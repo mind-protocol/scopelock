@@ -1,0 +1,13 @@
+{
+  "project": "ScopeLock",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "bootstrap",
+      "title": "Repository bootstrap",
+      "description": "Initial repository structure, CI, and proof generation harness.",
+      "tags": ["init", "ci", "proof"],
+      "timestamp": "2024-01-01T00:00:00Z"
+    }
+  ]
+}
