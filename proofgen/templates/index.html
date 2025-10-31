@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proof Log</title>
+    <link rel="stylesheet" href="./proof.css" />
+  </head>
+  <body>
+    <main>
+      <header class="stack intro">
+        <h1>Proof Log</h1>
+        <p class="lead">Evidence sprints and AC green tags rendered at build time.</p>
+        <div class="legend" role="note">
+          <span class="dot dot-evidence" aria-hidden="true"></span>
+          <span>Evidence sprint</span>
+          <span class="dot dot-green" aria-hidden="true"></span>
+          <span>AC green</span>
+        </div>
+        <form class="filters" id="filters" aria-label="Filter proof entries">
+          <label>
+            <span class="muted">Type</span>
+            <select id="typeFilter">
+              <option value="all" selected>All</option>
+              <option value="evidence-sprint">Evidence sprint</option>
+              <option value="ac-green">AC green</option>
+            </select>
+          </label>
+          <label>
+            <span class="muted">Feature</span>
+            <input type="search" id="featureFilter" placeholder="Filter by feature" />
+          </label>
+        </form>
+      </header>
+
+      {{content}}
+    </main>
+    <script>
+      {{script}}
+    </script>
+  </body>
+</html>

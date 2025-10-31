@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="{{stylesheet}}" />
+  </head>
+  <body>
+    <main>
+      <header class="card header">
+        <span class="badge badge-{{type}}">{{badgeIcon}} {{badgeLabel}}</span>
+        <p class="muted">{{typeLabel}} • {{date}} • {{feature}}</p>
+        {{demoCta}}
+        {{missingChips}}
+      </header>
+
+      <section class="stack" id="ac">
+        <h2>Acceptance Criteria</h2>
+        <div class="prose">
+          {{acBody}}
+        </div>
+      </section>
+
+      <section class="stack" id="demo">
+        <h2>Demo Notes</h2>
+        <div class="prose">
+          {{demoBody}}
+        </div>
+      </section>
+
+      <section class="stack" id="delta">
+        <h2>Delta / Metrics</h2>
+        <div class="card metrics">
+          {{deltaBody}}
+        </div>
+      </section>
+
+      <footer class="stack footer">
+        <a href="../index.html" class="muted">← Back to proof index</a>
+        <p class="muted">Tag {{tag}} • commit {{commit}}</p>
+      </footer>
+    </main>
+  </body>
+</html>
