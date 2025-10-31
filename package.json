@@ -1,0 +1,11 @@
+{
+  "name": "scopelock",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node scripts/run-lint.mjs",
+    "test": "node scripts/run-test.mjs",
+    "build": "node scripts/build.mjs"
+  }
+}
