@@ -2,6 +2,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { emitEvent } from './emit.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,6 +30,15 @@ async function build() {
   await fs.mkdir(outDir, { recursive: true });
   await copyDirectory(srcDir, outDir);
   console.log('Static site built to', outDir);
+  try {
+    await emitEvent('site.page_built@1.0', {
+      path: '/',
+      actor: 'agent:web',
+      generatedAt: new Date().toISOString()
+    });
+  } catch (error) {
+    console.warn('Unable to emit site.page_built@1.0:', error.message);
+  }
 }
 
 build().catch((error) => {
