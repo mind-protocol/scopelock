@@ -1,15 +1,196 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ScopeLock</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>ScopeLock Delivery — Critères d’acceptation exécutables, prix et issue verrouillés</title>
+    <meta name="description" content="ScopeLock co-écrit AC.md + tests, livre par jalons tagués (démo ≤90s, delta) et facture à AC green." />
+    <meta property="og:title" content="ScopeLock Delivery" />
+    <meta property="og:description" content="Critères d’acceptation exécutables. Prix et issue verrouillés." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://scopelock.dev/" />
+    <meta property="og:image" content="/og-scopelock.svg" />
+    <link rel="stylesheet" href="styles/site.css" />
   </head>
   <body>
     <main>
-      <h1>ScopeLock</h1>
-      <p>The ScopeLock monorepo combines site, proof generation, agents, and operational guides.</p>
+      <header class="hero">
+        <div class="event-pulse">
+          <span class="badge-event" aria-live="polite">Tag émis · 2025-01-09T08:24:00Z</span>
+        </div>
+        <h1>ScopeLock Delivery.</h1>
+        <p class="lead">Critères d’acceptation exécutables. Prix et issue verrouillés.</p>
+        <div class="hero-ctas">
+          <a class="cta" href="/proof">
+            <span>Voir un Evidence Sprint récent</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contact">Planifier un kickoff (≤ 72h) →</a>
+        </div>
+      </header>
+
+      <section class="card scope-steps" aria-labelledby="process">
+        <h2 id="process">Comment on travaille</h2>
+        <ol>
+          <li>
+            <strong>ScopeLock</strong> — On co-écrit <code>AC.md</code> (critères d’acceptation) et on écrit les tests d’acceptation correspondants.
+          </li>
+          <li>
+            <strong>Evidence Sprint</strong> — On produit un artefact visible (démo ≤90s + <code>DELTA.md</code>) pour valider les choix et resserrer <code>AC.md</code>.
+          </li>
+          <li>
+            <strong>Build → AC green</strong> — On livre par jalons tagués jusqu’à ce que les critères passent en CI/CD.
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="quick-scope">
+        <h2 id="quick-scope">ScopeLock en 60 secondes</h2>
+        <div class="scope-quick-grid">
+          <article>
+            <h3>1. Vous voyez/testez la démo.</h3>
+            <p>Chaque jalon arrive avec une démo ≤90s et un delta mesurable.</p>
+          </article>
+          <article>
+            <h3>2. Vous acceptez quand les tests passent.</h3>
+            <p>Les critères sont verrouillés dans <code>AC.md</code> et exécutés à chaque run.</p>
+          </article>
+          <article>
+            <h3>3. Vous payez à « AC green ».</h3>
+            <p>Facturation déclenchée uniquement lorsque les tags <code>ac-green_*</code> sont émis.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="cases">
+        <div class="card">
+          <h2 id="cases">Études de cas</h2>
+          <div class="grid-3">
+            <article class="card card-case">
+              <header>
+                <h3>OTP Signup</h3>
+                <p class="case-delta"><em>Avant</em> : p95 1200ms → <em>Après</em> : 280ms</p>
+              </header>
+              <div class="case-meta">
+                <span>Stack : Next.js</span>
+                <span>Playwright</span>
+              </div>
+              <p>Preuve : <a href="/proof/evidence-sprint_signup-otp_2025-10-31">evidence-sprint_signup-otp_2025-10-31</a></p>
+            </article>
+            <article class="card card-case">
+              <header>
+                <h3>Import CSV</h3>
+                <p class="case-delta"><em>Avant</em> : 7 écrans → <em>Après</em> : 3 écrans</p>
+              </header>
+              <div class="case-meta">
+                <span>Stack : Node</span>
+                <span>React Table</span>
+              </div>
+              <p>Preuve : <a href="/proof/evidence-sprint_import-csv_2025-11-02">evidence-sprint_import-csv_2025-11-02</a></p>
+            </article>
+            <article class="card card-case">
+              <header>
+                <h3>Search</h3>
+                <p class="case-delta"><em>Avant</em> : 12% erreurs → <em>Après</em> : 1.4%</p>
+              </header>
+              <div class="case-meta">
+                <span>Stack : Postgres</span>
+                <span>pg_trgm</span>
+              </div>
+              <p>Preuve : <a href="/proof/evidence-sprint_search_2025-11-03">evidence-sprint_search_2025-11-03</a></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="timeline">
+        <h2 id="timeline">Proof teaser</h2>
+        <p>Derniers jalons tagués :</p>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-time">2025-01-08T16:20:00Z · Evidence Sprint</div>
+            <p><code>evidence-sprint_signup-otp_2025-10-31</code> — démo ≤90s, delta p95 à 280ms.</p>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-time">2025-01-05T11:42:00Z · AC green</div>
+            <p><code>ac-green_signup-otp</code> — critères d’acceptation verts en CI.</p>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-time">2025-01-02T09:12:00Z · Evidence Sprint</div>
+            <p><code>evidence-sprint_import-csv_2025-11-02</code> — delta écrans réduit de 7 à 3.</p>
+          </article>
+        </div>
+        <p class="proof-link">
+          <span>Voir tout le Proof Log →</span>
+          <a href="/proof">/proof</a>
+        </p>
+      </section>
+
+      <section class="card proof-list" aria-labelledby="proof-log">
+        <h2 id="proof-log">Proof Log</h2>
+        <p>Suivez les jalons tagués : <code>evidence-sprint_*</code> (démo ≤90s) et <code>ac-green_*</code> (tests d’acceptation verts).</p>
+        <form class="proof-search" role="search">
+          <label for="proof-search-input">Recherche par &lt;feature&gt;</label>
+          <input id="proof-search-input" type="search" name="feature" placeholder="ex : signup-otp" autocomplete="off" />
+        </form>
+        <ul>
+          <li data-proof-item data-feature="signup-otp evidence-sprint">
+            <code>evidence-sprint_signup-otp_2025-10-31</code><br />
+            <small>Démo ≤90s, delta p95 1200ms → 280ms.</small>
+          </li>
+          <li data-proof-item data-feature="signup-otp ac-green">
+            <code>ac-green_signup-otp</code><br />
+            <small>Tests d’acceptation verts, release taguée.</small>
+          </li>
+          <li data-proof-item data-feature="import-csv evidence-sprint">
+            <code>evidence-sprint_import-csv_2025-11-02</code><br />
+            <small>Delta UX : 7 écrans → 3 écrans.</small>
+          </li>
+          <li data-proof-item data-feature="search evidence-sprint">
+            <code>evidence-sprint_search_2025-11-03</code><br />
+            <small>Delta erreurs : 12% → 1.4%.</small>
+          </li>
+        </ul>
+        <p class="proof-empty" data-proof-empty hidden>Aucun tag ne correspond à ce feature. Essayez un autre critère.</p>
+        <p><a href="/proof">Voir tout le Proof Log →</a></p>
+      </section>
+
+      <section class="card" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p><strong>Kickoff ≤ 72h.</strong> Parlez-nous d’un jalon : on écrit <code>AC.md</code> ensemble et on livre jusqu’à « AC green ».</p>
+        <div class="contact-actions">
+          <a class="cta" href="https://cal.com/scopelock/kickoff" target="_blank" rel="noopener">Réserver un créneau</a>
+          <a href="mailto:hello@scopelock.dev">hello@scopelock.dev</a>
+        </div>
+      </section>
     </main>
+    <footer>
+      <small>© ScopeLock — membrane-first, event-native. Jalons tagués, critères verrouillés.</small>
+    </footer>
+    <script type="module">
+      const searchInput = document.querySelector('#proof-search-input');
+      const proofItems = Array.from(document.querySelectorAll('[data-proof-item]'));
+      const emptyState = document.querySelector('[data-proof-empty]');
+
+      function applyFilter(term) {
+        const query = term.trim().toLowerCase();
+        let visible = 0;
+        proofItems.forEach((item) => {
+          const feature = `${item.dataset.feature || ''} ${item.textContent || ''}`.toLowerCase();
+          const match = query.length === 0 || feature.includes(query);
+          item.hidden = !match;
+          if (match) visible += 1;
+        });
+        if (emptyState) {
+          emptyState.hidden = visible !== 0;
+        }
+      }
+
+      if (searchInput && proofItems.length) {
+        searchInput.addEventListener('input', (event) => {
+          applyFilter(event.target.value);
+        });
+      }
+    </script>
   </body>
 </html>

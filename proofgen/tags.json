@@ -3,11 +3,32 @@
   "version": "1.0.0",
   "entries": [
     {
-      "id": "bootstrap",
-      "title": "Repository bootstrap",
-      "description": "Initial repository structure, CI, and proof generation harness.",
-      "tags": ["init", "ci", "proof"],
-      "timestamp": "2024-01-01T00:00:00Z"
+      "id": "evidence-sprint_signup-otp_2025-10-31",
+      "title": "Evidence Sprint — OTP Signup",
+      "description": "Démo ≤90s montrant la réduction du p95 de 1200ms à 280ms pour le signup OTP.",
+      "tags": ["evidence-sprint", "otp", "delta"],
+      "timestamp": "2025-01-08T16:20:00Z"
+    },
+    {
+      "id": "ac-green_signup-otp",
+      "title": "AC green — OTP Signup",
+      "description": "Tests d’acceptation exécutables pour le signup OTP validés en CI/CD.",
+      "tags": ["ac-green", "otp", "ci"],
+      "timestamp": "2025-01-05T11:42:00Z"
+    },
+    {
+      "id": "evidence-sprint_import-csv_2025-11-02",
+      "title": "Evidence Sprint — Import CSV",
+      "description": "Démo ≤90s montrant la réduction du parcours import CSV de 7 écrans à 3 écrans.",
+      "tags": ["evidence-sprint", "csv", "ux"],
+      "timestamp": "2025-01-02T09:12:00Z"
+    },
+    {
+      "id": "evidence-sprint_search_2025-11-03",
+      "title": "Evidence Sprint — Search",
+      "description": "Démo ≤90s démontrant la baisse d’erreurs de recherche de 12% à 1.4%.",
+      "tags": ["evidence-sprint", "search", "delta"],
+      "timestamp": "2025-01-01T14:05:00Z"
     }
   ]
 }
