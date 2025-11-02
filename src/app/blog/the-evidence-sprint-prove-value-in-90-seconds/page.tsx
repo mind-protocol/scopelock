@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import styles from './styles.module.css';
+import styles from '../blog.module.css';
 
 export const metadata: Metadata = {
   title: 'The Evidence Sprint: Prove Value in 90 Seconds | ScopeLock Blog',
