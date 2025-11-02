@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { ContactForm } from '../../components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact — ScopeLock',
@@ -28,6 +29,14 @@ export default function ContactPage() {
         <p>
           <small>Powered by Cal.com. Choose a time that works for you.</small>
         </p>
+      </section>
+
+      <section className="card">
+        <h2>Send a Message</h2>
+        <p>
+          Not ready to schedule a call? Send us a message and we&apos;ll get back to you.
+        </p>
+        <ContactForm />
       </section>
 
       <section className="card">
