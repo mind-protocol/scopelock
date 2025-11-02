@@ -61,6 +61,36 @@ R‑400 Fail‑Loud‑Catch: any catch must rethrow or emit failure.emit{code_lo
 R‑401 No‑Silent‑Default: when a value is missing, fail with explicit reason; do not invent defaults in production paths.
 R‑500 Deterministic‑CI: acceptance must pass on CI; local‑only passes are insufficient.
 
+## TEST INFRASTRUCTURE (established)
+
+**Location:** `tests/acceptance/*.spec.ts`
+**Framework:** Playwright (@playwright/test)
+**Config:** `playwright.config.ts`
+**Runner:** `npm test` → `scripts/run-test.mjs` → `npx playwright test`
+
+**Coverage (ac-green_website_2025-11-02):**
+- F1 (Core Pages): `tests/acceptance/pages.spec.ts` — 13 tests
+- F2 (Navigation): `tests/acceptance/navigation.spec.ts` — 4 tests
+- F3 (Content Quality): `tests/acceptance/content.spec.ts` — 4 tests
+- F4 (SEO): `tests/acceptance/seo.spec.ts` — 5 tests
+- NF2 (Deployment): `tests/acceptance/deployment.spec.ts` — 3 tests (prod-only, skipped locally)
+
+**Status:** 26/26 passed (local), 3/3 skipped (production-only)
+**Execution time:** ~25-32s
+**CI integration:** `.github/workflows/ci.yml:29` runs `npm test`
+
+**Verification command:**
+```bash
+npm test  # runs all acceptance tests
+npx playwright test --ui  # interactive mode
+```
+
+**Notes:**
+- Tests run against localhost:3000 by default (webServer auto-starts Next.js)
+- Set BASE_URL env var to test against production
+- Deployment tests skip unless BASE_URL matches production URL
+- Test files map directly to AC.md sections (F1-F4, NF1-NF3)
+
 ## RESPONSE FORMATS
 
 Verdict (internal, plain text)
