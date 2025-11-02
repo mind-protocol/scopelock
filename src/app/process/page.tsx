@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { ProcessTimeline } from '../../components/ProcessTimeline';
 
 export const metadata: Metadata = {
   title: 'Process — ScopeLock',
@@ -13,6 +14,8 @@ export default function ProcessPage() {
         <h1>How ScopeLock Works</h1>
         <p className="lead">A deep dive into our delivery model.</p>
       </header>
+
+      <ProcessTimeline />
 
       <section className="card">
         <h2>The ScopeLock Flow</h2>
