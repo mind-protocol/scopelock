@@ -1,7 +1,7 @@
 """
-Rafael Runner HTTP Client
+Citizen Runner HTTP Client
 
-Calls Node.js Rafael Runner service to execute Claude CLI with tool access.
+Calls Node.js Citizen Runner service to execute Claude CLI with tool access.
 """
 
 import logging
@@ -15,9 +15,9 @@ logger = logging.getLogger(__name__)
 
 class ClaudeRunner:
     """
-    Execute Claude Code sessions via Rafael Runner service
+    Execute Claude Code sessions via Citizen Runner service
 
-    This is the core operational model: backend calls Rafael Runner (Node.js service)
+    This is the core operational model: backend calls Citizen Runner (Node.js service)
     which runs `claude --print --continue` with full tool access.
 
     Benefits:
@@ -27,14 +27,14 @@ class ClaudeRunner:
     - Separate service = simpler deployments (Python + Node.js native runtimes)
     """
 
-    def __init__(self, rafael_runner_url: Optional[str] = None):
+    def __init__(self, citizen_runner_url: Optional[str] = None):
         """
         Initialize runner
 
         Args:
-            rafael_runner_url: URL of Rafael Runner service (default: from env)
+            citizen_runner_url: URL of Citizen Runner service (default: from env)
         """
-        self.rafael_runner_url = rafael_runner_url or settings.rafael_runner_url
+        self.citizen_runner_url = citizen_runner_url or settings.citizen_runner_url
         self.backend_api_url = settings.backend_api_url
 
     def run_rafael(self, client: str, message: str, job_title: str, job_link: str, received_at: Optional[str] = None) -> dict:
@@ -86,7 +86,7 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
 
     def _run_claude(self, prompt: str, citizen: str = "rafael", received_at: Optional[str] = None) -> dict:
         """
-        Execute Claude via Rafael Runner service (HTTP)
+        Execute Claude via Citizen Runner service (HTTP)
 
         Args:
             prompt: Message to send to Claude
@@ -101,7 +101,7 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
             }
         """
         try:
-            logger.info(f"[runner:{citizen}] Calling Rafael Runner service")
+            logger.info(f"[runner:{citizen}] Calling Citizen Runner service")
             logger.debug(f"[runner:{citizen}] Prompt: {prompt[:100]}...")
 
             # Prepare request payload
@@ -111,10 +111,10 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
                 "received_at": received_at
             }
 
-            # Call Rafael Runner via HTTP
-            with httpx.Client(timeout=130.0) as client:  # 130s timeout (slightly longer than Rafael's 120s)
+            # Call Citizen Runner via HTTP
+            with httpx.Client(timeout=130.0) as client:  # 130s timeout (slightly longer than runner's 120s)
                 response = client.post(
-                    f"{self.rafael_runner_url}/run",
+                    f"{self.citizen_runner_url}/run",
                     json=payload
                 )
 
@@ -137,7 +137,7 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
                 }
 
         except httpx.TimeoutException:
-            error = "Rafael Runner timeout after 130s"
+            error = "Citizen Runner timeout after 130s"
             logger.error(f"[runner:{citizen}] {error}")
             return {
                 "success": False,
@@ -146,7 +146,7 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
             }
 
         except httpx.HTTPStatusError as e:
-            error = f"Rafael Runner HTTP error: {e.response.status_code}"
+            error = f"Citizen Runner HTTP error: {e.response.status_code}"
             logger.error(f"[runner:{citizen}] {error}")
             return {
                 "success": False,
@@ -155,7 +155,7 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
             }
 
         except httpx.RequestError as e:
-            error = f"Rafael Runner connection error: {str(e)}"
+            error = f"Citizen Runner connection error: {str(e)}"
             logger.error(f"[runner:{citizen}] {error}")
             return {
                 "success": False,

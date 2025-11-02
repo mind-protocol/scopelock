@@ -30,8 +30,8 @@ class Settings(BaseSettings):
     workers: int = 2
 
     # Service URLs
-    rafael_runner_url: str = "http://localhost:3000"  # Rafael Runner service
-    backend_api_url: str = "http://localhost:8000"  # This backend (for Rafael to call back)
+    citizen_runner_url: str = "http://localhost:3000"  # Citizen Runner service
+    backend_api_url: str = "http://localhost:8000"  # This backend (for citizens to call back)
 
     class Config:
         env_file = ".env"

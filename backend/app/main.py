@@ -130,17 +130,17 @@ async def health_check():
         last_check=datetime.utcnow()
     )
 
-    # Check Rafael Runner service
+    # Check Citizen Runner service
     try:
         import httpx
-        response = httpx.get(f"{settings.rafael_runner_url}/health", timeout=5.0)
-        services["rafael_runner"] = ServiceStatus(
+        response = httpx.get(f"{settings.citizen_runner_url}/health", timeout=5.0)
+        services["citizen_runner"] = ServiceStatus(
             status="connected" if response.status_code == 200 else "disconnected",
             last_check=datetime.utcnow()
         )
     except Exception as e:
-        logger.debug(f"Rafael Runner check failed: {e}")
-        services["rafael_runner"] = ServiceStatus(
+        logger.debug(f"Citizen Runner check failed: {e}")
+        services["citizen_runner"] = ServiceStatus(
             status="disconnected",
             last_check=datetime.utcnow()
         )

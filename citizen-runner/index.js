@@ -1,5 +1,5 @@
 /**
- * Rafael Runner Service
+ * Citizen Runner Service
  *
  * Node.js service that executes Rafael (Claude CLI) with full tool access.
  * Called by Python backend when Gmail webhook received.
@@ -47,7 +47,7 @@ function log(level, message, meta = {}) {
 // Health check
 app.get('/health', (req, res) => {
   res.json({
-    service: 'Rafael Runner',
+    service: 'Citizen Runner',
     status: 'healthy',
     version: '1.0.0',
     repo_path: REPO_PATH,
@@ -58,7 +58,7 @@ app.get('/health', (req, res) => {
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    service: 'Rafael Runner',
+    service: 'Citizen Runner',
     version: '1.0.0',
     endpoints: {
       health: '/health',
@@ -207,7 +207,7 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-  log('info', 'Rafael Runner started', {
+  log('info', 'Citizen Runner started', {
     port: PORT,
     repo_path: REPO_PATH,
     backend_api_url: BACKEND_API_URL,

@@ -1,7 +1,7 @@
 {
-  "name": "rafael-runner",
+  "name": "citizen-runner",
   "version": "1.0.0",
-  "description": "Node.js service that runs Rafael (Claude CLI) with tool access",
+  "description": "Node.js service that runs ScopeLock citizens (Rafael, Emma) via Claude CLI with full tool access",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -17,7 +17,7 @@
     "@anthropic-ai/claude-code": "latest"
   },
   "devDependencies": {},
-  "keywords": ["rafael", "claude", "automation"],
+  "keywords": ["scopelock", "citizens", "claude", "automation"],
   "author": "Mind Protocol",
   "license": "MIT"
 }

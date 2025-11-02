@@ -1,4 +1,4 @@
-# Rafael Runner Service
+# Citizen Runner Service
 
 **Purpose**: Node.js service that executes Rafael (Claude CLI) with full tool access
 
@@ -12,7 +12,7 @@
 
 **Solution**: Split into 2 services:
 1. **Python Backend** (backend/) - Receives webhooks, sends Telegram
-2. **Node.js Rafael Runner** (this service) - Runs Claude CLI with tool access
+2. **Node.js Citizen Runner** (this service) - Runs Claude CLI with tool access
 
 **Benefits**:
 - ✅ Rafael has full tool access (Read, Write, Bash, Grep)
@@ -31,7 +31,7 @@ Gmail webhook → Python Backend
                     ↓
                 HTTP POST /run
                     ↓
-            Rafael Runner (this service)
+            Citizen Runner (this service)
                     ↓
         subprocess: claude --print --continue
                     ↓
@@ -87,7 +87,7 @@ Health check endpoint
 **Response**:
 ```json
 {
-  "service": "Rafael Runner",
+  "service": "Citizen Runner",
   "status": "healthy",
   "version": "1.0.0",
   "repo_path": "/opt/render/project/src",
@@ -119,7 +119,7 @@ Health check endpoint
 ### Setup
 
 ```bash
-cd rafael-runner
+cd citizen-runner
 
 # Install dependencies
 npm install
@@ -179,7 +179,7 @@ Service logs to stdout in JSON format:
 
 **View logs on Render**:
 1. Go to https://dashboard.render.com/
-2. Select `scopelock-rafael-runner`
+2. Select `scopelock-citizen-runner`
 3. Click "Logs" tab
 
 ---
@@ -189,7 +189,7 @@ Service logs to stdout in JSON format:
 ### Health Check
 
 ```bash
-curl https://scopelock-rafael-runner.onrender.com/health
+curl https://scopelock-citizen-runner.onrender.com/health
 ```
 
 Should return `status: "healthy"`
@@ -197,7 +197,7 @@ Should return `status: "healthy"`
 ### Test Run
 
 ```bash
-curl -X POST https://scopelock-rafael-runner.onrender.com/run \
+curl -X POST https://scopelock-citizen-runner.onrender.com/run \
   -H "Content-Type: application/json" \
   -d '{
     "prompt": "echo test",
@@ -215,7 +215,7 @@ Should return Claude CLI output
 
 **Check**: Health endpoint
 ```bash
-curl https://scopelock-rafael-runner.onrender.com/health
+curl https://scopelock-citizen-runner.onrender.com/health
 ```
 
 **If timeout**: Service may be sleeping (Render free tier). Wait 30s and retry.
@@ -257,4 +257,4 @@ npm install -g @anthropic-ai/claude-code
 
 ---
 
-**Rafael Runner ready. Executes citizens with full tool access.**
+**Citizen Runner ready. Executes citizens with full tool access.**

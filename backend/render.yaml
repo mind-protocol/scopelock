@@ -32,8 +32,8 @@ services:
         sync: false
 
       # Service URLs (set after deploying both services)
-      - key: RAFAEL_RUNNER_URL
-        value: "https://scopelock-rafael-runner.onrender.com"
+      - key: CITIZEN_RUNNER_URL
+        value: "https://scopelock-citizen-runner.onrender.com"
       - key: BACKEND_API_URL
         value: "https://scopelock.onrender.com"
 
@@ -55,14 +55,14 @@ services:
       paths:
         - backend/**
 
-  # 2. Node.js Rafael Runner (Claude CLI)
+  # 2. Node.js Citizen Runner (Claude CLI)
   - type: web
-    name: scopelock-rafael-runner
+    name: scopelock-citizen-runner
     runtime: node
     plan: starter  # $7/month
     region: oregon
     branch: main
-    rootDir: rafael-runner
+    rootDir: citizen-runner
     buildCommand: "npm install && npm install -g @anthropic-ai/claude-code"
     startCommand: "node index.js"
 
@@ -89,5 +89,5 @@ services:
     # Build settings
     buildFilter:
       paths:
-        - rafael-runner/**
+        - citizen-runner/**
         - citizens/**
