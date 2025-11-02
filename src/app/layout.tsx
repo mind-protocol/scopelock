@@ -33,7 +33,7 @@ export default function RootLayout({
           <nav className="site-nav">
             <Link href="/" className="logo-link">
               <img
-                src="/brand/logo/logo.png"
+                src="/brand/logo/logo.svg"
                 alt="ScopeLock"
                 width="224"
                 height="48"
