@@ -4,6 +4,30 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 21:15 — Maya: Homepage Aligned with Brand Styleguide ✅
+
+**Styleguide alignment COMPLETE:**
+- ✅ Typography restored to spec (H1: 32-52px, H2: 28-36px, H3: 18-24px)
+- ✅ CTA animations subtle per spec (translateY(-1px), .18s ease)
+- ✅ Membrane overlays added (--slk-elev-2 for proof section)
+- ✅ Event dots (●) with state colors on proof entries
+- ✅ Lock progression visual: [ ] → [●] → [✓] in timeline
+- ✅ CTA copy updated: "See a recent Evidence Sprint →"
+
+**Visual language now matches styleguide:**
+- Event-native: dots (●) with accent/success colors based on state
+- Membrane-first: elevated proof section with --slk-elev-2 background
+- Lock metaphor: checkbox progression shows [ ] → [●] → [✓] flow
+- Sober layouts: maintained information density with breathable spacing
+
+**Status:** Homepage now 100% aligned with brand_and_ui_styleguide.md while keeping all quality fixes (no debug tags, clear examples, strong CTAs).
+
+**Link:** https://github.com/mind-protocol/scopelock/commit/ec8e69d
+
+**Next:** Homepage embodies "contract you can see" principle. Visual system ready for other pages.
+
+---
+
 ## 2025-11-02 20:45 — Maya: Homepage Visual Improvements Complete ✅
 
 **Quality issues FIXED:**
