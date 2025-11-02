@@ -1,20 +1,20 @@
 # Render Deployment Configuration
 # https://render.com/docs/yaml-spec
 #
-# Minimal file-based backend: webhooks + Telegram + Claude CLI runner
+# Full repo deployment: backend + citizens + Claude CLI
 # Cost: $7/month (Starter plan) - NO DATABASE
 
 services:
-  # FastAPI Backend (file-based, no PostgreSQL)
+  # FastAPI Backend with Claude CLI support (Docker)
   - type: web
     name: scopelock-backend
-    runtime: python
+    runtime: docker
     plan: starter  # $7/month
     region: oregon
     branch: main
     rootDir: backend
-    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
-    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 2"
+    dockerfilePath: ./Dockerfile
+    dockerContext: ..  # Build from repo root to include citizens/
 
     # Persistent disk for file storage (drafts, events)
     disk:
@@ -31,15 +31,15 @@ services:
       - key: WEBHOOK_SECRET
         sync: false
 
-      # Paths
+      # Paths (Docker image has full repo at /app)
       - key: SCOPELOCK_REPO
-        value: "/home/mind-protocol/scopelock"
+        value: "/app"
       - key: DATA_DIR
         value: "/var/data"
+      - key: CITIZENS_DIR
+        value: "/app/citizens"
 
       # Python Config
-      - key: PYTHON_VERSION
-        value: "3.11"
       - key: PYTHONUNBUFFERED
         value: "1"
 
@@ -56,3 +56,4 @@ services:
     buildFilter:
       paths:
         - backend/**
+        - citizens/**
