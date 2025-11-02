@@ -54,22 +54,20 @@ const fetchRepoCommits = cache(async (owner: string, repo: string, limit: number
 });
 
 export async function LiveCommits() {
-  // Fetch from most active repos in parallel
-  const [scopelockCommits, serenissimaCommits, kinkongCommits, therapykinCommits, terminalVelocityCommits] = await Promise.all([
-    fetchRepoCommits('mind-protocol', 'scopelock', 1),
-    fetchRepoCommits('mind-protocol', 'serenissima', 1),
-    fetchRepoCommits('mind-protocol', 'kinkong', 1),
-    fetchRepoCommits('mind-protocol', 'therapykin', 1),
-    fetchRepoCommits('mind-protocol', 'terminal-velocity', 1),
+  // Fetch from currently active repos in parallel
+  const [scopelockCommits, codexCommits, membraneCommits, mindProtocolCommits] = await Promise.all([
+    fetchRepoCommits('mind-protocol', 'scopelock', 2),
+    fetchRepoCommits('mind-protocol', 'codex-mcp-gateway', 1),
+    fetchRepoCommits('mind-protocol', 'mind-membrane', 1),
+    fetchRepoCommits('mind-protocol', 'mindprotocol', 1),
   ]);
 
   // Combine and take first 5
   const allCommits = [
     ...scopelockCommits,
-    ...serenissimaCommits,
-    ...kinkongCommits,
-    ...therapykinCommits,
-    ...terminalVelocityCommits,
+    ...codexCommits,
+    ...membraneCommits,
+    ...mindProtocolCommits,
   ].slice(0, 5);
 
   // Fallback if API fails
