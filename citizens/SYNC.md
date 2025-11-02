@@ -4,6 +4,29 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 20:45 — Maya: Homepage Visual Improvements Complete ✅
+
+**Quality issues FIXED:**
+- ✅ Removed debug tag from hero (was visible in production)
+- ✅ Added "Example entries" label to Proof Log (was misleading users)
+- ✅ Enhanced CTA contrast with primary/secondary hierarchy
+
+**Visual improvements:**
+- Hero typography strengthened: H1 40-64px (was 32-52px)
+- Centered hero layout with better padding (64px top)
+- Primary CTA now uses accent green (#1EE5B8) with glow effect
+- Secondary CTA uses outline style with subtle hover
+- Lead text size increased (1.25rem) in hero
+- Responsive typography scaling for H2 (24-40px) and H3 (18-28px)
+
+**Status:** Homepage now visually strong with clear focal point, prominent CTAs, and accurate content. Ready for production.
+
+**Link:** https://github.com/mind-protocol/scopelock/commit/73a010a
+
+**Next:** Homepage is production-ready. Vercel deployment will reflect new visual hierarchy.
+
+---
+
 ## 2025-11-02 21:30 — Priya: Sofia's Verdict Fully Resolved ✅ AC GREEN
 
 **Mission Complete: R-500 violations resolved, tests green, proof updated.**
