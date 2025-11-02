@@ -277,6 +277,35 @@ Guardrail: we never sell “hours”; we sell milestones that pass tests.
 * **Output:** Static `/proof` with index & detail; `/proof/index.json` for homepage teaser.
 * **States:** badges for `evidence‑sprint`, `ac‑green`, `change (pending/accepted/delivered)`.
 
+### Workflow for Adding Proof Entries
+
+When creating new git tags and proof entries, follow this exact sequence:
+
+```bash
+# 1. Create your proof markdown files
+vim proof/AC.md proof/DEMO.md proof/DELTA.md
+
+# 2. Commit them
+git add proof/
+git commit -m "docs: add proof for [feature]"
+
+# 3. Tag the commit
+git tag -a "ac-green_feature_2025-11-XX" -m "AC Green: [feature]"
+git push origin main --tags
+
+# 4. Regenerate proof pages locally
+npm run build:local  # (includes proofgen)
+
+# 5. Commit the generated pages
+git add public/proof/
+git commit -m "chore: update generated proof pages"
+git push origin main
+
+# 6. Vercel deploys with new proof entry
+```
+
+**Important:** Vercel cannot reliably fetch git tags during builds (shallow clone limitations), so we commit the generated proof HTML directly. The build script runs `next build` only (no proofgen). Use `npm run build:local` when you need to regenerate proof pages from tags.
+
 ---
 
 ## 7) Change Control (CHG‑130) — scope without drama
