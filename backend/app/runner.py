@@ -38,7 +38,7 @@ class ClaudeRunner:
         self.repo_path = repo_path or settings.scopelock_repo
         self.backend_api_url = os.getenv("BACKEND_API_URL", "http://localhost:8000")
 
-    def run_rafael(self, client: str, message: str, job_title: str, job_link: str) -> dict:
+    def run_rafael(self, client: str, message: str, job_title: str, job_link: str, received_at: Optional[str] = None) -> dict:
         """
         Trigger Rafael (response drafter) via Claude CLI
 
@@ -47,6 +47,7 @@ class ClaudeRunner:
             message: Client message
             job_title: Job title
             job_link: Job URL
+            received_at: ISO timestamp when Gmail alert received (for SLA tracking)
 
         Returns:
             {
@@ -62,7 +63,10 @@ Link: {job_link}
 
 Draft a response following ScopeLock principles and call POST /api/draft/create when ready."""
 
-        return self._run_claude(prompt, citizen="rafael")
+        # Pass received_at via environment for SLA tracking
+        extra_env = {"RECEIVED_AT": received_at} if received_at else {}
+
+        return self._run_claude(prompt, citizen="rafael", extra_env=extra_env)
 
     def run_emma(self, job_post: str) -> dict:
         """
@@ -84,13 +88,14 @@ Draft a response following ScopeLock principles and call POST /api/draft/create 
 
         return self._run_claude(prompt, citizen="emma")
 
-    def _run_claude(self, prompt: str, citizen: str = "rafael") -> dict:
+    def _run_claude(self, prompt: str, citizen: str = "rafael", extra_env: Optional[dict] = None) -> dict:
         """
         Execute claude CLI in subprocess
 
         Args:
             prompt: Message to send to Claude
             citizen: Citizen name (for logging)
+            extra_env: Additional environment variables to pass
 
         Returns:
             {
@@ -106,6 +111,11 @@ Draft a response following ScopeLock principles and call POST /api/draft/create 
             # Set environment variables for Claude session
             env = os.environ.copy()
             env["BACKEND_API_URL"] = self.backend_api_url
+
+            # Merge extra environment variables (e.g., RECEIVED_AT for SLA tracking)
+            if extra_env:
+                env.update(extra_env)
+                logger.debug(f"[runner:{citizen}] Extra env: {list(extra_env.keys())}")
 
             # Run claude CLI
             result = subprocess.run(

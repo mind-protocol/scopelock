@@ -60,14 +60,17 @@ async def upwork_webhook(request: UpworkWebhookRequest):
         {"status": "triggered", "citizen": "rafael"}
     """
     try:
-        logger.info(f"[webhook:upwork] Received response from {request.client}")
+        # Track received timestamp for SLA monitoring
+        received_at = datetime.utcnow().isoformat()
+        logger.info(f"[webhook:upwork] Received response from {request.client} at {received_at}")
 
-        # Run Rafael via Claude CLI
+        # Run Rafael via Claude CLI (pass received timestamp)
         result = runner.run_rafael(
             client=request.client,
             message=request.message,
             job_title=request.job_title,
-            job_link=request.job_link
+            job_link=request.job_link,
+            received_at=received_at  # For SLA tracking
         )
 
         if result["success"]:
@@ -75,6 +78,7 @@ async def upwork_webhook(request: UpworkWebhookRequest):
             return {
                 "status": "triggered",
                 "citizen": "rafael",
+                "received_at": received_at,
                 "output": result["output"][:200]  # First 200 chars
             }
         else:
@@ -82,6 +86,7 @@ async def upwork_webhook(request: UpworkWebhookRequest):
             return {
                 "status": "error",
                 "citizen": "rafael",
+                "received_at": received_at,
                 "error": result["error"]
             }
 
@@ -136,7 +141,13 @@ async def telegram_webhook(update: TelegramUpdate):
 
 
 @router.post("/api/notify/draft")
-async def notify_draft(draft_id: str, client: str, draft_text: str, confidence: int):
+async def notify_draft(
+    draft_id: str,
+    client: str,
+    draft_text: str,
+    confidence: int,
+    received_at: str = None  # Optional SLA tracking timestamp
+):
     """
     Send Telegram notification with approval buttons
 
@@ -147,6 +158,7 @@ async def notify_draft(draft_id: str, client: str, draft_text: str, confidence: 
         client: Client name
         draft_text: Draft response text
         confidence: Confidence score (0-100)
+        received_at: ISO timestamp when Gmail alert received (optional, for SLA)
 
     Returns:
         {"telegram_sent": true, "message_id": "..."}
@@ -158,7 +170,8 @@ async def notify_draft(draft_id: str, client: str, draft_text: str, confidence: 
             draft_id=draft_id,
             client=client,
             draft_text=draft_text,
-            confidence=confidence
+            confidence=confidence,
+            received_at=received_at  # Pass SLA timestamp
         )
 
         return {

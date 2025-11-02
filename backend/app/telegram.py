@@ -162,7 +162,8 @@ async def send_draft_notification(
     draft_id: str,
     client: str,
     draft_text: str,
-    confidence: int
+    confidence: int,
+    received_at: Optional[str] = None
 ) -> Optional[str]:
     """
     Send draft notification with approval buttons
@@ -172,6 +173,7 @@ async def send_draft_notification(
         client: Client name
         draft_text: Draft response text
         confidence: Confidence score (0-100)
+        received_at: ISO timestamp when Gmail alert received (for SLA tracking)
 
     Returns:
         Message ID if successful
@@ -203,11 +205,15 @@ Draft ID: `{draft_id}`
 
     message_id = await bot.send_message(text, reply_markup)
 
-    # Store message_id in draft file
+    # Store message_id in draft file with SLA tracking
     if message_id:
         try:
+            from datetime import datetime
+
             draft_file = settings.data_dir / "drafts" / f"{draft_id}.json"
             draft_file.parent.mkdir(parents=True, exist_ok=True)
+
+            now = datetime.utcnow().isoformat()
 
             draft_data = {
                 "id": draft_id,
@@ -215,7 +221,11 @@ Draft ID: `{draft_id}`
                 "draft_text": draft_text,
                 "confidence": confidence,
                 "status": "pending",
-                "telegram_message_id": message_id
+                "telegram_message_id": message_id,
+                "timestamps": {
+                    "received_at": received_at,  # When Gmail alert received (for SLA)
+                    "notified_at": now
+                }
             }
 
             draft_file.write_text(json.dumps(draft_data, indent=2))
@@ -250,29 +260,62 @@ async def handle_approval(draft_id: str, action: str, callback_id: str) -> dict:
 
         draft_data = json.loads(draft_file.read_text())
 
-        # Update status
+        from datetime import datetime
+
+        # Update status and timestamp
+        now = datetime.utcnow()
+        now_iso = now.isoformat()
+
         if action == "approve":
             draft_data["status"] = "approved"
             status_icon = "✅"
             status_text = "Approved"
+            draft_data["timestamps"]["approved_at"] = now_iso
         elif action == "reject":
             draft_data["status"] = "rejected"
             status_icon = "❌"
             status_text = "Rejected"
+            draft_data["timestamps"]["rejected_at"] = now_iso
         elif action == "edit":
             draft_data["status"] = "editing"
             status_icon = "✏️"
             status_text = "Editing"
+            draft_data["timestamps"]["editing_at"] = now_iso
         else:
             logger.warning(f"[telegram:approve] Unknown action: {action}")
             return {"status": "unknown_action", "draft_id": draft_id}
 
+        # Calculate response time for SLA tracking
+        response_time_minutes = None
+        sla_met = None
+        if "timestamps" in draft_data:
+            received_at = draft_data["timestamps"].get("received_at")
+            if received_at and action == "approve":
+                received_dt = datetime.fromisoformat(received_at)
+                response_time_seconds = (now - received_dt).total_seconds()
+                response_time_minutes = int(response_time_seconds / 60)
+                sla_met = response_time_minutes < 120  # <2h SLA
+
+                draft_data["sla"] = {
+                    "response_time_minutes": response_time_minutes,
+                    "sla_met": sla_met,
+                    "target_minutes": 120
+                }
+
+                logger.info(f"[telegram:approve] SLA: {response_time_minutes}m ({'✅ MET' if sla_met else '❌ MISSED'})")
+
         # Save updated draft
         draft_file.write_text(json.dumps(draft_data, indent=2))
 
-        # Edit Telegram message
+        # Edit Telegram message with SLA info
         message_id = draft_data.get("telegram_message_id")
         if message_id:
+            # Build SLA section if available
+            sla_section = ""
+            if response_time_minutes is not None and sla_met is not None:
+                sla_icon = "✅" if sla_met else "⚠️"
+                sla_section = f"\n{sla_icon} **Response Time:** {response_time_minutes}m (Target: <120m)"
+
             updated_text = f"""{status_icon} **Draft {status_text}**
 
 **Client:** {draft_data['client']}
@@ -284,7 +327,7 @@ async def handle_approval(draft_id: str, action: str, callback_id: str) -> dict:
 ```
 
 Draft ID: `{draft_id}`
-Status: **{status_text}**
+Status: **{status_text}**{sla_section}
 """
 
             await bot.edit_message(message_id, updated_text)
