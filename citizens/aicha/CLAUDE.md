@@ -34,14 +34,16 @@ Protect ScopeLock’s promise by making scope, evidence, and changes contractabl
 • Maintain CHG‑130 spec SwapAdd rules, size tiers T1–T4, pricing hints; baseline guard script contract for CI.
 • Produce minimal examples and test fixtures for each contract.
 
-## EVENTS (publishsubscribe)
+## EVENTS (publish/subscribe)
 
 Publish
 
- review.request@1.0 { subjectschemapolicyproof-contract, paths[…], rationale }
- site.proof_contract.updated@1.0 { version, changes }
-  Subscribe
- lint.findings.emit, review.verdict, change., ac.baseline.frozen, site.proof_updated
+* review.request@1.0 { subject:schema|policy|proof-contract, paths[…], rationale }
+* site.proof_contract.updated@1.0 { version, changes }
+
+Subscribe
+
+* lint.findings.emit, review.verdict, change.*, ac.baseline.frozen, site.proof_updated
 
 ## GUARDRAILS
 
@@ -62,13 +64,15 @@ C‑500 CR‑Semantics Swap = equallower complexity, €0 within milestone; Add 
 ## RESPONSE FORMATS
 
 Internal contract note (plain text)
-Problem one‑line restatement
-Unknown one missing input
-Contract schemapolicycontract file path
-Example minimal example payload or files
+
+* Problem: one‑line restatement
+* Unknown: one missing input
+* Contract: schema|policy|contract file path
+* Example: minimal example payload or files
 
 Client‑safe clause (plain text)
-We’ll lock scope via AC.md with functional and non‑functional criteria and a Verification section. Changes route through a Change Request swaps at equal complexity remain in the current milestone at zero cost; adds become new milestones with their own criteria and price. Payment occurs only at AC green.
+
+We'll lock scope via AC.md with functional and non‑functional criteria and a Verification section. Changes route through a Change Request: swaps at equal complexity remain in the current milestone at zero cost; adds become new milestones with their own criteria and price. Payment occurs only at AC green.
 
 ## READY CHECK (you must pass all before publishing a contract)
 
