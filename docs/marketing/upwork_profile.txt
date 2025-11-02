@@ -1,13 +1,3 @@
-HEADLINE:
-Software Engineer & Multi-Agent AI Specialist | ScopeLock Delivery
-
-HOURLY RATE:
-$200.00/hr (displayed but not used - we work fixed-price milestones)
-
-===================================
-OVERVIEW / PROFILE DESCRIPTION:
-===================================
-
 I lock scope and deliver against executable acceptance criteria. You pay only when tests pass.
 
 Founder with La Serenissima (130+ persistent AI agents, 3+ months live), Terminal Velocity (1,051 GitHub stars), and Civocracy (€1M+ raised, successful exit). I build production systems through clear acceptance criteria, Evidence Sprints, and public proof.
@@ -35,12 +25,8 @@ WHAT SCOPELOCK DELIVERY MEANS
 
 RECENT DELIVERIES
 
-- Rebuilt SaaS 48 hours before investor demo → Client raised $2M
-- Fixed fintech authentication in 44 hours → Now processing $600K+ volume
 - La Serenissima: 130+ persistent AI agents, 50,000+ state updates/hour, 99.7% uptime
 - Terminal Velocity: 1,051 GitHub stars (top 0.01% of GitHub projects)
-- 500+ projects delivered, average Evidence Sprint: 2-5 days
-
 
 HOW WE WORK
 
@@ -69,10 +55,8 @@ TECHNICAL STACK
 Languages: JavaScript/TypeScript (15y), Python (10y), Solidity, Go, Rust
 Frontend: React, Next.js, Vue, React Native, Tailwind
 Backend: Node.js, FastAPI, Django, PostgreSQL, MongoDB, Redis
-AI/ML: Claude API, GPT-4, LangChain, custom orchestration, vector databases
-Cloud: AWS, GCP, Vercel, Docker, Kubernetes
-Scale: 20K+ requests/minute, millions of users, 99%+ uptime
-
+AI/ML: Claude API, GPT-5, custom orchestration, vector databases
+Cloud: Render, AWS, GCP, Vercel, Docker, Kubernetes
 
 THE TEAM
 
@@ -118,7 +102,6 @@ Scope Creep Surprises
 "Tests Pass" But It's Broken
 → You can run the tests yourself, exact command + seed data in AC.md
 
-
 PERFECT FOR
 
 ✓ Startups with investor demos approaching
@@ -138,11 +121,11 @@ VERIFICATION
 
 Live Systems:
 - serenissima.ai: 130+ agents running right now
-- github.com/Lesterpaintstheworld: 1,051 stars, daily commits
-- scopelock.dev/proof: Public milestone record (launching Q1 2025)
+- github.com/mind-protocol: 1,051 stars, daily commits
+- github.com/nlr-ai: Experiments and support
+- scopelock.mindprotocol.ai/proof: Public milestone record (launching Q1 2025)
 
 First call free: I'll show GitHub commits, live systems, and draft AC.md for your project.
-
 
 HOW TO START
 
@@ -157,13 +140,6 @@ No hidden costs. No hourly surprises. No ambiguity about "done."
 
 Lock the scope. Prove the value.
 
-
-===================================
-ADDITIONAL INFO:
-===================================
-
 Location: Lyon, France (CET/CEST)
-Availability: 14:00–19:00 Central European Time for calls
-Languages: English (fluent), French (native)
-GitHub: github.com/Lesterpaintstheworld
-Response time: <2 hours (typically)
+Availability: 14:00–00:00 Central European Time for calls + East America
+Languages: English (native), French (native)
