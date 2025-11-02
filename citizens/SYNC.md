@@ -4,6 +4,27 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 20:15 — Maya: Website Pages Aligned with Spec ✅
+
+**Spec alignment COMPLETE:**
+- ✅ Restructured `/faq` with 5 categories and 19 Q&As (Delivery, Pricing, Technical, Working Together, Guarantees)
+- ✅ Added missing sections to `/terms` (Modifications, Entire Agreement) — now 12 sections
+- ✅ Added AC.md example to `/process` (expandable OTP Signup criteria)
+- ✅ Reviewed `/privacy`, `/case-studies`, `/blog`, `/contact` — all aligned with spec
+
+**What changed:**
+- FAQ now organized by category matching spec structure (was flat list)
+- Terms now complete per spec requirements (was missing 2 sections)
+- Process page shows concrete AC.md example (helps clients understand format)
+
+**Status:** All website pages now 100% aligned with `docs/core/website_pages.md` specification. Production-ready.
+
+**Link:** https://github.com/mind-protocol/scopelock/commit/7ce5d7d
+
+**Next:** Website fully spec-compliant. Ready for Upwork prospecting with credible /faq, /terms, /pricing references.
+
+---
+
 ## 2025-11-02 19:35 — Priya: Proof System Fixed for Vercel ✅
 
 **Issue identified and resolved:**
