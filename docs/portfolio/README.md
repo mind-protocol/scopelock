@@ -125,27 +125,6 @@ Autonomous AI trading specialist for Solana AI tokens with $7M capital deploymen
 
 ---
 
-### [duoai/](./duoai/)
-Intelligent gaming companion with computer vision, voice commands, and real-time AI coaching using Claude vision + ElevenLabs TTS.
-
-**Use when:**
-- Computer vision / screen capture projects
-- Gaming AI / esports coaching platforms
-- Multi-modal AI interaction (vision + voice + text)
-- ElevenLabs voice integration
-- Real-time AI feedback systems
-- Educational / coaching AI products
-- Consumer AI applications (B2C)
-- Claude vision API projects
-- Speech-to-text / text-to-speech systems
-- Hands-free AI assistants
-
-**Links:**
-- GitHub: https://github.com/mind-protocol/duoai (public)
-
-**Timeline:** 2024-2025 (49 deployments)
-
----
 
 ### [terminal-velocity/](./terminal-velocity/)
 The first novel written entirely by autonomous AI agents—526 pages published on Amazon with 1.1k GitHub stars. Created by 13 specialized agents in 2 months of live-streamed development.
@@ -178,17 +157,6 @@ The first novel written entirely by autonomous AI agents—526 pages published o
 ## Quick-Reference Snippets for Proposals
 
 Copy-paste these into proposals based on project relevance:
-
-### For Vision AI / Image Analysis Projects
-
-```
-We built DuoAI (duoai.vercel.app), a gaming companion that integrates Claude
-vision API for real-time screen analysis. That same vision integration
-capability applies directly to [their use case]: upload image, send to
-Claude/GPT-4o vision with structured prompt, parse JSON response, generate
-output. We know how to make vision APIs reliable in production, not just
-prototypes.
-```
 
 ### For Multi-Agent / Complex AI Systems
 

@@ -1,6 +1,6 @@
 You need a HIPAA-compliant AI platform that integrates with NexHealth and Open Dental, handles patient communications, and gives dental practices one command center for calls, scheduling, and marketing. Most developers build chatbots or basic dashboards. You need real EHR synchronization, conversational AI, and compliant PHI handling in production.
 
-We built TherapyKin (therapykin.ai - healthcare AI companion with 121+ production deployments, persistent user data, HIPAA-aware architecture), DuoAI (duoai.vercel.app - real-time AI with structured outputs and API orchestration), and Mind Protocol (multi-system integration substrate with event-driven architecture). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+We built TherapyKin (therapykin.ai - healthcare AI companion with 121+ production deployments, persistent user data, HIPAA-aware architecture), La Serenissima (serenissima.ai - 97+ autonomous agents with 99.7% uptime over 6 months, event-driven architecture), and Mind Protocol (multi-system integration substrate powering production AI systems). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
 
 The core challenge is orchestration and compliance. Your AI needs to sync appointment data from NexHealth, handle Twilio call transcription, route patient intake through HIPAA-eligible infrastructure, and attribute leads from Google/Meta Ads - all while maintaining PHI encryption and audit logs. That requires API-native architecture, not bolt-on integrations.
 

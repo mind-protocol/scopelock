@@ -29,10 +29,9 @@ class Settings(BaseSettings):
     port: int = 8000
     workers: int = 2
 
-    # Paths (for Claude CLI execution)
-    citizens_dir: Path = Path("/home/mind-protocol/scopelock/citizens")
-    proof_dir: Path = Path("/home/mind-protocol/scopelock/proof")
-    scopelock_repo: Path = Path("/home/mind-protocol/scopelock")
+    # Service URLs
+    rafael_runner_url: str = "http://localhost:3000"  # Rafael Runner service
+    backend_api_url: str = "http://localhost:8000"  # This backend (for Rafael to call back)
 
     class Config:
         env_file = ".env"

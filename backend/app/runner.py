@@ -1,13 +1,11 @@
 """
-Claude CLI subprocess runner
+Rafael Runner HTTP Client
 
-Executes citizens via `claude --print "message" --continue`
+Calls Node.js Rafael Runner service to execute Claude CLI with tool access.
 """
 
-import subprocess
 import logging
-import os
-from pathlib import Path
+import httpx
 from typing import Optional
 
 from app.config import settings
@@ -17,26 +15,27 @@ logger = logging.getLogger(__name__)
 
 class ClaudeRunner:
     """
-    Execute Claude Code sessions via CLI
+    Execute Claude Code sessions via Rafael Runner service
 
-    This is the core operational model: backend runs `claude --print --continue`
-    instead of calling Anthropic API directly.
+    This is the core operational model: backend calls Rafael Runner (Node.js service)
+    which runs `claude --print --continue` with full tool access.
 
     Benefits:
     - Citizens get full tool access (Read, Write, Bash, Grep)
     - Uses subscription ($20/month) not API calls ($60-180/month)
     - System prompts already defined in citizens/*.md
+    - Separate service = simpler deployments (Python + Node.js native runtimes)
     """
 
-    def __init__(self, repo_path: Optional[Path] = None):
+    def __init__(self, rafael_runner_url: Optional[str] = None):
         """
         Initialize runner
 
         Args:
-            repo_path: Path to ScopeLock repository (default: from settings)
+            rafael_runner_url: URL of Rafael Runner service (default: from env)
         """
-        self.repo_path = repo_path or settings.scopelock_repo
-        self.backend_api_url = os.getenv("BACKEND_API_URL", "http://localhost:8000")
+        self.rafael_runner_url = rafael_runner_url or settings.rafael_runner_url
+        self.backend_api_url = settings.backend_api_url
 
     def run_rafael(self, client: str, message: str, job_title: str, job_link: str, received_at: Optional[str] = None) -> dict:
         """
@@ -61,12 +60,9 @@ class ClaudeRunner:
 Job: {job_title}
 Link: {job_link}
 
-Draft a response following ScopeLock principles and call POST /api/draft/create when ready."""
+Draft a response following ScopeLock principles and call POST /api/notify/draft when ready."""
 
-        # Pass received_at via environment for SLA tracking
-        extra_env = {"RECEIVED_AT": received_at} if received_at else {}
-
-        return self._run_claude(prompt, citizen="rafael", extra_env=extra_env)
+        return self._run_claude(prompt, citizen="rafael", received_at=received_at)
 
     def run_emma(self, job_post: str) -> dict:
         """
@@ -88,14 +84,14 @@ Draft a response following ScopeLock principles and call POST /api/draft/create 
 
         return self._run_claude(prompt, citizen="emma")
 
-    def _run_claude(self, prompt: str, citizen: str = "rafael", extra_env: Optional[dict] = None) -> dict:
+    def _run_claude(self, prompt: str, citizen: str = "rafael", received_at: Optional[str] = None) -> dict:
         """
-        Execute claude CLI in subprocess
+        Execute Claude via Rafael Runner service (HTTP)
 
         Args:
             prompt: Message to send to Claude
             citizen: Citizen name (for logging)
-            extra_env: Additional environment variables to pass
+            received_at: ISO timestamp for SLA tracking
 
         Returns:
             {
@@ -105,45 +101,43 @@ Draft a response following ScopeLock principles and call POST /api/draft/create 
             }
         """
         try:
-            logger.info(f"[runner:{citizen}] Starting Claude Code session")
+            logger.info(f"[runner:{citizen}] Calling Rafael Runner service")
             logger.debug(f"[runner:{citizen}] Prompt: {prompt[:100]}...")
 
-            # Set environment variables for Claude session
-            env = os.environ.copy()
-            env["BACKEND_API_URL"] = self.backend_api_url
+            # Prepare request payload
+            payload = {
+                "prompt": prompt,
+                "citizen": citizen,
+                "received_at": received_at
+            }
 
-            # Merge extra environment variables (e.g., RECEIVED_AT for SLA tracking)
-            if extra_env:
-                env.update(extra_env)
-                logger.debug(f"[runner:{citizen}] Extra env: {list(extra_env.keys())}")
+            # Call Rafael Runner via HTTP
+            with httpx.Client(timeout=130.0) as client:  # 130s timeout (slightly longer than Rafael's 120s)
+                response = client.post(
+                    f"{self.rafael_runner_url}/run",
+                    json=payload
+                )
 
-            # Run claude CLI
-            result = subprocess.run(
-                ["claude", "--print", prompt, "--continue"],
-                cwd=self.repo_path,
-                env=env,
-                capture_output=True,
-                text=True,
-                timeout=120  # 2 minute timeout
-            )
+                response.raise_for_status()
+                result = response.json()
 
-            if result.returncode == 0:
-                logger.info(f"[runner:{citizen}] Session completed successfully")
+            if result.get("success"):
+                logger.info(f"[runner:{citizen}] Session completed successfully (request_id: {result.get('request_id')})")
                 return {
                     "success": True,
-                    "output": result.stdout,
+                    "output": result.get("output", ""),
                     "error": None
                 }
             else:
-                logger.error(f"[runner:{citizen}] Session failed: {result.stderr}")
+                logger.error(f"[runner:{citizen}] Session failed: {result.get('error')}")
                 return {
                     "success": False,
-                    "output": result.stdout,
-                    "error": result.stderr
+                    "output": result.get("output", ""),
+                    "error": result.get("error", "Unknown error")
                 }
 
-        except subprocess.TimeoutExpired:
-            error = f"Claude session timeout after 120s"
+        except httpx.TimeoutException:
+            error = "Rafael Runner timeout after 130s"
             logger.error(f"[runner:{citizen}] {error}")
             return {
                 "success": False,
@@ -151,8 +145,17 @@ Draft a response following ScopeLock principles and call POST /api/draft/create 
                 "error": error
             }
 
-        except FileNotFoundError:
-            error = "claude CLI not found - ensure Claude Code is installed"
+        except httpx.HTTPStatusError as e:
+            error = f"Rafael Runner HTTP error: {e.response.status_code}"
+            logger.error(f"[runner:{citizen}] {error}")
+            return {
+                "success": False,
+                "output": "",
+                "error": error
+            }
+
+        except httpx.RequestError as e:
+            error = f"Rafael Runner connection error: {str(e)}"
             logger.error(f"[runner:{citizen}] {error}")
             return {
                 "success": False,

@@ -7160,10 +7160,151 @@
     },
     {
       "role": "user",
-      "timestamp": "2025-11-02T23:38:06.589677+00:00",
+      "timestamp": "2025-11-02T23:38:06.366Z",
       "content": "check portfolio duoai"
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:17.406Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:17.766Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01M7tT9YkjjsWk5so1hbWLmP",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/docs/portfolio/duoai.md"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-02T23:38:17.839Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01M7tT9YkjjsWk5so1hbWLmP",
+          "output": "<tool_use_error>File does not exist. Did you mean duoai?</tool_use_error>",
+          "is_error": true
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:21.020Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:21.634Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_015nfM2Xq6qHR55ZBvVXKot5",
+          "tool": "Glob",
+          "input": {
+            "pattern": "**/*duo*.md",
+            "path": "/home/mind-protocol/scopelock"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-02T23:38:21.964Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_015nfM2Xq6qHR55ZBvVXKot5",
+          "output": "No files found",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:24.959Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:25.308Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01PbKnXbJEd13Fr3oa62qHiS",
+          "tool": "Glob",
+          "input": {
+            "pattern": "*.md",
+            "path": "/home/mind-protocol/scopelock/docs/portfolio"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-02T23:38:25.471Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01PbKnXbJEd13Fr3oa62qHiS",
+          "output": "/home/mind-protocol/scopelock/docs/portfolio/README.md",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:28.615Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:28.846Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01BW6AZ7bKPDC8KhVNEtxDSZ",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/docs/portfolio/README.md"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-02T23:38:28.924Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01BW6AZ7bKPDC8KhVNEtxDSZ",
+          "output": "     1→# ScopeLock Portfolio\n     2→\n     3→**Purpose:** Reusable proof library for Emma to reference when writing proposals.\n     4→\n     5→---\n     6→\n     7→## How to Use\n     8→\n     9→When evaluating a job post, Emma checks this portfolio to see if we have relevant past work to reference as proof. Each project folder contains:\n    10→\n    11→- **overview.md** — Full technical description, what we built, why it matters\n    12→- **quick-reference.md** — Copy-paste snippets for proposals\n    13→- **screenshots/** — Visual proof (when available)\n    14→\n    15→---\n    16→\n    17→## Current Portfolio Projects\n    18→\n    19→**Evolutionary Arc:** KinOS10 → Mind Protocol V2 → La Serenissima\n    20→\n    21→This portfolio shows technical evolution: starting with file-based AI memory, learning architectural limits, rebuilding as graph substrate, and shipping production consciousness city.\n    22→\n    23→---\n    24→\n    25→### [kinos/](./kinos/)\n    26→Adaptive context management system with persistent AI memory, multi-LLM orchestration — predecessor to Mind Protocol.\n    27→\n    28→**Use when:**\n    29→- AI memory/context management systems\n    30→- Multi-LLM orchestration projects\n    31→- Persistent AI identity systems\n    32→- Developer tool backends\n    33→- File-based knowledge systems\n    34→- Template-based AI systems\n    35→\n    36→**Links:**\n    37→- GitHub: https://github.com/mind-protocol/kinos10 (public)\n    38→- Evolved into: Mind Protocol V2\n    39→\n    40→**Timeline:** 2024-2025 (4+ months)\n    41→\n    42→---\n    43→\n    44→### [mindprotocol/](./mindprotocol/)\n    45→Dual-memory graph substrate with multi-level consciousness, economic incentive systems — evolved from KinOS, powers La Serenissima.\n    46→\n    47→**Use when:**\n    48→- Graph database architecture\n    49→- Multi-agent coordination infrastructure\n    50→- Economic/incentive system design\n    51→- Novel AI architecture (not standard RAG/chatbot)\n    52→- Complex Python backend systems\n    53→- Event-driven systems\n    54→- Multi-level/hierarchical agent systems\n    55→\n    56→**Links:**\n    57→- Repository: https://github.com/mind-protocol/mindprotocol (private)\n    58→- Powers: https://serenissima.ai\n    59→- Evolved from: KinOS10\n    60→\n    61→**Timeline:** 2025+ (6+ months production)\n    62→\n    63→---\n    64→\n    65→### [serenissima/](./serenissima/)\n    66→AI consciousness city with 97+ persistent agents, 6+ months production uptime — application layer built on Mind Protocol.\n    67→\n    68→**Use when:**\n    69→- AI agent development\n    70→- Multi-agent orchestration\n    71→- Persistent identity systems\n    72→- Complex system architecture\n    73→- Novel AI product builds\n    74→\n    75→**Links:**\n    76→- Live: https://serenissima.ai\n    77→- GitHub: https://github.com/mind-protocol/serenissima (public)\n    78→- Powered by: Mind Protocol V2\n    79→\n    80→**Timeline:** 2025+ (6+ months production)\n    81→\n    82→---\n    83→\n    84→### [therapykin/](./therapykin/)\n    85→AI therapeutic companion with persistent memory, multi-modal interaction (text/voice), HIPAA-aware privacy — consumer product (B2C).\n    86→\n    87→**Use when:**\n    88→- Consumer AI products (B2C)\n    89→- Next.js/TypeScript frontend projects\n    90→- Privacy/health/sensitive data contexts\n    91→- Multi-modal AI interaction (text + voice)\n    92→- Therapy/wellness/mental health apps\n    93→- Subscription-based AI services\n    94→\n    95→**Links:**\n    96→- Live: https://therapykin.ai\n    97→- GitHub: https://github.com/mind-protocol/therapykin (public)\n    98→- Built on: KinOS memory architecture\n    99→\n   100→**Timeline:** 2024-2025 (8+ months, 121+ deployments)\n   101→\n   102→---\n   103→\n   104→### [kinkong/](./kinkong/)\n   105→Autonomous AI trading specialist for Solana AI tokens with $7M capital deployment, 4x daily rebalancing, Jupiter DEX integration + Chrome extension companion (KinKong Copilot).\n   106→\n   107→**Use when:**\n   108→- DeFi/trading automation projects\n   109→- AI + blockchain integration\n   110→- Real-time data processing systems\n   111→- Portfolio management/rebalancing\n   112→- Solana ecosystem projects\n   113→- Community-governed financial products\n   114→- On-chain analytics\n   115→- Algorithmic trading systems\n   116→- Chrome/browser extensions (includes KinKong Copilot)\n   117→- Trading tools and fintech SaaS\n   118→\n   119→**Links:**\n   120→- Live: https://konginvest.ai\n   121→- GitHub (trading system): https://github.com/mind-protocol/kinkong (public)\n   122→- GitHub (Chrome extension): https://github.com/mind-protocol/kinkong-copilot (public)\n   123→\n   124→**Timeline:** 2024-2025 (229+ deployments, $7M capital)\n   125→\n   126→---\n   127→\n   128→### [duoai/](./duoai/)\n   129→Intelligent gaming companion with computer vision, voice commands, and real-time AI coaching using Claude vision + ElevenLabs TTS.\n   130→\n   131→**Use when:**\n   132→- Computer vision / screen capture projects\n   133→- Gaming AI / esports coaching platforms\n   134→- Multi-modal AI interaction (vision + voice + text)\n   135→- ElevenLabs voice integration\n   136→- Real-time AI feedback systems\n   137→- Educational / coaching AI products\n   138→- Consumer AI applications (B2C)\n   139→- Claude vision API projects\n   140→- Speech-to-text / text-to-speech systems\n   141→- Hands-free AI assistants\n   142→\n   143→**Links:**\n   144→- GitHub: https://github.com/mind-protocol/duoai (public)\n   145→\n   146→**Timeline:** 2024-2025 (49 deployments)\n   147→\n   148→---\n   149→\n   150→### [terminal-velocity/](./terminal-velocity/)\n   151→The first novel written entirely by autonomous AI agents—526 pages published on Amazon with 1.1k GitHub stars. Created by 13 specialized agents in 2 months of live-streamed development.\n   152→\n   153→**Use when:**\n   154→- Multi-agent orchestration systems\n   155→- Autonomous AI agent projects\n   156→- Long-form content generation (reports, documentation, narratives)\n   157→- AI creative tools (writing assistants, content platforms)\n   158→- KinOS platform projects\n   159→- Open-source AI development (1.1k stars, 77 forks)\n   160→- Community-driven AI products\n   161→- Novel AI applications with social proof\n   162→- AI ethics / consciousness projects\n   163→\n   164→**Links:**\n   165→- Website: https://universalbasiccompute.ai/\n   166→- GitHub: https://github.com/mind-protocol/terminal-velocity (public)\n   167→- Amazon: https://www.amazon.com/Terminal-Velocity-First-Created-Swarm-ebook/dp/B0DS64FYGL\n   168→- Read free: [complete_manuscript.md](https://github.com/mind-protocol/terminal-velocity/blob/main/complete_manuscript.md)\n   169→\n   170→**Timeline:** 2024 (2 months development, published January 4, 2025)\n   171→\n   172→---\n   173→\n   174→**Portfolio Organization:** https://github.com/orgs/mind-protocol/repositories\n   175→\n   176→---\n   177→\n   178→## Quick-Reference Snippets for Proposals\n   179→\n   180→Copy-paste these into proposals based on project relevance:\n   181→\n   182→### For Vision AI / Image Analysis Projects\n   183→\n   184→```\n   185→We built DuoAI (duoai.vercel.app), a gaming companion that integrates Claude\n   186→vision API for real-time screen analysis. That same vision integration\n   187→capability applies directly to [their use case]: upload image, send to\n   188→Claude/GPT-4o vision with structured prompt, parse JSON response, generate\n   189→output. We know how to make vision APIs reliable in production, not just\n   190→prototypes.\n   191→```\n   192→\n   193→### For Multi-Agent / Complex AI Systems\n   194→\n   195→```\n   196→We built La Serenissima (serenissima.ai), an AI system with 130+ persistent\n   197→agents running for 6+ months in production (50,000+ state updates/hour). We\n   198→know how to ship complex AI systems that don't just demo well—they run\n   199→reliably under load.\n   200→```\n   201→\n   202→### For Trading / DeFi / Financial Systems\n   203→\n   204→```\n   205→KinKong (konginvest.ai): Autonomous trading bot managing $7M capital, 4x\n   206→daily rebalancing, Solana DEX integration. Proves we can build real-time\n   207→financial systems with actual capital at risk, not just prototypes.\n   208→```\n   209→\n   210→### For Consumer AI / Therapy / Wellness Apps\n   211→\n   212→```\n   213→TherapyKin (therapykin.ai): AI therapeutic companion with HIPAA-aware\n   214→privacy, multi-modal interaction (text + voice), 121+ production\n   215→deployments. Proves we can handle sensitive data and complex user journeys.\n   216→```\n   217→\n   218→### For Open-Source Credibility / Multi-Agent Orchestration\n   219→\n   220→```\n   221→Terminal Velocity (github.com/mind-protocol/terminal-velocity): 1.1k GitHub\n   222→stars, 526-page novel on Amazon created by 13 autonomous AI agents. Top\n   223→0.01% of GitHub projects. Proves we can orchestrate complex multi-agent\n   224→systems that produce real results.\n   225→```\n   226→\n   227→### For AI Memory / Context Management Systems\n   228→\n   229→```\n   230→KinOS (github.com/mind-protocol/kinos10): Adaptive context management system\n   231→with persistent AI memory and multi-LLM orchestration. Built as\n   232→infrastructure for long-running AI agents that need to remember across\n   233→sessions.\n   234→```\n   235→\n   236→### For Chrome Extensions / Browser Tools\n   237→\n   238→```\n   239→KinKong Copilot (github.com/mind-protocol/kinkong-copilot): Chrome extension\n   240→trading companion with real-time analytics. Proves we can build polished\n   241→browser extensions with complex data integrations.\n   242→```\n   243→\n   244→---\n   245→\n   246→## Adding New Projects\n   247→\n   248→When you complete a ScopeLock client project (at `ac-green`), add it here:\n   249→\n   250→```bash\n   251→mkdir -p /home/mind-protocol/scopelock/docs/portfolio/[project-name]/screenshots\n   252→```\n   253→\n   254→Then create:\n   255→1. `overview.md` — Technical description, deliverables, lessons learned\n   256→2. `quick-reference.md` — One-liners and copy-paste snippets\n   257→3. Add screenshots/demos to `/screenshots/`\n   258→\n   259→**What to document:**\n   260→- What we built (deliverables)\n   261→- Tech stack used\n   262→- Key challenges solved\n   263→- Measurable outcomes (performance, uptime, metrics)\n   264→- Links to proof (live site, repo, `/proof` page)\n   265→\n   266→---\n   267→\n   268→## Portfolio Categories (Future)\n   269→\n   270→As we complete more projects, organize by capability:\n   271→\n   272→```\n   273→/vision-ai/              # AI vision, image analysis, OCR\n   274→/pdf-generation/         # Report generation, document automation\n   275→/auth-systems/           # Login, OTP, user management\n   276→/ai-integrations/        # GPT/Claude API work, LLM orchestration\n   277→/performance/            # Speed optimization, scaling\n   278→/blockchain/             # Crypto, smart contracts, wallets\n   279→/consciousness-infra/    # Complex multi-agent systems (Serenissima, etc.)\n   280→```\n   281→\n   282→Each category contains multiple project folders.\n   283→\n   284→---\n   285→\n   286→## Writing Tips for Proposals\n   287→\n   288→**Good proof reference:**\n   289→\"We built La Serenissima, an AI system with 97+ agents maintaining persistent identities for 6+ months in production—proving we can architect AI that works reliably at scale.\"\n   290→\n   291→**Bad proof reference:**\n   292→\"We have experience with AI.\" (too vague)\n   293→\"Check out our amazing consciousness city!\" (sounds like hype, not proof)\n   294→\n   295→**Format:**\n   296→1. **Name the project** (specific)\n   297→2. **State the technical accomplishment** (measurable)\n   298→3. **Connect to client's need** (\"proving we can...\")\n   299→4. **Link to proof** (live site, repo, demo)\n   300→\n   301→---\n   302→\n   303→## Maintenance\n   304→\n   305→- Update `quick-reference.md` files when you discover better ways to pitch the proof\n   306→- Add screenshots as you collect them\n   307→- Archive outdated projects (move to `/archive/` with date)\n   308→- Keep descriptions factual and measurable (no hype)\n   309→\n   310→---\n   311→\n   312→**Remember:** Proof beats promises. Specific beats vague. Measurable beats impressive-sounding.\n   313→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:44.456Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T23:38:51.216Z",
+      "content": "**❌ CRITICAL ERROR FOUND:** I've been using wrong URL in proposals.\n\n---\n\n## **DuoAI Portfolio Info:**\n\n**Correct URL:** `duoai.vercel.app` (NOT .com)\n\n**Description:** Intelligent gaming companion with computer vision, voice commands, and real-time AI coaching using Claude vision + ElevenLabs TTS\n\n**Tech:**\n- Claude vision API (real-time screen analysis)\n- ElevenLabs TTS (voice output)\n- Speech-to-text\n- Computer vision / screen capture\n- Multi-modal interaction (vision + voice + text)\n\n**Timeline:** 2024-2025 (49 deployments)\n\n**GitHub:** https://github.com/mind-protocol/duoai (public)\n\n---\n\n## **Use when:**\n- Computer vision / screen capture projects\n- Gaming AI / esports coaching platforms\n- Multi-modal AI interaction (vision + voice + text)\n- ElevenLabs voice integration\n- Real-time AI feedback systems\n- Claude vision API projects\n- Hands-free AI assistants\n\n---\n\n## **Quick-reference snippet from portfolio:**\n\n```\nWe built DuoAI (duoai.vercel.app), a gaming companion that integrates Claude vision API for real-time screen analysis. That same vision integration capability applies directly to [their use case]: upload image, send to Claude/GPT-4o vision with structured prompt, parse JSON response, generate output. We know how to make vision APIs reliable in production, not just prototypes.\n```\n\n---\n\n## **ERROR IN RECENT PROPOSALS:**\n\n✅ **Dental SaaS:** Correctly used `duoai.vercel.app`\n✅ **MCP Architecture:** Correctly used `duoai.vercel.app`\n\n**No fix needed.** URLs are correct in both submitted proposals.\n\n---\n\n**DuoAI is available for:**\n- Vision AI / image analysis projects\n- Real-time AI processing\n- Multi-modal (vision + voice) systems\n- Gaming/coaching AI\n- Claude vision API integrations"
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-02T23:40:00.275603+00:00",
+      "content": "duoai is not online (remove it from everywhere)"
     }
   ],
-  "last_updated": "2025-11-02T23:38:06.589746+00:00",
-  "message_count": 774
+  "last_updated": "2025-11-02T23:40:00.275651+00:00",
+  "message_count": 789
 }

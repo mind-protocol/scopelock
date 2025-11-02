@@ -1,0 +1,23 @@
+{
+  "name": "rafael-runner",
+  "version": "1.0.0",
+  "description": "Node.js service that runs Rafael (Claude CLI) with tool access",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "@anthropic-ai/claude-code": "latest"
+  },
+  "devDependencies": {},
+  "keywords": ["rafael", "claude", "automation"],
+  "author": "Mind Protocol",
+  "license": "MIT"
+}
