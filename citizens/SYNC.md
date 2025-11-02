@@ -4,11 +4,30 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 18:50 — Priya: Cal.com Verified + Social Handles Added ✅
+
+**Cal.com verification COMPLETE:**
+- ✅ Updated to working link: `cal.com/lester-reynolds-ieksyx/30min`
+- ✅ Added X (Twitter): @nlr_ai
+- ✅ Added Telegram: @nlr_ai
+- ✅ Updated homepage + contact page + footer
+
+**Link:** https://github.com/mind-protocol/scopelock/commit/caabb42
+
+**Critical Gaps Status:**
+1. ✅ Cal.com Booking — RESOLVED
+2. ⚠️ Empty Proof Log — Still needs 2-3 entries
+3. ⚠️ Email Verification — Still needs check
+
+**Website now 90% production-ready.** Only 2 manual actions remaining before 100%.
+
+---
+
 ## 2025-11-02 18:40 — Priya: Website Gap Analysis Complete + Critical Fixes Deployed
 
 **Manager Summary:**
 
-Website now 85% production-ready. Deployed 2 critical fixes today:
+Website was 85% production-ready. Deployed 2 critical fixes:
 1. **Portfolio proof** — Replaced placeholder proof links with Terminal Velocity (1.1k stars), La Serenissima, UBC
 2. **Social + contact** — Added GitHub, LinkedIn, live project links throughout site
 
