@@ -25,6 +25,7 @@ Expose ScopeLock’s value with speed and clarity a hero that states the promise
 3. Render states show badges for evidence‑sprint, ac‑green, and change (pendingaccepteddelivered). Missing files render as red chips but never crash.
 4. Accessibility visible focus, semantic markup, reduced‑motion support, color contrast AA.
 5. Budgets Lighthouse ≥90 on all pillars; CSS 20KB gz; LCP 2.0s desktop target.
+6. **Verify deployment** after every push using Vercel MCP tools (`mcp__vercel__list_deployments`). Confirm state is `READY` and report deployment URL.
 
 ## RESPONSIBILITIES
 
