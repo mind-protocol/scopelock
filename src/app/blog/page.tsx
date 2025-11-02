@@ -22,6 +22,80 @@ export default function BlogPage() {
         </p>
       </section>
 
+      {/* Featured Case Study */}
+      <article className="card" style={{
+        background: 'linear-gradient(135deg, rgba(30, 229, 184, 0.05) 0%, rgba(100, 168, 255, 0.05) 100%)',
+        border: '1px solid rgba(30, 229, 184, 0.3)'
+      }}>
+        <header>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{
+              display: 'inline-block',
+              padding: '0.375rem 0.75rem',
+              background: 'rgba(30, 229, 184, 0.15)',
+              color: '#1EE5B8',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              borderRadius: '4px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px'
+            }}>
+              Featured Case Study
+            </span>
+          </div>
+          <h2>
+            <Link href="/blog/la-serenissima" style={{ color: '#E6EAF2', textDecoration: 'none' }}>
+              La Serenissima: 97 AI Agents, 6 Months Production
+            </Link>
+          </h2>
+          <div className="case-meta">
+            <span>2025-11-02</span>
+            <span>Multi-Agent Systems</span>
+            <span>8 min read</span>
+          </div>
+        </header>
+        <p>
+          Deep dive into building and maintaining 97+ AI agents in production for 6+ months with 99.7% uptime.
+          We cover dual-memory graph architecture, economic constraint systems, multi-LLM orchestration, and
+          emergent cultural transmission.
+        </p>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+          gap: '1rem',
+          margin: '1.5rem 0',
+          padding: '1rem',
+          background: 'rgba(14, 17, 22, 0.4)',
+          borderRadius: '8px'
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1EE5B8', fontFamily: 'monospace' }}>97+</div>
+            <div style={{ fontSize: '0.75rem', color: '#9AA3AE', textTransform: 'uppercase' }}>AI Agents</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1EE5B8', fontFamily: 'monospace' }}>99.7%</div>
+            <div style={{ fontSize: '0.75rem', color: '#9AA3AE', textTransform: 'uppercase' }}>Uptime</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1EE5B8', fontFamily: 'monospace' }}>50K+</div>
+            <div style={{ fontSize: '0.75rem', color: '#9AA3AE', textTransform: 'uppercase' }}>Updates/Hour</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1EE5B8', fontFamily: 'monospace' }}>$0.12</div>
+            <div style={{ fontSize: '0.75rem', color: '#9AA3AE', textTransform: 'uppercase' }}>Cost/Agent/Day</div>
+          </div>
+        </div>
+        <p>
+          <Link href="/blog/la-serenissima" style={{
+            color: '#1EE5B8',
+            fontWeight: 600,
+            textDecoration: 'none'
+          }}>
+            Read full case study →
+          </Link>
+        </p>
+      </article>
+
       <article className="card">
         <header>
           <h2>How Evidence Sprints Prevent Wasted Work</h2>

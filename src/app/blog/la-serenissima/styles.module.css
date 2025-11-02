@@ -1,0 +1,626 @@
+/* Blog Post Layout - Consciousness Theme */
+
+.blogPost {
+  min-height: 100vh;
+  background: #0E1116;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  color: #E6EAF2;
+}
+
+/* Section Styling */
+.section {
+  margin: 4rem 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(30, 229, 184, 0.1);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+  border-radius: 4px;
+  color: #1EE5B8;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.date {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #9AA3AE;
+  margin: 0 0 2rem 0;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #E6EAF2;
+  margin: 0 0 2rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(30, 229, 184, 0.2);
+  letter-spacing: -0.02em;
+}
+
+/* Subsections */
+.subsection {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(21, 26, 33, 0.3);
+  border-left: 3px solid #1EE5B8;
+  border-radius: 4px;
+}
+
+.subsectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1EE5B8;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Problem/Solution Pattern */
+.problemSolution {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.problem,
+.solution {
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.problem {
+  background: rgba(255, 93, 93, 0.1);
+  border: 1px solid rgba(255, 93, 93, 0.3);
+}
+
+.problem strong {
+  color: #FF5D5D;
+}
+
+.solution {
+  background: rgba(30, 229, 184, 0.1);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+}
+
+.solution strong {
+  color: #1EE5B8;
+}
+
+/* Challenge Grid */
+.challengeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.challengeCard {
+  padding: 1.5rem;
+  background: rgba(21, 26, 33, 0.6);
+  border: 1px solid rgba(30, 229, 184, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.challengeCard:hover {
+  border-color: #1EE5B8;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.15);
+}
+
+.challengeCard h4 {
+  color: #1EE5B8;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.challengeCard p {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Identity Layers */
+.identityLayers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.layer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(21, 26, 33, 0.6);
+  border: 1px solid rgba(30, 229, 184, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.layer:hover {
+  border-color: #1EE5B8;
+  transform: translateX(4px);
+}
+
+.layerNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #1EE5B8;
+  color: #0E1116;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.layer strong {
+  color: #E6EAF2;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.layer p {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Example Cards */
+.exampleCard {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: rgba(14, 17, 22, 0.8);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+}
+
+.exampleTitle {
+  display: block;
+  color: #1EE5B8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.exampleContent p {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.exampleContent strong {
+  color: #E6EAF2;
+}
+
+/* Pricing Example */
+.pricingExample {
+  margin: 1.5rem 0;
+}
+
+.pricingExample pre {
+  background: rgba(14, 17, 22, 0.8);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.pricingExample code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #E6EAF2;
+}
+
+/* Impact Lists */
+.impact {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background: rgba(30, 229, 184, 0.05);
+  border-left: 3px solid #1EE5B8;
+  border-radius: 4px;
+}
+
+.impact strong {
+  color: #1EE5B8;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.impact ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.impact li {
+  color: #E6EAF2;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.impact li::before {
+  content: '→';
+  position: absolute;
+  left: -1.5rem;
+  color: #1EE5B8;
+  font-weight: bold;
+}
+
+/* Stack Grid */
+.stackGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stackCard {
+  padding: 1.5rem;
+  background: rgba(21, 26, 33, 0.6);
+  border: 1px solid rgba(30, 229, 184, 0.1);
+  border-radius: 8px;
+}
+
+.stackCard h4 {
+  color: #1EE5B8;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.stackCard ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: none;
+}
+
+.stackCard li {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  position: relative;
+}
+
+.stackCard li::before {
+  content: '•';
+  position: absolute;
+  left: -1.25rem;
+  color: #1EE5B8;
+}
+
+/* Metrics Achieved */
+.metricsAchieved {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(30, 229, 184, 0.05) 0%, rgba(100, 168, 255, 0.05) 100%);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+}
+
+.metricsAchieved h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #E6EAF2;
+  margin: 0 0 2rem 0;
+}
+
+.achievedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.achievedItem {
+  text-align: center;
+}
+
+.achievedValue {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1EE5B8;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 0.5rem;
+}
+
+.achievedLabel {
+  display: block;
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Lessons Grid */
+.lessonsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.lessonCard {
+  padding: 2rem;
+  background: rgba(21, 26, 33, 0.4);
+  border: 1px solid rgba(30, 229, 184, 0.1);
+  border-radius: 8px;
+}
+
+.lessonTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+}
+
+.lessonCard:first-child .lessonTitle {
+  color: #5CE27E;
+}
+
+.lessonCard:last-child .lessonTitle {
+  color: #64A8FF;
+}
+
+.lessonContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.lessonItem strong {
+  display: block;
+  color: #E6EAF2;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.lessonItem p {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.lessonTakeaway {
+  color: #1EE5B8 !important;
+  font-style: italic;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(30, 229, 184, 0.3);
+  margin-top: 0.75rem !important;
+}
+
+/* Capabilities Grid */
+.capabilitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.capabilityCard {
+  padding: 1.5rem;
+  background: rgba(21, 26, 33, 0.6);
+  border: 1px solid rgba(30, 229, 184, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.capabilityCard:hover {
+  border-color: #1EE5B8;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.15);
+}
+
+.capabilityCard strong {
+  display: block;
+  color: #1EE5B8;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.capabilityCard p {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Problem Statement */
+.problemStatement {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(100, 168, 255, 0.1);
+  border: 1px solid rgba(100, 168, 255, 0.3);
+  border-radius: 8px;
+}
+
+.problemStatement h3 {
+  color: #64A8FF;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.problemStatement p {
+  color: #E6EAF2;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* CTA Section */
+.ctaSection {
+  margin: 4rem 0;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(30, 229, 184, 0.1) 0%, rgba(100, 168, 255, 0.1) 100%);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+  border-radius: 8px;
+}
+
+.ctaSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #E6EAF2;
+  margin: 0 0 1rem 0;
+}
+
+.ctaSection p {
+  font-size: 1.125rem;
+  color: #9AA3AE;
+  margin: 0 0 2rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Article Footer */
+.articleFooter {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(30, 229, 184, 0.2);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tags span {
+  padding: 0.5rem 0.75rem;
+  background: rgba(30, 229, 184, 0.1);
+  color: #1EE5B8;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+
+.meta {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.meta p {
+  margin: 0.5rem 0;
+}
+
+.meta strong {
+  color: #E6EAF2;
+}
+
+.meta a {
+  color: #1EE5B8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.meta a:hover {
+  color: #17C99F;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: 2rem 1rem;
+  }
+
+  .section {
+    margin: 2rem 0;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .subsection {
+    padding: 1rem;
+  }
+
+  .subsectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .problemSolution {
+    grid-template-columns: 1fr;
+  }
+
+  .challengeGrid,
+  .lessonsGrid,
+  .capabilitiesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievedGrid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .achievedValue {
+    font-size: 2rem;
+  }
+
+  .ctaSection {
+    padding: 2rem 1rem;
+  }
+
+  .ctaSection h2 {
+    font-size: 1.5rem;
+  }
+
+  .ctaSection p {
+    font-size: 1rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+  }
+}

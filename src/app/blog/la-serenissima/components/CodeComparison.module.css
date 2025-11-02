@@ -1,0 +1,92 @@
+.comparison {
+  margin: 2rem 0;
+  background: rgba(14, 17, 22, 0.8);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(30, 229, 184, 0.2);
+  background: rgba(21, 26, 33, 0.6);
+}
+
+.tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tab:hover {
+  background: rgba(30, 229, 184, 0.05);
+  color: #E6EAF2;
+}
+
+.tab.active {
+  background: rgba(30, 229, 184, 0.1);
+  color: #1EE5B8;
+  border-bottom: 2px solid #1EE5B8;
+}
+
+.codeContainer {
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.code {
+  margin: 0;
+  padding: 0;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #E6EAF2;
+  background: transparent;
+}
+
+.code code {
+  display: block;
+  white-space: pre;
+}
+
+/* Syntax highlighting hints */
+.code :global(.comment) {
+  color: #6A737D;
+  font-style: italic;
+}
+
+.code :global(.keyword) {
+  color: #64A8FF;
+  font-weight: 600;
+}
+
+.code :global(.string) {
+  color: #5CE27E;
+}
+
+.code :global(.function) {
+  color: #1EE5B8;
+}
+
+@media (max-width: 768px) {
+  .tab {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .codeContainer {
+    padding: 1rem;
+  }
+
+  .code {
+    font-size: 0.75rem;
+  }
+}

@@ -8,7 +8,7 @@ export default function HomePage() {
         <p className="lead">Executable acceptance criteria. Price and outcome locked.</p>
         <div className="hero-ctas">
           <Link className="cta cta-primary" href="/proof">
-            <span>View Proof Log</span>
+            <span>See a recent Evidence Sprint</span>
             <span aria-hidden="true">→</span>
           </Link>
           <Link className="cta-secondary" href="#contact">Schedule a kickoff (≤ 72h) →</Link>
@@ -94,15 +94,15 @@ export default function HomePage() {
         <p>Every project follows the same transparent process:</p>
         <div className="timeline">
           <article className="timeline-item">
-            <div className="timeline-time">Step 1 · ScopeLock</div>
+            <div className="timeline-time">Step 1 · ScopeLock <span style={{color:'var(--slk-muted)', marginLeft:'8px'}}>[  ]</span></div>
             <p>We co-write <code>AC.md</code> with you. Scope locked, price fixed.</p>
           </article>
           <article className="timeline-item">
-            <div className="timeline-time">Step 2 · Evidence Sprint</div>
+            <div className="timeline-time">Step 2 · Evidence Sprint <span style={{color:'var(--slk-accent)', marginLeft:'8px'}}>[●]</span></div>
             <p>Working demo ≤90s + quantified delta. You see it before committing to full build.</p>
           </article>
           <article className="timeline-item">
-            <div className="timeline-time">Step 3 · AC Green</div>
+            <div className="timeline-time">Step 3 · AC Green <span style={{color:'var(--slk-success)', marginLeft:'8px'}}>[✓]</span></div>
             <p>Acceptance tests pass in CI. You pay only when tests are green.</p>
           </article>
         </div>
@@ -112,7 +112,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section className="card proof-list" aria-labelledby="proof-log">
+      <section className="card card-membrane proof-list" aria-labelledby="proof-log">
         <h2 id="proof-log">Proof Log</h2>
         <p>Follow tagged milestones: <code>evidence-sprint_*</code> (demo ≤90s) and <code>ac-green_*</code> (acceptance tests green).</p>
         <p><strong>Example entries</strong> (format shown below):</p>

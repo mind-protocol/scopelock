@@ -1,0 +1,85 @@
+.metricsSection {
+  margin: 4rem 0;
+  padding: 3rem 0;
+  background: linear-gradient(180deg, rgba(30, 229, 184, 0.03) 0%, transparent 100%);
+}
+
+.metricsTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #E6EAF2;
+  margin: 0 0 3rem 0;
+  letter-spacing: -0.02em;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.metric {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(21, 26, 33, 0.6);
+  border: 1px solid rgba(30, 229, 184, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.metric:hover {
+  background: rgba(21, 26, 33, 0.9);
+  border-color: rgba(30, 229, 184, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.15);
+}
+
+.value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #1EE5B8;
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .metricsSection {
+    margin: 2rem 0;
+    padding: 2rem 0;
+  }
+
+  .metricsTitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .metric {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .value {
+    font-size: 1.5rem;
+  }
+
+  .label {
+    font-size: 0.75rem;
+  }
+}

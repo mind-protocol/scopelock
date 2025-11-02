@@ -141,7 +141,6 @@ Intelligent gaming companion with computer vision, voice commands, and real-time
 - Hands-free AI assistants
 
 **Links:**
-- Live: https://duoai.vercel.app
 - GitHub: https://github.com/mind-protocol/duoai (public)
 
 **Timeline:** 2024-2025 (49 deployments)
