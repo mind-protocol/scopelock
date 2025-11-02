@@ -62,7 +62,7 @@ const blogPosts: BlogPost[] = [
     date: '2025-11-02',
     readTime: '8 min',
     tags: ['pricing', 'fixed-price', 'hourly-billing'],
-    status: 'coming-soon',
+    status: 'published',
   },
   {
     slug: 'what-is-acceptance-criteria-document',

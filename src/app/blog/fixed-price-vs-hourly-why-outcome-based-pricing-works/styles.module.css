@@ -1,0 +1,59 @@
+/* Fixed-Price vs Hourly Blog - Use shared blog styles */
+@import '../change-control-without-scope-creep/styles.module.css';
+
+/* Pricing-specific overrides and additions */
+.pricingMode {
+  composes: controlMode from '../change-control-without-scope-creep/styles.module.css';
+}
+
+/* Model cards in 3-column grid */
+.modelsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 1024px) {
+  .modelsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Color-code the three models */
+.hourlyCard {
+  border-color: #FF5D5D;
+}
+
+.fixedCard {
+  border-color: #FFC857;
+}
+
+.outcomeCard {
+  border-color: #1EE5B8;
+  background: linear-gradient(135deg, #151A21 0%, #1A2128 100%);
+}
+
+/* Highlight key numbers */
+.surprise {
+  color: #FF5D5D;
+  font-weight: 700;
+}
+
+.waste {
+  color: #FFC857;
+  font-weight: 700;
+}
+
+.exact {
+  color: #5CE27E;
+  font-weight: 700;
+}
+
+.destroyed, .none {
+  color: #FF5D5D;
+}
+
+.built {
+  color: #5CE27E;
+}
