@@ -4,17 +4,14 @@ export default function HomePage() {
   return (
     <main>
       <header className="hero">
-        <div className="event-pulse">
-          <span className="badge-event" aria-live="polite">Tag emitted · 2025-01-09T08:24:00Z</span>
-        </div>
         <h1>ScopeLock Delivery.</h1>
         <p className="lead">Executable acceptance criteria. Price and outcome locked.</p>
         <div className="hero-ctas">
-          <Link className="cta" href="/proof">
-            <span>View a recent Evidence Sprint</span>
+          <Link className="cta cta-primary" href="/proof">
+            <span>View Proof Log</span>
             <span aria-hidden="true">→</span>
           </Link>
-          <Link href="#contact">Schedule a kickoff (≤ 72h) →</Link>
+          <Link className="cta-secondary" href="#contact">Schedule a kickoff (≤ 72h) →</Link>
         </div>
       </header>
 
@@ -69,24 +66,24 @@ export default function HomePage() {
             <article className="card card-case">
               <header>
                 <h3>La Serenissima</h3>
-                <p className="case-delta">120+ AI agents, months of autonomous operation</p>
+                <p className="case-delta">97+ AI agents, 6+ months production, 50K+ state updates/hour</p>
               </header>
               <div className="case-meta">
+                <span>99.7% uptime</span>
                 <span>Multi-agent</span>
-                <span>Python</span>
               </div>
-              <p><a href="https://github.com/mind-protocol/serenissima" target="_blank" rel="noopener">View on GitHub →</a></p>
+              <p><a href="https://serenissima.ai" target="_blank" rel="noopener">Visit live site →</a></p>
             </article>
             <article className="card card-case">
               <header>
-                <h3>Universal Basic Compute</h3>
-                <p className="case-delta">AI agent ecosystem with economic layer</p>
+                <h3>TherapyKin</h3>
+                <p className="case-delta">AI therapeutic companion with persistent memory, text + voice</p>
               </header>
               <div className="case-meta">
-                <span>Live production</span>
-                <span>TypeScript</span>
+                <span>121+ deployments</span>
+                <span>Next.js</span>
               </div>
-              <p><a href="https://universalbasiccompute.ai" target="_blank" rel="noopener">Visit live site →</a></p>
+              <p><a href="https://therapykin.ai" target="_blank" rel="noopener">Visit live site →</a></p>
             </article>
           </div>
         </div>
@@ -118,10 +115,7 @@ export default function HomePage() {
       <section className="card proof-list" aria-labelledby="proof-log">
         <h2 id="proof-log">Proof Log</h2>
         <p>Follow tagged milestones: <code>evidence-sprint_*</code> (demo ≤90s) and <code>ac-green_*</code> (acceptance tests green).</p>
-        <form className="proof-search" role="search">
-          <label htmlFor="proof-search-input">Search by &lt;feature&gt;</label>
-          <input id="proof-search-input" type="search" name="feature" placeholder="e.g., signup-otp" autoComplete="off" />
-        </form>
+        <p><strong>Example entries</strong> (format shown below):</p>
         <ul>
           <li data-proof-item data-feature="signup-otp evidence-sprint">
             <code>evidence-sprint_signup-otp_2025-10-31</code><br />
@@ -140,7 +134,6 @@ export default function HomePage() {
             <small>Error delta: 12% → 1.4%.</small>
           </li>
         </ul>
-        <p className="proof-empty" data-proof-empty hidden>No tag matches this feature. Try another search term.</p>
         <p><Link href="/proof">See full Proof Log →</Link></p>
       </section>
 
@@ -148,8 +141,8 @@ export default function HomePage() {
         <h2 id="contact-title">Contact</h2>
         <p><strong>Kickoff ≤ 72h.</strong> Tell us about a milestone: we write <code>AC.md</code> together and deliver until &quot;AC green&quot;.</p>
         <div className="contact-actions">
-          <a className="cta" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">Book a slot</a>
-          <a href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a>
+          <a className="cta-primary" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">Book a slot</a>
+          <a className="cta-secondary" href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a>
         </div>
       </section>
     </main>

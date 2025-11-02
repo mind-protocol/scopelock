@@ -34,7 +34,7 @@ export default function AboutPage() {
 
         <h3>Nicolas Lester Reynolds — Founder</h3>
         <p>
-          Serial founder and rapid-delivery builder. I ship working systems against executable acceptance criteria using an AI partnership model—the same architecture behind <a href="https://github.com/mind-protocol/serenissima" target="_blank" rel="noopener">La Serenissima</a> (120+ autonomous agents, months of live operation) and <a href="https://github.com/nlr-ai/terminal-velocity" target="_blank" rel="noopener">Terminal Velocity</a> (1,051 GitHub stars).
+          Serial founder and rapid-delivery builder. I ship working systems against executable acceptance criteria using an AI partnership model—the same architecture behind <a href="https://serenissima.ai" target="_blank" rel="noopener">La Serenissima</a> (97+ autonomous agents, 6+ months production, 99.7% uptime) and <a href="https://github.com/nlr-ai/terminal-velocity" target="_blank" rel="noopener">Terminal Velocity</a> (1,051 GitHub stars).
         </p>
         <ul>
           <li><strong>Location:</strong> Lyon, France</li>

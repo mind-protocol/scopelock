@@ -1,0 +1,11 @@
+You need a backend that works immediately, not mostly-done code that needs weeks of debugging. Seven specific deliverables: selfie upload API with signed URLs, GPT-4o or Claude Vision integration returning structured JSON skin analysis, automatic PDF report generation with logo and photos and three-step routine, OTP login system, dashboard showing past reports and allowing new uploads, product catalog integration for personalized recommendations, and deployment with full API documentation. Each one needs to pass acceptance tests before you pay.
+
+I have built similar AI vision pipelines: image upload, API call to vision model, structured output extraction, and automated report generation. The technical approach here is straightforward: Supabase for storage and auth, OpenAI or Anthropic API for vision analysis with a strict JSON schema to ensure consistent output structure, pdfkit or ReportLab for report generation with your branding, and Next.js or FastAPI backend deployed to Vercel or Render. The risk is in the details: handling edge cases like poor lighting in photos, ensuring the PDF renders correctly across devices, and making sure the vision model returns usable analysis every time.
+
+Here is how we work. Before I write any code, we co-write an acceptance criteria document that defines exactly what done looks like for each deliverable. Upload a test selfie, system returns a PDF with analysis and product recommendations in under five seconds. Login with OTP, see your past reports, upload a new photo. Those criteria become automated tests. When all tests pass, you pay. If scope changes, we open a change request: either swap with equal complexity at no cost, or add as a new milestone with separate pricing. You only pay when acceptance tests are green, which protects you from scope creep and protects me from endless revisions on vague requirements.
+
+Three thousand dollars, fixed price, kickoff within 48 hours if you are ready. Working demo with all seven deliverables in 10 to 14 days, acceptance tests included. No hourly tracking, no surprises, no partial work invoices. Either it passes your acceptance criteria or you do not pay.
+
+Nicolas
+ScopeLock — Lock the scope. Prove the value.
+Available 14:00–19:00 Central for calls

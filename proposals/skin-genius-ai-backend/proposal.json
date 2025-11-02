@@ -1,0 +1,103 @@
+{
+  "job": {
+    "title": "AI & Backend Engineer (Vision AI + PDF Report + Login)",
+    "posted": "2025-11-02T09:00:00Z",
+    "platform": "Upwork",
+    "url": "",
+    "budget": 3000,
+    "budget_type": "fixed-price",
+    "duration": "< 1 month",
+    "experience_level": "Intermediate",
+    "featured": true,
+    "connects_required": 20
+  },
+  "client": {
+    "location": "Germany",
+    "city": "Monheim",
+    "timezone": "CET (UTC+1)",
+    "payment_verified": true,
+    "phone_verified": true,
+    "rating": 4.6,
+    "reviews_count": 1,
+    "total_spent": 3900,
+    "jobs_posted": 7,
+    "hire_rate": 0.29,
+    "open_jobs": 2,
+    "active_hires": 1,
+    "member_since": "2024-10-23"
+  },
+  "competition": {
+    "proposals": "20 to 50",
+    "interviewing": 0,
+    "invites_sent": 0,
+    "last_viewed": "4 hours ago",
+    "boost_ranking": {
+      "1st_place": 81,
+      "2nd_place": 80,
+      "3rd_place": 39,
+      "4th_place": 38
+    }
+  },
+  "evaluation": {
+    "decision": "GO",
+    "reason": "Clear MVP scope with concrete deliverables; fits ScopeLock model perfectly",
+    "persona": "Technical founder or PM launching skincare AI product",
+    "urgency": 5,
+    "pain": 7,
+    "win_probability": 0.25,
+    "red_flags": [
+      "New client (Oct 2024)",
+      "Only 1 review",
+      "29% hire rate",
+      "20-50 proposals (competitive)",
+      "No explicit deadline"
+    ],
+    "green_flags": [
+      "Clear deliverables",
+      "Fixed $3K budget",
+      "Featured job",
+      "Payment verified",
+      "Technical buyer",
+      "Modern AI stack"
+    ]
+  },
+  "deliverables": [
+    "Secure API for selfie uploads (Supabase/Firebase + signed URLs)",
+    "Integration with GPT-4o / Claude 3 Vision → structured JSON skin analysis",
+    "Automatic PDF report: logo, before/after photos, analysis summary, 3-step routine",
+    "User login system (email or OTP) + dashboard to view past reports, upload new photos, get updated advice",
+    "Small product catalog integration for personalized recommendations",
+    "Database schema for users, reports, photos, and products",
+    "Deployment (Vercel / Render / AWS) + Postman collection & documentation"
+  ],
+  "tech_stack": {
+    "backend": ["Node.js", "Next.js", "Python", "FastAPI"],
+    "database": ["Supabase", "Firebase", "Postgres"],
+    "ai": ["OpenAI API", "Anthropic API", "GPT-4o", "Claude 3 Vision"],
+    "pdf": ["pdfkit", "ReportLab", "jsPDF"],
+    "deployment": ["Vercel", "Render", "AWS"]
+  },
+  "proposal": {
+    "submitted": false,
+    "submitted_date": null,
+    "milestones": [
+      {
+        "number": 1,
+        "description": "Skin Genius MVP Backend - AC Green",
+        "amount": 3000,
+        "due_days": 14
+      }
+    ],
+    "total_price": 3000,
+    "duration_estimate": "10-14 days",
+    "kickoff_readiness": "48 hours",
+    "boost_bid": 0,
+    "boost_reasoning": "Competitive field; selling on method + proof, not ranking"
+  },
+  "tracking": {
+    "date_evaluated": "2025-11-02",
+    "evaluated_by": "Emma",
+    "status": "ready_to_submit",
+    "notes": "Perfect ScopeLock fit - clear acceptance criteria possible for all 7 deliverables. Client risk mitigated by AC green payment model."
+  }
+}

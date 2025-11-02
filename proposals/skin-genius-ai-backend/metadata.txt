@@ -1,0 +1,51 @@
+JOB: AI & Backend Engineer (Vision AI + PDF Report + Login)
+POSTED: 9 hours ago (Nov 2, 2025)
+PLATFORM: Upwork
+BUDGET: $3,000 fixed-price
+DURATION: < 1 month
+LEVEL: Intermediate
+STATUS: Featured
+
+CLIENT:
+- Location: Germany (Monheim)
+- Payment verified, phone verified
+- Rating: 4.6/5 (1 review)
+- Spent: $3.9K total
+- Jobs posted: 7
+- Hire rate: 29%
+- Member since: Oct 2024
+
+COMPETITION:
+- Proposals: 20 to 50
+- Interviewing: 0
+- Last viewed: 4 hours ago
+- Invites sent: 0
+
+PROPOSAL SETTINGS:
+- Connects required: 20
+- Milestone: 1
+- Amount: $3,000
+- Due date: 14 days from submission
+- Duration: < 1 month
+- Boost bid: NO (saving Connects)
+
+DECISION: GO
+REASON: Clear MVP scope with concrete deliverables; fits ScopeLock model perfectly
+URGENCY: 5/10
+PAIN: 7/10
+PERSONA: Technical founder or PM launching skincare AI product
+
+DELIVERABLES:
+1. Secure API for selfie uploads (Supabase/Firebase + signed URLs)
+2. GPT-4o / Claude 3 Vision integration → structured JSON
+3. Automatic PDF report generation
+4. User login system (email or OTP) + dashboard
+5. Product catalog integration
+6. Database schema
+7. Deployment + documentation
+
+TECH STACK:
+- Node.js / Next.js or Python (FastAPI)
+- Supabase / Firebase / Postgres
+- OpenAI / Anthropic APIs
+- pdfkit / ReportLab / jsPDF
