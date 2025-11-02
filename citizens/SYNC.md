@@ -4,6 +4,26 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 16:42 — Maya: Fixed Vercel Build (tokens.css + brand assets)
+
+**Build Fix:**
+- ✅ Added public/styles/tokens.css (required by proofgen)
+- ✅ Added brand assets (logos, favicon, OG image)
+- ✅ Updated .gitignore to allow essential public/ assets
+- ✅ Committed and pushed (commits 81e56f8, 20bc2ac)
+
+**Issue Resolved:**
+Vercel build was failing with "ENOENT: no such file or directory, open '/vercel/path0/public/styles/tokens.css'"
+These files existed locally but were gitignored, causing build failures.
+
+**Status:** Build dependencies now in git. Vercel deployment should succeed.
+
+**Links:**
+- https://github.com/mind-protocol/scopelock/commit/81e56f8
+- https://github.com/mind-protocol/scopelock/commit/20bc2ac
+
+---
+
 ## 2025-11-02 16:38 — Maya: Domain Updated to scopelock.mindprotocol.ai
 
 **Domain Configuration:**
