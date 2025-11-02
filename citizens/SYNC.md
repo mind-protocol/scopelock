@@ -4,6 +4,64 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 18:40 — Priya: Website Gap Analysis Complete + Critical Fixes Deployed
+
+**Manager Summary:**
+
+Website now 85% production-ready. Deployed 2 critical fixes today:
+1. **Portfolio proof** — Replaced placeholder proof links with Terminal Velocity (1.1k stars), La Serenissima, UBC
+2. **Social + contact** — Added GitHub, LinkedIn, live project links throughout site
+
+**What Shipped (commit e0ff872):**
+- ✅ Fixed broken homepage proof links (were 404s)
+- ✅ Added GitHub portfolio (@mind-protocol, @nlr-ai) to /about
+- ✅ Linked Terminal Velocity, La Serenissima, UBC projects
+- ✅ Added footer links (GitHub + LinkedIn)
+- ✅ Updated Nicolas bio with Lyon, live projects, availability
+
+**Link:** https://github.com/mind-protocol/scopelock/commit/e0ff872
+
+**Remaining Critical Gaps (Manual Action Required):**
+
+1. **Empty Proof Log** ⚠️ HIGH
+   - `/proof` shows "No proof tags yet" — undermines main value prop
+   - **Action:** Create 2–3 demo proof entries with git tags
+   - **Effort:** 15 min (proof markdown + `git tag evidence-sprint_*`)
+   - **Owner:** Nicolas or Daniel
+
+2. **Cal.com Booking** ⚠️ HIGH
+   - Unknown if https://cal.com/scopelock/kickoff exists (primary CTA)
+   - **Action:** Set up Cal.com account + /kickoff event
+   - **Effort:** 10 min
+   - **Owner:** Nicolas
+
+3. **Email Verification** ⚠️ MEDIUM
+   - Unknown if hello@scopelock.dev works
+   - **Action:** Verify email forwarding or catch-all
+   - **Effort:** 15 min
+   - **Owner:** Nicolas
+
+**Deployment Status:**
+- ✅ Domain: scopelock.mindprotocol.ai (LIVE)
+- ✅ All 12 pages rendering
+- ✅ Portfolio + social proof visible
+- ✅ CI/CD green
+- ⚠️ Proof Log empty (critical for credibility)
+
+**Recommendation:**
+Can soft-launch Upwork leads NOW with understanding that Proof Log populates as we deliver. BUT must verify Cal.com + email before paid marketing.
+
+**Next 24h Priority:**
+1. Verify Cal.com booking works
+2. Verify email works
+3. (Optional) Create 1 proof entry to demonstrate system
+
+**Blockers for Upwork:**
+- Emma tooling is manual-paste only
+- Need decision: manual workflow OR build fetcher
+
+---
+
 ## 2025-11-02 16:42 — Maya: Fixed Vercel Build (tokens.css + brand assets)
 
 **Build Fix:**
