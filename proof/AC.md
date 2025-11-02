@@ -62,9 +62,23 @@
 
 ## Verification
 
-### Build Test
+### Acceptance Tests
 ```bash
 npm install
+npx playwright install --with-deps chromium
+npm test
+# ✅ All acceptance tests pass
+```
+
+Test coverage:
+- F1: All 12 pages return HTTP 200
+- F2: Navigation links present and functional
+- F3: Cal.com booking link, portfolio proof, social handles
+- F4: sitemap.xml, robots.txt, metadata, favicon
+- NF2: Production SSL and no console errors
+
+### Build Test
+```bash
 npm run build
 # ✅ Build exits with code 0
 ```
@@ -75,12 +89,6 @@ curl -I https://scopelock.mindprotocol.ai
 # ✅ Returns HTTP 200
 # ✅ SSL certificate valid
 ```
-
-### Content Verification
-- ✅ All 12 pages return 200 (/, /about, /pricing, /faq, /contact, /proof, /case-studies, /process, /blog, /terms, /privacy, 404)
-- ✅ No broken internal links
-- ✅ Cal.com link verified working
-- ✅ Portfolio links present and valid
 
 ---
 

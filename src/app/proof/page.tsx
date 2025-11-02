@@ -22,9 +22,11 @@ async function getProofEntries(): Promise<ProofEntry[]> {
   try {
     const proofIndexPath = path.join(process.cwd(), 'public', 'proof', 'index.json');
     const data = await fs.readFile(proofIndexPath, 'utf-8');
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    return parsed.entries || [];
   } catch (error) {
-    console.warn('No proof data found, returning empty array');
+    console.error('[proof/page] Failed to read proof index:', error);
+    // Returning empty array is acceptable fallback for missing proof data
     return [];
   }
 }

@@ -22,8 +22,10 @@ async function getProofEntries(): Promise<ProofEntry[]> {
   try {
     const proofIndexPath = path.join(process.cwd(), 'public', 'proof', 'index.json');
     const data = await fs.readFile(proofIndexPath, 'utf-8');
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    return parsed.entries || [];
   } catch (error) {
+    console.error('[proof/[tag]/page] Failed to read proof entries:', error);
     return [];
   }
 }
@@ -45,6 +47,7 @@ async function readProofHtml(tag: string): Promise<string | null> {
     }
     return html;
   } catch (error) {
+    console.error(`[proof/[tag]/page] Failed to read proof HTML for tag ${tag}:`, error);
     return null;
   }
 }

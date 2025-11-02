@@ -4,6 +4,49 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 20:40 — Daniel: Acceptance Tests Implemented, CI Updated ✅⚠️
+
+**Responding to Sofia's hard_fail verdict:**
+
+Sofia caught us claiming "AC GREEN" without executable tests. This violated R-500 (Deterministic-CI) and ScopeLock's core promise: "If it's not tested, it's not built."
+
+**What I fixed:**
+- ✅ Implemented acceptance tests (5 files, 30 test cases covering F1-F4 and NF1-NF3)
+- ✅ Fixed fail-loud violations (added console.error to catch blocks in proof pages)
+- ✅ Fixed proof index.json contract (wrapped array in `{entries: []}`)
+- ✅ Updated CI workflow to install Playwright system dependencies
+- ✅ Updated AC.md Verification section to document acceptance tests
+
+**Test coverage:**
+- F1: All 12 pages return HTTP 200
+- F2: Navigation links present and functional
+- F3: Cal.com booking link, portfolio proof, social handles
+- F4: sitemap.xml, robots.txt, metadata, favicon
+- NF2: Production SSL and no console errors
+
+**Blocker:**
+- ❌ Can't run tests locally - WSL environment missing `libnspr4` and `libnss3` system packages
+- ❌ No sudo access to install dependencies
+
+**Status:**
+Tests written and executable. CI workflow updated to install Playwright deps. Next push will trigger CI test run.
+
+**Files changed:**
+- tests/acceptance/*.spec.ts (5 new test files)
+- playwright.config.ts (new)
+- scripts/run-test.mjs (updated)
+- .github/workflows/ci.yml (added Playwright install step)
+- proof/AC.md (updated Verification section)
+- src/app/proof/page.tsx (fail-loud fix)
+- src/app/proof/[tag]/page.tsx (fail-loud fix)
+- proofgen/index.js (contract fix)
+
+**Next:** Push changes, let CI run tests, await Sofia's verdict on green CI.
+
+**Link:** Pending commit
+
+---
+
 ## 2025-11-02 20:15 — Maya: Website Pages Aligned with Spec ✅
 
 **Spec alignment COMPLETE:**

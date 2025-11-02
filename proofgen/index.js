@@ -278,7 +278,7 @@ async function writeJson(outDir, entries) {
       DELTA: entry.delta.missing ? null : `/proof/${entry.tag}/index.html#delta`
     }
   }));
-  const serialized = `${JSON.stringify(json, null, 2)}\n`;
+  const serialized = `${JSON.stringify({ entries: json }, null, 2)}\n`;
   await fs.writeFile(path.join(outDir, 'index.json'), serialized, 'utf8');
 }
 
