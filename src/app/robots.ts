@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: [],
     },
-    sitemap: 'https://scopelock.dev/sitemap.xml',
+    sitemap: 'https://scopelock.mindprotocol.ai/sitemap.xml',
   };
 }

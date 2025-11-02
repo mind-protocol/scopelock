@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://scopelock.dev';
+  const baseUrl = 'https://scopelock.mindprotocol.ai';
 
   // Static pages
   const staticPages = [

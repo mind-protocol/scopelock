@@ -5,11 +5,12 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'ScopeLock Delivery — Executable acceptance criteria, price and outcome locked',
   description: 'ScopeLock co-writes AC.md + tests, delivers through tagged milestones (demo ≤90s, delta) and invoices at AC green.',
+  metadataBase: new URL('https://scopelock.mindprotocol.ai'),
   openGraph: {
     title: 'ScopeLock Delivery',
     description: 'Executable acceptance criteria. Price and outcome locked.',
     type: 'website',
-    url: 'https://scopelock.dev/',
+    url: 'https://scopelock.mindprotocol.ai/',
     images: ['/og-scopelock.svg'],
   },
   icons: {
