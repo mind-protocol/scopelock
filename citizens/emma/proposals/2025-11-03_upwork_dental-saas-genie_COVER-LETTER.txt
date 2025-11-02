@@ -1,0 +1,33 @@
+You need a HIPAA-compliant AI platform that integrates with NexHealth and Open Dental, handles patient communications, and gives dental practices one command center for calls, scheduling, and marketing. Most developers build chatbots or basic dashboards. You need real EHR synchronization, conversational AI, and compliant PHI handling in production.
+
+We built TherapyKin (therapykin.ai - healthcare AI companion with 121+ production deployments, persistent user data, HIPAA-aware architecture), DuoAI (duoai.vercel.app - real-time AI with structured outputs and API orchestration), and Mind Protocol (multi-system integration substrate with event-driven architecture). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+
+The core challenge is orchestration and compliance. Your AI needs to sync appointment data from NexHealth, handle Twilio call transcription, route patient intake through HIPAA-eligible infrastructure, and attribute leads from Google/Meta Ads - all while maintaining PHI encryption and audit logs. That requires API-native architecture, not bolt-on integrations.
+
+Complete Genie Platform ($15,000 fixed, 6-8 months structured milestones):
+
+Milestone 1 - Evidence Sprint + NexHealth Integration (4 weeks, $3,000):
+AI assistant prototype with NexHealth Synchronizer API integration, Twilio call tracking + transcription pipeline, admin dashboard (CRM view, scheduling interface, basic analytics), HIPAA-eligible deployment on AWS with encryption at rest/transit. Acceptance: NexHealth sync pulls appointments, AI assistant answers 3 common dental office questions, Twilio logs calls with transcripts, dashboard displays patient data.
+
+Milestone 2 - Patient Communication Automation (6 weeks, $4,000):
+SMS/email automation via Twilio + SendGrid (appointment reminders, rebooking triggers), digital intake forms with PHI validation, missed-call automation (capture, log, AI-generated follow-up), Open Dental integration (read-only patient lookup). Acceptance: Automated SMS sent for appointments 24h before, intake form captures patient data and stores encrypted, missed calls trigger follow-up within 5 minutes.
+
+Milestone 3 - Marketing Attribution + AI Insights (6 weeks, $4,000):
+Google Ads + Meta Ads API integration (lead source tracking), analytics dashboard (call volume, lead attribution, patient retention metrics), AI-powered insights (identify high-value patients, recommend rebooking strategies), conversational AI refinement (handle complex scheduling scenarios). Acceptance: Dashboard shows lead-to-appointment attribution by ad campaign, AI generates actionable insight, assistant handles multi-step booking flow.
+
+Milestone 4 - Production Hardening + Handoff (4 weeks, $4,000):
+Full HIPAA compliance audit (BAA execution, access controls, audit logging), load testing and performance optimization, technical documentation (API specs, deployment runbooks, admin guides), team training and 30-day post-launch support. Acceptance: System passes HIPAA compliance checklist, handles 100 concurrent users, documentation complete, team trained.
+
+Tech Stack: Rasa or Dialogflow CX (conversational AI), Python FastAPI (backend), React + TypeScript (frontend), PostgreSQL (database), AWS (HIPAA-eligible infrastructure), NexHealth Synchronizer API, Open Dental API, Twilio, SendGrid, Google Ads API, Meta Ads API.
+
+Before start, we co-write acceptance criteria. What passes? Which dental office workflows must the AI handle? What NexHealth data fields are critical? How do you measure success? You pay only when milestones pass.
+
+Changes mid-build: Swap (same complexity, no charge) or Add (new milestone, priced upfront).
+
+Available 14:00-19:00 Central for calls. Kick off within 72 hours if timeline works.
+
+Reply with: which dental office workflow is most painful right now (missed calls, manual scheduling, patient intake, lead tracking)? Determines Evidence Sprint focus and if 4-week first milestone works or needs adjustment.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

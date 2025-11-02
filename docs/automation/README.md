@@ -10,6 +10,10 @@
 
 This directory contains detailed technical specifications for 11 automation features that will reduce manual work from 19.6h/week to 2.5h/week (87% automation).
 
+**📊 Track Progress:** See **[PROGRESS.md](PROGRESS.md)** for TODO vs DONE status, test results, and implementation checklist.
+
+**🔄 Real-Time Updates:** Use **`/citizens/SYNC.md`** for work-in-progress status and blockers. See **[SYNC_vs_PROGRESS.md](SYNC_vs_PROGRESS.md)** to understand the difference.
+
 Each specification follows the consciousness design pattern:
 
 ```

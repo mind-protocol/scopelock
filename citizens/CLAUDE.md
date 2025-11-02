@@ -721,6 +721,11 @@ scopelock/
 │   │   ├── mind-protocol-v2.md         # Consciousness infrastructure
 │   │   └── duoai.md                    # Real-time voice AI
 │   │
+│   ├── automation/ ⭐                  # Automation feature specifications
+│   │   ├── README.md                    # Overview, priorities, ROI
+│   │   ├── PROGRESS.md ⭐⭐             # TODO vs DONE tracker with tests
+│   │   └── 01-11_*.md                   # Individual feature specs
+│   │
 │   ├── design/                         # Design system & branding
 │   ├── research/                       # Research documents
 │   └── archive/                        # Archived/superseded documentation
@@ -764,6 +769,11 @@ scopelock/
 1. `/docs/core/delivery_model.md` - AC.md, Evidence Sprint, CHG-130
 2. `/docs/core/team_structure.md` - Roles & collaboration protocols
 3. `/citizens/SYNC.md` - Current status & blockers
+
+**For Automation Implementation:**
+1. `/docs/automation/PROGRESS.md` ⭐ - TODO vs DONE tracker with test results
+2. `/docs/automation/README.md` - Overview, priorities, implementation order
+3. `/docs/automation/01-11_*.md` - Detailed specs for each feature
 
 **For Verification Links (Use in Proposals):**
 - GitHub Personal: `github.com/nlr-ai` (65K commits)

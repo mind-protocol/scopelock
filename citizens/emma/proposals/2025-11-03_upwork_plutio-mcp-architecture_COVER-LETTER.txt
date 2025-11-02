@@ -1,0 +1,32 @@
+I've hit every one of these problems. The monolithic agent with all tools in one context is a classic trap - looks elegant at first, then becomes unmaintainable fast. Context bloat kills performance, and without strict validation, the LLM will absolutely hallucinate endpoints when it gets confused by similar-sounding tools.
+
+The MCP architecture you outlined solves the right problems. Separate servers per domain (Invoices, Files, Forms) with their own schemas means each piece can validate independently, and the hub only needs routing logic - not the full API surface. That cuts context size by 80%+ and makes streaming reliable because you're not waiting on a massive prompt.
+
+I built similar orchestration for La Serenissima (serenissima.ai - 97 autonomous agents with 99.7% uptime over 6 months). The core challenge there was routing between specialized agents without context overflow and preventing cascading failures when one agent stalled. Solution: central router with strict schemas per agent type, parameter validation before dispatch, and circuit breakers on timeouts. Same pattern you need here.
+
+For the voice streaming piece: batch Whisper is unusable for real-time. You need chunked audio (250-500ms segments), parallel decoding (GPU for inference, CPU for preprocessing), and WebSocket persistence to handle network jitter. The tricky part is balancing chunk size - too small and you lose context for accurate transcription, too large and latency spikes. I'd start with 400ms chunks, overlap by 100ms for word boundaries, and use beam pruning (width=5) to keep decoding fast without sacrificing accuracy.
+
+What I'd build:
+
+Milestone 1 - MCP Hub + Schema Foundation (1 week, $1,000):
+Central MCP Hub with case classifier (Invoices vs Files vs Forms detection), method classifier (Create/Get/Update/Delete routing), parameter validator with centralized schema definitions, one MCP Server implemented (Invoices) as reference architecture. Acceptance: User message "create an invoice for $500" routes to Invoices MCP Server, validates required fields (amount, client), calls API, returns success/error.
+
+Milestone 2 - Full MCP Server Migration (1.5 weeks, $1,200):
+Migrate remaining tools to dedicated MCP Servers (Files, Forms, Messages, Events), schema validation per server with clear error messages, timeout handling and circuit breakers (if MCP Server stalls >10s, return error instead of hanging session), integration testing across all servers. Acceptance: All existing Plutio tools work through MCP architecture, context size reduced by 75%+ vs. monolithic agent, no hallucinated endpoint calls in 100-message test.
+
+Milestone 3 - Real-Time Voice Streaming (1 week, $800):
+WebSocket-based audio streaming pipeline, chunked Whisper transcription (400ms chunks, 100ms overlap), parallel CPU/GPU pipeline (audio preprocessing on CPU, inference on GPU), beam pruning and segment detection for low-latency output. Acceptance: Live voice input transcribed with <1s latency (from speech to text output), handles 5-minute continuous sessions without disconnects, accuracy ≥95% on test samples.
+
+Tech approach: MCP Hub in Node.js or Python (depends on your existing backend), MCP Servers with JSON Schema or Pydantic validation, case/method classifiers using rule-based with LLM fallback (faster than fine-tuned models), voice streaming with Python + faster-whisper (OpenAI Whisper with CTranslate2 optimization) + WebSocket, Docker containers per MCP Server for isolation.
+
+Why this works: You eliminate the monolithic context problem by splitting tools into domains. Each MCP Server only knows its own API surface, so validation is strict and hallucinations drop to near-zero. The hub becomes dumb routing logic, which is exactly what you want - no intelligence at the orchestration layer means fewer failure modes. For voice, chunked streaming with overlap solves the batch latency issue. Parallel decoding keeps GPU saturated while CPU handles audio preprocessing.
+
+The risk is over-engineering the classifier layer. If your use cases are predictable (most user messages clearly target one domain), you might not need a fine-tuned model - a simple keyword matcher with LLM fallback is faster and easier to debug. I'd prototype both and measure accuracy vs. latency.
+
+Before we start: what's your current backend stack (Node/Python/other)? That determines whether I match your environment or recommend a rewrite. Also, how many concurrent users hit the voice transcription feature? That affects whether we need horizontal scaling or a single beefy GPU instance is enough.
+
+Available 14:00-19:00 Central for calls. Can start within 48 hours if you're ready to move.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

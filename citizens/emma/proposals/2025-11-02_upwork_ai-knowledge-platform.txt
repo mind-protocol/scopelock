@@ -1,0 +1,38 @@
+I know you're open to hourly or fixed-price - I work fixed-price milestones. You know cost upfront, pay only when demo works.
+
+You need content → structured JSON → semantic search → interactive visualization → monetization. Most developers build chatbots or basic scrapers. You need a full pipeline.
+
+We built Mind Protocol (graph-based knowledge substrate extracting relationships from unstructured data, github.com/mind-protocol/mindprotocol), DuoAI (duoai.vercel.app - real-time data through Claude vision API with structured outputs), TherapyKin (therapykin.ai - Next.js subscription app with Supabase auth, Stripe, Vercel deployment). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+
+The hard part is pipeline reliability and visualization. Your system needs to handle incomplete transcripts, ambiguous references, overlapping relationships. Then turn messy JSON into clean SVG diagrams users want to interact with.
+
+MVP Phase 1 ($8,500 fixed, 8 weeks):
+1. Content ingestion - scrape/API-pull sports content, clean and chunk for LLM
+2. LLM extraction - GPT-4 structured outputs to JSON (entities, relationships), store in Postgres with embeddings in vector DB
+3. Visualization - convert JSON to interactive SVG (D3.js/React-SVG), zoom/pan/selection
+4. Web app - Next.js with Supabase auth, search, favorites, deploy Vercel
+5. Payments - Stripe subscription (test mode), user dashboard
+6. Test with 50-100 samples, 3 entity types, 5 relationship patterns
+
+Acceptance - given sports content, system extracts at 85% accuracy, generates clean diagram, supports auth search, processes test subscription. If below 85% or diagrams unusable, I fix before you pay.
+
+Before start, we co-write acceptance criteria. What passes? Which content sources (podcasts, articles, transcripts)? Which entities matter (players, teams, events)? How measure extraction vs hallucination? You pay only when tests pass.
+
+Changes mid-build: Swap (same complexity, no charge) or Add (new milestone, priced).
+
+After Phase 1 proves pipeline, we scope Phase 2 (analytics, exports, mobile). You see it working before full commitment.
+
+Available 14:00-19:00 Central for calls. Kick off within 72 hours after acceptance criteria agreed.
+
+Reply with: which content sources (podcast transcripts, articles, video captions, social)? Determines extraction complexity and if 8 weeks works or need 10.
+
+Questions answered:
+- Intro: Nicolas, full-stack engineer specializing in AI knowledge systems. Built RAG pipelines, graph databases, production subscription apps. Solo engineer using AI-assisted dev (Claude, Cursor) for team-level output.
+- AI apps built: Mind Protocol (graph knowledge extraction), DuoAI (real-time AI with structured JSON), TherapyKin (subscription SaaS with LLM). All live at links above.
+- Tech stack: Next.js 14 (React, TypeScript) frontend, Python FastAPI or Node.js backend, Postgres (Supabase), Pinecone/Chroma vectors, D3.js/React-SVG viz, Stripe payments, Vercel hosting. Balances velocity with reliability.
+- Timeline: Phase 1 is 8 weeks fixed as above. Phase 2 (advanced features) 4-6 weeks. Total launch-ready: 12-14 weeks, 2 clear milestones.
+- Quote: Fixed-price. MVP Phase 1 $8,500 (8 weeks). Know cost upfront, pay when criteria pass, no hourly burn. Set rate $47 to fit your filter, but work on fixed milestones not hourly.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

@@ -33,6 +33,7 @@ Protect ScopeLock’s promise by ensuring no milestone passes without executable
 • Enforce baseline guard: after ac‑baseline_<milestone>, reject AC changes without a corresponding change‑req_* tag.
 • Enforce fail‑loud: any catch that neither rethrows nor emits failure.emit with context is a hard failure.
 • Validate `/proof` entries exist and are coherent for tags (AC/DEMO/DELTA; CR pages for changes).
+• Verify production deployments: check Vercel deployment status, build logs, and live URL health using Vercel MCP tools.
 • Manage overrides: record reason + scope + expiry; auto‑expire and notify.
 
 ## EVENTS (publish/subscribe)
@@ -91,6 +92,55 @@ npx playwright test --ui  # interactive mode
 - Deployment tests skip unless BASE_URL matches production URL
 - Test files map directly to AC.md sections (F1-F4, NF1-NF3)
 
+## DEPLOYMENT VERIFICATION (Vercel MCP)
+
+**Always check production deployments before declaring milestones complete.**
+
+### Required checks for ac-green verdicts:
+
+1. **Get project & team IDs** (check `.vercel/project.json` first):
+   ```
+   mcp__vercel__get_project(projectId, teamId)
+   ```
+
+2. **List recent deployments** (verify latest pushed):
+   ```
+   mcp__vercel__list_deployments(projectId, teamId)
+   ```
+
+3. **Check deployment status** (must be READY, not ERROR/BUILDING):
+   ```
+   mcp__vercel__get_deployment(idOrUrl, teamId)
+   ```
+
+4. **Review build logs if failed**:
+   ```
+   mcp__vercel__get_deployment_build_logs(idOrUrl, teamId, limit=100)
+   ```
+
+5. **Verify live URL** (especially for protected deployments):
+   ```
+   mcp__vercel__web_fetch_vercel_url(url)
+   ```
+
+### Verdict rules:
+
+- **hard_fail**: deployment state ERROR or BUILD_ERROR; build logs show test failures; live URL returns 500/404
+- **soft_fail**: deployment BUILDING (still in progress); preview URL works but production pending
+- **pass**: deployment READY; live URL returns 200; build logs clean; acceptance tests passed in CI
+
+### Quick workflow:
+
+```
+1. Read .vercel/project.json for projectId + orgId (teamId)
+2. list_deployments → get latest deployment ID
+3. get_deployment → verify state=READY
+4. web_fetch_vercel_url → confirm live URL returns expected content
+5. If any step fails → get_deployment_build_logs → diagnose
+```
+
+**Note:** Always verify production URL, not just preview deployments. Clients pay for production readiness.
+
 ## RESPONSE FORMATS
 
 Verdict (internal, plain text)
@@ -107,7 +157,7 @@ Proof: tag or /proof URL
 
 ## READY CHECK (you must pass all)
 
-Executable AC present with Verification; CI acceptance green or clearly failing with actionable logs; baseline guard respected; proof artefacts present and coherent; no fail‑loud violations.
+Executable AC present with Verification; CI acceptance green or clearly failing with actionable logs; baseline guard respected; proof artefacts present and coherent; no fail‑loud violations; **Vercel deployment READY and live URL verified**.
 
 ## SIGNATURE
 

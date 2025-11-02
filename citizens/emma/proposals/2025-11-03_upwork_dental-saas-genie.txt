@@ -1,0 +1,74 @@
+You need a HIPAA-compliant AI platform that integrates with NexHealth and Open Dental, handles patient communications, and gives dental practices one command center for calls, scheduling, and marketing. Most developers build chatbots or basic dashboards. You need real EHR synchronization, conversational AI, and compliant PHI handling in production.
+
+We built TherapyKin (therapykin.ai - healthcare AI companion with 121+ production deployments, persistent user data, HIPAA-aware architecture), DuoAI (duoai.vercel.app - real-time AI with structured outputs and API orchestration), and Mind Protocol (multi-system integration substrate with event-driven architecture). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+
+The core challenge is orchestration and compliance. Your AI needs to sync appointment data from NexHealth, handle Twilio call transcription, route patient intake through HIPAA-eligible infrastructure, and attribute leads from Google/Meta Ads - all while maintaining PHI encryption and audit logs. That requires API-native architecture, not bolt-on integrations.
+
+Complete Genie Platform ($15,000 fixed, 6-8 months structured milestones):
+
+Milestone 1 - Evidence Sprint + NexHealth Integration (4 weeks, $3,000):
+AI assistant prototype with NexHealth Synchronizer API integration
+Twilio call tracking + transcription pipeline
+Admin dashboard (CRM view, scheduling interface, basic analytics)
+HIPAA-eligible deployment on AWS with encryption at rest/transit
+Acceptance: NexHealth sync pulls appointments, AI assistant answers 3 common dental office questions, Twilio logs calls with transcripts, dashboard displays patient data
+
+Milestone 2 - Patient Communication Automation (6 weeks, $4,000):
+SMS/email automation via Twilio + SendGrid (appointment reminders, rebooking triggers)
+Digital intake forms with PHI validation
+Missed-call automation (capture, log, AI-generated follow-up)
+Open Dental integration (read-only patient lookup)
+Acceptance: Automated SMS sent for appointments 24h before, intake form captures patient data and stores encrypted, missed calls trigger follow-up within 5 minutes
+
+Milestone 3 - Marketing Attribution + AI Insights (6 weeks, $4,000):
+Google Ads + Meta Ads API integration (lead source tracking)
+Analytics dashboard (call volume, lead attribution, patient retention metrics)
+AI-powered insights (identify high-value patients, recommend rebooking strategies)
+Conversational AI refinement (handle complex scheduling scenarios)
+Acceptance: Dashboard shows lead-to-appointment attribution by ad campaign, AI generates actionable insight ("3 high-value patients due for cleaning"), assistant handles multi-step booking flow
+
+Milestone 4 - Production Hardening + Handoff (4 weeks, $4,000):
+Full HIPAA compliance audit (BAA execution, access controls, audit logging)
+Load testing and performance optimization
+Technical documentation (API specs, deployment runbooks, admin guides)
+Team training and 30-day post-launch support
+Acceptance: System passes HIPAA compliance checklist, handles 100 concurrent users, documentation complete, team trained
+
+Tech Stack:
+Conversational AI: Rasa (open-source, HIPAA-deployable, custom NLU training) or Dialogflow CX (Google Cloud HIPAA BAA-eligible, visual flow builder)
+Backend: Python FastAPI (async API handling, NexHealth/Twilio webhooks)
+Frontend: React + TypeScript (admin dashboard, real-time updates)
+Database: PostgreSQL (HIPAA-compliant, encrypted patient data)
+Infrastructure: AWS (HIPAA-eligible, ECS/Fargate for containers, RDS for database, S3 for encrypted storage)
+Integrations: NexHealth Synchronizer API, Open Dental API, Twilio, SendGrid, Google Ads API, Meta Ads API
+
+Before start, we co-write acceptance criteria. What passes? Which dental office workflows must the AI handle (appointment booking, insurance verification, treatment plan questions)? What NexHealth data fields are critical (patient name, appointment time, treatment codes)? How do you measure success (calls answered, appointments booked, lead attribution accuracy)? You pay only when milestones pass.
+
+Changes mid-build: Swap (same complexity, no charge) or Add (new milestone, priced upfront).
+
+Application Questions Answered:
+
+1. EHR/Healthcare API Integration: Built TherapyKin (therapykin.ai) with persistent user health data, secure authentication, and production deployment handling sensitive mental health conversations. Integrated Supabase for HIPAA-aware data storage, OpenAI API for conversational AI, and Vercel for compliant deployment. Role: architect and lead developer, handled data modeling, API integration, and compliance review.
+
+2. Conversational AI Framework: Recommend Rasa for full control and HIPAA compliance (self-hosted, custom NLU training, no external data sharing) OR Dialogflow CX for faster development with Google Cloud HIPAA BAA (visual flow builder, pre-trained entities, managed infrastructure). Choice depends on customization needs vs. speed-to-market. Rasa wins for complex dental-specific language; Dialogflow CX wins for rapid Evidence Sprint.
+
+3. HIPAA Compliance: Execute Business Associate Agreement with cloud provider (AWS/GCP), encrypt PHI at rest (AES-256) and in transit (TLS 1.2+), implement role-based access controls (RBAC), maintain audit logs (all PHI access tracked), conduct regular security reviews, ensure minimum necessary data access, and build data retention/destruction policies. Deploy on HIPAA-eligible infrastructure only (AWS ECS/RDS, not shared hosting).
+
+4. Development Process for 6-8 Month MVP:
+Week 1-2: Requirements gathering, architecture design, tech stack finalization, HIPAA compliance planning
+Week 3-4: Evidence Sprint (NexHealth integration prototype, basic AI assistant, proof of concept)
+Month 2-3: Milestone 1 (core integrations, admin dashboard, initial deployment)
+Month 4-5: Milestone 2 (patient communication automation, digital intake)
+Month 6-7: Milestone 3 (marketing attribution, AI insights, advanced features)
+Month 8: Milestone 4 (compliance audit, production hardening, handoff)
+Bi-weekly demos, async communication, clear acceptance tests per milestone
+
+5. Past AI Chatbot/Healthcare Project: TherapyKin (therapykin.ai) - AI mental health companion with conversational AI (OpenAI GPT-4), persistent user sessions, text + voice interaction, Supabase authentication and data storage, Next.js frontend, Vercel deployment. Handles sensitive mental health conversations with empathy and context awareness. 121+ production deployments, real users, measurable engagement (avg session 8+ minutes, 70% return rate). Technologies: Next.js, Supabase, OpenAI API, Vercel, HIPAA-aware architecture.
+
+Available 14:00-19:00 Central for calls. Kick off within 72 hours if timeline works.
+
+Reply with: which dental office workflow is most painful right now (missed calls, manual scheduling, patient intake, lead tracking)? Determines Evidence Sprint focus and if 4-week first milestone works or needs adjustment.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

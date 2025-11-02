@@ -1,38 +1,33 @@
-You need an AI Physical Therapist that retrieves the right video or image based on what the user describes about their pain. Most developers will build you a chatbot that hallucinates exercise names or generates wrong content. You need a RAG system that only pulls from your verified treatment library and knows which motion test to show for knee pain versus shoulder pain.
+You need an AI Physical Therapist that retrieves the right video based on user pain descriptions. Most developers build chatbots that hallucinate - you need a RAG system that only pulls from your verified treatment library.
 
-I know you posted this as hourly, but I work on fixed-price milestones so you know the cost upfront and only pay when tests pass. Here's Milestone 1.
+I know you posted hourly, but I work fixed-price milestones. You know cost upfront, pay only when tests pass.
 
-We built KinOS, a RAG-based AI memory system with hierarchical retrieval and multi-modal content (text, images, video). We built DuoAI (duoai.vercel.app), integrating Claude vision API with real-time multimedia responses. We built TherapyKin (therapykin.ai), an AI companion with persistent conversational flow and context awareness across sessions. You can verify our work at github.com/nlr-ai (personal) and github.com/mind-protocol (org - includes terminal-velocity with 1.1k stars, therapykin, kinkong).
+We built KinOS (RAG with hierarchical retrieval and multi-modal content), DuoAI (duoai.vercel.app - Claude vision API with real-time multimedia), TherapyKin (therapykin.ai - AI companion with persistent conversational flow). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
 
-The core challenge is not the LLM - it's the retrieval system. Your AI needs to map user input (knee pain, bending motion, pain score 70) to the correct assessment flow, then retrieve the specific trunk twist video from your library, not generate a description or guess. That requires structured metadata on every video, semantic search for retrieval, and a decision tree that matches pain patterns to treatment protocols.
+The core challenge is retrieval, not the LLM. Your AI needs to map "knee pain, bending motion, score 70" to the correct assessment flow, then retrieve the specific trunk twist video - not guess. That requires structured metadata, semantic search, and a decision tree matching pain patterns to protocols.
 
-Here's Milestone 1 ($4,500 fixed, 14 days):
+Milestone 1 ($4,500 fixed, 14 days):
+1. Content ingestion - upload videos/images with metadata (body part, motion, difficulty)
+2. RAG pipeline - embed protocols, match user pain to assessment sequence
+3. Conversational flow - user describes pain, AI asks tests, scores 0-100, retrieves next video
+4. Test with 10-20 exercises across 3 body areas
+5. Acceptance - given knee pain, system walks through tests, retrieves correct videos, no hallucination
 
-1. Content ingestion system - upload your videos and images with metadata (body part, motion type, difficulty, when to show)
-2. RAG pipeline - embed your treatment protocols, match user pain descriptions to correct assessment sequence
-3. Conversational flow engine - user describes pain, AI asks motion tests, scores responses (0-100), retrieves next step video
-4. Test with 10-20 exercises covering 3 body areas (knee, shoulder, back as examples)
-5. Acceptance criteria - given knee pain input, system correctly walks through motion tests, retrieves right videos in sequence, does not hallucinate exercises
+Before I start, we co-write acceptance criteria. What does passing look like? Which motion test for knee pain? What metadata do videos have? You pay only when tests pass.
 
-Before I start, we co-write the acceptance criteria together. What does passing look like? If user says knee pain, which motion test should the AI show first? What metadata fields do your videos have (or need)? How do you know if the AI retrieved the right exercise versus guessing? I build to those criteria. You pay only when the tests pass.
+Changes mid-build: Swap (same complexity, no charge) or Add (new milestone, priced upfront).
 
-If you want to change something mid-build - Swap (replace at same complexity, no charge) or Add (new milestone, priced upfront). No surprise invoices.
+After Milestone 1 proves RAG works, we scope full library as Milestone 2. You see it working before committing to complete build.
 
-After Milestone 1 proves the RAG system works with your content, we scope the full exercise library and treatment plan generation as Milestone 2. You see it working with real videos and real pain scenarios before committing to the complete build. If the retrieval accuracy isn't there, we fix it in Milestone 1 - not after you've paid for everything.
+Available 14:00-19:00 Central for calls. Kick off within 72 hours.
 
-I'm in France, available 14:00-19:00 Central (US time) for calls. We can kick off within 72 hours if you want to move fast.
+Reply with: what does your video metadata look like (filename conventions, tags, organization)? Determines if 14 days works or need 18.
 
-Reply with one thing - what does your video metadata look like today (filename conventions, any existing tags, how you organize the 85 percent video content)? That determines if 14 days is realistic or if we need 18.
-
-Answers to your questions:
-
-Do I understand the instructions? Yes. You need a RAG system that retrieves verified treatment content (not generates), guides users through motion assessments with scoring, and follows your unique treatment protocol. My clarifying question is above - video metadata structure.
-
-Examples of live projects with video or image pulling? DuoAI (duoai.vercel.app) pulls real-time screen captures and sends to Claude vision API for analysis. TherapyKin (therapykin.ai) retrieves contextual responses based on conversation history. KinOS (github.com/mind-protocol/kinos10) is the RAG architecture foundation - hierarchical retrieval with multi-modal content.
-
-Point person for the project? I architect the system, make technical decisions (which embedding model, retrieval strategy, flow engine), and solve problems before they surface (like what happens when user describes pain that matches multiple protocols, or videos are missing metadata). You own the treatment expertise and content. I own making the AI retrieve it correctly.
-
-Certifications related to this project? No formal PT certifications. I build AI systems that retrieve and present expert content accurately. You are the domain expert. I'm the RAG and LLM integration expert who makes sure your expertise reaches users correctly through the AI.
+Questions answered:
+- Understand instructions? Yes. RAG retrieves verified content, guides motion assessments with scoring, follows your protocol. Question above re metadata.
+- Live projects? DuoAI pulls real-time captures to Claude vision. TherapyKin retrieves contextual responses. KinOS is RAG foundation (github.com/mind-protocol/kinos10).
+- Point person? I architect system, make technical decisions (embedding model, retrieval strategy, flow engine), solve problems before they surface. You own treatment expertise. I own making AI retrieve correctly.
+- Certifications? No PT certs. I build AI systems that retrieve expert content accurately. You're the expert. I'm the RAG specialist making your expertise reach users correctly.
 
 Nicolas
 github.com/nlr-ai • github.com/mind-protocol

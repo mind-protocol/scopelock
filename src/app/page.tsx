@@ -8,16 +8,21 @@ export default function HomePage() {
       <header className="hero">
         <h1>Lock the scope.<br />Prove the value.</h1>
         <p className="lead">You'll know if we're good before you pay.</p>
+        <p className="hero-pitch">
+          Fixed-price software delivery with executable acceptance criteria—pay only when tests pass.
+        </p>
         <p className="hero-tagline">
           Solo engineer + AI workforce · <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">65K commits in 2024 →</a>
         </p>
         <div className="hero-ctas">
-          <a className="cta-primary" href="https://github.com/nlr-ai" target="_blank" rel="noopener">
-            <span>Just show me the code</span>
+          <Link className="cta-primary" href="#contact">
+            <span>Schedule kickoff</span>
             <span aria-hidden="true">→</span>
-          </a>
+          </Link>
           <Link className="cta-secondary" href="/proof">See proof log</Link>
-          <Link className="cta-tertiary" href="#contact">Schedule kickoff (≤72h)</Link>
+          <a className="cta-tertiary" href="https://github.com/nlr-ai" target="_blank" rel="noopener">
+            View code on GitHub
+          </a>
         </div>
       </header>
 

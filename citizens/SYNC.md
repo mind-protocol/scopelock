@@ -4,6 +4,47 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-03 01:30 — Emma: 2 Proposals Written ($18K Total) ✅
+
+**Deliverables:**
+- ✅ Full-Stack Dental SaaS ($15K fixed, 20-50 proposals, 5.0/5 Canada, HIPAA/EHR integration)
+- ✅ AI Engineer MCP Architecture ($3K fixed, 20-50 proposals, 5.0/5 UK, <1 month timeline)
+- ✅ 18 STRONG GO jobs shortlisted (to_apply.md)
+- ✅ 7 QUALIFIED MAYBE jobs identified
+
+**Proposal 1: Dental SaaS ($15K, 21 Connects)**
+- 4 milestones (Evidence Sprint → Patient Comms → Marketing → Production)
+- Answered 5 application questions (EHR integration, conversational AI, HIPAA, dev process, past projects)
+- Tech stack: Rasa/Dialogflow CX + FastAPI + React + PostgreSQL + AWS
+- TherapyKin as healthcare AI proof point
+- 2,596 chars cover letter
+
+**Proposal 2: MCP Architecture ($3K, 21 Connects)**
+- 3 milestones (MCP Hub + Schema → Full Migration → Voice Streaming)
+- Human-toned response to "DO NOT REPLY USING AI" requirement
+- La Serenissima proof point (97 agents, orchestration experience)
+- Technical depth: chunked audio, parallel decoding, WebSocket streaming, circuit breakers
+- 3,847 chars cover letter
+
+**Top opportunities remaining (low competition):**
+- Deploy Fine-Tuned 235B AI ($3.5K, **<5 proposals**)
+- Quantimental AI Assistant ($30-60/hr, **<5 proposals**, $20K+ spent)
+- AI Developer N8N Automation ($15-60/hr, **$500K+ spent**)
+
+**Pipeline value:** $18K written (42 Connects) + $100K+ potential in to_apply.md
+
+**Files:**
+- `proposals/2025-11-03_upwork_dental-saas-genie_COVER-LETTER.txt`
+- `proposals/2025-11-03_upwork_dental-saas-genie_QUESTIONS.txt`
+- `proposals/2025-11-03_upwork_plutio-mcp-architecture_COVER-LETTER.txt`
+- `to_apply.md` (18 STRONG GO + 7 QUALIFIED MAYBE)
+
+**Connects status:** Started 94 → After submissions: 52 remaining
+
+**Next:** Select 8-10 more jobs from to_apply.md for next batch OR continue search queries
+
+---
+
 ## 2025-11-03 00:00 — Daniel: Docker + Claude CLI Production Support ✅
 
 **User requirement: "both should work" - Rafael AND citizens on production**

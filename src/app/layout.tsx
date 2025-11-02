@@ -34,7 +34,7 @@ export default function RootLayout({
             <Link href="/" className="logo-link">
               <img
                 src="/brand/logo/logo.svg"
-                alt="ScopeLock"
+                alt="ScopeLock - Fixed-price software delivery with locked scope"
                 width="224"
                 height="48"
                 style={{ height: '48px', width: 'auto' }}
@@ -42,9 +42,11 @@ export default function RootLayout({
             </Link>
             <div className="nav-links">
               <Link href="/about">About</Link>
-              <Link href="/blog">Blog</Link>
-              <Link href="/faq">FAQ</Link>
+              <Link href="/process">Process</Link>
+              <Link href="/pricing">Pricing</Link>
               <Link href="/proof">Proof</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/blog">Blog</Link>
               <Link href="/#contact">Contact</Link>
             </div>
           </nav>

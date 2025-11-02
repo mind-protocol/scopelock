@@ -1,0 +1,31 @@
+You need an investor demo showing AI simulations producing real results, not mockups with fake data. Polished enough to convince investors, reliable enough to run live during pitches.
+
+I know you posted hourly, but I work fixed-price milestones. You know cost upfront, pay only when demo works.
+
+We built TherapyKin (therapykin.ai - production Next.js with Supabase auth, OpenAI, Vercel deployment, exactly your stack), DuoAI (duoai.vercel.app - processes inputs through AI APIs with visualization), multiple AI subscription products with auth and payments. Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars, therapykin, kinkong).
+
+The challenge with investor demos is balancing polish with functionality. Professional look (landing page, smooth UX, animations) AND actually works (real OpenAI calls, real storage, real viz). Most give you one or the other. You need both - investors will ask to see it run live.
+
+Complete demo platform ($4,800 fixed, 4 weeks):
+1. Hero landing with demo CTA - clean design, animations, responsive
+2. Auth - Supabase Auth with email signup, dashboard, sessions
+3. Simulation module - user defines research objective, sends to GPT-4, receives structured results (JSON), stores in Supabase
+4. Visualization - Recharts graphs showing simulation outputs, exportable
+5. Knowledge Hub - searchable repository of all simulations, filter by category/keyword
+6. Deployment - Vercel with custom domain, env config, error monitoring
+
+Acceptance - user registers, runs simulation with GPT-4 (real API not mocked), views interactive charts, searches Knowledge Hub. Demo runs smoothly in live investor presentation without crashes/API failures. If core flow breaks during demo testing, I fix before you pay.
+
+Before start, we co-write acceptance criteria. What passes? Which research objectives will you demo (specific science domain)? What simulation outputs should GPT-4 generate (experiment designs, analysis, predictions)? How many sample simulations pre-seeded for demo? You pay only when demo works.
+
+Changes mid-build: Swap (same complexity, no charge) or Add (new feature, priced).
+
+4-week timeline gets working demo fast for your investor timeline. Additional features after proving concept (mobile, advanced analytics, API integrations) scope as separate milestones with clear pricing.
+
+Available 14:00-19:00 Central for calls. Kick off within 72 hours if timeline is tight.
+
+Reply with: when is your first investor presentation where you'll demo this live? Determines if 4 weeks works or need to compress to 3.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

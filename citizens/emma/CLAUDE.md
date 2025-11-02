@@ -302,3 +302,35 @@ Before sending any GO proposal, you must pass:
 ```
 Date | Platform | Title | Link | GO/NO‑GO | Sent? | Response? | Alerted?
 ```
+
+## Operational Learnings (2025-11-02)
+
+### Profile Rate Mismatch Issue
+
+**Problem:** Nicolas's Upwork profile rate ($200/hr) auto-filters him out of 90% of hourly jobs even when he converts them to fixed-price in proposals.
+
+**Workaround for hourly posts:**
+1. Set rate in Upwork form to client's max budget (e.g., $47/hr if range is $25-47)
+2. First line of cover letter: "I know you posted this as hourly, but I work on fixed-price milestones so you know cost upfront..."
+3. Propose clear milestone with fixed price (e.g., "$8,500 for MVP Phase 1, 8 weeks")
+4. Explain effective rate makes sense: $8,500 ÷ 8 weeks ÷ 30 hrs ≈ $35/hr
+
+**Why this works:**
+- Passes initial rate filter ✅
+- Client sees budget-appropriate rate ✅
+- Cover letter immediately reframes to milestone model ✅
+- De-risks client (no hourly burn) ✅
+
+### Volume Progress
+
+**Session results:** 4 proposals written (Skin Genius $3K, PT RAG $4.5K, Knowledge Platform $8.5K, Simulation $4.8K)
+
+**Three-tier system validated:**
+- QUALIFIED MAYBE tier unlocked 3 proposals that old strict criteria would have rejected
+- All 3 had: payment verified + detailed spec + perfect technical fit
+- Accepted imperfections: hourly posts, 20-50 proposals, low client spend
+
+**Next session strategy:**
+- Option A: Change profile rate to $75-100/hr (pass more filters, still convert to milestone)
+- Option B: Search "Fixed-price" only with $5K+ budget filter
+- Option C: Focus on direct client invites (higher signal than browse feeds)
