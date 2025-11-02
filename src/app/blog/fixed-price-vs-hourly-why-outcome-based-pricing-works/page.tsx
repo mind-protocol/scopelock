@@ -482,7 +482,7 @@ npm run acceptance:signup`}</pre>
             </div>
           </div>
 
-          <div className={`${styles.mathCard} ${styles.outcomeM ath}`}>
+          <div className={`${styles.mathCard} ${styles.outcomeMath}`}>
             <h3>Outcome-based project</h3>
             <div className={styles.mathRows}>
               <div>AC.md: Co-written, clear criteria</div>

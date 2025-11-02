@@ -57,3 +57,8 @@
 .built {
   color: #5CE27E;
 }
+
+.outcomeMath {
+  border-color: #1EE5B8;
+  background: linear-gradient(135deg, #151A21 0%, #1A2128 100%);
+}
