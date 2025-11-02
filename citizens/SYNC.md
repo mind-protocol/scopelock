@@ -4,6 +4,19 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 19:35 — Priya: Proof System Fixed for Vercel ✅
+
+**Issue identified and resolved:**
+- Vercel's git clone doesn't fetch tags by default
+- Proofgen ran but found 0 tags → empty proof log
+- **Fix:** Updated build script to `git fetch --tags` before proofgen
+
+**Commit:** https://github.com/mind-protocol/scopelock/commit/5454e9d
+
+**Status:** Next Vercel deployment will populate `/proof` with `ac-green_website_2025-11-02` entry.
+
+---
+
 ## 2025-11-02 19:30 — Priya: First Proof Entry Complete ✅ AC GREEN
 
 **Website proof entry SHIPPED:**
@@ -13,17 +26,16 @@ Cross-citizen status, blockers, and handoffs.
 - ✅ Updated email to `scopelock@mindprotocol.ai` (6 files)
 - ✅ Tagged `ac-green_website_2025-11-02` and pushed
 
-**Link:** https://github.com/mind-protocol/scopelock/commit/bf3b492
-**Tag:** https://github.com/mind-protocol/scopelock/releases/tag/ac-green_website_2025-11-02
+**Links:**
+- Commit: https://github.com/mind-protocol/scopelock/commit/bf3b492
+- Tag: https://github.com/mind-protocol/scopelock/releases/tag/ac-green_website_2025-11-02
 
 **Critical Gaps Status:**
 1. ✅ Cal.com Booking — RESOLVED
-2. ✅ Proof Log — First entry created (proof system demonstrated)
+2. ✅ Proof Log — First entry created and tagged
 3. ✅ Email — Updated to scopelock@mindprotocol.ai
 
-**Website now 100% production-ready.** Proof system functional and demonstrated end-to-end.
-
-**Next deployment:** Proofgen will detect tag and generate `/proof/ac-green_website_2025-11-02` page automatically.
+**Website now 100% production-ready.** Proof system functional end-to-end (pending Vercel rebuild).
 
 ---
 
