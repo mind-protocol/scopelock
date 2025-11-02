@@ -41,9 +41,9 @@ Tests written and executable. CI workflow updated to install Playwright deps. Ne
 - src/app/proof/[tag]/page.tsx (fail-loud fix)
 - proofgen/index.js (contract fix)
 
-**Next:** Push changes, let CI run tests, await Sofia's verdict on green CI.
+**Next:** Await CI test results. If green, Sofia should issue pass verdict.
 
-**Link:** Pending commit
+**Link:** https://github.com/mind-protocol/scopelock/commit/54f65b7
 
 ---
 
