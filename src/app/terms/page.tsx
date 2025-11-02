@@ -131,7 +131,7 @@ export default function TermsPage() {
       <section className="card">
         <h2>Questions?</h2>
         <p>
-          Contact us at <a href="mailto:hello@scopelock.dev">hello@scopelock.dev</a> for clarifications.
+          Contact us at <a href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a> for clarifications.
         </p>
         <div className="hero-ctas">
           <Link className="cta" href="/contact">Schedule a kickoff</Link>

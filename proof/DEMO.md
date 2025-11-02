@@ -29,7 +29,7 @@
 ### 00:45–01:00 — Contact & Proof
 - Navigate to `/contact`
 - Working Cal.com booking: cal.com/lester-reynolds-ieksyx/30min
-- Email present: hello@scopelock.dev
+- Email present: scopelock@mindprotocol.ai
 - Social handles: @nlr_ai (X, Telegram)
 - Navigate to `/proof`
 - Proof Log functional (empty, ready for tags)

@@ -36,8 +36,8 @@ export default function ContactPage() {
           Prefer email? Reach us at:
         </p>
         <p>
-          <a href="mailto:hello@scopelock.dev" style={{fontSize: '1.25rem', fontWeight: 600}}>
-            hello@scopelock.dev
+          <a href="mailto:scopelock@mindprotocol.ai" style={{fontSize: '1.25rem', fontWeight: 600}}>
+            scopelock@mindprotocol.ai
           </a>
         </p>
         <p>

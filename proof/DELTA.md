@@ -66,7 +66,7 @@
 
 ### Contact Paths Fixed
 - ✅ Cal.com: Working booking link (verified)
-- ✅ Email: hello@scopelock.dev (present)
+- ✅ Email: scopelock@mindprotocol.ai (present)
 - ✅ Social: 4 platforms linked
 
 ---

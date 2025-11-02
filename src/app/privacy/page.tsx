@@ -80,7 +80,7 @@ export default function PrivacyPage() {
           <li><strong>Objection:</strong> Object to certain data processing</li>
         </ul>
         <p>
-          Contact <a href="mailto:hello@scopelock.dev">hello@scopelock.dev</a> to exercise these rights.
+          Contact <a href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a> to exercise these rights.
         </p>
       </section>
 
@@ -139,7 +139,7 @@ export default function PrivacyPage() {
       <section className="card">
         <h2>Questions or Concerns?</h2>
         <p>
-          Contact us at <a href="mailto:hello@scopelock.dev">hello@scopelock.dev</a> for privacy-related questions.
+          Contact us at <a href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a> for privacy-related questions.
         </p>
         <div className="hero-ctas">
           <Link className="cta" href="/contact">Get in touch</Link>
