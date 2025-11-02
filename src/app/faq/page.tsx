@@ -11,149 +11,172 @@ export default function FAQPage() {
     <main>
       <header className="hero">
         <h1>Frequently Asked Questions</h1>
-        <p className="lead">Clear answers to common questions about how we work.</p>
+        <p className="lead">Clear answers. No surprises. No hidden fine print.</p>
       </header>
 
       <section className="card">
-        <h2>What if scope changes mid-project?</h2>
+        <h2>Delivery & Process</h2>
+
+        <h3>What does "AC green" mean?</h3>
         <p>
-          We use <strong>Change Control (CHG-130)</strong> with two paths:
+          <strong>Acceptance Criteria green = all tests in AC.md pass.</strong> These are executable tests
+          (Playwright, PyTest, etc.) with specific pass/fail conditions. You can run them yourself to verify.
+          When CI shows green and performance thresholds are met, we invoice.
+        </p>
+
+        <h3>What if I need to change scope after we start?</h3>
+        <p>
+          We route every scope change through Change Control (CHG-130):
         </p>
         <ul>
-          <li><strong>Swap:</strong> Replace existing scope with equal/lower complexity → €0 cost, same milestone</li>
-          <li><strong>Add:</strong> New scope beyond original AC → new milestone, separately priced</li>
+          <li><strong>Swap:</strong> Replace with equal/lower complexity → €0, same milestone</li>
+          <li><strong>Add:</strong> New features beyond original scope → new milestone, priced separately</li>
         </ul>
         <p>
-          You never get surprise invoices. Changes are either swaps (no charge) or additions (priced upfront before work starts).
+          You choose. You approve pricing before we proceed. No surprise costs.
+        </p>
+
+        <h3>What if I don&apos;t like the Evidence Sprint result?</h3>
+        <p>
+          <strong>No obligation to continue.</strong> You keep the demo, code, and documentation.
+          If you paid a deposit, you&apos;ve already received working software for it.
+        </p>
+
+        <h3>How do I know the tests are real and not rigged?</h3>
+        <p>
+          The Verification section in AC.md includes the exact command and seed data. Run the tests yourself.
+          CI logs are public (if you want them). We can do a live walkthrough before you pay.
+        </p>
+
+        <h3>Can I see progress before it&apos;s done?</h3>
+        <p>
+          Yes. Evidence Sprint shows working demo + quantified deltas in 2–5 days. You&apos;re not waiting
+          in the dark until final delivery.
         </p>
       </section>
 
       <section className="card">
-        <h2>How do you measure &quot;AC green&quot;?</h2>
+        <h2>Pricing & Payment</h2>
+
+        <h3>Why fixed-price instead of hourly?</h3>
         <p>
-          <strong>Acceptance tests running in CI/CD.</strong> No judgment calls, no &quot;looks good to me.&quot;
+          Hourly incentivizes slow work. Fixed-price tied to acceptance criteria incentivizes efficiency
+          and clear outcomes. You know the total cost upfront. We can&apos;t pad hours.
         </p>
+
+        <h3>What if it takes longer than expected?</h3>
         <p>
-          We co-write <code>AC.md</code> with you at the start. It lists functional + non-functional criteria
-          (e.g., &quot;p95 latency &lt;300ms&quot;). We then write tests that verify those criteria.
-          When the tests pass in your CI pipeline, that&apos;s AC green.
+          Our risk, not yours. Price is locked at ScopeLock phase. If we underestimated, we absorb the cost.
+          You still pay the agreed amount only at AC green.
         </p>
+
+        <h3>What if tests fail at delivery?</h3>
         <p>
-          The tests <em>are</em> the contract. If they pass, you pay. If they don&apos;t, we keep working or you walk away.
+          We don&apos;t invoice. We fix until green or refund any deposit. Our standard: AC green or no payment.
+        </p>
+
+        <h3>Do you offer payment plans?</h3>
+        <p>
+          For engagements &gt;$10K, we can split: 50% at baseline, 50% at AC green. For &lt;$10K, typical
+          structure is 50% upfront, 50% at AC green (or 100% upfront for &lt;$5K).
         </p>
       </section>
 
       <section className="card">
-        <h2>What if I don&apos;t like the Evidence Sprint?</h2>
-        <p>
-          <strong>No obligation to continue.</strong>
-        </p>
-        <p>
-          An Evidence Sprint is a ≤90s demo + measurable delta. It&apos;s designed to validate assumptions early.
-          If it doesn&apos;t prove value, you stop. We only invoice for the Evidence Sprint itself (typically $3k–$6k).
-        </p>
-        <p>
-          You&apos;re not locked into a multi-month engagement. Every milestone is atomic.
-        </p>
-      </section>
+        <h2>Technical</h2>
 
-      <section className="card">
-        <h2>Can you work hourly?</h2>
-        <p>
-          <strong>No.</strong> We deliver milestones, not hours.
-        </p>
-        <p>
-          Hourly billing creates misaligned incentives (more hours = more money). We lock the outcome and price upfront.
-          You know what you&apos;re getting and what it costs before we start.
-        </p>
-      </section>
-
-      <section className="card">
-        <h2>What tech stacks do you support?</h2>
-        <p><strong>Primary stacks:</strong></p>
+        <h3>What tech stacks do you work with?</h3>
+        <p><strong>Primary:</strong></p>
         <ul>
-          <li>Frontend: React, Next.js, Vue, Svelte, plain HTML/CSS</li>
-          <li>Backend: Node.js, Python (FastAPI, Django), Go</li>
-          <li>Databases: PostgreSQL, MongoDB, Redis, SQLite</li>
-          <li>Infrastructure: Vercel, AWS, Docker, CI/CD (GitHub Actions, GitLab CI)</li>
+          <li><strong>Frontend:</strong> React, Next.js, Vue, React Native</li>
+          <li><strong>Backend:</strong> Node.js, Python (FastAPI, Django), Go</li>
+          <li><strong>Databases:</strong> PostgreSQL, MongoDB, Redis</li>
+          <li><strong>AI/ML:</strong> Claude API, OpenAI, LangChain, vector databases</li>
+          <li><strong>Blockchain:</strong> Solana, Ethereum (if relevant)</li>
+          <li><strong>Cloud:</strong> AWS, GCP, Vercel, Docker</li>
         </ul>
         <p>
           If your stack isn&apos;t listed, <Link href="/contact">ask</Link>. We evaluate case-by-case.
         </p>
-      </section>
 
-      <section className="card">
-        <h2>What timezone are you in?</h2>
+        <h3>Do you handle DevOps/hosting?</h3>
         <p>
-          <strong>France-based</strong>, typically available <strong>14:00–19:00 Central European Time</strong>.
+          We can deploy to your infrastructure or set up new infrastructure as part of the project.
+          Ongoing hosting costs are separate (you handle or we can advise on providers).
         </p>
-        <p>
-          We overlap with US East Coast afternoons and West Coast mornings. Async-first communication
-          (email, Linear, Slack) works well across timezones.
-        </p>
-      </section>
 
-      <section className="card">
-        <h2>How fast can you start?</h2>
+        <h3>What about security?</h3>
         <p>
-          <strong>Kickoff typically ≤72 hours</strong> from first contact.
-        </p>
-        <p>
-          Process: schedule a call → co-write <code>AC.md</code> → agree on price → start.
-          If you have urgent needs, mention it upfront.
+          All code reviewed for common vulnerabilities (OWASP Top 10). We follow fail-loud patterns
+          (no silent fallbacks). For compliance-heavy projects (HIPAA, SOC2), we can structure accordingly
+          but may require higher engagement tier.
         </p>
       </section>
 
       <section className="card">
-        <h2>Do you sign NDAs?</h2>
+        <h2>Working Together</h2>
+
+        <h3>What timezone are you in?</h3>
         <p>
-          <strong>Yes.</strong> Standard mutual NDAs are fine. Send yours or we&apos;ll provide a template.
+          France-based (CET/CEST). Available for calls 14:00–19:00 Central European time. Async work
+          happens 24/7 (AI citizens don&apos;t sleep). Most communication is async via SYNC.md, demos,
+          and /proof links.
+        </p>
+
+        <h3>How fast can you start?</h3>
+        <p>
+          Kickoff call typically within 72 hours of contact. Evidence Sprint delivery 2–5 days after
+          baseline. We don&apos;t have long sales cycles.
+        </p>
+
+        <h3>Do you work with agencies or only direct clients?</h3>
+        <p>
+          Both. If you&apos;re an agency needing overflow capacity or specialized AI work, we can structure
+          as a subcontractor. Same model: AC.md → Evidence Sprint → AC green.
+        </p>
+
+        <h3>Can we hire you for ongoing work (retainer)?</h3>
+        <p>
+          After first AC green milestone, we can discuss monthly retainer for continuous evolution
+          (typically $5K–10K/month for priority access + 30–50 hours of work). Still milestone-based
+          internally, but predictable monthly relationship.
         </p>
       </section>
 
       <section className="card">
-        <h2>Who owns the code?</h2>
-        <p>
-          <strong>You do.</strong> All code we write for your project is yours. We retain rights to our
-          delivery framework (ScopeLock process, proofgen tools, etc.), but your features are yours.
-        </p>
-        <p>
-          See <Link href="/terms">Terms of Service</Link> for details.
-        </p>
-      </section>
+        <h2>Guarantees & Policies</h2>
 
-      <section className="card">
-        <h2>What if we disagree on &quot;done&quot;?</h2>
+        <h3>What if we disagree on whether AC is met?</h3>
         <p>
-          <strong>The tests decide.</strong> That&apos;s why we co-write <code>AC.md</code> upfront.
+          Tests decide. That&apos;s why we write executable acceptance criteria. If tests pass and
+          thresholds are met, AC is satisfied. If they don&apos;t, it&apos;s not. No judgment calls,
+          no ambiguity.
         </p>
-        <p>
-          If acceptance tests pass, it&apos;s done. If you want something beyond the original AC,
-          that&apos;s a change request (Swap or Add).
-        </p>
-        <p>
-          This model eliminates subjective debates about completion.
-        </p>
-      </section>
 
-      <section className="card">
-        <h2>Can you handle maintenance after delivery?</h2>
+        <h3>Do you offer refunds?</h3>
         <p>
-          <strong>Yes, as new milestones.</strong> Maintenance can be scoped as:
+          If we fail to deliver AC green within agreed timeline and you want to terminate, any deposit
+          paid is refunded minus the value of artefacts delivered (Evidence Sprint demo, code, docs).
+          Typically we fix and deliver rather than refund, but option exists.
         </p>
-        <ul>
-          <li>Bug fixes → new AC green milestone</li>
-          <li>Performance tuning → evidence sprint + AC green</li>
-          <li>Feature enhancements → same as new features</li>
-        </ul>
+
+        <h3>What if you disappear mid-project?</h3>
         <p>
-          We don&apos;t do retainer hours. Each maintenance request is its own milestone with AC.
+          All code is in git (you have access from day one). All AC criteria and tests are documented.
+          Any other developer can continue from our work. Risk mitigation: milestones are atomic,
+          you&apos;re never more than one milestone invested.
         </p>
       </section>
 
       <section className="card">
         <h2>Still have questions?</h2>
-        <div className="hero-ctas">
+        <p>
+          <Link href="/contact">Schedule a call</Link> or email scopelock@mindprotocol.ai
+        </p>
+        <p>
+          We respond within 2 hours (typically).
+        </p>
+        <div className="hero-ctas" style={{marginTop: '2rem'}}>
           <Link className="cta" href="/contact">Schedule a call</Link>
           <Link href="/about">Learn more about us →</Link>
         </div>

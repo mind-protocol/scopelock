@@ -129,6 +129,30 @@ export default function TermsPage() {
       </section>
 
       <section className="card">
+        <h2>11. Modifications</h2>
+        <p>
+          ScopeLock may update these terms with 30 days notice. Updates will be posted on this page
+          with a new Last Updated date.
+        </p>
+        <p>
+          Material changes that affect active engagements require Client acceptance for ongoing work.
+          Existing milestones continue under the terms agreed at baseline.
+        </p>
+      </section>
+
+      <section className="card">
+        <h2>12. Entire Agreement</h2>
+        <p>
+          These Terms of Service plus the project-specific <code>AC.md</code> (Acceptance Criteria)
+          constitute the entire agreement between ScopeLock and Client.
+        </p>
+        <p>
+          These terms supersede all prior communications, proposals, or agreements (written or oral)
+          relating to the subject matter.
+        </p>
+      </section>
+
+      <section className="card">
         <h2>Questions?</h2>
         <p>
           Contact us at <a href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a> for clarifications.

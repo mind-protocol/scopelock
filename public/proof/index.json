@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "tag": "ac-green_website_2025-11-02",
+    "type": "ac-green",
+    "date": "2025-11-02",
+    "feature": "website",
+    "featureLabel": "website",
+    "commit": "c177d1c",
+    "demoUrl": "https://scopelock.mindprotocol.ai",
+    "files": {
+      "AC": "/proof/ac-green_website_2025-11-02/index.html#ac",
+      "DEMO": "/proof/ac-green_website_2025-11-02/index.html#demo",
+      "DELTA": "/proof/ac-green_website_2025-11-02/index.html#delta"
+    }
+  }
+]

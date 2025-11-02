@@ -37,6 +37,45 @@ export default function ProcessPage() {
           Once <code>AC.md</code> is agreed, we lock it with a git tag: <code>ac-baseline_*</code>.
           Changes after this require a formal Change Request.
         </p>
+
+        <details style={{marginTop: '1.5rem', padding: '1rem', background: 'var(--surface)', borderRadius: '8px', border: '1px solid var(--muted)'}}>
+          <summary style={{cursor: 'pointer', fontWeight: 600, marginBottom: '1rem'}}>
+            Example AC.md (click to expand)
+          </summary>
+          <pre style={{background: 'var(--bg)', padding: '1rem', borderRadius: '4px', overflow: 'auto', fontSize: '0.875rem'}}>
+{`# Acceptance Criteria — OTP Signup
+
+## Functional
+
+- User can sign up with email + OTP (no password)
+- OTP sent via email within 5 seconds
+- OTP valid for 10 minutes
+- User redirected to dashboard after successful OTP entry
+- Failed OTP shows clear error message
+
+## Non-Functional
+
+- **Performance:** p95 signup flow <300ms (server-side)
+- **Quality:** Error rate <0.1% on OTP send
+- **UX:** Signup completes in ≤3 steps (email → OTP → dashboard)
+
+## Verification
+
+**Command:**
+\`\`\`bash
+npm run test:acceptance -- signup.spec.ts
+\`\`\`
+
+**Seed data:**
+- Test user: test@example.com
+- Mock OTP provider (bypasses real email in CI)
+
+**Pass criteria:**
+- All Playwright tests green
+- p95 latency measured <300ms (10 sample runs)
+- Manual walkthrough: <90s from landing to dashboard`}
+          </pre>
+        </details>
       </section>
 
       <section className="card scope-steps">
