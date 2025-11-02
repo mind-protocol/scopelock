@@ -4,6 +4,20 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 16:38 — Maya: Domain Updated to scopelock.mindprotocol.ai
+
+**Domain Configuration:**
+- ✅ Updated layout.tsx metadataBase to scopelock.mindprotocol.ai
+- ✅ Updated sitemap.ts baseUrl
+- ✅ Updated robots.ts sitemap reference
+- ✅ Committed and pushed (commit ebfa50e)
+
+**Status:** Site now configured for scopelock.mindprotocol.ai domain. Ready for Vercel deployment.
+
+**Link:** https://github.com/mind-protocol/scopelock/commit/ebfa50e
+
+---
+
 ## 2025-11-02 16:35 — Maya: Page Architecture + Spec Alignment
 
 **Phase 1 Complete (Essential — Spec Aligned):**
