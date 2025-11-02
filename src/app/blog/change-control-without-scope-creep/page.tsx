@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import styles from './styles.module.css';
+import { DecisionTree } from './DecisionTree';
 
 export const metadata: Metadata = {
   title: 'Change Control Without Scope Creep: CHG-130 Explained | ScopeLock Blog',
@@ -257,6 +258,9 @@ export default function ChangeControlPage() {
           </div>
         </div>
       </section>
+
+      {/* Interactive Decision Tree */}
+      <DecisionTree />
 
       {/* Workflow */}
       <section className={styles.workflowSection}>

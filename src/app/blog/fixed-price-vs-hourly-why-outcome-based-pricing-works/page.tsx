@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import styles from './styles.module.css';
+import { PricingCalculator } from './PricingCalculator';
 
 export const metadata: Metadata = {
   title: 'Fixed-Price vs Hourly: Why Outcome-Based Pricing Works | ScopeLock Blog',
@@ -421,6 +422,9 @@ npm run acceptance:signup`}</pre>
           </div>
         </div>
       </section>
+
+      {/* Interactive Pricing Calculator */}
+      <PricingCalculator />
 
       {/* Three-Question Test */}
       <section className={styles.testSection}>

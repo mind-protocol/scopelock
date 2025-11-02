@@ -45,6 +45,65 @@ export default function WhyAcceptanceCriteriaPage() {
       <section className={styles.section} id="problem">
         <h2>The Problem with Time Estimates</h2>
 
+        {/* Interactive Timeline Chart */}
+        <div className={styles.interactiveTimeline}>
+          <h3>Project Duration: Traditional vs ScopeLock</h3>
+          <div className={styles.timelineChart}>
+            <div className={styles.chartRow}>
+              <div className={styles.chartLabel}>
+                <strong>Traditional Agency</strong>
+                <span className={styles.chartQuote}>"6-8 weeks"</span>
+              </div>
+              <div className={styles.chartBar}>
+                <div className={styles.chartEstimate} style={{ width: '50%' }}>
+                  <span>Estimated: 8 weeks</span>
+                </div>
+                <div className={styles.chartActual} style={{ width: '100%' }}>
+                  <span>Actual: 12 weeks (+50%)</span>
+                </div>
+              </div>
+              <div className={styles.chartMeta}>
+                <div>Cost overrun: +83%</div>
+                <div>Timeline slip: +4 weeks</div>
+              </div>
+            </div>
+
+            <div className={styles.chartRow}>
+              <div className={styles.chartLabel}>
+                <strong>ScopeLock</strong>
+                <span className={styles.chartQuote}>"5 days to AC green"</span>
+              </div>
+              <div className={styles.chartBar}>
+                <div className={`${styles.chartEstimate} ${styles.scopelockEstimate}`} style={{ width: '8.3%' }}>
+                  <span>Estimated: 5 days</span>
+                </div>
+                <div className={`${styles.chartActual} ${styles.scopelockActual}`} style={{ width: '8.3%' }}>
+                  <span>Actual: 5 days (0%)</span>
+                </div>
+              </div>
+              <div className={styles.chartMeta}>
+                <div>Cost overrun: $0</div>
+                <div>Timeline slip: 0 days</div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.timelineKey}>
+            <div className={styles.keyItem}>
+              <div className={styles.keyColor} style={{ background: '#64A8FF' }}></div>
+              <span>Estimated timeline</span>
+            </div>
+            <div className={styles.keyItem}>
+              <div className={styles.keyColor} style={{ background: '#FF5D5D' }}></div>
+              <span>Actual timeline (traditional)</span>
+            </div>
+            <div className={styles.keyItem}>
+              <div className={styles.keyColor} style={{ background: '#1EE5B8' }}></div>
+              <span>Actual timeline (ScopeLock)</span>
+            </div>
+          </div>
+        </div>
+
         <div className={styles.timelineComparison}>
           <div className={styles.timelineBlock}>
             <h3>Agency Quote: "6-8 weeks"</h3>

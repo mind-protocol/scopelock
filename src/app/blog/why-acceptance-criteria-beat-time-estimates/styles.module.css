@@ -699,3 +699,141 @@
     align-items: stretch;
   }
 }
+
+/* Interactive Timeline Chart */
+.interactiveTimeline {
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.interactiveTimeline h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  color: #FFFFFF;
+}
+
+.timelineChart {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.chartRow {
+  display: grid;
+  grid-template-columns: 200px 1fr 180px;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .chartRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.chartLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.chartLabel strong {
+  font-size: 1rem;
+  color: #FFFFFF;
+}
+
+.chartQuote {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  font-style: italic;
+}
+
+.chartBar {
+  position: relative;
+  height: 60px;
+  background: #0A0C10;
+  border-radius: 4px;
+  overflow: visible;
+}
+
+.chartEstimate,
+.chartActual {
+  position: absolute;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.chartEstimate {
+  top: 2px;
+  background: #64A8FF;
+  color: #0E1116;
+  border: 2px solid #64A8FF;
+}
+
+.chartActual {
+  top: 30px;
+  background: #FF5D5D;
+  color: #FFFFFF;
+  border: 2px solid #FF5D5D;
+}
+
+.scopelockEstimate {
+  background: #64A8FF;
+  border-color: #64A8FF;
+}
+
+.scopelockActual {
+  background: #1EE5B8;
+  border-color: #1EE5B8;
+  color: #0E1116;
+}
+
+.chartEstimate:hover,
+.chartActual:hover {
+  transform: scale(1.02);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.chartMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #9AA3AE;
+}
+
+.timelineKey {
+  display: flex;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #2A2E35;
+  flex-wrap: wrap;
+}
+
+.keyItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #9AA3AE;
+}
+
+.keyColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
