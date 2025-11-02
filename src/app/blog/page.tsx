@@ -1,22 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import styles from './blog.module.css';
+import { BlogFilter, type BlogPost } from '../../components/BlogFilter';
 
 export const metadata: Metadata = {
   title: 'Blog | ScopeLock',
   description: 'Articles on acceptance criteria, evidence-based delivery, scope control, and building software that ships.',
   keywords: ['software development', 'acceptance criteria', 'project management', 'scope control', 'evidence sprint'],
 };
-
-interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  tags: string[];
-  status: 'published' | 'coming-soon';
-}
 
 const blogPosts: BlogPost[] = [
   {
@@ -27,6 +18,7 @@ const blogPosts: BlogPost[] = [
     readTime: '8 min',
     tags: ['acceptance-criteria', 'time-estimates', 'project-management'],
     status: 'published',
+    featured: true,
   },
   {
     slug: 'la-serenissima',
@@ -85,9 +77,6 @@ const blogPosts: BlogPost[] = [
 ];
 
 export default function BlogPage() {
-  const publishedPosts = blogPosts.filter(post => post.status === 'published');
-  const upcomingPosts = blogPosts.filter(post => post.status === 'coming-soon');
-
   return (
     <main className={styles.blogIndex}>
       {/* Header */}
@@ -98,64 +87,8 @@ export default function BlogPage() {
         </p>
       </section>
 
-      {/* Published Posts */}
-      {publishedPosts.length > 0 && (
-        <section className={styles.postsSection}>
-          <h2 className={styles.sectionTitle}>Latest Posts</h2>
-          <div className={styles.postsGrid}>
-            {publishedPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className={styles.postCard}
-              >
-                <div className={styles.postMeta}>
-                  <time>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h3 className={styles.postTitle}>{post.title}</h3>
-                <p className={styles.postDescription}>{post.description}</p>
-                <div className={styles.postTags}>
-                  {post.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Upcoming Posts */}
-      {upcomingPosts.length > 0 && (
-        <section className={styles.postsSection}>
-          <h2 className={styles.sectionTitle}>Coming Soon</h2>
-          <div className={styles.postsGrid}>
-            {upcomingPosts.map((post) => (
-              <div key={post.slug} className={`${styles.postCard} ${styles.comingSoon}`}>
-                <div className={styles.comingSoonBadge}>Coming Soon</div>
-                <div className={styles.postMeta}>
-                  <time>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h3 className={styles.postTitle}>{post.title}</h3>
-                <p className={styles.postDescription}>{post.description}</p>
-                <div className={styles.postTags}>
-                  {post.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+      {/* Blog Filter with Posts */}
+      <BlogFilter posts={blogPosts} />
 
       {/* CTA */}
       <section className={styles.cta}>
