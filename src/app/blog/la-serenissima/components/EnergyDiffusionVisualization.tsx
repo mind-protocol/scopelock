@@ -14,7 +14,7 @@ interface Node {
 export function EnergyDiffusionVisualization() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {

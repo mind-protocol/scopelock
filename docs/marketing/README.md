@@ -154,6 +154,9 @@ See [../portfolio/README.md](../portfolio/README.md) for:
 ### [blog_content_plan.md](./blog_content_plan.md)
 Content strategy for scopelock.mindprotocol.ai blog
 
+### [blog_implementation_guide.md](./blog_implementation_guide.md) ⭐
+**How to build blog posts** - Each post custom-built from scratch, unique visual treatment
+
 ### [blog/](./blog/)
 Individual blog post drafts
 

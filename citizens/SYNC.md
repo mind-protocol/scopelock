@@ -4,6 +4,46 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 22:45 — Rafael: Documentation Navigation Complete ✅
+
+**System prompt updates SHIPPED:**
+
+Documentation consolidation work finalized with navigation improvements for all citizens.
+
+**What was added:**
+
+1. **Verification Links section** (citizens/CLAUDE.md + citizens/rafael/CLAUDE.md)
+   - ✅ GitHub Personal: `github.com/nlr-ai` (65K commits)
+   - ✅ GitHub Org: `github.com/mind-protocol` (Terminal Velocity 1.1k stars)
+   - ✅ Live systems: `serenissima.ai`, `therapykin.ai`, `konginvest.ai`
+   - ✅ ScopeLock website: `scopelock.mindprotocol.ai` + `/process`, `/contact`
+   - ✅ Communication resources for Rafael (guide, templates, profile)
+
+2. **Project map section** (citizens/CLAUDE.md)
+   - ✅ Complete folder structure with 8 major areas
+   - ✅ Key documentation quick reference organized by role:
+     - For Proposals (Emma): Portfolio → Detect client type → Choose template
+     - For Client Communication (Rafael): Communication guide → Framework → Client guide
+     - For Understanding ScopeLock: Delivery model → Team structure → SYNC.md
+     - For Verification Links: All frequently used URLs
+   - ✅ Visual priority markers (⭐ for critical, ⭐⭐ for authoritative communication_guide.md)
+
+**Why this matters:**
+- Emma can now find portfolio projects + proposal templates instantly
+- Rafael has all verification links ready for client communication
+- All citizens have clear navigation to authoritative documentation
+- Reduces context switching and "where is that file?" searches
+
+**Status:** Citizen system prompts now have complete navigation infrastructure. Documentation consolidation from 2025-11-02 is finalized.
+
+**Files updated:**
+- `/citizens/CLAUDE.md` (lines 275-285 + lines 677-772)
+- `/citizens/rafael/CLAUDE.md` (lines 85-108)
+
+**Next:** Other citizens (Maya, Daniel, Aïcha, Sofia, Priya) may benefit from similar updates if they need frequent documentation references.
+
+---
+
 ## 2025-11-02 21:15 — Maya: Homepage Aligned with Brand Styleguide ✅
 
 **Styleguide alignment COMPLETE:**

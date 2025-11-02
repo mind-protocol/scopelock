@@ -41,7 +41,9 @@ export default function RootLayout({
               />
             </Link>
             <div className="nav-links">
-              <Link href="/proof">Proof Log</Link>
+              <Link href="/about">About</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/proof">Proof</Link>
               <Link href="/#contact">Contact</Link>
             </div>
           </nav>
