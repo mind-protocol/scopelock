@@ -44,7 +44,7 @@ const blogPosts: BlogPost[] = [
     date: '2025-11-02',
     readTime: '7 min',
     tags: ['evidence-sprint', 'mvp', 'rapid-prototyping'],
-    status: 'coming-soon',
+    status: 'published',
   },
   {
     slug: 'change-control-without-scope-creep',
@@ -53,7 +53,7 @@ const blogPosts: BlogPost[] = [
     date: '2025-11-02',
     readTime: '7 min',
     tags: ['scope-creep', 'change-control', 'chg-130'],
-    status: 'coming-soon',
+    status: 'published',
   },
   {
     slug: 'fixed-price-vs-hourly-why-outcome-based-pricing-works',
@@ -80,7 +80,7 @@ const blogPosts: BlogPost[] = [
     date: '2025-11-02',
     readTime: '8 min',
     tags: ['ai-development', 'multi-agent', 'ai-citizens'],
-    status: 'coming-soon',
+    status: 'published',
   },
 ];
 

@@ -1,0 +1,1164 @@
+/* Change Control Blog Post - CHG-130 Design */
+
+.controlMode {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #E6EAF2;
+  background: #0E1116;
+  line-height: 1.7;
+}
+
+/* Header */
+.header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #2A2E35;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #64A8FF;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: #1EE5B8;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+  color: #FFFFFF;
+}
+
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  color: #9AA3AE;
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: #151A21;
+  color: #64A8FF;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Lead */
+.lead {
+  margin-bottom: 3rem;
+  font-size: 1.0625rem;
+}
+
+.leadQuote {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 0.5rem;
+  font-style: italic;
+}
+
+.leadText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FF5D5D;
+  margin: 0 0 1.5rem;
+}
+
+.callout {
+  background: #151A21;
+  border-left: 4px solid #1EE5B8;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 1.0625rem;
+}
+
+/* Problem Section */
+.problemSection {
+  margin-bottom: 4rem;
+}
+
+.problemSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #FFFFFF;
+}
+
+.keyQuestion {
+  background: #1A2128;
+  border-left: 4px solid #FFC857;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.125rem;
+}
+
+.scenarioBox {
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.scenarioBox h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 2rem;
+  color: #64A8FF;
+}
+
+.responsesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.responseCard {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+.responseLabel {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #2A2E35;
+}
+
+.responseCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.responseCard li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.responseCard li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #9AA3AE;
+}
+
+.clientReaction {
+  background: #1A2128;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-style: italic;
+  color: #FF5D5D;
+  font-size: 0.875rem;
+}
+
+.failureReason {
+  background: #1A2128;
+  border-left: 4px solid #FF5D5D;
+  padding: 1rem 1.5rem;
+  font-size: 1.0625rem;
+}
+
+/* Approach Section */
+.approachSection {
+  margin-bottom: 4rem;
+}
+
+.approachSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: #FFFFFF;
+}
+
+.sectionIntro {
+  color: #9AA3AE;
+  font-size: 1.0625rem;
+  margin-bottom: 2rem;
+}
+
+.coreRule {
+  background: linear-gradient(135deg, #1A2128 0%, #151A21 100%);
+  border: 2px solid #1EE5B8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.125rem;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.baselineBox {
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.baselineBox h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #FFFFFF;
+}
+
+.commandBlock {
+  background: #000000;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: #1EE5B8;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.baselineMeans {
+  margin: 1.5rem 0;
+}
+
+.baselineMeans h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #64A8FF;
+}
+
+.baselineMeans ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.baselineMeans li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.lockIcon {
+  font-size: 1.25rem;
+}
+
+.baselineGuard {
+  background: #1A2128;
+  border-left: 4px solid #FFC857;
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+/* Types Section */
+.typesSection {
+  margin-bottom: 4rem;
+}
+
+.typesSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #FFFFFF;
+}
+
+.typesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .typesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.typeCard {
+  background: #151A21;
+  border: 2px solid #2A2E35;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.swapCard {
+  border-color: #1EE5B8;
+}
+
+.addCard {
+  border-color: #64A8FF;
+}
+
+.typeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #2A2E35;
+}
+
+.typeHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.typeCost {
+  background: #0A0C10;
+  color: #1EE5B8;
+  padding: 0.375rem 0.875rem;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+.addCard .typeCost {
+  color: #64A8FF;
+}
+
+.typeDefinition,
+.typeWhen {
+  margin-bottom: 1.5rem;
+}
+
+.typeDefinition strong,
+.typeWhen strong {
+  color: #64A8FF;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.typeWhen ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.typeWhen li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.typeWhen li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #1EE5B8;
+  font-weight: 600;
+}
+
+.typeExample {
+  margin-top: 2rem;
+}
+
+.typeExample h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #FFFFFF;
+}
+
+.exampleBox {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.exampleLabel {
+  color: #9AA3AE;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.exampleCode {
+  background: #000000;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  color: #E6EAF2;
+  margin: 0.5rem 0 0;
+  overflow-x: auto;
+}
+
+.analysisList {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.analysisList li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.decisionBox {
+  background: #1A2128;
+  border-left: 4px solid #1EE5B8;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.addCard .decisionBox {
+  border-color: #64A8FF;
+}
+
+.decisionBox strong {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 1.0625rem;
+}
+
+.decisionDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.free {
+  color: #5CE27E;
+  font-weight: 700;
+}
+
+.priced {
+  color: #FFC857;
+  font-weight: 700;
+}
+
+.whyWorks {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
+/* Workflow Section */
+.workflowSection {
+  margin-bottom: 4rem;
+}
+
+.workflowSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #FFFFFF;
+}
+
+.workflowSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.workflowStep {
+  display: flex;
+  gap: 1.5rem;
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, #1EE5B8 0%, #64A8FF 100%);
+  color: #0E1116;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.stepContent h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #FFFFFF;
+}
+
+.stepDetail {
+  color: #9AA3AE;
+  margin: 0.75rem 0;
+}
+
+.stepDetail strong {
+  color: #64A8FF;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stepDetail ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.stepDetail li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.stepDetail li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #1EE5B8;
+}
+
+.stepCode {
+  background: #000000;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  color: #1EE5B8;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+}
+
+.analysisDecision {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.analysisOption {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9375rem;
+}
+
+.arrow {
+  color: #1EE5B8;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.decisionPaths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .decisionPaths {
+    grid-template-columns: 1fr;
+  }
+}
+
+.decisionPath {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.decisionPath h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: #64A8FF;
+}
+
+.decisionPath ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.decisionPath li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.decisionPath li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #1EE5B8;
+}
+
+.proofEntry {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+
+.proofEntry strong {
+  color: #64A8FF;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.proofEntry ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.proofEntry li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.proofEntry li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #1EE5B8;
+}
+
+.proofEntry code {
+  color: #64A8FF;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Examples Section */
+.examplesSection {
+  margin-bottom: 4rem;
+}
+
+.examplesSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #FFFFFF;
+}
+
+.exampleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.exampleCard {
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.exampleHeader {
+  background: #1A2128;
+  padding: 1.5rem;
+  border-bottom: 1px solid #2A2E35;
+}
+
+.exampleHeader h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: #FFFFFF;
+}
+
+.exampleType {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.exampleContent {
+  padding: 1.5rem;
+}
+
+.exampleRow {
+  margin-bottom: 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.exampleRow strong {
+  color: #64A8FF;
+}
+
+.exampleAnalysis {
+  margin: 1rem 0;
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.exampleAnalysis strong {
+  color: #64A8FF;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.exampleAnalysis ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.exampleAnalysis li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.exampleAnalysis li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #1EE5B8;
+}
+
+.exampleOutcome {
+  background: #1A2128;
+  border-left: 4px solid #1EE5B8;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.swap {
+  color: #5CE27E;
+  font-weight: 700;
+}
+
+.add {
+  color: #64A8FF;
+  font-weight: 700;
+}
+
+/* Why Section */
+.whySection {
+  margin-bottom: 4rem;
+}
+
+.whySection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #FFFFFF;
+}
+
+.reasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.reasonCard {
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.reasonCard h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #FFFFFF;
+}
+
+.dialogue {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.dialogueItem {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dialogueItem:last-child {
+  margin-bottom: 0;
+}
+
+.dialogueItem strong {
+  color: #64A8FF;
+}
+
+.noSurprises,
+.noDrift,
+.transparency {
+  background: #1A2128;
+  border-left: 4px solid #1EE5B8;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+}
+
+/* Math Section */
+.mathSection {
+  margin-bottom: 4rem;
+}
+
+.mathSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #FFFFFF;
+}
+
+.mathComparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .mathComparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mathCard {
+  background: #151A21;
+  border: 2px solid #2A2E35;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.mathSuccess {
+  border-color: #1EE5B8;
+  background: linear-gradient(135deg, #151A21 0%, #1A2128 100%);
+}
+
+.mathCard h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  color: #FFFFFF;
+}
+
+.mathBreakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mathRow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9375rem;
+}
+
+.surprise {
+  color: #FF5D5D;
+  font-weight: 700;
+}
+
+.expected {
+  color: #5CE27E;
+  font-weight: 700;
+}
+
+.mathReaction {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-style: italic;
+  color: #9AA3AE;
+  font-size: 0.875rem;
+}
+
+.mathOutcome {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: #64A8FF;
+}
+
+.mathConclusion {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 1.5rem;
+  background: #1A2128;
+  border-radius: 8px;
+}
+
+/* FAQ Section */
+.faqSection {
+  margin-bottom: 4rem;
+}
+
+.faqSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem;
+  color: #FFFFFF;
+}
+
+.faqItem {
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.faqItem h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #64A8FF;
+}
+
+.faqItem p {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.faqItem ul {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.faqItem li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.cancellationPolicy {
+  background: #0A0C10;
+  border: 1px solid #2A2E35;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.policyRow {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid #1EE5B8;
+  font-size: 0.9375rem;
+}
+
+.policyRow:last-child {
+  margin-bottom: 0;
+}
+
+/* CTA */
+.cta {
+  background: #151A21;
+  border: 1px solid #2A2E35;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cta h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: #FFFFFF;
+}
+
+.whyMandatory {
+  background: #1A2128;
+  border-left: 4px solid #1EE5B8;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.protectionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 768px) {
+  .protectionGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: inline-block;
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.ctaPrimary {
+  background: #1EE5B8;
+  color: #0E1116;
+}
+
+.ctaPrimary:hover {
+  background: #17C09A;
+  transform: translateY(-2px);
+}
+
+.ctaSecondary {
+  background: transparent;
+  border: 2px solid #64A8FF;
+  color: #64A8FF;
+}
+
+.ctaSecondary:hover {
+  background: #64A8FF;
+  color: #0E1116;
+  transform: translateY(-2px);
+}
+
+.ctaNote {
+  color: #9AA3AE;
+  font-size: 0.9375rem;
+}
+
+.ctaNote a {
+  color: #64A8FF;
+  text-decoration: none;
+}
+
+.ctaNote a:hover {
+  color: #1EE5B8;
+}
+
+/* Post Nav */
+.postNav {
+  padding-top: 2rem;
+  border-top: 1px solid #2A2E35;
+}
+
+.backToIndex {
+  display: inline-block;
+  color: #64A8FF;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: color 0.2s;
+}
+
+.backToIndex:hover {
+  color: #1EE5B8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .controlMode {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .leadQuote {
+    font-size: 1.5rem;
+  }
+
+  .leadText {
+    font-size: 1.125rem;
+  }
+
+  .responsesGrid,
+  .mathComparison {
+    grid-template-columns: 1fr;
+  }
+
+  .workflowStep {
+    flex-direction: column;
+  }
+
+  .stepNumber {
+    align-self: flex-start;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    text-align: center;
+  }
+}
