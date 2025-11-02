@@ -1,0 +1,43 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background -->
+  <rect width="1200" height="630" fill="#0E1116"/>
+
+  <!-- Gradient overlay -->
+  <circle cx="240" cy="-50" r="400" fill="url(#grad1)" opacity="0.18"/>
+  <circle cx="960" cy="0" r="350" fill="url(#grad2)" opacity="0.18"/>
+
+  <defs>
+    <radialGradient id="grad1">
+      <stop offset="0%" stop-color="#64A8FF"/>
+      <stop offset="100%" stop-color="#0E1116" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="grad2">
+      <stop offset="0%" stop-color="#1EE5B8"/>
+      <stop offset="100%" stop-color="#0E1116" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Logo -->
+  <g transform="translate(100, 180)">
+    <rect width="64" height="64" rx="20" fill="#151A21"/>
+    <path d="M18 32L28 42L46 22" stroke="#1EE5B8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ScopeLock wordmark -->
+  <text x="190" y="232" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="56" letter-spacing="-1" fill="#E6EAF2">ScopeLock</text>
+
+  <!-- Tagline -->
+  <text x="100" y="310" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="32" fill="#9AA3AE">Executable acceptance criteria.</text>
+  <text x="100" y="360" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="32" fill="#9AA3AE">Price and outcome locked.</text>
+
+  <!-- Badge -->
+  <g transform="translate(100, 420)">
+    <rect width="180" height="36" rx="18" fill="rgba(30, 229, 184, 0.12)" stroke="rgba(30, 229, 184, 0.45)" stroke-width="1"/>
+    <circle cx="18" cy="18" r="6" fill="#1EE5B8"/>
+    <text x="32" y="24" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="14" fill="#1EE5B8">AC green</text>
+  </g>
+
+  <!-- Metric delta -->
+  <text x="100" y="510" font-family="JetBrains Mono, monospace" font-weight="600" font-size="24" fill="#E6EAF2">p95: 1200ms → 280ms</text>
+  <text x="100" y="550" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="18" fill="#5CE27E">▲ 76% improvement</text>
+</svg>

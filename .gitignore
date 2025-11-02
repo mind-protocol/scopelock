@@ -5,12 +5,16 @@ node_modules/
 .next/
 out/
 
-# Public build artifacts (keep proof directory and tokens.css for proofgen)
+# Public build artifacts (keep proof directory, tokens, and brand assets)
 public/*
 !public/proof/
 !public/proof/**
 !public/styles/
 !public/styles/tokens.css
+!public/brand/
+!public/brand/**
+!public/favicon.svg
+!public/og-scopelock.svg
 
 # TypeScript
 *.tsbuildinfo
