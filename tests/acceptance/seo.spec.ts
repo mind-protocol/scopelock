@@ -4,11 +4,11 @@ import { test, expect } from '@playwright/test';
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
 test.describe('F4: SEO & Metadata', () => {
-  test('sitemap.xml exists and is valid', async ({ page }) => {
-    const response = await page.goto(`${BASE_URL}/sitemap.xml`);
-    expect(response?.status()).toBe(200);
+  test('sitemap.xml exists and is valid', async ({ page, request }) => {
+    const response = await request.get(`${BASE_URL}/sitemap.xml`);
+    expect(response.status()).toBe(200);
 
-    const content = await page.textContent('body');
+    const content = await response.text();
     expect(content).toContain('<?xml');
     expect(content).toContain('<urlset');
     expect(content).toContain('<url>');
