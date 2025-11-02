@@ -6,12 +6,16 @@ export default function HomePage() {
       <header className="hero">
         <h1>ScopeLock Delivery.</h1>
         <p className="lead">Executable acceptance criteria. Price and outcome locked.</p>
+        <p className="hero-tagline">
+          Solo engineer + AI workforce. <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">Verify on GitHub →</a>
+        </p>
         <div className="hero-ctas">
           <Link className="cta cta-primary" href="/proof">
             <span>See a recent Evidence Sprint</span>
             <span aria-hidden="true">→</span>
           </Link>
           <Link className="cta-secondary" href="#contact">Schedule a kickoff (≤ 72h) →</Link>
+          <a className="cta-tertiary" href="https://github.com/nlr-ai" target="_blank" rel="noopener">Just show me the code →</a>
         </div>
       </header>
 
@@ -135,6 +139,49 @@ export default function HomePage() {
           </li>
         </ul>
         <p><Link href="/proof">See full Proof Log →</Link></p>
+      </section>
+
+      <section className="card catch-section" aria-labelledby="catch-title">
+        <h2 id="catch-title">What&apos;s The Catch?</h2>
+        <p className="catch-intro">&quot;Pay only when tests pass&quot; sounds too good. Here&apos;s how it actually works:</p>
+
+        <div className="catch-grid">
+          <article className="catch-item">
+            <h3>What if I&apos;m unreasonable and keep saying &quot;not good enough&quot;?</h3>
+            <p>
+              Acceptance criteria are <strong>executable tests in code</strong>, not subjective judgment.
+              If tests pass, milestone is done. Want to change criteria? That&apos;s a Change Request.
+            </p>
+          </article>
+
+          <article className="catch-item">
+            <h3>What if tests pass but it&apos;s still broken?</h3>
+            <p>
+              Tests were wrong—I fix at no charge. But if tests correctly verify original
+              criteria and you want <em>new</em> criteria, that&apos;s a scope change.
+            </p>
+          </article>
+
+          <article className="catch-item">
+            <h3>How do you prevent infinite revisions?</h3>
+            <p>
+              <code>AC.md</code> includes exact test command + seed data. When CI is green, you can verify
+              yourself. Done means done.
+            </p>
+          </article>
+
+          <article className="catch-item">
+            <h3>What if we discover the scope was wrong?</h3>
+            <p>
+              <strong>Change Request:</strong> document what changed, <strong>Swap</strong> ($0) or <strong>Add</strong> (new price),
+              you approve first. No surprise invoices.
+            </p>
+          </article>
+        </div>
+
+        <p className="catch-footer">
+          You&apos;ll know if we&apos;re good before you pay.
+        </p>
       </section>
 
       <section className="card" id="contact" aria-labelledby="contact-title">

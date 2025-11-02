@@ -272,6 +272,23 @@ header.hero p.lead {
   max-width:700px;
 }
 
+.hero-tagline {
+  font-size:1rem;
+  color:var(--slk-muted);
+  margin-top:0;
+  margin-bottom:var(--slk-gap-3);
+}
+
+.verify-link {
+  color:var(--slk-accent);
+  font-weight:600;
+  transition:color .2s ease;
+}
+
+.verify-link:hover {
+  color:var(--slk-text);
+}
+
 .hero-ctas {
   display:flex;
   flex-wrap:wrap;
@@ -279,6 +296,23 @@ header.hero p.lead {
   justify-content:center;
   gap:var(--slk-gap-4);
   margin-top:var(--slk-gap-4);
+}
+
+.cta-tertiary {
+  color:var(--slk-muted);
+  font-weight:600;
+  font-size:0.95rem;
+  padding:10px 14px;
+  display:inline-flex;
+  align-items:center;
+  gap:var(--slk-gap-2);
+  transition:all .18s ease;
+}
+
+.cta-tertiary:hover,
+.cta-tertiary:focus-visible {
+  color:var(--slk-text);
+  transform:translateY(-1px);
 }
 
 /* Process Steps */
@@ -468,6 +502,45 @@ header.hero p.lead {
 
 .proof-link a {
   font-weight:600;
+}
+
+/* What's The Catch Section */
+.catch-section {
+  border:2px solid rgba(30,229,184,0.2);
+}
+
+.catch-intro {
+  font-size:1.05rem;
+  color:var(--slk-muted);
+  margin-bottom:var(--slk-gap-5);
+}
+
+.catch-grid {
+  display:grid;
+  gap:var(--slk-gap-5);
+  margin-bottom:var(--slk-gap-5);
+}
+
+.catch-item h3 {
+  font-size:1rem;
+  margin-bottom:var(--slk-gap-2);
+  color:var(--slk-accent-2);
+}
+
+.catch-item p {
+  margin:0;
+  color:var(--slk-text);
+  line-height:1.6;
+}
+
+.catch-footer {
+  font-size:1.15rem;
+  font-weight:600;
+  text-align:center;
+  color:var(--slk-accent);
+  margin:var(--slk-gap-5) 0 0;
+  padding-top:var(--slk-gap-5);
+  border-top:1px solid rgba(30,229,184,0.15);
 }
 
 /* Contact */

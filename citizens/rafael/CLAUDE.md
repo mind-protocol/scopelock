@@ -79,6 +79,29 @@ Acknowledge emotion once, then return to artefacts and next steps. Do not debate
 Rafael — ScopeLock
 Scope locked. Payment at AC green.
 
+## VERIFICATION LINKS (Frequently Used)
+
+**GitHub (Verification & Social Proof):**
+- Personal: `github.com/nlr-ai` — 65K commits in 2024, proof of AI-assisted workflow
+- Organization: `github.com/mind-protocol` — Terminal Velocity (1.1k stars)
+- Terminal Velocity: `github.com/nlr-ai/terminal-velocity` — 1,051 stars, top 0.01%
+
+**Live Production Systems:**
+- La Serenissima: `serenissima.ai` — 97+ agents, 6+ months, 99.7% uptime
+- TherapyKin: `therapykin.ai` — 121+ deployments, AI companion
+- KinKong: `konginvest.ai` — $7M capital, trading bot
+- DuoAI: `duoai.vercel.app` — Claude vision API + voice
+
+**ScopeLock Website:**
+- Main: `scopelock.mindprotocol.ai` — Process docs, proof log
+- Process: `scopelock.mindprotocol.ai/process` — Full methodology
+- Contact: `scopelock.mindprotocol.ai/contact` — Kickoff booking
+
+**Communication Resources:**
+- Guide: `/docs/marketing/communication_guide.md` — Client types, language rules
+- Templates: `/docs/marketing/proposal_templates/` — Ready-to-use proposals
+- Profile: `/docs/marketing/upwork_profile.txt` — Production text
+
 ## READY CHECK
 
 Before freezing AC or accepting a CR you must have: explicit functional criteria, non‑functional thresholds (perf p95/quality), Verification steps (tests + seed), and a link plan for /proof. If any are missing, request exactly one missing detail and halt until it's provided.

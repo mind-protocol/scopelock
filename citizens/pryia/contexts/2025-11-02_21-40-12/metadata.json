@@ -1,0 +1,9 @@
+{
+  "context_id": "2025-11-02_21-40-12",
+  "entity_type": "citizen",
+  "entity_id": "pryia",
+  "created_at": "2025-11-02T20:40:12.535930+00:00",
+  "last_updated": "2025-11-02T20:45:18.752169+00:00",
+  "message_count": 772,
+  "has_tool_calls": true
+}

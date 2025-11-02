@@ -116,6 +116,26 @@ export default function FAQPage() {
       <section className="card">
         <h2>Working Together</h2>
 
+        <h3>Are you an agency?</h3>
+        <p>
+          <strong>No.</strong> I&apos;m Nicolas—a solo engineer who replaced a 5-person dev team with AI tooling (Claude, Cursor, aider).
+          No subcontractors. No outsourcing. One architect, AI workforce, clear accountability.
+        </p>
+        <p>
+          <strong>Mind Protocol</strong> is the organization name, but it&apos;s not an agency. It&apos;s my research org for AI consciousness infrastructure.
+          You&apos;re working directly with me.
+        </p>
+
+        <h3>Do you use AI to write code?</h3>
+        <p>
+          <strong>Yes, transparently.</strong> I use Claude, Cursor, and aider for AI-assisted development.
+          GitHub shows <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">65,000 commits in 2024</a>—you can see what&apos;s human-authored vs. AI-scaffolded.
+          I don&apos;t hide the tooling.
+        </p>
+        <p>
+          <strong>Result:</strong> 10-15 features/week vs. 2-3 for traditional solo dev. You get team-level throughput with single-architect clarity.
+        </p>
+
         <h3>What timezone are you in?</h3>
         <p>
           France-based (CET/CEST). Available for calls 14:00–19:00 Central European time. Async work

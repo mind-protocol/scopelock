@@ -30,36 +30,70 @@ export default function AboutPage() {
       </section>
 
       <section className="card">
-        <h2>The Team</h2>
+        <h2>Nicolas Lester Reynolds — Solo Engineer + AI Workforce</h2>
 
-        <h3>Nicolas Lester Reynolds — Founder</h3>
         <p>
-          Serial founder and rapid-delivery builder. I ship working systems against executable acceptance criteria using an AI partnership model—the same architecture behind <a href="https://serenissima.ai" target="_blank" rel="noopener">La Serenissima</a> (97+ autonomous agents, 6+ months production, 99.7% uptime) and <a href="https://github.com/nlr-ai/terminal-velocity" target="_blank" rel="noopener">Terminal Velocity</a> (1,051 GitHub stars).
+          <strong>I&apos;m not an agency.</strong> I&apos;m a solo engineer who replaced a 5-person dev team with AI tooling (Claude, Cursor, aider).
         </p>
+
+        <p>
+          <strong>Result:</strong> 10-15 features/week vs. 2-3 for traditional solo dev.
+        </p>
+
+        <p>
+          <strong>Proof:</strong> GitHub shows <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">65,000 commits in 2024</a>—check the messages yourself. You&apos;ll see what&apos;s human-authored vs. AI-scaffolded. I don&apos;t hide the tooling.
+        </p>
+
+        <h3>Verification Links</h3>
         <ul>
-          <li><strong>Location:</strong> Lyon, France</li>
-          <li><strong>Availability:</strong> 14:00–19:00 CET (08:00–13:00 US Central)</li>
-          <li><strong>Live projects:</strong> <a href="https://universalbasiccompute.ai" target="_blank" rel="noopener">Universal Basic Compute</a>, <a href="https://therapykin.ai" target="_blank" rel="noopener">TherapyKin</a>, <a href="https://konginvest.ai" target="_blank" rel="noopener">KongInvest</a></li>
-          <li><strong>GitHub:</strong> <a href="https://github.com/mind-protocol" target="_blank" rel="noopener">@mind-protocol</a> (org), <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">@nlr-ai</a> (personal)</li>
+          <li><strong>Personal GitHub:</strong> <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">@nlr-ai</a> — 65K commits, daily activity, aider tags visible</li>
+          <li><strong>Org GitHub:</strong> <a href="https://github.com/mind-protocol" target="_blank" rel="noopener">@mind-protocol</a> — Terminal Velocity (1.1k stars), La Serenissima, 23 repos</li>
+          <li><strong>Live Systems:</strong> <a href="https://serenissima.ai" target="_blank" rel="noopener">La Serenissima</a> (97+ agents, 6+ months, 99.7% uptime), <a href="https://therapykin.ai" target="_blank" rel="noopener">TherapyKin</a>, <a href="https://konginvest.ai" target="_blank" rel="noopener">KongInvest</a></li>
           <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">nicolas-lester-reynolds</a></li>
         </ul>
+
+        <h3>Location & Contact</h3>
+        <ul>
+          <li><strong>Based in:</strong> Lyon, France</li>
+          <li><strong>Availability:</strong> 14:00–19:00 CET (08:00–13:00 US Central)</li>
+          <li><strong>Response time:</strong> &lt;2 hours (typically)</li>
+          <li><strong>Kickoff:</strong> ≤72 hours from first contact</li>
+        </ul>
+
+        <h3>Why ScopeLock Exists</h3>
         <p>
-          <strong>Why ScopeLock exists:</strong> Most freelance dev fails on ambiguity. Clients don't know if they're paying for "working" or "working toward." ScopeLock eliminates that: co-written AC.md defines done, acceptance tests verify it, you pay only at green. Evidence Sprints (≤90s demos + quantified deltas) prove value before full commitment.
+          Most freelance dev fails on ambiguity. Clients don&apos;t know if they&apos;re paying for &quot;working&quot; or &quot;working toward.&quot;
+        </p>
+        <p>
+          <strong>ScopeLock eliminates that:</strong> co-written <code>AC.md</code> defines done, acceptance tests verify it, you pay only at green. Evidence Sprints (≤90s demos + quantified deltas) prove value before full commitment.
+        </p>
+      </section>
+
+      <section className="card">
+        <h2>The AI Workforce (Specialized Agents)</h2>
+
+        <p>
+          I work with specialized AI agents (powered by Claude) that handle different domains.
+          Think of them as <strong>autonomous specialists</strong>, not assistants:
         </p>
 
-        <h3>The Citizens (Specialized Roles)</h3>
-        <p>
-          We operate as a team of domain specialists (human + AI citizens), each owning their domain:
-        </p>
         <ul>
           <li><strong>Emma &quot;The Scout&quot;</strong> — Lead Intelligence (prospecting, triage, proposal inputs)</li>
-          <li><strong>Rafael &quot;The Harbor&quot;</strong> — Relationships & Change Requests (client ops, AC co-authoring, CHG-130)</li>
-          <li><strong>Sofia &quot;The Gauge&quot;</strong> — Quality & Policy Guardian (reviewer, fail-loud enforcement, baseline guard)</li>
-          <li><strong>Daniel &quot;The Forge&quot;</strong> — Core Builder (features, acceptance tests, performance deltas)</li>
-          <li><strong>Aïcha &quot;The Architect&quot;</strong> — Architecture & Membrane (event schemas, /proof contracts, CHG-130 semantics)</li>
-          <li><strong>Maya &quot;The Facet&quot;</strong> — Frontend & Evidence UX (homepage, /proof UI, accessibility)</li>
-          <li><strong>Priya &quot;The Pulse&quot;</strong> — Supervision (health monitoring, readiness/liveness, MTTR &lt;10m)</li>
+          <li><strong>Rafael &quot;The Harbor&quot;</strong> — Client Relationships (client ops, AC co-authoring, change requests)</li>
+          <li><strong>Sofia &quot;The Gauge&quot;</strong> — Quality Guardian (code review, fail-loud enforcement, baseline protection)</li>
+          <li><strong>Daniel &quot;The Forge&quot;</strong> — Core Builder (features, acceptance tests, performance optimization)</li>
+          <li><strong>Aïcha &quot;The Architect&quot;</strong> — System Architecture (event schemas, contracts, change control semantics)</li>
+          <li><strong>Maya &quot;The Facet&quot;</strong> — Frontend & UX (UI implementation, /proof pages, accessibility)</li>
+          <li><strong>Priya &quot;The Pulse&quot;</strong> — Operations (health monitoring, deployment, incident response)</li>
         </ul>
+
+        <p>
+          <strong>This is 15 years of custom tooling</strong> + domain-specific AI infrastructure. Parallel work streams without coordination overhead.
+        </p>
+
+        <p>
+          <strong>The advantage:</strong> You get team-level throughput with single-architect clarity. No handoff delays, no communication overhead, no subcontractors.
+        </p>
       </section>
 
       <section className="card">

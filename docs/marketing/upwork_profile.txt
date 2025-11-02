@@ -1,13 +1,17 @@
-I lock scope and deliver against executable acceptance criteria. You pay only when tests pass.
+Solo engineer using AI-assisted development (Claude, Cursor, aider).
 
-Founder with La Serenissima (130+ persistent AI agents, 3+ months live), Terminal Velocity (1,051 GitHub stars), and Civocracy (€1M+ raised, successful exit). I build production systems through clear acceptance criteria, Evidence Sprints, and public proof.
+I architect systems, AI scaffolds implementation, I review/test every line before shipping. Result: 10-15 features/week vs. 2-3 for traditional solo dev.
 
-Not a traditional freelancer - founder between ventures doing strategic delivery sprints.
+Founder: La Serenissima (130+ AI agents, 6+ months production), Terminal Velocity (1.1k GitHub stars), Civocracy (€1M+ raised, exit). I build production systems through executable acceptance criteria and public proof.
+
+GitHub shows 65K commits in 2024—I don't hide the AI tooling. Check commit messages: you'll see what's human-authored vs. agent-scaffolded.
+
+Full disclosure: If you posted "No Agencies," I respect that. I'm not an agency—I'm a solo engineer who replaced a dev team with AI tooling. No subcontractors. No outsourcing. One architect, AI workforce, clear accountability.
 
 
 WHAT SCOPELOCK DELIVERY MEANS
 
-1. We Co-Write Acceptance Criteria
+1. Co-Write Acceptance Criteria
    - Functional + non-functional requirements (what it does, how fast)
    - Executable tests + seed data (you can verify yourself)
    - Scope locked with git tag
@@ -25,15 +29,18 @@ WHAT SCOPELOCK DELIVERY MEANS
 
 RECENT DELIVERIES
 
-- La Serenissima: 130+ persistent AI agents, 50,000+ state updates/hour, 99.7% uptime
-- Terminal Velocity: 1,051 GitHub stars (top 0.01% of GitHub projects)
+- La Serenissima: 130+ persistent AI agents, 6+ months production, 50,000+ state updates/hour
+- Terminal Velocity: 1.1k GitHub stars (top 0.01% of GitHub projects), 526-page novel on Amazon
+- KinKong: Autonomous trading bot, $7M capital deployment, 4x daily rebalancing, Solana DEX integration
+- TherapyKin: AI therapeutic companion, HIPAA-aware privacy, 121+ production deployments
+- DuoAI: Gaming companion with computer vision + voice, Claude vision API + ElevenLabs TTS
 
-HOW WE WORK
+HOW I WORK
 
 Phase 1: ScopeLock (Free)
 - 30-60 min call, I draft acceptance criteria
 - You approve scope and price
-- Baseline locked
+- Baseline locked with git tag
 
 Phase 2: Evidence Sprint
 - Working demo in 2-5 days
@@ -46,7 +53,7 @@ Phase 3: AC Green
 - Invoice when complete
 
 Scope Changes:
-- Swap: Equal/lower complexity → €0, same milestone
+- Swap: Equal/lower complexity → $0, same milestone
 - Add: New features → new milestone, priced separately
 
 
@@ -58,18 +65,29 @@ Backend: Node.js, FastAPI, Django, PostgreSQL, MongoDB, Redis
 AI/ML: Claude API, GPT-5, custom orchestration, vector databases
 Cloud: Render, AWS, GCP, Vercel, Docker, Kubernetes
 
-THE TEAM
+HOW THE AI WORKFORCE WORKS
 
-I work with specialized AI citizens (domain experts) handling:
-- Architecture & event schemas
-- Core development & acceptance tests
-- Quality review & fail-loud enforcement
-- Frontend, /proof UI, accessibility
+I use AI agents (Claude via Cursor, aider, custom tooling) as my development team:
+- I architect the system and write acceptance tests (human, 2-4 hours)
+- AI agents scaffold implementation (compress 10-20 hours of human typing to 30 mins)
+- I review, integrate, test every line (human, 2-4 hours)
+- Ship to production
 
-This is 15 years of custom tooling + domain-specific AI infrastructure. Parallel work streams without coordination overhead.
+Result: 10-15 features/week vs. 2-3 for traditional solo dev
+
+GitHub shows 65K commits in 2024 (~178/day). Before you dismiss it as vanity:
+- ~40% human-authored (architecture, tests, integration)
+- ~60% AI-assisted (scaffolding via aider/cursor)
+- All commits tagged with authorship—check commit messages yourself
+
+The commit volume isn't the point. The point is throughput without coordination overhead.
+
+This is 15 years of custom tooling + domain-specific AI infrastructure.
 
 
 PRICING (Fixed-Price Milestones)
+
+The AI workforce means faster delivery at lower cost. You're not paying $60-150/hr for a human to type boilerplate—you're paying for architecture, quality assurance, and accountability.
 
 Evidence Sprint: $3,000–$6,000
 - Working demo (≤90s), quantified delta, published proof
@@ -97,10 +115,30 @@ WHAT I PREVENT
 → Executable acceptance criteria define "done", not judgment calls
 
 Scope Creep Surprises
-→ Change Control: every change is Swap (€0) or Add (new price), you approve first
+→ Change Control: every change is Swap ($0) or Add (new price), you approve first
 
 "Tests Pass" But It's Broken
 → You can run the tests yourself, exact command + seed data in AC.md
+
+
+WHAT'S THE CATCH?
+
+"Pay only when tests pass" sounds too good. Here's how it actually works:
+
+Q: What if I'm unreasonable and keep saying "not good enough"?
+A: Acceptance criteria are executable tests written in code, not subjective judgment. If the tests pass, the milestone is done. If you want to change the criteria, that's a Change Request (Swap or Add).
+
+Q: What if the tests pass but it's still broken?
+A: Then the tests were wrong. I fix the tests and the code at no charge—that's on me. But if the tests correctly verify the original criteria and you want new criteria, that's a scope change.
+
+Q: How do you prevent infinite revisions?
+A: The AC includes a "Verification" section: exact command to run tests + seed data. When CI is green, milestone is done. You don't have to trust my judgment—you run the tests yourself.
+
+Q: What if we discover the original scope was wrong?
+A: Change Request. We document what changed, why, and whether it's Swap (replace at $0) or Add (new milestone, priced). You approve before I start. No surprise invoices.
+
+Real scenario: Client wanted "fast" signup. AC said "<500ms p95". Tests passed at 280ms. Client then said "but I want it to feel faster with animations." That's a new requirement = Add milestone. Original milestone was done and paid.
+
 
 PERFECT FOR
 
@@ -120,12 +158,15 @@ NOT FOR
 VERIFICATION
 
 Live Systems:
-- serenissima.ai: 130+ agents running right now
-- github.com/mind-protocol: 1,051 stars, daily commits
-- github.com/nlr-ai: Experiments and support
-- scopelock.mindprotocol.ai/proof: Public milestone record (launching Q1 2025)
+- serenissima.ai: 130+ agents, 6+ months production uptime
+- github.com/mind-protocol: 22 public repos, terminal-velocity has 1.1k stars
+- github.com/nlr-ai: 37 repos, 65,000 commits in 2024
+- konginvest.ai: Trading bot managing $7M capital
+- therapykin.ai: AI therapeutic companion, 121+ deployments
 
-First call free: I'll show GitHub commits, live systems, and draft AC.md for your project.
+Check my GitHub contribution graph—it's not fake. 178 commits/day is what AI-augmented development looks like.
+
+First call free: I'll show you GitHub history, live systems, and draft AC.md for your project.
 
 HOW TO START
 

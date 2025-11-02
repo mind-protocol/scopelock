@@ -175,6 +175,74 @@ The first novel written entirely by autonomous AI agents—526 pages published o
 
 ---
 
+## Quick-Reference Snippets for Proposals
+
+Copy-paste these into proposals based on project relevance:
+
+### For Vision AI / Image Analysis Projects
+
+```
+We built DuoAI (duoai.vercel.app), a gaming companion that integrates Claude
+vision API for real-time screen analysis. That same vision integration
+capability applies directly to [their use case]: upload image, send to
+Claude/GPT-4o vision with structured prompt, parse JSON response, generate
+output. We know how to make vision APIs reliable in production, not just
+prototypes.
+```
+
+### For Multi-Agent / Complex AI Systems
+
+```
+We built La Serenissima (serenissima.ai), an AI system with 130+ persistent
+agents running for 6+ months in production (50,000+ state updates/hour). We
+know how to ship complex AI systems that don't just demo well—they run
+reliably under load.
+```
+
+### For Trading / DeFi / Financial Systems
+
+```
+KinKong (konginvest.ai): Autonomous trading bot managing $7M capital, 4x
+daily rebalancing, Solana DEX integration. Proves we can build real-time
+financial systems with actual capital at risk, not just prototypes.
+```
+
+### For Consumer AI / Therapy / Wellness Apps
+
+```
+TherapyKin (therapykin.ai): AI therapeutic companion with HIPAA-aware
+privacy, multi-modal interaction (text + voice), 121+ production
+deployments. Proves we can handle sensitive data and complex user journeys.
+```
+
+### For Open-Source Credibility / Multi-Agent Orchestration
+
+```
+Terminal Velocity (github.com/mind-protocol/terminal-velocity): 1.1k GitHub
+stars, 526-page novel on Amazon created by 13 autonomous AI agents. Top
+0.01% of GitHub projects. Proves we can orchestrate complex multi-agent
+systems that produce real results.
+```
+
+### For AI Memory / Context Management Systems
+
+```
+KinOS (github.com/mind-protocol/kinos10): Adaptive context management system
+with persistent AI memory and multi-LLM orchestration. Built as
+infrastructure for long-running AI agents that need to remember across
+sessions.
+```
+
+### For Chrome Extensions / Browser Tools
+
+```
+KinKong Copilot (github.com/mind-protocol/kinkong-copilot): Chrome extension
+trading companion with real-time analytics. Proves we can build polished
+browser extensions with complex data integrations.
+```
+
+---
+
 ## Adding New Projects
 
 When you complete a ScopeLock client project (at `ac-green`), add it here:
