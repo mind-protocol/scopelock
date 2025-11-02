@@ -1,10 +1,57 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { PricingTiers } from '../../components/PricingTiers';
 
 export const metadata: Metadata = {
   title: 'Pricing — ScopeLock',
   description: 'Transparent pricing. Payment only at AC green. Fixed-price milestones from Evidence Sprints to full integrations.',
 };
+
+const pricingTiers = [
+  {
+    name: 'Evidence Sprint',
+    price: '$3K–$6K',
+    priceLabel: 'typical investment',
+    timeline: '2–5 days',
+    bestFor: 'Validate approach, test collaboration, show stakeholders',
+    features: [
+      'Co-authored AC.md (functional + non-functional criteria + verification)',
+      'Working demo (≤90 seconds to see the value)',
+      'Quantified DELTA.md (before→after with numbers)',
+      'Published /proof entry',
+      'No obligation to continue',
+    ],
+  },
+  {
+    name: 'Feature to AC Green',
+    price: '$5K–$15K',
+    priceLabel: 'fixed price',
+    timeline: '1–2 weeks',
+    bestFor: 'Single feature, MVP, core system component',
+    popular: true,
+    features: [
+      'Everything in Evidence Sprint',
+      'Full implementation to acceptance criteria',
+      'All tests passing (CI green)',
+      'Performance thresholds met (p95, quality gates)',
+      '2 weeks of adjustments included',
+    ],
+  },
+  {
+    name: 'Week-Scale Integration',
+    price: '$15K–$35K',
+    priceLabel: 'scope-dependent',
+    timeline: '2–4 weeks',
+    bestFor: 'Multi-feature systems, integrations, transformations',
+    features: [
+      'Multiple Evidence Sprints',
+      'Full system integration',
+      'Multiple AC green milestones',
+      'Architecture documentation',
+      '2 weeks support post-delivery',
+    ],
+  },
+];
 
 export default function PricingPage() {
   return (
@@ -19,58 +66,10 @@ export default function PricingPage() {
 
       <section className="card">
         <h2>Pricing Tiers</h2>
+        <p>Choose the engagement level that fits your needs. All tiers include fixed pricing and payment only at AC green.</p>
       </section>
 
-      <article className="card">
-        <h2>Evidence Sprint</h2>
-        <p className="case-delta"><strong>Investment:</strong> $3,000–$6,000 (typical)</p>
-
-        <h3>What you get:</h3>
-        <ul>
-          <li>Co-authored AC.md (functional + non-functional criteria + verification)</li>
-          <li>Working demo (≤90 seconds to see the value)</li>
-          <li>Quantified DELTA.md (before→after with numbers)</li>
-          <li>Published /proof entry</li>
-          <li>No obligation to continue</li>
-        </ul>
-
-        <p><strong>Timeline:</strong> 2–5 days</p>
-        <p><strong>Best for:</strong> Validate approach, test collaboration, show stakeholders</p>
-      </article>
-
-      <article className="card">
-        <h2>Feature to AC Green</h2>
-        <p className="case-delta"><strong>Investment:</strong> $5,000–$15,000</p>
-
-        <h3>What you get:</h3>
-        <ul>
-          <li>Everything in Evidence Sprint</li>
-          <li>Full implementation to acceptance criteria</li>
-          <li>All tests passing (CI green)</li>
-          <li>Performance thresholds met (p95, quality gates)</li>
-          <li>2 weeks of adjustments included</li>
-        </ul>
-
-        <p><strong>Timeline:</strong> 1–2 weeks</p>
-        <p><strong>Best for:</strong> Single feature, MVP, core system component</p>
-      </article>
-
-      <article className="card">
-        <h2>Week-Scale Integration</h2>
-        <p className="case-delta"><strong>Investment:</strong> $15,000–$35,000</p>
-
-        <h3>What you get:</h3>
-        <ul>
-          <li>Multiple Evidence Sprints</li>
-          <li>Full system integration</li>
-          <li>Multiple AC green milestones</li>
-          <li>Architecture documentation</li>
-          <li>2 weeks support post-delivery</li>
-        </ul>
-
-        <p><strong>Timeline:</strong> 2–4 weeks</p>
-        <p><strong>Best for:</strong> Multi-feature systems, integrations, transformations</p>
-      </article>
+      <PricingTiers tiers={pricingTiers} />
 
       <section className="card">
         <p><strong>Minimum Engagement:</strong> $2,500 (proof-of-concept Evidence Sprint)</p>

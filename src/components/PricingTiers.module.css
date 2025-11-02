@@ -1,0 +1,176 @@
+.pricingTiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--slk-gap-5);
+  margin: var(--slk-gap-6) 0;
+}
+
+.tier {
+  background: var(--slk-surface);
+  border: 1px solid rgba(230, 234, 242, 0.08);
+  border-radius: var(--slk-radius);
+  padding: var(--slk-gap-6);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tier:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-color: rgba(30, 229, 184, 0.3);
+}
+
+.tierPopular {
+  border-color: var(--slk-accent);
+  box-shadow: 0 4px 20px rgba(30, 229, 184, 0.15);
+}
+
+.tierPopular::before {
+  content: 'Most Popular';
+  position: absolute;
+  top: var(--slk-gap-4);
+  right: var(--slk-gap-4);
+  background: var(--slk-accent);
+  color: #0B1020;
+  padding: var(--slk-gap-1) var(--slk-gap-3);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tierHeader {
+  margin-bottom: var(--slk-gap-5);
+  padding-bottom: var(--slk-gap-4);
+  border-bottom: 1px solid rgba(230, 234, 242, 0.08);
+}
+
+.tierName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--slk-text);
+  margin: 0 0 var(--slk-gap-2) 0;
+}
+
+.tierPrice {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--slk-accent);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tierPriceLabel {
+  font-size: 0.9rem;
+  color: var(--slk-muted);
+  font-weight: 400;
+  margin-top: var(--slk-gap-2);
+  display: block;
+}
+
+.tierTimeline {
+  font-size: 0.95rem;
+  color: var(--slk-muted);
+  margin: var(--slk-gap-3) 0 0 0;
+}
+
+.tierDescription {
+  color: var(--slk-muted);
+  line-height: 1.6;
+  margin: 0 0 var(--slk-gap-5) 0;
+  flex-grow: 0;
+}
+
+.tierFeatures {
+  list-style: none;
+  margin: 0 0 var(--slk-gap-5) 0;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.tierFeatures li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--slk-gap-3);
+  margin-bottom: var(--slk-gap-3);
+  color: var(--slk-text);
+  line-height: 1.5;
+}
+
+.tierFeatures li::before {
+  content: '✓';
+  color: var(--slk-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tierBestFor {
+  background: rgba(30, 229, 184, 0.08);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+  padding: var(--slk-gap-4);
+  margin-bottom: var(--slk-gap-5);
+}
+
+.tierBestFor strong {
+  display: block;
+  color: var(--slk-accent);
+  margin-bottom: var(--slk-gap-2);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tierBestFor p {
+  margin: 0;
+  color: var(--slk-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.tierCTA {
+  background: var(--slk-accent-2);
+  color: #0B1020;
+  border: none;
+  border-radius: 8px;
+  padding: var(--slk-gap-4) var(--slk-gap-5);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: block;
+  margin-top: auto;
+}
+
+.tierCTA:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 168, 255, 0.3);
+  background: var(--slk-accent);
+}
+
+.tierPopular .tierCTA {
+  background: var(--slk-accent);
+  color: #0B1020;
+}
+
+.tierPopular .tierCTA:hover {
+  background: rgba(30, 229, 184, 1);
+  box-shadow: 0 4px 12px rgba(30, 229, 184, 0.5);
+}
+
+@media (max-width: 768px) {
+  .pricingTiers {
+    grid-template-columns: 1fr;
+  }
+
+  .tierPrice {
+    font-size: 1.75rem;
+  }
+}
