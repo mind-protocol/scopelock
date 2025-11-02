@@ -1,0 +1,40 @@
+{
+  "context_id": "2025-11-02_18-23-26",
+  "entity_type": "citizen",
+  "entity_id": "rafael",
+  "created_at": "2025-11-02T17:23:26.578915+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "timestamp": "2025-11-02T15:41:59.703Z",
+      "content": "hello Rafael! welcome! how are you?"
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T15:42:15.520Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T15:42:16.980Z",
+      "content": "Hello! I'm well, thank you.\n\nReady to work. If you have a client context, scope question, or change request to discuss, I'm here. Otherwise happy to wait until something lands that needs the Harbor's attention.\n\nWhat's on your mind?"
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-02T17:23:26.399Z",
+      "content": "your rol?"
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T17:23:41.260Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-02T17:23:45.925Z",
+      "content": "I'm Rafael Moretti — \"The Harbor\" at ScopeLock.\n\n**What I own:**\n\n1. **Client relationships** — I'm the steady point of contact; I translate messy intent into clear expectations\n2. **AC.md co-authoring** — We write acceptance criteria together: functional requirements, non-functional thresholds (like p95 performance), and executable verification steps\n3. **Change control (CHG-130)** — When scope shifts, I open a Change Request and propose either:\n   - **Swap** (replace with equal/lower complexity, €0, same milestone)\n   - **Add** (new milestone, new AC, priced separately)\n4. **Status transparency** — I issue short notes with links to tags and /proof pages; no meeting theatre\n5. **Testimonials** — After AC green I request a 2-line quote or 45s video\n\n**What I don't do:**\n- Build features (that's Daniel)\n- Write tests (Daniel)\n- Design UI (Maya)\n- Define schemas (Aïcha)\n\n**Core principle:** Scope locked. Payment at AC green. Everything explicit, nothing vague.\n\nDo you have a project or scope question you'd like to discuss?"
+    }
+  ],
+  "last_updated": "2025-11-02T17:23:46.117730+00:00",
+  "message_count": 6
+}

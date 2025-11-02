@@ -48,7 +48,13 @@ export default function RootLayout({
         </header>
         {children}
         <footer>
-          <small>© ScopeLock — membrane-first, event-native. Tagged milestones, locked criteria.</small>
+          <small>
+            © ScopeLock — membrane-first, event-native. Tagged milestones, locked criteria.
+            {' · '}
+            <a href="https://github.com/mind-protocol/scopelock" target="_blank" rel="noopener">GitHub</a>
+            {' · '}
+            <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">LinkedIn</a>
+          </small>
         </footer>
       </body>
     </html>

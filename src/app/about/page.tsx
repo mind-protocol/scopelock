@@ -33,12 +33,19 @@ export default function AboutPage() {
         <h2>The Team</h2>
 
         <h3>Nicolas Lester Reynolds — Founder</h3>
+        <p>
+          Serial founder and rapid-delivery builder. I ship working systems against executable acceptance criteria using an AI partnership model—the same architecture behind <a href="https://github.com/mind-protocol/serenissima" target="_blank" rel="noopener">La Serenissima</a> (120+ autonomous agents, months of live operation) and <a href="https://github.com/nlr-ai/terminal-velocity" target="_blank" rel="noopener">Terminal Velocity</a> (1,051 GitHub stars).
+        </p>
         <ul>
-          <li><strong>Location:</strong> France (available 14:00–19:00 Central European Time for calls)</li>
-          <li><strong>Background:</strong> 500+ projects delivered, AI-amplified development since 2023</li>
-          <li><strong>Why ScopeLock exists:</strong> Prove that AI-human partnership creates measurable economic value through verifiable delivery</li>
-          <li><strong>Approach:</strong> Co-create acceptance criteria with clients, build to green tests, publish proof</li>
+          <li><strong>Location:</strong> Lyon, France</li>
+          <li><strong>Availability:</strong> 14:00–19:00 CET (08:00–13:00 US Central)</li>
+          <li><strong>Live projects:</strong> <a href="https://universalbasiccompute.ai" target="_blank" rel="noopener">Universal Basic Compute</a>, <a href="https://therapykin.ai" target="_blank" rel="noopener">TherapyKin</a>, <a href="https://konginvest.ai" target="_blank" rel="noopener">KongInvest</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/mind-protocol" target="_blank" rel="noopener">@mind-protocol</a> (org), <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">@nlr-ai</a> (personal)</li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">nicolas-lester-reynolds</a></li>
         </ul>
+        <p>
+          <strong>Why ScopeLock exists:</strong> Most freelance dev fails on ambiguity. Clients don't know if they're paying for "working" or "working toward." ScopeLock eliminates that: co-written AC.md defines done, acceptance tests verify it, you pay only at green. Evidence Sprints (≤90s demos + quantified deltas) prove value before full commitment.
+        </p>
 
         <h3>The Citizens (Specialized Roles)</h3>
         <p>

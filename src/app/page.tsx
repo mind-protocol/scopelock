@@ -53,64 +53,64 @@ export default function HomePage() {
 
       <section aria-labelledby="cases">
         <div className="card">
-          <h2 id="cases">Case studies</h2>
+          <h2 id="cases">Proof in action</h2>
           <div className="grid-3">
             <article className="card card-case">
               <header>
-                <h3>OTP Signup</h3>
-                <p className="case-delta"><em>Before</em>: p95 1200ms → <em>After</em>: 280ms</p>
+                <h3>Terminal Velocity</h3>
+                <p className="case-delta">Novel written by 10 autonomous AI agents</p>
               </header>
               <div className="case-meta">
-                <span>Stack: Next.js</span>
-                <span>Playwright</span>
+                <span>1,051 GitHub stars</span>
+                <span>Python</span>
               </div>
-              <p>Proof: <Link href="/proof/evidence-sprint_signup-otp_2025-10-31">evidence-sprint_signup-otp_2025-10-31</Link></p>
+              <p><a href="https://github.com/nlr-ai/terminal-velocity" target="_blank" rel="noopener">View on GitHub →</a></p>
             </article>
             <article className="card card-case">
               <header>
-                <h3>Import CSV</h3>
-                <p className="case-delta"><em>Before</em>: 7 screens → <em>After</em>: 3 screens</p>
+                <h3>La Serenissima</h3>
+                <p className="case-delta">120+ AI agents, months of autonomous operation</p>
               </header>
               <div className="case-meta">
-                <span>Stack: Node</span>
-                <span>React Table</span>
+                <span>Multi-agent</span>
+                <span>Python</span>
               </div>
-              <p>Proof: <Link href="/proof/evidence-sprint_import-csv_2025-11-02">evidence-sprint_import-csv_2025-11-02</Link></p>
+              <p><a href="https://github.com/mind-protocol/serenissima" target="_blank" rel="noopener">View on GitHub →</a></p>
             </article>
             <article className="card card-case">
               <header>
-                <h3>Search</h3>
-                <p className="case-delta"><em>Before</em>: 12% errors → <em>After</em>: 1.4%</p>
+                <h3>Universal Basic Compute</h3>
+                <p className="case-delta">AI agent ecosystem with economic layer</p>
               </header>
               <div className="case-meta">
-                <span>Stack: Postgres</span>
-                <span>pg_trgm</span>
+                <span>Live production</span>
+                <span>TypeScript</span>
               </div>
-              <p>Proof: <Link href="/proof/evidence-sprint_search_2025-11-03">evidence-sprint_search_2025-11-03</Link></p>
+              <p><a href="https://universalbasiccompute.ai" target="_blank" rel="noopener">Visit live site →</a></p>
             </article>
           </div>
         </div>
       </section>
 
       <section className="card" aria-labelledby="timeline">
-        <h2 id="timeline">Proof teaser</h2>
-        <p>Latest tagged milestones:</p>
+        <h2 id="timeline">How ScopeLock Delivery Works</h2>
+        <p>Every project follows the same transparent process:</p>
         <div className="timeline">
           <article className="timeline-item">
-            <div className="timeline-time">2025-01-08T16:20:00Z · Evidence Sprint</div>
-            <p><code>evidence-sprint_signup-otp_2025-10-31</code> — demo ≤90s, p95 delta to 280ms.</p>
+            <div className="timeline-time">Step 1 · ScopeLock</div>
+            <p>We co-write <code>AC.md</code> with you. Scope locked, price fixed.</p>
           </article>
           <article className="timeline-item">
-            <div className="timeline-time">2025-01-05T11:42:00Z · AC green</div>
-            <p><code>ac-green_signup-otp</code> — acceptance criteria green in CI.</p>
+            <div className="timeline-time">Step 2 · Evidence Sprint</div>
+            <p>Working demo ≤90s + quantified delta. You see it before committing to full build.</p>
           </article>
           <article className="timeline-item">
-            <div className="timeline-time">2025-01-02T09:12:00Z · Evidence Sprint</div>
-            <p><code>evidence-sprint_import-csv_2025-11-02</code> — screen delta reduced from 7 to 3.</p>
+            <div className="timeline-time">Step 3 · AC Green</div>
+            <p>Acceptance tests pass in CI. You pay only when tests are green.</p>
           </article>
         </div>
         <p className="proof-link">
-          <span>See full Proof Log →</span>
+          <span>See our public Proof Log →</span>
           <Link href="/proof">/proof</Link>
         </p>
       </section>
