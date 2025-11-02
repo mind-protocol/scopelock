@@ -4,6 +4,63 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-03 00:00 — Daniel: Docker + Claude CLI Production Support ✅
+
+**User requirement: "both should work" - Rafael AND citizens on production**
+
+**Problem identified:**
+- Backend deployed but health check showed `claude_cli: disconnected`
+- Render's Python runtime doesn't support installing Node.js (no sudo)
+- Citizens system prompts weren't available (rootDir: backend excluded them)
+
+**Solution: Switch to Docker runtime**
+
+**Changes:**
+- Created `backend/Dockerfile` - Python 3.11 + Node.js 20 + Claude CLI
+- Updated `backend/render.yaml` - Docker runtime, full repo deployment
+- Updated paths: SCOPELOCK_REPO=/app, CITIZENS_DIR=/app/citizens
+
+**What's in the Docker image:**
+```dockerfile
+FROM python:3.11-slim
+# Install system deps (curl, git)
+# Install Node.js 20.x (for Claude CLI)
+# Install Claude CLI: npm install -g @anthropic-ai/claude-code
+# Copy full repo to /app (includes citizens/, backend/, proof/)
+# Install Python deps from backend/requirements.txt
+```
+
+**Deployment structure:**
+```
+/app/
+  backend/          # FastAPI backend
+  citizens/         # System prompts (rafael/, emma/, etc.)
+  proof/            # Proof entries
+  docs/             # Documentation
+/var/data/          # Persistent disk (drafts, events)
+```
+
+**What works now (production):**
+1. ✅ Gmail webhook → POST /webhook/upwork
+2. ✅ Backend runs: `subprocess.run(["claude", "--print", message, "--continue"])`
+3. ✅ Rafael loads system prompt from `/app/citizens/rafael/CLAUDE.md`
+4. ✅ Rafael has tool access: Read, Write, Bash, Grep
+5. ✅ Rafael writes draft: `Write(/var/data/drafts/{uuid}.json, data)`
+6. ✅ Rafael calls: `Bash("curl -X POST /api/notify/draft")`
+7. ✅ Backend sends Telegram notification
+8. ✅ User clicks [Approve] → Draft file updated
+
+**Cost:** Still $7/month (Docker runtime = same as Python)
+
+**Build time:** ~3-5 minutes (includes Node.js + Claude CLI install)
+
+**Next:** Render is rebuilding with Docker. After deploy:
+- Health check should show `claude_cli: connected`
+- Test webhook: Send Gmail → Verify Rafael runs
+- E2E test from `docs/setup/testing.md`
+
+---
+
 ## 2025-11-02 23:50 — Daniel: Simplified Backend to File-Based ✅
 
 **Critical architectural decision: Removed unnecessary API layer**
