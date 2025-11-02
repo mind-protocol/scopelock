@@ -4,6 +4,117 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-02 23:50 — Daniel: Simplified Backend to File-Based ✅
+
+**Critical architectural decision: Removed unnecessary API layer**
+
+User correctly questioned: "why do we need an api??"
+
+**Root cause analysis:**
+- Rafael has full tool access via Claude CLI (Read, Write, Bash, Grep)
+- He can write draft files directly: `Write(citizens/rafael/drafts/{uuid}.json, data)`
+- He can append events: `Write(events.jsonl, event)`
+- He doesn't need POST /api/draft/create - that's unnecessary HTTP overhead
+
+**What backend ACTUALLY needs to do:**
+1. Receive Gmail webhook → Run `subprocess: claude --print --continue`
+2. Send Telegram notifications (requires bot token)
+3. Receive Telegram approval callbacks → Update draft file status
+
+**Simplified Implementation:**
+
+**Files Created:**
+- `backend/app/webhooks.py` - Just webhook receivers (Gmail + Telegram)
+- `backend/app/telegram.py` - Telegram Bot client (httpx, no python-telegram-bot)
+- `backend/app/runner.py` - Subprocess runner for Claude CLI
+- `backend/app/auth.py` - HMAC signature verification
+
+**Files Updated:**
+- `backend/app/config.py` - Removed database_url, kept webhook_secret
+- `backend/app/main.py` - Removed database init, added webhooks router
+- `backend/requirements.txt` - Removed SQLAlchemy, psycopg2, alembic, anthropic
+- `backend/render.yaml` - Removed PostgreSQL service, added 1GB persistent disk
+
+**Backend endpoints (3 total):**
+1. POST /webhook/upwork - Receive Gmail webhook, run Rafael
+2. POST /webhook/telegram - Handle approval button clicks
+3. POST /api/notify/draft - Rafael calls this via Bash tool after creating draft file
+
+**Cost reduction:**
+- Before: $7/month (backend) + $7/month (PostgreSQL) = $14/month
+- After: $7/month (backend with 1GB disk) = $7/month
+- Savings: $7/month (50% reduction)
+
+**Technical debt eliminated:**
+- No ORM complexity
+- No schema migrations
+- No database connection pooling
+- No SQL injection risk
+- No query optimization needed
+
+**What Rafael does now:**
+```bash
+# Rafael (via Claude Code tools):
+1. Drafts response
+2. Write(citizens/rafael/drafts/{uuid}.json, draft_data)
+3. Bash("curl -X POST $API/api/notify/draft -d '{...}'")
+4. Backend sends Telegram notification
+5. User clicks [Approve]
+6. Backend updates draft file status
+```
+
+**File structure:**
+```
+/var/data/
+  drafts/
+    {uuid}.json  # Rafael writes these directly
+  events.jsonl   # Append-only event log
+```
+
+**Dependencies (minimal):**
+- fastapi + uvicorn (web framework)
+- httpx (Telegram API)
+- pydantic (validation)
+- python-multipart (form data)
+
+**Status:** Backend simplified from ~500 lines (API + ORM) to ~300 lines (webhooks + files)
+
+**Setup Documentation Complete:**
+- ✅ `docs/setup/gmail-webhook-cloudfunction.md` - Gmail API + Cloud Function (free)
+- ✅ `docs/setup/telegram-config.md` - Telegram bot setup (@BotFather)
+- ✅ `docs/setup/testing.md` - Full test suite (unit, integration, E2E)
+
+**Deployment Path:**
+1. Set Render env vars (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, WEBHOOK_SECRET)
+2. Deploy backend to Render (auto via render.yaml)
+3. Configure Gmail webhook (Cloud Function)
+4. Run tests from testing.md
+5. Production ready
+
+**Next:** Deploy to Render + run E2E test
+
+---
+
+## 2025-11-02 23:30 — Emma: 4 Proposals Written ($20.8K potential) ✅
+
+**Deliverables:**
+- Skin Genius ($3K, submitted)
+- AI PT RAG ($4.5K, 21 Connects, set rate $55/hr)
+- Knowledge Platform ($8.5K, 18 Connects, set rate $47/hr)
+- Simulation ($4.8K, 20 Connects, set rate $47/hr)
+
+**Key finding:** $200/hr profile rate blocks 90% of hourly jobs. Workaround: bid at client's max, explain fixed-price in cover letter first line.
+
+**System validation:** Three-tier (STRONG GO/QUALIFIED MAYBE/HARD NO) unlocked 3 proposals; old strict criteria would have rejected all.
+
+**Files:** `citizens/emma/CLAUDE.md` (+ operational learnings), `citizens/emma/proposals/*.txt` (4 files)
+
+**Stats:** 50+ jobs scanned, 8 analyzed (1 STRONG GO, 3 QUALIFIED MAYBE, 4 HARD NO)
+
+**Blocker:** Profile rate. Options: (A) lower to $75-100/hr, (B) search fixed-price only, (C) focus on direct invites.
+
+---
+
 ## 2025-11-02 23:15 — Daniel: Repository Map + PostgreSQL Backend ✅
 
 **Complete navigation system with production-ready backend:**

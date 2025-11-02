@@ -13,28 +13,26 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
 
-    # API Keys (required in production)
-    anthropic_api_key: str = ""
+    # Required in production
     telegram_bot_token: str = ""
     telegram_chat_id: str = ""
-
-    # Optional API keys
-    upwork_api_key: str = ""
+    webhook_secret: str = ""  # HMAC secret for webhook verification
 
     # Environment
     environment: Literal["development", "production"] = "development"
     log_level: str = "INFO"
 
-    # Data storage
+    # Data storage (file-based)
     data_dir: Path = Path("/var/data")
 
     # Server
     port: int = 8000
     workers: int = 2
 
-    # Paths
+    # Paths (for Claude CLI execution)
     citizens_dir: Path = Path("/home/mind-protocol/scopelock/citizens")
     proof_dir: Path = Path("/home/mind-protocol/scopelock/proof")
+    scopelock_repo: Path = Path("/home/mind-protocol/scopelock")
 
     class Config:
         env_file = ".env"
@@ -44,12 +42,12 @@ class Settings(BaseSettings):
         """Validate required settings in production"""
         if self.environment == "production":
             missing = []
-            if not self.anthropic_api_key:
-                missing.append("ANTHROPIC_API_KEY")
             if not self.telegram_bot_token:
                 missing.append("TELEGRAM_BOT_TOKEN")
             if not self.telegram_chat_id:
                 missing.append("TELEGRAM_CHAT_ID")
+            if not self.webhook_secret:
+                missing.append("WEBHOOK_SECRET")
 
             if missing:
                 raise ValueError(

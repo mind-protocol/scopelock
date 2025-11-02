@@ -33,7 +33,7 @@ async def lifespan(app: FastAPI):
     # Startup
     logger.info("ScopeLock Backend starting...")
     logger.info(f"Environment: {settings.environment}")
-    logger.info(f"Data directory: {settings.data_dir}")
+    logger.info(f"ScopeLock repo: {settings.scopelock_repo}")
 
     # Validate required settings in production
     try:
@@ -44,23 +44,11 @@ async def lifespan(app: FastAPI):
         if settings.environment == "production":
             raise
 
-    # Ensure data directory exists
+    # Ensure data directory exists for file storage
     settings.data_dir.mkdir(parents=True, exist_ok=True)
     logger.info(f"✅ Data directory ready: {settings.data_dir}")
 
-    # Initialize event log
-    events_log = settings.data_dir / "events.jsonl"
-    if not events_log.exists():
-        events_log.touch()
-        logger.info(f"✅ Created event log: {events_log}")
-
-    # Initialize leads log
-    leads_log = settings.data_dir / "leads.json"
-    if not leads_log.exists():
-        leads_log.touch()
-        logger.info(f"✅ Created leads log: {leads_log}")
-
-    logger.info("🚀 ScopeLock Backend ready")
+    logger.info("🚀 ScopeLock Backend ready (file-based, webhook-only)")
 
     yield
 
@@ -120,11 +108,21 @@ async def health_check():
     # Check services
     services = {}
 
-    # Check Anthropic API
-    services["anthropic_api"] = ServiceStatus(
-        status="connected" if settings.anthropic_api_key else "disconnected",
-        last_check=datetime.utcnow()
-    )
+    # Check file storage
+    try:
+        test_file = settings.data_dir / ".health_check"
+        test_file.write_text("test")
+        test_file.unlink()
+        services["file_storage"] = ServiceStatus(
+            status="connected",
+            last_check=datetime.utcnow()
+        )
+    except Exception as e:
+        logger.error(f"File storage check failed: {e}")
+        services["file_storage"] = ServiceStatus(
+            status="disconnected",
+            last_check=datetime.utcnow()
+        )
 
     # Check Telegram Bot
     services["telegram_bot"] = ServiceStatus(
@@ -132,21 +130,11 @@ async def health_check():
         last_check=datetime.utcnow()
     )
 
-    # Check data storage
-    try:
-        test_file = settings.data_dir / ".health_check"
-        test_file.write_text("test")
-        test_file.unlink()
-        services["data_storage"] = ServiceStatus(
-            status="connected",
-            last_check=datetime.utcnow()
-        )
-    except Exception as e:
-        logger.error(f"Data storage check failed: {e}")
-        services["data_storage"] = ServiceStatus(
-            status="disconnected",
-            last_check=datetime.utcnow()
-        )
+    # Check Claude CLI (verify repo exists)
+    services["claude_cli"] = ServiceStatus(
+        status="connected" if settings.scopelock_repo.exists() else "disconnected",
+        last_check=datetime.utcnow()
+    )
 
     # Determine overall status
     all_connected = all(s.status == "connected" for s in services.values())
@@ -175,11 +163,8 @@ async def root():
 
 
 # Import and include routers
-# TODO: Uncomment as we implement these modules
-# from app.api import webhooks, tracking, events
-# app.include_router(webhooks.router, prefix="/webhook", tags=["webhooks"])
-# app.include_router(tracking.router, prefix="/api/lead", tags=["tracking"])
-# app.include_router(events.router, prefix="/api/events", tags=["events"])
+from app.webhooks import router as webhooks_router
+app.include_router(webhooks_router, tags=["webhooks"])
 
 
 if __name__ == "__main__":
