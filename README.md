@@ -25,6 +25,7 @@ The proof bundle is written to `public/proof` and contains an index page with th
 - [Delivery Model](docs/core/delivery_model.md) — How ScopeLock delivers against executable acceptance criteria
 - [Team Structure](docs/core/team_structure.md) — Citizen roles, domains, handoffs, and collaboration protocols
 - [Client Guide](docs/core/client_guide.md) — How to work with ScopeLock for predictable, verifiable delivery
+- [Website Pages](docs/core/website_pages.md) — Content outlines for essential website pages (/about, /pricing, /faq, etc.)
 
 **Design:**
 - [Brand & UI Styleguide](docs/design/brand_and_ui_styleguide.md) — Visual language, tokens, components

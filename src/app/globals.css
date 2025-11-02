@@ -31,6 +31,69 @@ button:focus-visible {
   outline-offset:4px;
 }
 
+/* Header & Navigation */
+.site-header {
+  border-bottom: 1px solid rgba(230, 234, 242, 0.08);
+  background: rgba(14, 17, 22, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-nav {
+  max-width:1040px;
+  margin:0 auto;
+  padding:var(--slk-gap-4) var(--slk-gap-5);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo-link {
+  display:flex;
+  align-items:center;
+  transition: opacity 0.2s ease;
+}
+
+.logo-link:hover {
+  opacity:0.85;
+}
+
+.nav-links {
+  display:flex;
+  gap:var(--slk-gap-5);
+  align-items:center;
+}
+
+.nav-links a {
+  font-weight:600;
+  font-size:0.95rem;
+  color:var(--slk-text);
+  transition:color 0.2s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color:var(--slk-accent-2);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--slk-accent-2);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
 main {
   max-width:1040px;
   margin:auto;

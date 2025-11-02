@@ -28,21 +28,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav className="site-nav">
-          <Link href="/" className="logo-link">
-            <img
-              src="/brand/logo/scopelock-lockup.svg"
-              alt="ScopeLock"
-              width="224"
-              height="32"
-              style={{ height: '32px', width: 'auto' }}
-            />
-          </Link>
-          <div className="nav-links">
-            <Link href="/proof">Proof Log</Link>
-            <Link href="/#contact">Contact</Link>
-          </div>
-        </nav>
+        <header className="site-header">
+          <nav className="site-nav">
+            <Link href="/" className="logo-link">
+              <img
+                src="/brand/logo/logo.png"
+                alt="ScopeLock"
+                width="224"
+                height="48"
+                style={{ height: '48px', width: 'auto' }}
+              />
+            </Link>
+            <div className="nav-links">
+              <Link href="/proof">Proof Log</Link>
+              <Link href="/#contact">Contact</Link>
+            </div>
+          </nav>
+        </header>
         {children}
         <footer>
           <small>© ScopeLock — membrane-first, event-native. Tagged milestones, locked criteria.</small>
