@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const templatesDir = path.join(__dirname, 'templates');
-const tokensPath = path.join(rootDir, 'app', 'styles', 'tokens.css');
+const tokensPath = path.join(rootDir, 'public', 'styles', 'tokens.css');
 
 const TAG_PATTERN = /^(evidence-sprint|ac-green)_([a-z0-9-]+)_(\d{4}-\d{2}-\d{2})$/i;
 const TYPE_LABEL = {

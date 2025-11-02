@@ -1,5 +1,18 @@
 node_modules/
+.DS_Store
+
+# Next.js build output
+.next/
+out/
+
+# Public build artifacts (keep proof directory)
 public/*
 !public/proof/
 !public/proof/**
-.DS_Store
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Old backups
+*.old

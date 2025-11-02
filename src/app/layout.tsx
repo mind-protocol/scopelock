@@ -1,0 +1,53 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: 'ScopeLock Delivery — Executable acceptance criteria, price and outcome locked',
+  description: 'ScopeLock co-writes AC.md + tests, delivers through tagged milestones (demo ≤90s, delta) and invoices at AC green.',
+  openGraph: {
+    title: 'ScopeLock Delivery',
+    description: 'Executable acceptance criteria. Price and outcome locked.',
+    type: 'website',
+    url: 'https://scopelock.dev/',
+    images: ['/og-scopelock.svg'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/brand/logo/scopelock-mark.svg', sizes: '32x32', type: 'image/svg+xml' },
+    ],
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <nav className="site-nav">
+          <Link href="/" className="logo-link">
+            <img
+              src="/brand/logo/scopelock-lockup.svg"
+              alt="ScopeLock"
+              width="224"
+              height="32"
+              style={{ height: '32px', width: 'auto' }}
+            />
+          </Link>
+          <div className="nav-links">
+            <Link href="/proof">Proof Log</Link>
+            <Link href="/#contact">Contact</Link>
+          </div>
+        </nav>
+        {children}
+        <footer>
+          <small>© ScopeLock — membrane-first, event-native. Tagged milestones, locked criteria.</small>
+        </footer>
+      </body>
+    </html>
+  );
+}

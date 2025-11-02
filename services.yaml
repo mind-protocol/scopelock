@@ -1,0 +1,28 @@
+# ScopeLock Service Specifications
+# MPSv3-compliant service manifest
+# Author: Priya "The Pulse"
+# Date: 2025-11-02
+# Purpose: Supervision for ScopeLock static website
+
+env:
+  SCOPELOCK_PORT: "8080"
+  SCOPELOCK_HOST: "0.0.0.0"
+
+services:
+  - id: scopelock_web
+    cmd: ["python3", "-m", "http.server", "${SCOPELOCK_PORT}", "--bind", "${SCOPELOCK_HOST}", "--directory", "public"]
+    cwd: "/home/mind-protocol/scopelock"
+    env:
+      SCOPELOCK_PORT: "${SCOPELOCK_PORT}"
+      SCOPELOCK_HOST: "${SCOPELOCK_HOST}"
+    readiness:
+      http_get: { url: "http://127.0.0.1:${SCOPELOCK_PORT}/index.html", timeout_s: 5 }
+    liveness:
+      http_get: { url: "http://127.0.0.1:${SCOPELOCK_PORT}/index.html", timeout_s: 3 }
+    restart:
+      policy: "always"
+      backoff: { base_ms: 1000, max_ms: 30000, jitter: true }
+    watch:
+      paths: ["public"]
+      on_change: "signal"  # No need to restart for static content changes
+    singleton: true

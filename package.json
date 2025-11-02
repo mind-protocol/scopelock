@@ -4,8 +4,22 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "next dev",
+    "build": "npm run proofgen && next build",
+    "start": "next start",
+    "export": "next build",
+    "proofgen": "node proofgen/index.js",
     "lint": "node scripts/run-lint.mjs",
-    "test": "node scripts/run-test.mjs",
-    "build": "node scripts/build.mjs"
+    "test": "node scripts/run-test.mjs"
+  },
+  "dependencies": {
+    "next": "^14.2.33",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.2",
+    "@types/react": "^19.2.2",
+    "typescript": "^5.9.3"
   }
 }

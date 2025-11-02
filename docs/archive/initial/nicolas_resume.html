@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Lester Reynolds - Technical Founder & Rapid Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.2em;
+            font-weight: 600;
+            color: #0366d6;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .tagline {
+            font-size: 1.1em;
+            color: #586069;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+        }
+        
+        .contact-info a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-info span {
+            color: #586069;
+        }
+        
+        .verify-box {
+            background: #f6f8fa;
+            border: 1px solid #d1d5da;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f6f8fa;
+            border-radius: 6px;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: 600;
+            color: #0366d6;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 0.85em;
+            color: #586069;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            color: #24292e;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            color: #24292e;
+            margin-bottom: 15px;
+            margin-top: 25px;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: #0366d6;
+            color: white;
+            padding: 25px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .highlight-box a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .bridge-section {
+            background: #fff8dc;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .bridge-section h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        
+        .project-card {
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #ffffff;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+        }
+        
+        .project-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #0366d6;
+        }
+        
+        .project-date {
+            color: #586069;
+            font-size: 0.9em;
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .achievement-card {
+            background: #f6f8fa;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .achievement-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .achievement-metric {
+            color: #0366d6;
+            font-weight: 600;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            color: #586069;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .tech-tag {
+            background: #f6f8fa;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            color: #586069;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .trial-box {
+            border: 2px solid #28a745;
+            border-radius: 6px;
+            padding: 25px;
+            background: #f6ffed;
+        }
+        
+        .trial-box h3 {
+            color: #155724;
+            margin-top: 0;
+        }
+        
+        .availability-section {
+            background: #f6f8fa;
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .availability-section h3 {
+            margin-top: 0;
+        }
+        
+        .timezone-info {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        
+        .what-i-dont-do {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        
+        .what-i-dont-do h4 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .simple-cta {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f6f8fa;
+            border-radius: 6px;
+            margin-top: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #0366d6;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background: #0256c7;
+        }
+        
+        strong {
+            color: #24292e;
+        }
+        
+        a {
+            color: #0366d6;
+        }
+        
+        .money-reality {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .verify-box, .what-i-dont-do, .simple-cta {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Nicolas Lester Reynolds</h1>
+            <p class="tagline">Serial Founder | Rapid MVP Development | Built 130+ Agent System</p>
+            <div class="contact-info">
+                <a href="mailto:nlr@mindprotocol.ai">nlr@mindprotocol.ai</a>
+                <span>|</span>
+                <a href="https://github.com/Lesterpaintstheworld">GitHub: 1,200+ Stars</a>
+                <span>|</span>
+                <a href="https://serenissima.ai">Live Demo: serenissima.ai</a>
+                <span>|</span>
+                <span>Lyon, France / US Hours Available</span>
+            </div>
+        </header>
+        
+        <div class="verify-box">
+            <strong>Don't trust this resume.</strong> Verify everything: 
+            <a href="https://serenissima.ai">Watch 130+ AI agents live</a> | 
+            <a href="https://github.com/Lesterpaintstheworld/TerminalVelocity">Check the 1,051 stars yourself</a> | 
+            <a href="https://github.com/Lesterpaintstheworld?tab=repositories">See daily commits going back years</a>
+        </div>
+        
+        <div class="key-metrics">
+            <div class="metric">
+                <span class="metric-value">130+</span>
+                <span class="metric-label">Autonomous AI Agents</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">500+</span>
+                <span class="metric-label">Pre-Launch Users</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">1,051</span>
+                <span class="metric-label">GitHub Stars</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">15+</span>
+                <span class="metric-label">Years Shipping Code</span>
+            </div>
+        </div>
+        
+        <section class="highlight-box">
+            <h3>I Built One of the World's Most Complex Public Multi-Agent Systems</h3>
+            <p><strong>La Serenissima:</strong> 130+ persistent AI agents with memory, goals, and economic constraints maintaining a Renaissance Venice simulation for 3+ months autonomously.</p>
+            <p style="margin-top: 15px;">Not a demo or prototype. Running continuously at <a href="https://serenissima.ai">serenissima.ai</a>. The systematic architecture that coordinates 130+ agents can deliver your MVP rapidly.</p>
+        </section>
+        
+        <section class="bridge-section">
+            <h3>Why I Do Both Complex AI and Rapid MVPs</h3>
+            <p>Mind Protocol launches Q1 2025. Taking development projects until then.</p>
+            <p>The architecture behind 130+ agents applies to rapid development. Complex systems or quick MVPs - same systematic approach, different timescales.</p>
+            <p><strong>Specialty:</strong> Building functional systems quickly. Sometimes that's AI agents, sometimes it's your overdue feature.</p>
+        </section>
+        
+        <section>
+            <h2>What I Actually Deliver</h2>
+            
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-title">Rapid MVPs</div>
+                    <div class="achievement-metric">48 Hours</div>
+                    <p>From concept to working code in 2 days</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-title">Emergency Rescues</div>
+                    <div class="achievement-metric">Saved $2M Raise</div>
+                    <p>Fixed failing demo 48h before pitch</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-title">Complex Systems</div>
+                    <div class="achievement-metric">Multi-Agent Coordination</div>
+                    <p>Built autonomous financial system in 72h</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-style: italic;">Not a specialist in optimization. A specialist in shipping when others say impossible.</p>
+        </section>
+        
+        <section>
+            <h2>Test Me With Your Impossible Deadline</h2>
+            
+            <div class="trial-box">
+                <h3>Trial Project: $500 for 48 Hours</h3>
+                <ul>
+                    <li>Pick something you need built yesterday</li>
+                    <li>I'll deliver a working MVP</li>
+                    <li>Not a prototype - actual working code</li>
+                    <li>Pay only if it works</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Recent example:</strong> Authentication system for fintech, delivered in 44 hours. They hired me for their next three features.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>AI Projects That Actually Work</h2>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">La Serenissima - Autonomous AI Society</div>
+                    <div class="project-date">2024 - Present</div>
+                </div>
+                <p>130+ AI agents with individual personalities, goals, and relationships maintaining a stable civilization.</p>
+                <ul>
+                    <li>3+ months of continuous operation</li>
+                    <li>50,000+ state updates per hour</li>
+                    <li>Agents negotiate, trade, and govern without human input</li>
+                    <li>Live demonstration at <a href="https://serenissima.ai">serenissima.ai</a></li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-tag">Multi-Agent Orchestration</span>
+                    <span class="tech-tag">Claude API</span>
+                    <span class="tech-tag">GPT-4</span>
+                    <span class="tech-tag">Advanced Memory System</span>
+                    <span class="tech-tag">Advanced Prompting</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Terminal Velocity - AI Collaborative Novel</div>
+                    <div class="project-date">2024</div>
+                </div>
+                <p>First novel written entirely by 10 collaborating AI agents. No human creative intervention.</p>
+                <ul>
+                    <li>1,051 GitHub stars (verify it yourself)</li>
+                    <li>Agents negotiated plot, characters, and narrative arc</li>
+                    <li>Demonstrated emergent creativity at scale</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-tag">Multi-Agent Coordination</span>
+                    <span class="tech-tag">Natural Language Processing</span>
+                    <span class="tech-tag">Autonomous Creativity</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Kin Kong - Autonomous Financial System</div>
+                    <div class="project-date">2024</div>
+                </div>
+                <p>Multi-agent system with financial autonomy built in 72 hours.</p>
+                <ul>
+                    <li>Processed $600K+ in volume</li>
+                    <li>Discontinued after operational learnings</li>
+                    <li>Proved autonomous economic agents feasible</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-tag">Multi-Agent Systems</span>
+                    <span class="tech-tag">Financial APIs</span>
+                    <span class="tech-tag">Real-time Processing</span>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Business Track Record</h2>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Civocracy - Civic Tech Platform</div>
+                    <div class="project-date">2015 - 2019</div>
+                </div>
+                <ul>
+                    <li>Raised â‚¬1M+ in funding</li>
+                    <li>Deployed across European cities</li>
+                    <li>Managed 10 FTE team</li>
+                    <li>Successful acquisition</li>
+                </ul>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Social Gaming Platform</div>
+                    <div class="project-date">2011 - 2016</div>
+                </div>
+                <ul>
+                    <li>Scaled to millions of users</li>
+                    <li>20K+ concurrent connections handled</li>
+                    <li>â‚¬2M+ revenue generated</li>
+                    <li>Still operational today</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Technical Reality</h2>
+            
+            <h3>Primary Skills: Complex Systems & AI</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">Multi-agent orchestration (130+ concurrent)</span>
+                <span class="tech-tag">Real-time state management</span>
+                <span class="tech-tag">Claude API / GPT-4 integration</span>
+                <span class="tech-tag">Rapid MVP development</span>
+            </div>
+            
+            <h3>Languages & Frameworks</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">JavaScript/TypeScript (15+ years)</span>
+                <span class="tech-tag">Python (10+ years)</span>
+                <span class="tech-tag">React/Next.js</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Solidity</span>
+            </div>
+            
+            <h3>Infrastructure</h3>
+            <div class="tech-stack">
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">20K+ requests/minute</span>
+            </div>
+        </section>
+        
+        <section>
+            <h2>How I Work</h2>
+            
+            <div class="timezone-info">
+                <h4>US Timezone Availability</h4>
+                <p>Core hours: 2-7 PM Central (9 PM - 2 AM Lyon)</p>
+                <p>5+ years serving US clients with consistent overlap</p>
+                <p>Yes, I take 9 PM calls. That's when we ship.</p>
+            </div>
+            
+            <h3>The 48-Hour Methodology</h3>
+            <ul>
+                <li><strong>Hour 0-4:</strong> Architecture design with custom AI infrastructure while you sleep</li>
+                <li><strong>Hour 4-20:</strong> Core implementation with AI-assisted development</li>
+                <li><strong>Hour 20-36:</strong> Parallel processing - AI handles testing while I refine</li>
+                <li><strong>Hour 36-48:</strong> Final integration and deployment</li>
+            </ul>
+            <p style="margin-top: 15px;"><em>The advantage: Custom AI development infrastructure that works 24/7, catches errors, and maintains context. That's how rapid delivery becomes reliable.</em></p>
+            
+            <div class="what-i-dont-do">
+                <h4>What I Don't Do</h4>
+                <ul style="margin-left: 20px;">
+                    <li>Long-term maintenance (I build, you maintain)</li>
+                    <li>Deep optimization (I ship fast, not perfect)</li>
+                    <li>Enterprise process (I move too fast for committees)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="availability-section">
+            <h3>Currently Available for Rapid Projects</h3>
+            <p><strong>Fixed Project Pricing:</strong></p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>Quick MVP (48-72h): $5,000</li>
+                <li>Full Feature (1 week): $15,000</li>
+                <li>Complex System (2 weeks): $50,000</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>Availability:</strong> Taking select projects through Q1 2025</p>
+        </section>
+        
+        <div class="simple-cta">
+            <h3>Let's See If We Fit</h3>
+            <p>You need something built fast. I build things fast.</p>
+            <p>Try me with a $500 trial project. If I deliver, we continue.</p>
+            <p>If not, you've only lost $500 and 48 hours.</p>
+            <a href="mailto:nlr@mindprotocol.ai" class="cta-button">Send Your Impossible Deadline</a>
+        </div>
+    </div>
+</body>
+</html>

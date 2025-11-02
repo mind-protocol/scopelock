@@ -1,0 +1,84 @@
+.proofPage {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--slk-gap-6) var(--slk-gap-5);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--slk-gap-3);
+  margin-bottom: var(--slk-gap-6);
+}
+
+.intro {
+  margin-bottom: var(--slk-gap-5);
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--slk-gap-2) var(--slk-gap-4);
+  align-items: center;
+  margin-top: var(--slk-gap-2);
+}
+
+.dotEvidence {
+  background: var(--slk-accent-2);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotGreen {
+  background: var(--slk-success);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.listHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--slk-gap-3);
+}
+
+.empty :global(.card) {
+  text-align: center;
+}
+
+.proofList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--slk-gap-3);
+}
+
+.proofList li {
+  display: flex;
+  align-items: center;
+  gap: var(--slk-gap-3);
+  background: var(--slk-surface);
+  padding: var(--slk-gap-3) var(--slk-gap-4);
+  border-radius: var(--slk-radius);
+  border: 1px solid rgba(230,234,242,0.05);
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entry a {
+  font-weight: 600;
+}
+
+.entry small {
+  color: var(--slk-muted);
+}

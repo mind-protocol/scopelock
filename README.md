@@ -19,6 +19,16 @@ make proof
 
 The proof bundle is written to `public/proof` and contains an index page with the generated entries.
 
+## Documentation
+
+**Core Documentation:**
+- [Delivery Model](docs/core/delivery_model.md) — How ScopeLock delivers against executable acceptance criteria
+- [Team Structure](docs/core/team_structure.md) — Citizen roles, domains, handoffs, and collaboration protocols
+- [Client Guide](docs/core/client_guide.md) — How to work with ScopeLock for predictable, verifiable delivery
+
+**Design:**
+- [Brand & UI Styleguide](docs/design/brand_and_ui_styleguide.md) — Visual language, tokens, components
+
 ## Repository layout
 
 - `app/` — static site source assets.
