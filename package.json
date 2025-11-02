@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run proofgen && next build",
+    "build": "git fetch --tags 2>/dev/null || true && npm run proofgen && next build",
     "start": "next start",
     "export": "next build",
     "proofgen": "node proofgen/index.js",
