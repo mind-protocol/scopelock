@@ -3,14 +3,14 @@
 #
 # Minimal file-based backend: webhooks + Telegram + Claude CLI runner
 
-# Web Framework
-fastapi==0.109.0
-uvicorn[standard]==0.27.0
-pydantic==2.5.3
-pydantic-settings==2.1.0
+# Web Framework (with pre-built wheels for Render)
+fastapi==0.115.4
+uvicorn[standard]==0.32.0
+pydantic==2.9.2
+pydantic-settings==2.6.1
 
 # HTTP Client (for Telegram API)
-httpx==0.26.0
+httpx==0.27.2
 
 # Data & Parsing
-python-multipart==0.0.6
+python-multipart==0.0.12
