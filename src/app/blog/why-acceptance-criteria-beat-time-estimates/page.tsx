@@ -59,8 +59,8 @@ export default function WhyAcceptanceCriteriaPage() {
         </div>
 
         <div className={styles.verifyLinks}>
-          <Link href="/proof/evidence-sprint_otp-signup">View proof log →</Link>
-          <a href="https://github.com/scopelock/example-otp" target="_blank" rel="noopener">View on GitHub →</a>
+          <Link href="/proof">View proof log →</Link>
+          <a href="https://github.com/mind-protocol/scopelock" target="_blank" rel="noopener">View ScopeLock on GitHub →</a>
         </div>
       </section>
 
@@ -98,10 +98,7 @@ export default function WhyAcceptanceCriteriaPage() {
 
         <div className={styles.githubEmbed}>
           <div className={styles.githubHeader}>
-            <span className={styles.githubPath}>scopelock/example-otp/AC.md</span>
-            <a href="https://github.com/scopelock/example-otp/blob/main/AC.md" target="_blank" rel="noopener" className={styles.githubLink}>
-              View on GitHub →
-            </a>
+            <span className={styles.githubPath}>AC.md: OTP Signup (Example)</span>
           </div>
 
           <pre className={styles.codeBlock}><code>{`# AC.md: OTP Signup
@@ -171,16 +168,8 @@ Tests pass: Done
 Tests fail: Not done`}</code></pre>
         </div>
 
-        <div className={styles.verifyLinks}>
-          <a href="https://github.com/scopelock/example-otp/blob/main/AC.md" target="_blank" rel="noopener">
-            View full AC.md →
-          </a>
-          <a href="https://github.com/scopelock/example-otp/blob/main/tests/acceptance/signup.spec.ts" target="_blank" rel="noopener">
-            View tests →
-          </a>
-          <a href="https://github.com/scopelock/example-otp/pull/42" target="_blank" rel="noopener">
-            View PR that closed this →
-          </a>
+        <div className={styles.verifyNote}>
+          <p><strong>Note:</strong> This is an example AC.md structure. Real implementations would include actual test files and git tags.</p>
         </div>
       </section>
 
@@ -212,9 +201,8 @@ Running 10 tests using 4 workers
         </div>
 
         <div className={styles.copyCommand}>
-          <span>Run this yourself:</span>
-          <code>git clone https://github.com/scopelock/example-otp && npm install && npm run acceptance:signup</code>
-          <button className={styles.copyButton}>Copy</button>
+          <span>Typical test command:</span>
+          <code>npm run acceptance:signup</code>
         </div>
       </section>
 
@@ -232,9 +220,6 @@ Running 10 tests using 4 workers
             <div className={styles.gitTimelineContent}>
               <code className={styles.gitTag}>ac-baseline_otp-signup</code>
               <p>AC.md frozen, scope locked</p>
-              <a href="https://github.com/scopelock/example-otp/releases/tag/ac-baseline_otp-signup_2025-11-02" target="_blank" rel="noopener">
-                View tag →
-              </a>
             </div>
           </div>
 
@@ -317,10 +302,8 @@ Running 10 tests using 4 workers
           </tbody>
         </table>
 
-        <div className={styles.verifyLinks}>
-          <a href="https://github.com/scopelock/example-otp/blob/main/DELTA.md" target="_blank" rel="noopener">
-            View full DELTA.md →
-          </a>
+        <div className={styles.verifyNote}>
+          <p><strong>Note:</strong> This DELTA.md shows example metrics. Real projects would include actual performance data.</p>
         </div>
       </section>
 
@@ -393,34 +376,34 @@ Running 10 tests using 4 workers
         <h2>Verify Everything</h2>
 
         <div className={styles.verificationGrid}>
-          <a href="https://github.com/scopelock/example-otp/blob/main/AC.md" target="_blank" rel="noopener" className={styles.verifyCard}>
-            <h3>View AC.md</h3>
-            <p>on GitHub</p>
+          <a href="https://github.com/mind-protocol/scopelock" target="_blank" rel="noopener" className={styles.verifyCard}>
+            <h3>View on GitHub</h3>
+            <p>mind-protocol/scopelock</p>
           </a>
 
-          <a href="https://github.com/scopelock/example-otp/tree/main/tests" target="_blank" rel="noopener" className={styles.verifyCard}>
-            <h3>View Tests</h3>
-            <p>on GitHub</p>
-          </a>
-
-          <a href="https://github.com/scopelock/example-otp/pull/42" target="_blank" rel="noopener" className={styles.verifyCard}>
-            <h3>View PR</h3>
-            <p>that closed it</p>
-          </a>
-
-          <Link href="/proof/ac-green_otp-signup_2025-11-07" className={styles.verifyCard}>
+          <Link href="/proof" className={styles.verifyCard}>
             <h3>View Proof Log</h3>
-            <p>/proof/...</p>
+            <p>/proof</p>
           </Link>
 
-          <a href="#run-yourself" className={styles.verifyCard}>
-            <h3>Run tests</h3>
-            <p>yourself</p>
+          <Link href="/blog" className={styles.verifyCard}>
+            <h3>Read Blog</h3>
+            <p>Learn methodology</p>
+          </Link>
+
+          <Link href="/#contact" className={styles.verifyCard}>
+            <h3>Schedule Call</h3>
+            <p>Discuss your project</p>
+          </Link>
+
+          <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener" className={styles.verifyCard}>
+            <h3>LinkedIn</h3>
+            <p>Nicolas L. Reynolds</p>
           </a>
 
-          <a href="https://demo.scopelock.ai/otp-signup" target="_blank" rel="noopener" className={styles.verifyCard}>
-            <h3>Try live demo</h3>
-            <p>demo.scopelock.ai</p>
+          <a href="https://github.com/mind-protocol" target="_blank" rel="noopener" className={styles.verifyCard}>
+            <h3>GitHub Org</h3>
+            <p>All repositories</p>
           </a>
         </div>
       </section>
@@ -437,7 +420,7 @@ Running 10 tests using 4 workers
         <p className={styles.ctaAlt}>
           Or verify first: <Link href="/proof">Browse /proof</Link> (all delivered projects) •
           <a href="https://github.com/mind-protocol" target="_blank" rel="noopener"> Check GitHub org</a> •
-          <a href="https://github.com/scopelock/examples" target="_blank" rel="noopener"> Read AC.md examples</a>
+          <Link href="/blog"> Read more blog posts</Link>
         </p>
       </section>
 
