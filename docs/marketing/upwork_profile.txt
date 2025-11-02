@@ -1,0 +1,169 @@
+HEADLINE:
+Software Engineer & Multi-Agent AI Specialist | ScopeLock Delivery
+
+HOURLY RATE:
+$200.00/hr (displayed but not used - we work fixed-price milestones)
+
+===================================
+OVERVIEW / PROFILE DESCRIPTION:
+===================================
+
+I lock scope and deliver against executable acceptance criteria. You pay only when tests pass.
+
+Founder with La Serenissima (130+ persistent AI agents, 3+ months live), Terminal Velocity (1,051 GitHub stars), and Civocracy (€1M+ raised, successful exit). I build production systems through clear acceptance criteria, Evidence Sprints, and public proof.
+
+Not a traditional freelancer - founder between ventures doing strategic delivery sprints.
+
+
+WHAT SCOPELOCK DELIVERY MEANS
+
+1. We Co-Write Acceptance Criteria
+   - Functional + non-functional requirements (what it does, how fast)
+   - Executable tests + seed data (you can verify yourself)
+   - Scope locked with git tag
+
+2. Evidence Sprint (2-5 Days)
+   - Working demo (≤90 seconds to test)
+   - Quantified delta: "Signup p95: 1200ms → 280ms (↓77%), steps: 7 → 3"
+   - Published proof entry
+
+3. Payment at AC Green
+   - All tests pass (CI green)
+   - Performance thresholds met
+   - Invoice only when complete
+
+
+RECENT DELIVERIES
+
+- Rebuilt SaaS 48 hours before investor demo → Client raised $2M
+- Fixed fintech authentication in 44 hours → Now processing $600K+ volume
+- La Serenissima: 130+ persistent AI agents, 50,000+ state updates/hour, 99.7% uptime
+- Terminal Velocity: 1,051 GitHub stars (top 0.01% of GitHub projects)
+- 500+ projects delivered, average Evidence Sprint: 2-5 days
+
+
+HOW WE WORK
+
+Phase 1: ScopeLock (Free)
+- 30-60 min call, I draft acceptance criteria
+- You approve scope and price
+- Baseline locked
+
+Phase 2: Evidence Sprint
+- Working demo in 2-5 days
+- Quantified before→after deltas
+- You test and decide to continue
+
+Phase 3: AC Green
+- Full implementation
+- All tests passing
+- Invoice when complete
+
+Scope Changes:
+- Swap: Equal/lower complexity → €0, same milestone
+- Add: New features → new milestone, priced separately
+
+
+TECHNICAL STACK
+
+Languages: JavaScript/TypeScript (15y), Python (10y), Solidity, Go, Rust
+Frontend: React, Next.js, Vue, React Native, Tailwind
+Backend: Node.js, FastAPI, Django, PostgreSQL, MongoDB, Redis
+AI/ML: Claude API, GPT-4, LangChain, custom orchestration, vector databases
+Cloud: AWS, GCP, Vercel, Docker, Kubernetes
+Scale: 20K+ requests/minute, millions of users, 99%+ uptime
+
+
+THE TEAM
+
+I work with specialized AI citizens (domain experts) handling:
+- Architecture & event schemas
+- Core development & acceptance tests
+- Quality review & fail-loud enforcement
+- Frontend, /proof UI, accessibility
+
+This is 15 years of custom tooling + domain-specific AI infrastructure. Parallel work streams without coordination overhead.
+
+
+PRICING (Fixed-Price Milestones)
+
+Evidence Sprint: $3,000–$6,000
+- Working demo (≤90s), quantified delta, published proof
+- Timeline: 2–5 days
+- Best for: Validate approach, test collaboration
+
+Feature to AC Green: $5,000–$15,000
+- Full implementation, tests passing, 2 weeks adjustments
+- Timeline: 1–2 weeks
+- Best for: Single feature, MVP, core system
+
+Week-Scale Integration: $15,000–$35,000
+- Multiple Evidence Sprints, full integration, architecture docs
+- Timeline: 2–4 weeks
+- Best for: Multi-feature systems, complex integrations
+
+Minimum: $2,500
+Payment: 50/50 split (baseline + AC green)
+Guarantee: Pay only when tests pass. Tests fail = we fix or refund.
+
+
+WHAT I PREVENT
+
+"2 Weeks" Becomes 5 Months
+→ Executable acceptance criteria define "done", not judgment calls
+
+Scope Creep Surprises
+→ Change Control: every change is Swap (€0) or Add (new price), you approve first
+
+"Tests Pass" But It's Broken
+→ You can run the tests yourself, exact command + seed data in AC.md
+
+
+PERFECT FOR
+
+✓ Startups with investor demos approaching
+✓ CTOs needing AI integration with measurable outcomes
+✓ Emergency rescues (previous developer disappeared)
+✓ Teams wanting clear acceptance criteria and proof
+
+NOT FOR
+
+✗ Long-term employment or CTO search
+✗ Simple WordPress/Shopify sites
+✗ Pure maintenance contracts
+✗ Daily standups and Jira theatre
+
+
+VERIFICATION
+
+Live Systems:
+- serenissima.ai: 130+ agents running right now
+- github.com/Lesterpaintstheworld: 1,051 stars, daily commits
+- scopelock.dev/proof: Public milestone record (launching Q1 2025)
+
+First call free: I'll show GitHub commits, live systems, and draft AC.md for your project.
+
+
+HOW TO START
+
+1. Message me with brief description of your need
+2. Schedule ScopeLock call (30-60 min, free)
+3. Review AC.md draft
+4. Approve baseline (scope locked, price locked)
+5. See Evidence Sprint (2-5 days: working demo + delta)
+6. Pay at AC green (when tests pass)
+
+No hidden costs. No hourly surprises. No ambiguity about "done."
+
+Lock the scope. Prove the value.
+
+
+===================================
+ADDITIONAL INFO:
+===================================
+
+Location: Lyon, France (CET/CEST)
+Availability: 14:00–19:00 Central European Time for calls
+Languages: English (fluent), French (native)
+GitHub: github.com/Lesterpaintstheworld
+Response time: <2 hours (typically)

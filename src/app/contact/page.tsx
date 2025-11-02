@@ -21,7 +21,7 @@ export default function ContactPage() {
           co-write <code>AC.md</code>, and agree on price before any work begins.
         </p>
         <p>
-          <a className="cta" href="https://cal.com/scopelock/kickoff" target="_blank" rel="noopener">
+          <a className="cta" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">
             Book a 30-minute kickoff call →
           </a>
         </p>
@@ -55,15 +55,18 @@ export default function ContactPage() {
       </section>
 
       <section className="card">
-        <h2>Platforms</h2>
-        <p>You can also find us on:</p>
+        <h2>Find Us Elsewhere</h2>
+        <p>Connect on other platforms:</p>
         <ul>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">nicolas-lester-reynolds</a></li>
+          <li><strong>X (Twitter):</strong> <a href="https://x.com/nlr_ai" target="_blank" rel="noopener">@nlr_ai</a></li>
+          <li><strong>Telegram:</strong> <a href="https://t.me/nlr_ai" target="_blank" rel="noopener">@nlr_ai</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/mind-protocol" target="_blank" rel="noopener">@mind-protocol</a></li>
           <li><strong>Upwork:</strong> Available for fixed-price contracts</li>
           <li><strong>Contra:</strong> Independent work platform</li>
-          <li><strong>LinkedIn:</strong> Connect for updates and case studies</li>
         </ul>
         <p>
-          Direct engagement via email or Cal.com is preferred for fastest response.
+          <strong>Note:</strong> Direct engagement via email or Cal.com is preferred for fastest response.
         </p>
       </section>
 

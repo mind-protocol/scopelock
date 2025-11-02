@@ -54,6 +54,10 @@ export default function RootLayout({
             <a href="https://github.com/mind-protocol/scopelock" target="_blank" rel="noopener">GitHub</a>
             {' · '}
             <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">LinkedIn</a>
+            {' · '}
+            <a href="https://x.com/nlr_ai" target="_blank" rel="noopener">X</a>
+            {' · '}
+            <a href="https://t.me/nlr_ai" target="_blank" rel="noopener">Telegram</a>
           </small>
         </footer>
       </body>

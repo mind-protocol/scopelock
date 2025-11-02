@@ -148,7 +148,7 @@ export default function HomePage() {
         <h2 id="contact-title">Contact</h2>
         <p><strong>Kickoff ≤ 72h.</strong> Tell us about a milestone: we write <code>AC.md</code> together and deliver until &quot;AC green&quot;.</p>
         <div className="contact-actions">
-          <a className="cta" href="https://cal.com/scopelock/kickoff" target="_blank" rel="noopener">Book a slot</a>
+          <a className="cta" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">Book a slot</a>
           <a href="mailto:hello@scopelock.dev">hello@scopelock.dev</a>
         </div>
       </section>
