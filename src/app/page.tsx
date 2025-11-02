@@ -202,8 +202,8 @@ export default function HomePage() {
                 <div className="stat-label">Repos</div>
               </div>
               <div className="stat-item">
-                <div className="stat-value">99.7%</div>
-                <div className="stat-label">Uptime</div>
+                <div className="stat-value">130+</div>
+                <div className="stat-label">Coordinated Agents</div>
               </div>
             </div>
           </div>
