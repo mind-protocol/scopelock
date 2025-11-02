@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ContactForm } from '../../components/ContactForm';
+import { TimezoneConverter } from '../../components/TimezoneConverter';
 
 export const metadata: Metadata = {
   title: 'Contact — ScopeLock',
@@ -56,11 +57,9 @@ export default function ContactPage() {
 
       <section className="card">
         <h2>Availability</h2>
-        <ul>
-          <li><strong>Location:</strong> France (Central European Time)</li>
-          <li><strong>Core hours:</strong> 14:00–19:00 CET (overlaps with US East Coast afternoons, West Coast mornings)</li>
-          <li><strong>Kickoff timing:</strong> Usually ≤72 hours from first contact</li>
-        </ul>
+        <p><strong>Location:</strong> France (Central European Time)</p>
+        <TimezoneConverter />
+        <p><strong>Kickoff timing:</strong> Usually ≤72 hours from first contact</p>
       </section>
 
       <section className="card">
