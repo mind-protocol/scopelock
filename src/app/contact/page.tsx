@@ -62,7 +62,7 @@ export default function ContactPage() {
           <li><strong>X (Twitter):</strong> <a href="https://x.com/nlr_ai" target="_blank" rel="noopener">@nlr_ai</a></li>
           <li><strong>Telegram:</strong> <a href="https://t.me/nlr_ai" target="_blank" rel="noopener">@nlr_ai</a></li>
           <li><strong>GitHub:</strong> <a href="https://github.com/mind-protocol" target="_blank" rel="noopener">@mind-protocol</a></li>
-          <li><strong>Upwork:</strong> Available for fixed-price contracts</li>
+          <li><strong>Upwork:</strong> <a href="https://www.upwork.com/freelancers/~0121cfb6a08401468a" target="_blank" rel="noopener">View profile</a></li>
           <li><strong>Contra:</strong> Independent work platform</li>
         </ul>
         <p>
