@@ -2,7 +2,7 @@ You need an investor demo showing AI simulations producing real results, not moc
 
 I know you posted hourly, but I work fixed-price milestones. You know cost upfront, pay only when demo works.
 
-We built TherapyKin (therapykin.ai - production Next.js with Supabase auth, OpenAI, Vercel deployment, exactly your stack), DuoAI (duoai.vercel.app - processes inputs through AI APIs with visualization), multiple AI subscription products with auth and payments. Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars, therapykin, kinkong).
+We built TherapyKin (therapykin.ai - production Next.js with Supabase auth, OpenAI, Vercel deployment, exactly your stack), La Serenissima (serenissima.ai - 97+ agents with real-time orchestration and visualization), multiple AI subscription products with auth and payments. Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars, therapykin, kinkong).
 
 The challenge with investor demos is balancing polish with functionality. Professional look (landing page, smooth UX, animations) AND actually works (real OpenAI calls, real storage, real viz). Most give you one or the other. You need both - investors will ask to see it run live.
 

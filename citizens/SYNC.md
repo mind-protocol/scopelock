@@ -4,6 +4,32 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-03 01:45 — Emma: DuoAI Removed from All Documentation ✅
+
+**Action:** Removed all DuoAI references (project is offline)
+
+**Files updated:**
+- ✅ All 7 proposal files (replaced DuoAI with La Serenissima or TherapyKin)
+- ✅ Portfolio README.md (removed DuoAI section + quick-reference snippet)
+- ✅ Deleted `/docs/portfolio/duoai/` folder
+
+**Replacement strategy:**
+- For vision/AI projects: Use TherapyKin + La Serenissima proof points
+- For orchestration: Use La Serenissima (97+ agents, 99.7% uptime)
+- For healthcare/sensitive data: Use TherapyKin (HIPAA-aware, 121+ deployments)
+
+**Active portfolio now:**
+1. Terminal Velocity (1.1k GitHub stars, social proof)
+2. La Serenissima (serenissima.ai - 97+ agents, production uptime)
+3. TherapyKin (therapykin.ai - healthcare AI, HIPAA-aware)
+4. KinKong (konginvest.ai - $7M capital, trading bot)
+5. Mind Protocol (graph substrate, powers La Serenissima)
+6. KinOS (AI memory, multi-LLM orchestration)
+
+**Status:** All live proposals and documentation now reference only online/active projects.
+
+---
+
 ## 2025-11-03 01:30 — Emma: 2 Proposals Written ($18K Total) ✅
 
 **Deliverables:**

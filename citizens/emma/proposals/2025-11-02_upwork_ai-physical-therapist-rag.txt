@@ -2,7 +2,7 @@ You need an AI Physical Therapist that retrieves the right video based on user p
 
 I know you posted hourly, but I work fixed-price milestones. You know cost upfront, pay only when tests pass.
 
-We built KinOS (RAG with hierarchical retrieval and multi-modal content), DuoAI (duoai.vercel.app - Claude vision API with real-time multimedia), TherapyKin (therapykin.ai - AI companion with persistent conversational flow). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+We built KinOS (RAG with hierarchical retrieval and multi-modal content), La Serenissima (serenissima.ai - 97+ agents with 99.7% uptime, event-driven orchestration), TherapyKin (therapykin.ai - AI companion with persistent conversational flow). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
 
 The core challenge is retrieval, not the LLM. Your AI needs to map "knee pain, bending motion, score 70" to the correct assessment flow, then retrieve the specific trunk twist video - not guess. That requires structured metadata, semantic search, and a decision tree matching pain patterns to protocols.
 

@@ -1,20 +1,20 @@
 # Render Deployment Configuration
 # https://render.com/docs/yaml-spec
 #
-# Full repo deployment: backend + citizens + Claude CLI
-# Cost: $7/month (Starter plan) - NO DATABASE
+# 2-service architecture: Python backend + Node.js Rafael runner
+# Cost: $7/month × 2 = $14/month (NO DATABASE)
 
 services:
-  # FastAPI Backend with Claude CLI support (Docker)
+  # 1. Python Backend (FastAPI)
   - type: web
     name: scopelock-backend
-    runtime: docker
+    runtime: python
     plan: starter  # $7/month
     region: oregon
     branch: main
     rootDir: backend
-    dockerfilePath: ./Dockerfile
-    dockerContext: ..  # Build from repo root to include citizens/
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 2"
 
     # Persistent disk for file storage (drafts, events)
     disk:
@@ -31,13 +31,11 @@ services:
       - key: WEBHOOK_SECRET
         sync: false
 
-      # Paths (Docker image has full repo at /app)
-      - key: SCOPELOCK_REPO
-        value: "/app"
-      - key: DATA_DIR
-        value: "/var/data"
-      - key: CITIZENS_DIR
-        value: "/app/citizens"
+      # Service URLs (set after deploying both services)
+      - key: RAFAEL_RUNNER_URL
+        value: "https://scopelock-rafael-runner.onrender.com"
+      - key: BACKEND_API_URL
+        value: "https://scopelock.onrender.com"
 
       # Python Config
       - key: PYTHONUNBUFFERED
@@ -56,4 +54,40 @@ services:
     buildFilter:
       paths:
         - backend/**
+
+  # 2. Node.js Rafael Runner (Claude CLI)
+  - type: web
+    name: scopelock-rafael-runner
+    runtime: node
+    plan: starter  # $7/month
+    region: oregon
+    branch: main
+    rootDir: rafael-runner
+    buildCommand: "npm install && npm install -g @anthropic-ai/claude-code"
+    startCommand: "node index.js"
+
+    envVars:
+      # Service URLs
+      - key: BACKEND_API_URL
+        value: "https://scopelock.onrender.com"
+
+      # Paths (full repo deployed to /opt/render/project/src)
+      - key: REPO_PATH
+        value: "/opt/render/project/src"
+
+      # Timeout
+      - key: TIMEOUT_MS
+        value: "120000"  # 2 minutes
+
+      # Node Config
+      - key: NODE_ENV
+        value: "production"
+
+    # Health checks
+    healthCheckPath: /health
+
+    # Build settings
+    buildFilter:
+      paths:
+        - rafael-runner/**
         - citizens/**

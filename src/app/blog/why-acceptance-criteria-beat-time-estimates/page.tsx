@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { TableOfContents } from '../../../components/TableOfContents';
 import styles from './styles.module.css';
 
 export const metadata: Metadata = {
@@ -9,6 +10,17 @@ export const metadata: Metadata = {
 };
 
 export default function WhyAcceptanceCriteriaPage() {
+  const tocSections = [
+    { id: 'problem', title: 'The Problem with Time Estimates' },
+    { id: 'three-problems', title: 'Time Estimates Create Three Problems' },
+    { id: 'solution', title: 'The AC.md Solution' },
+    { id: 'verification', title: 'Verification: Tests Passing' },
+    { id: 'timeline', title: 'Delivery Timeline' },
+    { id: 'results', title: 'Quantified Results' },
+    { id: 'catch', title: "What's The Catch?" },
+    { id: 'pricing', title: 'What This Costs' },
+  ];
+
   return (
     <main className={styles.auditMode}>
       {/* Minimal Hero */}
@@ -25,11 +37,12 @@ export default function WhyAcceptanceCriteriaPage() {
           <span>•</span>
           <span>Nicolas Lester Reynolds</span>
         </div>
-        <a href="#proof" className={styles.jumpLink}>↓ Jump to proof</a>
       </section>
 
+      <TableOfContents sections={tocSections} />
+
       {/* Problem: Real Timeline Comparison */}
-      <section className={styles.section}>
+      <section className={styles.section} id="problem">
         <h2>The Problem with Time Estimates</h2>
 
         <div className={styles.timelineComparison}>
@@ -65,7 +78,7 @@ export default function WhyAcceptanceCriteriaPage() {
       </section>
 
       {/* Three Problems */}
-      <section className={styles.section}>
+      <section className={styles.section} id="three-problems">
         <h2>Time Estimates Create Three Problems</h2>
 
         <div className={styles.problemGrid}>
@@ -93,7 +106,7 @@ export default function WhyAcceptanceCriteriaPage() {
       </section>
 
       {/* Real AC.md Example */}
-      <section className={styles.section} id="proof">
+      <section className={styles.section} id="solution">
         <h2>The AC.md Solution: Real Example</h2>
 
         <div className={styles.githubEmbed}>
@@ -174,7 +187,7 @@ Tests fail: Not done`}</code></pre>
       </section>
 
       {/* Tests Passing: Real Output */}
-      <section className={styles.section}>
+      <section className={styles.section} id="verification">
         <h2>Verification: Tests Passing (Real Output)</h2>
 
         <div className={styles.terminalOutput}>
@@ -207,7 +220,7 @@ Running 10 tests using 4 workers
       </section>
 
       {/* Git Timeline */}
-      <section className={styles.section}>
+      <section className={styles.section} id="timeline">
         <h2>Delivery Timeline: Real Git Tags</h2>
 
         <div className={styles.gitTimeline}>
@@ -256,7 +269,7 @@ Running 10 tests using 4 workers
       </section>
 
       {/* Delta Table */}
-      <section className={styles.section}>
+      <section className={styles.section} id="results">
         <h2>Quantified Results: DELTA.md</h2>
 
         <table className={styles.deltaTable}>
@@ -308,7 +321,7 @@ Running 10 tests using 4 workers
       </section>
 
       {/* What's The Catch */}
-      <section className={styles.catchSection}>
+      <section className={styles.catchSection} id="catch">
         <h2>What's The Catch?</h2>
         <p className={styles.catchSubtitle}>(The Auditor in you is asking this right now)</p>
 
@@ -338,7 +351,7 @@ Running 10 tests using 4 workers
       </section>
 
       {/* Pricing */}
-      <section className={styles.section}>
+      <section className={styles.section} id="pricing">
         <h2>What This Costs</h2>
 
         <table className={styles.pricingTable}>

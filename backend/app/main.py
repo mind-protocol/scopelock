@@ -130,11 +130,20 @@ async def health_check():
         last_check=datetime.utcnow()
     )
 
-    # Check Claude CLI (verify repo exists)
-    services["claude_cli"] = ServiceStatus(
-        status="connected" if settings.scopelock_repo.exists() else "disconnected",
-        last_check=datetime.utcnow()
-    )
+    # Check Rafael Runner service
+    try:
+        import httpx
+        response = httpx.get(f"{settings.rafael_runner_url}/health", timeout=5.0)
+        services["rafael_runner"] = ServiceStatus(
+            status="connected" if response.status_code == 200 else "disconnected",
+            last_check=datetime.utcnow()
+        )
+    except Exception as e:
+        logger.debug(f"Rafael Runner check failed: {e}")
+        services["rafael_runner"] = ServiceStatus(
+            status="disconnected",
+            last_check=datetime.utcnow()
+        )
 
     # Determine overall status
     all_connected = all(s.status == "connected" for s in services.values())
