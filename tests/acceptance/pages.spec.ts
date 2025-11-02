@@ -28,9 +28,10 @@ test.describe('F1: Core Pages', () => {
   test('Homepage has hero section', async ({ page }) => {
     await page.goto(`${BASE_URL}/`);
 
-    // Check for key hero content - h1 specifically
-    await expect(page.getByRole('heading', { name: /scopelock delivery/i, level: 1 })).toBeVisible();
-    await expect(page.getByText(/executable acceptance criteria/i)).toBeVisible();
+    // Check for key hero content within the hero section specifically
+    const hero = page.locator('.hero');
+    await expect(hero.getByRole('heading', { name: /lock the scope/i, level: 1 })).toBeVisible();
+    await expect(hero.getByText(/you'll know if we're good before you pay/i)).toBeVisible();
   });
 
   test('/proof page is ready for tags', async ({ page }) => {

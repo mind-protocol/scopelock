@@ -1,4 +1,32 @@
 #!/usr/bin/env node
+/**
+ * Proof Page Generator
+ *
+ * Purpose: Generate static HTML proof pages from git tags
+ * Command: npm run proofgen
+ * Owner: Daniel "The Forge"
+ *
+ * Documentation:
+ * - Specification: docs/automation/SPEC.md#proof-regeneration
+ * - Output Contract: ARCHITECTURE.md (PRF-020)
+ * - Repository Map: REPO_MAP.md#scripts
+ *
+ * Input:
+ * - Git tags matching: evidence-sprint_*, ac-green_*, change-*
+ * - Proof files at tag: proof/AC.md, proof/DEMO.md, proof/DELTA.md
+ *
+ * Output:
+ * - public/proof/index.html (index page)
+ * - public/proof/index.json (API for homepage teaser)
+ * - public/proof/[tag]/index.html (detail pages)
+ *
+ * Events Emitted:
+ * - proof.generated@1.0 { tag, entry_count, timestamp }
+ *
+ * Failure Mode:
+ * - Tag missing proof files → Generate page with "Missing files" chips (don't crash)
+ */
+
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';

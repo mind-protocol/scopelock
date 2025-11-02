@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
+import { LiveCommits } from '../components/LiveCommits';
 
 export default function HomePage() {
   return (
@@ -170,14 +172,20 @@ export default function HomePage() {
               </svg>
               <h3>Recent Commits</h3>
             </div>
-            <ul className="commit-list">
-              <li><span className="commit-sha">daccbfc</span> feat: align website with communication guide</li>
-              <li><span className="commit-sha">3031cce</span> docs: update SYNC.md with styleguide alignment</li>
-              <li><span className="commit-sha">ec8e69d</span> refine: align homepage with brand styleguide v1</li>
-              <li><span className="commit-sha">cbed917</span> docs: format citizen CLAUDE.md files</li>
-            </ul>
+            <Suspense fallback={
+              <ul className="commit-list">
+                <li>
+                  <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">
+                    <span className="commit-sha">•••••••</span>
+                    <span className="commit-msg">Loading recent activity...</span>
+                  </a>
+                </li>
+              </ul>
+            }>
+              <LiveCommits />
+            </Suspense>
             <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="activity-link">
-              View all 65,000+ commits →
+              View all 65,000+ commits across all repos →
             </a>
           </div>
 

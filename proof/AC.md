@@ -70,19 +70,19 @@ npm test
 # ✅ 26 tests passed, 3 skipped (prod-only), 0 failed
 ```
 
-**Test Results (2025-11-02 21:05 UTC):**
+**Test Results (Last run: 2025-11-02 21:35 UTC):**
 - **F1: Core Pages** — 11/11 passed
-  - All 12 pages return HTTP 200
-  - Hero visible on homepage
+  - All 11 pages return HTTP 200
+  - Hero visible on homepage (scoped to .hero element)
   - Page-specific content present
 - **F2: Navigation & UX** — 4/4 passed
-  - Site header with logo and nav links
+  - Site header with logo and nav links (scoped to .site-nav)
   - Footer with social links (GitHub, LinkedIn, X, Telegram)
   - External links open in new tab with rel="noopener"
   - No broken internal links (404s)
 - **F3: Content Quality** — 4/4 passed
   - Working Cal.com booking link verified
-  - Portfolio proof visible (Terminal Velocity, La Serenissima, UBC)
+  - Portfolio proof visible (Terminal Velocity, La Serenissima, TherapyKin)
   - Social handles present (@nlr_ai on X, Telegram)
   - GitHub orgs linked (@mind-protocol, @nlr-ai)
 - **F4: SEO & Metadata** — 6/6 passed

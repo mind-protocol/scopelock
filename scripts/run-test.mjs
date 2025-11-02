@@ -1,4 +1,23 @@
 #!/usr/bin/env node
+/**
+ * Run Playwright Acceptance Tests
+ *
+ * Purpose: Execute Playwright test suite against acceptance criteria
+ * Command: npm test
+ * Owner: Daniel "The Forge"
+ *
+ * Documentation:
+ * - Acceptance Criteria: proof/AC.md
+ * - Test Files: tests/acceptance/*.spec.ts
+ * - Repository Map: REPO_MAP.md#scripts
+ *
+ * Events Emitted: None (test runner)
+ *
+ * Exit Codes:
+ * - 0: All tests passed
+ * - 1: One or more tests failed
+ */
+
 import { exec } from 'child_process';
 import { promisify } from 'util';
 

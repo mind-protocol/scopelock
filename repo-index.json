@@ -1,0 +1,395 @@
+{
+  "repository": "scopelock",
+  "version": "1.0.0",
+  "last_updated": "2025-11-02",
+  "purpose": "Machine-readable repository index for navigation and tooling",
+
+  "directories": [
+    {
+      "path": "src/",
+      "purpose": "Next.js website (scopelock.mindprotocol.ai)",
+      "owner": "Maya",
+      "documentation": "README.md",
+      "status": "active"
+    },
+    {
+      "path": "tests/",
+      "purpose": "Acceptance tests (Playwright)",
+      "owner": "Daniel",
+      "documentation": "tests/README.md",
+      "status": "active"
+    },
+    {
+      "path": "backend/",
+      "purpose": "Python automation backend (Render)",
+      "owner": "Daniel",
+      "documentation": "backend/ARCHITECTURE.md",
+      "status": "scaffolded"
+    },
+    {
+      "path": "citizens/",
+      "purpose": "AI citizen system prompts and state",
+      "owner": "All",
+      "documentation": "citizens/CLAUDE.md",
+      "status": "active"
+    },
+    {
+      "path": "docs/",
+      "purpose": "Documentation (process, automation, marketing)",
+      "owner": "Aïcha",
+      "documentation": "docs/README.md",
+      "status": "active"
+    },
+    {
+      "path": "proofgen/",
+      "purpose": "Proof page generator",
+      "owner": "Daniel",
+      "documentation": "docs/automation/SPEC.md#proof-regeneration",
+      "status": "active"
+    },
+    {
+      "path": "proof/",
+      "purpose": "Proof source files (AC, DEMO, DELTA)",
+      "owner": "Daniel",
+      "documentation": "docs/process/delivery_model.md",
+      "status": "active"
+    }
+  ],
+
+  "scripts": [
+    {
+      "path": "scripts/run-test.mjs",
+      "purpose": "Run Playwright acceptance tests",
+      "documentation": "tests/README.md",
+      "command": "npm test",
+      "owner": "Daniel",
+      "status": "active"
+    },
+    {
+      "path": "scripts/track-lead.py",
+      "purpose": "Track Emma lead evaluations (CLI)",
+      "documentation": "docs/automation/SPEC.md#lead-tracker",
+      "command": "python scripts/track-lead.py --platform Upwork --title \"...\" --budget \"...\" --decision GO --reason \"...\"",
+      "owner": "Emma",
+      "status": "spec_only"
+    },
+    {
+      "path": "proofgen/index.js",
+      "purpose": "Generate proof HTML pages from git tags",
+      "documentation": "docs/automation/SPEC.md#proof-regeneration",
+      "command": "npm run proofgen",
+      "owner": "Daniel",
+      "status": "active"
+    }
+  ],
+
+  "documentation": [
+    {
+      "path": "README.md",
+      "title": "ScopeLock Project Overview",
+      "audience": "everyone",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "REPO_MAP.md",
+      "title": "Repository Navigation Map",
+      "audience": "everyone",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "citizens/CLAUDE.md",
+      "title": "Team-Wide Citizen Guide",
+      "audience": "all_citizens",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "citizens/SYNC.md",
+      "title": "Cross-Citizen Status Tracker",
+      "audience": "all_citizens",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "proof/AC.md",
+      "title": "Acceptance Criteria (Website Milestone)",
+      "audience": "daniel_sofia",
+      "implements": "tests/acceptance/*.spec.ts",
+      "status": "active"
+    },
+    {
+      "path": "docs/process/delivery_model.md",
+      "title": "ScopeLock Delivery Model",
+      "audience": "rafael_aicha",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "docs/process/change_control.md",
+      "title": "Change Control (CHG-130)",
+      "audience": "rafael_aicha",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "docs/automation/SPEC.md",
+      "title": "Automation Feature Specifications",
+      "audience": "daniel_aicha",
+      "implements": "backend/app/services/",
+      "status": "active"
+    },
+    {
+      "path": "docs/marketing/communication_guide.md",
+      "title": "Client Communication Guide",
+      "audience": "emma_rafael",
+      "authority": "authoritative",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "docs/marketing/proposal_framework.md",
+      "title": "Proposal Structure & Templates",
+      "audience": "emma",
+      "implements": "citizens/emma/proposals/",
+      "status": "active"
+    },
+    {
+      "path": "docs/portfolio/README.md",
+      "title": "Portfolio Projects (Proof Points)",
+      "audience": "emma_rafael",
+      "implements": null,
+      "status": "active"
+    },
+    {
+      "path": "backend/ARCHITECTURE.md",
+      "title": "Backend System Architecture",
+      "audience": "daniel_aicha",
+      "implements": "backend/app/",
+      "status": "active"
+    },
+    {
+      "path": "backend/README.md",
+      "title": "Backend Quick Start Guide",
+      "audience": "daniel",
+      "implements": null,
+      "status": "active"
+    }
+  ],
+
+  "citizens": [
+    {
+      "name": "Emma",
+      "role": "The Scout",
+      "domain": "Lead Intelligence & Triage",
+      "system_prompt": "citizens/emma/CLAUDE.md",
+      "responsibilities": [
+        "Parse job posts into structured assessments",
+        "Generate GO/NO-GO decisions with reasoning",
+        "Draft proposals aligned to ScopeLock principles"
+      ],
+      "key_files": [
+        "citizens/emma/proposals/",
+        "citizens/emma/leads-tracker.md",
+        "docs/marketing/communication_guide.md",
+        "docs/portfolio/README.md"
+      ],
+      "tools": [
+        "scripts/track-lead.py"
+      ]
+    },
+    {
+      "name": "Rafael",
+      "role": "The Harbor",
+      "domain": "Relationships & Change Requests",
+      "system_prompt": "citizens/rafael/CLAUDE.md",
+      "responsibilities": [
+        "Co-write AC.md with clients",
+        "Route scope changes through CHG-130 (Swap/Add)",
+        "Maintain client status notes",
+        "Trigger testimonials at AC green"
+      ],
+      "key_files": [
+        "proof/AC.md",
+        "docs/process/change_control.md",
+        "docs/marketing/communication_guide.md"
+      ],
+      "tools": [
+        "backend/app/services/rafael_responder.py"
+      ]
+    },
+    {
+      "name": "Daniel",
+      "role": "The Forge",
+      "domain": "Core Builder",
+      "system_prompt": "citizens/daniel/CLAUDE.md",
+      "responsibilities": [
+        "Implement features against AC.md",
+        "Write acceptance tests",
+        "Produce DEMO.md + DELTA.md",
+        "Create and push milestone tags"
+      ],
+      "key_files": [
+        "src/",
+        "backend/",
+        "tests/",
+        "proofgen/",
+        "proof/AC.md"
+      ],
+      "tools": [
+        "scripts/run-test.mjs",
+        "proofgen/index.js"
+      ]
+    },
+    {
+      "name": "Sofia",
+      "role": "The Gauge",
+      "domain": "Quality & Policy Guardian",
+      "system_prompt": "citizens/sofia/CLAUDE.md",
+      "responsibilities": [
+        "Issue review verdicts (pass/soft/hard)",
+        "Enforce baseline guard (R-300)",
+        "Enforce fail-loud rules (R-400/401)",
+        "Manage overrides with reason + expiry"
+      ],
+      "key_files": [
+        "tests/",
+        ".github/workflows/ci.yml"
+      ],
+      "tools": []
+    },
+    {
+      "name": "Aïcha",
+      "role": "The Architect",
+      "domain": "Architecture & Membrane",
+      "system_prompt": "citizens/aicha/CLAUDE.md",
+      "responsibilities": [
+        "Define event schemas and policies (L4)",
+        "Specify proof contracts (PRF-020)",
+        "Guard AC baseline and CHG-130 semantics",
+        "Author minimal examples and test fixtures"
+      ],
+      "key_files": [
+        "docs/process/",
+        "docs/automation/SPEC.md",
+        "backend/ARCHITECTURE.md",
+        "backend/app/contracts.py"
+      ],
+      "tools": []
+    },
+    {
+      "name": "Maya",
+      "role": "The Facet",
+      "domain": "Frontend & Evidence UX",
+      "system_prompt": "citizens/maya/CLAUDE.md",
+      "responsibilities": [
+        "Render ScopeLock hero + process",
+        "Implement /proof index/detail from JSON",
+        "Keep Lighthouse ≥90, CSS <20KB gz",
+        "Expose state badges"
+      ],
+      "key_files": [
+        "src/app/",
+        "src/components/",
+        "src/globals.css"
+      ],
+      "tools": []
+    }
+  ],
+
+  "services": [
+    {
+      "name": "website",
+      "type": "frontend",
+      "platform": "vercel",
+      "url": "https://scopelock.mindprotocol.ai",
+      "repository": "https://github.com/mind-protocol/scopelock",
+      "status": "deployed"
+    },
+    {
+      "name": "backend",
+      "type": "api",
+      "platform": "render",
+      "url": "https://scopelock-backend.onrender.com",
+      "repository": "https://github.com/mind-protocol/scopelock",
+      "status": "scaffolded"
+    }
+  ],
+
+  "technologies": {
+    "frontend": {
+      "framework": "Next.js 14.2.33",
+      "language": "TypeScript",
+      "testing": "Playwright",
+      "deployment": "Vercel"
+    },
+    "backend": {
+      "framework": "FastAPI",
+      "language": "Python 3.11+",
+      "database": "PostgreSQL (Render free tier)",
+      "testing": "Pytest",
+      "deployment": "Render"
+    },
+    "ai": {
+      "provider": "Anthropic",
+      "model": "claude-sonnet-4"
+    }
+  },
+
+  "events": [
+    {
+      "name": "response.detected@1.0",
+      "description": "Upwork client message received via Gmail webhook",
+      "emitted_by": "backend/app/api/webhooks.py",
+      "consumed_by": ["backend/app/services/rafael_responder.py"]
+    },
+    {
+      "name": "response.drafted@1.0",
+      "description": "Rafael drafted a response with confidence score",
+      "emitted_by": "backend/app/services/rafael_responder.py",
+      "consumed_by": ["backend/app/integrations/telegram_client.py"]
+    },
+    {
+      "name": "response.sent@1.0",
+      "description": "Response sent to Upwork",
+      "emitted_by": "backend/app/integrations/upwork_client.py",
+      "consumed_by": ["backend/app/services/event_hub.py"]
+    },
+    {
+      "name": "lead.tracked@1.0",
+      "description": "Emma evaluation logged",
+      "emitted_by": "backend/app/services/lead_tracker.py",
+      "consumed_by": ["backend/app/services/event_hub.py"]
+    },
+    {
+      "name": "failure.emit",
+      "description": "Service error with code location",
+      "emitted_by": "any service",
+      "consumed_by": ["backend/app/services/event_hub.py"]
+    }
+  ],
+
+  "query_examples": [
+    {
+      "description": "Find all active scripts",
+      "command": "jq '.scripts[] | select(.status == \"active\")' repo-index.json"
+    },
+    {
+      "description": "Find documentation for a citizen",
+      "command": "jq '.citizens[] | select(.name == \"Emma\") | .key_files[]' repo-index.json"
+    },
+    {
+      "description": "Find implementation for a doc",
+      "command": "jq '.documentation[] | select(.path == \"docs/automation/SPEC.md\") | .implements' repo-index.json"
+    },
+    {
+      "description": "List all events",
+      "command": "jq '.events[] | .name' repo-index.json"
+    },
+    {
+      "description": "Find tools owned by Daniel",
+      "command": "jq '.citizens[] | select(.name == \"Daniel\") | .tools[]' repo-index.json"
+    }
+  ]
+}

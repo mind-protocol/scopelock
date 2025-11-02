@@ -7,9 +7,9 @@ test.describe('F2: Navigation & UX', () => {
   test('Site header has logo and nav links', async ({ page }) => {
     await page.goto(`${BASE_URL}/`);
 
-    // Check for navigation links
-    const nav = page.locator('nav, header');
-    await expect(nav.getByRole('link', { name: /proof log|proof/i })).toBeVisible();
+    // Check for navigation links in the site-nav specifically
+    const nav = page.locator('.site-nav');
+    await expect(nav.getByRole('link', { name: /proof/i })).toBeVisible();
     await expect(nav.getByRole('link', { name: /contact/i })).toBeVisible();
   });
 
