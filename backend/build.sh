@@ -2,17 +2,31 @@
 set -e
 
 echo "📦 Installing Claude CLI to project directory..."
-# Install to project-local bin directory that persists to runtime
+# Create bin directory in project (persists to runtime)
 mkdir -p ./bin
-export CLAUDE_INSTALL_DIR="$PWD/bin"
-curl -fsSL https://claude.ai/install.sh | bash -s -- --install-dir "$PWD/bin"
+
+# Determine architecture
+ARCH=$(uname -m)
+if [ "$ARCH" = "x86_64" ]; then
+    CLAUDE_URL="https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-cli-2.0.31-linux-x64.tar.gz"
+elif [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
+    CLAUDE_URL="https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-cli-2.0.31-linux-arm64.tar.gz"
+else
+    echo "❌ Unsupported architecture: $ARCH"
+    exit 1
+fi
+
+echo "Downloading Claude CLI for $ARCH..."
+curl -fsSL "$CLAUDE_URL" | tar -xz -C ./bin
 
 # Verify installation
 if [ -f "./bin/claude" ]; then
     echo "✅ Claude CLI installed successfully to ./bin/claude"
     chmod +x ./bin/claude
+    ./bin/claude --version || echo "Warning: version check failed but binary exists"
 else
-    echo "❌ Claude CLI installation failed"
+    echo "❌ Claude CLI binary not found after extraction"
+    ls -la ./bin/
     exit 1
 fi
 
