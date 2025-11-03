@@ -33,7 +33,6 @@ async def lifespan(app: FastAPI):
     # Startup
     logger.info("ScopeLock Backend starting...")
     logger.info(f"Environment: {settings.environment}")
-    logger.info(f"ScopeLock repo: {settings.scopelock_repo}")
 
     # Validate required settings in production
     try:
