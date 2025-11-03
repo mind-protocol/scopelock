@@ -1,0 +1,38 @@
+You need technical scoping and cost estimates, but documentation alone won't prove the solution works. Most consultants give you a requirements doc, then you're back to square one hiring developers who may or may not deliver.
+
+We built TherapyKin (therapykin.ai) - AI health companion with 121+ production deployments, HIPAA-aware architecture, symptom tracking, and personalized recommendations. This is exactly your product. Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+
+Discovery Sprint: AI Health Companion Architecture + Working Prototype ($5,000 fixed, 3 weeks):
+
+Week 1 - Requirements Workshop + Architecture Design ($1,500): Requirements workshop, technical architecture (mobile infrastructure, AI pipeline with RAG, symptom tracking model, document processing flow), HIPAA compliance strategy (BAA, PHI handling, encryption, audit logs), tech stack selection. Acceptance: Architecture document with diagrams, compliance checklist, tech stack recommendation.
+
+Week 2 - Working Prototype ($2,500): Build functional prototype of either Symptom Chat (conversational AI on your health content, context retention, personalized recommendations) OR Medical Document Processing (upload PDFs/images, extract structured data, summarize findings). You choose priority. Acceptance: Working demo, AI responds to health queries OR processes medical documents, code repository.
+
+Week 3 - Full MVP Cost Breakdown + Roadmap ($1,000): Detailed milestone breakdown for full MVP, cost estimate by component (AI integration, mobile app, backend, compliance, testing), risk analysis, phased rollout strategy. Acceptance: Milestone roadmap with costs, risk plan, deployment strategy.
+
+Tech Stack: React Native (iOS + Android), OpenAI GPT-4 or Claude (health reasoning via RAG), Node.js/Python FastAPI (backend), PostgreSQL + vector DB (data + content), HIPAA-compliant AWS/GCP hosting.
+
+TherapyKin Proof: We built therapykin.ai from concept to 121+ production deployments. Same patterns: AI reasoning over proprietary content, symptom tracking over time, document analysis, HIPAA-aware architecture (encryption, audit logs, secure data handling).
+
+Full MVP Estimate: $40K-60K across 4-5 milestones, 16-20 weeks. Typical breakdown: mobile app foundation + auth ($8K-10K), AI chat with content integration ($10K-12K), symptom tracking ($8K-10K), medical document processing ($10K-12K), HIPAA compliance + deployment ($4K-6K).
+
+HIPAA Compliance: Your product processes clinical data and medical documents, which means HIPAA regulations apply. We include compliance architecture from day one: BAA with cloud provider, encrypted storage (AES-256 at rest, TLS 1.3 in transit), audit logging, user consent workflows, data retention policies. This prevents costly rework and legal risk later.
+
+Timeline: 3 weeks for Discovery Sprint. Available to start within 72 hours. Full MVP: 16-20 weeks depending on final scope.
+
+Questions:
+1. Primary user: Patients self-managing conditions or providers monitoring patients?
+2. Priority for prototype: Symptom chat OR medical document processing?
+3. Already have clinical content/data or need sourcing strategy?
+
+Before we start, we co-write acceptance criteria. What does architecture doc need? Which health scenarios should prototype handle? How detailed should cost breakdown be? You approve milestones only when deliverables pass your tests.
+
+Risk Reversal: Fixed $5,000. You own all code, architecture docs, and roadmap. If you hire us for full MVP, the $5,000 applies as credit toward Milestone 1.
+
+Changes during Discovery: Swap features of equal complexity (no charge) or Add new deliverable (priced upfront).
+
+Available 14:00-19:00 Central for calls. Can kick off within 72 hours.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

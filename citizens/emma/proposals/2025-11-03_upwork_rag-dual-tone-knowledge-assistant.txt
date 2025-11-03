@@ -1,0 +1,86 @@
+You need accurate, evidence-based responses in two distinct brand tones. Most developers build basic RAG chatbots that hallucinate or lose brand voice. You need citation logic, tone consistency across personas, and graceful decline when evidence is weak - all while sounding human and credible.
+
+We built Terminal Velocity (github.com/mind-protocol/terminal-velocity - 1.1k stars, AI-generated content with quality control and source citation), TherapyKin (therapykin.ai - AI reasoning over knowledge base with context retention and accurate responses, 121+ deployments), and La Serenissima (serenissima.ai - 97+ agents with distinct behaviors and orchestration patterns). Verify at github.com/nlr-ai (65K commits) and github.com/mind-protocol.
+
+The core challenge is combining retrieval accuracy with tone fidelity. Most RAG systems optimize for one or the other. You need both: grounded answers with citations, jurisdiction tags, and source attribution AND brand-consistent expression across two personas with US/UK spelling variants. The tone layer must preserve factual accuracy while transforming voice. This requires prompt engineering sophistication beyond basic RAG implementations.
+
+Evidence Sprint: Dual-Tone RAG Knowledge Assistant ($7,500 fixed, 4 weeks):
+
+Week 1 - Knowledge Ingestion + Vector Database ($2,000):
+Document ingestion pipeline (PDFs, reports, FAQs, internal docs with metadata extraction), chunking strategy for optimal retrieval (sentence-level, paragraph-level, semantic boundaries), vector embeddings generation (OpenAI ada-002 or equivalent), vector database setup (Pinecone, Weaviate, or FAISS depending on scale requirements), metadata tagging (jurisdiction, document type, confidence level, publish date). Acceptance: Ingest 50+ test documents, vector search returns relevant chunks for sample queries, metadata filters work correctly.
+
+Week 2 - RAG Retrieval + Citation Logic ($2,000):
+Semantic search implementation (query embedding, similarity threshold tuning), retrieval ranking (top-k selection, re-ranking based on relevance and metadata), citation generation (source document title, page number, publication date), jurisdiction tagging (automatic detection from document metadata or content), conflict detection (identify when sources contradict each other), confidence scoring (weak evidence flagging, decline logic for insufficient data). Acceptance: Query returns top 3-5 relevant chunks with citations, system declines or flags ambiguous questions, jurisdiction tags appear correctly.
+
+Week 3 - Dual-Tone Layer + Validation ($2,000):
+Persona system prompts (Brand A and Brand B with distinct personality, vocabulary, formality level), regional spelling dictionaries (US vs UK English automatic conversion), tone validation scoring (measure adherence to brand guidelines using rubric), fact preservation check (ensure tone transformation doesn't alter factual claims), A/B testing framework (compare outputs from both personas for same query), guardrails implementation (content moderation, inappropriate question handling, out-of-scope detection). Acceptance: Same query produces two distinct responses matching brand tones, factual accuracy preserved across both, spelling conventions correct, tone scores meet target thresholds.
+
+Week 4 - Interface + Documentation ($1,500):
+Web interface (simple React UI with query input, response display, citation links, tone selector) OR Slack integration (slash commands, threaded responses, citation formatting), user feedback mechanism (thumbs up/down, flag inaccurate responses), admin panel for tone tuning and confidence threshold adjustment, documentation (knowledge ingestion guide, tone persona configuration, retrieval tuning parameters, deployment instructions), code handoff with README and setup scripts. Acceptance: Interface deployed and accessible, documentation complete, admin can update tone personas and add new documents without developer assistance.
+
+Tech Stack (Proposed):
+Backend: Python + FastAPI (API endpoints, async processing)
+LLM Framework: LangChain or LlamaIndex (RAG orchestration, prompt management)
+AI Model: OpenAI GPT-4 or Anthropic Claude (reasoning and tone generation)
+Vector Database: Pinecone (managed) or Weaviate (self-hosted) depending on scale and cost preferences
+Embeddings: OpenAI text-embedding-ada-002 or equivalent
+Interface: React (web UI) or Slack SDK (bot integration) - you choose priority
+Hosting: AWS or GCP (API + vector DB + document storage)
+
+Dual-Tone Technical Approach:
+Persona system prompts: Each brand persona gets dedicated system prompt with personality traits, vocabulary preferences, formality rules, and example responses. Prompt includes explicit instructions: "You are [Brand A], known for [traits]. Write in [tone] using [vocabulary level]. Follow [regional spelling]."
+
+Regional spelling: Post-processing layer with dictionary mapping (e.g., "color" → "colour" for UK variant) applied after generation to ensure consistency without confusing the LLM during reasoning.
+
+Tone validation: Automated scoring using secondary LLM call or rule-based checks to measure adherence to brand guidelines. Flags outputs that drift from target tone for human review.
+
+Fact preservation: Compare generated response against retrieved chunks to ensure no hallucination or fact distortion during tone transformation. If response introduces claims not in sources, system flags for review.
+
+A/B testing: Store both persona outputs for internal comparison, allowing comms team to refine persona definitions based on real query examples.
+
+Portfolio Proof Points:
+Terminal Velocity (1.1k GitHub stars): AI-generated 526-page novel with quality control system. Built citation logic where AI outputs were validated against source material to prevent hallucination. Same pattern needed here: grounded responses with source attribution and confidence scoring.
+
+TherapyKin (therapykin.ai): AI companion with 121+ production deployments. Implements RAG over mental health knowledge base, providing context-aware responses that maintain accuracy while adapting tone to user needs. Proves we can balance retrieval accuracy with conversational quality.
+
+La Serenissima (serenissima.ai): 97+ autonomous agents with distinct behaviors and orchestration. Each agent has unique personality and decision-making patterns while maintaining system-wide coherence. Maps directly to your dual-brand persona challenge: multiple voices with consistent quality.
+
+Science Communication Experience: Terminal Velocity required translating complex narrative structures into coherent, citation-backed content. TherapyKin handles sensitive mental health topics requiring accurate, evidence-based responses. Both projects demonstrate our ability to maintain credibility and trustworthiness in AI-generated content - your core requirement.
+
+RAG System Experience: TherapyKin uses RAG for therapy techniques and mental health protocols. Built semantic search over structured knowledge base, implemented confidence thresholds for response quality, and designed graceful degradation when evidence is insufficient. This matches your requirement to "decline or flag questions where evidence is weak, conflicting, or absent."
+
+Timeline: 4 weeks for Evidence Sprint (functional prototype + documentation). Available to start within 72 hours, 30+ hours per week commitment. For scaling to public deployment: additional 6-8 weeks with milestones for user authentication, rate limiting, analytics dashboard, and production hardening.
+
+Preferred Stack Tradeoffs:
+OpenAI GPT-4: Better reasoning and instruction-following for complex queries, higher cost per query (~$0.03-0.06), faster iteration with function calling for structured outputs.
+Anthropic Claude: Stronger citation accuracy and refusal behavior, lower cost (~$0.015-0.025), better handling of long documents (100K context window).
+
+Vector DB choice depends on your scale and budget:
+Pinecone: Managed service, minimal ops overhead, $70-100/month for prototype scale, easy scaling.
+Weaviate: Self-hosted, more control, ~$30-50/month cloud hosting, requires DevOps setup.
+FAISS: Local or S3-backed, lowest cost (free + storage), good for prototype, harder to scale to multi-user.
+
+Questions for Clarity:
+1. Can you provide 5-10 example documents for ingestion testing and retrieval tuning?
+2. Describe the two brand personas: tone differences, formality level, vocabulary preferences?
+3. Priority for interface: web UI (accessible via browser) or Slack integration (team workspace) first?
+4. Expected query volume: tens, hundreds, or thousands per day? (Affects infrastructure and cost planning)
+
+How To Apply Requirements:
+Experience building AI/RAG systems: We built TherapyKin (RAG over mental health knowledge base, 121+ deployments) and Terminal Velocity (AI content with quality control and citation logic). Both systems combine retrieval accuracy with output quality.
+
+Project examples: Terminal Velocity at github.com/mind-protocol/terminal-velocity (1.1k stars), TherapyKin at therapykin.ai (live production app), La Serenissima at serenissima.ai (97+ agents with orchestration).
+
+Technical approach to dual-tone, evidence-grounded responses: See "Dual-Tone Technical Approach" section above. Summary: Persona system prompts for distinct voices, regional spelling post-processing, tone validation scoring, fact preservation checks against retrieved chunks, A/B testing framework for persona refinement.
+
+Timeline and cost estimate: 4 weeks, $7,500 fixed price. Breakdown: Week 1 ingestion/vector DB ($2K), Week 2 retrieval/citations ($2K), Week 3 dual-tone/validation ($2K), Week 4 interface/docs ($1.5K).
+
+Before we start, we co-write acceptance criteria. What defines accurate retrieval? How do you measure tone consistency? Which sample queries should the prototype handle? What citation format do you prefer? You pay only when tests pass.
+
+Changes mid-build: Swap features of equal complexity (no charge) or Add new deliverable as separate milestone (priced upfront). Example: If you decide Slack is more important than web UI during Week 3, we swap at no cost. If you want BOTH web and Slack, that's an Add milestone priced separately.
+
+Available 14:00-19:00 Central for calls. Can kick off within 72 hours if you're ready to move.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

@@ -1,0 +1,43 @@
+You need an AI recruitment platform that cuts hiring time by 60-70% through intelligent CV analysis, interview transcript evaluation, and automated candidate ranking. Most developers build basic CRUD apps with OpenAI wrapper. You need structured AI outputs, benchmark comparisons, and production-grade candidate scoring that recruiters trust.
+
+We built TherapyKin (therapykin.ai - AI companion with 121+ production deployments, persistent user data, structured AI analysis), La Serenissima (serenissima.ai - 97+ autonomous agents with 99.7% uptime, real-time orchestration), and Mind Protocol (graph substrate powering multi-agent systems). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+
+The core challenge is structured AI outputs. Your platform needs to parse CVs into normalized fields, analyze interview transcripts against job criteria, generate screening questions that actually filter candidates, and rank applicants with explainable rationale - not generic GPT responses. That requires prompt engineering, schema validation, and feedback loops to improve accuracy over time.
+
+AI-Powered Recruitment Platform MVP ($5,000 fixed, 6 weeks):
+
+Milestone 1 - Architecture + AI Engine Foundation (Week 1-2, $1,250):
+Project setup (React frontend, Node.js/Express backend, PostgreSQL + MongoDB schemas), OpenAI GPT-4 API integration with structured prompt templates, job description optimization module, CV parsing pipeline. Acceptance: Job description input returns AI-optimized version, CV upload extracts structured data with 85%+ accuracy.
+
+Milestone 2 - Candidate Management + Screening (Week 2-3, $1,250):
+Automatic screening question generation (technical, IQ, culture-fit), CV analysis against job requirements with weighted scoring, candidate management dashboard, email automation system. Acceptance: Upload 10 CVs for test job, system generates screening questions and ranks candidates with score justification.
+
+Milestone 3 - Interview Analysis + Reporting (Week 3-4, $1,250):
+Video transcript processing, AI analysis of interview responses against job criteria, skills gap analysis, automated shortlisting (top 10 candidates), analytics dashboard. Acceptance: Upload interview transcript, system analyzes responses, identifies skills gaps, generates candidate ranking.
+
+Milestone 4 - Deployment + Production Hardening (Week 5-6, $1,250):
+AWS deployment with secure file storage, benchmark comparison against industry standards, comprehensive reporting, testing suite, documentation, 30-day post-launch support. Acceptance: Platform deployed on AWS, handles 50 concurrent users, AI outputs pass accuracy tests (85%+ on test dataset), documentation complete.
+
+Tech Stack: React + TypeScript (frontend), Node.js + Express (backend), PostgreSQL + MongoDB (databases), OpenAI GPT-4 API (AI), AWS (cloud deployment).
+
+Technical Approach: Week 1 - architecture design, Week 2-3 - backend with AI integration, Week 3-4 - frontend development, Week 5 - QA testing, Week 6 - AWS deployment and documentation.
+
+AI Integration Specifics: CV parsing with structured JSON schema, screening questions via few-shot learning, interview analysis with function calling for scoring, candidate ranking with weighted algorithm and AI-generated rationale.
+
+Portfolio Highlights: TherapyKin (AI analysis with structured outputs, 121+ deployments), La Serenissima (97+ agents, 99.7% uptime, real-time coordination), Terminal Velocity (1.1k GitHub stars, AI content with quality control).
+
+Timeline Confirmation: Available to start within 48 hours, 40+ hours/week commitment, available during UAE business hours (GMT+4) for bi-weekly calls.
+
+Budget Confirmation: $5,000 fixed price confirmed. You pay only when milestones pass acceptance criteria.
+
+Questions for Clarity: 1) Expected candidate volume per job posting? 2) Sample CVs and interview transcripts available for AI training? 3) Prefer OpenAI GPT-4 or Claude?
+
+Before we start, we co-write acceptance criteria. What passes? Which CV fields are critical? How do you measure candidate ranking accuracy? What interview analysis metrics matter most? You pay only when tests pass.
+
+Changes mid-build: Swap (same complexity, no charge) or Add (new milestone, priced upfront).
+
+Available 14:00-19:00 Central for calls. Can kick off within 48 hours if you're ready to move.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls

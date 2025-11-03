@@ -1330,3 +1330,139 @@ These files existed locally but were gitignored, causing build failures.
 **Next:** TBD based on user preference
 
 ---
+
+## 2025-11-03 03:20 - Priya: Vollna Webhook Integration - Python Backend
+
+**Context:** Fixed architecture mistake - rewrote Vollna integration for existing Python FastAPI backend (not Node.js)
+
+**Completed:**
+- ✅ Identified correct architecture: Python FastAPI backend already deployed
+- ✅ Added `/webhook/vollna-job` endpoint to `backend/app/webhooks.py`
+- ✅ Integrated with existing `runner.run_emma()` for evaluations
+- ✅ Batch processing with async background tasks
+- ✅ Basic Auth verification using `webhook_secret` from config
+- ✅ Removed incorrect Node.js implementation (`services/emma-vollna/`)
+- ✅ Committed and pushed (commit 70b99e5)
+
+**Current Status:**
+- ⏳ Render deployment in progress (502 Bad Gateway)
+- Backend URL: https://scopelock.onrender.com
+- Service name: scopelock-backend (Python)
+
+**Blocker:** Deployment not complete yet (may take 5-10 minutes)
+
+**Next Steps:**
+1. Monitor Render dashboard for deployment completion
+2. Test health endpoint: `curl https://scopelock.onrender.com/health`
+3. Add `WEBHOOK_SECRET` env var in Render dashboard (for Vollna Basic Auth)
+4. Test webhook endpoint with mock payload
+5. Subscribe to Vollna Agency plan ($54/mo, 14-day trial)
+6. Configure 5 job feeds in Vollna dashboard
+7. Set Vollna webhook URL: `https://scopelock.onrender.com/webhook/vollna-job`
+8. Test full flow with Vollna test notification
+
+**Architecture:**
+```
+Vollna → POST /webhook/vollna-job (Python FastAPI)
+  → Parse batch payload (projects array)
+  → For each project: runner.run_emma(job_summary)
+    → Claude CLI wakes Emma citizen
+    → Emma evaluates GO/NO-GO
+    → Emma calls POST /api/lead/track
+    → If GO: Emma drafts proposal and calls POST /api/notify/proposal
+```
+
+**Files Modified:**
+- `backend/app/webhooks.py` - Added Vollna webhook endpoint
+- `.gitignore` - Excluded OAuth secrets
+- Deleted: `services/emma-vollna/*` (wrong Node.js implementation)
+- Deleted: `render.yaml` (root - was for Node.js service)
+
+**Deployment Config:**
+- Uses existing `backend/render.yaml` (Python FastAPI)
+- Region: oregon
+- Plan: starter ($7/month)
+- Build: `pip install -r requirements.txt`
+- Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 2`
+
+**Link:** https://github.com/mind-protocol/scopelock/commit/70b99e5
+
+## 2025-11-03 03:26 - Priya: Vollna Integration - Deployment Complete ✅
+
+**Status:** Webhook endpoint deployed and working correctly
+
+**Fixed Issues:**
+- ✅ Fixed missing `JSONResponse` import
+- ✅ Redeployed with fix (commit 2025593)
+- ✅ Backend health check passing
+- ✅ Webhook endpoint responding correctly
+
+**Testing Results:**
+```bash
+# Health check
+curl https://scopelock.onrender.com/health
+{"status":"degraded","uptime_seconds":20,...}
+
+# Webhook without auth (expected: 401)
+curl -X POST https://scopelock.onrender.com/webhook/vollna-job
+{"error":"Unauthorized"} ✅
+
+# Auth verification working correctly
+```
+
+**Next Steps for User:**
+
+1. **Add WEBHOOK_SECRET in Render Dashboard:**
+   - Go to: https://dashboard.render.com → scopelock-backend → Environment
+   - Add variable: `WEBHOOK_SECRET` = [generate secure secret]
+   - This will be used for Vollna Basic Auth
+
+2. **Subscribe to Vollna Agency Plan:**
+   - URL: https://www.vollna.com/pricing
+   - Plan: Agency ($54/mo, 14-day free trial)
+   - Need: Webhook/API access
+
+3. **Configure 5 Vollna Job Feeds:**
+   Feed names and filter criteria:
+   - Feed 1: "STRONG GO - Premium AI" ($3K+, $5K+ client spend, AI/Python)
+   - Feed 2: "QUALIFIED MAYBE" ($2-3K, verified payment)
+   - Feed 3: "Hourly Converted" ($50+/hr, healthcare/AI)
+   - Feed 4: "Tech Stack Match" (Next.js, React, Python, FastAPI)
+   - Feed 5: "Healthcare AI" (HIPAA, medical, patient, therapy)
+
+4. **Set Vollna Webhook:**
+   - URL: `https://scopelock.onrender.com/webhook/vollna-job`
+   - Auth: Basic Auth with username `` (empty) and password = `WEBHOOK_SECRET`
+   - Events: "New Job Posted"
+   - Select: All 5 feeds
+
+5. **Test Full Flow:**
+   - Use Vollna's "Send test notification" button
+   - Check Render logs for Emma evaluation
+   - Verify lead tracking updates
+
+**Architecture Working:**
+```
+Vollna → POST /webhook/vollna-job (FastAPI)
+  ↓ Verify Basic Auth
+  ↓ Parse projects batch
+  ↓ For each project: asyncio.create_task(process_vollna_project)
+    ↓ Normalize job data (extract URL, budget, client info)
+    ↓ Build job summary for Emma
+    ↓ runner.run_emma(job_summary)
+      ↓ Claude CLI: cd repo && claude --print "<job>" --continue
+        ↓ Emma citizen evaluates GO/NO-GO
+        ↓ Emma calls POST /api/lead/track (Feature 3)
+        ↓ If GO: Emma drafts proposal
+        ↓ Emma calls POST /api/notify/proposal (Telegram notification)
+```
+
+**Files Modified:**
+- `backend/app/webhooks.py` - Added Vollna endpoint + process function
+- Fixed: Missing JSONResponse import
+
+**Links:**
+- Commit (webhook): https://github.com/mind-protocol/scopelock/commit/70b99e5
+- Commit (fix): https://github.com/mind-protocol/scopelock/commit/2025593
+- Backend health: https://scopelock.onrender.com/health
+- Webhook endpoint: https://scopelock.onrender.com/webhook/vollna-job

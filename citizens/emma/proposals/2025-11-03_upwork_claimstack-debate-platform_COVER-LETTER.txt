@@ -1,0 +1,44 @@
+You need a content-driven debate platform where users submit evidence, vote on quality, and AI summarizes the strongest arguments on each side. Most developers build basic forums or voting apps. You need structured claim/evidence relationships, voting algorithms that surface quality (not just popularity), and AI that can generate fair "steel-man" summaries of opposing views.
+
+We built Terminal Velocity (github.com/mind-protocol/terminal-velocity - 1.1k stars, AI-generated content with quality control and community feedback), La Serenissima (serenissima.ai - 97+ agents with structured state management and real-time coordination), TherapyKin (therapykin.ai - Next.js production app with AI integration and user authentication). Verify at github.com/nlr-ai and github.com/mind-protocol.
+
+The core challenge is data modeling and AI integration. Your platform needs relational logic for claims → evidence → votes → users, plus voting algorithms that prevent manipulation. The AI summarization is tricky: it needs to extract the strongest argument from each side AND generate a balanced counter-argument ("steel-man") without hallucinating or misrepresenting positions.
+
+ClaimStack.ai Web Platform ($3,500 fixed, 8-10 weeks):
+
+Milestone 1 - Foundation + Auth (2 weeks, $800): Next.js + TypeScript setup, JWT authentication (signup, login, password reset), PostgreSQL database schema (claims, evidence, votes, users), basic UI components. Acceptance: Users can sign up, log in, view profile, database schema documented.
+
+Milestone 2 - Claim System + Evidence Submission (3 weeks, $1,000): Create claim flow, browse claims (filter by category, sort by trending/most-voted/new), view claim detail, evidence submission (URLs, PDFs, tweets, videos, images, personal statements), content validation. Acceptance: Users can create claims, submit evidence in all formats, browse and view claims.
+
+Milestone 3 - Voting + Ranking (2 weeks, $700): Upvote/downvote mechanism, live scoring and ranking, vote manipulation prevention (rate limiting, spam detection), real-time updates via WebSocket. Acceptance: Users can vote, scores update in real-time, voting rules prevent manipulation.
+
+Milestone 4 - AI Summaries + Notifications (2 weeks, $700): OpenAI GPT-4 integration, AI summary generation (leading argument + steel-man counter), follow system, email notifications, summary regeneration trigger. Acceptance: AI generates balanced summaries, users receive notifications.
+
+Milestone 5 - Admin Moderation + Deployment (1-2 weeks, $300): Admin panel (review flagged content, moderate evidence), flag system, search functionality, static pages (About, Privacy, Terms, FAQ), Vercel deployment, documentation. Acceptance: Admin can moderate, search works, platform deployed, documentation complete.
+
+Tech Stack: Next.js 14 + TypeScript + Tailwind CSS (frontend), Node.js + Express (backend), PostgreSQL (database), OpenAI GPT-4 API (AI summaries), Vercel or AWS (hosting), JWT (auth).
+
+Similar Projects:
+- Terminal Velocity (1.1k GitHub stars): AI-generated content with quality control system, voting and community feedback
+- La Serenissima (97+ agents, 99.7% uptime): Complex relational systems with real-time coordination
+- TherapyKin (121+ deployments): Next.js + AI integration + auth + database (matches ClaimStack stack)
+
+AI Integration Experience: Used GPT-4 for structured summaries in Terminal Velocity. For steel-man generation, prompt will instruct AI to "generate the strongest possible version of the opposing argument" and validate against source evidence for fair representation.
+
+Timeline: 8-10 weeks (breakdown above). Available to start within 48 hours, 30+ hours/week commitment.
+
+Preferred Stack: Next.js 14 + TypeScript, Node.js + Express, PostgreSQL, OpenAI GPT-4, Vercel. Matches your preferences and our proven stack from TherapyKin.
+
+GitHub: github.com/nlr-ai (65K commits) and github.com/mind-protocol (terminal-velocity 1.1k stars)
+
+Questions: 1) Example claims/evidence for AI training? 2) How do you define "strongest argument" for ranking? 3) Should AI summaries auto-update with new evidence?
+
+Before we start, we co-write acceptance criteria. What passes? Which voting manipulation scenarios must the system prevent? How do you measure AI summary quality? What moderation tools does admin need? You pay only when tests pass.
+
+Changes mid-build: Swap (same complexity, no charge) or Add (new milestone, priced upfront).
+
+Available 14:00-19:00 Central for calls. Can kick off within 48 hours.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls
