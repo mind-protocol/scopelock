@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { LiveCommits } from '../components/LiveCommits';
+import { ProofTeaser } from '../components/ProofTeaser';
 
 export default function HomePage() {
   return (
@@ -112,6 +113,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ProofTeaser />
 
       <section className="card process-card" aria-labelledby="timeline">
         <h2 id="timeline">How it works</h2>
