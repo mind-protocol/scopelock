@@ -132,9 +132,10 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
             # Get repo path (parent of backend dir)
             repo_path = Path(__file__).parent.parent.parent
 
-            # Run Claude CLI
+            # Run Claude CLI (use full path since ~/.local/bin may not be in PATH)
+            claude_path = Path.home() / '.local' / 'bin' / 'claude'
             result = subprocess.run(
-                ['claude', '--print', prompt, '--continue'],
+                [str(claude_path), '--print', prompt, '--continue'],
                 cwd=str(repo_path),
                 env=env,
                 capture_output=True,
