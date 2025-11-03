@@ -103,10 +103,10 @@ app.post('/run', async (req, res) => {
       env.RECEIVED_AT = received_at;
     }
 
-    // Spawn Claude CLI subprocess
+    // Spawn Claude CLI subprocess via npx (works with local npm install)
     log('info', 'Spawning Claude CLI', { request_id: requestId });
 
-    const claude = spawn('claude', ['--print', prompt, '--continue'], {
+    const claude = spawn('npx', ['@anthropic-ai/claude-code', '--print', prompt, '--continue'], {
       cwd: REPO_PATH,
       env,
       shell: false
