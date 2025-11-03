@@ -7,6 +7,7 @@ Core backend responsibility: receive webhooks, run Claude CLI, send Telegram.
 import logging
 from datetime import datetime
 from fastapi import APIRouter, Request, Depends
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from app.auth import verify_webhook_signature
