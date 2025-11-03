@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { TeamTools } from '../../components/TeamTools';
 
 export const metadata: Metadata = {
   title: 'About — ScopeLock',
@@ -69,32 +70,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <section className="card">
-        <h2>The AI Workforce (Specialized Agents)</h2>
-
-        <p>
-          I work with specialized AI agents (powered by Claude) that handle different domains.
-          Think of them as <strong>autonomous specialists</strong>, not assistants:
-        </p>
-
-        <ul>
-          <li><strong>Emma &quot;The Scout&quot;</strong> — Lead Intelligence (prospecting, triage, proposal inputs)</li>
-          <li><strong>Rafael &quot;The Harbor&quot;</strong> — Client Relationships (client ops, AC co-authoring, change requests)</li>
-          <li><strong>Sofia &quot;The Gauge&quot;</strong> — Quality Guardian (code review, fail-loud enforcement, baseline protection)</li>
-          <li><strong>Daniel &quot;The Forge&quot;</strong> — Core Builder (features, acceptance tests, performance optimization)</li>
-          <li><strong>Aïcha &quot;The Architect&quot;</strong> — System Architecture (event schemas, contracts, change control semantics)</li>
-          <li><strong>Maya &quot;The Facet&quot;</strong> — Frontend & UX (UI implementation, /proof pages, accessibility)</li>
-          <li><strong>Priya &quot;The Pulse&quot;</strong> — Operations (health monitoring, deployment, incident response)</li>
-        </ul>
-
-        <p>
-          <strong>This is 15 years of custom tooling</strong> + domain-specific AI infrastructure. Parallel work streams without coordination overhead.
-        </p>
-
-        <p>
-          <strong>The advantage:</strong> You get team-level throughput with single-architect clarity. No handoff delays, no communication overhead, no subcontractors.
-        </p>
-      </section>
+      <TeamTools />
 
       <section className="card">
         <h2>How We&apos;re Different</h2>
