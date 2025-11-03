@@ -36,6 +36,14 @@ class TelegramUpdate(BaseModel):
     callback_query: dict | None = None
 
 
+class CloudMailinWebhook(BaseModel):
+    """CloudMailin webhook payload (JSON Normalized format)"""
+    envelope: dict
+    headers: dict
+    plain: str
+    html: str | None = None
+
+
 # ============================================================================
 # Endpoints
 # ============================================================================
@@ -92,6 +100,103 @@ async def upwork_webhook(request: UpworkWebhookRequest):
 
     except Exception as e:
         logger.error(f"[webhook:upwork] {e}", exc_info=True)
+        raise
+
+
+@router.post("/api/webhooks/cloudmailin")
+async def cloudmailin_webhook(request: Request):
+    """
+    Receive emails from CloudMailin and trigger Rafael for Upwork responses
+
+    CloudMailin forwards Gmail emails as HTTP webhooks (JSON format).
+    This endpoint parses the email and triggers the same flow as /webhook/upwork.
+
+    Flow:
+    1. Parse CloudMailin JSON (envelope, headers, plain text body)
+    2. Filter: only process emails from @upwork.com with "New message from" in subject
+    3. Extract client name from subject
+    4. Run Rafael via Citizen Runner
+    5. Rafael drafts response and calls /api/notify/draft
+
+    Args:
+        request: CloudMailin webhook (JSON Normalized format)
+
+    Returns:
+        {"status": "triggered"|"ignored", "reason": "..."}
+    """
+    try:
+        # Parse CloudMailin JSON
+        data = await request.json()
+
+        # Extract email fields
+        envelope = data.get("envelope", {})
+        headers = data.get("headers", {})
+        plain_body = data.get("plain", "")
+
+        from_address = envelope.get("from", "")
+        subject = headers.get("Subject", "")
+
+        logger.info(f"[cloudmailin] Received email from: {from_address}, subject: {subject}")
+
+        # Filter: only process Upwork emails
+        if "@upwork.com" not in from_address.lower():
+            logger.info(f"[cloudmailin] Ignored: not from Upwork ({from_address})")
+            return {
+                "status": "ignored",
+                "reason": "not_from_upwork",
+                "from": from_address
+            }
+
+        if "new message from" not in subject.lower():
+            logger.info(f"[cloudmailin] Ignored: not a client response ({subject})")
+            return {
+                "status": "ignored",
+                "reason": "not_client_message",
+                "subject": subject
+            }
+
+        # Extract client name from subject
+        # Format: "New message from John Doe on Upwork"
+        client_name = subject.replace("New message from", "").replace("on Upwork", "").strip()
+
+        # Extract job info from body (if available)
+        # For MVP: use placeholders, Rafael can find job details
+        job_title = "Upwork Job"
+        job_link = "https://www.upwork.com/messages"
+
+        # Track received timestamp for SLA monitoring
+        received_at = datetime.utcnow().isoformat()
+
+        logger.info(f"[cloudmailin] Parsed email from: {client_name}")
+
+        # Run Rafael via Citizen Runner
+        result = runner.run_rafael(
+            client=client_name,
+            message=plain_body[:500],  # First 500 chars
+            job_title=job_title,
+            job_link=job_link,
+            received_at=received_at
+        )
+
+        if result["success"]:
+            logger.info(f"[cloudmailin] Rafael session completed")
+            return {
+                "status": "triggered",
+                "citizen": "rafael",
+                "client": client_name,
+                "received_at": received_at
+            }
+        else:
+            logger.error(f"[cloudmailin] Rafael session failed: {result['error']}")
+            return {
+                "status": "error",
+                "citizen": "rafael",
+                "client": client_name,
+                "error": result["error"]
+            }
+
+    except Exception as e:
+        logger.error(f"[cloudmailin] {e}", exc_info=True)
         raise
 
 
