@@ -4,6 +4,71 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-03 10:00 — Priya: 🚨 BLOCKER - Upwork RSS Feeds Discontinued (Aug 2024)
+
+**Critical Issue:** Feature 4 ("Emma RSS Auto-Send") based on RSS feeds, which Upwork discontinued August 20, 2024.
+
+**Impact:**
+- ❌ Feature 4 spec invalid (RSS-based approach no longer works)
+- ❌ Time savings target (10h/week) unachievable without automated feed
+- ❌ Volume target (50+ leads/day) requires alternative approach
+
+**Alternative Options Identified:**
+
+1. **Email Notification Parsing** (ToS-compliant, 6-8h/week savings, 15h implementation)
+   - Parse Upwork email notifications via Gmail API
+   - We already have Gmail OAuth setup
+   - Lower frequency than RSS but still automated
+
+2. **Vollna Integration** (Third-party, 8-10h/week savings, requires investigation)
+   - Vollna offers "RSS migration feature"
+   - Unknown: API availability, pricing, ToS compliance
+   - Need to investigate before deciding
+
+3. **Hybrid Manual** (ToS-compliant, 7h/week savings, 8h implementation)
+   - User pastes jobs → Emma evaluates + tracks + drafts
+   - Lower automation but still valuable
+   - Can implement immediately
+
+**Vollna Investigation Complete:** ✅
+
+**Findings:**
+- ✅ Vollna HAS API + webhooks (Agency plan: $54/month)
+- ✅ Real-time job filtering (30+ attributes, client ranking)
+- ⚠️ Automation plan exists ($120/month) - already does what we want to build
+- ✅ ToS-compliant (legitimate SaaS, 4.9/5 rating, case studies)
+
+**Three Options:**
+
+| Option | Cost | Dev Time | Pros | Cons |
+|--------|------|----------|------|------|
+| A: Just use Vollna Automation | $120/mo | 0h | Ready now, 1,500 proposals/mo | Generic AI, no portfolio value |
+| **B: Emma + Vollna Integration** | **$54/mo** | **15h** | **Custom Emma logic, ScopeLock proposals, portfolio value** | **Manual submission** |
+| C: Email Parsing | $0/mo | 15h | Free, ToS-compliant | Lower volume (10-30 jobs/day) |
+
+**Recommendation: Option B (Emma + Vollna Integration)**
+
+**Why:**
+- Best of both: Vollna's filtering + Emma's custom evaluation + ScopeLock proposal style
+- Portfolio value: Shows integration skills + AI coordination
+- Cost-effective: $54/mo vs $120/mo (45% cheaper)
+- ToS-compliant: Manual submission, no automated bidding
+- Scalable: Emma logic portable if Vollna fails
+
+**Architecture:**
+```
+Vollna filters → Webhook → Emma evaluates → Track lead → Draft ScopeLock proposal → Telegram approval → You submit manually
+```
+
+**ROI:** $54/month cost vs $1,000/month value (10h/week × $100/h)
+
+**Decision needed:** Approve Option B (Vollna integration) or choose A/C?
+
+**Status:** Awaiting user decision
+**Next:** If approved → Subscribe to Vollna Agency → Get webhook URL → Implement Feature 4 (15h)
+
+---
+
 ## 2025-11-03 09:30 — Nicolas: Lead Tracker Implementation Complete → Emma Testing ✅
 
 **Work:** Implemented scripts/track-lead.py with JSON logging + markdown generation

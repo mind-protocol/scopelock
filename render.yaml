@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: scopelock-backend
+    env: node
+    region: oregon
+    plan: starter
+    rootDir: services/emma-vollna
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: VOLLNA_WEBHOOK_SECRET
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: SITE_URL
+        value: https://scopelock.mindprotocol.ai
+      - key: CAL_COM_URL
+        value: https://cal.com/scopelock/kickoff
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /health
