@@ -1,4 +1,5 @@
 import { cache } from 'react';
+import { AnimatedCommitList } from './AnimatedCommitList';
 
 interface GitHubCommit {
   sha: string;
@@ -13,7 +14,7 @@ interface GitHubCommit {
 }
 
 // Cache for 5 minutes
-const fetchRepoCommits = cache(async (owner: string, repo: string, limit: number = 3) => {
+const fetchRepoCommits = cache(async (owner: string, repo: string, limit: number = 15) => {
   try {
     const response = await fetch(
       `https://api.github.com/repos/${owner}/${repo}/commits?per_page=${limit}`,
@@ -54,21 +55,21 @@ const fetchRepoCommits = cache(async (owner: string, repo: string, limit: number
 });
 
 export async function LiveCommits() {
-  // Fetch from currently active repos in parallel
+  // Fetch from currently active repos in parallel (more commits per repo)
   const [scopelockCommits, codexCommits, membraneCommits, mindProtocolCommits] = await Promise.all([
-    fetchRepoCommits('mind-protocol', 'scopelock', 2),
-    fetchRepoCommits('mind-protocol', 'codex-mcp-gateway', 1),
-    fetchRepoCommits('mind-protocol', 'mind-membrane', 1),
-    fetchRepoCommits('mind-protocol', 'mindprotocol', 1),
+    fetchRepoCommits('mind-protocol', 'scopelock', 20),
+    fetchRepoCommits('mind-protocol', 'codex-mcp-gateway', 15),
+    fetchRepoCommits('mind-protocol', 'mind-membrane', 10),
+    fetchRepoCommits('mind-protocol', 'mindprotocol', 10),
   ]);
 
-  // Combine and take first 5
+  // Combine and take first 50
   const allCommits = [
     ...scopelockCommits,
     ...codexCommits,
     ...membraneCommits,
     ...mindProtocolCommits,
-  ].slice(0, 5);
+  ].slice(0, 50);
 
   // Fallback if API fails
   if (allCommits.length === 0) {
@@ -84,19 +85,5 @@ export async function LiveCommits() {
     );
   }
 
-  return (
-    <ul className="commit-list">
-      {allCommits.map((commit) => (
-        <li key={commit.sha + commit.repo}>
-          <a href={commit.url} target="_blank" rel="noopener">
-            <span className="commit-sha">{commit.sha}</span>
-            <span className="commit-msg">{commit.message}</span>
-            <span className={`commit-author ${commit.isAI ? 'ai' : 'human'}`}>
-              {commit.isAI ? 'AI' : 'Human'}
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
+  return <AnimatedCommitList commits={allCommits} />;
 }

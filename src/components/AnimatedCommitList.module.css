@@ -1,0 +1,178 @@
+.commitContainer {
+  width: 100%;
+}
+
+.commitList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--slk-gap-2);
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: var(--slk-gap-2);
+}
+
+/* Custom scrollbar */
+.commitList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.commitList::-webkit-scrollbar-track {
+  background: rgba(230, 234, 242, 0.05);
+  border-radius: 3px;
+}
+
+.commitList::-webkit-scrollbar-thumb {
+  background: rgba(30, 229, 184, 0.3);
+  border-radius: 3px;
+}
+
+.commitList::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 229, 184, 0.5);
+}
+
+.commitItem {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.commitLink {
+  display: grid;
+  grid-template-columns: 70px 1fr auto auto;
+  gap: var(--slk-gap-3);
+  align-items: center;
+  padding: var(--slk-gap-2) var(--slk-gap-3);
+  background: rgba(230, 234, 242, 0.02);
+  border: 1px solid rgba(230, 234, 242, 0.05);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.commitLink:hover {
+  background: rgba(30, 229, 184, 0.05);
+  border-color: rgba(30, 229, 184, 0.2);
+  transform: translateX(4px);
+}
+
+.commitSha {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--slk-accent);
+  font-weight: 600;
+}
+
+.commitMsg {
+  color: var(--slk-text);
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.commitRepo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--slk-muted);
+  background: rgba(230, 234, 242, 0.05);
+  padding: var(--slk-gap-1) var(--slk-gap-2);
+  border-radius: 4px;
+}
+
+.commitAuthor {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--slk-gap-1) var(--slk-gap-2);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.commitAuthor.ai {
+  background: rgba(30, 229, 184, 0.15);
+  color: var(--slk-accent);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+}
+
+.commitAuthor.human {
+  background: rgba(100, 168, 255, 0.15);
+  color: var(--slk-accent-2);
+  border: 1px solid rgba(100, 168, 255, 0.3);
+}
+
+.expandButton,
+.collapseButton {
+  width: 100%;
+  margin-top: var(--slk-gap-3);
+  padding: var(--slk-gap-3) var(--slk-gap-4);
+  background: rgba(30, 229, 184, 0.08);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+  color: var(--slk-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.expandButton:hover,
+.collapseButton:hover {
+  background: rgba(30, 229, 184, 0.12);
+  border-color: rgba(30, 229, 184, 0.3);
+  transform: translateY(-2px);
+}
+
+.collapseButton {
+  background: rgba(100, 168, 255, 0.08);
+  border-color: rgba(100, 168, 255, 0.2);
+  color: var(--slk-accent-2);
+}
+
+.collapseButton:hover {
+  background: rgba(100, 168, 255, 0.12);
+  border-color: rgba(100, 168, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .commitLink {
+    grid-template-columns: 60px 1fr;
+    gap: var(--slk-gap-2);
+  }
+
+  .commitRepo {
+    display: none;
+  }
+
+  .commitAuthor {
+    position: absolute;
+    right: var(--slk-gap-2);
+    top: var(--slk-gap-2);
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .commitMsg {
+    grid-column: 1 / -1;
+    padding-top: var(--slk-gap-2);
+  }
+
+  .commitList {
+    max-height: 400px;
+  }
+}
