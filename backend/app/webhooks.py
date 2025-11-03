@@ -409,6 +409,15 @@ async def process_vollna_project(project: dict, payload: dict):
 
         # Build job summary for Emma
         client_details = project.get('client_details', {})
+
+        # Safely extract client details with proper None handling
+        total_spent = client_details.get('total_spent') or 0
+        rating = client_details.get('rating') or 0
+        total_hires = client_details.get('total_hires') or 0
+        payment_verified = client_details.get('payment_method_verified') or False
+        country_name = (client_details.get('country') or {}).get('name', 'Unknown')
+        rank = client_details.get('rank') or 'Unknown'
+
         job_summary = f"""
 Title: {project.get('title', 'Unknown')}
 Budget: {project.get('budget', 'Not specified')}
@@ -418,12 +427,12 @@ Description:
 {project.get('description', '')}
 
 Client:
-- Total Spent: ${client_details.get('total_spent', 0):,.2f}
-- Rating: {client_details.get('rating', 0)}⭐
-- Hires: {client_details.get('total_hires', 0)}
-- Payment Verified: {client_details.get('payment_method_verified', False)}
-- Location: {client_details.get('country', {}).get('name', 'Unknown')}
-- Rank: {client_details.get('rank', 'Unknown')}
+- Total Spent: ${total_spent:,.2f}
+- Rating: {rating}⭐
+- Hires: {total_hires}
+- Payment Verified: {payment_verified}
+- Location: {country_name}
+- Rank: {rank}
 
 Feed: {feed_name}
 Link: {upwork_url}
