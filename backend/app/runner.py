@@ -1,11 +1,14 @@
 """
-Citizen Runner HTTP Client
+Citizen Runner - Direct Claude CLI Execution
 
-Calls Node.js Citizen Runner service to execute Claude CLI with tool access.
+Executes Claude CLI directly via subprocess with full tool access.
 """
 
 import logging
-import httpx
+import subprocess
+import json
+import os
+from pathlib import Path
 from typing import Optional
 
 from app.config import settings
@@ -15,27 +18,43 @@ logger = logging.getLogger(__name__)
 
 class ClaudeRunner:
     """
-    Execute Claude Code sessions via Citizen Runner service
+    Execute Claude Code sessions directly via subprocess
 
-    This is the core operational model: backend calls Citizen Runner (Node.js service)
-    which runs `claude --print --continue` with full tool access.
+    Uses native Claude CLI (installed via curl -fsSL https://claude.ai/install.sh | bash)
+    which doesn't require Node.js.
 
     Benefits:
+    - Single service (no separate Node.js service needed)
     - Citizens get full tool access (Read, Write, Bash, Grep)
     - Uses subscription ($20/month) not API calls ($60-180/month)
     - System prompts already defined in citizens/*.md
-    - Separate service = simpler deployments (Python + Node.js native runtimes)
     """
 
-    def __init__(self, citizen_runner_url: Optional[str] = None):
-        """
-        Initialize runner
-
-        Args:
-            citizen_runner_url: URL of Citizen Runner service (default: from env)
-        """
-        self.citizen_runner_url = citizen_runner_url or settings.citizen_runner_url
+    def __init__(self):
+        """Initialize runner and set up Claude credentials"""
         self.backend_api_url = settings.backend_api_url
+        self.timeout = 180  # 3 minutes
+        self._setup_credentials()
+
+    def _setup_credentials(self):
+        """Write Claude credentials from env var to ~/.claude/.credentials.json"""
+        credentials_env = os.getenv('CLAUDE_CREDENTIALS')
+        if not credentials_env:
+            logger.warning('⚠️  CLAUDE_CREDENTIALS not set, Claude CLI may fail')
+            return
+
+        try:
+            claude_dir = Path.home() / '.claude'
+            credentials_path = claude_dir / '.credentials.json'
+
+            # Create .claude directory if it doesn't exist
+            claude_dir.mkdir(parents=True, exist_ok=True)
+
+            # Write credentials file
+            credentials_path.write_text(credentials_env)
+            logger.info(f'✅ Claude credentials written to {credentials_path}')
+        except Exception as error:
+            logger.error(f'❌ Failed to write Claude credentials: {error}')
 
     def run_rafael(self, client: str, message: str, job_title: str, job_link: str, received_at: Optional[str] = None) -> dict:
         """
@@ -86,7 +105,7 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
 
     def _run_claude(self, prompt: str, citizen: str = "rafael", received_at: Optional[str] = None) -> dict:
         """
-        Execute Claude via Citizen Runner service (HTTP)
+        Execute Claude CLI via subprocess
 
         Args:
             prompt: Message to send to Claude
@@ -101,43 +120,45 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
             }
         """
         try:
-            logger.info(f"[runner:{citizen}] Calling Citizen Runner service")
+            logger.info(f"[runner:{citizen}] Spawning Claude CLI")
             logger.debug(f"[runner:{citizen}] Prompt: {prompt[:100]}...")
 
-            # Prepare request payload
-            payload = {
-                "prompt": prompt,
-                "citizen": citizen,
-                "received_at": received_at
-            }
+            # Prepare environment variables
+            env = os.environ.copy()
+            env['BACKEND_API_URL'] = self.backend_api_url
+            if received_at:
+                env['RECEIVED_AT'] = received_at
 
-            # Call Citizen Runner via HTTP
-            with httpx.Client(timeout=130.0) as client:  # 130s timeout (slightly longer than runner's 120s)
-                response = client.post(
-                    f"{self.citizen_runner_url}/run",
-                    json=payload
-                )
+            # Get repo path (parent of backend dir)
+            repo_path = Path(__file__).parent.parent.parent
 
-                response.raise_for_status()
-                result = response.json()
+            # Run Claude CLI
+            result = subprocess.run(
+                ['claude', '--print', prompt, '--continue'],
+                cwd=str(repo_path),
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=self.timeout
+            )
 
-            if result.get("success"):
-                logger.info(f"[runner:{citizen}] Session completed successfully (request_id: {result.get('request_id')})")
+            logger.info(f"[runner:{citizen}] Claude CLI completed (exit_code: {result.returncode}, stdout_length: {len(result.stdout)}, stderr_length: {len(result.stderr)})")
+
+            if result.returncode == 0:
                 return {
                     "success": True,
-                    "output": result.get("output", ""),
+                    "output": result.stdout,
                     "error": None
                 }
             else:
-                logger.error(f"[runner:{citizen}] Session failed: {result.get('error')}")
                 return {
                     "success": False,
-                    "output": result.get("output", ""),
-                    "error": result.get("error", "Unknown error")
+                    "output": result.stdout,
+                    "error": result.stderr or f"Process exited with code {result.returncode}"
                 }
 
-        except httpx.TimeoutException:
-            error = "Citizen Runner timeout after 130s"
+        except subprocess.TimeoutExpired:
+            error = f"Claude CLI timeout after {self.timeout}s"
             logger.error(f"[runner:{citizen}] {error}")
             return {
                 "success": False,
@@ -145,17 +166,8 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
                 "error": error
             }
 
-        except httpx.HTTPStatusError as e:
-            error = f"Citizen Runner HTTP error: {e.response.status_code}"
-            logger.error(f"[runner:{citizen}] {error}")
-            return {
-                "success": False,
-                "output": "",
-                "error": error
-            }
-
-        except httpx.RequestError as e:
-            error = f"Citizen Runner connection error: {str(e)}"
+        except FileNotFoundError:
+            error = "Claude CLI not found - ensure it's installed via build.sh"
             logger.error(f"[runner:{citizen}] {error}")
             return {
                 "success": False,
