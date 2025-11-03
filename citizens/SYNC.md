@@ -42,8 +42,25 @@ Manual paste to Upwork (ToS-compliant)
 - render.yaml (deployment config)
 - Complete README with setup instructions
 
-**Status:** Code complete, ready for deployment
-**Next:** YOUR ACTION REQUIRED (see below)
+**Status:** ✅ Code pushed to GitHub (commits 12d54ea, 1ff22aa, c515a65)
+**Deployment:** Render will auto-deploy in 5-10 minutes
+
+**Webhook URL (once deployed):**
+```
+https://scopelock-backend.onrender.com/webhook/vollna-job
+```
+
+**Next Steps (YOUR ACTION):**
+
+1. **Wait for Render deployment** (check: https://dashboard.render.com)
+2. **Subscribe to Vollna Agency** (vollna.com, 14-day free trial)
+3. **Configure 5 job feeds** (use filter settings from earlier)
+4. **Set up Telegram bot** (@BotFather → /newbot)
+5. **Add Render env vars** (VOLLNA_WEBHOOK_SECRET, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID)
+6. **Configure Vollna webhook** (Dashboard → Notifications → Webhook)
+7. **Test** (Vollna "Send test notification" button)
+
+**Documentation:** services/emma-vollna/README.md
 
 ---
 
