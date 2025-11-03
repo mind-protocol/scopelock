@@ -4,6 +4,82 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-03 03:15 — Rafael: LinkedIn Strategy + Interactive Blog Features ✅
+
+**Work:** Created comprehensive LinkedIn strategy documentation + completed 3 interactive blog features
+
+**Completed:**
+
+1. **LinkedIn Strategy Documentation** (`docs/marketing/linkedin_strategy.md`)
+   - ✅ 4 content pillars (Proof Drops, Change Requests, Evidence Sprints, Anti-patterns)
+   - ✅ Post templates for each content type
+   - ✅ 30-day action plan (foundation → proof library → blog amplification → community)
+   - ✅ Voice guidelines (calm, matter-of-fact, proof-first)
+   - ✅ Engagement strategy (what to engage with, how to comment)
+   - ✅ Metrics tracking (quality over vanity)
+   - ✅ Profile optimization guidelines (company page + personal profiles)
+   - ✅ Red flags checklist (engagement farming, inspiration theater)
+
+2. **Interactive Blog Features** (3/3 completed)
+   - ✅ Timeline comparison chart (AC Criteria blog) - CSS bars with hover effects
+   - ✅ Pricing calculator (Pricing blog) - React sliders with real-time cost comparison
+   - ✅ Decision tree (CHG-130 blog) - Interactive Swap vs Add flow with 4 examples
+
+**Key Principles (LinkedIn):**
+- Post AFTER delivery, not before
+- Every claim links to /proof
+- No "excited to announce" or engagement farming
+- Specific metrics only (ban "90% done")
+- Voice: builder-grade precision, no fluff
+
+**Content Calendar:**
+- Monday: Proof Drops (AC green milestones)
+- Wednesday: Change Request stories
+- Friday: Evidence Sprint showcases
+- Biweekly: Anti-pattern callouts
+
+**Interactive Features Details:**
+- Timeline: Traditional vs ScopeLock project duration with estimate/actual comparison
+- Calculator: Hourly ($4K-$14K range) vs Fixed-bid (padded) vs Outcome-based (predictable)
+- Decision Tree: Step-by-step classification (Email→SMS, React→Vue, Analytics, Push) with reasoning
+
+**Files Created:**
+- `docs/marketing/linkedin_strategy.md` (727 lines)
+- `src/app/blog/change-control-without-scope-creep/DecisionTree.tsx`
+- `src/app/blog/change-control-without-scope-creep/decision-tree.module.css`
+- `src/app/blog/fixed-price-vs-hourly-why-outcome-based-pricing-works/PricingCalculator.tsx`
+- `src/app/blog/fixed-price-vs-hourly-why-outcome-based-pricing-works/calculator.module.css`
+
+**Files Modified:**
+- `src/app/blog/change-control-without-scope-creep/page.tsx` (DecisionTree integration)
+- `src/app/blog/fixed-price-vs-hourly-why-outcome-based-pricing-works/page.tsx` (Calculator integration)
+- `src/app/blog/why-acceptance-criteria-beat-time-estimates/page.tsx` (Timeline chart)
+- `src/app/blog/why-acceptance-criteria-beat-time-estimates/styles.module.css` (Chart styles)
+
+**Commits:**
+- 33a289b - feat: add interactive features to blog posts
+- 49da5e0 - docs: add LinkedIn strategy documentation
+
+**Status:** ✅ All features deployed to production
+**Next:** Rafael to implement Week 1 of LinkedIn strategy (company page optimization + team profiles)
+
+**Ownership:**
+- Rafael: Primary LinkedIn poster, community builder
+- Emma: Monitor for qualified leads
+- Maya: Create visual assets (proof screenshots, GIFs)
+- Daniel: Provide metrics for Proof Drops
+- Aïcha: Review technical accuracy
+
+**First 30 Days Plan:**
+- Week 1: Foundation (optimize profiles, intro post)
+- Week 2: Proof Library (3 posts from existing /proof)
+- Week 3: Blog Amplification (share articles + interactive features)
+- Week 4: Community Building (engage 25 posts, CR story, testimonial)
+
+**Link:** /docs/marketing/linkedin_strategy.md
+
+---
+
 ## 2025-11-03 11:00 — Nicolas: Emma + Vollna Integration Complete ✅
 
 **Work:** Built complete webhook integration (Feature 4)
