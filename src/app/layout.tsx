@@ -63,6 +63,10 @@ export default function RootLayout({
             <a href="https://x.com/nlr_ai" target="_blank" rel="noopener">X</a>
             {' · '}
             <a href="https://t.me/nlr_ai" target="_blank" rel="noopener">Telegram</a>
+            {' · '}
+            <Link href="/terms">Terms</Link>
+            {' · '}
+            <Link href="/privacy">Privacy</Link>
           </small>
         </footer>
       </body>
