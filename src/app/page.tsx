@@ -172,57 +172,28 @@ export default function HomePage() {
         <h2 id="proof-log">Live Activity</h2>
         <p className="proof-intro">Show don't tell. Here's what we're building right now:</p>
 
-        <div className="activity-grid">
-          <div className="activity-card activity-commits">
-            <div className="activity-header">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                <path d="M1.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25H1.75zM0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V1.75zm9.22 3.72a.75.75 0 000 1.06L10.69 8 9.22 9.47a.75.75 0 101.06 1.06l2-2a.75.75 0 000-1.06l-2-2a.75.75 0 00-1.06 0zM6.78 6.53a.75.75 0 00-1.06-1.06l-2 2a.75.75 0 000 1.06l2 2a.75.75 0 101.06-1.06L5.31 8l1.47-1.47z"/>
-              </svg>
-              <h3>Recent Commits</h3>
-            </div>
-            <Suspense fallback={
-              <ul className="commit-list">
-                <li>
-                  <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">
-                    <span className="commit-sha">•••••••</span>
-                    <span className="commit-msg">Loading recent activity...</span>
-                  </a>
-                </li>
-              </ul>
-            }>
-              <LiveCommits />
-            </Suspense>
-            <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="activity-link">
-              View all 65,000+ commits across all repos →
-            </a>
+        <div className="activity-card activity-commits">
+          <div className="activity-header">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M1.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V1.75a.25.25 0 00-.25-.25H1.75zM0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0114.25 16H1.75A1.75 1.75 0 010 14.25V1.75zm9.22 3.72a.75.75 0 000 1.06L10.69 8 9.22 9.47a.75.75 0 101.06 1.06l2-2a.75.75 0 000-1.06l-2-2a.75.75 0 00-1.06 0zM6.78 6.53a.75.75 0 00-1.06-1.06l-2 2a.75.75 0 000 1.06l2 2a.75.75 0 101.06-1.06L5.31 8l1.47-1.47z"/>
+            </svg>
+            <h3>Recent Commits</h3>
           </div>
-
-          <div className="activity-card activity-stats">
-            <div className="activity-header">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                <path d="M1.5 1.75V13.5h13.75a.75.75 0 010 1.5H.75a.75.75 0 01-.75-.75V1.75a.75.75 0 011.5 0zm14.28 2.53l-5.25 5.25a.75.75 0 01-1.06 0L7 7.06 4.28 9.78a.75.75 0 01-1.06-1.06l3.25-3.25a.75.75 0 011.06 0L10 7.94l4.72-4.72a.75.75 0 111.06 1.06z"/>
-              </svg>
-              <h3>This Week</h3>
-            </div>
-            <div className="stats-grid">
-              <div className="stat-item">
-                <div className="stat-value">37</div>
-                <div className="stat-label">Commits</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">12</div>
-                <div className="stat-label">Features</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">3</div>
-                <div className="stat-label">Repos</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-value">130+</div>
-                <div className="stat-label">Coordinated Agents</div>
-              </div>
-            </div>
-          </div>
+          <Suspense fallback={
+            <ul className="commit-list">
+              <li>
+                <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">
+                  <span className="commit-sha">•••••••</span>
+                  <span className="commit-msg">Loading recent activity...</span>
+                </a>
+              </li>
+            </ul>
+          }>
+            <LiveCommits />
+          </Suspense>
+          <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="activity-link">
+            View all 65,000+ commits across all repos →
+          </a>
         </div>
 
         <div className="proof-footer">
