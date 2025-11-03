@@ -59,7 +59,7 @@ function setupClaudeCredentials() {
 // Setup credentials on startup
 setupClaudeCredentials();
 const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://localhost:8000';
-const TIMEOUT_MS = parseInt(process.env.TIMEOUT_MS || '120000'); // 2 minutes
+const TIMEOUT_MS = parseInt(process.env.TIMEOUT_MS || '180000'); // 3 minutes
 
 app.use(bodyParser.json({ limit: '10mb' }));
 
@@ -133,10 +133,10 @@ app.post('/run', async (req, res) => {
       env.RECEIVED_AT = received_at;
     }
 
-    // Spawn Claude CLI subprocess via npx (works with local npm install)
+    // Spawn Claude CLI subprocess (installed globally via build.sh)
     log('info', 'Spawning Claude CLI', { request_id: requestId });
 
-    const claude = spawn('npx', ['@anthropic-ai/claude-code', '--print', prompt, '--continue'], {
+    const claude = spawn('claude', ['--print', prompt, '--continue'], {
       cwd: REPO_PATH,
       env,
       shell: false
