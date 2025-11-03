@@ -44,6 +44,20 @@ class CloudMailinWebhook(BaseModel):
     html: str | None = None
 
 
+class VollnaWebhook(BaseModel):
+    """
+    Vollna webhook payload
+
+    Vollna sends batches of jobs matching filters.
+    Docs: https://docs.vollna.com/integrations/webhooks
+    """
+    total: int
+    results_url: str | None = None
+    filter: dict | None = None
+    filters: list[dict] | None = None
+    projects: list[dict]
+
+
 # ============================================================================
 # Endpoints
 # ============================================================================
@@ -287,3 +301,144 @@ async def notify_draft(
     except Exception as e:
         logger.error(f"[notify:draft] {e}", exc_info=True)
         raise
+
+
+@router.post("/webhook/vollna-job")
+async def vollna_webhook(request: Request):
+    """
+    Receive Vollna job notifications and trigger Emma evaluation
+
+    Vollna sends batches of jobs matching filters.
+    Each job is evaluated by Emma citizen via Claude CLI.
+
+    Flow:
+    1. Verify webhook authentication (Basic Auth)
+    2. Parse job batch from Vollna
+    3. For each job: run Emma via Claude CLI
+    4. Emma evaluates GO/NO-GO and calls /api/lead/track
+    5. If GO: Emma drafts proposal and calls /api/notify/proposal
+
+    Args:
+        request: Vollna webhook payload
+
+    Returns:
+        {"received": true, "total": N, "processing": N}
+    """
+    try:
+        logger.info(f"[vollna] Received webhook at {datetime.utcnow().isoformat()}")
+
+        # Verify webhook authentication if configured
+        from app.config import settings
+        if settings.webhook_secret:
+            auth_header = request.headers.get('Authorization')
+            if not auth_header:
+                logger.error("[vollna] Missing Authorization header")
+                return JSONResponse(
+                    status_code=401,
+                    content={"error": "Unauthorized"}
+                )
+
+            # Vollna uses Basic Auth: "Basic base64(:password)"
+            import base64
+            expected_auth = f"Basic {base64.b64encode(f':{settings.webhook_secret}'.encode()).decode()}"
+            if auth_header != expected_auth:
+                logger.error("[vollna] Invalid webhook authentication")
+                return JSONResponse(
+                    status_code=401,
+                    content={"error": "Unauthorized"}
+                )
+
+        # Parse payload
+        data = await request.json()
+        total = data.get('total', 0)
+        projects = data.get('projects', [])
+
+        logger.info(f"[vollna] Processing {len(projects)} projects (total: {total})")
+
+        if not projects:
+            logger.warning("[vollna] No projects in payload")
+            return {"received": True, "processed": 0}
+
+        # Process each project (async background task)
+        # Respond quickly to avoid Vollna timeout
+        import asyncio
+        for project in projects:
+            asyncio.create_task(process_vollna_project(project, data))
+
+        return {
+            "received": True,
+            "total": total,
+            "processing": len(projects)
+        }
+
+    except Exception as e:
+        logger.error(f"[vollna] {e}", exc_info=True)
+        # Return 200 to avoid Vollna auto-disable
+        return {
+            "received": True,
+            "error": str(e)
+        }
+
+
+async def process_vollna_project(project: dict, payload: dict):
+    """
+    Process individual Vollna project (async background task)
+
+    Args:
+        project: Vollna project object
+        payload: Full webhook payload (for feed info)
+    """
+    try:
+        # Normalize project data
+        job_id_match = project.get('url', '').split('~')
+        job_id = job_id_match[-1] if len(job_id_match) > 1 else f"vollna_{datetime.utcnow().timestamp()}"
+
+        # Extract clean Upwork URL
+        import urllib.parse
+        upwork_url = project.get('url', '')
+        if 'url=' in upwork_url:
+            upwork_url = urllib.parse.unquote(upwork_url.split('url=')[1].split('&')[0])
+
+        # Feed name
+        feed_name = (
+            project.get('filters', [{}])[0].get('name') if project.get('filters')
+            else payload.get('filter', {}).get('name')
+            or 'Unknown Feed'
+        )
+
+        # Build job summary for Emma
+        client_details = project.get('client_details', {})
+        job_summary = f"""
+Title: {project.get('title', 'Unknown')}
+Budget: {project.get('budget', 'Not specified')}
+Budget Type: {project.get('budget_type', 'fixed')}
+
+Description:
+{project.get('description', '')}
+
+Client:
+- Total Spent: ${client_details.get('total_spent', 0):,.2f}
+- Rating: {client_details.get('rating', 0)}⭐
+- Hires: {client_details.get('total_hires', 0)}
+- Payment Verified: {client_details.get('payment_method_verified', False)}
+- Location: {client_details.get('country', {}).get('name', 'Unknown')}
+- Rank: {client_details.get('rank', 'Unknown')}
+
+Feed: {feed_name}
+Link: {upwork_url}
+
+Skills: {', '.join(project.get('skills', []))}
+"""
+
+        logger.info(f"[vollna:project] Processing: {project.get('title', 'Unknown')[:50]}")
+
+        # Run Emma evaluation
+        result = runner.run_emma(job_summary)
+
+        if result["success"]:
+            logger.info(f"[vollna:project] Emma evaluation completed for {job_id}")
+        else:
+            logger.error(f"[vollna:project] Emma evaluation failed: {result['error']}")
+
+    except Exception as e:
+        logger.error(f"[vollna:project] Failed to process project: {e}", exc_info=True)

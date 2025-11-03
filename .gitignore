@@ -22,3 +22,7 @@ next-env.d.ts
 
 # Old backups
 *.old
+gmail-oauth.json
+gmail-token.json
+client_secret_*.json
+*:Zone.Identifier
