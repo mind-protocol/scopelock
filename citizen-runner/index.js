@@ -22,12 +22,42 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { spawn } = require('child_process');
 const path = require('path');
+const fs = require('fs');
+const os = require('os');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configuration
 const REPO_PATH = process.env.REPO_PATH || '/opt/render/project/src';
+
+// Setup Claude credentials at startup
+function setupClaudeCredentials() {
+  const credentialsEnv = process.env.CLAUDE_CREDENTIALS;
+  if (!credentialsEnv) {
+    console.log('⚠️  CLAUDE_CREDENTIALS not set, Claude CLI may fail');
+    return;
+  }
+
+  try {
+    const claudeDir = path.join(os.homedir(), '.claude');
+    const credentialsPath = path.join(claudeDir, '.credentials.json');
+
+    // Create .claude directory if it doesn't exist
+    if (!fs.existsSync(claudeDir)) {
+      fs.mkdirSync(claudeDir, { recursive: true });
+    }
+
+    // Write credentials file
+    fs.writeFileSync(credentialsPath, credentialsEnv);
+    console.log(`✅ Claude credentials written to ${credentialsPath}`);
+  } catch (error) {
+    console.error('❌ Failed to write Claude credentials:', error);
+  }
+}
+
+// Setup credentials on startup
+setupClaudeCredentials();
 const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://localhost:8000';
 const TIMEOUT_MS = parseInt(process.env.TIMEOUT_MS || '120000'); // 2 minutes
 
