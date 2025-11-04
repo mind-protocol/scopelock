@@ -74,6 +74,15 @@ const blogPosts: BlogPost[] = [
     tags: ['ai-development', 'multi-agent', 'ai-citizens'],
     status: 'published',
   },
+  {
+    slug: 'how-we-deliver-in-1-week-what-agencies-quote-in-8',
+    title: 'How We Deliver in 1 Week What Agencies Quote in 8',
+    description: 'Agencies optimize for billable hours. We optimize for speed. Learn how we eliminate waste, cut meetings, and deliver faster without cutting quality.',
+    date: '2025-11-04',
+    readTime: '9 min',
+    tags: ['rapid-development', 'agency-alternative', 'speed'],
+    status: 'published',
+  },
 ];
 
 export default function BlogPage() {
