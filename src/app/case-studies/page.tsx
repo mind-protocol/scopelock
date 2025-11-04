@@ -56,7 +56,7 @@ export default function CaseStudiesPage() {
           in first week post-launch.
         </p>
         <p>
-          <Link href="/proof/evidence-sprint_signup-otp_2025-10-31">View proof entry →</Link>
+          <em>Example case study - see <Link href="/proof">Proof Log</Link> for real deliveries</em>
         </p>
       </article>
 
@@ -92,7 +92,7 @@ export default function CaseStudiesPage() {
           Client reported 10x fewer support tickets related to imports.
         </p>
         <p>
-          <Link href="/proof/evidence-sprint_import-csv_2025-11-02">View proof entry →</Link>
+          <em>Example case study - see <Link href="/proof">Proof Log</Link> for real deliveries</em>
         </p>
       </article>
 
@@ -128,7 +128,7 @@ export default function CaseStudiesPage() {
           improvement in user satisfaction scores.
         </p>
         <p>
-          <Link href="/proof/evidence-sprint_search_2025-11-03">View proof entry →</Link>
+          <em>Example case study - see <Link href="/proof">Proof Log</Link> for real deliveries</em>
         </p>
       </article>
 
