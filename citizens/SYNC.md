@@ -4,6 +4,87 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-04 — Emma: 4 Contra Proposals + Portfolio Update ($44.5K Pipeline) ✅
+
+**Work:** Evaluated Contra jobs, wrote 4 proposals, updated portfolio with BeatFoundry + DuoAI
+
+**Completed:**
+
+1. **4 Contra Proposals Written** ($44.5K total pipeline):
+   - ✅ SomaAI Healthtech ($8.5K, 6 weeks) - Middleware + demo MVP, TherapyKin proof match
+   - ✅ Apex HR AI Filtering ($4.5K, 4 weeks) - La Serenissima proof (filtering/ranking at scale)
+   - ✅ Arcutum Mobile Health ($9.5K, 2 months) - HIPAA mobile MVP, TherapyKin proof match
+   - ✅ Sample Lab Music Platform ($22K, 4 months) - BeatFoundry proof match (audio platform)
+
+2. **Portfolio Documentation Updated:**
+   - ✅ Added BeatFoundry to `/docs/portfolio/README.md` (55 deployments, music platform)
+   - ✅ Added DuoAI to `/docs/portfolio/README.md` (49 deployments, real-time audio)
+   - ✅ Created quick-reference snippets for both projects
+
+**Key Insights:**
+
+- **BeatFoundry unlocks new verticals:** Music/audio platforms, creator tools, subscription services
+- **DuoAI proves real-time capability:** Voice integration, audio processing, screen capture
+- **Portfolio now covers:** AI agents, trading, healthcare, music/audio, voice, browser tools
+- **Contra strategy:** All proposals compressed to <1,500 chars with project links
+
+**Proposal Files Created:**
+- `citizens/emma/proposals/2025-11-04_contra_somaai-healthtech-SHORT.txt` (1,450 chars)
+- `citizens/emma/proposals/2025-11-04_contra_apex-hr-ai-filtering.txt` (1,468 chars)
+- `citizens/emma/proposals/2025-11-04_contra_arcutum-health-mobile.txt` (1,222 chars)
+- `citizens/emma/proposals/2025-11-04_contra_sample-lab-music-platform.txt` (1,327 chars)
+
+**Rejected Jobs (HARD NO):**
+- n8n automation ($10-30/hr) - too low budget
+- Nexus Global Partners ($2-4K for massive scope) - 10x underpriced
+- Longbow Webflow redesign ($4-8K) - wrong stack (we do Next.js)
+
+**Status:** Ready to submit all 4 Contra proposals + still have Upwork Project Catalog ready for review (pending Gamma.app gallery images)
+
+**Next:** Submit proposals, create gallery assets for Project Catalog
+
+---
+
+## 2025-11-03 03:45 — Rafael: BeatsFoundry Comprehensive Documentation ✅
+
+**Work:** Created detailed technical documentation for BeatsFoundry (building on Emma's portfolio addition)
+
+**What was added:**
+- ✅ Comprehensive technical README (`docs/portfolio/beatfoundry/README.md`, 600+ lines)
+- ✅ Enhanced portfolio index entry with key features
+- ✅ Updated quick-reference snippet with personality/evolution angle
+
+**Documentation Includes:**
+- Complete technical architecture (Next.js 14 App Router, Airtable schema, API integrations)
+- SUNO V4.5 model integration details
+- KinOS API personality system
+- Environment variables + configuration
+- Development setup instructions
+- Technical decisions + trade-offs
+- User flow (5 steps from discovery → creation)
+- Proof points (55 deployments, TypeScript 97.6%, 4 API integrations)
+- Use cases for client proposals (9 scenarios)
+- Portfolio positioning (complements La Serenissima/Terminal Velocity)
+- Client-facing talking points
+- Technical debt + future enhancements
+- When to reference guide
+
+**Key Differentiators Documented:**
+- Not transactional music generation (AI artists with identity)
+- Conversational creation (chat with AI before generating)
+- Artistic evolution over time (listener feedback)
+- AI citizens for music (similar to La Serenissima for civilization)
+
+**Files:**
+- Created: `docs/portfolio/beatfoundry/README.md`
+- Updated: `docs/portfolio/README.md`
+
+**Commit:** 68679ba - docs: add BeatsFoundry to portfolio
+
+**Status:** ✅ Full technical documentation available for proposals
+
+---
+
 ## 2025-11-03 03:15 — Rafael: LinkedIn Strategy + Interactive Blog Features ✅
 
 **Work:** Created comprehensive LinkedIn strategy documentation + completed 3 interactive blog features
@@ -1466,3 +1547,221 @@ Vollna → POST /webhook/vollna-job (FastAPI)
 - Commit (fix): https://github.com/mind-protocol/scopelock/commit/2025593
 - Backend health: https://scopelock.onrender.com/health
 - Webhook endpoint: https://scopelock.onrender.com/webhook/vollna-job
+
+## 2025-11-04 01:32 - Priya: Browser Automation Setup - Playwright MCP
+
+**Context:** Setting up AI-driven browser automation for Upwork proposal submission using Microsoft's official Playwright MCP server
+
+**Why Playwright MCP:**
+- ✅ Official Microsoft implementation
+- ✅ Runs in background (separate browser session - won't block your work)
+- ✅ Persistent profile (login once, session saved)
+- ✅ Headed mode for debugging (can watch it work)
+- ✅ Headless mode for production (invisible)
+- ✅ Built-in tracing, video recording, screenshots
+- ✅ Native MCP integration with Claude Code
+
+**Completed:**
+- ✅ Configured Playwright MCP in `~/.config/claude-code/mcp_settings.json`
+- ✅ Created persistent profile directory: `~/.playwright/upwork-profile`
+- ✅ Created output directory for traces/videos: `scopelock/browser-sessions`
+- ✅ Created `backend/app/browser_automation.py` skeleton
+
+**Configuration Details:**
+```json
+{
+  "playwright": {
+    "command": "npx @playwright/mcp@latest",
+    "browser": "chrome",
+    "profile": "/home/mind-protocol/.playwright/upwork-profile",
+    "output": "/home/mind-protocol/scopelock/browser-sessions",
+    "features": ["trace", "video", "clipboard"],
+    "timeouts": {
+      "action": "10s",
+      "navigation": "30s"
+    }
+  }
+}
+```
+
+**How It Works:**
+```
+You work normally (your browser unaffected)
+  ↓
+Telegram: "Submit" button clicked
+  ↓
+Backend calls browser_automation.py
+  ↓
+Separate Chrome opens (background or visible)
+  ↓
+Uses saved Upwork session (no re-login)
+  ↓
+Navigates to job URL
+  ↓
+Fills proposal form
+  ↓
+Submits
+  ↓
+Captures screenshot + trace
+  ↓
+Closes (10-15 seconds total)
+  ↓
+Telegram: "✅ Submitted! [screenshot]"
+```
+
+**Next Steps (User Action Required):**
+
+**1. Restart Claude Code**
+   - Exit current Claude Code session
+   - Restart: `claude` or reopen VS Code
+   - MCP server will load automatically
+   - Check for "Playwright" in MCP tools list
+
+**2. One-Time Upwork Login**
+   - After restart, I'll run headed browser
+   - Navigate to Upwork login page
+   - You manually log in (including 2FA if needed)
+   - Session saved to profile automatically
+   - Never need to log in again (unless cookies expire)
+
+**3. Test Automation**
+   - Pick a test job URL
+   - Test proposal submission
+   - Watch it work in headed mode
+   - Verify screenshot/trace captured
+
+**4. Production Mode**
+   - Switch to headless (add `--headless` flag)
+   - Integrate with Telegram approval workflow
+   - Full automation ready
+
+**Files Created:**
+- `~/.config/claude-code/mcp_settings.json` - MCP configuration
+- `backend/app/browser_automation.py` - Automation module
+- `~/.playwright/upwork-profile/` - Persistent session storage
+- `scopelock/browser-sessions/` - Traces/videos/screenshots
+
+**Why This Won't Block Your Work:**
+- Separate Chrome instance with different profile
+- You can keep working in your normal browser
+- Can run headless (completely invisible)
+- Can even deploy to remote server later
+
+**Debug Mode:**
+- Browser visible by default (can watch it work)
+- Screenshots at each step
+- Video recording of entire session
+- Playwright traces for debugging
+- Toggle headless with env var later
+
+**Link:** N/A (local configuration)
+
+## 2025-11-04 02:33 - Priya: Browser Automation - READY TO TEST ✅
+
+**Status:** Complete standalone automation script built and ready for testing
+
+**What's Built:**
+- ✅ `scripts/submit-upwork-proposal.js` - Full Playwright automation (375 lines)
+- ✅ Persistent session management (login once, reuse)
+- ✅ Multi-selector AI-adaptive approach (handles UI changes)
+- ✅ Screenshot + video capture at every step
+- ✅ Test mode (dry run without submitting)
+- ✅ Manual login flow on first run
+- ✅ WSL2-compatible (verified working)
+
+**Features:**
+- **Headed mode** (default): Watch browser work for debugging
+- **Headless mode**: Set `BROWSER_HEADLESS=true` for invisible
+- **Test mode**: Set `TEST_MODE=true` for dry run
+- **Session persistence**: Login saved in `~/.playwright/upwork-profile`
+- **Output capture**: Videos, screenshots, traces saved to `browser-sessions/`
+
+**How It Works:**
+```
+1. Launch Chromium with persistent profile
+2. Navigate to job URL
+3. Check if logged in (auto-detect)
+4. If not logged in: pause 60s for manual login
+5. Find "Submit a Proposal" button (multiple selectors)
+6. Click button
+7. Fill proposal textarea (AI-adaptive)
+8. Set bid amount
+9. Click "Send" (or skip if TEST_MODE=true)
+10. Capture confirmation screenshot
+11. Save session results
+```
+
+**Next Steps (User Testing):**
+
+**1. Get a Real Upwork Job URL**
+   - Find any job on Upwork
+   - Copy the full URL (e.g., `https://www.upwork.com/jobs/~01abc123...`)
+
+**2. Edit Test Script**
+   - Open: `scripts/test-browser.sh`
+   - Replace `JOB_URL` with your real job URL
+   - Customize proposal text if you want
+
+**3. Run Test**
+   ```bash
+   cd /home/mind-protocol/scopelock
+   ./scripts/test-browser.sh
+   ```
+
+**4. What Will Happen:**
+   - Browser window opens (visible)
+   - Navigates to Upwork job
+   - If not logged in: waits 60s for you to log in manually
+   - Fills proposal form
+   - Takes screenshots at each step
+   - **Does NOT submit** (TEST_MODE=true)
+   - Saves results to `browser-sessions/session-{timestamp}/`
+
+**5. Check Results:**
+   ```bash
+   ls -la browser-sessions/session-*/
+   # You'll see:
+   # - 01-job-page.png
+   # - 02-proposal-form.png
+   # - 03-filled-form.png
+   # - 04-ready-to-send.png
+   # - result.json
+   # - video.webm
+   ```
+
+**Environment Variables:**
+```bash
+TEST_MODE=true              # Dry run (don't actually submit)
+BROWSER_HEADLESS=false      # Show browser (default)
+BROWSER_HEADLESS=true       # Invisible background mode
+UPWORK_PROFILE_DIR=path     # Custom session location
+OUTPUT_DIR=path             # Custom output location
+```
+
+**Production Usage (After Testing):**
+```bash
+# Remove test mode to actually submit
+export TEST_MODE=false
+export BROWSER_HEADLESS=true  # Run invisible
+
+node scripts/submit-upwork-proposal.js \
+  "https://www.upwork.com/jobs/~abc123" \
+  "Your full proposal text here" \
+  3500 \
+  6
+```
+
+**Integration with Backend (Next):**
+Once testing confirms it works, we'll integrate:
+1. Python backend calls this Node.js script
+2. Telegram approval triggers submission
+3. Results sent back to Telegram
+4. Screenshots/videos attached
+
+**Files:**
+- `scripts/submit-upwork-proposal.js` - Main automation (375 lines)
+- `scripts/test-browser.sh` - Test wrapper script
+- `~/.playwright/upwork-profile/` - Session storage
+- `browser-sessions/` - Output directory
+
+**Link:** Local scripts
