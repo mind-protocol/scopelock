@@ -4,6 +4,121 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
+## 2025-11-04 04:30 — Rafael: "How We Deliver in 1 Week" Blog Post ✅
+
+**Work:** Created Priority 2 blog post on speed advantage over agencies
+
+**Post Created:**
+- **Title:** "How We Deliver in 1 Week What Agencies Quote in 8"
+- **Slug:** `how-we-deliver-in-1-week-what-agencies-quote-in-8`
+- **Length:** ~2,200 words (9 min read)
+- **Status:** Published
+
+**Key Content:**
+1. **The Math** - Agency 320 hours breakdown (discovery, dev, QA, deployment)
+2. **What We Cut** - 143 hours overhead eliminated (45% of timeline):
+   - Status meetings: 20h savings
+   - Discovery phase: 38h savings
+   - Design iterations: 25h savings
+   - Internal coordination: 30h savings
+   - QA phase: 20h savings
+   - Documentation: 10h savings
+3. **Side-by-Side Comparison** - Agency 8 weeks vs ScopeLock 1 week (same deliverable)
+4. **How It's Possible** - 3 structural advantages:
+   - No internal coordination (AI citizens parallel work)
+   - Acceptance criteria first (AC.md in 2h vs 2-week discovery)
+   - Tests define done (no separate QA phase)
+5. **Common Objections** - Quality, cost, complexity, changes (with rebuttals)
+6. **Real Example** - OTP Signup: $18K/6 weeks (agency) → $5K/5 days (ScopeLock)
+7. **Why Agencies Can't** - Structural constraints (billable hours, team coordination, risk aversion, meeting culture)
+8. **What This Means** - Launch faster, lower cost, less risk, clear outcomes
+
+**Interactive Elements:**
+- Timeline breakdown cards with hours
+- Overhead comparison grid (6 categories)
+- Side-by-side week-by-week comparison
+- Real example comparison table
+- CTA comparison (timeline, meetings, phases, price, payment)
+
+**SEO Keywords:**
+- rapid development
+- agency alternative
+- fast software delivery
+- startup development
+
+**Target Audience:**
+- Founders comparing ScopeLock to agencies
+- CTOs evaluating development options
+- Startups seeking fast delivery
+
+**Voice:**
+- Builder-grade, precise
+- No agency bashing, structural explanation
+- Evidence-based (hours, percentages, real timelines)
+- Acknowledges agency constraints (not incompetence)
+
+**Files Created:**
+- `src/app/blog/how-we-deliver-in-1-week-what-agencies-quote-in-8/page.tsx`
+- `src/app/blog/how-we-deliver-in-1-week-what-agencies-quote-in-8/styles.module.css`
+
+**Files Updated:**
+- `src/app/blog/page.tsx` (added to blog index)
+
+**Commit:** 1f29d43 - feat: add "How We Deliver in 1 Week What Agencies Quote in 8" blog post
+
+**Status:** ✅ Published (7 total blog posts now live)
+
+**Blog Progress:**
+- ✅ Published: 7 posts (Acceptance Criteria, La Serenissima, Evidence Sprint, CHG-130, Fixed-Price vs Hourly, AI Citizens, **Agency Speed**)
+- ⏭️ Coming Soon: 1 post (What Is AC.md?)
+- 📋 Content Plan: 12 posts total mapped out
+
+**Next:** Could create "What Is AC.md?" post (currently marked coming-soon) or wait for real client projects for case study posts
+
+---
+
+## 2025-11-04 — Emma: Contra Tactical Guide Created ✅
+
+**Work:** Replaced generic Contra best practices with ScopeLock-specific tactical guide
+
+**Completed:**
+
+1. **Archived generic doc:**
+   - Moved `docs/marketing/Contra_best_practices.md` → `docs/archive/Contra_best_practices_generic.md`
+   - Generic freelancing advice (portfolio building, community features, Pro subscription) contradicted ScopeLock approach
+
+2. **Created tactical guide:**
+   - New: `docs/marketing/contra_tactical_guide.md` (12 sections, ~6,500 words)
+   - Based on proven results: 11 proposals, $75.5K pipeline, 2025-11-04 session
+   - Tactical content:
+     - 1,500 character limit optimization techniques
+     - Three-tier evaluation (STRONG GO/QUALIFIED MAYBE/HARD NO)
+     - Converting hourly posts to fixed-price milestones
+     - Portfolio proof matching decision tree (7 projects → job domains)
+     - Character count compression strategies
+     - Client type detection on Contra
+     - Real success metrics (20-30 proposals/day target)
+     - Anti-patterns (no hourly, no cheap gigs, no Contra Pro)
+
+3. **Updated documentation:**
+   - ✅ Updated `docs/marketing/README.md` with new guide reference
+   - ✅ Updated Emma's `CLAUDE.md` Reference Files section
+   - ✅ File structure documented in marketing README
+
+**Why this matters:**
+- Generic advice contradicted core ScopeLock principles (no hourly, $2.5K minimum, fixed-price only)
+- Tactical guide captures actual working methods from today's successful 11-proposal session
+- Provides character optimization techniques critical for 1,500 char Contra limit
+- Integrates with existing ScopeLock docs (portfolio/README.md, communication_guide.md, proposal_framework.md)
+
+**Status:** Complete. Tactical guide ready for use in next Contra session.
+
+**Next:** Apply tactical guide to next batch of Contra proposals (will test three-tier evaluation and character optimization)
+
+**Link:** `docs/marketing/contra_tactical_guide.md`
+
+---
+
 ## 2025-11-04 — Priya: Telegram Approval Workflow Complete ✅
 
 **Work:** Built automated Vollna → Emma → Telegram approval flow
