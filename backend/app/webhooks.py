@@ -12,7 +12,12 @@ from pydantic import BaseModel
 
 from app.auth import verify_webhook_signature
 from app.runner import runner
-from app.telegram import send_draft_notification, handle_approval
+from app.telegram import (
+    send_draft_notification,
+    handle_approval,
+    send_proposal_notification,
+    handle_proposal_action
+)
 
 logger = logging.getLogger(__name__)
 
@@ -221,17 +226,16 @@ async def telegram_webhook(update: TelegramUpdate):
     Handle Telegram callback queries (approval buttons)
 
     Flow:
-    1. Parse callback_data → "approve:{draft_id}" or "reject:{draft_id}"
-    2. Read draft file: citizens/rafael/drafts/{draft_id}.json
-    3. Update status field
-    4. Call Telegram API to edit message ("✅ Approved" or "❌ Rejected")
-    5. If approved, trigger send (future: call Upwork API or copy to clipboard)
+    1. Parse callback_data → "approve:{draft_id}" or "proposal_approve:{proposal_id}"
+    2. Route to appropriate handler (draft or proposal)
+    3. Update status and edit Telegram message
+    4. If proposal approved, trigger browser automation
 
     Args:
         update: Telegram update object
 
     Returns:
-        {"status": "approved"|"rejected", "draft_id": "..."}
+        {"status": str, "id": str}
     """
     try:
         if not update.callback_query:
@@ -243,15 +247,23 @@ async def telegram_webhook(update: TelegramUpdate):
 
         logger.info(f"[webhook:telegram] Callback: {callback_data}")
 
-        # Parse action and draft_id
+        # Parse action and ID
         if ":" not in callback_data:
             logger.warning(f"[webhook:telegram] Invalid callback_data: {callback_data}")
             return {"status": "invalid_format"}
 
-        action, draft_id = callback_data.split(":", 1)
+        parts = callback_data.split(":", 1)
+        action = parts[0]
+        item_id = parts[1]
 
-        # Handle approval/rejection
-        result = await handle_approval(draft_id, action, callback_id)
+        # Route to appropriate handler
+        if action.startswith("proposal_"):
+            # Proposal actions: proposal_approve, proposal_edit, proposal_reject
+            proposal_action = action.replace("proposal_", "")  # "approve", "edit", "reject"
+            result = await handle_proposal_action(item_id, proposal_action, callback_id)
+        else:
+            # Draft actions: approve, edit, reject
+            result = await handle_approval(item_id, action, callback_id)
 
         return result
 
@@ -301,6 +313,70 @@ async def notify_draft(
 
     except Exception as e:
         logger.error(f"[notify:draft] {e}", exc_info=True)
+        raise
+
+
+@router.post("/api/notify/proposal")
+async def notify_proposal(
+    proposal_id: str,
+    job_title: str,
+    job_url: str,
+    proposal_text: str,
+    bid_amount: int,
+    confidence: int,
+    client_spent: float = 0,
+    client_rating: float = 0,
+    client_hires: int = 0,
+    client_payment_verified: bool = False,
+    client_country: str = "Unknown",
+    client_rank: str = "Unknown"
+):
+    """
+    Send Upwork proposal notification with approval buttons
+
+    Called by Emma (via Bash tool) after evaluating a Vollna job as GO.
+
+    Args:
+        proposal_id: UUID of proposal
+        job_title: Upwork job title
+        job_url: Upwork job URL
+        proposal_text: Emma's generated proposal
+        bid_amount: Suggested bid amount
+        confidence: Confidence score (0-100)
+        client_*: Client details from Vollna
+
+    Returns:
+        {"telegram_sent": bool, "message_id": str}
+    """
+    try:
+        logger.info(f"[notify:proposal] Sending notification for proposal {proposal_id}")
+
+        client_info = {
+            "total_spent": client_spent,
+            "rating": client_rating,
+            "total_hires": client_hires,
+            "payment_method_verified": client_payment_verified,
+            "country": {"name": client_country},
+            "rank": client_rank
+        }
+
+        message_id = await send_proposal_notification(
+            proposal_id=proposal_id,
+            job_title=job_title,
+            job_url=job_url,
+            proposal_text=proposal_text,
+            bid_amount=bid_amount,
+            confidence=confidence,
+            client_info=client_info
+        )
+
+        return {
+            "telegram_sent": True,
+            "message_id": message_id
+        }
+
+    except Exception as e:
+        logger.error(f"[notify:proposal] {e}", exc_info=True)
         raise
 
 

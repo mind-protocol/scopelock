@@ -1,0 +1,22 @@
+You need HIPAA-compliant mobile health MVP with wearable integrations. Most developers handle mobile OR compliance, not both at production scale.
+
+I built TherapyKin (therapykin.ai) - mobile AI health companion with 121+ deployments. React Native, HIPAA-aware, handles PHI correctly, BAA-compliant, production iOS + Android.
+
+Mobile Health MVP ($9,500, 2 months):
+
+Month 1 ($5K): React Native app, HIPAA data layer (encryption at rest/transit), wearable APIs (Fitbit, HealthKit, Google Fit). Deliverable: Working app with real wearable sync, HIPAA checklist passed.
+
+Month 2 ($4.5K): User flows, backend API, TestFlight + Play Store beta, docs. Deliverable: Production-ready MVP, both platforms.
+
+Stack: React Native + Node.js/Python + PostgreSQL + AWS/Vercel. BAA, encryption, audit logging included.
+
+Questions: 1) Priority wearables? 2) Key health metrics? 3) Backend (Node.js or Python)?
+
+Pay when tests pass. Swap (free) or Add (priced). GMT+1, available EST hours. Start 72h.
+
+Projects:
+• TherapyKin: therapykin.ai (mobile health AI, 121+ deploys, HIPAA-aware)
+• La Serenissima: serenissima.ai (97 agents, 99.7% uptime)
+• GitHub: github.com/nlr-ai (65K commits) + github.com/mind-protocol (1.1k stars)
+
+Nicolas

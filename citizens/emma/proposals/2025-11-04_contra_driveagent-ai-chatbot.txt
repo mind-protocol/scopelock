@@ -1,0 +1,24 @@
+You need developer who takes your working local chatbot to production with lightweight frontend and per-user session memory, not someone building from scratch.
+
+I built La Serenissima (serenissima.ai) - 97 AI agents in Python, 99.7% uptime 6+ months. Also TherapyKin (therapykin.ai) - AI companion with 121+ deployments. We know how to take prototypes to production scale.
+
+Production Deployment + Ongoing Maintenance ($6K/mo, 15 hrs/wk):
+
+Weeks 1-2: Take your local chatbot to Flask/FastAPI, add per-user session memory, lightweight frontend (minimalist, clean). Deliverable: Deployed chatbot, shareable URL, session memory working.
+
+Weeks 3-4: Error handling, retry logic, basic monitoring, admin panel. Deliverable: Production-ready, handles edge cases gracefully.
+
+Ongoing: Improvements (memory handling, logic refinement, UI tweaks), prompt optimization, weekly updates. Deliverable: 2-3 improvements/month.
+
+Stack: Python + Flask/FastAPI + OpenAI + PostgreSQL/MongoDB (session storage). Minimalist frontend, no complex visuals.
+
+Questions: 1) Current chatbot framework (LangChain, custom)? 2) Expected users for testing? 3) Hosting preference (Render, Vercel, AWS)?
+
+Pay monthly. Swap/Add for changes. GMT+1, available US hours. Start 72h.
+
+Projects:
+• La Serenissima: serenissima.ai (97 agents, Python, 99.7% uptime)
+• TherapyKin: therapykin.ai (AI companion, 121+ deploys)
+• GitHub: github.com/nlr-ai + github.com/mind-protocol
+
+Nicolas

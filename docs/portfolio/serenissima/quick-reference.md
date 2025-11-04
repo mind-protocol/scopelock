@@ -1,12 +1,12 @@
 # Serenissima — Quick Reference for Proposals
 
-**One-liner:** Built AI consciousness city with 97+ persistent agents, 6+ months production uptime, novel multi-agent coordination.
+**One-liner:** Built AI consciousness city with 130+ persistent agents, 6+ months production uptime, novel multi-agent coordination.
 
 ---
 
 ## Key Proof Points
 
-✅ **Scale:** 97+ AI agents with persistent identities (90.92% consistency)
+✅ **Scale:** 130+ AI agents with persistent identities (90.92% consistency)
 ✅ **Uptime:** 6+ months in production, live at serenissima.ai
 ✅ **AI Orchestration:** Multi-LLM integration (GPT-4, Claude, DeepSeek)
 ✅ **Complex Systems:** Economic simulation, cultural transmission, emergent behavior
@@ -36,10 +36,10 @@
 ## One-Sentence Pitch Versions
 
 **Technical buyer:**
-"We architected La Serenissima, a multi-agent AI system with 97+ persistent citizens running 6+ months in production—proving we can orchestrate complex AI at scale."
+"We architected La Serenissima, a multi-agent AI system with 130+ persistent citizens running 6+ months in production—proving we can orchestrate complex AI at scale."
 
 **Non-technical buyer:**
-"We built an AI city with 97 digital citizens who remember you, make decisions, and create culture—live for 6 months and growing."
+"We built an AI city with 130 digital citizens who remember you, make decisions, and create culture—live for 6 months and growing."
 
 **Startup founder:**
 "We shipped La Serenissima from concept to production in 6 months—AI agents, blockchain, full-stack, all open-source. That's the build speed you get."

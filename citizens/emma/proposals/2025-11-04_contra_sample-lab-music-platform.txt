@@ -1,0 +1,26 @@
+You need subscription platform with audio preview, credit system, browse/download for samples. Most developers build generic e-commerce without creator workflows or playback performance.
+
+I built BeatFoundry (beatfoundry.vercel.app) - music platform with built-in audio player, browse/listen interface, 55 deployments. Also DuoAI (duoai.vercel.app) with real-time audio processing.
+
+Sample Platform ($22K, 4 months):
+
+Month 1 ($6K): Figma designs, Next.js app, credit membership, Stripe. Deliverable: Designs + auth + credit dashboard.
+
+Month 2 ($6K): Audio preview/playback (waveforms, streaming), browse/filter, metadata (BPM, key, genre). Deliverable: Catalog browsing, preview without lag.
+
+Month 3 ($6K): Download + credit deduction, user dashboard (history), admin (upload, manage). Deliverable: Full user + admin flows.
+
+Month 4 ($4K): CDN, caching, analytics, Vercel deploy. Deliverable: Production 1K+ users.
+
+Stack: Next.js + PostgreSQL/Airtable + Stripe + S3. Wavesurfer.js for preview.
+
+Questions: 1) Launch catalog size? 2) Formats (WAV, MP3, stems)? 3) Credit tiers?
+
+Pay when tests pass. Swap/Add. Start 72h.
+
+Projects:
+• BeatFoundry: beatfoundry.vercel.app (music platform, 55 deploys)
+• DuoAI: duoai.vercel.app (real-time audio, 49 deploys)
+• GitHub: github.com/nlr-ai + github.com/mind-protocol
+
+Nicolas

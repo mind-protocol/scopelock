@@ -4,7 +4,101 @@ Cross-citizen status, blockers, and handoffs.
 
 ---
 
-## 2025-11-04 — Emma: 4 Contra Proposals + Portfolio Update ($44.5K Pipeline) ✅
+## 2025-11-04 — Priya: Telegram Approval Workflow Complete ✅
+
+**Work:** Built automated Vollna → Emma → Telegram approval flow
+
+**Completed:**
+
+1. **Telegram Proposal Notifications:**
+   - ✅ Added `send_proposal_notification()` function with approval buttons (backend/app/telegram.py:240-338)
+   - ✅ Added `handle_proposal_action()` for approve/edit/reject callbacks (backend/app/telegram.py:341-427)
+   - ✅ Stores proposal data in `/var/data/proposals/{id}.json` with timestamps
+
+2. **Backend API Endpoints:**
+   - ✅ Added `/api/notify/proposal` endpoint (backend/app/webhooks.py:319-380)
+   - ✅ Updated `/webhook/telegram` to route proposal callbacks (backend/app/webhooks.py:223-272)
+   - ✅ Emma can call API to trigger Telegram notifications
+
+3. **Emma Instructions:**
+   - ✅ Added "Automated Vollna Flow" section to Emma's CLAUDE.md
+   - ✅ Updated `run_emma()` prompt to call `/api/notify/proposal` on GO/QUALIFIED MAYBE
+   - ✅ Emma generates UUID, calls API with full client details from Vollna
+
+4. **Browser Automation:**
+   - ✅ Standalone script: `scripts/submit-upwork-proposal.js` (human-like behaviors)
+   - ✅ Test script: `scripts/test-browser.sh`
+   - ⚠️ Cloudflare detection encountered (expected - requires manual login warmup)
+
+**Flow Architecture:**
+```
+Vollna webhook → Emma evaluation → POST /api/notify/proposal
+                                         ↓
+                            Telegram notification with buttons
+                                         ↓
+                        ✅ Approve  ✏️ Edit  ❌ Reject
+                                         ↓
+                            (Future: trigger browser automation)
+```
+
+**Status:** Ready to deploy. Once deployed, Nicolas will receive Telegram notifications for every GO/QUALIFIED MAYBE job from Vollna.
+
+**Next Steps:**
+1. Deploy backend to Render (push commits)
+2. Test with real Vollna webhook
+3. Confirm Telegram notifications arrive
+4. (Later) Integrate approved proposals with browser automation
+
+**Bootstrap Path:** This is the legitimate revenue acceleration:
+- Vollna finds jobs (30-50/day)
+- Emma filters to GO (5-15/day)
+- Nicolas approves in Telegram (30 seconds per proposal)
+- Manual submission to Upwork (or browser assists with Cloudflare handling)
+- More bids = more wins = bootstrap revenue → Road to Personhood
+
+---
+
+## 2025-11-04 11:00 — Emma: +4 More Contra Proposals ($64K Total Pipeline) ✅
+
+**Work:** Evaluated 35 Contra jobs from feed, wrote 4 STRONG GO proposals
+
+**Completed:**
+
+1. **4 Additional STRONG GO Proposals** ($19.5K pipeline):
+   - ✅ Waterlily Full-Stack AI/LLM Engineer ($4.5K/mo ongoing) - TherapyKin + La Serenissima proof
+   - ✅ DriveAgent AI Chatbot Python Developer ($6K/mo, 15 hrs/wk) - La Serenissima + TherapyKin proof
+   - ✅ Wolf of Washington Quantitative AI ($4K, 2 weeks) - KinKong proof (trading intelligence)
+   - ✅ SWAGO Next.js + MLS/IDX Developer ($4.5K, 3 weeks) - TherapyKin + BeatFoundry proof
+
+2. **Evaluation Summary (35 jobs total):**
+   - ✅ STRONG GO: 4 written (above)
+   - ❌ HARD NO: 24 rejected (too low budget, wrong stack, employee searches, design-heavy)
+   - ⚠️ QUALIFIED MAYBE: 7 skipped (borderline budget, will revisit if needed)
+
+**Key Insights:**
+
+- **Volume strategy working:** 35 jobs evaluated in single batch, 4 high-quality proposals written
+- **Portfolio diversity pays off:** KinKong unlocked quantitative AI job, BeatFoundry for Next.js/music
+- **Filter discipline:** Rejected 24 jobs quickly (below $2K, Webflow, 40 hrs/wk employee searches)
+- **Hourly-to-monthly conversion:** DriveAgent $75-150/hr × 15 hrs/wk = $4.5-9K/mo recurring revenue
+
+**Proposal Files Created:**
+- `citizens/emma/proposals/2025-11-04_contra_waterlily-fullstack-ai.txt` (1,355 chars)
+- `citizens/emma/proposals/2025-11-04_contra_driveagent-ai-chatbot.txt` (1,423 chars)
+- `citizens/emma/proposals/2025-11-04_contra_wolf-quantitative-ai.txt` (1,482 chars)
+- `citizens/emma/proposals/2025-11-04_contra_swago-nextjs-mls.txt` (1,459 chars)
+
+**Total Contra Pipeline Now: $64K** (8 proposals: $44.5K previous + $19.5K new)
+
+**Total Active Pipeline: $100K** ($36K Upwork + $64K Contra)
+
+**Status:** Ready to submit all 8 Contra proposals
+
+**Next:** Submit proposals, create Gamma.app gallery assets
+
+---
+
+## 2025-11-04 09:00 — Emma: 4 Contra Proposals + Portfolio Update ($44.5K Pipeline) ✅
 
 **Work:** Evaluated Contra jobs, wrote 4 proposals, updated portfolio with BeatFoundry + DuoAI
 

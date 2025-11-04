@@ -1,0 +1,26 @@
+You need AI filtering for HR with accurate candidate ranking, not generic LLM outputs. Most developers build chatbot wrappers. You need structured AI that extracts skills, scores candidates, explains rankings - so HR trusts results.
+
+I built La Serenissima (serenissima.ai) with 97 AI agents filtering and ranking at scale, 99.7% uptime over 6+ months. Proves reliable AI decision-making, not just prototypes.
+
+HR AI Filtering Tool ($4,500, 4 weeks):
+
+Week 1 ($1.5K): Next.js app, PostgreSQL schema, OpenAI CV parsing. Deliverable: Upload CVs, extract structured data (skills, experience) 85%+ accuracy.
+
+Week 2 ($1.5K): AI scoring with custom criteria, candidate ranking with explanations, progress dashboard. Deliverable: Filter 100 applications, rank by fit, show reasoning.
+
+Week 3 ($1K): Admin panel, workflow tracking (new/reviewing/shortlisted), role-based access, export. Deliverable: Multi-user tool with permissions.
+
+Week 4 ($500): Security audit, GDPR compliance, documentation, Vercel/AWS deployment. Deliverable: Production-ready.
+
+Stack: Next.js + PostgreSQL + OpenAI + Vercel. Structured JSON outputs, not free-form text.
+
+Questions: 1) Filtering criteria? 2) Monthly volume? 3) Data retention?
+
+Pay when tests pass. Swap (free) or Add (priced). Start 72h.
+
+Projects:
+• La Serenissima: serenissima.ai (AI filtering/ranking)
+• TherapyKin: therapykin.ai (structured AI, 121+ deploys)
+• GitHub: github.com/nlr-ai + github.com/mind-protocol
+
+Nicolas

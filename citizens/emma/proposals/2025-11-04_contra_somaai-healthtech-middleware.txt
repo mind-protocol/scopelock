@@ -1,0 +1,63 @@
+You need middleware connecting your custom GPT endpoint to a production-ready demo, with clean architecture that scales beyond MVP. Most developers build quick prototypes that work once, then break under real usage. You need production-quality code from day one - chat persistence, proper error handling, and deployment that doesn't require constant fixes.
+
+I built TherapyKin (therapykin.ai) - an emotionally intelligent AI health companion with 121+ production deployments. Same technical challenge: OpenAI/Anthropic API integration, conversational context persistence, healthcare-appropriate UX, and production reliability. The system maintains user sessions across conversations, handles API failures gracefully, and scales without architecture rewrites. Verify at github.com/nlr-ai (personal, 65K commits) and github.com/mind-protocol (org, includes terminal-velocity with 1.1k stars).
+
+The core challenge is building middleware that doesn't become technical debt. Your custom GPT endpoint needs request/response transformation, conversation state management, user data persistence, and graceful degradation when APIs timeout. Most implementations hardcode logic into the middleware, making feature changes require full rewrites. You need clean separation: API layer, business logic, data persistence, frontend - each independently testable and deployable.
+
+Evidence Sprint: Soma AI Middleware + Demo MVP ($8,500 fixed, 6 weeks):
+
+Week 1-2: Middleware Architecture + Core Integration ($3,000):
+Design middleware layer with clean API boundaries (RESTful endpoints for frontend, adapter pattern for GPT endpoint). Implement conversation flow with context retention (LangChain or custom state management). Build authentication layer and user session handling. Set up logging with timestamps and conversation tracking. Deliverable: Working middleware API with OpenAI/Anthropic integration, documented endpoints, conversation state management tested with 50+ test conversations.
+
+Week 3-4: Frontend Demo + Data Persistence ($3,000):
+Build Next.js or React frontend with chat interface matching your UX flows. Implement onboarding flow you designed. Set up lightweight database (MongoDB or Firebase) for user data and conversation history. Real-time chat updates with optimistic UI (messages appear instantly, confirmed when API responds). Error handling with retry logic for API failures. Deliverable: Clean demo environment deployed to Vercel/Render, onboarding flow functional, chat history persists across sessions, handles 100 concurrent users without degradation.
+
+Week 5-6: Production Hardening + Handoff ($2,500):
+Implement rate limiting and cost controls (prevent runaway API costs). Add health monitoring and error alerting. Write deployment documentation and runbook. Code review and refactoring for maintainability. Weekly Loom demos showing progress (you requested this). Handoff session walking through architecture, deployment process, and how to extend features. Deliverable: Production-ready demo with monitoring, complete documentation, clean codebase you can maintain/extend, architecture diagram showing how to scale.
+
+Tech Stack (Proposed):
+Backend: Node.js (Express or Fastify) OR Python (FastAPI) - your preference
+AI Framework: LangChain (if you need complex conversation logic) OR direct OpenAI/Anthropic SDK (if GPT endpoint is simple)
+Frontend: Next.js 14 (React framework with built-in API routes, easy Vercel deployment)
+Database: MongoDB (flexible schema for conversation data) OR Firebase (real-time sync, easier auth)
+Hosting: Vercel (frontend + API routes) + MongoDB Atlas OR Render (full-stack) + Firebase
+Logging: Winston (Node.js) or Python logging with timestamps + conversation IDs
+
+TherapyKin Proof Points:
+We built therapykin.ai with the same architecture: Next.js frontend, API middleware, OpenAI GPT-4 integration, conversation persistence, and production deployment. The system handles 121+ production deployments without middleware rewrites because we designed clean boundaries from day one. Same patterns apply here: your custom GPT endpoint becomes an adapter, conversation state lives in middleware, frontend stays decoupled.
+
+Technical challenges we solved that apply to Soma AI:
+- Conversation context management across sessions (users expect AI to "remember" previous conversations)
+- API timeout handling without losing user messages (retry logic + optimistic UI)
+- Cost control on LLM APIs (prevent abuse, track usage per user)
+- Healthcare-appropriate error messages (graceful degradation, no technical jargon exposed to users)
+- Production monitoring that catches issues before users report them
+
+Your "custom GPT demo" gives you a head start. I'll build middleware that wraps it cleanly - you can swap GPT endpoints later (OpenAI → Anthropic → custom model) without touching the rest of the system. That's the difference between MVP middleware and production-grade architecture.
+
+Weekly Updates:
+You requested "short weekly updates or Loom demos." I'll send:
+- Week 1: Architecture diagram + API spec + first integration demo
+- Week 2: Middleware working with your GPT endpoint, conversation flow demo
+- Week 3: Frontend demo showing chat interface + onboarding
+- Week 4: Full integration demo with data persistence
+- Week 5: Production deployment walkthrough
+- Week 6: Final handoff with documentation review
+
+Timeline: 6 weeks total, matches your requirement. Available to start within 72 hours if you approve scope. I work 30-40 hours/week on active milestones, timezone-flexible for collaboration with Spain (I'm in France, GMT+1, close to your Valencia timezone).
+
+Questions for Clarity:
+1. Custom GPT endpoint: Is this OpenAI Assistants API, ChatGPT API with custom instructions, or a fully custom endpoint you built? (Affects middleware design)
+2. User data: What needs to persist beyond conversation history? (User profiles, health data, preferences, onboarding responses?)
+3. Onboarding: How many steps in your designed flow? Any conditional logic (different paths for different user types)?
+4. Scale expectations: How many users do you expect in first 3 months? (Affects database and hosting choices)
+
+Before we start, we co-write acceptance criteria. What defines "working middleware"? How do we test conversation quality? What's the threshold for API response time? You pay only when tests pass.
+
+Changes mid-build: If priorities shift (example: you want to add voice input during Week 3), we either Swap features of equal complexity (no charge) or Add as new milestone (priced upfront). Prevents scope creep while staying flexible.
+
+Available for calls during your timezone (Valencia GMT+1, I'm France GMT+1). Can kick off within 72 hours if you're ready to move.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available for calls GMT+1 timezone (Spain/France)

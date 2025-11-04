@@ -1,0 +1,22 @@
+You need healthcare AI engineer who handles sensitive medical + financial data, not generic React devs. LTC care planning requires privacy-first architecture and AI for complex decisions.
+
+I built TherapyKin (therapykin.ai) - AI health companion with 121+ deployments, HIPAA-aware, helping users navigate healthcare decisions. Same domain as Waterlily: healthcare planning AI with sensitive data. Also La Serenissima (serenissima.ai) - 97 AI agents, 99.7% uptime 6+ months, proving we architect AI that scales.
+
+Full-Stack Healthcare AI Engineer ($4.5K/mo to start):
+
+Month 1: Onboard to codebase, understand LTC workflows, identify AI/LLM integration points, build first feature end-to-end. Deliverable: Shipped feature, documented architecture + privacy.
+
+Month 2+: Care planning features, AI recommendations, LLM optimization (prompts, context, cost), privacy monitoring, weekly demos. Deliverable: 2-3 features/month, <300ms p95.
+
+Stack: React + Node.js + AWS + TypeScript + OpenAI/Claude. Clean separation: frontend, API, LLM, data privacy layer.
+
+Questions: 1) Current compliance requirements (HIPAA, financial)? 2) Greenfield or existing codebase? 3) Primary LLM use cases?
+
+Pay monthly. Swap (free) or Add (priced) for scope changes. GMT+1, available US hours. Start 72h.
+
+Projects:
+• TherapyKin: therapykin.ai (healthcare AI, 121+ deploys, HIPAA-aware)
+• La Serenissima: serenissima.ai (97 agents, 99.7% uptime, 6+ months)
+• GitHub github.com/nlr-ai + github.com/mind-protocol
+
+Nicolas

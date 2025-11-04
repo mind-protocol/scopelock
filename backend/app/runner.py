@@ -88,7 +88,7 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
         Trigger Emma (lead evaluator) via Claude CLI
 
         Args:
-            job_post: Full job post text
+            job_post: Full job post text (from Vollna webhook)
 
         Returns:
             {
@@ -97,9 +97,16 @@ Draft a response following ScopeLock principles and call POST /api/notify/draft 
                 "error": Optional[str]
             }
         """
-        prompt = f"""Evaluate this Upwork post and call POST /api/lead/track with your decision:
+        prompt = f"""Evaluate this Upwork job from Vollna and generate a proposal if GO or QUALIFIED MAYBE.
 
-{job_post}"""
+{job_post}
+
+Follow your Automated Vollna Flow instructions:
+1. Evaluate using three-tier heuristics (STRONG GO / QUALIFIED MAYBE / HARD NO)
+2. If GO or QUALIFIED MAYBE: generate proposal and call POST ${{BACKEND_API_URL}}/api/notify/proposal
+3. If NO-GO: just log your reasoning
+
+The /api/notify/proposal endpoint will send a Telegram notification for Nicolas to approve."""
 
         return self._run_claude(prompt, citizen="emma")
 

@@ -237,6 +237,196 @@ Draft ID: `{draft_id}`
     return message_id
 
 
+async def send_proposal_notification(
+    proposal_id: str,
+    job_title: str,
+    job_url: str,
+    proposal_text: str,
+    bid_amount: int,
+    confidence: int,
+    client_info: dict
+) -> Optional[str]:
+    """
+    Send Upwork proposal notification with approval buttons
+
+    Args:
+        proposal_id: UUID of proposal
+        job_title: Upwork job title
+        job_url: Upwork job URL
+        proposal_text: Emma's generated proposal
+        bid_amount: Suggested bid amount
+        confidence: Confidence score (0-100)
+        client_info: Client details (spent, rating, etc.)
+
+    Returns:
+        Message ID if successful
+    """
+    # Format client info
+    client_spent = client_info.get('total_spent', 0)
+    client_rating = client_info.get('rating', 0)
+    client_hires = client_info.get('total_hires', 0)
+
+    # Format message
+    text = f"""🎯 **New Upwork Proposal**
+
+**Job:** {job_title[:80]}{"..." if len(job_title) > 80 else ""}
+**Bid:** ${bid_amount}
+**Confidence:** {confidence}%
+
+**Client:**
+• Spent: ${client_spent:,.0f}
+• Rating: {client_rating}⭐
+• Hires: {client_hires}
+
+**Proposal:**
+```
+{proposal_text[:400]}{"..." if len(proposal_text) > 400 else ""}
+```
+
+[View Full Job]({job_url})
+
+Proposal ID: `{proposal_id}`
+"""
+
+    # Create inline keyboard with approval buttons
+    reply_markup = {
+        "inline_keyboard": [
+            [
+                {"text": "✅ Approve & Submit", "callback_data": f"proposal_approve:{proposal_id}"},
+                {"text": "✏️ Edit", "callback_data": f"proposal_edit:{proposal_id}"}
+            ],
+            [
+                {"text": "❌ Reject", "callback_data": f"proposal_reject:{proposal_id}"}
+            ]
+        ]
+    }
+
+    message_id = await bot.send_message(text, reply_markup)
+
+    # Store message_id in proposal file
+    if message_id:
+        try:
+            from datetime import datetime
+
+            proposal_file = settings.data_dir / "proposals" / f"{proposal_id}.json"
+            proposal_file.parent.mkdir(parents=True, exist_ok=True)
+
+            now = datetime.utcnow().isoformat()
+
+            proposal_data = {
+                "id": proposal_id,
+                "job_title": job_title,
+                "job_url": job_url,
+                "proposal_text": proposal_text,
+                "bid_amount": bid_amount,
+                "confidence": confidence,
+                "client_info": client_info,
+                "status": "pending",
+                "telegram_message_id": message_id,
+                "timestamps": {
+                    "created_at": now,
+                    "notified_at": now
+                }
+            }
+
+            proposal_file.write_text(json.dumps(proposal_data, indent=2))
+            logger.info(f"[telegram:proposal] Proposal file created: {proposal_file}")
+
+        except Exception as e:
+            logger.error(f"[telegram:proposal] Failed to create proposal file: {e}")
+
+    return message_id
+
+
+async def handle_proposal_action(proposal_id: str, action: str, callback_id: str) -> dict:
+    """
+    Handle approval/edit/rejection of Upwork proposal
+
+    Args:
+        proposal_id: UUID of proposal
+        action: "approve", "edit", or "reject"
+        callback_id: Telegram callback query ID
+
+    Returns:
+        {"status": str, "proposal_id": str, "action": str}
+    """
+    try:
+        # Read proposal file
+        proposal_file = settings.data_dir / "proposals" / f"{proposal_id}.json"
+
+        if not proposal_file.exists():
+            logger.warning(f"[telegram:proposal] Proposal file not found: {proposal_id}")
+            await bot.answer_callback(callback_id, "Proposal not found")
+            return {"status": "not_found", "proposal_id": proposal_id}
+
+        proposal_data = json.loads(proposal_file.read_text())
+
+        from datetime import datetime
+        now_iso = datetime.utcnow().isoformat()
+
+        if action == "approve":
+            proposal_data["status"] = "approved"
+            status_icon = "✅"
+            status_text = "Approved - Ready to Submit"
+            proposal_data["timestamps"]["approved_at"] = now_iso
+
+            # Trigger browser automation (will be implemented next)
+            logger.info(f"[telegram:proposal] Triggering browser automation for {proposal_id}")
+
+        elif action == "reject":
+            proposal_data["status"] = "rejected"
+            status_icon = "❌"
+            status_text = "Rejected"
+            proposal_data["timestamps"]["rejected_at"] = now_iso
+
+        elif action == "edit":
+            proposal_data["status"] = "editing"
+            status_icon = "✏️"
+            status_text = "Edit in Emma Context"
+            proposal_data["timestamps"]["editing_at"] = now_iso
+
+        else:
+            logger.warning(f"[telegram:proposal] Unknown action: {action}")
+            return {"status": "unknown_action", "proposal_id": proposal_id}
+
+        # Save updated proposal
+        proposal_file.write_text(json.dumps(proposal_data, indent=2))
+
+        # Edit Telegram message
+        message_id = proposal_data.get("telegram_message_id")
+        if message_id:
+            updated_text = f"""{status_icon} **Proposal {status_text}**
+
+**Job:** {proposal_data['job_title'][:80]}{"..." if len(proposal_data['job_title']) > 80 else ""}
+**Bid:** ${proposal_data['bid_amount']}
+**Confidence:** {proposal_data['confidence']}%
+
+**Status:** {status_text}
+
+[View Full Job]({proposal_data['job_url']})
+
+Proposal ID: `{proposal_id}`
+"""
+
+            await bot.edit_message(message_id, updated_text)
+
+        # Answer callback
+        await bot.answer_callback(callback_id, f"Proposal {status_text.lower()}")
+
+        logger.info(f"[telegram:proposal] Proposal {proposal_id} {status_text.lower()}")
+
+        return {
+            "status": proposal_data["status"],
+            "proposal_id": proposal_id,
+            "action": action
+        }
+
+    except Exception as e:
+        logger.error(f"[telegram:proposal] {e}", exc_info=True)
+        await bot.answer_callback(callback_id, "Error processing approval")
+        return {"status": "error", "proposal_id": proposal_id, "error": str(e)}
+
+
 async def handle_approval(draft_id: str, action: str, callback_id: str) -> dict:
     """
     Handle approval/rejection of draft

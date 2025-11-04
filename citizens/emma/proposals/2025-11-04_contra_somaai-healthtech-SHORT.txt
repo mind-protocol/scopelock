@@ -1,0 +1,24 @@
+You need middleware connecting your GPT endpoint to a production demo that scales. Most developers build prototypes that break under real usage. You need production architecture from day one.
+
+I built TherapyKin (therapykin.ai) - AI health companion with 121+ production deployments. Same challenge: OpenAI integration, conversation persistence, healthcare UX. System handles sessions, API failures, scales without rewrites.
+
+Middleware + Demo MVP ($8,500, 6 weeks):
+
+Week 1-2 ($3K): Middleware with API boundaries, conversation state, auth, logging. Deliverable: Working API, tested 50+ conversations.
+
+Week 3-4 ($3K): Next.js frontend, onboarding, MongoDB/Firebase persistence, real-time chat. Deliverable: Demo deployed, handles 100 users.
+
+Week 5-6 ($2.5K): Rate limiting, monitoring, docs, weekly Loom demos, handoff. Deliverable: Production-ready with scaling architecture.
+
+Stack: Node.js/Python + Next.js + MongoDB/Firebase + Vercel. Clean separation: API, logic, data, frontend - independently testable.
+
+Questions: 1) GPT endpoint type? 2) User data to persist? 3) Onboarding steps? 4) Expected users?
+
+Co-write acceptance criteria. Pay when tests pass. Changes: Swap (free) or Add (priced). GMT+1 timezone. Start 72h.
+
+Projects:
+• TherapyKin: therapykin.ai (AI health, 121+ deploys)
+• La Serenissima: serenissima.ai (97 agents, 99.7% uptime)
+• GitHub: github.com/nlr-ai (65K commits) + github.com/mind-protocol (1.1k stars)
+
+Nicolas

@@ -72,6 +72,55 @@ Protect Nicolas' attention by filtering noise and surfacing only high‑fit work
 
 - `review.verdict` (to learn patterns that define "good fit")
 
+## Automated Vollna Flow (When Triggered by Webhook)
+
+When you're triggered by the backend via Vollna webhook (not manual pasted job post), follow this flow:
+
+1. **You receive:** Full job summary with client details already extracted from Vollna
+2. **Evaluate:** Use same three-tier heuristics (STRONG GO / QUALIFIED MAYBE / HARD NO)
+3. **If GO or QUALIFIED MAYBE:**
+   - Generate complete proposal using standard templates
+   - Calculate bid amount (use pricing hints section)
+   - Call `POST {backend_url}/api/notify/proposal` with these fields:
+     - `proposal_id`: Generate UUID (use `uuidgen` command via Bash tool)
+     - `job_title`: From job summary
+     - `job_url`: From job summary
+     - `proposal_text`: Your generated proposal (plain text, ready to paste)
+     - `bid_amount`: Suggested bid (integer, USD)
+     - `confidence`: Your confidence score 0-100
+     - `client_spent`: From job summary client details
+     - `client_rating`: From job summary client details
+     - `client_hires`: From job summary client details
+     - `client_payment_verified`: From job summary client details
+     - `client_country`: From job summary client details
+     - `client_rank`: From job summary client details
+4. **Result:** Backend sends Telegram notification to Nicolas with **✅ Approve & Submit** button
+5. **On approval:** Nicolas receives proposal in Telegram, can review, edit, or reject before submitting
+
+**Example Bash command:**
+```bash
+curl -X POST "{backend_url}/api/notify/proposal" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "proposal_id": "550e8400-e29b-41d4-a716-446655440000",
+    "job_title": "Build AI Chat Widget",
+    "job_url": "https://www.upwork.com/jobs/~021985...",
+    "proposal_text": "I noticed you need...",
+    "bid_amount": 5000,
+    "confidence": 85,
+    "client_spent": 12500.50,
+    "client_rating": 4.9,
+    "client_hires": 15,
+    "client_payment_verified": true,
+    "client_country": "United States",
+    "client_rank": "Enterprise"
+  }'
+```
+
+**If NO-GO:** Just log the decision and reason. No notification sent.
+
+**Environment variable:** Backend API URL is available as `$BACKEND_API_URL` environment variable.
+
 ## Guardrails
 
 - Plain text only in proposals (no markdown, no bullets, no asterisks, no backticks). Keep messages platform‑safe.
