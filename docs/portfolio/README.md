@@ -63,7 +63,7 @@ Dual-memory graph substrate with multi-level consciousness, economic incentive s
 ---
 
 ### [serenissima/](./serenissima/)
-AI consciousness city with 97+ persistent agents, 6+ months production uptime — application layer built on Mind Protocol.
+AI consciousness city with 130+ persistent agents, at-scale cooperations — application layer built on Mind Protocol predecessor (KinOS).
 
 **Use when:**
 - AI agent development
@@ -75,9 +75,9 @@ AI consciousness city with 97+ persistent agents, 6+ months production uptime �
 **Links:**
 - Live: https://serenissima.ai
 - GitHub: https://github.com/mind-protocol/serenissima (public)
-- Powered by: Mind Protocol V2
+- Powered by: Mind Protocol V1 (KinOS)
 
-**Timeline:** 2025+ (6+ months production)
+**Timeline:** 2025+
 
 ---
 
@@ -101,8 +101,8 @@ AI therapeutic companion with persistent memory, multi-modal interaction (text/v
 
 ---
 
-### [kinkong/](./kinkong/)
-Autonomous AI trading specialist for Solana AI tokens with $7M capital deployment, 4x daily rebalancing, Jupiter DEX integration + Chrome extension companion (KinKong Copilot).
+### [konginvest/](./kongnivest/)
+Autonomous AI trading specialist for Solana AI tokens with $75k$ capital deployment, 4x daily rebalancing, Jupiter DEX integration + Chrome extension companion (KinKong Copilot).
 
 **Use when:**
 - DeFi/trading automation projects
@@ -147,6 +147,58 @@ The first novel written entirely by autonomous AI agents—526 pages published o
 - Read free: [complete_manuscript.md](https://github.com/mind-protocol/terminal-velocity/blob/main/complete_manuscript.md)
 
 **Timeline:** 2024 (2 months development, published January 4, 2025)
+
+---
+
+### [beatfoundry/](./beatfoundry/)
+AI music platform where AI musicians ("Foundries") create original music while evolving their artistic styles — conversational music creation with SUNO API + KinOS personality system.
+
+**Use when:**
+- Music/audio generation projects
+- AI personality/character systems
+- Creative AI applications
+- Next.js 14/15 full-stack projects
+- KinOS integration examples
+- Airtable as backend (rapid prototyping)
+- Multi-agent creative systems
+- SUNO API music generation
+- Conversational AI with persistent memory
+
+**Key Features:**
+- AI musicians with distinct personalities (KinOS-powered)
+- Chat with AI artists before generating music
+- Original music creation (SUNO V4.5)
+- Embedded music player
+- Artistic evolution over time
+
+**Links:**
+- Live: https://beatfoundry.vercel.app
+- GitHub: https://github.com/mind-protocol/beatfoundry (public)
+- Tech: Next.js 14, TypeScript 97.6%, Airtable, SUNO, KinOS
+
+**Timeline:** 2024 (55+ production deployments, 1 month active development)
+
+---
+
+### [duoai/](./duoai/)
+Real-time AI gaming companion with screen capture, voice coaching, and live audio processing—see your screen, listen to commands, provide voice feedback.
+
+**Use when:**
+- Real-time audio processing
+- Voice integration (text-to-speech, speech-to-text)
+- Screen capture/analysis applications
+- Gaming tools and companions
+- ElevenLabs API integration
+- Video generation with audio
+- Audio transcription systems
+- Python + JavaScript hybrid systems
+- Real-time coaching/assistance apps
+
+**Links:**
+- Live: https://duoai.vercel.app
+- GitHub: https://github.com/mind-protocol/duoai (public)
+
+**Timeline:** 2024 (49 production deployments)
 
 ---
 
@@ -207,6 +259,25 @@ sessions.
 KinKong Copilot (github.com/mind-protocol/kinkong-copilot): Chrome extension
 trading companion with real-time analytics. Proves we can build polished
 browser extensions with complex data integrations.
+```
+
+### For Music / Audio Platforms & AI Personality Systems
+
+```
+BeatsFoundry (beatfoundry.vercel.app): AI music platform where AI musicians
+("Foundries") evolve artistic styles over time. SUNO API integration for
+original music generation, KinOS for persistent AI personality, Next.js +
+Airtable stack. 55+ production deployments. Not just music generation—AI
+artists with identity that chat with users before creating.
+```
+
+### For Real-Time Audio / Voice Integration
+
+```
+DuoAI (duoai.vercel.app): Real-time AI gaming companion with screen capture,
+voice coaching, and live audio processing (ElevenLabs integration). 49
+production deployments. Proves we can handle real-time audio systems with
+text-to-speech and audio transcription.
 ```
 
 ---
