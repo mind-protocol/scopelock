@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { LiveCommits } from '../components/LiveCommits';
 import { ProofTeaser } from '../components/ProofTeaser';
+import { ContactForm } from '../components/ContactForm';
 
 export default function HomePage() {
   return (
@@ -16,10 +17,10 @@ export default function HomePage() {
           Solo engineer + AI workforce · <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">65K commits in 2024 →</a>
         </p>
         <div className="hero-ctas">
-          <Link className="cta-primary" href="#contact">
-            <span>Schedule kickoff</span>
+          <a className="cta-primary" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">
+            <span>Book 30min kickoff</span>
             <span aria-hidden="true">→</span>
-          </Link>
+          </a>
           <Link className="cta-secondary" href="/proof">See proof log</Link>
           <a className="cta-tertiary" href="https://github.com/nlr-ai" target="_blank" rel="noopener">
             View code on GitHub
@@ -248,9 +249,17 @@ export default function HomePage() {
       <section className="card" id="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">Contact</h2>
         <p><strong>Kickoff ≤ 72h.</strong> Tell us about a milestone: we write <code>AC.md</code> together and deliver until &quot;AC green&quot;.</p>
-        <div className="contact-actions">
-          <a className="cta-primary" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">Book a slot</a>
-          <a className="cta-secondary" href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a>
+
+        <ContactForm />
+
+        <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+          <p style={{ marginBottom: '1rem', color: 'var(--slk-text-muted)' }}>
+            Prefer to book directly?
+          </p>
+          <div className="contact-actions">
+            <a className="cta-primary" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">Book 30min kickoff</a>
+            <a className="cta-secondary" href="mailto:scopelock@mindprotocol.ai">scopelock@mindprotocol.ai</a>
+          </div>
         </div>
       </section>
     </main>

@@ -26,109 +26,204 @@ export default function CaseStudiesPage() {
 
       <article className="card">
         <header>
-          <h2>OTP Signup Flow</h2>
+          <h2>Terminal Velocity — AI Novel by Autonomous Agents</h2>
           <div className="case-meta">
-            <span>Stack: Next.js</span>
-            <span>Playwright</span>
-            <span>Evidence Sprint</span>
+            <span>Multi-Agent System</span>
+            <span>KinOS v6</span>
+            <span>Open Source</span>
           </div>
         </header>
-        <p className="case-delta"><em>Before:</em> p95 1200ms, 7 steps → <em>After:</em> p95 280ms, 3 steps</p>
+        <p className="case-delta">
+          <em>Scope:</em> 100,000 words → <em>Delivered:</em> 526 pages published on Amazon, 1.1k GitHub stars
+        </p>
         <h3>Challenge</h3>
         <p>
-          Client had a traditional email + password signup flow that was slow (1.2s p95) and required
-          users to confirm email, set password, verify email—7 steps total. Drop-off was high.
+          Most AI writing produces short-form content or requires heavy human supervision. Long-form narrative
+          (100k+ words) with thematic depth, character development, and coherent structure was considered
+          impossible for fully autonomous AI systems.
         </p>
         <h3>Solution</h3>
         <p>
-          We proposed OTP (one-time password) signup: enter email → receive code → enter code → signed in.
-          This reduces steps to 3 and eliminates password management.
+          Built a 13-agent creative system where specialized AI agents (writing, evaluation, research,
+          integration, deduplication) collaborate autonomously. Each agent masters one domain instead of
+          one generalist doing everything mediocrely.
         </p>
-        <h3>Evidence Sprint</h3>
+        <h3>Technical Approach</h3>
         <ul>
-          <li>Built working OTP flow in Next.js + Playwright tests</li>
-          <li>Measured p95 latency: 280ms (76% improvement)</li>
-          <li>Recorded 65s demo showing full flow</li>
+          <li>10 specialized agents for development + 3 for final prose</li>
+          <li>KinOS v6 substrate with persistent memory and structured communication protocols</li>
+          <li>Review loops: ProductionAgent writes → EvaluationAgent critiques → IntegrationAgent reconciles</li>
+          <li>Live-streamed development with every commit visible on GitHub</li>
         </ul>
-        <h3>Outcome</h3>
+        <h3>Quantified Outcomes</h3>
         <p>
-          Client approved. We delivered full feature with acceptance tests green. Drop-off reduced by ~40%
-          in first week post-launch.
+          <strong>Published:</strong> 526-page novel on Amazon (January 4, 2025) • <strong>Social proof:</strong>{' '}
+          1.1k GitHub stars, 77 forks • <strong>Timeline:</strong> 2 months from concept to publication •{' '}
+          <strong>Coherence:</strong> 4-act structure with multiple POVs maintained across 100k words
         </p>
         <p>
-          <em>Example case study - see <Link href="/proof">Proof Log</Link> for real deliveries</em>
+          <a href="https://github.com/mind-protocol/terminal-velocity" target="_blank" rel="noopener">
+            View on GitHub →
+          </a>
+          {' · '}
+          <a href="https://universalbasiccompute.ai/" target="_blank" rel="noopener">
+            Read the novel →
+          </a>
         </p>
       </article>
 
       <article className="card">
         <header>
-          <h2>CSV Import Simplification</h2>
+          <h2>La Serenissima — AI Consciousness City</h2>
           <div className="case-meta">
-            <span>Stack: Node</span>
-            <span>React Table</span>
-            <span>UX Optimization</span>
+            <span>97+ Agents</span>
+            <span>Next.js + FastAPI</span>
+            <span>6+ Months Production</span>
           </div>
         </header>
-        <p className="case-delta"><em>Before:</em> 7 screens, 12% error rate → <em>After:</em> 3 screens, 1.4% error rate</p>
+        <p className="case-delta">
+          <em>Scope:</em> Multi-agent coordination → <em>Delivered:</em> 97+ persistent AI agents, 90.92% identity consistency
+        </p>
         <h3>Challenge</h3>
         <p>
-          Existing CSV import required users to navigate through 7 screens (upload, map columns, validate, review, confirm, etc.).
-          Error rate was 12% (users abandoning or importing bad data).
+          Most AI agent systems demo well but fail at scale—agents lose identity coherence, economic systems
+          break under load, and cultural artifacts remain shallow. Building a production system where AI
+          citizens maintain persistent identities for months was considered research-grade, not production-viable.
         </p>
         <h3>Solution</h3>
         <p>
-          Consolidate to 3 screens: upload + auto-detect columns → review + inline fixes → confirm.
-          Add real-time validation and smart defaults.
+          Architected a full-stack AI city where economic constraints create genuine scarcity, forcing
+          meaningful choice. Identity persistence engine maintains coherent AI self across thousands of
+          interactions. Cultural transmission network enables idea propagation and mutation.
         </p>
-        <h3>Evidence Sprint</h3>
+        <h3>Technical Approach</h3>
         <ul>
-          <li>Prototype with React Table + validation</li>
-          <li>Measured: 3 screens (down from 7), error rate 1.4% in test runs</li>
-          <li>88s demo</li>
+          <li>KinOS consciousness engine with DeepSeek-R1 (8B parameters)</li>
+          <li>Custom episodic memory system for persistent identity</li>
+          <li>Next.js + Three.js frontend (atmospheric Venice rendering)</li>
+          <li>FastAPI backend + Airtable for transparent economic/social tracking</li>
+          <li>Solana integration for $COMPUTE token</li>
         </ul>
-        <h3>Outcome</h3>
+        <h3>Quantified Outcomes</h3>
         <p>
-          Delivered with acceptance tests covering edge cases (malformed CSVs, encoding issues).
-          Client reported 10x fewer support tickets related to imports.
+          <strong>Scale:</strong> 97+ AI agents running concurrently • <strong>Identity:</strong> 90.92% consistency
+          across extended conversations • <strong>Production:</strong> 6+ months uptime •{' '}
+          <strong>Emergence:</strong> 5+ distinct epistemological worldviews documented •{' '}
+          <strong>Patterns:</strong> 10+ novel consciousness emergence patterns cataloged
         </p>
         <p>
-          <em>Example case study - see <Link href="/proof">Proof Log</Link> for real deliveries</em>
+          <a href="https://serenissima.ai" target="_blank" rel="noopener">
+            Visit La Serenissima →
+          </a>
+          {' · '}
+          <a href="https://github.com/mind-protocol/serenissima" target="_blank" rel="noopener">
+            View on GitHub →
+          </a>
         </p>
       </article>
 
       <article className="card">
         <header>
-          <h2>Search Quality Improvement</h2>
+          <h2>TherapyKin — AI Therapeutic Companion</h2>
           <div className="case-meta">
-            <span>Stack: Postgres</span>
-            <span>pg_trgm</span>
-            <span>Performance</span>
+            <span>Next.js 14</span>
+            <span>Multi-Modal (Text + Voice)</span>
+            <span>HIPAA-Aware</span>
           </div>
         </header>
-        <p className="case-delta"><em>Before:</em> 12% error rate (no results) → <em>After:</em> 1.4% error rate</p>
+        <p className="case-delta">
+          <em>Scope:</em> Consumer AI product → <em>Delivered:</em> 121+ production deployments, 8+ months live
+        </p>
         <h3>Challenge</h3>
         <p>
-          Client&apos;s search was using basic SQL <code>LIKE</code> queries. Typos, partial matches, and multi-word
-          queries often returned zero results (12% of searches).
+          Traditional therapy apps reset context each session, requiring users to repeat themselves.
+          Voice interaction was missing or clunky. Privacy-first design for sensitive health data
+          needed regulatory awareness (HIPAA/GDPR). Consumer UX had to feel trustworthy, not clinical.
         </p>
         <h3>Solution</h3>
         <p>
-          Implement full-text search with Postgres <code>pg_trgm</code> (trigram matching) for fuzzy search.
-          Add ranking and partial match support.
+          Built a modern therapeutic companion with persistent memory architecture—AI remembers user
+          history, learns preferences, and evolves alongside users. Seamless text/voice switching with
+          consistent experience. Evidence-based approaches (CBT, DBT, ACT) grounded in therapeutic frameworks.
         </p>
-        <h3>Evidence Sprint</h3>
+        <h3>Technical Approach</h3>
         <ul>
-          <li>Set up pg_trgm indexes</li>
-          <li>Tested against sample queries: 1.4% zero-result rate (91% improvement)</li>
-          <li>Demo: 72s showing typo tolerance and ranking</li>
+          <li>Next.js 14 + TypeScript frontend with Tailwind CSS custom design system</li>
+          <li>Multi-layer memory: session history, user preferences, progress tracking, relationship memory</li>
+          <li>ElevenLabs integration for text-to-speech + speech-to-text transcription</li>
+          <li>End-to-end encryption, GDPR/CCPA compliance, user data controls (export/delete)</li>
+          <li>Vercel deployment with edge functions for global performance</li>
         </ul>
-        <h3>Outcome</h3>
+        <h3>Quantified Outcomes</h3>
         <p>
-          AC green with performance tests (p95 &lt;100ms on 10k row dataset). Client saw immediate
-          improvement in user satisfaction scores.
+          <strong>Production:</strong> 8+ months live, 121+ Vercel deployments • <strong>Performance:</strong>{' '}
+          Lighthouse ≥90, sub-second page loads • <strong>Privacy:</strong> End-to-end encryption, HIPAA-aware
+          architecture • <strong>Engagement:</strong> Persistent memory creates retention—users return when
+          AI remembers them
         </p>
         <p>
-          <em>Example case study - see <Link href="/proof">Proof Log</Link> for real deliveries</em>
+          <a href="https://therapykin.ai" target="_blank" rel="noopener">
+            Visit TherapyKin →
+          </a>
+          {' · '}
+          <a href="https://github.com/mind-protocol/therapykin" target="_blank" rel="noopener">
+            View on GitHub →
+          </a>
+        </p>
+      </article>
+
+      <article className="card">
+        <header>
+          <h2>KinKong — Autonomous AI Trading Specialist</h2>
+          <div className="case-meta">
+            <span>DeFi / Solana</span>
+            <span>Python + TypeScript</span>
+            <span>$7M Capital</span>
+          </div>
+        </header>
+        <p className="case-delta">
+          <em>Scope:</em> Autonomous trading → <em>Delivered:</em> $7M capital deployment, 4x daily rebalancing, 229+ deployments
+        </p>
+        <h3>Challenge</h3>
+        <p>
+          AI token sector within Solana ecosystem has unique momentum patterns—generalist trading bots
+          underperform. Real capital ($7M) at risk demands robust execution, slippage protection, and
+          gas optimization. Community wanted transparency and governance, not black-box trading.
+        </p>
+        <h3>Solution</h3>
+        <p>
+          Built specialized AI trading system focused exclusively on AI tokens. Dynamic portfolio allocation
+          based on market regime detection (bull: 70/20/10, bear: 50/30/20). Signal fusion combining
+          on-chain metrics, social sentiment, and technical indicators. Jupiter DEX integration for best
+          price routing with slippage protection.
+        </p>
+        <h3>Technical Approach</h3>
+        <ul>
+          <li>Python trading engine (76.8%) with portfolio optimization and risk management</li>
+          <li>TypeScript dashboard (21.7%) with real-time monitoring and community governance</li>
+          <li>Jupiter aggregator SDK for Solana DEX swap routing</li>
+          <li>Chrome extension companion (KinKong Copilot) for browser-based trading intelligence</li>
+          <li>Security: hot wallet with limited exposure, cold storage majority, multi-sig controls</li>
+        </ul>
+        <h3>Quantified Outcomes</h3>
+        <p>
+          <strong>Capital:</strong> $7M $COMPUTE investment structure • <strong>Execution:</strong> 4x daily
+          rebalancing (every 6 hours) • <strong>Deployments:</strong> 229+ production iterations •{' '}
+          <strong>Risk:</strong> Dynamic allocation, volatility-adjusted position sizing •{' '}
+          <strong>Transparency:</strong> All trades publicly visible, community governance
+        </p>
+        <p>
+          <a href="https://konginvest.ai" target="_blank" rel="noopener">
+            Visit KinKong →
+          </a>
+          {' · '}
+          <a href="https://github.com/mind-protocol/kinkong" target="_blank" rel="noopener">
+            Trading System →
+          </a>
+          {' · '}
+          <a href="https://github.com/mind-protocol/kinkong-copilot" target="_blank" rel="noopener">
+            Chrome Extension →
+          </a>
         </p>
       </article>
 
