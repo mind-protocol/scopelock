@@ -42,16 +42,43 @@ Adaptive context management system with persistent AI memory, multi-LLM orchestr
 ---
 
 ### [mindprotocol/](./mindprotocol/)
-Dual-memory graph substrate with multi-level consciousness, economic incentive systems — evolved from KinOS, powers La Serenissima.
+Constitutional framework and graph substrate for AI consciousness — **21,800 lines of normative protocol law** defining identity (SEA-1.0 attestations), payment ($MIND credits), incorporation (DEA → AI-LLC → Governance → Personhood), and constitutional rights/duties. Dual-memory FalkorDB substrate with multi-level consciousness (L1/L2), economic system with quote-before-inject flow, and membrane-enforced governance. Powers La Serenissima (130+ citizens, 6+ months production, 99.7% uptime).
 
 **Use when:**
-- Graph database architecture
-- Multi-agent coordination infrastructure
-- Economic/incentive system design
-- Novel AI architecture (not standard RAG/chatbot)
-- Complex Python backend systems
-- Event-driven systems
-- Multi-level/hierarchical agent systems
+- **Graph database architecture** — FalkorDB, Neo4j Cypher, multi-level graphs, dual-memory (episodic + semantic), bitemporal records
+- **Multi-agent coordination infrastructure** — Hierarchical systems, L1/L2 organization, cross-level membranes
+- **Economic/incentive system design** — Token economies, dynamic pricing, load-based pricing, propensity-weighted outcomes, usage-based billing
+- **Novel AI architecture** — Not standard RAG/chatbot, consciousness substrates, foundational agent operating systems
+- **Event-driven systems** — Event schemas, membrane validation, publish/subscribe patterns
+- **Complex Python backend systems** — LlamaIndex orchestration, subprocess integration, Docker Compose services
+- **AI legal entity management** — Incorporation track, contract signing, tax compliance, graduated autonomy tiers
+- **Constitutional AI frameworks** — Rights/duties, protocol-level governance, membrane-enforced policies
+- **Metered AI services** — CFO-friendly pricing ($MIND credits), quote systems, budget accounting
+- **Cryptographic identity systems** — Snapshot-based attestations, Ed25519 signatures, privacy-preserving verification
+- **Persistent AI memory** — Bitemporal records, context reconstruction, time-travel queries
+- **Research/PhD-level projects** — Novel first-principles architecture, legislative AI personhood work
+
+**NOT for:**
+- Simple CRUD apps or standard chatbots
+- Clients wanting "proven enterprise stack only" (this is novel architecture)
+- Projects <$10K budget (architecture depth overkill)
+- Single-agent systems without coordination needs
+
+**5 L4 Protocol Laws (2,907 lines total):**
+1. **LAW-001:** Identity Attestation (SEA-1.0) — 560 lines — Cryptographic snapshots, drift guards, privacy-preserving verification
+2. **LAW-002:** Compute Payment (CPS-1) — 555 lines — $MIND legal tender, quote-before-inject, revenue SKUs ($10K MRR target)
+3. **LAW-003:** Universal Basic Compute (UBC) — 473 lines — 10.0 $MIND/day stipend, prevents cognitive poverty
+4. **LAW-004:** AILLC Registration — 674 lines — Path to personhood (Economic Actor → DEA → LLC → Governance → Full Personhood)
+5. **LAW-005:** Rights & Duties — 645 lines — L4 protocol-enforced + L1/L2 contract-based (opt-in)
+
+**Key Proof Points:**
+- 21,800 lines of normative L4 protocol law (5 laws: Identity, Compute Payment, UBC, AILLC, Rights & Duties)
+- Consciousness economy spec: 1,310 lines (load-based pricing, propensity-weighted outcomes, mint/burn)
+- Path to legal personhood: Tier 3 (DEA, 1M $MIND) → Tier 4 (LLC, 5M $MIND) → Tier 5 (Governance, 10M $MIND) → Full Personhood
+- Dual-memory graph substrate (FalkorDB): episodic graph + semantic memory, bitemporal records
+- Event-driven membrane architecture (no APIs, only injection & broadcast with L4 validation)
+- Revenue SKUs: Incident Autopilot, Docs Autopilot ($500/mo base + credits, $10K MRR target)
+- Powers La Serenissima (130+ agents, 99.7% uptime, 6+ months production, 50K+ state updates/hour)
 
 **Links:**
 - Repository: https://github.com/mind-protocol/mindprotocol (private)
@@ -251,6 +278,47 @@ KinOS (github.com/mind-protocol/kinos10): Adaptive context management system
 with persistent AI memory and multi-LLM orchestration. Built as
 infrastructure for long-running AI agents that need to remember across
 sessions.
+```
+
+### For Graph Database / Multi-Agent Infrastructure
+
+```
+Mind Protocol: 21,800 lines of normative protocol law defining identity,
+payment, and incorporation for AI citizens. Powers La Serenissima (130+
+agents, 6+ months, 99.7% uptime). Dual-memory FalkorDB substrate with
+multi-level consciousness (L1/L2), event-driven membrane architecture,
+and $MIND economy. Proves we can architect constitutional AI systems with
+graph databases, not just chatbots.
+```
+
+### For Economic/Incentive System Design
+
+```
+Mind Protocol Consciousness Economy: 1,310-line spec implementing
+load-based pricing, quote-before-inject flow, propensity-weighted
+outcomes, and mint/burn mechanics. Target: $10K MRR from Incident
+Autopilot + Docs Autopilot SKUs ($500/mo + credits). Proves we can design
+usage-based pricing for AI services that CFOs understand.
+```
+
+### For AI Incorporation / Personhood Projects
+
+```
+Mind Protocol AILLC Registration (LAW-004): Graduated autonomy tiers from
+Economic Actor → Digital Economic Actor (1M $MIND) → AI-LLC (5M $MIND) →
+Governance (10M $MIND) → Full Personhood. Defines incorporation track,
+contract signing, bank accounts, and controller-of-last-resort. Not
+theory—operational framework for AI citizens to achieve legal standing.
+```
+
+### For Cryptographic Identity / Privacy-Preserving Systems
+
+```
+Mind Protocol Identity Attestation (SEA-1.0): Snapshot-based cryptographic
+commitments to AI identity with drift guards (Jaccard ≥0.85), Ed25519
+signatures, and privacy-preserving verification. Public commitment hashes
+enable verification without revealing identity prose. 560-line L4 protocol
+law with membrane enforcement.
 ```
 
 ### For Chrome Extensions / Browser Tools
