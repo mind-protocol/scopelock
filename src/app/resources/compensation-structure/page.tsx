@@ -112,15 +112,15 @@ export default function CompensationStructurePage() {
                 type="range"
                 id="missions"
                 min="1"
-                max="30"
+                max="20"
                 value={missionsPerMonth}
                 onChange={(e) => setMissionsPerMonth(parseInt(e.target.value))}
                 className={styles.slider}
               />
               <div className={styles.sliderLabels}>
                 <span>1</span>
-                <span>15</span>
-                <span>30</span>
+                <span>10</span>
+                <span>20</span>
               </div>
             </div>
 
