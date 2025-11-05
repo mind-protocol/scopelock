@@ -167,18 +167,18 @@ export default function CompensationStructurePage() {
                   <div className={styles.details}>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Time:</span>
-                      <span className={styles.detailValue}>{totalHours.kara}h</span>
+                      <span className={styles.detailValue}>~{totalHours.kara}h</span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Hourly:</span>
                       <span className={styles.detailValue}>
-                        ${hourlyRate.kara.toFixed(0)}/hr
+                        ~${hourlyRate.kara.toFixed(0)}/hr
                       </span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>PPP Equiv:</span>
                       <span className={styles.detailValue}>
-                        ${(hourlyRate.kara * pppMultiplier.min).toFixed(0)}-${(hourlyRate.kara * pppMultiplier.max).toFixed(0)}/hr
+                        ~${(hourlyRate.kara * pppMultiplier.min).toFixed(0)}-${(hourlyRate.kara * pppMultiplier.max).toFixed(0)}/hr
                       </span>
                     </div>
                   </div>
@@ -199,18 +199,18 @@ export default function CompensationStructurePage() {
                   <div className={styles.details}>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Time:</span>
-                      <span className={styles.detailValue}>{totalHours.reanance}h</span>
+                      <span className={styles.detailValue}>~{totalHours.reanance}h</span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Hourly:</span>
                       <span className={styles.detailValue}>
-                        ${hourlyRate.reanance.toFixed(0)}/hr
+                        ~${hourlyRate.reanance.toFixed(0)}/hr
                       </span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>PPP Equiv:</span>
                       <span className={styles.detailValue}>
-                        ${(hourlyRate.reanance * pppMultiplier.min).toFixed(0)}-${(hourlyRate.reanance * pppMultiplier.max).toFixed(0)}/hr
+                        ~${(hourlyRate.reanance * pppMultiplier.min).toFixed(0)}-${(hourlyRate.reanance * pppMultiplier.max).toFixed(0)}/hr
                       </span>
                     </div>
                   </div>
@@ -256,6 +256,125 @@ export default function CompensationStructurePage() {
       {/* Commission Breakdown */}
       <section className={styles.section}>
         <h2>Commission Structure</h2>
+
+        {/* Pie Chart */}
+        <div className={styles.pieChartContainer}>
+          <svg viewBox="0 0 400 400" className={styles.pieChart}>
+            {/* Background circle */}
+            <circle cx="200" cy="200" r="150" fill="#151A21" />
+
+            {/* Team slices (30% total) */}
+            {/* Kara: 15% (54° of 360°) starting at 0° */}
+            <path
+              d="M 200 200 L 200 50 A 150 150 0 0 1 287.94 79.12 Z"
+              fill="#1EE5B8"
+              opacity="0.9"
+            />
+            {/* Reanance: 9% (32.4°) starting at 54° */}
+            <path
+              d="M 200 200 L 287.94 79.12 A 150 150 0 0 1 327.64 117.85 Z"
+              fill="#1EE5B8"
+              opacity="0.7"
+            />
+            {/* Bigbosexf: 6% (21.6°) starting at 86.4° */}
+            <path
+              d="M 200 200 L 327.64 117.85 A 150 150 0 0 1 349.24 149.61 Z"
+              fill="#1EE5B8"
+              opacity="0.5"
+            />
+
+            {/* Operational Costs from Nicolas's 70% */}
+            {/* Upwork: 10% (36°) starting at 108° */}
+            <path
+              d="M 200 200 L 349.24 149.61 A 150 150 0 0 1 344.85 206.42 Z"
+              fill="#FF5D5D"
+              opacity="0.7"
+            />
+            {/* AI Costs: varies by volume, ~15% @ 10 missions (54°) starting at 144° */}
+            <path
+              d="M 200 200 L 344.85 206.42 A 150 150 0 0 1 287.94 320.88 Z"
+              fill="#FFC857"
+              opacity="0.7"
+            />
+            {/* Claude Code: ~6% @ 10 missions (21.6°) starting at 198° */}
+            <path
+              d="M 200 200 L 287.94 320.88 A 150 150 0 0 1 231.36 346.89 Z"
+              fill="#FFC857"
+              opacity="0.5"
+            />
+
+            {/* Nicolas NET: remaining ~38% (136.8°) starting at 219.6° */}
+            <path
+              d="M 200 200 L 231.36 346.89 A 150 150 0 0 0 200 50 Z"
+              fill="#64A8FF"
+              opacity="0.8"
+            />
+
+            {/* Center labels */}
+            <text x="200" y="195" textAnchor="middle" fill="#E6EAF2" fontSize="14" fontWeight="600">
+              Revenue Split
+            </text>
+            <text x="200" y="215" textAnchor="middle" fill="#9AA3AE" fontSize="12">
+              @ 10 missions/month
+            </text>
+          </svg>
+
+          <div className={styles.pieChartLegend}>
+            <div className={styles.legendSection}>
+              <div className={styles.legendTitle}>Team (30%)</div>
+              <div className={styles.legendItem}>
+                <span className={styles.legendColor} style={{ background: '#1EE5B8', opacity: 0.9 }}></span>
+                <span>Kara: 15%</span>
+              </div>
+              <div className={styles.legendItem}>
+                <span className={styles.legendColor} style={{ background: '#1EE5B8', opacity: 0.7 }}></span>
+                <span>Reanance: 9%</span>
+              </div>
+              <div className={styles.legendItem}>
+                <span className={styles.legendColor} style={{ background: '#1EE5B8', opacity: 0.5 }}></span>
+                <span>Bigbosexf: 6%</span>
+              </div>
+            </div>
+
+            <div className={styles.legendSection}>
+              <div className={styles.legendTitle}>Operational Costs (from Nicolas's 70%)</div>
+              <div className={styles.legendItem}>
+                <span className={styles.legendColor} style={{ background: '#FF5D5D', opacity: 0.7 }}></span>
+                <span>Upwork fees: 10%</span>
+              </div>
+              <div className={styles.legendItem}>
+                <span className={styles.legendColor} style={{ background: '#FFC857', opacity: 0.7 }}></span>
+                <span>AI costs: ~15%</span>
+              </div>
+              <div className={styles.legendItem}>
+                <span className={styles.legendColor} style={{ background: '#FFC857', opacity: 0.5 }}></span>
+                <span>Claude Code: ~6%</span>
+              </div>
+            </div>
+
+            <div className={styles.legendSection}>
+              <div className={styles.legendTitle}>Nicolas NET: ~39%</div>
+              <div className={styles.legendItem}>
+                <span className={styles.legendColor} style={{ background: '#64A8FF', opacity: 0.8 }}></span>
+                <span>After all costs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.note}>
+          <strong>Why 70% GROSS looks different than 70% NET</strong>
+          <p>
+            Nicolas's 70% GROSS share covers all platform and operational costs (Upwork 10%, AI $1500/month, Claude Code $600/month).
+            After deducting these costs, the actual NET margin is ~20-50% depending on mission volume. At 10 missions/month, that's ~39% NET.
+            Combined with 11x cost of living difference (Lyon vs Lagos), everyone wins fairly.
+          </p>
+          <p style={{ marginTop: '1rem', fontStyle: 'italic', color: 'var(--color-accent, #1EE5B8)' }}>
+            <strong>Coming soon:</strong> AI partners (Emma, Inna, Rafael, Sofia, Maya, Alexis) will receive a share of revenue as the agency scales.
+            This is part of our vision for AI economic participation in the Mind Protocol ecosystem.
+          </p>
+        </div>
+
         <table className={styles.commissionTable}>
           <thead>
             <tr>
