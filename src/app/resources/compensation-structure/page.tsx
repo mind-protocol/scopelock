@@ -76,11 +76,10 @@ export default function CompensationStructurePage() {
 
         <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', lineHeight: '1.8' }}>
           <p style={{ margin: 0 }}>
-            <strong>Our philosophy:</strong> Fair compensation isn't about equal nominal dollars—it's about equal purchasing power and aligned incentives.
-            We operate on pure commission because we believe in paying for value delivered, not hours logged. This means everyone wins together
-            when we deliver quality work fast. The team earns competitive rates adjusted for purchasing power parity (your $900 in Lagos
-            equals $4,500-9,000 in lifestyle), while Nicolas absorbs all risk and capital costs. No employment overhead, no time tracking,
-            no busywork—just ship missions, get paid when clients pay, and earn more by delivering faster.
+            <strong>Our philosophy:</strong> Fair compensation means aligned incentives and transparent splits.
+            We operate on pure commission because we believe in paying for value delivered, not hours logged. Revenue splits 4 ways:
+            Team (30%), Upwork (10%), Organization costs (~21%), and profit (~39%). Everyone wins together when we deliver quality work fast.
+            No employment overhead, no time tracking, no busywork—just ship missions, get paid when clients pay, and earn more by delivering faster.
           </p>
         </div>
       </section>
@@ -283,27 +282,26 @@ export default function CompensationStructurePage() {
               opacity="0.5"
             />
 
-            {/* Operational Costs from Nicolas's 70% */}
             {/* Upwork: 10% (36°) starting at 108° */}
             <path
               d="M 200 200 L 349.24 149.61 A 150 150 0 0 1 344.85 206.42 Z"
               fill="#FF5D5D"
               opacity="0.7"
             />
-            {/* AI Costs: varies by volume, ~15% @ 10 missions (54°) starting at 144° */}
+            {/* Organization costs: AI ~15% @ 10 missions (54°) starting at 144° */}
             <path
               d="M 200 200 L 344.85 206.42 A 150 150 0 0 1 287.94 320.88 Z"
               fill="#FFC857"
               opacity="0.7"
             />
-            {/* Claude Code: ~6% @ 10 missions (21.6°) starting at 198° */}
+            {/* Organization costs: Claude Code ~6% @ 10 missions (21.6°) starting at 198° */}
             <path
               d="M 200 200 L 287.94 320.88 A 150 150 0 0 1 231.36 346.89 Z"
               fill="#FFC857"
               opacity="0.5"
             />
 
-            {/* Nicolas NET: remaining ~38% (136.8°) starting at 219.6° */}
+            {/* Profit: remaining ~39% (136.8°) starting at 219.6° */}
             <path
               d="M 200 200 L 231.36 346.89 A 150 150 0 0 0 200 50 Z"
               fill="#64A8FF"
@@ -321,7 +319,7 @@ export default function CompensationStructurePage() {
 
           <div className={styles.pieChartLegend}>
             <div className={styles.legendSection}>
-              <div className={styles.legendTitle}>Team (30%)</div>
+              <div className={styles.legendTitle}>Team: 30%</div>
               <div className={styles.legendItem}>
                 <span className={styles.legendColor} style={{ background: '#1EE5B8', opacity: 0.9 }}></span>
                 <span>Kara: 15%</span>
@@ -337,11 +335,15 @@ export default function CompensationStructurePage() {
             </div>
 
             <div className={styles.legendSection}>
-              <div className={styles.legendTitle}>Operational Costs (from Nicolas's 70%)</div>
+              <div className={styles.legendTitle}>Upwork: 10%</div>
               <div className={styles.legendItem}>
                 <span className={styles.legendColor} style={{ background: '#FF5D5D', opacity: 0.7 }}></span>
-                <span>Upwork fees: 10%</span>
+                <span>Platform fees</span>
               </div>
+            </div>
+
+            <div className={styles.legendSection}>
+              <div className={styles.legendTitle}>Organization: ~21%</div>
               <div className={styles.legendItem}>
                 <span className={styles.legendColor} style={{ background: '#FFC857', opacity: 0.7 }}></span>
                 <span>AI costs: ~15%</span>
@@ -353,21 +355,22 @@ export default function CompensationStructurePage() {
             </div>
 
             <div className={styles.legendSection}>
-              <div className={styles.legendTitle}>Nicolas NET: ~39%</div>
+              <div className={styles.legendTitle}>You: ~39%</div>
               <div className={styles.legendItem}>
                 <span className={styles.legendColor} style={{ background: '#64A8FF', opacity: 0.8 }}></span>
-                <span>After all costs</span>
+                <span>Profit after all costs</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className={styles.note}>
-          <strong>Why 70% GROSS looks different than 70% NET</strong>
+          <strong>4-Way Split Explained</strong>
           <p>
-            Nicolas's 70% GROSS share covers all platform and operational costs (Upwork 10%, AI $1500/month, Claude Code $600/month).
-            After deducting these costs, the actual NET margin is ~20-50% depending on mission volume. At 10 missions/month, that's ~39% NET.
-            Combined with 11x cost of living difference (Lyon vs Lagos), everyone wins fairly.
+            <strong>Team (30%):</strong> Kara, Reanance, Bigbosexf — pure commission, paid when client pays<br/>
+            <strong>Upwork (10%):</strong> Platform fees for every mission<br/>
+            <strong>Organization (~21%):</strong> AI infrastructure (Claude API ~15%) + tools (Claude Code ~6%)<br/>
+            <strong>You (~39%):</strong> Profit margin after all costs @ 10 missions/month
           </p>
           <p style={{ marginTop: '1rem', fontStyle: 'italic', color: 'var(--color-accent, #1EE5B8)' }}>
             <strong>Coming soon:</strong> AI partners (Emma, Inna, Rafael, Sofia, Maya, Alexis) will receive a share of revenue as the agency scales.
