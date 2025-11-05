@@ -30,6 +30,15 @@ const resources = [
     timeToRead: '10 min',
     category: 'Critical',
   },
+  {
+    title: 'What Good Documentation Looks Like (PATTERN→GUIDE)',
+    description: 'Learn ScopeLock\'s 6-level documentation framework that eliminates ambiguity and prevents rework. See before/after examples showing how bad docs waste 4+ hours per feature while good docs save time for everyone.',
+    href: '/resources/good-documentation',
+    icon: '📚',
+    impact: 'Rafael generates correct code first time',
+    timeToRead: '18 min',
+    category: 'Essential',
+  },
   // Future resources: Add new resources here following the same structure
   // {
   //   title: 'Your Resource Title',

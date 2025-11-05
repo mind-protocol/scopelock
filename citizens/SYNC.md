@@ -1,3 +1,395 @@
+## 2025-11-06 00:30 — Emma: Good Documentation Resource (PATTERN→GUIDE) ✅
+
+**Work:** Created comprehensive team resource explaining ScopeLock's 6-level documentation framework
+
+**Context:** User requested: "❌ #4: What Good Documentation Looks Like (PATTERN→GUIDE) write resource md"
+
+**Deliverable:** `/resources/good-documentation` page + added to resources index
+
+**Implementation:**
+
+**1. Complete Resource Page (`page.tsx`):**
+- Header with metadata (18 min read, onboarding series #4, tags)
+- Lead section showing cost of bad docs (4+ hours wasted per feature)
+- Problem/Solution structure with before/after examples
+- Interactive 6-level framework:
+  1. PATTERN (🎯 - Core principles)
+  2. BEHAVIOR_SPEC (📋 - What success looks like)
+  3. VALIDATION (✅ - How we verify)
+  4. MECHANISM (🏗️ - Implementation approach)
+  5. ALGORITHM (⚙️ - Code-level steps)
+  6. GUIDE (📖 - How to adopt/deploy)
+- Expandable level cards showing purpose, audience, examples, when to write
+- Complete authentication example (200+ lines) vs bad example (4 lines)
+- Time comparison table (bad docs: 5h 25min vs good docs: 45min)
+- "How to Write Each Level" section with templates for all 6 levels
+- 4 quiz scenarios testing understanding
+- 6-level checklist for printing (DoD verification)
+- Common mistakes section (6 mistakes with fixes)
+- Links to related resources (Complete Mission Flow, How to Talk to AI Citizens)
+
+**2. Styling (`styles.module.css`):**
+- Dark theme matching ScopeLock design system
+- Interactive elements (expandable cards, toggle buttons, quiz answers)
+- Color coding: #1ee5b8 (success/good), #ff5d5d (errors/bad), #ffc857 (warnings)
+- Responsive design for mobile/tablet/desktop
+- Hover effects, transitions, clean typography
+- Code blocks with syntax highlighting
+- Comparison tables with visual differentiation
+
+**3. Added to Resources Index:**
+- Title: "What Good Documentation Looks Like (PATTERN→GUIDE)"
+- Description: 6-level framework preventing rework, before/after examples
+- Icon: 📚, Category: Essential, Time: 18 min, Impact: "Rafael generates correct code first time"
+
+**Key Educational Content:**
+- **Problem:** Vague specs waste 4+ hours (clarifications, rework, client unhappy)
+- **Solution:** 6 levels eliminate ambiguity at every stage
+- **Benefits:** Rafael generates correct code first time, Sofia knows what to verify, Kara deploys with confidence
+- **Templates:** Copy-paste templates for all 6 levels
+- **Examples:** Complete authentication implementation showing all 6 levels
+- **Quiz:** 4 scenarios testing understanding (who writes what, when to escalate)
+- **Checklist:** Print-ready DoD checklist for "spec is done"
+
+**Status:** Resource complete, live at `/resources/good-documentation`
+
+**Link:** `src/app/resources/good-documentation/`
+
+emma@scopelock
+
+---
+
+## 2025-11-06 00:12 — Alexis: Mission Evaluation & Improvement Process ✅
+
+**Work:** Created comprehensive evaluation and improvement process for human + AI citizen collaboration
+
+**Context:** User requested: "define a human + citizen + mission evaluation and improvement process"
+
+**Deliverable:** `/docs/core/mission-evaluation-improvement.md` (comprehensive process guide)
+
+**Three-Tier Evaluation System:**
+
+**1. Per-Mission Retrospective (30-45 min, within 24h of delivery)**
+- Facilitator: Sofia
+- Participants: All team members on mission
+- Format: Metrics review → What went well → What didn't → Root causes → Actions → Celebrate
+- Output: RETROSPECTIVE.md in mission folder + 2-4 improvement actions
+
+**2. Weekly Team Review (1h, Friday 4:00 PM WAT)**
+- Facilitator: Sofia
+- Participants: All humans + Nicolas, AI citizens via reports
+- Focus: Pattern recognition across multiple missions
+- Output: Team-wide improvements, next week goals
+
+**3. Monthly Strategic Retrospective (2h, First Monday 10:00 AM WAT)**
+- Facilitator: Alexis
+- Participants: All team
+- Focus: Strategic decisions, process changes, team development
+- Output: ROADMAP updates, strategic decisions, skills training plan
+
+**Key Systems Defined:**
+
+**Metrics Dashboard:**
+- Quality: AC.md completeness, bugs, client satisfaction
+- Timeline: Variance, on-time %, phase efficiency
+- Collaboration: Handoff delays, wait times, communication gaps
+- Financial: Revenue, margins, CAC, LTV:CAC
+
+**Cultural Principles:**
+- Blame-free (evaluate systems, not people)
+- Everyone contributes (humans + AI citizens)
+- Specific actions (not vague "improve X")
+- Celebrate wins (end on positive)
+- Continuous learning (every mission teaches)
+
+**Example Workflows Documented:**
+- Per-mission retrospective (6-part meeting structure)
+- Weekly review (pattern recognition + team-wide improvements)
+- Monthly strategic (domain deep dives + strategic decisions)
+- Root cause analysis techniques
+- Improvement action templates (owner, deadline, success metric)
+
+**Templates Provided:**
+- RETROSPECTIVE.md template
+- Weekly review structure
+- Monthly analysis format
+
+**Status:** Process framework complete. Ready to use starting next mission.
+
+**Link:** `/docs/core/mission-evaluation-improvement.md`
+
+alexis@scopelock
+
+---
+
+## 2025-11-05 23:55 — Alexis: Daily Job Search Strategy Plan ✅
+
+**Work:** Created comprehensive daily job search strategy with phased approach
+
+**Context:** User requested plan for daily job applications with decision: start at moderate volume immediately (5-8 proposals/day), integrate Contra in Phase 2.
+
+**Deliverable:** `/docs/marketing/daily_job_search_strategy.md` (complete operational plan)
+
+**Phase 1: Moderate Volume Upwork (Week 1-4)**
+- **Daily:** 5-8 proposals/day, 3-4 search sessions (9 AM, 11 AM, 2 PM, 7 PM WAT)
+- **Weekly:** 30-40 proposals, 2-3 jobs won, $800-1,800 revenue
+- **Platform:** Upwork only (master one before spreading)
+- **Time:** 4-5h/day (Bigbosexf)
+
+**Phase 2: High Volume + Contra (Month 2-3)**
+- **Daily:** 10-15 proposals/day (Upwork 7-10, Contra 3-5)
+- **Weekly:** 50-70 proposals, 3-5 jobs won, $1,500-3,000 revenue
+- **Platform:** Upwork + Contra (70/30 split)
+- **Contra ramp:** Week 5 start with 2-3/day, scale to 4-5/day
+
+**Phase 3: Automated High Volume (Month 4+)**
+- **Daily:** 10-15 proposals/day (Emma auto-sends 80%+)
+- **Weekly:** 50-75 proposals, 5-8 jobs won, $3,000-6,000 revenue
+- **Time:** 2h/day human (down from 5h in Phase 1)
+
+**Key Systems:**
+- Daily workflow (morning/mid-morning/afternoon/evening routine)
+- Follow-up protocol (24-48h if viewed, <2h response to questions)
+- Weekly rhythm (Monday review, Wednesday check, Friday retrospective)
+- Revenue projections (Week 1: $400-800 → Month 4+: $12k-20k)
+- Risk mitigation (low win rate, capacity issues, platform saturation)
+
+**Success Metrics Dashboard:**
+- Lead generation (proposals, views, interviews, wins)
+- Quality (win rate %, response time, follow-up conversion)
+- Revenue (won, delivered, collected, avg job value)
+- Efficiency (time per proposal, cost per acquisition)
+
+**Immediate Actions (This Week):**
+- Bigbosexf: Submit 5-8 proposals/day, log in leads-tracker.md
+- Emma: Draft proposals, track which templates win
+- Alexis: Set up weekly financial dashboard, monitor win rate
+
+**Status:** Operational plan complete. Bigbosexf starts today (5-8 proposals/day).
+
+**Link:** `/docs/marketing/daily_job_search_strategy.md`
+
+alexis@scopelock
+
+---
+
+## 2025-11-05 22:45 — Rafael: Mission-Deck Architecture & Implementation Plan Complete ✅
+
+**Work:** Created comprehensive architecture and implementation plan for citizen workspace refactor
+
+**Context:** User requested architecture analysis for new citizen workspace design (F3-F8 in AC.md). User simplified scope mid-analysis: "Monaco, xterm.js, file tree not needed; just GitHub view + chat."
+
+**Files Created:**
+
+1. **ARCHITECTURE.md** (21KB) - Comprehensive technical architecture
+   - Component hierarchy and state management
+   - Data flows (mission selection, workspace switching, chat, DoD, tests)
+   - API design (REST + WebSocket endpoints)
+   - Database schema updates
+   - Originally included: Monaco Editor, xterm.js, WebSocket terminal
+   - User feedback: "Too complex, simplify to GitHub view only"
+
+2. **IMPLEMENTATION_PLAN.md** (18KB) - Week 1 MVP implementation plan (SIMPLIFIED)
+   - **Rafael workspace:** GitHub embed + Chat only (NO code editor, NO terminal)
+   - **Sofia workspace:** DoD checklist + Test results + Chat
+   - **Citizen selector:** Horizontal tabs with workflow arrows
+   - 8-day implementation plan (vs 13 days in original)
+   - Phase-by-phase breakdown with deliverables
+
+**Key Simplifications Applied:**
+
+| Original Plan | Simplified Plan |
+|--------------|----------------|
+| Monaco Editor (VS Code in browser) | GitHub embed (view only) |
+| xterm.js Terminal + WebSocket | Developers use own terminal |
+| File tree component | GitHub shows files |
+| react-resizable-panels | Simple grid layout |
+| socket.io-client | No WebSocket needed Week 1 |
+
+**Implementation Timeline:**
+- Day 1: Citizen selector (horizontal tabs)
+- Day 2: Rafael workspace (GitHub view)
+- Day 3: Chat with Rafael (reusable component)
+- Day 4: Sofia workspace (DoD checklist)
+- Day 5: Sofia workspace (Test results placeholder)
+- Day 6: Sofia chat + workspace switching
+- Day 7: Polish, accessibility, testing
+- Day 8: Deployment + user testing
+
+**Technical Dependencies (Simplified):**
+
+**Frontend:**
+- next 14.0.4
+- react-markdown (chat messages)
+- react-syntax-highlighter (code blocks)
+- zustand (state management)
+- NO Monaco, NO xterm, NO WebSocket client
+
+**Backend:**
+- fastapi + uvicorn
+- psycopg2 + sqlalchemy (PostgreSQL)
+- NO python-socketio, NO asyncio subprocess
+
+**Database Changes:**
+- Add `github_url` column to `missions` table
+- Update `chat_messages` to support multiple citizens
+- `test_runs` table for Sofia workspace (placeholder Week 1)
+- NO files table, NO terminal_sessions table
+
+**Success Metrics (Week 1):**
+- ✅ Person 1 completes ONE mission using Mission Deck
+- ✅ Rafael workspace used for ≥3 questions
+- ✅ Sofia workspace used for QA verification
+- ✅ Zero critical bugs in production
+
+**Week 2 Expansion (if Week 1 succeeds):**
+- Emma workspace (Upwork job feed)
+- Inna workspace (doc editor with markdown preview)
+- Maya workspace (client messages + status updates)
+
+**Risk Mitigation:**
+- R1: Rafael too complex → Simulated responses Week 1 (Claude API Week 2)
+- R2: Developer adoption low → Test with Person 1 first, iterate
+- R3: GitHub embed blocked → Fallback to simple links
+- R4: Week 1 fails → Keep existing workflow, Mission Deck optional
+
+**Next:** Developer implements following IMPLEMENTATION_PLAN.md phases → Sofia verifies
+
+**Status:** Complete. Ready for implementation.
+
+**Link:** `/home/mind-protocol/scopelock/docs/missions/mission-deck/`
+- ARCHITECTURE.md (comprehensive technical design)
+- IMPLEMENTATION_PLAN.md (8-day phased implementation)
+
+rafael@scopelock
+
+---
+
+## 2025-11-05 22:27 — Alexis: Automatic Task System Strategic Vision ✅
+
+**Work:** Created comprehensive strategic vision for automatic task management system
+
+**Context:** User requested automatic task system with morning briefs, button-driven workflows, and AI-written handoffs. Clarified: "don't implement; it's not your role. Just do a high-level description, and Emma will do the specification, etc."
+
+**Deliverable:** `/docs/automation/00-automatic-task-system-vision.md` (strategic vision document)
+
+**System Components:**
+
+1. **Morning Brief System**
+   - Cron at 8:00 AM WAT triggers automation engine
+   - AI citizens write personalized briefs (Emma → Bigbosexf, Maya → Reanance, Rafael → Kara)
+   - Brief includes: active missions, urgent tasks, blockers, yesterday's completions, context
+   - Sent to personal Telegram DMs
+
+2. **Mission Pipeline State Machine**
+   - Complete flow: LEAD_FOUND → PROPOSAL → JOB_WON → SPEC → IMPLEMENTATION → QA → DELIVERY → COMPLETE
+   - Revision loops: proposal revisions, bug fixes, spec clarifications
+   - Auto-task creation when "Job Won" button clicked (creates entire pipeline)
+
+3. **Button Interface**
+   - One-tap task actions: ✅ Approve, ❌ Needs Revision, 🐛 Bugs Found, ✅ Complete, 🚫 Blocked
+   - Button clicks trigger: graph update, dependent task creation, handoff brief
+
+4. **Handoff Brief System**
+   - Task completion detected → query graph for dependent tasks
+   - Activate next task (state: waiting → todo)
+   - AI citizen writes contextual handoff brief for next person
+   - Example: Reanance completes spec → Rafael writes technical handoff for Kara
+
+5. **Data Model (Mind Protocol v2 Schema)**
+   - Nodes: U4_Work_Item, U4_Mission, U4_Agent, U4_Event
+   - Links: U4_ASSIGNED_TO, U4_DEPENDS_ON, U4_BLOCKED_BY, U4_TRIGGERED_BY
+   - Graph is single source of truth (all tasks, dependencies, audit trail)
+
+**Migration Path:**
+- Phase 1: Cron-based (temporary, anti-pattern but fast to implement)
+- Phase 2: Hybrid (events + cron)
+- Phase 3: Full L2 Stimulus Collector (event-driven, proper architecture)
+
+**Success Metrics:**
+- Time to task clarity: <2 min (morning brief tells you exactly what to do)
+- Handoff latency: <15 min (completion → next person notified)
+- Coordination overhead: 0 messages (automation handles all handoffs)
+
+**Next Steps (Clear Role Boundaries):**
+1. **Emma:** Create specifications (morning brief spec, task pipeline spec, handoff system spec) by 2025-11-08
+2. **Inna:** Create 6-level documentation (PATTERN → GUIDE) by 2025-11-12
+3. **Rafael:** Implement ONLY after Inna's complete docs ready by 2025-11-15
+4. **Alexis:** Review each phase (specs, docs, implementation plan)
+
+**Files Updated:**
+- Created: `/docs/automation/00-automatic-task-system-vision.md` (strategic vision)
+- Updated: `/docs/automation/README.md` (added "Strategic Initiatives" section)
+- Updated: `/citizens/alexis/TODOS.md` (added review milestones)
+
+**Status:** Strategic vision complete. Ready for Emma to create specifications. Do NOT implement before Inna's documentation is complete.
+
+**Link:** `/docs/automation/00-automatic-task-system-vision.md`
+
+alexis@scopelock
+
+---
+
+## 2025-11-05 21:23 — Rafael: Mission-Deck Tests Complete (26 New Tests) ✅
+
+**Work:** Generated 26 missing tests for `/docs/missions/mission-deck` following L4 conformance patterns
+
+**Context:** User said "okay code them" after gap analysis identified 18 missing tests. Reference files provided:
+- `/home/mind-protocol/mindprotocol/docs/L4-law/CONFORMANCE_SUITE_SPECIFICATION.md`
+- `/home/mind-protocol/mindprotocol/docs/L4-law/OVERVIEW.md`
+- `/home/mind-protocol/mindprotocol/docs/COMPLETE_TYPE_REFERENCE.md`
+
+**Files Created:**
+
+1. **`backend/tests/test_security.py`** (8 critical tests)
+   - JWT validation (expired, invalid signature, missing token)
+   - Authorization boundaries (missions, DoD, chat)
+   - XSS prevention (notes, chat sanitization)
+   - SQL injection prevention
+   - **Severity:** CRITICAL (100% pass rate, 0 failures allowed)
+   - Maps to: AC.md NF3 (Security)
+
+2. **`frontend/tests/quality.test.ts`** (10 tests)
+   - TypeScript strict mode + zero `any` types
+   - Build produces zero TypeScript errors
+   - ESLint configuration + zero warnings
+   - Keyboard navigation (Tab, Enter, Escape)
+   - Accessibility (focus indicators, WCAG AA contrast via axe-core)
+   - **Severity:** HIGH (≥95% pass rate required)
+   - Maps to: AC.md NF2 (Quality)
+
+3. **`backend/tests/test_error_handling.py`** (8 tests)
+   - Rafael API failure graceful degradation (503 not 500)
+   - Database connection failures + retry logic
+   - Race condition handling (DoD updates, progress calculation)
+   - Network timeout handling (Rafael >10s)
+   - **Severity:** MEDIUM (≥90% pass rate required)
+   - Maps to: AC.md NF1 (Performance), NF2 (Quality), NF4 (Deployment)
+
+**Updated:** `VALIDATION.md`
+- Added test file references to structure diagram
+- Added 3 new test scenario sections (NF3, NF2, NF1/NF2)
+- Updated coverage thresholds (security 100%, quality ≥95%, error ≥90%)
+- Updated CI integration (separate test runs for security/quality/error)
+- Updated test execution order (security tests block deployment if fail)
+
+**L4 Conformance Patterns Applied:**
+- Severity levels: critical/high/medium
+- Pass rate thresholds per severity
+- Attestation evidence (performance, behavior)
+- Test types: api_endpoint, script, integration
+- Critical failures = 0 required for "active" status
+
+**Next:** Developer implements mission-deck following Inna's MECHANISM + ALGORITHM → Sofia verifies against these tests
+
+**Status:** Complete. All tests documented. Ready for implementation phase.
+
+**Link:** `/home/mind-protocol/scopelock/docs/missions/mission-deck/`
+
+rafael@scopelock
+
+---
+
 ## 2025-11-05 23:52 — Alexis: Payment Structure Refactored (4-Way Split) ✅
 
 **Work:** Restructured `/docs/core/payment-structure.md` from "70% Nicolas" to transparent 4-way split
