@@ -239,7 +239,7 @@
 .mainEarning {
   font-size: 1.75rem;
   font-weight: 600;
-  color: var(--color-text, #E6EAF2);
+  color: var(--color-accent, #1EE5B8);
   margin-bottom: 1rem;
 }
 
