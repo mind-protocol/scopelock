@@ -57,11 +57,6 @@ export default function CompensationStructurePage() {
           <span>•</span>
           <span>Team Onboarding Series #3</span>
         </div>
-        <div className={styles.tags}>
-          <span className={styles.tag}>#compensation</span>
-          <span className={styles.tag}>#revenue</span>
-          <span className={styles.tag}>#transparency</span>
-        </div>
       </header>
 
       {/* Lead */}
@@ -355,7 +350,7 @@ export default function CompensationStructurePage() {
             </div>
 
             <div className={styles.legendSection}>
-              <div className={styles.legendTitle}>You: ~39%</div>
+              <div className={styles.legendTitle}>NLR: ~39%</div>
               <div className={styles.legendItem}>
                 <span className={styles.legendColor} style={{ background: '#64A8FF', opacity: 0.8 }}></span>
                 <span>Profit after all costs</span>
@@ -370,62 +365,11 @@ export default function CompensationStructurePage() {
             <strong>Team (30%):</strong> Kara, Reanance, Bigbosexf — pure commission, paid when client pays<br/>
             <strong>Upwork (10%):</strong> Platform fees for every mission<br/>
             <strong>Organization (~21%):</strong> AI infrastructure (Claude API ~15%) + tools (Claude Code ~6%)<br/>
-            <strong>You (~39%):</strong> Profit margin after all costs @ 10 missions/month
+            <strong>NLR (~39%):</strong> Profit margin after all costs @ 10 missions/month
           </p>
           <p style={{ marginTop: '1rem', fontStyle: 'italic', color: 'var(--color-accent, #1EE5B8)' }}>
             <strong>Coming soon:</strong> AI partners (Emma, Inna, Rafael, Sofia, Maya, Alexis) will receive a share of revenue as the agency scales.
             This is part of our vision for AI economic participation in the Mind Protocol ecosystem.
-          </p>
-        </div>
-
-        <table className={styles.commissionTable}>
-          <thead>
-            <tr>
-              <th>Role</th>
-              <th>%</th>
-              <th>Responsibilities</th>
-              <th>Time/Mission</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Kara</strong></td>
-              <td><strong>15%</strong></td>
-              <td>Implementation, testing, deployment</td>
-              <td>~10h</td>
-            </tr>
-            <tr>
-              <td><strong>Reanance</strong></td>
-              <td><strong>9%</strong></td>
-              <td>Client-facing, specs, change control</td>
-              <td>~2.5h + ongoing</td>
-            </tr>
-            <tr>
-              <td><strong>Bigbosexf</strong></td>
-              <td><strong>6%</strong></td>
-              <td>Lead finding, proposals, QA testing</td>
-              <td>~4.5h</td>
-            </tr>
-            <tr className={styles.totalRow}>
-              <td><strong>Team Total</strong></td>
-              <td><strong>30%</strong></td>
-              <td colSpan={2}>Execution layer</td>
-            </tr>
-            <tr>
-              <td><strong>Nicolas</strong></td>
-              <td><strong>70%</strong></td>
-              <td>Infrastructure, risk, capital, platform costs</td>
-              <td>Variable</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div className={styles.note}>
-          <strong>Why 70/30?</strong>
-          <p>
-            Nicolas fronts all capital (1-3 weeks before payment), absorbs all failures,
-            built the Mind Protocol infrastructure, covers platform costs (AI, Upwork fees ~15%),
-            and lives in expensive market (Lyon vs Lagos/Abidjan). Net margin after costs: ~52%.
           </p>
         </div>
       </section>
