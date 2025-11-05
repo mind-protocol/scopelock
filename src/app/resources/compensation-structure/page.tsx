@@ -73,6 +73,16 @@ export default function CompensationStructurePage() {
           This guide explains exactly how ScopeLock's payment structure works, why we chose pure commission,
           and what you can expect to earn at different volume levels.
         </p>
+
+        <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', lineHeight: '1.8' }}>
+          <p style={{ margin: 0 }}>
+            <strong>Our philosophy:</strong> Fair compensation isn't about equal nominal dollars—it's about equal purchasing power and aligned incentives.
+            We operate on pure commission because we believe in paying for value delivered, not hours logged. This means everyone wins together
+            when we deliver quality work fast. The team earns competitive rates adjusted for purchasing power parity (your $900 in Lagos
+            equals $4,500-9,000 in lifestyle), while Nicolas absorbs all risk and capital costs. No employment overhead, no time tracking,
+            no busywork—just ship missions, get paid when clients pay, and earn more by delivering faster.
+          </p>
+        </div>
       </section>
 
       {/* Key Principle */}
@@ -82,7 +92,7 @@ export default function CompensationStructurePage() {
           <strong>You get paid as soon as clients pay.</strong>
           <p>
             No hourly tracking. No timesheets. No employment contracts.
-            You earn a fixed percentage of each mission's revenue when Nicolas receives payment from the client.
+            You earn a fixed percentage of each mission's revenue when the team receives payment from the client.
           </p>
         </div>
       </section>
@@ -458,7 +468,7 @@ export default function CompensationStructurePage() {
             <div className={styles.phaseTitle}>Current (First 3-6 months)</div>
             <ul>
               <li>Pure commission: 70/15/9/6</li>
-              <li>Pay when Nicolas receives Upwork funds</li>
+              <li>Pay when the team receives Upwork funds</li>
               <li>Prove baseline performance</li>
             </ul>
           </div>
