@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-11-05T14:23:45Z",
+  "platform": "upwork",
+  "job_title": "Build AI-Powered Physical Therapy Assessment Platform",
+  "job_url": "https://www.upwork.com/jobs/~02198512345abc",
+  "decision": "STRONG GO",
+  "confidence": 90,
+  "budget_range": "$8,000-$12,000",
+  "client_info": {
+    "spent": 47850.50,
+    "rating": 4.95,
+    "hires": 23,
+    "payment_verified": true,
+    "country": "United States"
+  },
+  "proposal_text": "I see you need an AI assessment platform for physical therapy clinics that analyzes patient movement videos and generates treatment plans. The 6-week deadline and your mention of \"burned by an agency that promised the world\" tells me you need proof, not promises.\n\nWe built TherapyKin (therapykin.ai) — an AI therapy companion with text + voice interaction, 121+ production deployments, and HIPAA-aware privacy practices. You can verify our work at github.com/nlr-ai (65K commits) and github.com/mind-protocol (includes terminal-velocity with 1.1k stars).\n\nMilestone 1 delivers: (1) Video upload API with pose detection (MediaPipe or similar), (2) Movement analysis engine with AI assessment, (3) Treatment plan generator with editable templates, (4) Demo deployment with 3 test cases you can share with your pilot clinic. Tests verify: upload accepts MP4/MOV, analysis completes <10 seconds, treatment plans match clinical standards you provide.\n\nWhat's the catch? You pay $8,500 only when tests pass. If scope changes, you choose: Swap (replace with equal complexity, no price change) or Add (new milestone, priced separately). This keeps you in control.\n\nI can kick off within 48 hours. Which matters most for your pilot: speed of analysis or accuracy of assessment recommendations?\n\nNicolas\ngithub.com/nlr-ai • github.com/mind-protocol\nAvailable 14:00–19:00 Central for calls",
+  "questions": [
+    "Which matters most for your pilot: speed of analysis or accuracy of assessment recommendations?",
+    "Do you have existing patient video samples I can use for testing?"
+  ],
+  "portfolio_match": "TherapyKin",
+  "client_type": "process-skeptical",
+  "bid_amount": 8500,
+  "urgency": 9,
+  "pain": 8
+}

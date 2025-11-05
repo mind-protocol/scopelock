@@ -1,0 +1,335 @@
+/* Main container */
+.resourcePage {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0E1116 0%, #151A21 100%);
+  color: #E6EAF2;
+  padding-bottom: 120px;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  padding: 120px 20px 80px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, rgba(30, 229, 184, 0.1) 0%, transparent 60%);
+  border-bottom: 1px solid rgba(154, 163, 174, 0.1);
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #1EE5B8 0%, #64A8FF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #9AA3AE;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroStats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1EE5B8;
+  display: block;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  display: block;
+  margin-top: 8px;
+}
+
+/* Content container */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #E6EAF2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionIcon {
+  font-size: 2rem;
+}
+
+.sectionIntro {
+  font-size: 1.125rem;
+  color: #9AA3AE;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Card grid */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.card {
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(30, 229, 184, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.1);
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #E6EAF2;
+}
+
+.cardContent {
+  font-size: 0.9375rem;
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+/* Comparison container */
+.comparisonContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+@media (max-width: 768px) {
+  .comparisonContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Code block */
+.codeBlock {
+  background: rgba(14, 17, 22, 0.6);
+  border: 1px solid rgba(154, 163, 174, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.codeBlock.bad {
+  border-color: rgba(255, 93, 93, 0.3);
+}
+
+.codeBlock.good {
+  border-color: rgba(92, 226, 126, 0.3);
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge.bad {
+  background: rgba(255, 93, 93, 0.1);
+  color: #FF5D5D;
+  border: 1px solid rgba(255, 93, 93, 0.3);
+}
+
+.badge.good {
+  background: rgba(92, 226, 126, 0.1);
+  color: #5CE27E;
+  border: 1px solid rgba(92, 226, 126, 0.3);
+}
+
+.badge.info {
+  background: rgba(100, 168, 255, 0.1);
+  color: #64A8FF;
+  border: 1px solid rgba(100, 168, 255, 0.3);
+}
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+
+.checklistItem {
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background: rgba(21, 26, 33, 0.6);
+  border: 1px solid rgba(154, 163, 174, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.checklistItem:hover {
+  background: rgba(21, 26, 33, 0.9);
+  border-color: rgba(30, 229, 184, 0.3);
+}
+
+.checklistIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checklistText {
+  color: #E6EAF2;
+  line-height: 1.5;
+}
+
+.checklistText strong {
+  color: #1EE5B8;
+}
+
+/* Alert boxes */
+.alertBox {
+  padding: 20px;
+  border-radius: 8px;
+  margin: 24px 0;
+  border-left: 4px solid;
+}
+
+.alertBox.danger {
+  background: rgba(255, 93, 93, 0.1);
+  border-color: #FF5D5D;
+}
+
+.alertBox.success {
+  background: rgba(92, 226, 126, 0.1);
+  border-color: #5CE27E;
+}
+
+.alertBox.warning {
+  background: rgba(255, 200, 87, 0.1);
+  border-color: #FFC857;
+}
+
+.alertBox.info {
+  background: rgba(100, 168, 255, 0.1);
+  border-color: #64A8FF;
+}
+
+.alertTitle {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #E6EAF2;
+}
+
+.alertContent {
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+/* Quick reference card */
+.quickRefCard {
+  background: linear-gradient(135deg, rgba(30, 229, 184, 0.05) 0%, rgba(100, 168, 255, 0.05) 100%);
+  border: 2px solid rgba(30, 229, 184, 0.2);
+  border-radius: 12px;
+  padding: 32px;
+  margin: 40px 0;
+}
+
+.quickRefTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1EE5B8;
+  text-align: center;
+}
+
+/* Template box */
+.templateBox {
+  background: rgba(14, 17, 22, 0.6);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+  padding: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  margin: 24px 0;
+  white-space: pre-wrap;
+}
+
+/* Footer CTA */
+.footerCta {
+  text-align: center;
+  padding: 60px 20px;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 229, 184, 0.1) 0%, transparent 60%);
+}
+
+.footerCtaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #E6EAF2;
+}
+
+.footerCtaText {
+  font-size: 1.125rem;
+  color: #9AA3AE;
+  margin-bottom: 32px;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #1EE5B8 0%, #64A8FF 100%);
+  color: #0E1116;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.3);
+}
