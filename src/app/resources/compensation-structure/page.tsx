@@ -500,58 +500,6 @@ export default function CompensationStructurePage() {
         </div>
       </section>
 
-      {/* Purchasing Power */}
-      <section className={styles.section}>
-        <h2>Purchasing Power Parity (Why This Is Fair)</h2>
-
-        <p>
-          The 70/30 split makes sense when you understand purchasing power. Nominal dollars don't tell the full story—let's compare actual living costs:
-        </p>
-
-        <table className={styles.pppTable}>
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>France (Nicolas)</th>
-              <th>Nigeria (Team)</th>
-              <th>Ratio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Rent (1br apt)</td>
-              <td>€800/month</td>
-              <td>₦80k (~$50)</td>
-              <td><strong>16x cheaper</strong></td>
-            </tr>
-            <tr>
-              <td>Meal at restaurant</td>
-              <td>€15</td>
-              <td>₦2k (~$1.30)</td>
-              <td><strong>11x cheaper</strong></td>
-            </tr>
-            <tr>
-              <td>Internet (fiber)</td>
-              <td>€30/month</td>
-              <td>₦10k (~$6.50)</td>
-              <td><strong>4.6x cheaper</strong></td>
-            </tr>
-            <tr>
-              <td>Transportation</td>
-              <td>€60/month</td>
-              <td>₦15k (~$10)</td>
-              <td><strong>6x cheaper</strong></td>
-            </tr>
-            <tr className={styles.totalRow}>
-              <td><strong>Total cost of living</strong></td>
-              <td><strong>€1500+/month</strong></td>
-              <td><strong>₦200k (~$130)/month</strong></td>
-              <td><strong>11x cheaper</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
       {/* Transparency */}
       <section className={styles.section}>
         <h2>Transparency & Tracking</h2>
@@ -583,15 +531,15 @@ export default function CompensationStructurePage() {
             <div className={styles.breakdownSection}>YOUR EARNINGS:</div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>✅ Kara:</span>
-              <span className={styles.breakdownValue}>$90 (15%) = 0.5 SOL</span>
+              <span className={`${styles.breakdownValue} ${styles.earningHighlight}`}>$90 (15%) = 0.5 SOL</span>
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>✅ Reanance:</span>
-              <span className={styles.breakdownValue}>$54 (9%) = 0.3 SOL</span>
+              <span className={`${styles.breakdownValue} ${styles.earningHighlight}`}>$54 (9%) = 0.3 SOL</span>
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>✅ Bigbosexf:</span>
-              <span className={styles.breakdownValue}>$36 (6%) = 0.2 SOL</span>
+              <span className={`${styles.breakdownValue} ${styles.earningHighlight}`}>$36 (6%) = 0.2 SOL</span>
             </div>
 
             <div className={styles.breakdownSection}>PAYMENT SENT:</div>
@@ -604,11 +552,6 @@ export default function CompensationStructurePage() {
               <span className={styles.breakdownValue}>[Solscan link]</span>
             </div>
           </div>
-        </div>
-
-        <div className={styles.note}>
-          <strong>Full transparency.</strong>
-          <p>Every payment is visible on Solana blockchain. You can verify amounts, timing, and transaction fees.</p>
         </div>
       </section>
 

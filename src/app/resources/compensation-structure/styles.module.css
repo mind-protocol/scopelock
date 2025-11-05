@@ -629,6 +629,11 @@
   font-weight: 500;
 }
 
+.earningHighlight {
+  color: var(--color-accent, #1EE5B8);
+  font-weight: 600;
+}
+
 .breakdownSection {
   font-weight: 600;
   color: var(--color-accent, #1EE5B8);
