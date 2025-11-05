@@ -1,0 +1,855 @@
+.testingMindset {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #e6eaf2;
+  background: #0e1116;
+  line-height: 1.7;
+}
+
+/* Header */
+.header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #2a2f3a;
+}
+
+.backLink {
+  display: inline-block;
+  color: #64a8ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: #1ee5b8;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  color: #9aa3ae;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: #1a1f28;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #9aa3ae;
+}
+
+.resources {
+  background: #151a21;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  border-left: 3px solid #1ee5b8;
+}
+
+.resources strong {
+  color: #1ee5b8;
+}
+
+.resources a {
+  color: #64a8ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.resources a:hover {
+  color: #1ee5b8;
+}
+
+/* Lead */
+.lead {
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.leadQuote {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #9aa3ae;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 4px solid #ff5d5d;
+}
+
+.lead code {
+  background: #1a1f28;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #1ee5b8;
+  font-size: 0.9em;
+}
+
+.callout {
+  background: #151a21;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #ffc857;
+  margin: 1.5rem 0;
+  font-weight: 500;
+}
+
+.danger {
+  background: #1a1212;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #ff5d5d;
+  margin: 1.5rem 0;
+  font-weight: 600;
+  color: #ff5d5d;
+}
+
+/* Iron Law Section */
+.ironLaw {
+  margin-bottom: 4rem;
+}
+
+.ironLaw h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.lawBox {
+  background: linear-gradient(135deg, #1a1f28 0%, #151a21 100%);
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 2px solid #1ee5b8;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(30, 229, 184, 0.15);
+}
+
+.lawBox h3 {
+  font-size: 1.8rem;
+  margin: 0 0 1.5rem 0;
+  color: #1ee5b8;
+}
+
+.lawStatement {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.lawBox p {
+  font-size: 1.1rem;
+  margin: 0.75rem 0;
+}
+
+.whyItMatters {
+  background: #151a21;
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #64a8ff;
+  margin-bottom: 2rem;
+}
+
+.whyItMatters h3 {
+  margin-top: 0;
+  color: #64a8ff;
+}
+
+.whyItMatters ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.whyItMatters li {
+  margin: 0.75rem 0;
+}
+
+.whyItMatters strong {
+  color: #1ee5b8;
+}
+
+.falseEquivalences h3 {
+  color: #ff5d5d;
+  margin-bottom: 1.5rem;
+}
+
+.falseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.falseCard {
+  background: #151a21;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+  transition: border-color 0.2s;
+}
+
+.falseCard:hover {
+  border-color: #ff5d5d;
+}
+
+.falseCard h4 {
+  margin-top: 0;
+  color: #ff5d5d;
+  font-size: 1.1rem;
+}
+
+.falseCard p {
+  margin: 0.75rem 0 0 0;
+  color: #9aa3ae;
+}
+
+/* Testing Levels */
+.testingLevels {
+  margin-bottom: 4rem;
+}
+
+.testingLevels h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.intro {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #9aa3ae;
+}
+
+.levelsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.levelCard {
+  background: #151a21;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+  transition: all 0.2s;
+}
+
+.levelCard:hover {
+  border-color: #1ee5b8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 229, 184, 0.1);
+}
+
+.levelHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.levelEmoji {
+  font-size: 2rem;
+}
+
+.levelHeader h3 {
+  margin: 0;
+  color: #1ee5b8;
+  font-size: 1.2rem;
+}
+
+.levelContent p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #9aa3ae;
+}
+
+.levelContent strong {
+  color: #ffffff;
+}
+
+.levelsPyramid {
+  background: #151a21;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+}
+
+.levelsPyramid h3 {
+  margin-top: 0;
+  color: #ffc857;
+  text-align: center;
+}
+
+.pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.pyramidLevel {
+  background: linear-gradient(135deg, #1a1f28 0%, #2a2f3a 100%);
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  color: #1ee5b8;
+  font-weight: 600;
+  border: 1px solid #1ee5b8;
+  transition: all 0.2s;
+}
+
+.pyramidLevel:hover {
+  background: linear-gradient(135deg, #2a2f3a 0%, #1a1f28 100%);
+  transform: scale(1.02);
+}
+
+.pyramidExplanation {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #9aa3ae;
+  font-style: italic;
+}
+
+.pyramidExplanation strong {
+  color: #ffc857;
+}
+
+/* Scenarios */
+.scenarios {
+  margin-bottom: 4rem;
+}
+
+.scenarios h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.scenariosList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.scenarioCard {
+  background: #151a21;
+  border: 1px solid #2a2f3a;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.scenarioCard:hover {
+  border-color: #1ee5b8;
+}
+
+.scenarioHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  user-select: none;
+}
+
+.scenarioHeader h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.expandButton {
+  background: #1a1f28;
+  border: none;
+  color: #1ee5b8;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.expandButton:hover {
+  background: #2a2f3a;
+}
+
+.scenarioContent {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  background: #0a0c10;
+  border-top: 1px solid #2a2f3a;
+}
+
+.scenarioContent p {
+  margin: 1rem 0;
+}
+
+.scenarioContent strong {
+  color: #1ee5b8;
+}
+
+.scenarioContent ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.scenarioContent li {
+  margin: 0.5rem 0;
+}
+
+/* Sofia's Process */
+.sofiaProcess {
+  margin-bottom: 4rem;
+}
+
+.sofiaProcess h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.dodSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.dodStep {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background: #1ee5b8;
+  color: #0e1116;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stepContent {
+  flex: 1;
+  background: #151a21;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+}
+
+.stepContent h3 {
+  margin-top: 0;
+  color: #1ee5b8;
+  font-size: 1.1rem;
+}
+
+.stepContent p {
+  margin: 0.75rem 0 0 0;
+  color: #9aa3ae;
+}
+
+.stepContent code {
+  background: #0a0c10;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #1ee5b8;
+  font-size: 0.9em;
+}
+
+.sofiaOutput {
+  margin-top: 3rem;
+}
+
+.sofiaOutput h3 {
+  color: #5ce27e;
+  margin-bottom: 1rem;
+}
+
+.outputBox {
+  background: #0a0c10;
+  border: 1px solid #5ce27e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.outputBox pre {
+  margin: 0;
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #e6eaf2;
+}
+
+/* Mistakes */
+.mistakes {
+  margin-bottom: 4rem;
+}
+
+.mistakes h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.mistakesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.mistakeCard {
+  background: #151a21;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+  transition: border-color 0.2s;
+}
+
+.mistakeCard:hover {
+  border-color: #ff5d5d;
+}
+
+.mistakeCard h3 {
+  margin-top: 0;
+  color: #ff5d5d;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mistakeCard p {
+  margin: 0.75rem 0;
+}
+
+.mistakeCard strong {
+  color: #ffc857;
+}
+
+/* Quiz */
+.quiz {
+  margin-bottom: 4rem;
+}
+
+.quiz h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.quizQuestion {
+  background: #151a21;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+  margin-bottom: 1.5rem;
+}
+
+.quizQuestion h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.quizButton {
+  background: #1a1f28;
+  border: 1px solid #1ee5b8;
+  color: #1ee5b8;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quizButton:hover {
+  background: #1ee5b8;
+  color: #0e1116;
+}
+
+.quizAnswer {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #0a0c10;
+  border-radius: 6px;
+  border-left: 4px solid #1ee5b8;
+}
+
+.quizAnswer p {
+  margin: 0.75rem 0;
+}
+
+.quizAnswer strong {
+  color: #1ee5b8;
+}
+
+.quizAnswer ul {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.quizAnswer pre {
+  background: #151a21;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+
+.codeSnippet {
+  background: #151a21;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: #1ee5b8;
+  margin: 1rem 0;
+}
+
+/* Quick Reference */
+.quickRef {
+  margin-bottom: 4rem;
+}
+
+.quickRef h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.checklistCard {
+  background: #151a21;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 2px solid #1ee5b8;
+}
+
+.checklistCard h3 {
+  margin-top: 0;
+  color: #1ee5b8;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.checklistSection {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #2a2f3a;
+}
+
+.checklistSection:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.checklistSection h4 {
+  color: #64a8ff;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.checklistSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklistSection li {
+  padding: 0.35rem 0;
+  color: #9aa3ae;
+}
+
+.checklistSection code {
+  background: #0a0c10;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #1ee5b8;
+  font-size: 0.9em;
+}
+
+.goNoGo {
+  background: #1a1212;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #ff5d5d;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.goNoGo h3 {
+  color: #ff5d5d;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.goNoGo p {
+  margin: 0.75rem 0;
+  font-weight: 600;
+}
+
+.finalRule {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #0a0c10;
+  border-radius: 6px;
+  color: #ffc857;
+  font-size: 1.1rem;
+}
+
+/* Next Steps */
+.nextSteps {
+  margin-bottom: 3rem;
+}
+
+.nextSteps h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.nextSteps ol {
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.nextSteps li {
+  margin: 1rem 0;
+  font-size: 1.05rem;
+}
+
+.nextSteps a {
+  color: #64a8ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nextSteps a:hover {
+  color: #1ee5b8;
+}
+
+/* Footer */
+.footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #2a2f3a;
+  text-align: center;
+  color: #9aa3ae;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+.footer a {
+  color: #64a8ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: #1ee5b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testingMindset {
+    padding: 1.5rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .leadQuote {
+    font-size: 1.2rem;
+  }
+
+  .ironLaw h2,
+  .testingLevels h2,
+  .scenarios h2,
+  .sofiaProcess h2,
+  .mistakes h2,
+  .quiz h2,
+  .quickRef h2,
+  .nextSteps h2 {
+    font-size: 1.6rem;
+  }
+
+  .lawBox {
+    padding: 1.5rem;
+  }
+
+  .lawBox h3 {
+    font-size: 1.4rem;
+  }
+
+  .lawStatement {
+    font-size: 1.1rem;
+  }
+
+  .levelsGrid,
+  .falseGrid,
+  .mistakesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dodStep {
+    flex-direction: column;
+  }
+
+  .stepNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .pyramid {
+    gap: 0.25rem;
+  }
+
+  .pyramidLevel {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}

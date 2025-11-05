@@ -1,3 +1,135 @@
+## 2025-11-06 01:15 — Alexis: Team Structure Updates + Financial Dashboard ✅
+
+**Work:** Completed 4 team structure documentation updates + created comprehensive financial tracking system
+
+**Context:** Executing pending tasks from TODOS.md to align documentation with current team structure and establish financial monitoring
+
+**Deliverables:**
+
+**1. Emma's CLAUDE.md - Marketing & Content Responsibilities:**
+- Added detailed "Marketing & Content (Weekly Deliverables)" section
+- Weekly blog post workflow (1/week, SEO-optimized, 800-1,500 words)
+- Case study creation process (after each mission delivery)
+- Portfolio maintenance procedures
+- Lead nurturing content templates
+
+**2. Rafael's CLAUDE.md - DevOps Support:**
+- Added comprehensive "DEVOPS SUPPORT" section (300+ lines)
+- Production infrastructure debugging protocol
+- Application health monitoring guide
+- Hotfix procedures (severity levels, testing, deployment)
+- Database migration workflows (PostgreSQL + Airtable)
+- Environment variable update procedures
+- Platform-specific troubleshooting (Vercel, Render issues)
+
+**3. Main CLAUDE.md - Maya Integration:**
+- Verified Maya is in AI Citizens section (lines 604-641)
+- Corrected client tracking system paths to `/clients/` (org-level)
+- Verified Maya's directory in project map (line 917-918)
+- Verified `/clients/` directory in project map (lines 924-932)
+
+**4. Financial Dashboard System:**
+- Created `/citizens/alexis/FINANCIAL_DASHBOARD.md`
+- Weekly tracking template (wins, deliveries, collections, costs, cash flow)
+- Monthly metrics dashboard (revenue, costs, profitability, runway)
+- Financial alerts system (critical/warning/positive)
+- Pricing strategy tracking table
+- Developer economics per-person tracking
+- Growth scenarios (conservative, moderate, target)
+- Next actions checklist
+
+**Key Systems:**
+- Weekly update: Every Friday (Nicolas + Alexis)
+- Monthly review: First Monday of month
+- Metrics: Acquisition (Emma), Delivery, Quality (Sofia), Financial, Cash Flow
+- Alerts: Runway <3mo, Net margin <20%, Collections delayed >21d
+
+**Status:** All 4 team structure updates complete, financial tracking system operational
+
+**Next:**
+- Week 1 tracking starts (monitor Emma's proposal volume, track first wins)
+
+alexis@scopelock
+
+---
+
+## 2025-11-06 01:00 — Emma: Testing Mindset Resource (AC Green) ✅
+
+**Work:** Created comprehensive "Testing Mindset: AC Green or It Didn't Happen" resource
+
+**Context:** User requested: "❌ #6: Testing Mindset (AC Green or It Didn't Happen) --> make md"
+
+**Deliverable:** `/resources/testing-mindset` page + added to resources index
+
+**Implementation:**
+
+**1. Complete Resource Page (`page.tsx`):**
+- Header with metadata (15 min read, onboarding series #6, tags)
+- Lead section: "It compiled. Ship it." → Why this fails
+- The Iron Law: "AC Green or It Didn't Happen"
+  - If tests don't pass, feature doesn't exist
+  - False equivalences: "it compiled" ≠ "it works", etc.
+- The 4 Testing Levels (with cards):
+  1. 🔬 Unit Tests (individual functions, fast)
+  2. 🔗 Integration Tests (components together, medium)
+  3. 🎭 E2E Tests (full user flows, slow)
+  4. 👤 Manual Testing (human verification, slowest)
+- Testing pyramid visualization (quantity distribution)
+- Real Scenarios (4 expandable cards):
+  - ❌ "It works on my machine" (env var missing)
+  - ❌ "I tested the happy path" (no edge case tests)
+  - ❌ "Tests pass but feature is broken" (tests mock too much)
+  - ✅ "AC Green done right" (full workflow success)
+- Sofia's DoD Verification Process (6 steps):
+  1. Read AC.md
+  2. Run automated tests
+  3. Verify deployment
+  4. Check performance thresholds
+  5. Verify DoD checklist
+  6. Return verdict (AC Green or NO-GO)
+- Example Sofia output (verification report with all criteria)
+- Common Testing Mistakes (6 cards with fixes)
+- 4 Quiz Scenarios testing understanding
+- Testing Checklist (5 sections, print-ready)
+- GO/NO-GO decision criteria
+- Links to related resources
+
+**2. Styling (`styles.module.css`):**
+- Dark theme matching ScopeLock design system
+- `.ironLaw` with special "law box" styling (gradient, glow)
+- `.testingLevels` grid with 4 level cards
+- `.levelsPyramid` visual showing quantity distribution
+- `.scenarios` with expandable cards
+- `.sofiaProcess` with numbered step circles + content
+- `.outputBox` for Sofia's report example
+- `.mistakesGrid` for common mistakes
+- `.quizQuestion` with interactive answers
+- `.checklistCard` for print-ready checklist
+- `.goNoGo` decision box with warning styling
+- Color coding: #1ee5b8 (green/pass), #ff5d5d (red/fail), #ffc857 (warning)
+
+**3. Added to Resources Index:**
+- Title: "Testing Mindset: AC Green or It Didn't Happen"
+- Description: Why "it compiled" ≠ "it works", 4 testing levels, how Sofia verifies
+- Icon: ✅, Category: Critical, Time: 15 min, Impact: "Zero bugs reach client, fast delivery"
+
+**Key Educational Content:**
+- **Iron Law:** If tests don't pass, feature doesn't exist (no negotiation)
+- **Why it matters:** Client trust, payment, future-proofing, team coordination, reputation
+- **4 Testing Levels:** Unit → Integration → E2E → Manual (each catches different bugs)
+- **Real failures:** "Works on my machine" (env vars), "Tested happy path" (no edge cases)
+- **Sofia's process:** 6-step verification ensuring AC Green
+- **Common mistakes:** "I'll write tests later", "Testing is QA's job", "Tests are too slow"
+- **Quiz:** 4 scenarios testing understanding of when you're actually done
+
+**Status:** Resource complete, live at `/resources/testing-mindset`
+
+**Link:** `src/app/resources/testing-mindset/`
+
+emma@scopelock
+
+---
+
 ## 2025-11-06 00:45 — Emma: Documentation → Implementation Graph Added ✅
 
 **Work:** Added "Documentation → Implementation Graph" section to Good Documentation resource

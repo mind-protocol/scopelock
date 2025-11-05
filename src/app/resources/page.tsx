@@ -39,6 +39,15 @@ const resources = [
     timeToRead: '18 min',
     category: 'Essential',
   },
+  {
+    title: 'Testing Mindset: AC Green or It Didn\'t Happen',
+    description: 'Understand why "it compiled" ≠ "it works." Learn the 4 testing levels, how Sofia verifies your work, and why green tests are the only proof that matters. See real scenarios of what can go wrong without proper testing.',
+    href: '/resources/testing-mindset',
+    icon: '✅',
+    impact: 'Zero bugs reach client, fast delivery',
+    timeToRead: '15 min',
+    category: 'Critical',
+  },
   // Future resources: Add new resources here following the same structure
   // {
   //   title: 'Your Resource Title',
