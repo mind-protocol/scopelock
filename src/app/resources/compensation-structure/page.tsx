@@ -120,7 +120,7 @@ export default function CompensationStructurePage() {
 
             <div className={styles.control}>
               <label htmlFor="value">
-                Average mission value: <strong>${avgMissionValue}</strong>
+                Average mission value: <strong className={styles.metallicText}>${avgMissionValue}</strong>
               </label>
               <input
                 type="range"
@@ -133,9 +133,9 @@ export default function CompensationStructurePage() {
                 className={styles.slider}
               />
               <div className={styles.sliderLabels}>
-                <span>$50</span>
-                <span>$1275</span>
-                <span>$2500</span>
+                <span className={styles.metallicText}>$50</span>
+                <span className={styles.metallicText}>$1275</span>
+                <span className={styles.metallicText}>$2500</span>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function CompensationStructurePage() {
           <div className={styles.results}>
             <div className={styles.totalRevenue}>
               <span className={styles.label}>Total Monthly Revenue</span>
-              <span className={styles.value}>${totalRevenue.toLocaleString()}</span>
+              <span className={`${styles.value} ${styles.metallicText}`}>${totalRevenue.toLocaleString()}</span>
             </div>
 
             <div className={styles.earnings}>
@@ -155,7 +155,7 @@ export default function CompensationStructurePage() {
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.mainEarning}>
-                    ${karaEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}
+                    <span className={styles.metallicText}>${karaEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}</span>
                     <span className={styles.perMonth}>/month</span>
                   </div>
                   <div className={styles.details}>
@@ -166,13 +166,13 @@ export default function CompensationStructurePage() {
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Hourly:</span>
                       <span className={styles.detailValue}>
-                        ~${hourlyRate.kara.toFixed(0)}/hr
+                        <span className={styles.metallicText}>~${hourlyRate.kara.toFixed(0)}</span>/hr
                       </span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>PPP Equiv:</span>
                       <span className={styles.detailValue}>
-                        ~${(hourlyRate.kara * pppMultiplier.min).toFixed(0)}-${(hourlyRate.kara * pppMultiplier.max).toFixed(0)}/hr
+                        <span className={styles.metallicText}>~${(hourlyRate.kara * pppMultiplier.min).toFixed(0)}-${(hourlyRate.kara * pppMultiplier.max).toFixed(0)}</span>/hr
                       </span>
                     </div>
                   </div>
@@ -187,7 +187,7 @@ export default function CompensationStructurePage() {
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.mainEarning}>
-                    ${reananceEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}
+                    <span className={styles.metallicText}>${reananceEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}</span>
                     <span className={styles.perMonth}>/month</span>
                   </div>
                   <div className={styles.details}>
@@ -198,13 +198,13 @@ export default function CompensationStructurePage() {
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Hourly:</span>
                       <span className={styles.detailValue}>
-                        ~${hourlyRate.reanance.toFixed(0)}/hr
+                        <span className={styles.metallicText}>~${hourlyRate.reanance.toFixed(0)}</span>/hr
                       </span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>PPP Equiv:</span>
                       <span className={styles.detailValue}>
-                        ~${(hourlyRate.reanance * pppMultiplier.min).toFixed(0)}-${(hourlyRate.reanance * pppMultiplier.max).toFixed(0)}/hr
+                        <span className={styles.metallicText}>~${(hourlyRate.reanance * pppMultiplier.min).toFixed(0)}-${(hourlyRate.reanance * pppMultiplier.max).toFixed(0)}</span>/hr
                       </span>
                     </div>
                   </div>
@@ -219,24 +219,24 @@ export default function CompensationStructurePage() {
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.mainEarning}>
-                    ${bigbosexfEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}
+                    <span className={styles.metallicText}>${bigbosexfEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}</span>
                     <span className={styles.perMonth}>/month</span>
                   </div>
                   <div className={styles.details}>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Time:</span>
-                      <span className={styles.detailValue}>{totalHours.bigbosexf}h</span>
+                      <span className={styles.detailValue}>~{totalHours.bigbosexf}h</span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>Hourly:</span>
                       <span className={styles.detailValue}>
-                        ${hourlyRate.bigbosexf.toFixed(0)}/hr
+                        <span className={styles.metallicText}>~${hourlyRate.bigbosexf.toFixed(0)}</span>/hr
                       </span>
                     </div>
                     <div className={styles.detail}>
                       <span className={styles.detailLabel}>PPP Equiv:</span>
                       <span className={styles.detailValue}>
-                        ${(hourlyRate.bigbosexf * pppMultiplier.min).toFixed(0)}-${(hourlyRate.bigbosexf * pppMultiplier.max).toFixed(0)}/hr
+                        <span className={styles.metallicText}>~${(hourlyRate.bigbosexf * pppMultiplier.min).toFixed(0)}-${(hourlyRate.bigbosexf * pppMultiplier.max).toFixed(0)}</span>/hr
                       </span>
                     </div>
                   </div>
@@ -404,7 +404,7 @@ export default function CompensationStructurePage() {
 
         <div className={styles.callout}>
           <strong>Payment method: Solana (SOL)</strong>
-          <p>Instant transfers, near-zero fees (~$0.01), fully transparent on blockchain.</p>
+          <p>Instant transfers, near-zero fees (<span className={styles.metallicText}>~$0.01</span>), fully transparent on blockchain.</p>
           <p>You can hold SOL, convert to USDC, or cash out to NGN via Binance.</p>
         </div>
       </section>
@@ -434,7 +434,7 @@ export default function CompensationStructurePage() {
             <div className={styles.gateIcon}>💥</div>
             <div className={styles.gateContent}>
               <h3>Mission fails entirely</h3>
-              <p><strong>$0 for everyone</strong> (org absorbs loss - risk premium in 70% split)</p>
+              <p><strong><span className={styles.metallicText}>$0</span> for everyone</strong> (org absorbs loss - risk premium in 70% split)</p>
             </div>
           </div>
         </div>
@@ -464,7 +464,7 @@ export default function CompensationStructurePage() {
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>Client paid:</span>
-              <span className={styles.breakdownValue}>$600</span>
+              <span className={`${styles.breakdownValue} ${styles.metallicText}`}>$600</span>
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>Date:</span>
@@ -472,27 +472,27 @@ export default function CompensationStructurePage() {
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>SOL price at payment:</span>
-              <span className={styles.breakdownValue}>$180</span>
+              <span className={`${styles.breakdownValue} ${styles.metallicText}`}>$180</span>
             </div>
 
             <div className={styles.breakdownSection}>YOUR EARNINGS:</div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>✅ Kara:</span>
-              <span className={`${styles.breakdownValue} ${styles.earningHighlight}`}>$90 (15%) = 0.5 SOL</span>
+              <span className={`${styles.breakdownValue} ${styles.earningHighlight} ${styles.metallicText}`}>$90 (15%) = 0.5 SOL</span>
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>✅ Reanance:</span>
-              <span className={`${styles.breakdownValue} ${styles.earningHighlight}`}>$54 (9%) = 0.3 SOL</span>
+              <span className={`${styles.breakdownValue} ${styles.earningHighlight} ${styles.metallicText}`}>$54 (9%) = 0.3 SOL</span>
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>✅ Bigbosexf:</span>
-              <span className={`${styles.breakdownValue} ${styles.earningHighlight}`}>$36 (6%) = 0.2 SOL</span>
+              <span className={`${styles.breakdownValue} ${styles.earningHighlight} ${styles.metallicText}`}>$36 (6%) = 0.2 SOL</span>
             </div>
 
             <div className={styles.breakdownSection}>PAYMENT SENT:</div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>✅ Kara's wallet:</span>
-              <span className={styles.breakdownValue}>0.5 SOL (~$90) → 7xK9...</span>
+              <span className={styles.breakdownValue}>0.5 SOL (<span className={styles.metallicText}>~$90</span>) → 7xK9...</span>
             </div>
             <div className={styles.breakdownRow}>
               <span className={styles.breakdownLabel}>Transaction ID:</span>

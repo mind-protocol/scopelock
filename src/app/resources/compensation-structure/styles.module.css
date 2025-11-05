@@ -239,8 +239,29 @@
 .mainEarning {
   font-size: 1.75rem;
   font-weight: 600;
-  color: var(--color-accent, #1EE5B8);
   margin-bottom: 1rem;
+}
+
+.metallicText {
+  background: linear-gradient(
+    120deg,
+    #f59e0b 0%,
+    #fbbf24 10%,
+    #fef3c7 20%,
+    #fbbf24 30%,
+    #f59e0b 40%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: metallic-shine 8s linear infinite;
+}
+
+@keyframes metallic-shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .perMonth {
