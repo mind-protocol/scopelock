@@ -487,7 +487,7 @@ export default function CompensationStructurePage() {
             <div className={styles.gateIcon}>💥</div>
             <div className={styles.gateContent}>
               <h3>Mission fails entirely</h3>
-              <p><strong>$0 for everyone</strong> (Nicolas absorbs loss - risk premium in 70% split)</p>
+              <p><strong>$0 for everyone</strong> (org absorbs loss - risk premium in 70% split)</p>
             </div>
           </div>
         </div>
