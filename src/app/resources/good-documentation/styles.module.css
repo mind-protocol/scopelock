@@ -356,6 +356,173 @@
   gap: 0.5rem;
 }
 
+/* Documentation → Implementation Graph */
+.docToCode {
+  margin-bottom: 4rem;
+}
+
+.docToCode h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.graphVisual {
+  background: #151a21;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+  margin: 2rem 0;
+}
+
+.graphVisual h3 {
+  margin-top: 0;
+  color: #1ee5b8;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.flowDiagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.docsColumn,
+.implColumn,
+.testsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.docNode {
+  background: #1a1f28;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #64a8ff;
+  color: #64a8ff;
+  font-size: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.implNode {
+  background: #1a1f28;
+  padding: 2rem 1.5rem;
+  border-radius: 6px;
+  border: 2px solid #1ee5b8;
+  color: #1ee5b8;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.testNode {
+  background: #1a1f28;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #5ce27e;
+  color: #5ce27e;
+  font-size: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: #1ee5b8;
+  font-weight: bold;
+}
+
+.explainer {
+  background: #151a21;
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #64a8ff;
+  margin: 2rem 0;
+}
+
+.explainer h3 {
+  margin-top: 0;
+  color: #64a8ff;
+}
+
+.explainer ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.explainer li {
+  margin: 0.75rem 0;
+  color: #9aa3ae;
+}
+
+.explainer strong {
+  color: #1ee5b8;
+}
+
+.codeExample,
+.testExample {
+  margin: 2rem 0;
+}
+
+.codeExample h3,
+.testExample h3 {
+  color: #1ee5b8;
+  margin-bottom: 1rem;
+}
+
+.exampleWorkflow {
+  background: #151a21;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+  margin: 2rem 0;
+}
+
+.exampleWorkflow h3 {
+  margin-top: 0;
+  color: #ffc857;
+}
+
+.exampleWorkflow ol {
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  counter-reset: item;
+}
+
+.exampleWorkflow li {
+  margin: 1rem 0;
+  color: #9aa3ae;
+}
+
+.exampleWorkflow code {
+  background: #0a0c10;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #1ee5b8;
+  font-size: 0.9rem;
+}
+
+.result {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #0a0c10;
+  border-radius: 6px;
+  border-left: 4px solid #1ee5b8;
+  color: #e6eaf2;
+}
+
+.result strong {
+  color: #1ee5b8;
+}
+
 /* Complete Example */
 .completeExample {
   margin-bottom: 4rem;

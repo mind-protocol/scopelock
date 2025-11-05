@@ -521,6 +521,176 @@ vercel --prod
         </div>
       </section>
 
+      {/* Documentation → Implementation Graph */}
+      <section className={styles.docToCode}>
+        <h2>Documentation → Implementation Graph</h2>
+
+        <p className={styles.intro}>
+          <strong>Key architectural principle:</strong> Many documentation levels map to ONE implementation file. The implementation file references back to its docs AND its tests, creating bidirectional traceability.
+        </p>
+
+        <div className={styles.graphVisual}>
+          <h3>Many-to-One Relationship</h3>
+          <div className={styles.flowDiagram}>
+            <div className={styles.docsColumn}>
+              <div className={styles.docNode}>📄 PATTERN.md</div>
+              <div className={styles.docNode}>📄 BEHAVIOR_SPEC.md (AC.md)</div>
+              <div className={styles.docNode}>📄 VALIDATION.md</div>
+              <div className={styles.docNode}>📄 MECHANISM.md</div>
+              <div className={styles.docNode}>📄 ALGORITHM.md</div>
+              <div className={styles.docNode}>📄 GUIDE.md</div>
+            </div>
+            <div className={styles.arrow}>→</div>
+            <div className={styles.implColumn}>
+              <div className={styles.implNode}>⚙️ auth.ts</div>
+            </div>
+            <div className={styles.arrow}>→</div>
+            <div className={styles.testsColumn}>
+              <div className={styles.testNode}>✅ auth.test.ts</div>
+              <div className={styles.testNode}>✅ auth.e2e.ts</div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.explainer}>
+          <h3>Why This Matters</h3>
+          <ul>
+            <li><strong>Traceability:</strong> Every line of code can be traced back to its documentation (why it exists, what it does, how it's verified)</li>
+            <li><strong>Maintainability:</strong> Future developers understand context by reading linked docs</li>
+            <li><strong>Verification:</strong> Tests reference the same VALIDATION docs, ensuring alignment</li>
+            <li><strong>Onboarding:</strong> New team members follow doc → code → test chain to understand features</li>
+          </ul>
+        </div>
+
+        <div className={styles.codeExample}>
+          <h3>Implementation File Header (References Docs + Tests)</h3>
+          <pre className={styles.codeBlock}>{`/**
+ * Authentication Module: Email-based OTP signup/login
+ *
+ * DOCUMENTATION:
+ * - PATTERN:        docs/missions/user-auth/PATTERN.md
+ * - BEHAVIOR_SPEC:  docs/missions/user-auth/AC.md
+ * - VALIDATION:     docs/missions/user-auth/VALIDATION.md
+ * - MECHANISM:      docs/missions/user-auth/MECHANISM.md
+ * - ALGORITHM:      docs/missions/user-auth/ALGORITHM.md
+ * - GUIDE:          docs/missions/user-auth/GUIDE.md
+ *
+ * TESTS:
+ * - Unit:       tests/auth.test.ts
+ * - E2E:        tests/e2e/auth.e2e.ts
+ * - Coverage:   Must maintain >90% (enforced by CI)
+ *
+ * ACCEPTANCE CRITERIA:
+ * ✅ User can signup with email (AC.md #1)
+ * ✅ User can login with email (AC.md #2)
+ * ✅ Session expires after 7 days (AC.md #3)
+ * ✅ OTP delivery p95 < 5s (AC.md non-functional)
+ *
+ * Last updated: 2025-11-06
+ * Owner: @kara (implementation), @sofia (QA)
+ */
+
+import { db } from '@/lib/db';
+import { redis } from '@/lib/redis';
+import { sendEmail } from '@/lib/email';
+
+export async function signupWithEmail(email: string) {
+  // Implementation per ALGORITHM.md section 5.1
+  // ...
+}`}</pre>
+        </div>
+
+        <div className={styles.testExample}>
+          <h3>Test File Header (References Docs)</h3>
+          <pre className={styles.codeBlock}>{`/**
+ * Authentication Tests
+ *
+ * Verifies acceptance criteria from:
+ * - docs/missions/user-auth/AC.md
+ * - docs/missions/user-auth/VALIDATION.md
+ *
+ * Tests implementation:
+ * - src/app/actions/auth.ts
+ *
+ * Coverage target: >90%
+ */
+
+import { signupWithEmail, verifyOTP } from '@/app/actions/auth';
+
+describe('User Authentication', () => {
+  // Test AC.md #1: User can signup with email
+  test('user can sign up with valid email', async () => {
+    // Given: New user with valid email
+    const email = 'test@example.com';
+
+    // When: User submits signup
+    const result = await signupWithEmail(email);
+
+    // Then: Success response (per VALIDATION.md)
+    expect(result.success).toBe(true);
+  });
+
+  // Test AC.md #1: OTP delivery performance
+  test('OTP delivery meets p95 < 5s threshold', async () => {
+    // Per VALIDATION.md performance criteria
+    // ...
+  });
+});`}</pre>
+        </div>
+
+        <div className={styles.calloutBox}>
+          <h4>✅ Benefits of Bidirectional References</h4>
+          <ul>
+            <li><strong>Doc → Code:</strong> Every doc level knows which files implement it</li>
+            <li><strong>Code → Doc:</strong> Every implementation file declares which docs define it</li>
+            <li><strong>Code → Tests:</strong> Every implementation file lists its test files</li>
+            <li><strong>Tests → Doc:</strong> Every test file references acceptance criteria from docs</li>
+          </ul>
+          <p className={styles.insight}>
+            <strong>Result:</strong> When you change a MECHANISM doc, you immediately know which implementation files need updating. When a test fails, you immediately know which AC.md criterion is violated.
+          </p>
+        </div>
+
+        <div className={styles.exampleWorkflow}>
+          <h3>Example Workflow: Changing Authentication Method</h3>
+          <ol>
+            <li>
+              <strong>Update PATTERN.md:</strong> Change from "email OTP" to "email + password"
+            </li>
+            <li>
+              <strong>Update AC.md:</strong> New criteria: "password must be 8+ chars, 1 special char"
+            </li>
+            <li>
+              <strong>Update VALIDATION.md:</strong> New tests for password validation
+            </li>
+            <li>
+              <strong>Update MECHANISM.md:</strong> Replace Redis (OTP) with bcrypt (password hashing)
+            </li>
+            <li>
+              <strong>Update ALGORITHM.md:</strong> New code flow for password validation
+            </li>
+            <li>
+              <strong>Check implementation file header:</strong> <code>auth.ts</code> references all these docs
+            </li>
+            <li>
+              <strong>Update auth.ts:</strong> Implement new password flow per updated ALGORITHM.md
+            </li>
+            <li>
+              <strong>Check test file header:</strong> <code>auth.test.ts</code> references AC.md
+            </li>
+            <li>
+              <strong>Update auth.test.ts:</strong> Add password validation tests per updated VALIDATION.md
+            </li>
+            <li>
+              <strong>Run tests:</strong> All tests pass → AC green
+            </li>
+          </ol>
+          <p className={styles.result}>
+            <strong>Without this graph:</strong> You'd forget to update tests, or update implementation but miss a doc level. <strong>With this graph:</strong> You follow the chain and catch every dependency.
+          </p>
+        </div>
+      </section>
+
       {/* Complete Example */}
       <section className={styles.completeExample} id="examples">
         <h2>Complete Example: User Authentication</h2>
