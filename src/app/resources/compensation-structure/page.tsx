@@ -131,17 +131,17 @@ export default function CompensationStructurePage() {
               <input
                 type="range"
                 id="value"
-                min="200"
-                max="3000"
-                step="100"
+                min="50"
+                max="2500"
+                step="50"
                 value={avgMissionValue}
                 onChange={(e) => setAvgMissionValue(parseInt(e.target.value))}
                 className={styles.slider}
               />
               <div className={styles.sliderLabels}>
-                <span>$200</span>
-                <span>$1600</span>
-                <span>$3000</span>
+                <span>$50</span>
+                <span>$1275</span>
+                <span>$2500</span>
               </div>
             </div>
           </div>
