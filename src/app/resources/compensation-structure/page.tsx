@@ -79,7 +79,7 @@ export default function CompensationStructurePage() {
       <section className={styles.section}>
         <h2>The Core Principle</h2>
         <div className={styles.callout}>
-          <strong>We only get paid when clients pay.</strong>
+          <strong>You get paid as soon as clients pay.</strong>
           <p>
             No hourly tracking. No timesheets. No employment contracts.
             You earn a fixed percentage of each mission's revenue when Nicolas receives payment from the client.
