@@ -505,8 +505,7 @@ export default function CompensationStructurePage() {
         <h2>Purchasing Power Parity (Why This Is Fair)</h2>
 
         <p>
-          You might see "70%" and think "that's not fair." But nominal dollars don't tell the full story.
-          Let's compare actual living costs:
+          The 70/30 split makes sense when you understand purchasing power. Nominal dollars don't tell the full story—let's compare actual living costs:
         </p>
 
         <table className={styles.pppTable}>
@@ -551,74 +550,13 @@ export default function CompensationStructurePage() {
             </tr>
           </tbody>
         </table>
-
-        <div className={styles.pppExample}>
-          <h3>Real-World Example</h3>
-          <p>Let's say we do 10 missions/month @ $600 avg (total: $6000)</p>
-          <div className={styles.pppComparison}>
-            <div className={styles.pppCard}>
-              <div className={styles.pppName}>Kara</div>
-              <div className={styles.pppEarning}>$900/month</div>
-              <div className={styles.pppCost}>Living cost: ~$130/month</div>
-              <div className={styles.pppMonths}>= <strong>6.9 months</strong> of expenses</div>
-              <div className={styles.pppEquiv}>≈ Doctor/engineer salary in Lagos</div>
-            </div>
-            <div className={styles.pppCard}>
-              <div className={styles.pppName}>Nicolas</div>
-              <div className={styles.pppEarning}>$2520/month (net)</div>
-              <div className={styles.pppCost}>Living cost: ~$1640/month</div>
-              <div className={styles.pppMonths}>= <strong>1.5 months</strong> of expenses</div>
-              <div className={styles.pppEquiv}>≈ Mid-level dev salary in Lyon</div>
-            </div>
-          </div>
-          <p className={styles.pppConclusion}>
-            <strong>This is why 70/30 is fair:</strong> Your $900 goes 6.9x further than Nicolas's $2520.
-          </p>
-        </div>
-      </section>
-
-      {/* Growth Path */}
-      <section className={styles.section}>
-        <h2>Growth Path</h2>
-
-        <div className={styles.growthPhases}>
-          <div className={styles.phaseCard}>
-            <div className={styles.phaseNumber}>Phase 2</div>
-            <div className={styles.phaseTitle}>Current (First 3-6 months)</div>
-            <ul>
-              <li>Pure commission: 70/15/9/6</li>
-              <li>Pay when the team receives Upwork funds</li>
-              <li>Prove baseline performance</li>
-            </ul>
-          </div>
-
-          <div className={styles.phaseCard}>
-            <div className={styles.phaseNumber}>Phase 3</div>
-            <div className={styles.phaseTitle}>After Proven Track Record</div>
-            <ul>
-              <li>Consider base salary + commission hybrid</li>
-              <li>Speed bonuses (+10% for &lt;50% time)</li>
-              <li>Referral bonuses (10% of first mission)</li>
-            </ul>
-          </div>
-
-          <div className={styles.phaseCard}>
-            <div className={styles.phaseNumber}>Phase 4</div>
-            <div className={styles.phaseTitle}>Scaled Agency (15-20 missions/month)</div>
-            <ul>
-              <li>Team earning $1500-3000/month each</li>
-              <li>Consider increasing team % to 35%</li>
-              <li>Predictable, sustainable income</li>
-            </ul>
-          </div>
-        </div>
       </section>
 
       {/* Transparency */}
       <section className={styles.section}>
         <h2>Transparency & Tracking</h2>
 
-        <p>After each mission, you'll receive a breakdown like this:</p>
+        <p>After each mission, we'll put on the site:</p>
 
         <div className={styles.paymentBreakdown}>
           <div className={styles.breakdownHeader}>
