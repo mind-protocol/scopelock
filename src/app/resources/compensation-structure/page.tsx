@@ -443,7 +443,7 @@ export default function CompensationStructurePage() {
           <div className={styles.timelineArrow}>→</div>
           <div className={styles.timelineItem}>
             <div className={styles.timelineDay}>Day 21</div>
-            <div className={styles.timelineEvent}>Upwork releases funds to Nicolas</div>
+            <div className={styles.timelineEvent}>Upwork releases funds to team</div>
           </div>
           <div className={styles.timelineArrow}>→</div>
           <div className={styles.timelineItem}>
