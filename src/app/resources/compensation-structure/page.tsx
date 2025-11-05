@@ -429,7 +429,7 @@ export default function CompensationStructurePage() {
 
       {/* Payment Timing */}
       <section className={styles.section}>
-        <h2>When Do You Get Paid?</h2>
+        <h2>When Do You Get Paid? As soon as the client pays</h2>
         <div className={styles.timeline}>
           <div className={styles.timelineItem}>
             <div className={styles.timelineDay}>Day 0</div>
