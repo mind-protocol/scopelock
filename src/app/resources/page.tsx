@@ -21,6 +21,15 @@ const resources = [
     timeToRead: '10 min',
     category: 'Essential',
   },
+  {
+    title: 'Compensation Structure: How You Get Paid',
+    description: 'Understand exactly how ScopeLock\'s payment works, why we chose pure commission, and what you can expect to earn at different volume levels. Use the dynamic revenue projector to calculate your potential earnings.',
+    href: '/resources/compensation-structure',
+    icon: '💰',
+    impact: 'Aligned incentives, clear growth path',
+    timeToRead: '10 min',
+    category: 'Critical',
+  },
   // Future resources: Add new resources here following the same structure
   // {
   //   title: 'Your Resource Title',
