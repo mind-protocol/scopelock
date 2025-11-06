@@ -52,7 +52,6 @@ export default function ConsolePage() {
   const [activeMissionId, setActiveMissionId] = useState<string>('');
   const [activeCitizen, setActiveCitizen] = useState<CitizenName>('rafael');
   const [isLoading, setIsLoading] = useState(true);
-  const [isMissionPanelCollapsed, setIsMissionPanelCollapsed] = useState(false);
 
   useEffect(() => {
     // Check auth
@@ -73,7 +72,6 @@ export default function ConsolePage() {
       // Select first mission by default
       if (missionsData.length > 0) {
         setActiveMissionId(missionsData[0].id);
-        setIsMissionPanelCollapsed(true); // Auto-collapse when mission selected
       }
     } catch (error) {
       console.error('Failed to load missions:', error);
@@ -84,7 +82,11 @@ export default function ConsolePage() {
 
   const handleMissionSelect = (id: string) => {
     setActiveMissionId(id);
-    setIsMissionPanelCollapsed(true); // Collapse panel after selection
+  };
+
+  const handleLogout = () => {
+    api.logout();
+    router.push('/');
   };
 
   if (isLoading) {
@@ -114,8 +116,6 @@ export default function ConsolePage() {
         missions={missions}
         activeMissionId={activeMissionId}
         onSelect={handleMissionSelect}
-        isCollapsed={isMissionPanelCollapsed}
-        onToggleCollapse={() => setIsMissionPanelCollapsed(!isMissionPanelCollapsed)}
       />
 
       {/* Main area */}
@@ -127,22 +127,28 @@ export default function ConsolePage() {
           padding: '12px 24px',
           display: 'flex',
           alignItems: 'center',
-          gap: '16px'
+          justifyContent: 'space-between'
         }}>
-          <h1 style={{
-            fontSize: '1.25rem',
-            fontWeight: 'bold',
-            color: 'var(--slk-text)',
-            margin: 0
-          }}>Mission Deck</h1>
-          {activeMissionId && (
-            <span style={{
-              color: 'var(--slk-muted)',
-              fontSize: '0.875rem'
-            }}>
-              Mission #{activeMissionId}
-            </span>
-          )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <h1 style={{
+              fontSize: '1.25rem',
+              fontWeight: 'bold',
+              color: 'var(--slk-text)',
+              margin: 0
+            }}>Mission Deck</h1>
+            {activeMissionId && (
+              <span style={{
+                color: 'var(--slk-muted)',
+                fontSize: '0.875rem'
+              }}>
+                Mission #{activeMissionId}
+              </span>
+            )}
+          </div>
+
+          <button onClick={handleLogout} className="btn-secondary" style={{ fontSize: '0.875rem' }}>
+            Log Out
+          </button>
         </div>
 
         {/* Workspace area */}
