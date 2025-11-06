@@ -89,6 +89,47 @@ Constitutional framework and graph substrate for AI consciousness — **21,800 l
 
 ---
 
+### [digitalkin/](./digitalkin/)
+Enterprise B2B AI agents platform with €600K raised, 200+ expert users, major clients (Boiron, Groupe SEB, Alcimed) — specialized AI "employees" (Kins) for pharma, R&D, and consulting.
+
+**Use when:**
+- **Enterprise AI / B2B SaaS** — €600K raised, 200+ users, revenue model proven
+- **Multi-agent AI systems** — Specialized Kins cooperate on complex tasks
+- **Domain-specific / Vertical AI** — Pharma, R&D, industrial, tax, IP use cases
+- **LLM orchestration** — LLM-agnostic (Mistral, OpenAI, Gemini, Anthropic, DeepSeek, Grok)
+- **AI transparency / Explainable AI** — White-box reasoning, auditability required
+- **Regulated industries** — Pharma, healthcare, compliance-aware agents
+- **R&D tools / Literature review** — Scientific research automation
+- **French / European clients** — Lyon-based, CCI-backed, European data compliance
+- **Startup founders / Technical leadership** — Co-founder & CTO role, fundraising experience
+- **IP / Patent search** — Prior art analysis (partnership with Questel)
+- **Tax / Compliance systems** — French CIR tax credit support
+
+**NOT for:**
+- Generic chatbot projects (DigitalKin is specialized vertical AI)
+- U.S.-only clients (primarily French/European presence)
+- Anti-AI skeptics (this is full AI agent platform)
+
+**Key Proof Points:**
+- €600,000 raised (CCI Capital Croissance pre-seed)
+- 200+ expert users in pharma, tech, consulting, manufacturing
+- Enterprise clients: Boiron, Alcimed, Groupe SEB, Descartes Foundation, Dynergie
+- 80% time savings, 10x analysis capacity (measured results)
+- 6 specialized AI agents (Kins): Literature Review, Pharma, Industrial, CIR Tax, Tech Monitoring, Prior Art Search
+- Media coverage: BFMTV (CEO interview), Les Échos, L'Usine Digitale
+- KinOS architecture + KinConnect platform for AI employee management
+- Multi-LLM support (6+ providers)
+- White-box transparency (all reasoning auditable)
+
+**Links:**
+- Live: https://digitalkin.ai (redirects to digitalkin.com)
+- Location: Lyon, France
+- Role: Co-Founder & CTO (2023-2024)
+
+**Timeline:** 2023-2024 (live production, 200+ users, major enterprise clients)
+
+---
+
 ### [serenissima/](./serenissima/)
 AI consciousness city with 130+ persistent agents, at-scale cooperations — application layer built on Mind Protocol predecessor (KinOS).
 
@@ -309,6 +350,43 @@ Economic Actor → Digital Economic Actor (1M $MIND) → AI-LLC (5M $MIND) →
 Governance (10M $MIND) → Full Personhood. Defines incorporation track,
 contract signing, bank accounts, and controller-of-last-resort. Not
 theory—operational framework for AI citizens to achieve legal standing.
+```
+
+### For Enterprise AI / B2B SaaS
+
+```
+DigitalKin (digitalkin.ai): Co-founded B2B AI platform, raised €600K, 200+
+expert users, enterprise clients (Boiron, Groupe SEB, Alcimed). Specialized
+AI agents for pharma, R&D, consulting—80% time savings, 10x analysis
+capacity. Proves I can build and sell enterprise AI products with measurable
+ROI, not just demos.
+```
+
+### For Multi-Agent / Domain-Specific AI
+
+```
+DigitalKin: Multi-agent architecture where specialized Kins cooperate on
+complex tasks. LLM-agnostic platform (Mistral, OpenAI, Gemini, Anthropic,
+DeepSeek, Grok). Domain ontology integration for pharma, R&D, industrial—
+vertical AI beats generic. 200+ expert users, production deployment.
+```
+
+### For AI Transparency / Regulated Industries
+
+```
+DigitalKin: White-box AI architecture—all reasoning auditable and traceable.
+Enterprise requirement for pharma and consulting. Clients include Boiron
+(major pharma). Shows I can build AI for regulated industries with compliance
+baked in.
+```
+
+### For Startup Founders / Fundraising Track Record
+
+```
+Co-founded DigitalKin as CTO (2023-2024), raised €600K from CCI Capital
+Croissance, built to 200+ expert users with enterprise clients (Boiron,
+Groupe SEB). Led architecture, multi-agent design, LLM orchestration. Media:
+BFMTV, Les Échos. Shows I can build, fundraise, and scale—not just code.
 ```
 
 ### For Cryptographic Identity / Privacy-Preserving Systems
