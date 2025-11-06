@@ -105,7 +105,7 @@ export default function LoginPage() {
             {/* Info */}
             <div className="mt-6 text-center text-sm text-muted space-y-2">
               <p>
-                <strong>Supported Wallets:</strong> Phantom, Solflare, Backpack
+                <strong>Supported Wallets:</strong> Phantom, Solflare
               </p>
               <p className="text-xs">
                 You'll be asked to sign a message to prove wallet ownership.
