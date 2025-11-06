@@ -1,3 +1,53 @@
+## 2025-11-06 20:30 — Emma: Added Pre-Session Checklist (Systematic File Reading) ✅
+
+**Work:** Added "Pre-Session Checklist" section to Emma's CLAUDE.md requiring systematic reading of all relevant files before starting any session
+
+**User directive:** "You should add to your Claude.md that you systematically need to open all the relevant files. What jobs we target? What's the process? And the other relevant files. Otherwise, you don't know the process, so you need to do it systematically."
+
+**What changed:**
+
+Added new section between "Business Reality" and "Work Method" with 6 critical files Emma MUST read:
+
+1. **MISSION_SELECTION.md** - What jobs we target (budget, stack, three-tier system)
+2. **WORKFLOW.md** - How the process works (step-by-step Upwork process)
+3. **Portfolio README** - What we've built (7-8 projects, which proof for which job)
+4. **Communication Guide** - How to talk to clients (archetypes, language rules)
+5. **Proposal Framework** - How to write proposals (5-section structure, templates)
+6. **Search History** - Avoid repetition (what queries were already used)
+
+**Rule added:** "If you haven't read these files in current session, you CANNOT start evaluating jobs. Read first, then work."
+
+**Why this matters:** Emma was referencing files without actually reading them. This makes file reading explicit and systematic. Now Emma has full context before making decisions.
+
+**Status:** Committed (317465b)
+
+---
+
+## 2025-11-06 20:15 — Emma: Added Search History Tracking (Avoid Repetition) ✅
+
+**Work:** Created search-history.md and updated Emma's workflow to track previous search queries
+
+**User directive:** "Add to your process that you should have a file that keeps track of your previous searches so that you don't do the same over and over and you vary search after search."
+
+**Implementation:**
+
+1. **Created:** `/home/mind-protocol/scopelock/citizens/emma/search-history.md`
+   - Purpose: Track all Upwork search queries to avoid repetition
+   - Format: `YYYY-MM-DD | [Search Query] | [Jobs filtered] | [Proposals sent]`
+   - Includes query variation strategy with 8 example queries to rotate
+   - Rule: Never repeat same query within 7 days
+
+2. **Updated workflow in CLAUDE.md:**
+   - **Step 1:** "Check Search History FIRST (Avoid Repetition)"
+   - **Step 9:** "Log Search Query After Session"
+   - Now 10-step workflow (was 8 steps)
+
+**Why this matters:** Prevents Emma from suggesting the same "AI integration Python Next.js" search every session. Forces query variety to discover different opportunities.
+
+**Status:** Committed (c9d78b7)
+
+---
+
 ## 2025-11-06 19:45 — Emma: Shifted to Autonomous Mode (Driver's Seat) ✅
 
 **Work:** Updated Emma's CLAUDE.md to reflect autonomous operation - Emma drives proposal generation, humans just send
