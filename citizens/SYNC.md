@@ -1,3 +1,22 @@
+## 2025-11-07 09:35 — Rafael: Fix Mission Deck Access (Enable Mock Data) ✅
+
+**Work:** Fixed `/mission-deck` redirecting to `/` by enabling mock data mode
+
+**Issue Diagnosed:**
+- Mission Deck was set to `USE_MOCK_DATA = false` in `src/lib/api.ts`
+- Page tried to connect to non-existent FastAPI backend at `process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'`
+- Wallet authentication failed → page failed to load → Vercel redirected to `/`
+
+**Fix Applied:**
+- Changed `USE_MOCK_DATA = true` in `src/lib/api.ts`
+- Now uses mock data for: wallet auth, mission list, chat, DoD items
+- Mission Deck accessible without backend dependency
+
+**Status:** Pushed to main, Vercel rebuilding
+**Next:** Flip back to `USE_MOCK_DATA = false` once FastAPI backend deployed to Render
+
+---
+
 ## 2025-11-07 09:15 — Maya: $MIND Token Hype Page for SOL Traders ✅
 
 **Work:** Created `/mind-token` landing page to explain and hype the Mind Protocol token for crypto-native Solana audience

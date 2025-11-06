@@ -19,7 +19,7 @@ import type {
 } from '../types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-const USE_MOCK_DATA = true; // Use mock data until FastAPI backend is deployed
+const USE_MOCK_DATA = false; // Connect to real FastAPI backend
 
 // Mock data for Week 1 MVP
 const MOCK_MISSIONS: Mission[] = [
