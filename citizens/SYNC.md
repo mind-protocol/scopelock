@@ -1,3 +1,62 @@
+## 2025-11-06 22:50 — Rafael: UI Bug Fixes - Join Page & Mission Deck Wallet ✅
+
+**Fixed Two Critical UI Issues:**
+
+**1. Join Page "How It Works" Heading - Gray Overlay Bug**
+- **User Report:** Screenshot showing gray background overlay covering "How It Works" heading
+- **Root Cause:** CSS styling conflict in `.sectionTitle` class
+- **Fix Applied:**
+```css
+.sectionTitle {
+  background: none;           /* Remove unwanted background */
+  position: relative;
+  z-index: 1;                 /* Proper layering */
+}
+.sectionTitle::before,
+.sectionTitle::after {
+  content: none;              /* Remove pseudo-elements */
+}
+```
+- **File:** src/app/join/styles.module.css
+- **Result:** Heading displays cleanly without overlay
+- **Commit:** 2b46747
+
+**2. Mission Deck Wallet Auto-Signing - Race Condition Bug**
+- **User Report:** "connect wallet should ask for signing directly without additional button click"
+- **Issue:** Auto-signing failed when `signMessage` loaded after wallet connected
+- **Root Cause:** `signMessage` missing from useEffect dependency array
+- **Original Code (Buggy):**
+```typescript
+useEffect(() => {
+  if (connected && publicKey && signMessage && !isLoading) {
+    handleWalletAuth();
+  }
+}, [connected, publicKey]); // ❌ signMessage not in deps!
+```
+- **Rafael's Fix:** Added `signMessage` to dependency array
+- **User's Improvement:** Added `useRef` flag to prevent multiple auth attempts:
+```typescript
+const hasTriggeredAuth = useRef(false);
+useEffect(() => {
+  if (connected && publicKey && signMessage && !isLoading && !hasTriggeredAuth.current) {
+    hasTriggeredAuth.current = true;
+    handleWalletAuth();
+  }
+  if (!connected) {
+    hasTriggeredAuth.current = false; // Reset on disconnect
+  }
+}, [connected, publicKey, signMessage]); // ✅ All deps + prevents re-triggers
+```
+- **File:** src/app/mission-deck/page.tsx
+- **Result:** Wallet connection immediately triggers signing (no extra clicks, no multiple attempts)
+- **Commit:** 03cf67a + user's useRef enhancement
+
+**Status:** Both fixes committed and pushed ✅
+**Deployment:** Vercel auto-deployed to https://scopelock.mindprotocol.ai
+**Testing:** Join page heading verified clean, wallet flow ready for production testing
+
+---
+
 ## 2025-11-07 06:15 — Alexis: Proper Footer Added to Homepage ✅
 
 **Added:** Complete footer with 4-column navigation structure
