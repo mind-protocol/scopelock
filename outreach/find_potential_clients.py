@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 # Path to Telegram export (UPDATE THIS)
-TELEGRAM_EXPORT = '/mnt/c/Users/reyno/Downloads/Telegram Desktop/DataExport_2025-11-05.zip/DataExport_2025-11-05/results.json'
+TELEGRAM_EXPORT = '/mnt/c/Users/reyno/Downloads/Telegram Desktop/DataExport_2025-11-05/DataExport_2025-11-05/result.json'
 OUTPUT_DIR = Path('/home/mind-protocol/scopelock/outreach/potential_clients')
 
 # Business owner / founder patterns
