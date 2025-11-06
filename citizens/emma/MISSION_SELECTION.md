@@ -222,6 +222,765 @@ Time: 15-25 hours actual work
 
 ---
 
+## ⭐ CREATIVE AI SERVICES (STRATEGIC PRIORITY - HIGHEST MARGIN)
+
+### Why Creative AI Is Our Competitive Moat
+
+**The Game-Changing Advantage:**
+
+1. **Zero traditional dev competition** - Dev shops don't bid on creative work
+2. **AI-native workflow** - We have Ideogram, Runway, Suno, ElevenLabs, Gamma integrated
+3. **Massive margins** - 70-85% profit (AI does the work, humans QA)
+4. **Higher budgets** - $400-1500 vs $200-400 for dev work
+5. **Faster delivery** - 4-10 hours vs 20-40 hours for equivalent value
+6. **Clear AC.md possible** - Objective criteria (quantity, format, approval gates)
+7. **Scalable** - One human can QA 10x more creative output than code
+
+**The Risk We Must Manage:**
+
+❌ Subjective quality ("make it beautiful")
+✅ Objective acceptance criteria ("Client approves 10 samples before bulk")
+
+**Critical Success Factor:**
+- **Template/Style approval UPFRONT** - Client must approve samples before bulk generation
+- **Fixed revision rounds** - 1-2 rounds max, scoped in AC.md
+- **Reference materials required** - Client provides examples of desired style
+
+---
+
+### Tier 1A: Image Generation (Ideogram) - ⭐⭐⭐⭐⭐
+
+**Why Ideogram Is Perfect:**
+- Text-in-image capability (better than DALL-E/Midjourney for branded content)
+- Consistent style across batches
+- Fast generation (<30s per image)
+- Affordable API ($0.50-1.00 per image)
+
+**Mission Types:**
+
+**1. Bulk Product Images**
+```
+Example: "Generate 100 product mockup images for e-commerce store"
+
+AC.md Template:
+- Input: Product names + descriptions (CSV)
+- Style: [Client provides 3-5 reference images]
+- Format: 1024x1024 PNG, transparent background
+- Text: Product name on each image (if applicable)
+- Quantity: 100 images
+- Approval gate: Client approves 10 sample images before bulk
+- Revisions: 1 round for failed images only (missing text, wrong style)
+- Output: ZIP file organized by product category
+- Delivery: Google Drive link + organized folder structure
+
+Budget: $400-800
+Time: 4-8 hours (setup + generation + QA)
+API Cost: ~$50-100 (Ideogram $0.50-1.00 per image)
+Margin: 75-80%
+
+Red Flags to Avoid:
+❌ "Make them beautiful" (too subjective)
+❌ No reference images provided
+❌ Client wants "unique artistic vision" (scope creep)
+❌ Unlimited revisions expected
+
+Green Flags to Seek:
+✅ Client has clear brand guidelines
+✅ Provides 3+ reference images
+✅ Bulk operation (50+ images)
+✅ Willing to approve sample batch first
+```
+
+**2. Social Media Content (Branded)**
+```
+Example: "Create 30 Instagram posts with motivational quotes"
+
+AC.md Template:
+- Input: 30 quotes (client provides CSV)
+- Brand: Colors, fonts, logo (client provides brand kit)
+- Dimensions: 1080x1080px (Instagram square)
+- Style: Consistent across all images
+- Text placement: Quote centered, author bottom-right
+- Approval: Client approves 5 sample images before bulk
+- Revisions: Max 2 rounds of template adjustments
+- Delivery: 30 JPGs + Canva template for future use
+
+Budget: $350-600
+Time: 6-10 hours (template creation + generation + QA)
+API Cost: ~$30-60
+Margin: 70-75%
+```
+
+**3. Marketing Visuals (Blog Headers, Ads)**
+```
+Example: "Generate 20 unique header images for blog posts"
+
+AC.md Template:
+- Topics: [Client provides list of 20 blog post titles]
+- Style: Professional, modern, consistent color palette
+- Dimensions: 1200x630px (blog header standard + social share)
+- Text overlay: Blog post title on each image
+- Format: JPG
+- Brand consistency: Use client's primary colors
+- Approval: Client approves 3 samples before bulk
+- Revisions: 1 round per batch of 10
+
+Budget: $300-500
+Time: 4-6 hours
+API Cost: ~$20-40
+Margin: 75%
+```
+
+**4. E-book/PDF Covers**
+```
+Example: "Design 5 e-book covers for lead magnets"
+
+AC.md Template:
+- Titles: [5 e-book titles provided]
+- Style: [Client provides 2-3 reference covers]
+- Dimensions: 1600x2560px (standard e-book cover)
+- Format: PNG with transparent background + JPG preview
+- Text: Title, subtitle, author name
+- Branding: Client logo included
+- Approval: Client approves 1 sample before creating remaining 4
+- Revisions: 2 rounds max (text placement, color adjustments)
+
+Budget: $250-500
+Time: 4-8 hours
+API Cost: ~$10-25
+Margin: 80%
+```
+
+---
+
+### Tier 1B: Video Generation (Runway) - ⭐⭐⭐⭐⭐
+
+**Why Runway Is Strategic:**
+- Text-to-video + image-to-video capability
+- Professional quality (competitors charge $500+ per video)
+- Fast generation (2-5 min per 10-second clip)
+- Perfect for product demos, ads, social media
+
+**Mission Types:**
+
+**1. Product Demo Videos**
+```
+Example: "Create 10 short product demo videos (15-30 seconds each)"
+
+AC.md Template:
+- Input: Product images + text descriptions
+- Style: [Client provides reference video OR we suggest template]
+- Duration: 15-30 seconds per video
+- Format: MP4, 1080p, 30fps
+- Voiceover: AI-generated (ElevenLabs) OR text-on-screen (client choice)
+- Music: Royalty-free background music included
+- Transitions: Smooth cuts, professional pacing
+- Branding: Client logo in corner (optional)
+- Approval: Client approves 2 sample videos before bulk
+- Revisions: 1 round of edits per video (timing, text, music)
+
+Budget: $600-1200
+Time: 8-16 hours (video editing + generation + rendering)
+API Cost: ~$100-200 (Runway ~$10-20 per video)
+Margin: 50-60%
+```
+
+**2. Social Media Ads (TikTok/Instagram Reels)**
+```
+Example: "Generate 5 TikTok-style video ads (10-15 seconds)"
+
+AC.md Template:
+- Input: Product photos + key selling points
+- Style: Dynamic, eye-catching, trending format
+- Duration: 10-15 seconds each
+- Format: Vertical 9:16, MP4
+- Text overlays: Product name + CTA + price (if applicable)
+- Music: Trending audio track (client provides OR we source royalty-free)
+- Hooks: Attention-grabbing first 2 seconds
+- Approval: Client approves 1 sample before bulk
+- Delivery: 5 MP4 files + source files
+
+Budget: $400-700
+Time: 6-10 hours
+API Cost: ~$50-100
+Margin: 55-65%
+```
+
+**3. Explainer Videos (Animated)**
+```
+Example: "Create 3-minute explainer video for SaaS product"
+
+AC.md Template:
+- Script: [Client provides OR we write based on brief]
+- Style: [Client provides reference video]
+- Duration: 2-3 minutes
+- Format: MP4, 1080p horizontal
+- Voiceover: Professional AI voice (ElevenLabs)
+- Visuals: Product screenshots + animated transitions
+- Music: Background music throughout
+- CTA: Call-to-action at end
+- Approval: Client approves 30-second preview before full video
+- Revisions: 2 rounds (script changes, timing, visuals)
+
+Budget: $800-1500
+Time: 12-20 hours
+API Cost: ~$150-300 (Runway + ElevenLabs)
+Margin: 45-55%
+```
+
+---
+
+### Tier 1C: Music Generation (Suno/Udio) - ⭐⭐⭐⭐⭐
+
+**Why Music Generation Is Undervalued:**
+- Traditional music licensing: $50-500 per track
+- Suno/Udio: $0.10-1.00 per generation
+- Custom music = premium pricing
+- Perfect for videos, podcasts, ads, apps
+
+**Mission Types:**
+
+**1. Background Music for Videos**
+```
+Example: "Create 10 royalty-free background tracks for YouTube videos (2-3 min each)"
+
+AC.md Template:
+- Style: [Client provides reference tracks OR describes mood]
+- Duration: 2-3 minutes each (loopable)
+- Genre: Upbeat corporate, chill lofi, energetic pop, etc.
+- Tempo: BPM range specified
+- Instruments: [Client specifies OR we suggest based on mood]
+- Format: MP3 320kbps + WAV (lossless)
+- Usage: Royalty-free, client owns rights
+- Approval: Client approves 2 sample tracks before bulk
+- Revisions: 1 round per track (tempo, instrumentation)
+
+Budget: $300-600
+Time: 4-8 hours (generation + editing/trimming)
+API Cost: ~$10-30 (Suno/Udio $1-3 per track)
+Margin: 75-80%
+```
+
+**2. Podcast Intro/Outro Music**
+```
+Example: "Create custom intro + outro music for podcast (30 seconds each)"
+
+AC.md Template:
+- Style: [Client provides reference OR describes brand]
+- Duration: 30 seconds intro + 30 seconds outro
+- Branding: Upbeat, memorable, podcast-appropriate
+- Voiceover space: Leave 10 seconds in middle for voice (intro only)
+- Format: MP3 + WAV
+- Revisions: 2 rounds (style, tempo, length)
+- Usage: Exclusive rights for client
+
+Budget: $200-400
+Time: 3-6 hours
+API Cost: ~$5-15
+Margin: 75%
+```
+
+**3. App/Game Sound Effects + Music**
+```
+Example: "Create 20 sound effects + 3 background tracks for mobile game"
+
+AC.md Template:
+- Sound effects: Button clicks, success sounds, error sounds, etc.
+- Background tracks: Menu music, gameplay music, boss fight music
+- Style: [Client provides reference game OR describes vibe]
+- Format: WAV (lossless) for integration
+- Duration: Sound effects 0.5-2s each, tracks 1-2 min (loopable)
+- Approval: Client approves 5 sound effects + 1 track before bulk
+- Revisions: 1 round
+
+Budget: $400-800
+Time: 6-12 hours
+API Cost: ~$30-60
+Margin: 70%
+```
+
+**4. Custom Jingles/Brand Music**
+```
+Example: "Create 15-second brand jingle for radio/video ads"
+
+AC.md Template:
+- Style: Catchy, memorable, brand-appropriate
+- Duration: 15 seconds
+- Lyrics: Client provides OR we write based on tagline
+- Vocals: AI-generated singing (Suno) OR instrumental only
+- Variations: 3 versions (full, instrumental, shortened 5s)
+- Format: MP3 + WAV
+- Approval: Client approves 1 concept before refinement
+- Revisions: 3 rounds (this is high-value creative work)
+
+Budget: $500-1000
+Time: 8-12 hours (multiple iterations)
+API Cost: ~$20-40
+Margin: 60-70%
+```
+
+---
+
+### Tier 1D: Voice Generation (ElevenLabs) - ⭐⭐⭐⭐⭐
+
+**Why ElevenLabs Is High-Value:**
+- Professional voiceover talent: $100-500 per project
+- ElevenLabs: $0.30-3.00 per 1000 characters
+- Instant turnaround (no voice actor scheduling)
+- Multiple language support
+
+**Mission Types:**
+
+**1. Video Voiceovers**
+```
+Example: "Generate voiceovers for 10 product videos (30-60 seconds each)"
+
+AC.md Template:
+- Scripts: [Client provides OR we write based on video content]
+- Voice: [Client chooses from ElevenLabs voice library OR we suggest]
+- Tone: Professional, friendly, energetic (client specifies)
+- Duration: 30-60 seconds per video (300-500 words total per video)
+- Format: MP3 320kbps
+- Pacing: Natural pauses, emphasis on key points
+- Sync: Timed to match video scenes (if client provides video)
+- Approval: Client approves 1 sample voiceover before bulk
+- Revisions: 1 round (re-record with adjusted tone/pacing)
+
+Budget: $300-600
+Time: 4-8 hours (script writing + generation + timing)
+API Cost: ~$10-30 (ElevenLabs ~$1-3 per video)
+Margin: 75-80%
+```
+
+**2. Audiobook Narration**
+```
+Example: "Narrate 10,000-word e-book (approx 1 hour audio)"
+
+AC.md Template:
+- Input: Text document (Word/PDF)
+- Voice: [Client selects from voice library]
+- Tone: Consistent with book genre (business, fiction, self-help)
+- Length: ~10,000 words = ~60 minutes audio
+- Format: MP3 chapters + single full audiobook file
+- Editing: Remove long pauses, normalize volume
+- Approval: Client approves 5-minute sample before full narration
+- Revisions: 1 round (re-record specific sections if needed)
+
+Budget: $400-800
+Time: 6-10 hours (generation + editing + chapter splitting)
+API Cost: ~$30-60 (ElevenLabs charges by character count)
+Margin: 70-75%
+```
+
+**3. Podcast Voiceover / Narration**
+```
+Example: "Generate voiceovers for 10 podcast episodes (5-10 min each)"
+
+AC.md Template:
+- Scripts: [Client provides per episode]
+- Voice: Consistent voice across all episodes
+- Tone: Conversational, engaging
+- Duration: 5-10 minutes per episode (500-1000 words)
+- Format: MP3 per episode
+- Quality: Studio-quality audio, minimal background noise
+- Approval: Client approves episode 1 before bulk
+- Revisions: 1 round per episode
+
+Budget: $400-700
+Time: 6-10 hours
+API Cost: ~$30-50
+Margin: 70%
+```
+
+**4. IVR / Phone System Messages**
+```
+Example: "Create 20 IVR messages for business phone system"
+
+AC.md Template:
+- Messages: Greeting, menu options, hold music message, voicemail, etc.
+- Voice: Professional, clear pronunciation
+- Scripts: [Client provides OR we write standard IVR copy]
+- Format: WAV (phone system compatible)
+- Length: 5-30 seconds per message
+- Approval: Client approves 3 sample messages
+- Revisions: 1 round
+
+Budget: $250-500
+Time: 4-6 hours
+API Cost: ~$5-15
+Margin: 80%
+```
+
+**5. Language Learning / Pronunciation Audio**
+```
+Example: "Generate 500 pronunciation audio files for language app (words + sentences)"
+
+AC.md Template:
+- Input: CSV with 500 words/sentences
+- Languages: [Client specifies, ElevenLabs supports 29 languages]
+- Voice: Native speaker accent
+- Format: MP3 per word/sentence, organized in folders
+- Speed: Normal speaking pace (or client-specified)
+- Quality: Clear pronunciation for learning
+- Approval: Client reviews 20 samples before bulk
+- Revisions: Re-record mispronounced words
+
+Budget: $400-800
+Time: 6-10 hours (batch processing + QA)
+API Cost: ~$50-100
+Margin: 65-70%
+```
+
+---
+
+### Tier 1E: Presentation/PDF Generation (Gamma) - ⭐⭐⭐⭐
+
+**Why Gamma Is Strategic:**
+- Professional designers charge $500-2000 for pitch decks
+- Gamma generates in minutes
+- AI-powered layout + design
+- Perfect for startup pitch decks, sales presentations, reports
+
+**Mission Types:**
+
+**1. Pitch Deck / Investor Presentation**
+```
+Example: "Create 15-slide investor pitch deck for startup"
+
+AC.md Template:
+- Content: [Client provides outline OR we structure based on brief]
+- Slides: Problem, Solution, Market, Traction, Team, Ask (standard pitch format)
+- Design: Professional, clean, brand colors
+- Charts: Market size, revenue projections (client provides data)
+- Length: 12-15 slides
+- Format: PDF + editable Gamma link
+- Revisions: 2 rounds (content, design, data)
+- Delivery: PDF for sharing + Gamma link for future edits
+
+Budget: $400-800
+Time: 6-10 hours (content + design + data visualization)
+API Cost: ~$10-20 (Gamma Pro subscription)
+Margin: 75%
+```
+
+**2. Sales Presentation / One-Pager**
+```
+Example: "Create 10-slide sales deck + 1-page PDF summary"
+
+AC.md Template:
+- Content: Product overview, benefits, case studies, pricing
+- Design: Client brand colors + logo
+- Length: 10 slides + 1-page summary
+- Format: PDF (presentation) + PDF (one-pager)
+- Approval: Client reviews slide 1-3 before completing deck
+- Revisions: 2 rounds
+
+Budget: $300-600
+Time: 5-8 hours
+API Cost: ~$5-10
+Margin: 75-80%
+```
+
+**3. Training Manuals / Employee Handbooks**
+```
+Example: "Create 30-page employee onboarding handbook (PDF)"
+
+AC.md Template:
+- Content: [Client provides outline + raw text]
+- Sections: Welcome, Company values, Policies, Benefits, Resources
+- Design: Professional layout, branded
+- Length: 25-30 pages
+- Format: PDF
+- Visuals: Icons, diagrams, photos (client provides OR we source stock)
+- Approval: Client reviews first 10 pages before completing
+- Revisions: 2 rounds
+
+Budget: $500-1000
+Time: 8-14 hours
+API Cost: ~$10-20
+Margin: 70%
+```
+
+**4. Lead Magnet PDFs / E-books**
+```
+Example: "Design 20-page e-book for lead generation"
+
+AC.md Template:
+- Content: [Client provides text content]
+- Design: Eye-catching cover + clean interior layout
+- Length: 15-20 pages
+- Format: PDF
+- Branding: Client logo, colors, fonts
+- CTA: Links to client website/landing page
+- Approval: Client approves cover + first 3 pages
+- Revisions: 2 rounds
+
+Budget: $300-600
+Time: 5-8 hours
+API Cost: ~$5-10
+Margin: 75%
+```
+
+**5. Reports / White Papers**
+```
+Example: "Create 40-page industry report with data visualizations"
+
+AC.md Template:
+- Content: [Client provides research data + text]
+- Charts: 10-15 data visualizations (graphs, charts, infographics)
+- Design: Professional, report-appropriate layout
+- Length: 35-40 pages
+- Format: PDF
+- Citations: Properly formatted references
+- Approval: Client reviews first 10 pages + 3 sample charts
+- Revisions: 2 rounds
+
+Budget: $700-1200
+Time: 10-16 hours
+API Cost: ~$15-25
+Margin: 65-70%
+```
+
+---
+
+### Tier 1F: Translation Services - ⭐⭐⭐⭐
+
+**Why Translation Is High-Margin:**
+- Professional translators: $0.10-0.30 per word
+- Claude API: $0.001-0.003 per word
+- 95%+ accuracy for most language pairs
+- Fast turnaround (10,000 words in 2 hours)
+
+**Mission Types:**
+
+**1. Website/App Translation**
+```
+Example: "Translate website from English to 5 languages (French, Spanish, German, Italian, Portuguese)"
+
+AC.md Template:
+- Input: Website content (JSON/CSV/TXT files)
+- Languages: 5 target languages
+- Word count: [Estimate from client content]
+- Tone: Maintain original tone (professional, casual, technical)
+- Context-aware: Technical terms, brand names preserved correctly
+- Format: Same structure as input (JSON keys preserved, HTML tags intact)
+- QA: Native speaker review for 10% of content (client provides reviewer OR we charge extra $100)
+- Revisions: 1 round of corrections per language
+
+Budget: $500-1000 (based on word count)
+Example pricing: 10,000 words × 5 languages = 50,000 words → $600
+Time: 6-10 hours (setup + QA + formatting)
+API Cost: ~$30-60 (Claude translation)
+Margin: 70-75%
+```
+
+**2. Document Translation (Bulk)**
+```
+Example: "Translate 200 product descriptions from English to Spanish"
+
+AC.md Template:
+- Input: 200 descriptions (CSV)
+- Source: English
+- Target: Spanish (Latin America variant OR Spain Spanish - client specifies)
+- Word count: ~20,000 words total
+- Maintain formatting: Bullet points, capitalization, special characters
+- Quality: Natural-sounding, not literal translation
+- Terminology: Consistent product terms throughout
+- Approval: Client reviews 20 sample translations before bulk
+- Delivery: CSV with original + translated columns
+
+Budget: $300-600
+Time: 4-8 hours
+API Cost: ~$20-40
+Margin: 70%
+```
+
+**3. Marketing Content Translation**
+```
+Example: "Translate 10 blog posts from English to German (8,000 words total)"
+
+AC.md Template:
+- Input: 10 blog posts (Markdown or Word)
+- Target: German (formal vs informal - client specifies)
+- Word count: ~8,000 words
+- Tone: Marketing-appropriate, engaging
+- SEO: Translate meta descriptions + alt text
+- Links: Preserve all hyperlinks
+- Approval: Client reviews 1 full blog post before bulk
+- Revisions: 1 round per post
+
+Budget: $400-700
+Time: 6-10 hours
+API Cost: ~$25-40
+Margin: 70%
+```
+
+**4. Legal/Technical Document Translation (Higher Complexity)**
+```
+Example: "Translate legal contract from English to French (5,000 words)"
+
+AC.md Template:
+- Input: Legal contract (PDF/Word)
+- Target: French (legal terminology)
+- Word count: 5,000 words
+- Accuracy: Legal terms must be precise
+- Format: Preserve exact formatting (clauses, sections, numbering)
+- QA: MANDATORY native legal professional review (we coordinate)
+- Disclaimer: Translation for reference only, not legal advice
+- Revisions: 2 rounds after legal review
+
+Budget: $600-1000 (higher due to legal complexity + required review)
+Time: 8-12 hours (translation + legal reviewer coordination)
+API Cost: ~$30-50
+Margin: 60% (lower due to required legal review)
+
+⚠️ RED FLAG: Only take legal/medical translations if client understands limitations
+```
+
+---
+
+### Tier 1G: Content Writing/Editing - ⭐⭐⭐⭐
+
+**Why Content Writing Works:**
+- Professional writers: $0.10-0.50 per word
+- AI generation: $0.001-0.005 per word
+- Human QA ensures quality
+- Scalable (can produce 10K words/day)
+
+**Mission Types:**
+
+**1. SEO Blog Posts (Bulk)**
+```
+Example: "Write 10 SEO-optimized blog posts (800-1200 words each)"
+
+AC.md Template:
+- Topics: [Client provides keywords + outlines OR we research]
+- Tone: Professional, informative (client provides 2-3 reference posts)
+- SEO requirements:
+  - Keyword in title, H1, first paragraph, 2+ H2s
+  - Meta description (150-160 chars)
+  - Internal links (3-5 per post)
+  - Alt text for images
+- Structure: Intro, 3-5 H2 sections, conclusion with CTA
+- Length: 800-1200 words per post
+- Quality gate: Client approves 2 sample posts before bulk
+- Revisions: 1 round of edits per post (fact corrections, tone adjustments)
+- Delivery: 10 Markdown files + meta descriptions + suggested images
+
+Budget: $600-1200 ($60-120 per post)
+Time: 8-16 hours (research + generation + editing + SEO optimization)
+API Cost: ~$30-60
+Margin: 60-70%
+```
+
+**2. Product Descriptions (E-commerce)**
+```
+Example: "Write 500 unique product descriptions (100-150 words each)"
+
+AC.md Template:
+- Input: Product specs (CSV: name, features, benefits, price)
+- Tone: [Client provides 5 example descriptions]
+- Structure: Feature highlight → Benefit → CTA
+- Length: 100-150 words each
+- SEO: Include product name + category keywords naturally
+- Uniqueness: No duplicate phrasing across descriptions (we ensure variety)
+- Format: CSV with descriptions column added
+- Approval: Client reviews 20 sample descriptions before bulk
+- Revisions: 1 round for style/tone adjustments (not individual product edits)
+
+Budget: $400-800
+Time: 6-10 hours
+API Cost: ~$40-80 (500 generations)
+Margin: 65-70%
+```
+
+**3. Email Campaigns**
+```
+Example: "Write 12 email sequences for SaaS onboarding (6 emails × 2 personas)"
+
+AC.md Template:
+- Personas: [Client defines 2 target personas with pain points]
+- Sequence timing: Day 0, 2, 4, 7, 14, 21 (welcome → activation → retention)
+- Tone: Friendly, helpful (client provides reference emails)
+- Length: 150-250 words per email
+- Structure: Hook → Value → CTA
+- CTAs: Clear action in each email (login, complete profile, book demo, etc.)
+- Subject lines: 3 options per email (A/B test ready)
+- Approval: Client reviews 1 complete sequence (6 emails) before finalizing second persona
+- Delivery: Google Docs with all emails organized by persona + day
+
+Budget: $350-600
+Time: 6-10 hours
+API Cost: ~$10-20
+Margin: 70%
+```
+
+**4. Social Media Content Calendar**
+```
+Example: "Create 30 days of social media posts (LinkedIn + Twitter)"
+
+AC.md Template:
+- Platforms: LinkedIn + Twitter (different copy for each)
+- Frequency: 1 post per day × 30 days × 2 platforms = 60 posts
+- Tone: [Client provides brand voice guidelines]
+- Topics: [Client provides themes OR we suggest based on industry]
+- Length: LinkedIn 150-300 words, Twitter 200-280 chars
+- Hashtags: 3-5 relevant hashtags per post
+- CTAs: Include link/CTA every 3rd post
+- Format: CSV with columns: Date, Platform, Post, Hashtags, Link
+- Approval: Client reviews week 1 (7 days × 2 platforms) before bulk
+- Revisions: 1 round for tone adjustments
+
+Budget: $400-700
+Time: 6-10 hours
+API Cost: ~$20-40
+Margin: 70%
+```
+
+**5. Case Studies / Testimonial Writing**
+```
+Example: "Write 5 customer case studies (800-1000 words each)"
+
+AC.md Template:
+- Input: Client provides customer interview notes OR we conduct interviews (extra $100/interview)
+- Structure: Challenge → Solution → Results (with metrics)
+- Tone: Professional, results-focused
+- Length: 800-1000 words each
+- Quotes: Include 2-3 customer quotes per case study
+- Metrics: Before/after data (revenue increase, time saved, etc.)
+- Approval: Client + customer review each case study
+- Revisions: 2 rounds per case study (client + customer feedback)
+
+Budget: $500-900
+Time: 8-14 hours (interviewing + writing + revisions)
+API Cost: ~$15-30
+Margin: 65%
+```
+
+**6. Text Review/Proofreading**
+```
+Example: "Proofread and edit 50 blog posts for grammar, clarity, SEO"
+
+AC.md Template:
+- Input: 50 blog posts (Google Docs or Markdown)
+- Tasks:
+  - Fix grammar, spelling, punctuation
+  - Improve clarity and flow (sentence restructuring)
+  - Optimize for SEO (keyword density, readability score, meta descriptions)
+  - Suggest better headlines/subheadings
+- Track changes: All edits visible (Google Docs suggestions mode)
+- Comments: Flag major issues for client review
+- Delivery: Edited documents + summary report of major changes
+- Quality: Client reviews 5 sample edits before bulk
+
+Budget: $300-600
+Time: 8-12 hours
+API Cost: ~$20-40
+Margin: 70%
+```
+
+---
+
 ## AI Integration Missions (Strategic Advantage)
 
 ### Why AI Integration Missions Are Perfect for ScopeLock
@@ -639,31 +1398,54 @@ Score:
 
 ## Mission Target Summary Table
 
-| Type | Budget | Time | API Cost | Competition | Priority |
-|------|--------|------|----------|-------------|----------|
-| **PDF Parsing** | $400-800 | 6-12h | $5-15 | Low | ⭐⭐⭐⭐⭐ |
-| **Email Processing** | $350-600 | 8-14h | $2-8 | Low | ⭐⭐⭐⭐⭐ |
-| **Data Extraction** | $300-600 | 6-10h | $10-20 | Medium | ⭐⭐⭐⭐ |
-| **Doc Classification** | $400-700 | 8-12h | $15-30 | Low | ⭐⭐⭐⭐ |
-| **Product Descriptions** | $400-800 | 6-10h | $20-40 | Medium | ⭐⭐⭐⭐ |
-| **Blog Outlines** | $350-600 | 6-8h | $15-30 | Medium | ⭐⭐⭐ |
-| **Email Personalization** | $300-500 | 4-8h | $10-25 | High | ⭐⭐⭐ |
-| **Background Removal** | $250-400 | 3-6h | $0-100 | Medium | ⭐⭐⭐ |
-| **Social Graphics** | $400-700 | 8-12h | $0-20 | Medium | ⭐⭐ |
-| **AI Image Gen** | $600-1000 | 10-16h | $50-150 | High | ⭐ |
-| Landing Pages | $200-400 | 6-8h | $0 | High | ⭐⭐⭐⭐ |
-| Telegram Bots | $200-400 | 4-6h | $0 | Low | ⭐⭐⭐⭐⭐ |
+**CREATIVE AI SERVICES (HIGHEST MARGIN, LOWEST COMPETITION):**
+
+| Type | Budget | Time | API Cost | Margin | Competition | Priority |
+|------|--------|------|----------|--------|-------------|----------|
+| **Presentation/Decks (Gamma)** | $400-800 | 4-8h | $10-20 | 75-80% | Very Low | ⭐⭐⭐⭐⭐ |
+| **Translation (Claude)** | $500-1000 | 6-10h | $10-30 | 70-75% | Low | ⭐⭐⭐⭐⭐ |
+| **Voice Gen (ElevenLabs)** | $300-600 | 4-8h | $20-60 | 75-80% | Very Low | ⭐⭐⭐⭐⭐ |
+| **Content Writing (Claude)** | $600-1200 | 8-12h | $30-100 | 60-70% | Medium | ⭐⭐⭐⭐⭐ |
+| **Image Gen (Ideogram)** | $400-800 | 4-8h | $50-100 | 75-80% | Low | ⭐⭐⭐⭐ |
+| **Music Gen (Suno/Udio)** | $300-600 | 4-8h | $10-40 | 75-80% | Very Low | ⭐⭐⭐⭐ |
+| **Video Gen (Runway)** | $600-1200 | 8-16h | $100-200 | 50-60% | Low | ⭐⭐⭐ |
+
+**TRADITIONAL DEV + AI INTEGRATION:**
+
+| Type | Budget | Time | API Cost | Margin | Competition | Priority |
+|------|--------|------|----------|--------|-------------|----------|
+| **PDF Parsing** | $400-800 | 6-12h | $5-15 | 60-70% | Low | ⭐⭐⭐⭐⭐ |
+| **Email Processing** | $350-600 | 8-14h | $2-8 | 60-70% | Low | ⭐⭐⭐⭐⭐ |
+| **Data Extraction** | $300-600 | 6-10h | $10-20 | 55-65% | Medium | ⭐⭐⭐⭐ |
+| **Doc Classification** | $400-700 | 8-12h | $15-30 | 60-70% | Low | ⭐⭐⭐⭐ |
+| **Telegram Bots** | $200-400 | 4-6h | $0 | 60-70% | Low | ⭐⭐⭐⭐ |
+| **Landing Pages** | $200-400 | 6-8h | $0 | 50-60% | High | ⭐⭐⭐ |
 
 ---
 
 ## Week 1 Revised Target Mix
 
-**Ideal portfolio:**
-- 1x Telegram bot ($250) - Fast cash, proven
-- 1x PDF parsing ($500) - Higher value, AI integration proof
-- 1x Landing page ($300) - Fallback if above don't land
+**NEW PRIORITY (Creative AI Services First):**
 
-**Total: $1050 in pipeline, expect to land 1-2 = $250-800 Week 1 revenue**
+**Ideal portfolio:**
+- 1x Presentation/PDF generation (Gamma) ($500) - Highest margin (75-80%), very low competition
+- 1x Voice generation (ElevenLabs) ($400) - Fast delivery (4-8h), 75-80% margin, unique offering
+- 1x Translation job ($600) - Clear AC.md, 70-75% margin, scalable
+- 1x PDF parsing ($500) - Fallback, proven AI integration
+
+**Total: $2000 in pipeline, expect to land 1-2 = $400-1100 Week 1 revenue**
+
+**Why creative services first:**
+- ✅ 70-85% margins vs 50-60% for traditional dev
+- ✅ Zero traditional dev competition (they don't have Ideogram/Runway/Suno/ElevenLabs)
+- ✅ Faster delivery (4-10 hours vs 20-40 hours for equivalent value)
+- ✅ Clear AC.md possible ("Client approves 10 samples before bulk")
+- ✅ Higher budgets ($400-1500 vs $200-400)
+- ✅ One human can QA 10x more creative output than code
+
+**Traditional dev as fallback:**
+- Only bid on Telegram bots, PDF parsing if creative services pipeline is empty
+- Still valuable for building portfolio + proving delivery capability
 
 ---
 
@@ -719,11 +1501,20 @@ Why avoid:
 
 ## Strategy Progression
 
-**Week 1-2:** Focus on Web Dev + Document Processing (proven + easy AC.md)
+**Week 1-2 (NEW STRATEGY):**
+- **PRIMARY:** Creative AI services (Gamma, ElevenLabs, Translation, Content Writing) - 70-85% margins, low competition
+- **SECONDARY:** Document Processing (PDF parsing, Email processing) - proven AI integration
+- **FALLBACK:** Simple dev (Telegram bots, Landing pages) - only if creative pipeline empty
 
-**Week 3-4:** Add Content Generation (once we've proven we can deliver)
+**Week 3-4:**
+- **Add:** Image generation (Ideogram) - bulk product images, social media graphics
+- **Add:** Music generation (Suno/Udio) - podcast intros, background music, jingles
+- **Continue:** Creative AI services (this is the core business now)
 
-**Month 2+:** Carefully add Image tasks (highest risk, need track record first)
+**Month 2+:**
+- **Carefully add:** Video generation (Runway) - higher API costs, needs client education
+- **Scale:** Creative services to $5-10K monthly revenue before adding complex dev work
+- **Future:** Evidence Sprint → Full Build only after proving creative services delivery
 
 ---
 

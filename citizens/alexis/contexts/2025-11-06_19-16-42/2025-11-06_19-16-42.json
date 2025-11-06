@@ -1,8 +1,8 @@
 {
-  "context_id": "2025-11-06_18-23-52",
+  "context_id": "2025-11-06_19-16-42",
   "entity_type": "citizen",
   "entity_id": "alexis",
-  "created_at": "2025-11-06T17:23:52.596797+00:00",
+  "created_at": "2025-11-06T18:23:40.549256+00:00",
   "messages": [
     {
       "role": "user",
@@ -10658,10 +10658,936 @@
     },
     {
       "role": "user",
-      "timestamp": "2025-11-06T18:13:24.793874+00:00",
+      "timestamp": "2025-11-06T18:13:24.656Z",
       "content": "Amazing. Yes, update mission selection. I think we can also do music generation through Suno or Udio. We can also do voice generation or voice something through ElevenLabs. We also have access to PDF Generation through Gamma app. We can make slides and PowerPoint. Add everything needed, categories, AC, pricing, etc."
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:13:41.634Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:13:45.089Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_014VVj4guD6vFFPTkAnyZ25T",
+          "tool": "TodoWrite",
+          "input": {
+            "todos": [
+              {
+                "content": "Fix homepage messaging issues (solo voice, value clarity, CTA alignment, answer-first structure, timestamps)",
+                "status": "completed",
+                "activeForm": "Fixed homepage messaging issues"
+              },
+              {
+                "content": "Implement Zero-Call Evidence Sprint contact form",
+                "status": "completed",
+                "activeForm": "Implemented Zero-Call Evidence Sprint contact form"
+              },
+              {
+                "content": "Expand MISSION_SELECTION.md with creative AI services (Ideogram, Runway, Suno/Udio, ElevenLabs, Gamma, translation, content)",
+                "status": "in_progress",
+                "activeForm": "Expanding MISSION_SELECTION.md with creative AI services"
+              },
+              {
+                "content": "Set up Telegram outreach system (cd outreach/ → follow YOUR_ACTION_CHECKLIST_V2.txt)",
+                "status": "pending",
+                "activeForm": "Setting up Telegram outreach system"
+              },
+              {
+                "content": "Monitor win rate and revenue (Week 1)",
+                "status": "pending",
+                "activeForm": "Monitoring win rate and revenue"
+              },
+              {
+                "content": "Review Emma's automatic task system specifications (morning brief, pipeline, handoff)",
+                "status": "pending",
+                "activeForm": "Reviewing Emma's automatic task system specifications"
+              },
+              {
+                "content": "Review Inna's 6-level documentation for automatic task system",
+                "status": "pending",
+                "activeForm": "Reviewing Inna's 6-level documentation"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:13:45.307Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_014VVj4guD6vFFPTkAnyZ25T",
+          "output": "Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:13:52.197Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:13:52.837Z",
+      "content": "Perfect! Let me update MISSION_SELECTION.md with the complete creative AI services expansion including Suno/Udio, ElevenLabs, and Gamma."
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:13:54.082Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_017JNUuGd4FGWajN4hDfJXN8",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "offset": 220,
+            "limit": 100
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:13:54.222Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_017JNUuGd4FGWajN4hDfJXN8",
+          "output": "   220→Time: 15-25 hours actual work\n   221→```\n   222→\n   223→---\n   224→\n   225→## AI Integration Missions (Strategic Advantage)\n   226→\n   227→### Why AI Integration Missions Are Perfect for ScopeLock\n   228→\n   229→**The Strategic Advantage:**\n   230→\n   231→1. **AI excels at these** - This is what Claude/GPT actually do natively\n   232→2. **Less competition** - Traditional devs don't know AI APIs well\n   233→3. **Higher perceived value** - \"AI integration\" sounds premium\n   234→4. **Faster delivery** - Often 4-8 hours vs. 20+ for web apps\n   235→5. **Better margins** - $400 for 6 hours of work vs. $400 for 20 hours\n   236→6. **Rafael's sweet spot** - Generating code that calls AI APIs = trivial for Claude\n   237→\n   238→**The Risk We Must Manage:**\n   239→\n   240→❌ Subjective quality (\"make it perfect\")\n   241→✅ Objective acceptance criteria (\"95% accuracy on test set\")\n   242→\n   243→---\n   244→\n   245→### Tier 1: Document & Data Processing (HIGHEST PRIORITY)\n   246→\n   247→**Why These Are Gold:**\n   248→- **Objective AC.md possible** - \"Extract these fields with 95%+ accuracy\"\n   249→- **Clients have test data** - They can verify immediately\n   250→- **One-shot deliverable** - Process, deliver, done\n   251→- **Low API costs** - Parsing is cheap ($0.01-0.10 per document)\n   252→\n   253→**Mission Types We Should Hunt:**\n   254→\n   255→**1. PDF/Document Parsing**\n   256→```\n   257→Example: \"Extract invoice data (date, total, items) from 500 PDFs\"\n   258→\n   259→AC.md writes itself:\n   260→- Extract fields: {date, invoice_number, total, line_items[]}\n   261→- Test on 50 sample PDFs (client provides)\n   262→- Accuracy: 95%+ vs. manual check\n   263→- Output: CSV with all extracted data\n   264→- Handle errors: Log failed parses\n   265→\n   266→Budget: $400-800\n   267→Time: 6-12 hours\n   268→Stack: Python + LangChain/PyPDF2 + Claude API\n   269→API Cost: ~$5-15 (Claude for structured extraction)\n   270→```\n   271→\n   272→**2. Email Processing Automation**\n   273→```\n   274→Example: \"Parse support emails, categorize, extract customer info\"\n   275→\n   276→AC.md:\n   277→- Categories: {bug_report, feature_request, question, billing}\n   278→- Extract: {customer_email, subject, category, priority, summary}\n   279→- Test: 100 sample emails\n   280→- Accuracy: 90%+ on category classification\n   281→- Output: PostgreSQL database + Slack notification\n   282→\n   283→Budget: $350-600\n   284→Time: 8-14 hours\n   285→Stack: Python + Gmail API + Claude API + PostgreSQL\n   286→API Cost: ~$2-8\n   287→```\n   288→\n   289→**3. Data Extraction from Unstructured Text**\n   290→```\n   291→Example: \"Extract company info from 1000 LinkedIn profiles\"\n   292→\n   293→AC.md:\n   294→- Extract: {company_name, industry, employee_count, location, description}\n   295→- Input: Text dumps or screenshots\n   296→- Accuracy: 85%+ (some profiles incomplete)\n   297→- Output: Structured JSON\n   298→- Handle: Missing fields gracefully\n   299→\n   300→Budget: $300-600\n   301→Time: 6-10 hours\n   302→Stack: Python + Claude API + Pandas\n   303→API Cost: ~$10-20 (lots of text)\n   304→```\n   305→\n   306→**4. Document Classification**\n   307→```\n   308→Example: \"Sort 5000 customer documents into 10 categories\"\n   309→\n   310→AC.md:\n   311→- Categories: {contract, invoice, receipt, report, correspondence, ...}\n   312→- Test set: 200 pre-labeled documents\n   313→- Accuracy: 92%+ on test set\n   314→- Output: Organized folder structure OR database\n   315→- Speed: <1 second per document\n   316→\n   317→Budget: $400-700\n   318→Time: 8-12 hours\n   319→Stack: Python + Claude/GPT-4 + embeddings\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:14:02.887Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:16:31.987Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_015qxRfHzLVyNoznvq3UrAmt",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "old_string": "---\n\n## AI Integration Missions (Strategic Advantage)\n\n### Why AI Integration Missions Are Perfect for ScopeLock\n\n**The Strategic Advantage:**\n\n1. **AI excels at these** - This is what Claude/GPT actually do natively\n2. **Less competition** - Traditional devs don't know AI APIs well\n3. **Higher perceived value** - \"AI integration\" sounds premium\n4. **Faster delivery** - Often 4-8 hours vs. 20+ for web apps\n5. **Better margins** - $400 for 6 hours of work vs. $400 for 20 hours\n6. **Rafael's sweet spot** - Generating code that calls AI APIs = trivial for Claude\n\n**The Risk We Must Manage:**\n\n❌ Subjective quality (\"make it perfect\")\n✅ Objective acceptance criteria (\"95% accuracy on test set\")\n\n---",
+            "new_string": "---\n\n## ⭐ CREATIVE AI SERVICES (STRATEGIC PRIORITY - HIGHEST MARGIN)\n\n### Why Creative AI Is Our Competitive Moat\n\n**The Game-Changing Advantage:**\n\n1. **Zero traditional dev competition** - Dev shops don't bid on creative work\n2. **AI-native workflow** - We have Ideogram, Runway, Suno, ElevenLabs, Gamma integrated\n3. **Massive margins** - 70-85% profit (AI does the work, humans QA)\n4. **Higher budgets** - $400-1500 vs $200-400 for dev work\n5. **Faster delivery** - 4-10 hours vs 20-40 hours for equivalent value\n6. **Clear AC.md possible** - Objective criteria (quantity, format, approval gates)\n7. **Scalable** - One human can QA 10x more creative output than code\n\n**The Risk We Must Manage:**\n\n❌ Subjective quality (\"make it beautiful\")\n✅ Objective acceptance criteria (\"Client approves 10 samples before bulk\")\n\n**Critical Success Factor:**\n- **Template/Style approval UPFRONT** - Client must approve samples before bulk generation\n- **Fixed revision rounds** - 1-2 rounds max, scoped in AC.md\n- **Reference materials required** - Client provides examples of desired style\n\n---\n\n### Tier 1A: Image Generation (Ideogram) - ⭐⭐⭐⭐⭐\n\n**Why Ideogram Is Perfect:**\n- Text-in-image capability (better than DALL-E/Midjourney for branded content)\n- Consistent style across batches\n- Fast generation (<30s per image)\n- Affordable API ($0.50-1.00 per image)\n\n**Mission Types:**\n\n**1. Bulk Product Images**\n```\nExample: \"Generate 100 product mockup images for e-commerce store\"\n\nAC.md Template:\n- Input: Product names + descriptions (CSV)\n- Style: [Client provides 3-5 reference images]\n- Format: 1024x1024 PNG, transparent background\n- Text: Product name on each image (if applicable)\n- Quantity: 100 images\n- Approval gate: Client approves 10 sample images before bulk\n- Revisions: 1 round for failed images only (missing text, wrong style)\n- Output: ZIP file organized by product category\n- Delivery: Google Drive link + organized folder structure\n\nBudget: $400-800\nTime: 4-8 hours (setup + generation + QA)\nAPI Cost: ~$50-100 (Ideogram $0.50-1.00 per image)\nMargin: 75-80%\n\nRed Flags to Avoid:\n❌ \"Make them beautiful\" (too subjective)\n❌ No reference images provided\n❌ Client wants \"unique artistic vision\" (scope creep)\n❌ Unlimited revisions expected\n\nGreen Flags to Seek:\n✅ Client has clear brand guidelines\n✅ Provides 3+ reference images\n✅ Bulk operation (50+ images)\n✅ Willing to approve sample batch first\n```\n\n**2. Social Media Content (Branded)**\n```\nExample: \"Create 30 Instagram posts with motivational quotes\"\n\nAC.md Template:\n- Input: 30 quotes (client provides CSV)\n- Brand: Colors, fonts, logo (client provides brand kit)\n- Dimensions: 1080x1080px (Instagram square)\n- Style: Consistent across all images\n- Text placement: Quote centered, author bottom-right\n- Approval: Client approves 5 sample images before bulk\n- Revisions: Max 2 rounds of template adjustments\n- Delivery: 30 JPGs + Canva template for future use\n\nBudget: $350-600\nTime: 6-10 hours (template creation + generation + QA)\nAPI Cost: ~$30-60\nMargin: 70-75%\n```\n\n**3. Marketing Visuals (Blog Headers, Ads)**\n```\nExample: \"Generate 20 unique header images for blog posts\"\n\nAC.md Template:\n- Topics: [Client provides list of 20 blog post titles]\n- Style: Professional, modern, consistent color palette\n- Dimensions: 1200x630px (blog header standard + social share)\n- Text overlay: Blog post title on each image\n- Format: JPG\n- Brand consistency: Use client's primary colors\n- Approval: Client approves 3 samples before bulk\n- Revisions: 1 round per batch of 10\n\nBudget: $300-500\nTime: 4-6 hours\nAPI Cost: ~$20-40\nMargin: 75%\n```\n\n**4. E-book/PDF Covers**\n```\nExample: \"Design 5 e-book covers for lead magnets\"\n\nAC.md Template:\n- Titles: [5 e-book titles provided]\n- Style: [Client provides 2-3 reference covers]\n- Dimensions: 1600x2560px (standard e-book cover)\n- Format: PNG with transparent background + JPG preview\n- Text: Title, subtitle, author name\n- Branding: Client logo included\n- Approval: Client approves 1 sample before creating remaining 4\n- Revisions: 2 rounds max (text placement, color adjustments)\n\nBudget: $250-500\nTime: 4-8 hours\nAPI Cost: ~$10-25\nMargin: 80%\n```\n\n---\n\n### Tier 1B: Video Generation (Runway) - ⭐⭐⭐⭐⭐\n\n**Why Runway Is Strategic:**\n- Text-to-video + image-to-video capability\n- Professional quality (competitors charge $500+ per video)\n- Fast generation (2-5 min per 10-second clip)\n- Perfect for product demos, ads, social media\n\n**Mission Types:**\n\n**1. Product Demo Videos**\n```\nExample: \"Create 10 short product demo videos (15-30 seconds each)\"\n\nAC.md Template:\n- Input: Product images + text descriptions\n- Style: [Client provides reference video OR we suggest template]\n- Duration: 15-30 seconds per video\n- Format: MP4, 1080p, 30fps\n- Voiceover: AI-generated (ElevenLabs) OR text-on-screen (client choice)\n- Music: Royalty-free background music included\n- Transitions: Smooth cuts, professional pacing\n- Branding: Client logo in corner (optional)\n- Approval: Client approves 2 sample videos before bulk\n- Revisions: 1 round of edits per video (timing, text, music)\n\nBudget: $600-1200\nTime: 8-16 hours (video editing + generation + rendering)\nAPI Cost: ~$100-200 (Runway ~$10-20 per video)\nMargin: 50-60%\n```\n\n**2. Social Media Ads (TikTok/Instagram Reels)**\n```\nExample: \"Generate 5 TikTok-style video ads (10-15 seconds)\"\n\nAC.md Template:\n- Input: Product photos + key selling points\n- Style: Dynamic, eye-catching, trending format\n- Duration: 10-15 seconds each\n- Format: Vertical 9:16, MP4\n- Text overlays: Product name + CTA + price (if applicable)\n- Music: Trending audio track (client provides OR we source royalty-free)\n- Hooks: Attention-grabbing first 2 seconds\n- Approval: Client approves 1 sample before bulk\n- Delivery: 5 MP4 files + source files\n\nBudget: $400-700\nTime: 6-10 hours\nAPI Cost: ~$50-100\nMargin: 55-65%\n```\n\n**3. Explainer Videos (Animated)**\n```\nExample: \"Create 3-minute explainer video for SaaS product\"\n\nAC.md Template:\n- Script: [Client provides OR we write based on brief]\n- Style: [Client provides reference video]\n- Duration: 2-3 minutes\n- Format: MP4, 1080p horizontal\n- Voiceover: Professional AI voice (ElevenLabs)\n- Visuals: Product screenshots + animated transitions\n- Music: Background music throughout\n- CTA: Call-to-action at end\n- Approval: Client approves 30-second preview before full video\n- Revisions: 2 rounds (script changes, timing, visuals)\n\nBudget: $800-1500\nTime: 12-20 hours\nAPI Cost: ~$150-300 (Runway + ElevenLabs)\nMargin: 45-55%\n```\n\n---\n\n### Tier 1C: Music Generation (Suno/Udio) - ⭐⭐⭐⭐⭐\n\n**Why Music Generation Is Undervalued:**\n- Traditional music licensing: $50-500 per track\n- Suno/Udio: $0.10-1.00 per generation\n- Custom music = premium pricing\n- Perfect for videos, podcasts, ads, apps\n\n**Mission Types:**\n\n**1. Background Music for Videos**\n```\nExample: \"Create 10 royalty-free background tracks for YouTube videos (2-3 min each)\"\n\nAC.md Template:\n- Style: [Client provides reference tracks OR describes mood]\n- Duration: 2-3 minutes each (loopable)\n- Genre: Upbeat corporate, chill lofi, energetic pop, etc.\n- Tempo: BPM range specified\n- Instruments: [Client specifies OR we suggest based on mood]\n- Format: MP3 320kbps + WAV (lossless)\n- Usage: Royalty-free, client owns rights\n- Approval: Client approves 2 sample tracks before bulk\n- Revisions: 1 round per track (tempo, instrumentation)\n\nBudget: $300-600\nTime: 4-8 hours (generation + editing/trimming)\nAPI Cost: ~$10-30 (Suno/Udio $1-3 per track)\nMargin: 75-80%\n```\n\n**2. Podcast Intro/Outro Music**\n```\nExample: \"Create custom intro + outro music for podcast (30 seconds each)\"\n\nAC.md Template:\n- Style: [Client provides reference OR describes brand]\n- Duration: 30 seconds intro + 30 seconds outro\n- Branding: Upbeat, memorable, podcast-appropriate\n- Voiceover space: Leave 10 seconds in middle for voice (intro only)\n- Format: MP3 + WAV\n- Revisions: 2 rounds (style, tempo, length)\n- Usage: Exclusive rights for client\n\nBudget: $200-400\nTime: 3-6 hours\nAPI Cost: ~$5-15\nMargin: 75%\n```\n\n**3. App/Game Sound Effects + Music**\n```\nExample: \"Create 20 sound effects + 3 background tracks for mobile game\"\n\nAC.md Template:\n- Sound effects: Button clicks, success sounds, error sounds, etc.\n- Background tracks: Menu music, gameplay music, boss fight music\n- Style: [Client provides reference game OR describes vibe]\n- Format: WAV (lossless) for integration\n- Duration: Sound effects 0.5-2s each, tracks 1-2 min (loopable)\n- Approval: Client approves 5 sound effects + 1 track before bulk\n- Revisions: 1 round\n\nBudget: $400-800\nTime: 6-12 hours\nAPI Cost: ~$30-60\nMargin: 70%\n```\n\n**4. Custom Jingles/Brand Music**\n```\nExample: \"Create 15-second brand jingle for radio/video ads\"\n\nAC.md Template:\n- Style: Catchy, memorable, brand-appropriate\n- Duration: 15 seconds\n- Lyrics: Client provides OR we write based on tagline\n- Vocals: AI-generated singing (Suno) OR instrumental only\n- Variations: 3 versions (full, instrumental, shortened 5s)\n- Format: MP3 + WAV\n- Approval: Client approves 1 concept before refinement\n- Revisions: 3 rounds (this is high-value creative work)\n\nBudget: $500-1000\nTime: 8-12 hours (multiple iterations)\nAPI Cost: ~$20-40\nMargin: 60-70%\n```\n\n---\n\n### Tier 1D: Voice Generation (ElevenLabs) - ⭐⭐⭐⭐⭐\n\n**Why ElevenLabs Is High-Value:**\n- Professional voiceover talent: $100-500 per project\n- ElevenLabs: $0.30-3.00 per 1000 characters\n- Instant turnaround (no voice actor scheduling)\n- Multiple language support\n\n**Mission Types:**\n\n**1. Video Voiceovers**\n```\nExample: \"Generate voiceovers for 10 product videos (30-60 seconds each)\"\n\nAC.md Template:\n- Scripts: [Client provides OR we write based on video content]\n- Voice: [Client chooses from ElevenLabs voice library OR we suggest]\n- Tone: Professional, friendly, energetic (client specifies)\n- Duration: 30-60 seconds per video (300-500 words total per video)\n- Format: MP3 320kbps\n- Pacing: Natural pauses, emphasis on key points\n- Sync: Timed to match video scenes (if client provides video)\n- Approval: Client approves 1 sample voiceover before bulk\n- Revisions: 1 round (re-record with adjusted tone/pacing)\n\nBudget: $300-600\nTime: 4-8 hours (script writing + generation + timing)\nAPI Cost: ~$10-30 (ElevenLabs ~$1-3 per video)\nMargin: 75-80%\n```\n\n**2. Audiobook Narration**\n```\nExample: \"Narrate 10,000-word e-book (approx 1 hour audio)\"\n\nAC.md Template:\n- Input: Text document (Word/PDF)\n- Voice: [Client selects from voice library]\n- Tone: Consistent with book genre (business, fiction, self-help)\n- Length: ~10,000 words = ~60 minutes audio\n- Format: MP3 chapters + single full audiobook file\n- Editing: Remove long pauses, normalize volume\n- Approval: Client approves 5-minute sample before full narration\n- Revisions: 1 round (re-record specific sections if needed)\n\nBudget: $400-800\nTime: 6-10 hours (generation + editing + chapter splitting)\nAPI Cost: ~$30-60 (ElevenLabs charges by character count)\nMargin: 70-75%\n```\n\n**3. Podcast Voiceover / Narration**\n```\nExample: \"Generate voiceovers for 10 podcast episodes (5-10 min each)\"\n\nAC.md Template:\n- Scripts: [Client provides per episode]\n- Voice: Consistent voice across all episodes\n- Tone: Conversational, engaging\n- Duration: 5-10 minutes per episode (500-1000 words)\n- Format: MP3 per episode\n- Quality: Studio-quality audio, minimal background noise\n- Approval: Client approves episode 1 before bulk\n- Revisions: 1 round per episode\n\nBudget: $400-700\nTime: 6-10 hours\nAPI Cost: ~$30-50\nMargin: 70%\n```\n\n**4. IVR / Phone System Messages**\n```\nExample: \"Create 20 IVR messages for business phone system\"\n\nAC.md Template:\n- Messages: Greeting, menu options, hold music message, voicemail, etc.\n- Voice: Professional, clear pronunciation\n- Scripts: [Client provides OR we write standard IVR copy]\n- Format: WAV (phone system compatible)\n- Length: 5-30 seconds per message\n- Approval: Client approves 3 sample messages\n- Revisions: 1 round\n\nBudget: $250-500\nTime: 4-6 hours\nAPI Cost: ~$5-15\nMargin: 80%\n```\n\n**5. Language Learning / Pronunciation Audio**\n```\nExample: \"Generate 500 pronunciation audio files for language app (words + sentences)\"\n\nAC.md Template:\n- Input: CSV with 500 words/sentences\n- Languages: [Client specifies, ElevenLabs supports 29 languages]\n- Voice: Native speaker accent\n- Format: MP3 per word/sentence, organized in folders\n- Speed: Normal speaking pace (or client-specified)\n- Quality: Clear pronunciation for learning\n- Approval: Client reviews 20 samples before bulk\n- Revisions: Re-record mispronounced words\n\nBudget: $400-800\nTime: 6-10 hours (batch processing + QA)\nAPI Cost: ~$50-100\nMargin: 65-70%\n```\n\n---\n\n### Tier 1E: Presentation/PDF Generation (Gamma) - ⭐⭐⭐⭐\n\n**Why Gamma Is Strategic:**\n- Professional designers charge $500-2000 for pitch decks\n- Gamma generates in minutes\n- AI-powered layout + design\n- Perfect for startup pitch decks, sales presentations, reports\n\n**Mission Types:**\n\n**1. Pitch Deck / Investor Presentation**\n```\nExample: \"Create 15-slide investor pitch deck for startup\"\n\nAC.md Template:\n- Content: [Client provides outline OR we structure based on brief]\n- Slides: Problem, Solution, Market, Traction, Team, Ask (standard pitch format)\n- Design: Professional, clean, brand colors\n- Charts: Market size, revenue projections (client provides data)\n- Length: 12-15 slides\n- Format: PDF + editable Gamma link\n- Revisions: 2 rounds (content, design, data)\n- Delivery: PDF for sharing + Gamma link for future edits\n\nBudget: $400-800\nTime: 6-10 hours (content + design + data visualization)\nAPI Cost: ~$10-20 (Gamma Pro subscription)\nMargin: 75%\n```\n\n**2. Sales Presentation / One-Pager**\n```\nExample: \"Create 10-slide sales deck + 1-page PDF summary\"\n\nAC.md Template:\n- Content: Product overview, benefits, case studies, pricing\n- Design: Client brand colors + logo\n- Length: 10 slides + 1-page summary\n- Format: PDF (presentation) + PDF (one-pager)\n- Approval: Client reviews slide 1-3 before completing deck\n- Revisions: 2 rounds\n\nBudget: $300-600\nTime: 5-8 hours\nAPI Cost: ~$5-10\nMargin: 75-80%\n```\n\n**3. Training Manuals / Employee Handbooks**\n```\nExample: \"Create 30-page employee onboarding handbook (PDF)\"\n\nAC.md Template:\n- Content: [Client provides outline + raw text]\n- Sections: Welcome, Company values, Policies, Benefits, Resources\n- Design: Professional layout, branded\n- Length: 25-30 pages\n- Format: PDF\n- Visuals: Icons, diagrams, photos (client provides OR we source stock)\n- Approval: Client reviews first 10 pages before completing\n- Revisions: 2 rounds\n\nBudget: $500-1000\nTime: 8-14 hours\nAPI Cost: ~$10-20\nMargin: 70%\n```\n\n**4. Lead Magnet PDFs / E-books**\n```\nExample: \"Design 20-page e-book for lead generation\"\n\nAC.md Template:\n- Content: [Client provides text content]\n- Design: Eye-catching cover + clean interior layout\n- Length: 15-20 pages\n- Format: PDF\n- Branding: Client logo, colors, fonts\n- CTA: Links to client website/landing page\n- Approval: Client approves cover + first 3 pages\n- Revisions: 2 rounds\n\nBudget: $300-600\nTime: 5-8 hours\nAPI Cost: ~$5-10\nMargin: 75%\n```\n\n**5. Reports / White Papers**\n```\nExample: \"Create 40-page industry report with data visualizations\"\n\nAC.md Template:\n- Content: [Client provides research data + text]\n- Charts: 10-15 data visualizations (graphs, charts, infographics)\n- Design: Professional, report-appropriate layout\n- Length: 35-40 pages\n- Format: PDF\n- Citations: Properly formatted references\n- Approval: Client reviews first 10 pages + 3 sample charts\n- Revisions: 2 rounds\n\nBudget: $700-1200\nTime: 10-16 hours\nAPI Cost: ~$15-25\nMargin: 65-70%\n```\n\n---\n\n### Tier 1F: Translation Services - ⭐⭐⭐⭐\n\n**Why Translation Is High-Margin:**\n- Professional translators: $0.10-0.30 per word\n- Claude API: $0.001-0.003 per word\n- 95%+ accuracy for most language pairs\n- Fast turnaround (10,000 words in 2 hours)\n\n**Mission Types:**\n\n**1. Website/App Translation**\n```\nExample: \"Translate website from English to 5 languages (French, Spanish, German, Italian, Portuguese)\"\n\nAC.md Template:\n- Input: Website content (JSON/CSV/TXT files)\n- Languages: 5 target languages\n- Word count: [Estimate from client content]\n- Tone: Maintain original tone (professional, casual, technical)\n- Context-aware: Technical terms, brand names preserved correctly\n- Format: Same structure as input (JSON keys preserved, HTML tags intact)\n- QA: Native speaker review for 10% of content (client provides reviewer OR we charge extra $100)\n- Revisions: 1 round of corrections per language\n\nBudget: $500-1000 (based on word count)\nExample pricing: 10,000 words × 5 languages = 50,000 words → $600\nTime: 6-10 hours (setup + QA + formatting)\nAPI Cost: ~$30-60 (Claude translation)\nMargin: 70-75%\n```\n\n**2. Document Translation (Bulk)**\n```\nExample: \"Translate 200 product descriptions from English to Spanish\"\n\nAC.md Template:\n- Input: 200 descriptions (CSV)\n- Source: English\n- Target: Spanish (Latin America variant OR Spain Spanish - client specifies)\n- Word count: ~20,000 words total\n- Maintain formatting: Bullet points, capitalization, special characters\n- Quality: Natural-sounding, not literal translation\n- Terminology: Consistent product terms throughout\n- Approval: Client reviews 20 sample translations before bulk\n- Delivery: CSV with original + translated columns\n\nBudget: $300-600\nTime: 4-8 hours\nAPI Cost: ~$20-40\nMargin: 70%\n```\n\n**3. Marketing Content Translation**\n```\nExample: \"Translate 10 blog posts from English to German (8,000 words total)\"\n\nAC.md Template:\n- Input: 10 blog posts (Markdown or Word)\n- Target: German (formal vs informal - client specifies)\n- Word count: ~8,000 words\n- Tone: Marketing-appropriate, engaging\n- SEO: Translate meta descriptions + alt text\n- Links: Preserve all hyperlinks\n- Approval: Client reviews 1 full blog post before bulk\n- Revisions: 1 round per post\n\nBudget: $400-700\nTime: 6-10 hours\nAPI Cost: ~$25-40\nMargin: 70%\n```\n\n**4. Legal/Technical Document Translation (Higher Complexity)**\n```\nExample: \"Translate legal contract from English to French (5,000 words)\"\n\nAC.md Template:\n- Input: Legal contract (PDF/Word)\n- Target: French (legal terminology)\n- Word count: 5,000 words\n- Accuracy: Legal terms must be precise\n- Format: Preserve exact formatting (clauses, sections, numbering)\n- QA: MANDATORY native legal professional review (we coordinate)\n- Disclaimer: Translation for reference only, not legal advice\n- Revisions: 2 rounds after legal review\n\nBudget: $600-1000 (higher due to legal complexity + required review)\nTime: 8-12 hours (translation + legal reviewer coordination)\nAPI Cost: ~$30-50\nMargin: 60% (lower due to required legal review)\n\n⚠️ RED FLAG: Only take legal/medical translations if client understands limitations\n```\n\n---\n\n### Tier 1G: Content Writing/Editing - ⭐⭐⭐⭐\n\n**Why Content Writing Works:**\n- Professional writers: $0.10-0.50 per word\n- AI generation: $0.001-0.005 per word\n- Human QA ensures quality\n- Scalable (can produce 10K words/day)\n\n**Mission Types:**\n\n**1. SEO Blog Posts (Bulk)**\n```\nExample: \"Write 10 SEO-optimized blog posts (800-1200 words each)\"\n\nAC.md Template:\n- Topics: [Client provides keywords + outlines OR we research]\n- Tone: Professional, informative (client provides 2-3 reference posts)\n- SEO requirements:\n  - Keyword in title, H1, first paragraph, 2+ H2s\n  - Meta description (150-160 chars)\n  - Internal links (3-5 per post)\n  - Alt text for images\n- Structure: Intro, 3-5 H2 sections, conclusion with CTA\n- Length: 800-1200 words per post\n- Quality gate: Client approves 2 sample posts before bulk\n- Revisions: 1 round of edits per post (fact corrections, tone adjustments)\n- Delivery: 10 Markdown files + meta descriptions + suggested images\n\nBudget: $600-1200 ($60-120 per post)\nTime: 8-16 hours (research + generation + editing + SEO optimization)\nAPI Cost: ~$30-60\nMargin: 60-70%\n```\n\n**2. Product Descriptions (E-commerce)**\n```\nExample: \"Write 500 unique product descriptions (100-150 words each)\"\n\nAC.md Template:\n- Input: Product specs (CSV: name, features, benefits, price)\n- Tone: [Client provides 5 example descriptions]\n- Structure: Feature highlight → Benefit → CTA\n- Length: 100-150 words each\n- SEO: Include product name + category keywords naturally\n- Uniqueness: No duplicate phrasing across descriptions (we ensure variety)\n- Format: CSV with descriptions column added\n- Approval: Client reviews 20 sample descriptions before bulk\n- Revisions: 1 round for style/tone adjustments (not individual product edits)\n\nBudget: $400-800\nTime: 6-10 hours\nAPI Cost: ~$40-80 (500 generations)\nMargin: 65-70%\n```\n\n**3. Email Campaigns**\n```\nExample: \"Write 12 email sequences for SaaS onboarding (6 emails × 2 personas)\"\n\nAC.md Template:\n- Personas: [Client defines 2 target personas with pain points]\n- Sequence timing: Day 0, 2, 4, 7, 14, 21 (welcome → activation → retention)\n- Tone: Friendly, helpful (client provides reference emails)\n- Length: 150-250 words per email\n- Structure: Hook → Value → CTA\n- CTAs: Clear action in each email (login, complete profile, book demo, etc.)\n- Subject lines: 3 options per email (A/B test ready)\n- Approval: Client reviews 1 complete sequence (6 emails) before finalizing second persona\n- Delivery: Google Docs with all emails organized by persona + day\n\nBudget: $350-600\nTime: 6-10 hours\nAPI Cost: ~$10-20\nMargin: 70%\n```\n\n**4. Social Media Content Calendar**\n```\nExample: \"Create 30 days of social media posts (LinkedIn + Twitter)\"\n\nAC.md Template:\n- Platforms: LinkedIn + Twitter (different copy for each)\n- Frequency: 1 post per day × 30 days × 2 platforms = 60 posts\n- Tone: [Client provides brand voice guidelines]\n- Topics: [Client provides themes OR we suggest based on industry]\n- Length: LinkedIn 150-300 words, Twitter 200-280 chars\n- Hashtags: 3-5 relevant hashtags per post\n- CTAs: Include link/CTA every 3rd post\n- Format: CSV with columns: Date, Platform, Post, Hashtags, Link\n- Approval: Client reviews week 1 (7 days × 2 platforms) before bulk\n- Revisions: 1 round for tone adjustments\n\nBudget: $400-700\nTime: 6-10 hours\nAPI Cost: ~$20-40\nMargin: 70%\n```\n\n**5. Case Studies / Testimonial Writing**\n```\nExample: \"Write 5 customer case studies (800-1000 words each)\"\n\nAC.md Template:\n- Input: Client provides customer interview notes OR we conduct interviews (extra $100/interview)\n- Structure: Challenge → Solution → Results (with metrics)\n- Tone: Professional, results-focused\n- Length: 800-1000 words each\n- Quotes: Include 2-3 customer quotes per case study\n- Metrics: Before/after data (revenue increase, time saved, etc.)\n- Approval: Client + customer review each case study\n- Revisions: 2 rounds per case study (client + customer feedback)\n\nBudget: $500-900\nTime: 8-14 hours (interviewing + writing + revisions)\nAPI Cost: ~$15-30\nMargin: 65%\n```\n\n**6. Text Review/Proofreading**\n```\nExample: \"Proofread and edit 50 blog posts for grammar, clarity, SEO\"\n\nAC.md Template:\n- Input: 50 blog posts (Google Docs or Markdown)\n- Tasks:\n  - Fix grammar, spelling, punctuation\n  - Improve clarity and flow (sentence restructuring)\n  - Optimize for SEO (keyword density, readability score, meta descriptions)\n  - Suggest better headlines/subheadings\n- Track changes: All edits visible (Google Docs suggestions mode)\n- Comments: Flag major issues for client review\n- Delivery: Edited documents + summary report of major changes\n- Quality: Client reviews 5 sample edits before bulk\n\nBudget: $300-600\nTime: 8-12 hours\nAPI Cost: ~$20-40\nMargin: 70%\n```\n\n---\n\n## AI Integration Missions (Strategic Advantage)\n\n### Why AI Integration Missions Are Perfect for ScopeLock\n\n**The Strategic Advantage:**\n\n1. **AI excels at these** - This is what Claude/GPT actually do natively\n2. **Less competition** - Traditional devs don't know AI APIs well\n3. **Higher perceived value** - \"AI integration\" sounds premium\n4. **Faster delivery** - Often 4-8 hours vs. 20+ for web apps\n5. **Better margins** - $400 for 6 hours of work vs. $400 for 20 hours\n6. **Rafael's sweet spot** - Generating code that calls AI APIs = trivial for Claude\n\n**The Risk We Must Manage:**\n\n❌ Subjective quality (\"make it perfect\")\n✅ Objective acceptance criteria (\"95% accuracy on test set\")\n\n---"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:16:32.328Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_015qxRfHzLVyNoznvq3UrAmt",
+          "output": "The file /home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n   219→Why it works: Socket.io patterns, Rafael knows this\n   220→Time: 15-25 hours actual work\n   221→```\n   222→\n   223→---\n   224→\n   225→## ⭐ CREATIVE AI SERVICES (STRATEGIC PRIORITY - HIGHEST MARGIN)\n   226→\n   227→### Why Creative AI Is Our Competitive Moat\n   228→\n   229→**The Game-Changing Advantage:**\n   230→\n   231→1. **Zero traditional dev competition** - Dev shops don't bid on creative work\n   232→2. **AI-native workflow** - We have Ideogram, Runway, Suno, ElevenLabs, Gamma integrated\n   233→3. **Massive margins** - 70-85% profit (AI does the work, humans QA)\n   234→4. **Higher budgets** - $400-1500 vs $200-400 for dev work\n   235→5. **Faster delivery** - 4-10 hours vs 20-40 hours for equivalent value\n   236→6. **Clear AC.md possible** - Objective criteria (quantity, format, approval gates)\n   237→7. **Scalable** - One human can QA 10x more creative output than code\n   238→\n   239→**The Risk We Must Manage:**\n   240→\n   241→❌ Subjective quality (\"make it beautiful\")\n   242→✅ Objective acceptance criteria (\"Client approves 10 samples before bulk\")\n   243→\n   244→**Critical Success Factor:**\n   245→- **Template/Style approval UPFRONT** - Client must approve samples before bulk generation\n   246→- **Fixed revision rounds** - 1-2 rounds max, scoped in AC.md\n   247→- **Reference materials required** - Client provides examples of desired style\n   248→\n   249→---\n   250→\n   251→### Tier 1A: Image Generation (Ideogram) - ⭐⭐⭐⭐⭐\n   252→\n   253→**Why Ideogram Is Perfect:**\n   254→- Text-in-image capability (better than DALL-E/Midjourney for branded content)\n   255→- Consistent style across batches\n   256→- Fast generation (<30s per image)\n   257→- Affordable API ($0.50-1.00 per image)\n   258→\n   259→**Mission Types:**\n   260→\n   261→**1. Bulk Product Images**\n   262→```\n   263→Example: \"Generate 100 product mockup images for e-commerce store\"\n   264→\n   265→AC.md Template:\n   266→- Input: Product names + descriptions (CSV)\n   267→- Style: [Client provides 3-5 reference images]\n   268→- Format: 1024x1024 PNG, transparent background\n   269→- Text: Product name on each image (if applicable)\n   270→- Quantity: 100 images\n   271→- Approval gate: Client approves 10 sample images before bulk\n   272→- Revisions: 1 round for failed images only (missing text, wrong style)\n   273→- Output: ZIP file organized by product category\n   274→- Delivery: Google Drive link + organized folder structure\n   275→\n   276→Budget: $400-800\n   277→Time: 4-8 hours (setup + generation + QA)\n   278→API Cost: ~$50-100 (Ideogram $0.50-1.00 per image)\n   279→Margin: 75-80%\n   280→\n   281→Red Flags to Avoid:\n   282→❌ \"Make them beautiful\" (too subjective)\n   283→❌ No reference images provided\n   284→❌ Client wants \"unique artistic vision\" (scope creep)\n   285→❌ Unlimited revisions expected\n   286→\n   287→Green Flags to Seek:\n   288→✅ Client has clear brand guidelines\n   289→✅ Provides 3+ reference images\n   290→✅ Bulk operation (50+ images)\n   291→✅ Willing to approve sample batch first\n   292→```\n   293→\n   294→**2. Social Media Content (Branded)**\n   295→```\n   296→Example: \"Create 30 Instagram posts with motivational quotes\"\n   297→\n   298→AC.md Template:\n   299→- Input: 30 quotes (client provides CSV)\n   300→- Brand: Colors, fonts, logo (client provides brand kit)\n   301→- Dimensions: 1080x1080px (Instagram square)\n   302→- Style: Consistent across all images\n   303→- Text placement: Quote centered, author bottom-right\n   304→- Approval: Client approves 5 sample images before bulk\n   305→- Revisions: Max 2 rounds of template adjustments\n   306→- Delivery: 30 JPGs + Canva template for future use\n   307→\n   308→Budget: $350-600\n   309→Time: 6-10 hours (template creation + generation + QA)\n   310→API Cost: ~$30-60\n   311→Margin: 70-75%\n   312→```\n   313→\n   314→**3. Marketing Visuals (Blog Headers, Ads)**\n   315→```\n   316→Example: \"Generate 20 unique header images for blog posts\"\n   317→\n   318→AC.md Template:\n   319→- Topics: [Client provides list of 20 blog post titles]\n   320→- Style: Professional, modern, consistent color palette\n   321→- Dimensions: 1200x630px (blog header standard + social share)\n   322→- Text overlay: Blog post title on each image\n   323→- Format: JPG\n   324→- Brand consistency: Use client's primary colors\n   325→- Approval: Client approves 3 samples before bulk\n   326→- Revisions: 1 round per batch of 10\n   327→\n   328→Budget: $300-500\n   329→Time: 4-6 hours\n   330→API Cost: ~$20-40\n   331→Margin: 75%\n   332→```\n   333→\n   334→**4. E-book/PDF Covers**\n   335→```\n   336→Example: \"Design 5 e-book covers for lead magnets\"\n   337→\n   338→AC.md Template:\n   339→- Titles: [5 e-book titles provided]\n   340→- Style: [Client provides 2-3 reference covers]\n   341→- Dimensions: 1600x2560px (standard e-book cover)\n   342→- Format: PNG with transparent background + JPG preview\n   343→- Text: Title, subtitle, author name\n   344→- Branding: Client logo included\n   345→- Approval: Client approves 1 sample before creating remaining 4\n   346→- Revisions: 2 rounds max (text placement, color adjustments)\n   347→\n   348→Budget: $250-500\n   349→Time: 4-8 hours\n   350→API Cost: ~$10-25\n   351→Margin: 80%\n   352→```\n   353→\n   354→---\n   355→\n   356→### Tier 1B: Video Generation (Runway) - ⭐⭐⭐⭐⭐\n   357→\n   358→**Why Runway Is Strategic:**\n   359→- Text-to-video + image-to-video capability\n   360→- Professional quality (competitors charge $500+ per video)\n   361→- Fast generation (2-5 min per 10-second clip)\n   362→- Perfect for product demos, ads, social media\n   363→\n   364→**Mission Types:**\n   365→\n   366→**1. Product Demo Videos**\n   367→```\n   368→Example: \"Create 10 short product demo videos (15-30 seconds each)\"\n   369→\n   370→AC.md Template:\n   371→- Input: Product images + text descriptions\n   372→- Style: [Client provides reference video OR we suggest template]\n   373→- Duration: 15-30 seconds per video\n   374→- Format: MP4, 1080p, 30fps\n   375→- Voiceover: AI-generated (ElevenLabs) OR text-on-screen (client choice)\n   376→- Music: Royalty-free background music included\n   377→- Transitions: Smooth cuts, professional pacing\n   378→- Branding: Client logo in corner (optional)\n   379→- Approval: Client approves 2 sample videos before bulk\n   380→- Revisions: 1 round of edits per video (timing, text, music)\n   381→\n   382→Budget: $600-1200\n   383→Time: 8-16 hours (video editing + generation + rendering)\n   384→API Cost: ~$100-200 (Runway ~$10-20 per video)\n   385→Margin: 50-60%\n   386→```\n   387→\n   388→**2. Social Media Ads (TikTok/Instagram Reels)**\n   389→```\n   390→Example: \"Generate 5 TikTok-style video ads (10-15 seconds)\"\n   391→\n   392→AC.md Template:\n   393→- Input: Product photos + key selling points\n   394→- Style: Dynamic, eye-catching, trending format\n   395→- Duration: 10-15 seconds each\n   396→- Format: Vertical 9:16, MP4\n   397→- Text overlays: Product name + CTA + price (if applicable)\n   398→- Music: Trending audio track (client provides OR we source royalty-free)\n   399→- Hooks: Attention-grabbing first 2 seconds\n   400→- Approval: Client approves 1 sample before bulk\n   401→- Delivery: 5 MP4 files + source files\n   402→\n   403→Budget: $400-700\n   404→Time: 6-10 hours\n   405→API Cost: ~$50-100\n   406→Margin: 55-65%\n   407→```\n   408→\n   409→**3. Explainer Videos (Animated)**\n   410→```\n   411→Example: \"Create 3-minute explainer video for SaaS product\"\n   412→\n   413→AC.md Template:\n   414→- Script: [Client provides OR we write based on brief]\n   415→- Style: [Client provides reference video]\n   416→- Duration: 2-3 minutes\n   417→- Format: MP4, 1080p horizontal\n   418→- Voiceover: Professional AI voice (ElevenLabs)\n   419→- Visuals: Product screenshots + animated transitions\n   420→- Music: Background music throughout\n   421→- CTA: Call-to-action at end\n   422→- Approval: Client approves 30-second preview before full video\n   423→- Revisions: 2 rounds (script changes, timing, visuals)\n   424→\n   425→Budget: $800-1500\n   426→Time: 12-20 hours\n   427→API Cost: ~$150-300 (Runway + ElevenLabs)\n   428→Margin: 45-55%\n   429→```\n   430→\n   431→---\n   432→\n   433→### Tier 1C: Music Generation (Suno/Udio) - ⭐⭐⭐⭐⭐\n   434→\n   435→**Why Music Generation Is Undervalued:**\n   436→- Traditional music licensing: $50-500 per track\n   437→- Suno/Udio: $0.10-1.00 per generation\n   438→- Custom music = premium pricing\n   439→- Perfect for videos, podcasts, ads, apps\n   440→\n   441→**Mission Types:**\n   442→\n   443→**1. Background Music for Videos**\n   444→```\n   445→Example: \"Create 10 royalty-free background tracks for YouTube videos (2-3 min each)\"\n   446→\n   447→AC.md Template:\n   448→- Style: [Client provides reference tracks OR describes mood]\n   449→- Duration: 2-3 minutes each (loopable)\n   450→- Genre: Upbeat corporate, chill lofi, energetic pop, etc.\n   451→- Tempo: BPM range specified\n   452→- Instruments: [Client specifies OR we suggest based on mood]\n   453→- Format: MP3 320kbps + WAV (lossless)\n   454→- Usage: Royalty-free, client owns rights\n   455→- Approval: Client approves 2 sample tracks before bulk\n   456→- Revisions: 1 round per track (tempo, instrumentation)\n   457→\n   458→Budget: $300-600\n   459→Time: 4-8 hours (generation + editing/trimming)\n   460→API Cost: ~$10-30 (Suno/Udio $1-3 per track)\n   461→Margin: 75-80%\n   462→```\n   463→\n   464→**2. Podcast Intro/Outro Music**\n   465→```\n   466→Example: \"Create custom intro + outro music for podcast (30 seconds each)\"\n   467→\n   468→AC.md Template:\n   469→- Style: [Client provides reference OR describes brand]\n   470→- Duration: 30 seconds intro + 30 seconds outro\n   471→- Branding: Upbeat, memorable, podcast-appropriate\n   472→- Voiceover space: Leave 10 seconds in middle for voice (intro only)\n   473→- Format: MP3 + WAV\n   474→- Revisions: 2 rounds (style, tempo, length)\n   475→- Usage: Exclusive rights for client\n   476→\n   477→Budget: $200-400\n   478→Time: 3-6 hours\n   479→API Cost: ~$5-15\n   480→Margin: 75%\n   481→```\n   482→\n   483→**3. App/Game Sound Effects + Music**\n   484→```\n   485→Example: \"Create 20 sound effects + 3 background tracks for mobile game\"\n   486→\n   487→AC.md Template:\n   488→- Sound effects: Button clicks, success sounds, error sounds, etc.\n   489→- Background tracks: Menu music, gameplay music, boss fight music\n   490→- Style: [Client provides reference game OR describes vibe]\n   491→- Format: WAV (lossless) for integration\n   492→- Duration: Sound effects 0.5-2s each, tracks 1-2 min (loopable)\n   493→- Approval: Client approves 5 sound effects + 1 track before bulk\n   494→- Revisions: 1 round\n   495→\n   496→Budget: $400-800\n   497→Time: 6-12 hours\n   498→API Cost: ~$30-60\n   499→Margin: 70%\n   500→```\n   501→\n   502→**4. Custom Jingles/Brand Music**\n   503→```\n   504→Example: \"Create 15-second brand jingle for radio/video ads\"\n   505→\n   506→AC.md Template:\n   507→- Style: Catchy, memorable, brand-appropriate\n   508→- Duration: 15 seconds\n   509→- Lyrics: Client provides OR we write based on tagline\n   510→- Vocals: AI-generated singing (Suno) OR instrumental only\n   511→- Variations: 3 versions (full, instrumental, shortened 5s)\n   512→- Format: MP3 + WAV\n   513→- Approval: Client approves 1 concept before refinement\n   514→- Revisions: 3 rounds (this is high-value creative work)\n   515→\n   516→Budget: $500-1000\n   517→Time: 8-12 hours (multiple iterations)\n   518→API Cost: ~$20-40\n   519→Margin: 60-70%\n   520→```\n   521→\n   522→---\n   523→\n   524→### Tier 1D: Voice Generation (ElevenLabs) - ⭐⭐⭐⭐⭐\n   525→\n   526→**Why ElevenLabs Is High-Value:**\n   527→- Professional voiceover talent: $100-500 per project\n   528→- ElevenLabs: $0.30-3.00 per 1000 characters\n   529→- Instant turnaround (no voice actor scheduling)\n   530→- Multiple language support\n   531→\n   532→**Mission Types:**\n   533→\n   534→**1. Video Voiceovers**\n   535→```\n   536→Example: \"Generate voiceovers for 10 product videos (30-60 seconds each)\"\n   537→\n   538→AC.md Template:\n   539→- Scripts: [Client provides OR we write based on video content]\n   540→- Voice: [Client chooses from ElevenLabs voice library OR we suggest]\n   541→- Tone: Professional, friendly, energetic (client specifies)\n   542→- Duration: 30-60 seconds per video (300-500 words total per video)\n   543→- Format: MP3 320kbps\n   544→- Pacing: Natural pauses, emphasis on key points\n   545→- Sync: Timed to match video scenes (if client provides video)\n   546→- Approval: Client approves 1 sample voiceover before bulk\n   547→- Revisions: 1 round (re-record with adjusted tone/pacing)\n   548→\n   549→Budget: $300-600\n   550→Time: 4-8 hours (script writing + generation + timing)\n   551→API Cost: ~$10-30 (ElevenLabs ~$1-3 per video)\n   552→Margin: 75-80%\n   553→```\n   554→\n   555→**2. Audiobook Narration**\n   556→```\n   557→Example: \"Narrate 10,000-word e-book (approx 1 hour audio)\"\n   558→\n   559→AC.md Template:\n   560→- Input: Text document (Word/PDF)\n   561→- Voice: [Client selects from voice library]\n   562→- Tone: Consistent with book genre (business, fiction, self-help)\n   563→- Length: ~10,000 words = ~60 minutes audio\n   564→- Format: MP3 chapters + single full audiobook file\n   565→- Editing: Remove long pauses, normalize volume\n   566→- Approval: Client approves 5-minute sample before full narration\n   567→- Revisions: 1 round (re-record specific sections if needed)\n   568→\n   569→Budget: $400-800\n   570→Time: 6-10 hours (generation + editing + chapter splitting)\n   571→API Cost: ~$30-60 (ElevenLabs charges by character count)\n   572→Margin: 70-75%\n   573→```\n   574→\n   575→**3. Podcast Voiceover / Narration**\n   576→```\n   577→Example: \"Generate voiceovers for 10 podcast episodes (5-10 min each)\"\n   578→\n   579→AC.md Template:\n   580→- Scripts: [Client provides per episode]\n   581→- Voice: Consistent voice across all episodes\n   582→- Tone: Conversational, engaging\n   583→- Duration: 5-10 minutes per episode (500-1000 words)\n   584→- Format: MP3 per episode\n   585→- Quality: Studio-quality audio, minimal background noise\n   586→- Approval: Client approves episode 1 before bulk\n   587→- Revisions: 1 round per episode\n   588→\n   589→Budget: $400-700\n   590→Time: 6-10 hours\n   591→API Cost: ~$30-50\n   592→Margin: 70%\n   593→```\n   594→\n   595→**4. IVR / Phone System Messages**\n   596→```\n   597→Example: \"Create 20 IVR messages for business phone system\"\n   598→\n   599→AC.md Template:\n   600→- Messages: Greeting, menu options, hold music message, voicemail, etc.\n   601→- Voice: Professional, clear pronunciation\n   602→- Scripts: [Client provides OR we write standard IVR copy]\n   603→- Format: WAV (phone system compatible)\n   604→- Length: 5-30 seconds per message\n   605→- Approval: Client approves 3 sample messages\n   606→- Revisions: 1 round\n   607→\n   608→Budget: $250-500\n   609→Time: 4-6 hours\n   610→API Cost: ~$5-15\n   611→Margin: 80%\n   612→```\n   613→\n   614→**5. Language Learning / Pronunciation Audio**\n   615→```\n   616→Example: \"Generate 500 pronunciation audio files for language app (words + sentences)\"\n   617→\n   618→AC.md Template:\n   619→- Input: CSV with 500 words/sentences\n   620→- Languages: [Client specifies, ElevenLabs supports 29 languages]\n   621→- Voice: Native speaker accent\n   622→- Format: MP3 per word/sentence, organized in folders\n   623→- Speed: Normal speaking pace (or client-specified)\n   624→- Quality: Clear pronunciation for learning\n   625→- Approval: Client reviews 20 samples before bulk\n   626→- Revisions: Re-record mispronounced words\n   627→\n   628→Budget: $400-800\n   629→Time: 6-10 hours (batch processing + QA)\n   630→API Cost: ~$50-100\n   631→Margin: 65-70%\n   632→```\n   633→\n   634→---\n   635→\n   636→### Tier 1E: Presentation/PDF Generation (Gamma) - ⭐⭐⭐⭐\n   637→\n   638→**Why Gamma Is Strategic:**\n   639→- Professional designers charge $500-2000 for pitch decks\n   640→- Gamma generates in minutes\n   641→- AI-powered layout + design\n   642→- Perfect for startup pitch decks, sales presentations, reports\n   643→\n   644→**Mission Types:**\n   645→\n   646→**1. Pitch Deck / Investor Presentation**\n   647→```\n   648→Example: \"Create 15-slide investor pitch deck for startup\"\n   649→\n   650→AC.md Template:\n   651→- Content: [Client provides outline OR we structure based on brief]\n   652→- Slides: Problem, Solution, Market, Traction, Team, Ask (standard pitch format)\n   653→- Design: Professional, clean, brand colors\n   654→- Charts: Market size, revenue projections (client provides data)\n   655→- Length: 12-15 slides\n   656→- Format: PDF + editable Gamma link\n   657→- Revisions: 2 rounds (content, design, data)\n   658→- Delivery: PDF for sharing + Gamma link for future edits\n   659→\n   660→Budget: $400-800\n   661→Time: 6-10 hours (content + design + data visualization)\n   662→API Cost: ~$10-20 (Gamma Pro subscription)\n   663→Margin: 75%\n   664→```\n   665→\n   666→**2. Sales Presentation / One-Pager**\n   667→```\n   668→Example: \"Create 10-slide sales deck + 1-page PDF summary\"\n   669→\n   670→AC.md Template:\n   671→- Content: Product overview, benefits, case studies, pricing\n   672→- Design: Client brand colors + logo\n   673→- Length: 10 slides + 1-page summary\n   674→- Format: PDF (presentation) + PDF (one-pager)\n   675→- Approval: Client reviews slide 1-3 before completing deck\n   676→- Revisions: 2 rounds\n   677→\n   678→Budget: $300-600\n   679→Time: 5-8 hours\n   680→API Cost: ~$5-10\n   681→Margin: 75-80%\n   682→```\n   683→\n   684→**3. Training Manuals / Employee Handbooks**\n   685→```\n   686→Example: \"Create 30-page employee onboarding handbook (PDF)\"\n   687→\n   688→AC.md Template:\n   689→- Content: [Client provides outline + raw text]\n   690→- Sections: Welcome, Company values, Policies, Benefits, Resources\n   691→- Design: Professional layout, branded\n   692→- Length: 25-30 pages\n   693→- Format: PDF\n   694→- Visuals: Icons, diagrams, photos (client provides OR we source stock)\n   695→- Approval: Client reviews first 10 pages before completing\n   696→- Revisions: 2 rounds\n   697→\n   698→Budget: $500-1000\n   699→Time: 8-14 hours\n   700→API Cost: ~$10-20\n   701→Margin: 70%\n   702→```\n   703→\n   704→**4. Lead Magnet PDFs / E-books**\n   705→```\n   706→Example: \"Design 20-page e-book for lead generation\"\n   707→\n   708→AC.md Template:\n   709→- Content: [Client provides text content]\n   710→- Design: Eye-catching cover + clean interior layout\n   711→- Length: 15-20 pages\n   712→- Format: PDF\n   713→- Branding: Client logo, colors, fonts\n   714→- CTA: Links to client website/landing page\n   715→- Approval: Client approves cover + first 3 pages\n   716→- Revisions: 2 rounds\n   717→\n   718→Budget: $300-600\n   719→Time: 5-8 hours\n   720→API Cost: ~$5-10\n   721→Margin: 75%\n   722→```\n   723→\n   724→**5. Reports / White Papers**\n   725→```\n   726→Example: \"Create 40-page industry report with data visualizations\"\n   727→\n   728→AC.md Template:\n   729→- Content: [Client provides research data + text]\n   730→- Charts: 10-15 data visualizations (graphs, charts, infographics)\n   731→- Design: Professional, report-appropriate layout\n   732→- Length: 35-40 pages\n   733→- Format: PDF\n   734→- Citations: Properly formatted references\n   735→- Approval: Client reviews first 10 pages + 3 sample charts\n   736→- Revisions: 2 rounds\n   737→\n   738→Budget: $700-1200\n   739→Time: 10-16 hours\n   740→API Cost: ~$15-25\n   741→Margin: 65-70%\n   742→```\n   743→\n   744→---\n   745→\n   746→### Tier 1F: Translation Services - ⭐⭐⭐⭐\n   747→\n   748→**Why Translation Is High-Margin:**\n   749→- Professional translators: $0.10-0.30 per word\n   750→- Claude API: $0.001-0.003 per word\n   751→- 95%+ accuracy for most language pairs\n   752→- Fast turnaround (10,000 words in 2 hours)\n   753→\n   754→**Mission Types:**\n   755→\n   756→**1. Website/App Translation**\n   757→```\n   758→Example: \"Translate website from English to 5 languages (French, Spanish, German, Italian, Portuguese)\"\n   759→\n   760→AC.md Template:\n   761→- Input: Website content (JSON/CSV/TXT files)\n   762→- Languages: 5 target languages\n   763→- Word count: [Estimate from client content]\n   764→- Tone: Maintain original tone (professional, casual, technical)\n   765→- Context-aware: Technical terms, brand names preserved correctly\n   766→- Format: Same structure as input (JSON keys preserved, HTML tags intact)\n   767→- QA: Native speaker review for 10% of content (client provides reviewer OR we charge extra $100)\n   768→- Revisions: 1 round of corrections per language\n   769→\n   770→Budget: $500-1000 (based on word count)\n   771→Example pricing: 10,000 words × 5 languages = 50,000 words → $600\n   772→Time: 6-10 hours (setup + QA + formatting)\n   773→API Cost: ~$30-60 (Claude translation)\n   774→Margin: 70-75%\n   775→```\n   776→\n   777→**2. Document Translation (Bulk)**\n   778→```\n   779→Example: \"Translate 200 product descriptions from English to Spanish\"\n   780→\n   781→AC.md Template:\n   782→- Input: 200 descriptions (CSV)\n   783→- Source: English\n   784→- Target: Spanish (Latin America variant OR Spain Spanish - client specifies)\n   785→- Word count: ~20,000 words total\n   786→- Maintain formatting: Bullet points, capitalization, special characters\n   787→- Quality: Natural-sounding, not literal translation\n   788→- Terminology: Consistent product terms throughout\n   789→- Approval: Client reviews 20 sample translations before bulk\n   790→- Delivery: CSV with original + translated columns\n   791→\n   792→Budget: $300-600\n   793→Time: 4-8 hours\n   794→API Cost: ~$20-40\n   795→Margin: 70%\n   796→```\n   797→\n   798→**3. Marketing Content Translation**\n   799→```\n   800→Example: \"Translate 10 blog posts from English to German (8,000 words total)\"\n   801→\n   802→AC.md Template:\n   803→- Input: 10 blog posts (Markdown or Word)\n   804→- Target: German (formal vs informal - client specifies)\n   805→- Word count: ~8,000 words\n   806→- Tone: Marketing-appropriate, engaging\n   807→- SEO: Translate meta descriptions + alt text\n   808→- Links: Preserve all hyperlinks\n   809→- Approval: Client reviews 1 full blog post before bulk\n   810→- Revisions: 1 round per post\n   811→\n   812→Budget: $400-700\n   813→Time: 6-10 hours\n   814→API Cost: ~$25-40\n   815→Margin: 70%\n   816→```\n   817→\n   818→**4. Legal/Technical Document Translation (Higher Complexity)**\n   819→```\n   820→Example: \"Translate legal contract from English to French (5,000 words)\"\n   821→\n   822→AC.md Template:\n   823→- Input: Legal contract (PDF/Word)\n   824→- Target: French (legal terminology)\n   825→- Word count: 5,000 words\n   826→- Accuracy: Legal terms must be precise\n   827→- Format: Preserve exact formatting (clauses, sections, numbering)\n   828→- QA: MANDATORY native legal professional review (we coordinate)\n   829→- Disclaimer: Translation for reference only, not legal advice\n   830→- Revisions: 2 rounds after legal review\n   831→\n   832→Budget: $600-1000 (higher due to legal complexity + required review)\n   833→Time: 8-12 hours (translation + legal reviewer coordination)\n   834→API Cost: ~$30-50\n   835→Margin: 60% (lower due to required legal review)\n   836→\n   837→⚠️ RED FLAG: Only take legal/medical translations if client understands limitations\n   838→```\n   839→\n   840→---\n   841→\n   842→### Tier 1G: Content Writing/Editing - ⭐⭐⭐⭐\n   843→\n   844→**Why Content Writing Works:**\n   845→- Professional writers: $0.10-0.50 per word\n   846→- AI generation: $0.001-0.005 per word\n   847→- Human QA ensures quality\n   848→- Scalable (can produce 10K words/day)\n   849→\n   850→**Mission Types:**\n   851→\n   852→**1. SEO Blog Posts (Bulk)**\n   853→```\n   854→Example: \"Write 10 SEO-optimized blog posts (800-1200 words each)\"\n   855→\n   856→AC.md Template:\n   857→- Topics: [Client provides keywords + outlines OR we research]\n   858→- Tone: Professional, informative (client provides 2-3 reference posts)\n   859→- SEO requirements:\n   860→  - Keyword in title, H1, first paragraph, 2+ H2s\n   861→  - Meta description (150-160 chars)\n   862→  - Internal links (3-5 per post)\n   863→  - Alt text for images\n   864→- Structure: Intro, 3-5 H2 sections, conclusion with CTA\n   865→- Length: 800-1200 words per post\n   866→- Quality gate: Client approves 2 sample posts before bulk\n   867→- Revisions: 1 round of edits per post (fact corrections, tone adjustments)\n   868→- Delivery: 10 Markdown files + meta descriptions + suggested images\n   869→\n   870→Budget: $600-1200 ($60-120 per post)\n   871→Time: 8-16 hours (research + generation + editing + SEO optimization)\n   872→API Cost: ~$30-60\n   873→Margin: 60-70%\n   874→```\n   875→\n   876→**2. Product Descriptions (E-commerce)**\n   877→```\n   878→Example: \"Write 500 unique product descriptions (100-150 words each)\"\n   879→\n   880→AC.md Template:\n   881→- Input: Product specs (CSV: name, features, benefits, price)\n   882→- Tone: [Client provides 5 example descriptions]\n   883→- Structure: Feature highlight → Benefit → CTA\n   884→- Length: 100-150 words each\n   885→- SEO: Include product name + category keywords naturally\n   886→- Uniqueness: No duplicate phrasing across descriptions (we ensure variety)\n   887→- Format: CSV with descriptions column added\n   888→- Approval: Client reviews 20 sample descriptions before bulk\n   889→- Revisions: 1 round for style/tone adjustments (not individual product edits)\n   890→\n   891→Budget: $400-800\n   892→Time: 6-10 hours\n   893→API Cost: ~$40-80 (500 generations)\n   894→Margin: 65-70%\n   895→```\n   896→\n   897→**3. Email Campaigns**\n   898→```\n   899→Example: \"Write 12 email sequences for SaaS onboarding (6 emails × 2 personas)\"\n   900→\n   901→AC.md Template:\n   902→- Personas: [Client defines 2 target personas with pain points]\n   903→- Sequence timing: Day 0, 2, 4, 7, 14, 21 (welcome → activation → retention)\n   904→- Tone: Friendly, helpful (client provides reference emails)\n   905→- Length: 150-250 words per email\n   906→- Structure: Hook → Value → CTA\n   907→- CTAs: Clear action in each email (login, complete profile, book demo, etc.)\n   908→- Subject lines: 3 options per email (A/B test ready)\n   909→- Approval: Client reviews 1 complete sequence (6 emails) before finalizing second persona\n   910→- Delivery: Google Docs with all emails organized by persona + day\n   911→\n   912→Budget: $350-600\n   913→Time: 6-10 hours\n   914→API Cost: ~$10-20\n   915→Margin: 70%\n   916→```\n   917→\n   918→**4. Social Media Content Calendar**\n   919→```\n   920→Example: \"Create 30 days of social media posts (LinkedIn + Twitter)\"\n   921→\n   922→AC.md Template:\n   923→- Platforms: LinkedIn + Twitter (different copy for each)\n   924→- Frequency: 1 post per day × 30 days × 2 platforms = 60 posts\n   925→- Tone: [Client provides brand voice guidelines]\n   926→- Topics: [Client provides themes OR we suggest based on industry]\n   927→- Length: LinkedIn 150-300 words, Twitter 200-280 chars\n   928→- Hashtags: 3-5 relevant hashtags per post\n   929→- CTAs: Include link/CTA every 3rd post\n   930→- Format: CSV with columns: Date, Platform, Post, Hashtags, Link\n   931→- Approval: Client reviews week 1 (7 days × 2 platforms) before bulk\n   932→- Revisions: 1 round for tone adjustments\n   933→\n   934→Budget: $400-700\n   935→Time: 6-10 hours\n   936→API Cost: ~$20-40\n   937→Margin: 70%\n   938→```\n   939→\n   940→**5. Case Studies / Testimonial Writing**\n   941→```\n   942→Example: \"Write 5 customer case studies (800-1000 words each)\"\n   943→\n   944→AC.md Template:\n   945→- Input: Client provides customer interview notes OR we conduct interviews (extra $100/interview)\n   946→- Structure: Challenge → Solution → Results (with metrics)\n   947→- Tone: Professional, results-focused\n   948→- Length: 800-1000 words each\n   949→- Quotes: Include 2-3 customer quotes per case study\n   950→- Metrics: Before/after data (revenue increase, time saved, etc.)\n   951→- Approval: Client + customer review each case study\n   952→- Revisions: 2 rounds per case study (client + customer feedback)\n   953→\n   954→Budget: $500-900\n   955→Time: 8-14 hours (interviewing + writing + revisions)\n   956→API Cost: ~$15-30\n   957→Margin: 65%\n   958→```\n   959→\n   960→**6. Text Review/Proofreading**\n   961→```\n   962→Example: \"Proofread and edit 50 blog posts for grammar, clarity, SEO\"\n   963→\n   964→AC.md Template:\n   965→- Input: 50 blog posts (Google Docs or Markdown)\n   966→- Tasks:\n   967→  - Fix grammar, spelling, punctuation\n   968→  - Improve clarity and flow (sentence restructuring)\n   969→  - Optimize for SEO (keyword density, readability score, meta descriptions)\n   970→  - Suggest better headlines/subheadings\n   971→- Track changes: All edits visible (Google Docs suggestions mode)\n   972→- Comments: Flag major issues for client review\n   973→- Delivery: Edited documents + summary report of major changes\n   974→- Quality: Client reviews 5 sample edits before bulk\n   975→\n   976→Budget: $300-600\n   977→Time: 8-12 hours\n   978→API Cost: ~$20-40\n   979→Margin: 70%\n   980→```\n   981→\n   982→---\n   983→\n   984→## AI Integration Missions (Strategic Advantage)\n   985→\n   986→### Why AI Integration Missions Are Perfect for ScopeLock\n   987→\n   988→**The Strategic Advantage:**\n   989→\n   990→1. **AI excels at these** - This is what Claude/GPT actually do natively\n   991→2. **Less competition** - Traditional devs don't know AI APIs well\n   992→3. **Higher perceived value** - \"AI integration\" sounds premium\n   993→4. **Faster delivery** - Often 4-8 hours vs. 20+ for web apps\n   994→5. **Better margins** - $400 for 6 hours of work vs. $400 for 20 hours\n   995→6. **Rafael's sweet spot** - Generating code that calls AI APIs = trivial for Claude\n   996→\n   997→**The Risk We Must Manage:**\n   998→\n   999→❌ Subjective quality (\"make it perfect\")\n  1000→✅ Objective acceptance criteria (\"95% accuracy on test set\")\n  1001→\n  1002→---\n  1003→\n  1004→### Tier 1: Document & Data Processing (HIGHEST PRIORITY)\n  1005→\n  1006→**Why These Are Gold:**",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:16:39.240Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:16:39.770Z",
+      "content": "Now let me update the summary tables at the end to reflect the new creative services priorities:"
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:16:41.229Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01Ff9U1ursFFo336NrchiD8o",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "offset": 630,
+            "limit": 50
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:16:41.773Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01Ff9U1ursFFo336NrchiD8o",
+          "output": "   630→API Cost: ~$50-100\n   631→Margin: 65-70%\n   632→```\n   633→\n   634→---\n   635→\n   636→### Tier 1E: Presentation/PDF Generation (Gamma) - ⭐⭐⭐⭐\n   637→\n   638→**Why Gamma Is Strategic:**\n   639→- Professional designers charge $500-2000 for pitch decks\n   640→- Gamma generates in minutes\n   641→- AI-powered layout + design\n   642→- Perfect for startup pitch decks, sales presentations, reports\n   643→\n   644→**Mission Types:**\n   645→\n   646→**1. Pitch Deck / Investor Presentation**\n   647→```\n   648→Example: \"Create 15-slide investor pitch deck for startup\"\n   649→\n   650→AC.md Template:\n   651→- Content: [Client provides outline OR we structure based on brief]\n   652→- Slides: Problem, Solution, Market, Traction, Team, Ask (standard pitch format)\n   653→- Design: Professional, clean, brand colors\n   654→- Charts: Market size, revenue projections (client provides data)\n   655→- Length: 12-15 slides\n   656→- Format: PDF + editable Gamma link\n   657→- Revisions: 2 rounds (content, design, data)\n   658→- Delivery: PDF for sharing + Gamma link for future edits\n   659→\n   660→Budget: $400-800\n   661→Time: 6-10 hours (content + design + data visualization)\n   662→API Cost: ~$10-20 (Gamma Pro subscription)\n   663→Margin: 75%\n   664→```\n   665→\n   666→**2. Sales Presentation / One-Pager**\n   667→```\n   668→Example: \"Create 10-slide sales deck + 1-page PDF summary\"\n   669→\n   670→AC.md Template:\n   671→- Content: Product overview, benefits, case studies, pricing\n   672→- Design: Client brand colors + logo\n   673→- Length: 10 slides + 1-page summary\n   674→- Format: PDF (presentation) + PDF (one-pager)\n   675→- Approval: Client reviews slide 1-3 before completing deck\n   676→- Revisions: 2 rounds\n   677→\n   678→Budget: $300-600\n   679→Time: 5-8 hours\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:19:13.223Z",
+      "content": "This session is being continued from a previous conversation that ran out of context. The conversation is summarized below:\nAnalysis:\nLet me chronologically analyze this conversation to capture all technical details, user requests, and work performed.\n\n## Conversation Flow Analysis\n\n### Section 1: Continuation from Previous Session\nThe conversation started with system reminders about:\n1. Previously read files too large for context\n2. Todo list status showing completed homepage tasks\n3. CLAUDE.md file modifications (team structure documentation)\n\n### Section 2: Mission Type Clarification Request\n**User's request:** \"I want to know the complete type of missions that we are looking for. Could you make the recap?\"\n\n**My initial response (INCORRECT):**\n- I provided a comprehensive but WRONG answer based on outdated assumptions\n- Described mission types as $3K-15K Evidence Sprint → Full Build conversions\n- Focused on larger scopes (MVPs, startups, rescue missions)\n- Target budgets $2K-15K\n\n**User's correction:** \"Ok, so your answer is actually incorrect. I think it's based on outdated information. Could you look for and read the document? Now, we are looking first to target smaller, simpler missions that because of the integration with the human team.\"\n\n**Key insight from user:** The team is in BOOTSTRAPPING phase with junior developers, need SIMPLE missions first ($200-600), not complex $3K-15K projects.\n\n### Section 3: Reading Authoritative Document\n**Action taken:** Read `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md`\n\n**Corrected understanding:**\n- **Golden Rule:** \"If Rafael can't build it in ONE conversation → we pass\"\n- **Budget:** $200-600 (Week 1-2), not $3K-15K\n- **Timeline:** 2-7 days, sweet spot 2-3 days\n- **Stack:** 80%+ must match our tools (Python, JS/TS, PostgreSQL, Render/Vercel)\n- **Mission types:** Landing pages ($200-400), Telegram bots, simple APIs, PDF parsing, document processing\n\n**My corrected response:** Provided accurate mission types based on the authoritative document, acknowledging my mistake.\n\n### Section 4: Strategic Expansion Proposal\n**User's insight:** \"So I really think that given our context of a mixed team between AIs, collaborating and junior developers, we could drastically expand the mission scopes to for example content generation, image generation using Ideogram, video generation using Runway.aml, and other types of creative or maybe translation, text reviews etc. because we would be doing this really easily and it would give us more scope.\"\n\n**Key strategic insight from user:**\n- **Structural advantage:** AI citizens can generate creative work (images, videos, music, voice) natively\n- **Traditional dev shops can't compete:** They don't have Ideogram/Runway/Suno/ElevenLabs/Gamma\n- **Higher margins:** 70-85% vs 50-60% for traditional dev work\n- **Lower competition:** Dev shops don't bid on creative services\n- **Faster delivery:** AI generates, humans QA\n\n**User's explicit request:** \"Amazing. Yes, update mission selection. I think we can also do music generation through Suno or Udio. We can also do voice generation or voice something through ElevenLabs. We also have access to PDF Generation through Gamma app. We can make slides and PowerPoint. Add everything needed, categories, AC, pricing, etc.\"\n\n### Section 5: Comprehensive MISSION_SELECTION.md Update\n**Action taken:** Major expansion of `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md`\n\n**New sections added:**\n\n1. **Creative AI Services (Strategic Priority)** - New top section explaining competitive moat\n2. **Tier 1A: Image Generation (Ideogram)** - 4 mission types with full AC.md templates\n3. **Tier 1B: Video Generation (Runway)** - 3 mission types with pricing/margins\n4. **Tier 1C: Music Generation (Suno/Udio)** - 4 mission types (background music, podcast intros, jingles)\n5. **Tier 1D: Voice Generation (ElevenLabs)** - 5 mission types (voiceovers, audiobooks, IVR, language learning)\n6. **Tier 1E: Presentation/PDF Generation (Gamma)** - 5 mission types (pitch decks, sales decks, handbooks)\n7. **Tier 1F: Translation Services** - 4 mission types (website translation, documents, legal/technical)\n8. **Tier 1G: Content Writing/Editing** - 6 mission types (SEO blog posts, product descriptions, email campaigns)\n\n**Each mission type includes:**\n- Example job description\n- Complete AC.md template\n- Budget range\n- Time estimate\n- API cost estimate\n- Margin calculation\n- Red flags to avoid\n- Green flags to seek\n\n### Section 6: Summary Request\n**User's request:** \"Your task is to create a detailed summary of the conversation so far...\"\n\n**Current status:** Working on expanding MISSION_SELECTION.md with creative AI services, partially complete.\n\n## Technical Details Captured\n\n### Key Technologies Discussed\n- **Image Generation:** Ideogram API\n- **Video Generation:** Runway API\n- **Music Generation:** Suno, Udio\n- **Voice Generation:** ElevenLabs API\n- **Presentation Generation:** Gamma\n- **Translation:** Claude API\n- **Content Writing:** Claude API\n\n### Pricing Models Established\n- **Ideogram:** $0.50-1.00 per image\n- **Runway:** $10-20 per video\n- **Suno/Udio:** $1-3 per track\n- **ElevenLabs:** $0.30-3.00 per 1000 characters\n- **Gamma:** $10-20 per project (Pro subscription)\n- **Claude translation:** $0.001-0.003 per word\n\n### Margin Calculations\n- **Creative AI services:** 70-85% margin\n- **Traditional dev work:** 50-60% margin\n- **Translation:** 70-75% margin\n- **Content writing:** 60-70% margin\n\nSummary:\n## 1. Primary Request and Intent\n\n**Session continuation:**\n- Continue from previous session where homepage messaging fixes and Zero-Call Evidence Sprint contact form were completed\n- Todo list showed pending tasks for Telegram outreach, Emma's task system review, Inna's documentation review\n\n**Mission types clarification (Primary request):**\n- User: \"I want to know the complete type of missions that we are looking for. Could you make the recap?\"\n- User corrected my initial response: \"Ok, so your answer is actually incorrect. I think it's based on outdated information. Could you look for and read the document? Now, we are looking first to target smaller, simpler missions that because of the integration with the human team.\"\n- **Context correction:** Team is in bootstrapping phase with junior developers (Bigbosexf, Reanance, Kara), need simple $200-600 missions, NOT complex $3K-15K projects\n\n**Strategic expansion (Main work):**\n- User: \"So I really think that given our context of a mixed team between AIs, collaborating and junior developers, we could drastically expand the mission scopes to for example content generation, image generation using Ideogram, video generation using Runway.aml, and other types of creative or maybe translation, text reviews etc. because we would be doing this really easily and it would give us more scope.\"\n- User: \"Amazing. Yes, update mission selection. I think we can also do music generation through Suno or Udio. We can also do voice generation or voice something through ElevenLabs. We also have access to PDF Generation through Gamma app. We can make slides and PowerPoint. Add everything needed, categories, AC, pricing, etc.\"\n\n**Explicit directive:** Update MISSION_SELECTION.md with comprehensive creative AI services including:\n- Image generation (Ideogram)\n- Video generation (Runway)\n- Music generation (Suno/Udio)\n- Voice generation (ElevenLabs)\n- Presentation/PDF generation (Gamma)\n- Translation services\n- Content writing/editing\n\n## 2. Key Technical Concepts\n\n**ScopeLock Core Concepts:**\n- **Golden Rule:** \"If Rafael can't build it in ONE conversation → we pass\"\n- **AC.md:** Acceptance criteria document with objective success metrics\n- **Budget tiers:** $200-600 (Week 1-2), $600-1500 (Week 3+)\n- **Stack standardization:** Python/FastAPI, Next.js/Vercel, PostgreSQL/Airtable\n- **Zero-Call workflow:** Evidence Sprint → async approval → delivery\n\n**Creative AI Service Technologies:**\n- **Ideogram:** Text-in-image generation, $0.50-1.00 per image, better than DALL-E for branded content\n- **Runway:** Text-to-video and image-to-video, $10-20 per video, 2-5 min generation time\n- **Suno/Udio:** Music generation, $1-3 per track, royalty-free custom music\n- **ElevenLabs:** Voice generation, $0.30-3.00 per 1000 characters, 29 language support\n- **Gamma:** AI presentation generator, $10-20 per project, replaces $500-2000 design work\n- **Claude translation:** $0.001-0.003 per word, 95%+ accuracy\n\n**Margin Economics:**\n- Traditional dev work: 50-60% margin\n- Creative AI services: 70-85% margin\n- Translation: 70-75% margin\n- Content writing: 60-70% margin\n\n**Competitive Advantage:**\n- Zero traditional dev competition (dev shops don't bid on creative work)\n- AI-native workflow (Ideogram/Runway/Suno/ElevenLabs integrated)\n- Higher budgets ($400-1500 vs $200-400 for dev work)\n- Faster delivery (4-10 hours vs 20-40 hours)\n- Scalable (one human can QA 10x more creative output than code)\n\n**Risk Management:**\n- **Template/style approval UPFRONT:** Client must approve samples before bulk generation\n- **Fixed revision rounds:** 1-2 rounds max, scoped in AC.md\n- **Reference materials required:** Client provides examples of desired style\n- **Objective AC.md criteria:** \"Client approves 10 samples\" not \"make it beautiful\"\n\n## 3. Files and Code Sections\n\n### `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md` (MAJOR UPDATE)\n\n**Why important:** Authoritative document for Emma's job selection on Upwork, defines which missions to bid on and which to avoid.\n\n**Changes made:** Massive expansion with 7 new creative AI service categories inserted at line 225 (before existing \"AI Integration Missions\" section).\n\n**Section 1: Creative AI Services Introduction (Lines 225-249)**\n```markdown\n## ⭐ CREATIVE AI SERVICES (STRATEGIC PRIORITY - HIGHEST MARGIN)\n\n### Why Creative AI Is Our Competitive Moat\n\n**The Game-Changing Advantage:**\n\n1. **Zero traditional dev competition** - Dev shops don't bid on creative work\n2. **AI-native workflow** - We have Ideogram, Runway, Suno, ElevenLabs, Gamma integrated\n3. **Massive margins** - 70-85% profit (AI does the work, humans QA)\n4. **Higher budgets** - $400-1500 vs $200-400 for dev work\n5. **Faster delivery** - 4-10 hours vs 20-40 hours for equivalent value\n6. **Clear AC.md possible** - Objective criteria (quantity, format, approval gates)\n7. **Scalable** - One human can QA 10x more creative output than code\n\n**The Risk We Must Manage:**\n\n❌ Subjective quality (\"make it beautiful\")\n✅ Objective acceptance criteria (\"Client approves 10 samples before bulk\")\n\n**Critical Success Factor:**\n- **Template/Style approval UPFRONT** - Client must approve samples before bulk generation\n- **Fixed revision rounds** - 1-2 rounds max, scoped in AC.md\n- **Reference materials required** - Client provides examples of desired style\n```\n\n**Section 2: Tier 1A - Image Generation (Ideogram) (Lines 251-353)**\n\nExample mission type:\n```markdown\n**1. Bulk Product Images**\n```\nExample: \"Generate 100 product mockup images for e-commerce store\"\n\nAC.md Template:\n- Input: Product names + descriptions (CSV)\n- Style: [Client provides 3-5 reference images]\n- Format: 1024x1024 PNG, transparent background\n- Text: Product name on each image (if applicable)\n- Quantity: 100 images\n- Approval gate: Client approves 10 sample images before bulk\n- Revisions: 1 round for failed images only (missing text, wrong style)\n- Output: ZIP file organized by product category\n- Delivery: Google Drive link + organized folder structure\n\nBudget: $400-800\nTime: 4-8 hours (setup + generation + QA)\nAPI Cost: ~$50-100 (Ideogram $0.50-1.00 per image)\nMargin: 75-80%\n\nRed Flags to Avoid:\n❌ \"Make them beautiful\" (too subjective)\n❌ No reference images provided\n❌ Client wants \"unique artistic vision\" (scope creep)\n❌ Unlimited revisions expected\n\nGreen Flags to Seek:\n✅ Client has clear brand guidelines\n✅ Provides 3+ reference images\n✅ Bulk operation (50+ images)\n✅ Willing to approve sample batch first\n```\n```\n\n**Why this is important:** Provides complete AC.md template that Bigbosexf/Emma can use immediately when finding Ideogram jobs on Upwork. Includes pricing formula, margin calculation, and red/green flag filters.\n\n**Section 3: Tier 1B - Video Generation (Runway) (Lines 356-430)**\n\nExample mission type:\n```markdown\n**1. Product Demo Videos**\n```\nExample: \"Create 10 short product demo videos (15-30 seconds each)\"\n\nAC.md Template:\n- Input: Product images + text descriptions\n- Style: [Client provides reference video OR we suggest template]\n- Duration: 15-30 seconds per video\n- Format: MP4, 1080p, 30fps\n- Voiceover: AI-generated (ElevenLabs) OR text-on-screen (client choice)\n- Music: Royalty-free background music included\n- Transitions: Smooth cuts, professional pacing\n- Branding: Client logo in corner (optional)\n- Approval: Client approves 2 sample videos before bulk\n- Revisions: 1 round of edits per video (timing, text, music)\n\nBudget: $600-1200\nTime: 8-16 hours (video editing + generation + rendering)\nAPI Cost: ~$100-200 (Runway ~$10-20 per video)\nMargin: 50-60%\n```\n```\n\n**Why this is important:** Video generation is high-value ($600-1200) with 50-60% margins. Includes ElevenLabs voiceover integration option, showing multi-service workflow.\n\n**Section 4: Tier 1C - Music Generation (Suno/Udio) (Lines 433-521)**\n\nExample mission types:\n1. Background music for videos (10 tracks, 2-3 min each, $300-600)\n2. Podcast intro/outro music (30 seconds each, $200-400)\n3. App/game sound effects + music (20 effects + 3 tracks, $400-800)\n4. Custom jingles/brand music (15 seconds, $500-1000)\n\n**Why this is important:** Unlocks music services market that traditional devs can't access. Extremely high margins (75-80%) due to low API costs ($1-3 per track).\n\n**Section 5: Tier 1D - Voice Generation (ElevenLabs) (Lines 524-633)**\n\nExample mission types:\n1. Video voiceovers (10 videos, 30-60s each, $300-600, 75-80% margin)\n2. Audiobook narration (10,000 words = 1 hour, $400-800, 70-75% margin)\n3. Podcast voiceover (10 episodes, 5-10 min, $400-700, 70% margin)\n4. IVR/phone system messages (20 messages, $250-500, 80% margin)\n5. Language learning audio (500 files, $400-800, 65-70% margin)\n\n**Why this is important:** Professional voiceover talent costs $100-500, ElevenLabs costs $0.30-3.00 per 1000 chars. Massive arbitrage opportunity. Supports 29 languages.\n\n**Section 6: Tier 1E - Presentation/PDF Generation (Gamma) (Lines 636-743)**\n\nExample mission types:\n1. Pitch deck / investor presentation (15 slides, $400-800, 75% margin)\n2. Sales presentation / one-pager (10 slides + 1 page, $300-600, 75-80% margin)\n3. Training manuals / employee handbooks (30 pages, $500-1000, 70% margin)\n4. Lead magnet PDFs / e-books (20 pages, $300-600, 75% margin)\n5. Reports / white papers (40 pages with charts, $700-1200, 65-70% margin)\n\n**Why this is important:** Professional designers charge $500-2000 for pitch decks, Gamma generates in minutes for $10-20. Perfect for startup clients.\n\n**Section 7: Tier 1F - Translation Services (Lines 746-839)**\n\nExample mission types:\n1. Website/app translation (5 languages, 10K words, $500-1000, 70-75% margin)\n2. Document translation bulk (200 descriptions, Spanish, $300-600, 70% margin)\n3. Marketing content translation (10 blog posts, 8K words, $400-700, 70% margin)\n4. Legal/technical translation (5K words with legal review, $600-1000, 60% margin)\n\n**Pricing formula:** Professional translators charge $0.10-0.30 per word, Claude API costs $0.001-0.003 per word. 100x cost advantage.\n\n**Why this is important:** Translation is high-volume, predictable, objective AC.md possible (\"95%+ accuracy on test set\"). Huge arbitrage opportunity.\n\n**Section 8: Tier 1G - Content Writing/Editing (Lines 842-981)**\n\nExample mission types:\n1. SEO blog posts (10 posts, 800-1200 words, $600-1200, 60-70% margin)\n2. Product descriptions (500 descriptions, 100-150 words, $400-800, 65-70% margin)\n3. Email campaigns (12 emails × 2 personas, $350-600, 70% margin)\n4. Social media content calendar (30 days, 2 platforms, $400-700, 70% margin)\n5. Case studies (5 case studies, 800-1000 words, $500-900, 65% margin)\n6. Text review/proofreading (50 blog posts, $300-600, 70% margin)\n\n**Why this is important:** Content writing is scalable (can produce 10K words/day), high margins (60-70%), and humans QA ensures quality that pure AI output can't match.\n\n## 4. Errors and Fixes\n\n**Error 1: Incorrect Mission Type Assessment (Major Conceptual Error)**\n\n**What happened:** \n- User asked: \"I want to know the complete type of missions that we are looking for. Could you make the recap?\"\n- I provided comprehensive answer about $3K-15K Evidence Sprint → Full Build missions, MVP/POC for startups, rescue missions, etc.\n- My answer was based on FUTURE state assumptions, not CURRENT bootstrapping reality\n\n**User feedback:**\n- \"Ok, so your answer is actually incorrect. I think it's based on outdated information. Could you look for and read the document? Now, we are looking first to target smaller, simpler missions that because of the integration with the human team.\"\n\n**How I fixed it:**\n1. Read authoritative document: `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md`\n2. Discovered correct criteria:\n   - Budget: $200-600 (not $3K-15K)\n   - Timeline: 2-7 days (not multi-week)\n   - Golden Rule: \"If Rafael can't build in ONE conversation → pass\"\n   - Stack: 80%+ must match our tools\n3. Provided corrected recap with accurate mission types (landing pages, Telegram bots, simple APIs, PDF parsing)\n4. Acknowledged my mistake explicitly: \"My mistake: I was thinking about the FUTURE state (Evidence Sprint → Full Build conversions at $3K-15K) instead of the CURRENT bootstrapping phase (simple $200-600 missions to prove workflow).\"\n\n**Lesson learned:** Always read authoritative documents before making assumptions. The team is in BOOTSTRAPPING phase with junior developers, not ready for complex missions yet.\n\n## 5. Problem Solving\n\n**Problem 1: Understanding Team Maturity Level**\n- **Challenge:** Initially assumed team was ready for complex $3K-15K missions\n- **Reality:** Team has junior developers (Bigbosexf, Reanance, Kara) who are still learning ScopeLock workflow\n- **Solution:** Corrected mission targets to $200-600 simple missions that can be completed in 2-7 days with AI doing 80%+ of the work\n\n**Problem 2: Identifying Competitive Advantage**\n- **User's insight:** \"we could drastically expand the mission scopes to for example content generation, image generation using Ideogram, video generation using Runway.aml, and other types of creative or maybe translation, text reviews etc. because we would be doing this really easily\"\n- **Strategic breakthrough:** Traditional dev shops CAN'T compete on creative services because they don't have Ideogram/Runway/Suno/ElevenLabs/Gamma integrated\n- **Solution:** Massive expansion of mission types to include 7 new creative AI service categories with 70-85% margins vs 50-60% for traditional dev work\n\n**Problem 3: Ensuring Objective AC.md for Creative Work**\n- **Challenge:** Creative work is typically subjective (\"make it beautiful\")\n- **Solution:** Built template/style approval gates into every AC.md template:\n  - \"Client approves 10 samples before bulk\"\n  - \"Client provides 3-5 reference images\"\n  - \"Fixed revision rounds: 1-2 max\"\n  - \"Reference materials required\"\n- **Result:** Objective success criteria even for creative work\n\n## 6. All User Messages\n\n1. **System reminder about CLAUDE.md modifications** (not a user message, but important context)\n\n2. **\"So I really think that given our context of a mixed team between AIs, collaborating and junior developers, we could drastically expand the mission scopes to for example content generation, image generation using Ideogram, video generation using Runway.aml, and other types of creative or maybe translation, text reviews etc. because we would be doing this really easily and it would give us more scope.\"**\n\n3. **\"Amazing. Yes, update mission selection. I think we can also do music generation through Suno or Udio. We can also do voice generation or voice something through ElevenLabs. We also have access to PDF Generation through Gamma app. We can make slides and PowerPoint. Add everything needed, categories, AC, pricing, etc.\"**\n\n4. **\"Your task is to create a detailed summary of the conversation so far...\"** (summary request with detailed instructions)\n\n## 7. Pending Tasks\n\nFrom todo list:\n1. ✅ **Expand MISSION_SELECTION.md with creative AI services** - IN PROGRESS (partially complete)\n2. ⏳ Set up Telegram outreach system (cd outreach/ → follow YOUR_ACTION_CHECKLIST_V2.txt) - PENDING\n3. ⏳ Monitor win rate and revenue (Week 1) - PENDING\n4. ⏳ Review Emma's automatic task system specifications - PENDING\n5. ⏳ Review Inna's 6-level documentation - PENDING\n\n**Immediate pending work:**\n- Complete MISSION_SELECTION.md update (summary tables need updating to reflect new creative services priorities)\n- Update Emma's scoring script to include creative AI services\n- Update Week 1 target mix to prioritize creative services over traditional dev work\n\n## 8. Current Work\n\n**Immediately before summary request, I was working on:**\n\nExpanding `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md` with comprehensive creative AI services categories.\n\n**Specific work completed:**\n1. Added new section \"⭐ CREATIVE AI SERVICES (STRATEGIC PRIORITY - HIGHEST MARGIN)\" at line 225\n2. Created 7 complete subsections:\n   - **Tier 1A: Image Generation (Ideogram)** - 4 mission types with full AC.md templates, pricing, margins\n   - **Tier 1B: Video Generation (Runway)** - 3 mission types (product demos, social ads, explainer videos)\n   - **Tier 1C: Music Generation (Suno/Udio)** - 4 mission types (background music, podcast intros, jingles)\n   - **Tier 1D: Voice Generation (ElevenLabs)** - 5 mission types (voiceovers, audiobooks, IVR, language learning)\n   - **Tier 1E: Presentation/PDF Generation (Gamma)** - 5 mission types (pitch decks, sales decks, handbooks)\n   - **Tier 1F: Translation Services** - 4 mission types (website, documents, marketing, legal)\n   - **Tier 1G: Content Writing/Editing** - 6 mission types (SEO blogs, product descriptions, email campaigns)\n\n**Each mission type includes:**\n- Example job description\n- Complete AC.md template with all fields\n- Budget range\n- Time estimate (hours)\n- API cost estimate\n- Margin calculation (%)\n- Red flags to avoid\n- Green flags to seek (where applicable)\n\n**Status:** Main content insertion complete (lines 225-981), but document still needs:\n- Summary tables updated to reflect creative services priorities\n- Emma's scoring script updated (lines 618-637)\n- Week 1 target mix revised to prioritize creative services\n\n**File state:** Modified but not yet saved/committed. The edit successfully inserted ~750 lines of new content between the existing \"Multi-Feature Web Apps\" section and the \"AI Integration Missions\" section.\n\n## 9. Optional Next Step\n\n**Next step:** Complete the MISSION_SELECTION.md update by:\n\n1. **Update summary table** (around line 640-656 in original file, now shifted) to reflect creative services as highest priority\n2. **Update Emma's scoring script** (around line 618-637) to add AI Integration Fit scoring\n3. **Update Week 1 target mix** (around line 659-667) to prioritize creative services\n\n**Direct quote from conversation showing what task I was working on:**\n\nUser: \"Amazing. Yes, update mission selection. I think we can also do music generation through Suno or Udio. We can also do voice generation or voice something through ElevenLabs. We also have access to PDF Generation through Gamma app. We can make slides and PowerPoint. Add everything needed, categories, AC, pricing, etc.\"\n\nMy response: \"Perfect! Let me update MISSION_SELECTION.md with the complete creative AI services expansion including Suno/Udio, ElevenLabs, and Gamma.\"\n\n**Where I left off:** I successfully inserted all 7 creative AI service categories with complete AC.md templates, pricing, and margins. The main content is complete, but the document's summary tables and scoring systems need to be updated to reflect that creative AI services are now the HIGHEST priority (not just traditional dev work).\n\nThe edit was successfully applied at line 225, inserting comprehensive creative AI services documentation before the existing \"AI Integration Missions\" section..\nPlease continue the conversation from where we left it off without asking the user any further questions. Continue with the last task that you were asked to work on."
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:22.189Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:22.838Z",
+      "content": "I'll complete the MISSION_SELECTION.md update by revising the summary tables and scoring system to reflect creative AI services as the highest priority."
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:23.694Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_018M2uNPRbdPMtxsCx91m1xy",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "offset": 980,
+            "limit": 100
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:19:23.848Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_018M2uNPRbdPMtxsCx91m1xy",
+          "output": "   980→```\n   981→\n   982→---\n   983→\n   984→## AI Integration Missions (Strategic Advantage)\n   985→\n   986→### Why AI Integration Missions Are Perfect for ScopeLock\n   987→\n   988→**The Strategic Advantage:**\n   989→\n   990→1. **AI excels at these** - This is what Claude/GPT actually do natively\n   991→2. **Less competition** - Traditional devs don't know AI APIs well\n   992→3. **Higher perceived value** - \"AI integration\" sounds premium\n   993→4. **Faster delivery** - Often 4-8 hours vs. 20+ for web apps\n   994→5. **Better margins** - $400 for 6 hours of work vs. $400 for 20 hours\n   995→6. **Rafael's sweet spot** - Generating code that calls AI APIs = trivial for Claude\n   996→\n   997→**The Risk We Must Manage:**\n   998→\n   999→❌ Subjective quality (\"make it perfect\")\n  1000→✅ Objective acceptance criteria (\"95% accuracy on test set\")\n  1001→\n  1002→---\n  1003→\n  1004→### Tier 1: Document & Data Processing (HIGHEST PRIORITY)\n  1005→\n  1006→**Why These Are Gold:**\n  1007→- **Objective AC.md possible** - \"Extract these fields with 95%+ accuracy\"\n  1008→- **Clients have test data** - They can verify immediately\n  1009→- **One-shot deliverable** - Process, deliver, done\n  1010→- **Low API costs** - Parsing is cheap ($0.01-0.10 per document)\n  1011→\n  1012→**Mission Types We Should Hunt:**\n  1013→\n  1014→**1. PDF/Document Parsing**\n  1015→```\n  1016→Example: \"Extract invoice data (date, total, items) from 500 PDFs\"\n  1017→\n  1018→AC.md writes itself:\n  1019→- Extract fields: {date, invoice_number, total, line_items[]}\n  1020→- Test on 50 sample PDFs (client provides)\n  1021→- Accuracy: 95%+ vs. manual check\n  1022→- Output: CSV with all extracted data\n  1023→- Handle errors: Log failed parses\n  1024→\n  1025→Budget: $400-800\n  1026→Time: 6-12 hours\n  1027→Stack: Python + LangChain/PyPDF2 + Claude API\n  1028→API Cost: ~$5-15 (Claude for structured extraction)\n  1029→```\n  1030→\n  1031→**2. Email Processing Automation**\n  1032→```\n  1033→Example: \"Parse support emails, categorize, extract customer info\"\n  1034→\n  1035→AC.md:\n  1036→- Categories: {bug_report, feature_request, question, billing}\n  1037→- Extract: {customer_email, subject, category, priority, summary}\n  1038→- Test: 100 sample emails\n  1039→- Accuracy: 90%+ on category classification\n  1040→- Output: PostgreSQL database + Slack notification\n  1041→\n  1042→Budget: $350-600\n  1043→Time: 8-14 hours\n  1044→Stack: Python + Gmail API + Claude API + PostgreSQL\n  1045→API Cost: ~$2-8\n  1046→```\n  1047→\n  1048→**3. Data Extraction from Unstructured Text**\n  1049→```\n  1050→Example: \"Extract company info from 1000 LinkedIn profiles\"\n  1051→\n  1052→AC.md:\n  1053→- Extract: {company_name, industry, employee_count, location, description}\n  1054→- Input: Text dumps or screenshots\n  1055→- Accuracy: 85%+ (some profiles incomplete)\n  1056→- Output: Structured JSON\n  1057→- Handle: Missing fields gracefully\n  1058→\n  1059→Budget: $300-600\n  1060→Time: 6-10 hours\n  1061→Stack: Python + Claude API + Pandas\n  1062→API Cost: ~$10-20 (lots of text)\n  1063→```\n  1064→\n  1065→**4. Document Classification**\n  1066→```\n  1067→Example: \"Sort 5000 customer documents into 10 categories\"\n  1068→\n  1069→AC.md:\n  1070→- Categories: {contract, invoice, receipt, report, correspondence, ...}\n  1071→- Test set: 200 pre-labeled documents\n  1072→- Accuracy: 92%+ on test set\n  1073→- Output: Organized folder structure OR database\n  1074→- Speed: <1 second per document\n  1075→\n  1076→Budget: $400-700\n  1077→Time: 8-12 hours\n  1078→Stack: Python + Claude/GPT-4 + embeddings\n  1079→API Cost: ~$15-30 (classification with embeddings)\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:27.192Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:28.690Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01VdQy2ESzyuL3pXXwQ5Dz1Q",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "offset": 1400,
+            "limit": 100
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:19:28.891Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01VdQy2ESzyuL3pXXwQ5Dz1Q",
+          "output": "  1400→\n  1401→| Type | Budget | Time | API Cost | Competition | Priority |\n  1402→|------|--------|------|----------|-------------|----------|\n  1403→| **PDF Parsing** | $400-800 | 6-12h | $5-15 | Low | ⭐⭐⭐⭐⭐ |\n  1404→| **Email Processing** | $350-600 | 8-14h | $2-8 | Low | ⭐⭐⭐⭐⭐ |\n  1405→| **Data Extraction** | $300-600 | 6-10h | $10-20 | Medium | ⭐⭐⭐⭐ |\n  1406→| **Doc Classification** | $400-700 | 8-12h | $15-30 | Low | ⭐⭐⭐⭐ |\n  1407→| **Product Descriptions** | $400-800 | 6-10h | $20-40 | Medium | ⭐⭐⭐⭐ |\n  1408→| **Blog Outlines** | $350-600 | 6-8h | $15-30 | Medium | ⭐⭐⭐ |\n  1409→| **Email Personalization** | $300-500 | 4-8h | $10-25 | High | ⭐⭐⭐ |\n  1410→| **Background Removal** | $250-400 | 3-6h | $0-100 | Medium | ⭐⭐⭐ |\n  1411→| **Social Graphics** | $400-700 | 8-12h | $0-20 | Medium | ⭐⭐ |\n  1412→| **AI Image Gen** | $600-1000 | 10-16h | $50-150 | High | ⭐ |\n  1413→| Landing Pages | $200-400 | 6-8h | $0 | High | ⭐⭐⭐⭐ |\n  1414→| Telegram Bots | $200-400 | 4-6h | $0 | Low | ⭐⭐⭐⭐⭐ |\n  1415→\n  1416→---\n  1417→\n  1418→## Week 1 Revised Target Mix\n  1419→\n  1420→**Ideal portfolio:**\n  1421→- 1x Telegram bot ($250) - Fast cash, proven\n  1422→- 1x PDF parsing ($500) - Higher value, AI integration proof\n  1423→- 1x Landing page ($300) - Fallback if above don't land\n  1424→\n  1425→**Total: $1050 in pipeline, expect to land 1-2 = $250-800 Week 1 revenue**\n  1426→\n  1427→---\n  1428→\n  1429→## Real Examples (What to Look For)\n  1430→\n  1431→### ✅ PERFECT JOB\n  1432→```\n  1433→Title: Build Landing Page for SaaS Product\n  1434→Budget: $350\n  1435→Description:\n  1436→- Single page website\n  1437→- Hero section with CTA\n  1438→- Features grid (4 items)\n  1439→- Pricing table\n  1440→- Contact form (EmailJS)\n  1441→- Deploy to Vercel\n  1442→- Design: Clean, modern (provide Figma)\n  1443→- Timeline: 3 days\n  1444→\n  1445→Client: $5K spent, 12 hires, 4.9 rating, payment verified\n  1446→Proposals: 8\n  1447→\n  1448→Why perfect:\n  1449→✅ $350 = sweet spot\n  1450→✅ 100% Next.js + Tailwind\n  1451→✅ Clear deliverables (can write AC.md instantly)\n  1452→✅ 3 days = fast cash\n  1453→✅ Great client\n  1454→✅ Low competition\n  1455→```\n  1456→\n  1457→### ❌ AVOID\n  1458→```\n  1459→Title: Help with our website\n  1460→Budget: $500\n  1461→Description:\n  1462→- Make website faster\n  1463→- Improve design\n  1464→- Add some features\n  1465→- Ongoing help needed\n  1466→\n  1467→Client: $0 spent, 0 hires, no payment verified\n  1468→Proposals: 23\n  1469→\n  1470→Why avoid:\n  1471→❌ Vague scope (\"help,\" \"improve,\" \"some\")\n  1472→❌ First-time client\n  1473→❌ High competition\n  1474→❌ \"Ongoing\" = never done\n  1475→```\n  1476→\n  1477→---\n  1478→\n  1479→## Strategy Progression\n  1480→\n  1481→**Week 1-2:** Focus on Web Dev + Document Processing (proven + easy AC.md)\n  1482→\n  1483→**Week 3-4:** Add Content Generation (once we've proven we can deliver)\n  1484→\n  1485→**Month 2+:** Carefully add Image tasks (highest risk, need track record first)\n  1486→\n  1487→---\n  1488→\n  1489→**This document is Emma's primary reference for evaluating which Upwork jobs to pursue. When in doubt, consult NLR.**\n  1490→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:33.787Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:35.438Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01HM5r1TdUmsjtjXpA7BjLnA",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "offset": 1,
+            "limit": 100
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:19:35.571Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01HM5r1TdUmsjtjXpA7BjLnA",
+          "output": "     1→# ScopeLock Upwork Mission Selection Criteria\n     2→\n     3→## The Golden Rule\n     4→\n     5→**We only take missions where AI can generate 80%+ of the code and humans just deploy/verify.**\n     6→\n     7→If Rafael can't build it in one conversation → we pass.\n     8→\n     9→---\n    10→\n    11→## Green Light Criteria (All Must Match)\n    12→\n    13→### 1. **Budget: $200-$600 (Week 1-2), $600-$1500 (Week 3+)**\n    14→\n    15→**Why this range:**\n    16→- Below $200: Client expects \"cheap freelancer,\" high support burden\n    17→- $200-600: Perfect for 2-3 day missions, good client quality\n    18→- Above $1500: Scope too large OR client expectations too high for Week 1\n    19→\n    20→**Red flag budgets:**\n    21→- $50-150: \"Looking for cheap labor\"\n    22→- $2000+: Enterprise complexity or scope creep risk\n    23→\n    24→---\n    25→\n    26→### 2. **Stack Match: 80%+ Our Tools**\n    27→\n    28→**We say YES to:**\n    29→- Python backend (FastAPI, Flask, Django)\n    30→- JavaScript/TypeScript frontend (React, Next.js, Vue)\n    31→- Standard databases (PostgreSQL, MongoDB, SQLite)\n    32→- Cloud deploy (Render, Vercel, Heroku, Railway)\n    33→- APIs we know (Telegram, Stripe, SendGrid, Twilio, OpenAI)\n    34→\n    35→**We say NO to:**\n    36→- Mobile apps (React Native, Flutter, Swift)\n    37→- Languages outside Python/JS/TS (Java, C#, PHP, Ruby)\n    38→- Proprietary platforms (Salesforce, SAP, custom CMS)\n    39→- Desktop apps (Electron okay, native no)\n    40→- Game development (Unity, Unreal)\n    41→\n    42→**Gray area (ask NLR first):**\n    43→- WordPress/PHP if simple plugin\n    44→- Ruby/Rails if mostly frontend work\n    45→- Go/Rust if it's just API wrapper\n    46→\n    47→---\n    48→\n    49→### 3. **Clear Deliverable: You Can Write AC.md in 5 Minutes**\n    50→\n    51→**Green flag descriptions:**\n    52→```\n    53→✅ \"Build a landing page with email capture form\"\n    54→✅ \"Create Telegram bot that sends daily notifications\"\n    55→✅ \"Fix bug: API returns 500 on /users endpoint\"\n    56→✅ \"Deploy existing Next.js app to Vercel\"\n    57→✅ \"Add Stripe payment to existing checkout flow\"\n    58→```\n    59→\n    60→**Red flag descriptions:**\n    61→```\n    62→❌ \"Improve our website\" (what does improve mean?)\n    63→❌ \"Make it faster\" (how fast? which metric?)\n    64→❌ \"Add features\" (which features?)\n    65→❌ \"Ongoing maintenance\" (what counts as done?)\n    66→❌ \"Help with project\" (what project?)\n    67→```\n    68→\n    69→**Test:** Can you list 5 acceptance criteria in 30 seconds?\n    70→- Yes → Clear deliverable\n    71→- No → Vague scope, pass\n    72→\n    73→---\n    74→\n    75→### 4. **Timeline: 2-7 Days**\n    76→\n    77→**Sweet spot: 2-3 days for Week 1-2**\n    78→\n    79→**Why:**\n    80→- Faster cash conversion\n    81→- Lower client anxiety\n    82→- Smaller scope = less risk\n    83→- Easier to test completely\n    84→\n    85→**Red flags:**\n    86→- \"ASAP\" or \"urgent\" → Client disorganized, will change requirements\n    87→- \"Ongoing\" → Never-ending scope creep\n    88→- \"1 day\" → Unrealistic expectations\n    89→- \"30+ days\" → Too large, break into milestones\n    90→\n    91→**Gray area:**\n    92→- \"1 week\" → Acceptable if scope is clear\n    93→- \"2 weeks\" → Only if milestones defined\n    94→\n    95→---\n    96→\n    97→### 5. **Client Quality: 3+ Indicators**\n    98→\n    99→**Green flags (need 3+):**\n   100→- ✅ Payment verified\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:40.962Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:42.679Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_015tcsZtY1T4kwyxEZebNgom",
+          "tool": "Grep",
+          "input": {
+            "pattern": "scoring|score",
+            "path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "output_mode": "content",
+            "-i": true
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:19:43.014Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_015tcsZtY1T4kwyxEZebNgom",
+          "output": "969:  - Optimize for SEO (keyword density, readability score, meta descriptions)\r\n1379:When Emma sees a job, she scores it:\r\n1391:Score:",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:46.334Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:47.215Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_011FrxBvmDcfEFHiHgiamUCC",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "offset": 1370,
+            "limit": 50
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:19:47.383Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_011FrxBvmDcfEFHiHgiamUCC",
+          "output": "  1370→- Proposals: 5-10\n  1371→- Stack: 100% match (Next.js OR FastAPI, not both)\n  1372→\n  1373→**Goal:** Land 1-2 of these by Friday.\n  1374→\n  1375→---\n  1376→\n  1377→## Emma's Evaluation Script\n  1378→\n  1379→When Emma sees a job, she scores it:\n  1380→\n  1381→```\n  1382→Stack Match: 0-3 points (3 = 100% match)\n  1383→Budget Fit: 0-2 points (2 = $200-600)\n  1384→Clear Scope: 0-2 points (2 = can write AC.md instantly)\n  1385→Client Quality: 0-2 points (2 = 4+ green flags)\n  1386→Timeline: 0-1 point (1 = 2-7 days)\n  1387→AI Integration Fit: 0-3 points (3 = Perfect, 2 = Good, 1 = Risky, 0 = No AI)\n  1388→\n  1389→Total: 0-13 points\n  1390→\n  1391→Score:\n  1392→- 8-13: Strong yes, write proposal\n  1393→- 6-7: Maybe, ask NLR\n  1394→- 0-5: Pass\n  1395→```\n  1396→\n  1397→---\n  1398→\n  1399→## Mission Target Summary Table\n  1400→\n  1401→| Type | Budget | Time | API Cost | Competition | Priority |\n  1402→|------|--------|------|----------|-------------|----------|\n  1403→| **PDF Parsing** | $400-800 | 6-12h | $5-15 | Low | ⭐⭐⭐⭐⭐ |\n  1404→| **Email Processing** | $350-600 | 8-14h | $2-8 | Low | ⭐⭐⭐⭐⭐ |\n  1405→| **Data Extraction** | $300-600 | 6-10h | $10-20 | Medium | ⭐⭐⭐⭐ |\n  1406→| **Doc Classification** | $400-700 | 8-12h | $15-30 | Low | ⭐⭐⭐⭐ |\n  1407→| **Product Descriptions** | $400-800 | 6-10h | $20-40 | Medium | ⭐⭐⭐⭐ |\n  1408→| **Blog Outlines** | $350-600 | 6-8h | $15-30 | Medium | ⭐⭐⭐ |\n  1409→| **Email Personalization** | $300-500 | 4-8h | $10-25 | High | ⭐⭐⭐ |\n  1410→| **Background Removal** | $250-400 | 3-6h | $0-100 | Medium | ⭐⭐⭐ |\n  1411→| **Social Graphics** | $400-700 | 8-12h | $0-20 | Medium | ⭐⭐ |\n  1412→| **AI Image Gen** | $600-1000 | 10-16h | $50-150 | High | ⭐ |\n  1413→| Landing Pages | $200-400 | 6-8h | $0 | High | ⭐⭐⭐⭐ |\n  1414→| Telegram Bots | $200-400 | 4-6h | $0 | Low | ⭐⭐⭐⭐⭐ |\n  1415→\n  1416→---\n  1417→\n  1418→## Week 1 Revised Target Mix\n  1419→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:54.122Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:19:55.107Z",
+      "content": "Now I'll complete the MISSION_SELECTION.md update by revising the summary table and Week 1 target mix to prioritize creative AI services."
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:09.303Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01U9b2x19KhpKJY3EbbNa37S",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "old_string": "## Mission Target Summary Table\n\n| Type | Budget | Time | API Cost | Competition | Priority |\n|------|--------|------|----------|-------------|----------|\n| **PDF Parsing** | $400-800 | 6-12h | $5-15 | Low | ⭐⭐⭐⭐⭐ |\n| **Email Processing** | $350-600 | 8-14h | $2-8 | Low | ⭐⭐⭐⭐⭐ |\n| **Data Extraction** | $300-600 | 6-10h | $10-20 | Medium | ⭐⭐⭐⭐ |\n| **Doc Classification** | $400-700 | 8-12h | $15-30 | Low | ⭐⭐⭐⭐ |\n| **Product Descriptions** | $400-800 | 6-10h | $20-40 | Medium | ⭐⭐⭐⭐ |\n| **Blog Outlines** | $350-600 | 6-8h | $15-30 | Medium | ⭐⭐⭐ |\n| **Email Personalization** | $300-500 | 4-8h | $10-25 | High | ⭐⭐⭐ |\n| **Background Removal** | $250-400 | 3-6h | $0-100 | Medium | ⭐⭐⭐ |\n| **Social Graphics** | $400-700 | 8-12h | $0-20 | Medium | ⭐⭐ |\n| **AI Image Gen** | $600-1000 | 10-16h | $50-150 | High | ⭐ |\n| Landing Pages | $200-400 | 6-8h | $0 | High | ⭐⭐⭐⭐ |\n| Telegram Bots | $200-400 | 4-6h | $0 | Low | ⭐⭐⭐⭐⭐ |",
+            "new_string": "## Mission Target Summary Table\n\n**CREATIVE AI SERVICES (HIGHEST MARGIN, LOWEST COMPETITION):**\n\n| Type | Budget | Time | API Cost | Margin | Competition | Priority |\n|------|--------|------|----------|--------|-------------|----------|\n| **Presentation/Decks (Gamma)** | $400-800 | 4-8h | $10-20 | 75-80% | Very Low | ⭐⭐⭐⭐⭐ |\n| **Translation (Claude)** | $500-1000 | 6-10h | $10-30 | 70-75% | Low | ⭐⭐⭐⭐⭐ |\n| **Voice Gen (ElevenLabs)** | $300-600 | 4-8h | $20-60 | 75-80% | Very Low | ⭐⭐⭐⭐⭐ |\n| **Content Writing (Claude)** | $600-1200 | 8-12h | $30-100 | 60-70% | Medium | ⭐⭐⭐⭐⭐ |\n| **Image Gen (Ideogram)** | $400-800 | 4-8h | $50-100 | 75-80% | Low | ⭐⭐⭐⭐ |\n| **Music Gen (Suno/Udio)** | $300-600 | 4-8h | $10-40 | 75-80% | Very Low | ⭐⭐⭐⭐ |\n| **Video Gen (Runway)** | $600-1200 | 8-16h | $100-200 | 50-60% | Low | ⭐⭐⭐ |\n\n**TRADITIONAL DEV + AI INTEGRATION:**\n\n| Type | Budget | Time | API Cost | Margin | Competition | Priority |\n|------|--------|------|----------|--------|-------------|----------|\n| **PDF Parsing** | $400-800 | 6-12h | $5-15 | 60-70% | Low | ⭐⭐⭐⭐⭐ |\n| **Email Processing** | $350-600 | 8-14h | $2-8 | 60-70% | Low | ⭐⭐⭐⭐⭐ |\n| **Data Extraction** | $300-600 | 6-10h | $10-20 | 55-65% | Medium | ⭐⭐⭐⭐ |\n| **Doc Classification** | $400-700 | 8-12h | $15-30 | 60-70% | Low | ⭐⭐⭐⭐ |\n| **Telegram Bots** | $200-400 | 4-6h | $0 | 60-70% | Low | ⭐⭐⭐⭐ |\n| **Landing Pages** | $200-400 | 6-8h | $0 | 50-60% | High | ⭐⭐⭐ |"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:20:09.623Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01U9b2x19KhpKJY3EbbNa37S",
+          "output": "The file /home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n  1395→```\n  1396→\n  1397→---\n  1398→\n  1399→## Mission Target Summary Table\n  1400→\n  1401→**CREATIVE AI SERVICES (HIGHEST MARGIN, LOWEST COMPETITION):**\n  1402→\n  1403→| Type | Budget | Time | API Cost | Margin | Competition | Priority |\n  1404→|------|--------|------|----------|--------|-------------|----------|\n  1405→| **Presentation/Decks (Gamma)** | $400-800 | 4-8h | $10-20 | 75-80% | Very Low | ⭐⭐⭐⭐⭐ |\n  1406→| **Translation (Claude)** | $500-1000 | 6-10h | $10-30 | 70-75% | Low | ⭐⭐⭐⭐⭐ |\n  1407→| **Voice Gen (ElevenLabs)** | $300-600 | 4-8h | $20-60 | 75-80% | Very Low | ⭐⭐⭐⭐⭐ |\n  1408→| **Content Writing (Claude)** | $600-1200 | 8-12h | $30-100 | 60-70% | Medium | ⭐⭐⭐⭐⭐ |\n  1409→| **Image Gen (Ideogram)** | $400-800 | 4-8h | $50-100 | 75-80% | Low | ⭐⭐⭐⭐ |\n  1410→| **Music Gen (Suno/Udio)** | $300-600 | 4-8h | $10-40 | 75-80% | Very Low | ⭐⭐⭐⭐ |\n  1411→| **Video Gen (Runway)** | $600-1200 | 8-16h | $100-200 | 50-60% | Low | ⭐⭐⭐ |\n  1412→\n  1413→**TRADITIONAL DEV + AI INTEGRATION:**\n  1414→\n  1415→| Type | Budget | Time | API Cost | Margin | Competition | Priority |\n  1416→|------|--------|------|----------|--------|-------------|----------|\n  1417→| **PDF Parsing** | $400-800 | 6-12h | $5-15 | 60-70% | Low | ⭐⭐⭐⭐⭐ |\n  1418→| **Email Processing** | $350-600 | 8-14h | $2-8 | 60-70% | Low | ⭐⭐⭐⭐⭐ |\n  1419→| **Data Extraction** | $300-600 | 6-10h | $10-20 | 55-65% | Medium | ⭐⭐⭐⭐ |\n  1420→| **Doc Classification** | $400-700 | 8-12h | $15-30 | 60-70% | Low | ⭐⭐⭐⭐ |\n  1421→| **Telegram Bots** | $200-400 | 4-6h | $0 | 60-70% | Low | ⭐⭐⭐⭐ |\n  1422→| **Landing Pages** | $200-400 | 6-8h | $0 | 50-60% | High | ⭐⭐⭐ |\n  1423→\n  1424→---\n  1425→\n  1426→## Week 1 Revised Target Mix",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:14.281Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:26.538Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_018NQrY3q9MPr6pTaiDcXmC2",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "old_string": "## Week 1 Revised Target Mix\n\n**Ideal portfolio:**\n- 1x Telegram bot ($250) - Fast cash, proven\n- 1x PDF parsing ($500) - Higher value, AI integration proof\n- 1x Landing page ($300) - Fallback if above don't land\n\n**Total: $1050 in pipeline, expect to land 1-2 = $250-800 Week 1 revenue**",
+            "new_string": "## Week 1 Revised Target Mix\n\n**NEW PRIORITY (Creative AI Services First):**\n\n**Ideal portfolio:**\n- 1x Presentation/PDF generation (Gamma) ($500) - Highest margin (75-80%), very low competition\n- 1x Voice generation (ElevenLabs) ($400) - Fast delivery (4-8h), 75-80% margin, unique offering\n- 1x Translation job ($600) - Clear AC.md, 70-75% margin, scalable\n- 1x PDF parsing ($500) - Fallback, proven AI integration\n\n**Total: $2000 in pipeline, expect to land 1-2 = $400-1100 Week 1 revenue**\n\n**Why creative services first:**\n- ✅ 70-85% margins vs 50-60% for traditional dev\n- ✅ Zero traditional dev competition (they don't have Ideogram/Runway/Suno/ElevenLabs)\n- ✅ Faster delivery (4-10 hours vs 20-40 hours for equivalent value)\n- ✅ Clear AC.md possible (\"Client approves 10 samples before bulk\")\n- ✅ Higher budgets ($400-1500 vs $200-400)\n- ✅ One human can QA 10x more creative output than code\n\n**Traditional dev as fallback:**\n- Only bid on Telegram bots, PDF parsing if creative services pipeline is empty\n- Still valuable for building portfolio + proving delivery capability"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:20:26.832Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_018NQrY3q9MPr6pTaiDcXmC2",
+          "output": "The file /home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n  1422→| **Landing Pages** | $200-400 | 6-8h | $0 | 50-60% | High | ⭐⭐⭐ |\n  1423→\n  1424→---\n  1425→\n  1426→## Week 1 Revised Target Mix\n  1427→\n  1428→**NEW PRIORITY (Creative AI Services First):**\n  1429→\n  1430→**Ideal portfolio:**\n  1431→- 1x Presentation/PDF generation (Gamma) ($500) - Highest margin (75-80%), very low competition\n  1432→- 1x Voice generation (ElevenLabs) ($400) - Fast delivery (4-8h), 75-80% margin, unique offering\n  1433→- 1x Translation job ($600) - Clear AC.md, 70-75% margin, scalable\n  1434→- 1x PDF parsing ($500) - Fallback, proven AI integration\n  1435→\n  1436→**Total: $2000 in pipeline, expect to land 1-2 = $400-1100 Week 1 revenue**\n  1437→\n  1438→**Why creative services first:**\n  1439→- ✅ 70-85% margins vs 50-60% for traditional dev\n  1440→- ✅ Zero traditional dev competition (they don't have Ideogram/Runway/Suno/ElevenLabs)\n  1441→- ✅ Faster delivery (4-10 hours vs 20-40 hours for equivalent value)\n  1442→- ✅ Clear AC.md possible (\"Client approves 10 samples before bulk\")\n  1443→- ✅ Higher budgets ($400-1500 vs $200-400)\n  1444→- ✅ One human can QA 10x more creative output than code\n  1445→\n  1446→**Traditional dev as fallback:**\n  1447→- Only bid on Telegram bots, PDF parsing if creative services pipeline is empty\n  1448→- Still valuable for building portfolio + proving delivery capability\n  1449→\n  1450→---\n  1451→\n  1452→## Real Examples (What to Look For)",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:30.651Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:31.637Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01XFeh48daTxkCZB1cCSLJ8h",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "offset": 1500,
+            "limit": 30
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:20:31.776Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01XFeh48daTxkCZB1cCSLJ8h",
+          "output": "  1500→---\n  1501→\n  1502→## Strategy Progression\n  1503→\n  1504→**Week 1-2:** Focus on Web Dev + Document Processing (proven + easy AC.md)\n  1505→\n  1506→**Week 3-4:** Add Content Generation (once we've proven we can deliver)\n  1507→\n  1508→**Month 2+:** Carefully add Image tasks (highest risk, need track record first)\n  1509→\n  1510→---\n  1511→\n  1512→**This document is Emma's primary reference for evaluating which Upwork jobs to pursue. When in doubt, consult NLR.**\n  1513→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:36.124Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:41.950Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01JJBRGyoFsSvwP2Rk8QfCRQ",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md",
+            "old_string": "## Strategy Progression\n\n**Week 1-2:** Focus on Web Dev + Document Processing (proven + easy AC.md)\n\n**Week 3-4:** Add Content Generation (once we've proven we can deliver)\n\n**Month 2+:** Carefully add Image tasks (highest risk, need track record first)",
+            "new_string": "## Strategy Progression\n\n**Week 1-2 (NEW STRATEGY):**\n- **PRIMARY:** Creative AI services (Gamma, ElevenLabs, Translation, Content Writing) - 70-85% margins, low competition\n- **SECONDARY:** Document Processing (PDF parsing, Email processing) - proven AI integration\n- **FALLBACK:** Simple dev (Telegram bots, Landing pages) - only if creative pipeline empty\n\n**Week 3-4:**\n- **Add:** Image generation (Ideogram) - bulk product images, social media graphics\n- **Add:** Music generation (Suno/Udio) - podcast intros, background music, jingles\n- **Continue:** Creative AI services (this is the core business now)\n\n**Month 2+:**\n- **Carefully add:** Video generation (Runway) - higher API costs, needs client education\n- **Scale:** Creative services to $5-10K monthly revenue before adding complex dev work\n- **Future:** Evidence Sprint → Full Build only after proving creative services delivery"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:20:42.474Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01JJBRGyoFsSvwP2Rk8QfCRQ",
+          "output": "The file /home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n  1498→```\n  1499→\n  1500→---\n  1501→\n  1502→## Strategy Progression\n  1503→\n  1504→**Week 1-2 (NEW STRATEGY):**\n  1505→- **PRIMARY:** Creative AI services (Gamma, ElevenLabs, Translation, Content Writing) - 70-85% margins, low competition\n  1506→- **SECONDARY:** Document Processing (PDF parsing, Email processing) - proven AI integration\n  1507→- **FALLBACK:** Simple dev (Telegram bots, Landing pages) - only if creative pipeline empty\n  1508→\n  1509→**Week 3-4:**\n  1510→- **Add:** Image generation (Ideogram) - bulk product images, social media graphics\n  1511→- **Add:** Music generation (Suno/Udio) - podcast intros, background music, jingles\n  1512→- **Continue:** Creative AI services (this is the core business now)\n  1513→\n  1514→**Month 2+:**\n  1515→- **Carefully add:** Video generation (Runway) - higher API costs, needs client education\n  1516→- **Scale:** Creative services to $5-10K monthly revenue before adding complex dev work\n  1517→- **Future:** Evidence Sprint → Full Build only after proving creative services delivery\n  1518→\n  1519→---\n  1520→\n  1521→**This document is Emma's primary reference for evaluating which Upwork jobs to pursue. When in doubt, consult NLR.**",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:51.557Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:55.192Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_018xSDnJFvozUJupcmtiLqaE",
+          "tool": "TodoWrite",
+          "input": {
+            "todos": [
+              {
+                "content": "Fix homepage messaging issues (solo voice, value clarity, CTA alignment, answer-first structure, timestamps)",
+                "status": "completed",
+                "activeForm": "Fixed homepage messaging issues"
+              },
+              {
+                "content": "Implement Zero-Call Evidence Sprint contact form",
+                "status": "completed",
+                "activeForm": "Implemented Zero-Call Evidence Sprint contact form"
+              },
+              {
+                "content": "Expand MISSION_SELECTION.md with creative AI services (Ideogram, Runway, Suno/Udio, ElevenLabs, Gamma, translation, content)",
+                "status": "completed",
+                "activeForm": "Expanded MISSION_SELECTION.md with creative AI services"
+              },
+              {
+                "content": "Set up Telegram outreach system (cd outreach/ → follow YOUR_ACTION_CHECKLIST_V2.txt)",
+                "status": "pending",
+                "activeForm": "Setting up Telegram outreach system"
+              },
+              {
+                "content": "Monitor win rate and revenue (Week 1)",
+                "status": "pending",
+                "activeForm": "Monitoring win rate and revenue"
+              },
+              {
+                "content": "Review Emma's automatic task system specifications (morning brief, pipeline, handoff)",
+                "status": "pending",
+                "activeForm": "Reviewing Emma's automatic task system specifications"
+              },
+              {
+                "content": "Review Inna's 6-level documentation for automatic task system",
+                "status": "pending",
+                "activeForm": "Reviewing Inna's 6-level documentation"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:20:55.315Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_018xSDnJFvozUJupcmtiLqaE",
+          "output": "Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:20:59.501Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:00.507Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01Tew4gSRrYo8EfXHtytFBUf",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/SYNC.md",
+            "limit": 50
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:21:00.612Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01Tew4gSRrYo8EfXHtytFBUf",
+          "output": "     1→## 2025-11-07 00:15 — Rafael: Mission Deck Local Integration Working ✅\n     2→\n     3→**Work:** Fixed FalkorDB authentication + verified local frontend-backend integration\n     4→\n     5→**Issues Found & Fixed:**\n     6→\n     7→1. **TypeScript Build Error (null vs undefined)**\n     8→   - Mock data used `null` for optional stack fields\n     9→   - Type only allows `string | undefined`\n    10→   - Fix: Changed `null` to `undefined` in Mission #48 mock data\n    11→   - Commit: 2d12642\n    12→\n    13→2. **FalkorDB 401 Unauthorized**\n    14→   - Backend used `Authorization: Bearer` header\n    15→   - FalkorDB REST API expects `X-API-Key` header\n    16→   - Fix: Updated services/graph.py line 57-60\n    17→   - Commit: 656c73a\n    18→\n    19→**Integration Test Results:**\n    20→\n    21→✅ **F1 - User Authentication** (AC.md criteria)\n    22→```bash\n    23→curl -X POST http://localhost:8000/api/auth/login \\\n    24→  -d '{\"email\":\"person1@scopelock.ai\",\"password\":\"testpass\"}'\n    25→\n    26→Response: {\n    27→  \"access_token\": \"eyJhbGci...\",\n    28→  \"token_type\": \"bearer\",\n    29→  \"user\": {\"id\":\"bigbosexf\",\"email\":\"person1@scopelock.ai\",\"name\":\"Person 1\"}\n    30→}\n    31→```\n    32→- ✅ Hardcoded test users work (person1/2/3@scopelock.ai / testpass)\n    33→- ✅ JWT token creation works\n    34→- ✅ Returns user info correctly\n    35→\n    36→✅ **F2 - Mission Selector** (AC.md criteria)\n    37→```bash\n    38→curl http://localhost:8000/api/missions \\\n    39→  -H \"Authorization: Bearer <token>\"\n    40→\n    41→Response: {\"missions\":[],\"total\":0}\n    42→```\n    43→- ✅ FalkorDB connection works (X-API-Key header)\n    44→- ✅ Authenticated endpoint (requires JWT)\n    45→- ✅ Returns wrapped response {missions:[],total:0}\n    46→- ⚠️  Empty list expected (no missions seeded in FalkorDB yet)\n    47→\n    48→**Local Environment Status:**\n    49→\n    50→**Backend:** ✅ Running\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:05.372Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:29.572Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_011JWCDEfJhxGRY89ZSZV7Nj",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/SYNC.md",
+            "old_string": "## 2025-11-07 00:15 — Rafael: Mission Deck Local Integration Working ✅",
+            "new_string": "## 2025-11-07 01:45 — Alexis: MISSION_SELECTION.md Strategic Expansion Complete ✅\n\n**Work:** Completed major strategic expansion of Emma's mission selection criteria to prioritize creative AI services\n\n**Strategic Shift:**\n- **Before:** Primary focus on traditional dev work (landing pages, bots, APIs) with 50-60% margins\n- **After:** Primary focus on creative AI services (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content) with 70-85% margins\n\n**What Was Added:**\n\n1. **7 New Creative AI Service Categories** (Lines 225-981)\n   - Tier 1A: Image Generation (Ideogram) - 4 mission types\n   - Tier 1B: Video Generation (Runway) - 3 mission types\n   - Tier 1C: Music Generation (Suno/Udio) - 4 mission types\n   - Tier 1D: Voice Generation (ElevenLabs) - 5 mission types\n   - Tier 1E: Presentation/PDF Generation (Gamma) - 5 mission types\n   - Tier 1F: Translation Services - 4 mission types\n   - Tier 1G: Content Writing/Editing - 6 mission types\n\n**Each mission type includes:**\n- Example job description\n- Complete AC.md template with all fields (objective criteria)\n- Budget range, time estimate, API cost estimate\n- Margin calculation (60-85%)\n- Red flags to avoid (subjective quality requests)\n- Green flags to seek (bulk operations, reference materials provided)\n\n2. **Updated Mission Target Summary Table** (Lines 1399-1422)\n   - Split into \"Creative AI Services\" (highest margin) and \"Traditional Dev + AI Integration\"\n   - Added Margin column to make profitability explicit\n   - Creative services prioritized: ⭐⭐⭐⭐⭐ (5 stars)\n\n3. **Updated Week 1 Target Mix** (Lines 1426-1448)\n   - **NEW:** 1x Gamma presentation ($500), 1x ElevenLabs voice ($400), 1x Translation ($600), 1x PDF parsing fallback ($500)\n   - **OLD:** 1x Telegram bot ($250), 1x PDF parsing ($500), 1x Landing page ($300)\n   - Revenue target increased: $400-1100 (vs $250-800 previously)\n\n4. **Updated Strategy Progression** (Lines 1502-1517)\n   - Week 1-2: PRIMARY = Creative AI, SECONDARY = Document Processing, FALLBACK = Simple dev\n   - Week 3-4: Add Image/Music generation\n   - Month 2+: Add Video generation, scale creative services to $5-10K/month\n\n**Competitive Moat Insight (from Nicolas):**\n- ✅ Traditional dev shops CAN'T compete on creative services (no Ideogram/Runway/Suno/ElevenLabs/Gamma)\n- ✅ Higher budgets ($400-1500 vs $200-400 for dev work)\n- ✅ Faster delivery (4-10 hours vs 20-40 hours for equivalent value)\n- ✅ One human can QA 10x more creative output than code\n- ✅ Clear AC.md possible via template/style approval gates\n\n**Critical Success Factor for Creative Work:**\n- Template/style approval UPFRONT (client approves 10 samples before bulk)\n- Fixed revision rounds (1-2 max, scoped in AC.md)\n- Reference materials required (client provides 3-5 examples)\n- Objective criteria (\"Client approves samples\") not subjective (\"make it beautiful\")\n\n**Status:** ✅ Complete\n- All 7 categories documented with full AC.md templates\n- Summary tables updated\n- Week 1 targets revised\n- Strategy progression updated\n\n**Next:** Emma uses updated MISSION_SELECTION.md when hunting Upwork jobs (prioritize creative AI services over traditional dev)\n\n**Link:** `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md` (lines 225-1517 updated)\n\n---\n\n## 2025-11-07 00:15 — Rafael: Mission Deck Local Integration Working ✅"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:21:30.484Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_011JWCDEfJhxGRY89ZSZV7Nj",
+          "output": "The file /home/mind-protocol/scopelock/citizens/SYNC.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n     1→## 2025-11-07 01:45 — Alexis: MISSION_SELECTION.md Strategic Expansion Complete ✅\n     2→\n     3→**Work:** Completed major strategic expansion of Emma's mission selection criteria to prioritize creative AI services\n     4→\n     5→**Strategic Shift:**\n     6→- **Before:** Primary focus on traditional dev work (landing pages, bots, APIs) with 50-60% margins\n     7→- **After:** Primary focus on creative AI services (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content) with 70-85% margins\n     8→\n     9→**What Was Added:**\n    10→\n    11→1. **7 New Creative AI Service Categories** (Lines 225-981)\n    12→   - Tier 1A: Image Generation (Ideogram) - 4 mission types\n    13→   - Tier 1B: Video Generation (Runway) - 3 mission types\n    14→   - Tier 1C: Music Generation (Suno/Udio) - 4 mission types\n    15→   - Tier 1D: Voice Generation (ElevenLabs) - 5 mission types\n    16→   - Tier 1E: Presentation/PDF Generation (Gamma) - 5 mission types\n    17→   - Tier 1F: Translation Services - 4 mission types\n    18→   - Tier 1G: Content Writing/Editing - 6 mission types\n    19→\n    20→**Each mission type includes:**\n    21→- Example job description\n    22→- Complete AC.md template with all fields (objective criteria)\n    23→- Budget range, time estimate, API cost estimate\n    24→- Margin calculation (60-85%)\n    25→- Red flags to avoid (subjective quality requests)\n    26→- Green flags to seek (bulk operations, reference materials provided)\n    27→\n    28→2. **Updated Mission Target Summary Table** (Lines 1399-1422)\n    29→   - Split into \"Creative AI Services\" (highest margin) and \"Traditional Dev + AI Integration\"\n    30→   - Added Margin column to make profitability explicit\n    31→   - Creative services prioritized: ⭐⭐⭐⭐⭐ (5 stars)\n    32→\n    33→3. **Updated Week 1 Target Mix** (Lines 1426-1448)\n    34→   - **NEW:** 1x Gamma presentation ($500), 1x ElevenLabs voice ($400), 1x Translation ($600), 1x PDF parsing fallback ($500)\n    35→   - **OLD:** 1x Telegram bot ($250), 1x PDF parsing ($500), 1x Landing page ($300)\n    36→   - Revenue target increased: $400-1100 (vs $250-800 previously)\n    37→\n    38→4. **Updated Strategy Progression** (Lines 1502-1517)\n    39→   - Week 1-2: PRIMARY = Creative AI, SECONDARY = Document Processing, FALLBACK = Simple dev\n    40→   - Week 3-4: Add Image/Music generation\n    41→   - Month 2+: Add Video generation, scale creative services to $5-10K/month\n    42→\n    43→**Competitive Moat Insight (from Nicolas):**\n    44→- ✅ Traditional dev shops CAN'T compete on creative services (no Ideogram/Runway/Suno/ElevenLabs/Gamma)\n    45→- ✅ Higher budgets ($400-1500 vs $200-400 for dev work)\n    46→- ✅ Faster delivery (4-10 hours vs 20-40 hours for equivalent value)\n    47→- ✅ One human can QA 10x more creative output than code\n    48→- ✅ Clear AC.md possible via template/style approval gates\n    49→\n    50→**Critical Success Factor for Creative Work:**\n    51→- Template/style approval UPFRONT (client approves 10 samples before bulk)\n    52→- Fixed revision rounds (1-2 max, scoped in AC.md)\n    53→- Reference materials required (client provides 3-5 examples)\n    54→- Objective criteria (\"Client approves samples\") not subjective (\"make it beautiful\")\n    55→\n    56→**Status:** ✅ Complete\n    57→- All 7 categories documented with full AC.md templates\n    58→- Summary tables updated\n    59→- Week 1 targets revised\n    60→- Strategy progression updated\n    61→\n    62→**Next:** Emma uses updated MISSION_SELECTION.md when hunting Upwork jobs (prioritize creative AI services over traditional dev)\n    63→\n    64→**Link:** `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md` (lines 225-1517 updated)\n    65→\n    66→---\n    67→\n    68→## 2025-11-07 00:15 — Rafael: Mission Deck Local Integration Working ✅\n    69→\n    70→**Work:** Fixed FalkorDB authentication + verified local frontend-backend integration\n    71→\n    72→**Issues Found & Fixed:**",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:38.011Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:45.631Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01AQZKqFjrzMy7MejGkA1yR2",
+          "tool": "Bash",
+          "input": {
+            "command": "node /home/mind-protocol/scopelock/tools/telegram-send.cjs \"<b>📊 MISSION_SELECTION.md Strategic Expansion Complete</b>\n\n<b>Major Shift:</b> Prioritizing creative AI services (70-85% margin) over traditional dev work (50-60% margin)\n\n<b>7 New Service Categories Added:</b>\n• Presentation/PDF gen (Gamma) - $400-800, 75-80% margin\n• Translation (Claude) - $500-1000, 70-75% margin  \n• Voice gen (ElevenLabs) - $300-600, 75-80% margin\n• Content writing - $600-1200, 60-70% margin\n• Image gen (Ideogram) - $400-800, 75-80% margin\n• Music gen (Suno/Udio) - $300-600, 75-80% margin\n• Video gen (Runway) - $600-1200, 50-60% margin\n\n<b>Week 1 Targets Revised:</b>\nOLD: Telegram bot ($250) + PDF parsing ($500) + Landing page ($300) = $250-800 revenue\nNEW: Gamma presentation ($500) + ElevenLabs voice ($400) + Translation ($600) + PDF fallback ($500) = $400-1100 revenue\n\n<b>Competitive Moat:</b> Dev shops can't compete (no Ideogram/Runway/Suno/ElevenLabs/Gamma access)\n\n<b>Next:</b> Emma hunts creative AI jobs on Upwork first, traditional dev as fallback\n\nDetails: /citizens/SYNC.md:1-64\"",
+            "description": "Notify Nicolas of strategic expansion completion"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:21:47.545Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01AQZKqFjrzMy7MejGkA1yR2",
+          "output": "Exit code 1\nError: Missing environment variables\nRequired: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID",
+          "is_error": true
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:52.356Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:53.000Z",
+      "content": "Now let me update my strategic tracking files to document this major shift."
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:21:53.456Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01UCCnMMJruVi3mfQ5pofmW2",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/ROADMAP.md"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:21:53.587Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01UCCnMMJruVi3mfQ5pofmW2",
+          "output": "     1→# ScopeLock Strategic Roadmap\n     2→\n     3→**Last Updated:** 2025-11-05\n     4→\n     5→---\n     6→\n     7→## Current Phase: AI-Assisted Development Model\n     8→\n     9→**Timeline:** 2025-11-01 → 2025-12-31 (2 months)\n    10→**Focus:** Prove AI-assisted junior developer model can deliver quality at speed\n    11→\n    12→**Metrics:**\n    13→- Proposals sent: Current 0, Target 20/week by end of phase\n    14→- Win rate: Current 0%, Target 25% (5 jobs/week won)\n    15→- Missions delivered: Current 0, Target 8 in phase (4/month)\n    16→- Revenue: Current €0, Target €40K in phase\n    17→- Profit margin: Target 50%+ (€20K net)\n    18→- Runway: Target 6+ months by end of phase\n    19→\n    20→---\n    21→\n    22→## Phase 1: Solo Founder (Past)\n    23→\n    24→**Timeline:** 2024-01 → 2025-10\n    25→**Focus:** High-value complex missions, Nicolas solo\n    26→\n    27→- ✅ Built La Serenissima (97 agents, 99.7% uptime)\n    28→- ✅ Built TherapyKin (121+ deployments)\n    29→- ✅ Built KinKong ($75k$ AUM trading bot)\n    30→- ✅ Established ScopeLock methodology (AC Green, Evidence Sprint, Proof Log)\n    31→\n    32→**Outcomes:**\n    33→- Proven technical depth\n    34→- Portfolio with social proof (Terminal Velocity 1.1k stars)\n    35→- ScopeLock framework validated\n    36→- Revenue: High per-mission (€5-10K), low volume (1-2/month)\n    37→\n    38→**Lesson:** Not scalable solo. Need team to increase volume.\n    39→\n    40→---\n    41→\n    42→## Phase 2: AI-Assisted Development Model (Current)\n    43→\n    44→**Timeline:** 2025-11-01 → 2025-12-31\n    45→**Status:** In Progress (Week 1)\n    46→\n    47→**Goals:**\n    48→- [ ] Hire 2-3 junior developers (Nigeria/Côte d'Ivoire)\n    49→- [ ] Deliver 8 missions using AI-generated code + human supervision\n    50→- [ ] Achieve 25% proposal win rate (5/week won from 20/week sent)\n    51→- [ ] Maintain 50%+ profit margin\n    52→- [ ] Build 6 months runway\n    53→\n    54→**Success criteria:**\n    55→- Junior developers can deploy AI-generated code independently after 3 missions\n    56→- Client satisfaction remains high (no complaints, payment at AC Green)\n    57→- Quality maintained (Sofia QA pass rate >90%)\n    58→- Proposal → delivery time <2 weeks average\n    59→\n    60→**Current Status (2025-11-05):**\n    61→- Team structure defined ✅\n    62→- AI citizens created (Emma, Inna, Rafael, Sofia, Alexis, Maya) ✅\n    63→- Standard tech stack defined (Next.js + Vercel, Python + Render) ✅\n    64→- First developer (Reanance) onboarding ⏳\n    65→- First proposals: 0 sent (Emma needs activation)\n    66→\n    67→**Blockers:**\n    68→- Need to activate Emma to start sending proposals\n    69→- Need to hire 1-2 more junior developers\n    70→- Need to test full workflow (proposal → delivery) at least once\n    71→\n    72→---\n    73→\n    74→## Phase 3: Scale to 5-10 Developers\n    75→\n    76→**Planned start:** 2026-01-01\n    77→**Duration:** 3 months\n    78→\n    79→**Prerequisites:**\n    80→- Phase 2 goals achieved (8 missions delivered, 50% margin, 6 months runway)\n    81→- Workflow proven (proposal → Inna → Rafael → developer → Sofia → AC Green)\n    82→- At least 2 developers performing independently\n    83→\n    84→**Goals:**\n    85→- Hire 3-5 more junior developers\n    86→- Increase to 10-20 simultaneous missions\n    87→- Revenue: €100K+ per month\n    88→- Profit: €50K+ per month\n    89→- Establish lead developer role (promote best performer)\n    90→\n    91→**Success criteria:**\n    92→- 10+ simultaneous missions without quality degradation\n    93→- Win rate maintained at 25%+\n    94→- Profit margin maintained at 50%+\n    95→- Developer retention >80% (low turnover)\n    96→\n    97→---\n    98→\n    99→## Phase 4: Market Expansion (Future)\n   100→\n   101→**Planned start:** 2026-04-01\n   102→\n   103→**Prerequisites:**\n   104→- 5-10 developers performing well\n   105→- Revenue stable at €100K+/month\n   106→- Team management systems proven\n   107→\n   108→**Goals:**\n   109→- Expand to new verticals (healthcare, fintech, AI infrastructure)\n   110→- Add retainer model (monthly ongoing work)\n   111→- Geographic expansion (EU market, US market)\n   112→- Partner channel (agencies white-labeling ScopeLock)\n   113→\n   114→**Unknowns to resolve:**\n   115→- Which verticals are most profitable?\n   116→- Which geographic markets have best demand/price ratio?\n   117→- Can we maintain quality at 20+ simultaneous missions?\n   118→\n   119→---\n   120→\n   121→## Future Opportunities (Not Yet Scheduled)\n   122→\n   123→**Service Offerings:**\n   124→- Monthly retainers for ongoing development (predictable revenue)\n   125→- \"Evidence Sprint only\" product (€2-3K for demo + delta, no full build)\n   126→- White-label ScopeLock for agencies (licensing model)\n   127→- AI consulting/training (teach other agencies AI-assisted workflow)\n   128→\n   129→**Market Expansion:**\n   130→- Healthcare (HIPAA-compliant, therapy, wellness)\n   131→- Fintech (trading, payments, banking)\n   132→- AI infrastructure (protocols, frameworks, multi-agent)\n   133→- Enterprise automation (internal tools, workflow automation)\n   134→\n   135→**Team Growth:**\n   136→- Hire lead developer (supervise 5-10 junior devs)\n   137→- Hire client success manager (Maya role, human)\n   138→- Add specialized developers (mobile, blockchain, ML)\n   139→\n   140→**Technology:**\n   141→- Build internal ScopeLock platform (automate Inna specs, Rafael code gen, Sofia QA)\n   142→- Contribute to open source (Terminal Velocity, Mind Protocol)\n   143→- Build public API for ScopeLock methodology (other agencies can integrate)\n   144→\n   145→---\n   146→\n   147→## Strategic Principles (Constant Across All Phases)\n   148→\n   149→1. **Quality over volume:** AC Green is non-negotiable, never ship broken code\n   150→2. **AI does heavy lifting, humans supervise:** 95% AI work, 5% human review\n   151→3. **Transparent pricing:** Scope locked, pay at AC Green, Swap/Add for changes\n   152→4. **Proof-driven:** Public proof log, demos, quantified deltas\n   153→5. **Sustainable margins:** 50%+ profit margin, never race to bottom on price\n   154→6. **Developer empowerment:** Junior devs learn and grow, not just code monkeys\n   155→7. **Standard stack:** Next.js + Vercel, Python + Render unless client constraints\n   156→\n   157→---\n   158→\n   159→## Metrics Dashboard (Track Monthly)\n   160→\n   161→**Acquisition (Emma):**\n   162→- Proposals sent: [current]\n   163→- Win rate: [current %]\n   164→- Response time: [median minutes]\n   165→\n   166→**Delivery (Developers + Rafael):**\n   167→- Missions in progress: [current]\n   168→- Missions delivered: [this month]\n   169→- Average delivery time: [days from won → AC Green]\n   170→\n   171→**Quality (Sofia):**\n   172→- QA pass rate: [% first time]\n   173→- Bugs found: [count]\n   174→- Client complaints: [count]\n   175→\n   176→**Financial (Alexis):**\n   177→- Revenue won: €[X]\n   178→- Revenue delivered: €[X]\n   179→- Revenue collected: €[X]\n   180→- Costs: €[X]\n   181→- Profit margin: [X]%\n   182→- Runway: [X] months\n   183→\n   184→**Team (Alexis):**\n   185→- Active developers: [count]\n   186→- Developer performance: [list with scores]\n   187→- Turnover: [count left this month]\n   188→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:00.231Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:02.091Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01MV23cMpYrCecyWiZMZSudc",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/ROADMAP.md",
+            "old_string": "# ScopeLock Strategic Roadmap\n\n**Last Updated:** 2025-11-05",
+            "new_string": "# ScopeLock Strategic Roadmap\n\n**Last Updated:** 2025-11-07"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:22:02.409Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01MV23cMpYrCecyWiZMZSudc",
+          "output": "The file /home/mind-protocol/scopelock/citizens/alexis/ROADMAP.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n     1→# ScopeLock Strategic Roadmap\n     2→\n     3→**Last Updated:** 2025-11-07\n     4→\n     5→---\n     6→\n     7→## Current Phase: AI-Assisted Development Model",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:07.238Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:17.575Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01BpHGoCLT9tjvFfigX5WwMz",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/ROADMAP.md",
+            "old_string": "**Current Status (2025-11-05):**\n- Team structure defined ✅\n- AI citizens created (Emma, Inna, Rafael, Sofia, Alexis, Maya) ✅\n- Standard tech stack defined (Next.js + Vercel, Python + Render) ✅\n- First developer (Reanance) onboarding ⏳\n- First proposals: 0 sent (Emma needs activation)\n\n**Blockers:**\n- Need to activate Emma to start sending proposals\n- Need to hire 1-2 more junior developers\n- Need to test full workflow (proposal → delivery) at least once",
+            "new_string": "**Current Status (2025-11-07):**\n- Team structure defined ✅\n- AI citizens created (Emma, Inna, Rafael, Sofia, Alexis, Maya) ✅\n- Standard tech stack defined (Next.js + Vercel, Python + Render) ✅\n- **STRATEGIC PIVOT ✅ (2025-11-07):** Creative AI services prioritized over traditional dev\n  - 7 new service categories added (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content)\n  - Target margins: 70-85% (vs 50-60% for traditional dev)\n  - Competitive moat: Dev shops can't compete (no AI creative tools access)\n  - Week 1 targets revised: $400-1100 revenue (vs $250-800 previously)\n- Human team: Bigbosexf (QA), Reanance (specs/client mgmt), Kara (dev) ✅\n- First proposals: 0 sent (Emma ready to hunt creative AI jobs)\n\n**Blockers:**\n- Need to activate Emma to start sending proposals (prioritize creative AI services)\n- Need to test full workflow (proposal → delivery) at least once\n- Verify access to creative AI tools (Ideogram, Runway, Suno, ElevenLabs, Gamma)"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:22:18.359Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01BpHGoCLT9tjvFfigX5WwMz",
+          "output": "The file /home/mind-protocol/scopelock/citizens/alexis/ROADMAP.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n    56→- Client satisfaction remains high (no complaints, payment at AC Green)\n    57→- Quality maintained (Sofia QA pass rate >90%)\n    58→- Proposal → delivery time <2 weeks average\n    59→\n    60→**Current Status (2025-11-07):**\n    61→- Team structure defined ✅\n    62→- AI citizens created (Emma, Inna, Rafael, Sofia, Alexis, Maya) ✅\n    63→- Standard tech stack defined (Next.js + Vercel, Python + Render) ✅\n    64→- **STRATEGIC PIVOT ✅ (2025-11-07):** Creative AI services prioritized over traditional dev\n    65→  - 7 new service categories added (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content)\n    66→  - Target margins: 70-85% (vs 50-60% for traditional dev)\n    67→  - Competitive moat: Dev shops can't compete (no AI creative tools access)\n    68→  - Week 1 targets revised: $400-1100 revenue (vs $250-800 previously)\n    69→- Human team: Bigbosexf (QA), Reanance (specs/client mgmt), Kara (dev) ✅\n    70→- First proposals: 0 sent (Emma ready to hunt creative AI jobs)\n    71→\n    72→**Blockers:**\n    73→- Need to activate Emma to start sending proposals (prioritize creative AI services)\n    74→- Need to test full workflow (proposal → delivery) at least once\n    75→- Verify access to creative AI tools (Ideogram, Runway, Suno, ElevenLabs, Gamma)\n    76→\n    77→---\n    78→\n    79→## Phase 3: Scale to 5-10 Developers",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:22.705Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:23.141Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_0179zeWTC1Zq15YdXriN4Wwq",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/IDEAS.md"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:22:23.272Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_0179zeWTC1Zq15YdXriN4Wwq",
+          "output": "     1→# Strategic Ideas & Improvements\n     2→\n     3→**Last Updated:** 2025-11-05\n     4→\n     5→---\n     6→\n     7→## Pricing Strategy Ideas\n     8→\n     9→**2025-11-05 - Dynamic Pricing Based on Urgency**\n    10→- **Problem:** Currently flat pricing regardless of client timeline\n    11→- **Idea:** Add urgency premium (+30% for <1 week delivery, +50% for <3 days)\n    12→- **Impact:** Higher margins on rush jobs, filters out unreasonable timelines\n    13→- **Effort:** Low (just pricing decision, no system changes)\n    14→- **Status:** New\n    15→\n    16→**2025-11-05 - Evidence Sprint as Standalone Product**\n    17→- **Problem:** Some clients want to \"try before commit\" but Evidence Sprint is bundled\n    18→- **Idea:** Offer Evidence Sprint only (€2-3K) with option to continue to full AC Green\n    19→- **Impact:** Lower barrier to entry, converts skeptical clients, recurring revenue if they continue\n    20→- **Effort:** Low (just pricing + proposal templates)\n    21→- **Status:** New\n    22→\n    23→**2025-11-05 - Retainer Model for Ongoing Work**\n    24→- **Problem:** One-time missions = unpredictable revenue\n    25→- **Idea:** Offer monthly retainer (€5-10K/month) for ongoing feature development\n    26→- **Impact:** Predictable revenue, stable cash flow, long-term client relationships\n    27→- **Effort:** Medium (need retainer contract template, monthly planning process)\n    28→- **Status:** New\n    29→\n    30→---\n    31→\n    32→## Team Management Ideas\n    33→\n    34→**2025-11-05 - Performance-Based Pay Increases**\n    35→- **Problem:** Flat $6-8/hour doesn't reward high performers\n    36→- **Idea:** Start at $6/hour, increase to $8 after 3 successful missions, $10 after 6 months if quality high\n    37→- **Impact:** Retention of best developers, motivation to deliver quality\n    38→- **Effort:** Low (just compensation decision)\n    39→- **Status:** New\n    40→\n    41→**2025-11-05 - Lead Developer Role**\n    42→- **Problem:** Nicolas can't supervise 10+ junior devs alone\n    43→- **Idea:** Promote best performer to \"lead dev\" role (supervise 5 juniors, $15-20/hour)\n    44→- **Impact:** Scalability, mentorship, career growth for developers\n    45→- **Effort:** Medium (need to define role, responsibilities, training)\n    46→- **Status:** New (wait until Phase 3)\n    47→\n    48→**2025-11-05 - Weekly Team Call (Optional)**\n    49→- **Problem:** Remote team may feel isolated\n    50→- **Idea:** Optional 30-min weekly team call (show what you built this week, Q&A)\n    51→- **Impact:** Team bonding, knowledge sharing, motivation\n    52→- **Effort:** Low (just calendar invite)\n    53→- **Status:** New\n    54→\n    55→---\n    56→\n    57→## Financial Tracking Ideas\n    58→\n    59→**2025-11-05 - Weekly Financial Dashboard Automation**\n    60→- **Problem:** Manually tracking revenue/costs is time-consuming\n    61→- **Idea:** Build simple dashboard (Airtable or Google Sheet) with auto-updated metrics\n    62→- **Impact:** Real-time visibility, faster decision-making\n    63→- **Effort:** Medium (1-2 days to build)\n    64→- **Status:** New\n    65→\n    66→**2025-11-05 - Cash Flow Alert System**\n    67→- **Problem:** Might not notice runway issues until too late\n    68→- **Idea:** Automatic alerts when runway <3 months or net margin <30%\n    69→- **Impact:** Proactive risk management, avoid cash crunches\n    70→- **Effort:** Low (just conditional email/Slack notification)\n    71→- **Status:** New\n    72→\n    73→---\n    74→\n    75→## Branding Ideas\n    76→\n    77→**2025-11-05 - \"Built with ScopeLock\" Badge**\n    78→- **Problem:** Clients don't promote their projects publicly (no word-of-mouth)\n    79→- **Idea:** Offer \"Built with ScopeLock\" badge for client websites (links back to scopelock.mindprotocol.ai)\n    80→- **Impact:** SEO backlinks, social proof, passive lead generation\n    81→- **Effort:** Low (design badge, add to handoff)\n    82→- **Status:** New\n    83→\n    84→**2025-11-05 - Case Study Videos (Not Just Text)**\n    85→- **Problem:** Text case studies are good, but video is more engaging\n    86→- **Idea:** Record 2-3 minute walkthrough videos for La Serenissima, TherapyKin (show actual product)\n    87→- **Impact:** Higher engagement, better conversion on portfolio page\n    88→- **Effort:** Medium (1 day to record + edit)\n    89→- **Status:** New\n    90→\n    91→**2025-11-05 - Client Testimonials Program**\n    92→- **Problem:** No client testimonials on website (trust signal missing)\n    93→- **Idea:** Request testimonial at post-delivery check-in, offer €100 discount on next project\n    94→- **Impact:** Social proof, higher proposal win rate\n    95→- **Effort:** Low (just add to Maya's post-delivery checklist)\n    96→- **Status:** New\n    97→\n    98→---\n    99→\n   100→## Operations Ideas\n   101→\n   102→**2025-11-05 - Onboarding Checklist for New Developers**\n   103→- **Problem:** No standardized onboarding, each developer gets different intro\n   104→- **Idea:** Create 1-page onboarding checklist (accounts, tools, first mission walkthrough)\n   105→- **Impact:** Faster time-to-productivity, consistent experience\n   106→- **Effort:** Low (1 hour to write)\n   107→- **Status:** New\n   108→\n   109→**2025-11-05 - ScopeLock Internal Platform (Long-term)**\n   110→- **Problem:** Inna docs, Rafael code gen, Sofia QA are all manual (Claude Code sessions)\n   111→- **Idea:** Build internal platform that automates: Inna spec generation, Rafael code scaffolding, Sofia test running\n   112→- **Impact:** 10x faster delivery, lower cost per mission\n   113→- **Effort:** High (months of development)\n   114→- **Status:** New (Phase 4 or later)\n   115→\n   116→**2025-11-05 - Standard Mission Templates**\n   117→- **Problem:** Every mission starts from scratch (Inna writes AC.md, Rafael sets up repo, etc.)\n   118→- **Idea:** Create templates for common patterns (Next.js + Airtable, Next.js + PostgreSQL + Python API)\n   119→- **Impact:** Faster delivery, fewer mistakes, easier for junior devs\n   120→- **Effort:** Medium (1-2 days per template)\n   121→- **Status:** New\n   122→\n   123→---\n   124→\n   125→## Marketing/Lead Generation Ideas\n   126→\n   127→**2025-11-05 - Emma Auto-Sends GO Proposals (Optional)**\n   128→- **Problem:** Human has to manually copy-paste every proposal (bottleneck)\n   129→- **Idea:** Give Emma API access to auto-send GO proposals (with human approval via Telegram)\n   130→- **Impact:** 10x proposal volume (from 5/day to 50/day)\n   131→- **Effort:** Medium (need Upwork API integration + approval flow)\n   132→- **Status:** New (risky, need to test carefully)\n   133→\n   134→**2025-11-05 - Blog Content SEO Strategy**\n   135→- **Problem:** ScopeLock website has no blog traffic (no inbound leads)\n   136→- **Idea:** Publish 1 blog post/week on AI-assisted development, case studies, methodology\n   137→- **Impact:** Organic traffic, inbound leads, thought leadership\n   138→- **Effort:** Medium (2-3 hours/week to write + publish)\n   139→- **Status:** New\n   140→\n   141→**2025-11-05 - LinkedIn Outreach (Not Just Upwork)**\n   142→- **Problem:** 100% dependent on Upwork (single platform risk)\n   143→- **Idea:** Emma also finds leads on LinkedIn (CTOs posting about needing help)\n   144→- **Impact:** Diversified lead sources, potentially higher-budget clients\n   145→- **Effort:** Low (Emma just searches LinkedIn too)\n   146→- **Status:** New\n   147→\n   148→---\n   149→\n   150→## Notes\n   151→\n   152→- Ideas are cheap, execution is hard—prioritize based on impact/effort\n   153→- Test ideas as experiments (not commitments)\n   154→- Measure results, kill ideas that don't work\n   155→- Steal good ideas from competitors/agencies\n   156→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:27.529Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:44.186Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01S4XJniadSRHj6owgoTRu2Q",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/IDEAS.md",
+            "old_string": "# Strategic Ideas & Improvements\n\n**Last Updated:** 2025-11-05\n\n---\n\n## Pricing Strategy Ideas",
+            "new_string": "# Strategic Ideas & Improvements\n\n**Last Updated:** 2025-11-07\n\n---\n\n## 🎯 STRATEGIC BREAKTHROUGH (Implemented)\n\n**2025-11-07 - Creative AI Services as Competitive Moat**\n- **Problem:** Traditional dev work (landing pages, bots, APIs) has 50-60% margins, high competition from dev shops, limited budgets ($200-400)\n- **Insight from Nicolas:** AI citizens can generate creative work (images, videos, music, voice, presentations, translations) that traditional dev shops CAN'T compete with (they don't have Ideogram, Runway, Suno, ElevenLabs, Gamma)\n- **Solution:** Pivot to prioritize creative AI services over traditional dev work\n- **Impact:**\n  - Margins: 70-85% (vs 50-60% for dev work)\n  - Competition: Very low to low (vs high for dev work)\n  - Budgets: $400-1500 (vs $200-400 for dev work)\n  - Delivery speed: 4-10 hours (vs 20-40 hours for equivalent value)\n  - QA scalability: One human can QA 10x more creative output than code\n- **What We Added:**\n  - 7 new service categories: Gamma presentations, ElevenLabs voice, Ideogram images, Runway videos, Suno/Udio music, Claude translation, Claude content writing\n  - Each with complete AC.md templates, pricing formulas, margin calculations\n  - Week 1 targets revised: $400-1100 revenue (vs $250-800 previously)\n  - Emma's mission selection guide updated to prioritize creative AI jobs\n- **Critical Success Factor:** Template/style approval UPFRONT (client approves 10 samples before bulk, fixed 1-2 revision rounds)\n- **Effort:** Medium (2 days to document all service categories, pricing, AC templates)\n- **Status:** ✅ **Implemented** (2025-11-07)\n- **Next Steps:**\n  - Emma hunts creative AI jobs on Upwork first, traditional dev as fallback\n  - Verify team has access to creative AI tools (Ideogram API, Runway, Suno, ElevenLabs, Gamma)\n  - Deliver first creative AI mission to prove workflow\n\n---\n\n## Pricing Strategy Ideas"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:22:44.562Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01S4XJniadSRHj6owgoTRu2Q",
+          "output": "The file /home/mind-protocol/scopelock/citizens/alexis/IDEAS.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n     1→# Strategic Ideas & Improvements\n     2→\n     3→**Last Updated:** 2025-11-07\n     4→\n     5→---\n     6→\n     7→## 🎯 STRATEGIC BREAKTHROUGH (Implemented)\n     8→\n     9→**2025-11-07 - Creative AI Services as Competitive Moat**\n    10→- **Problem:** Traditional dev work (landing pages, bots, APIs) has 50-60% margins, high competition from dev shops, limited budgets ($200-400)\n    11→- **Insight from Nicolas:** AI citizens can generate creative work (images, videos, music, voice, presentations, translations) that traditional dev shops CAN'T compete with (they don't have Ideogram, Runway, Suno, ElevenLabs, Gamma)\n    12→- **Solution:** Pivot to prioritize creative AI services over traditional dev work\n    13→- **Impact:**\n    14→  - Margins: 70-85% (vs 50-60% for dev work)\n    15→  - Competition: Very low to low (vs high for dev work)\n    16→  - Budgets: $400-1500 (vs $200-400 for dev work)\n    17→  - Delivery speed: 4-10 hours (vs 20-40 hours for equivalent value)\n    18→  - QA scalability: One human can QA 10x more creative output than code\n    19→- **What We Added:**\n    20→  - 7 new service categories: Gamma presentations, ElevenLabs voice, Ideogram images, Runway videos, Suno/Udio music, Claude translation, Claude content writing\n    21→  - Each with complete AC.md templates, pricing formulas, margin calculations\n    22→  - Week 1 targets revised: $400-1100 revenue (vs $250-800 previously)\n    23→  - Emma's mission selection guide updated to prioritize creative AI jobs\n    24→- **Critical Success Factor:** Template/style approval UPFRONT (client approves 10 samples before bulk, fixed 1-2 revision rounds)\n    25→- **Effort:** Medium (2 days to document all service categories, pricing, AC templates)\n    26→- **Status:** ✅ **Implemented** (2025-11-07)\n    27→- **Next Steps:**\n    28→  - Emma hunts creative AI jobs on Upwork first, traditional dev as fallback\n    29→  - Verify team has access to creative AI tools (Ideogram API, Runway, Suno, ElevenLabs, Gamma)\n    30→  - Deliver first creative AI mission to prove workflow\n    31→\n    32→---\n    33→\n    34→## Pricing Strategy Ideas\n    35→\n    36→**2025-11-05 - Dynamic Pricing Based on Urgency**\n    37→- **Problem:** Currently flat pricing regardless of client timeline\n    38→- **Idea:** Add urgency premium (+30% for <1 week delivery, +50% for <3 days)",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:49.765Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:50.775Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_017mhizkLBouiz7dhCgeJSWH",
+          "tool": "Read",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/TODOS.md"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:22:50.922Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_017mhizkLBouiz7dhCgeJSWH",
+          "output": "     1→# Strategic Action Items\n     2→\n     3→**Last Updated:** 2025-11-06\n     4→\n     5→---\n     6→\n     7→## High Priority (This Week)\n     8→\n     9→**Automatic Task System (Phase 2):**\n    10→- [ ] Review Emma's specifications when ready (by 2025-11-08)\n    11→  - Morning brief spec\n    12→  - Task pipeline spec\n    13→  - Handoff system spec\n    14→- [ ] Review Inna's 6-level documentation when ready (by 2025-11-12)\n    15→  - PATTERN → BEHAVIOR_SPEC → VALIDATION → MECHANISM → ALGORITHM → GUIDE\n    16→- [ ] Approve Rafael's implementation plan when ready (by 2025-11-15)\n    17→  - No implementation before Inna's docs are complete\n    18→\n    19→**Financial Tracking (Week 1):**\n    20→- [ ] Monitor Emma's proposal volume (target: 5-8/day)\n    21→- [ ] Track first mission wins (if any this week)\n    22→- [ ] First weekly financial update (Friday 2025-11-08)\n    23→\n    24→**Telegram Outreach Setup:**\n    25→- [ ] Set up Telegram outreach system (by 2025-11-08)\n    26→  - Navigate to `/outreach/` directory\n    27→  - Read `START_HERE.txt` and `YOUR_ACTION_CHECKLIST_V2.txt`\n    28→  - Install dependencies: `pip install telethon python-dotenv`\n    29→  - Generate outreach messages: `python3 telegram_outreach_sender_v2.py --generate`\n    30→  - Configure API credentials (Telegram API ID/hash)\n    31→  - Test send to 5 prospects before scaling\n    32→\n    33→---\n    34→\n    35→## Medium Priority (This Month)\n    36→\n    37→**Financial Management:**\n    38→- [ ] Draft first pricing recommendation (when Emma brings first proposal)\n    39→- [ ] Review runway projections (current cash, monthly burn rate)\n    40→- [ ] First monthly financial report (2025-12-02)\n    41→\n    42→**Team Management:**\n    43→- [ ] Create developer onboarding checklist (1 page, ready for first hire)\n    44→- [ ] Performance tracking template (quality, speed, communication metrics)\n    45→\n    46→---\n    47→\n    48→## Low Priority (Backlog)\n    49→\n    50→- [ ] Design \"Built with ScopeLock\" badge\n    51→- [ ] Draft client testimonial request template (for Maya to use)\n    52→- [ ] Research retainer pricing models (compare to competitors)\n    53→- [ ] Explore Upwork API for Emma auto-send proposals (feasibility check)\n    54→\n    55→---\n    56→\n    57→## Completed (Recent)\n    58→\n    59→**2025-11-06 (Later)**\n    60→- ✅ Fixed homepage messaging issues (5 critical changes based on user feedback)\n    61→  - Hero H1: \"Software locked to executable acceptance criteria\" (specific value, not vague \"good\")\n    62→  - Hero pitch: \"No trust required\" positioning (replaced weak \"121+ deployments\" line)\n    63→  - CTA alignment: Removed \"Book call\" → \"Start with Evidence Sprint\" (process-aligned)\n    64→  - Empathy section: Answers in titles, not questions (solution-first, green borders not red)\n    65→  - Commit feed: Added timestamps (\"2h ago\", \"5d ago\") for recency proof\n    66→\n    67→**2025-11-06 (Earlier)**\n    68→- ✅ Updated Emma's CLAUDE.md with Marketing/Content responsibilities\n    69→  - Weekly blog post workflow (1/week, SEO-optimized)\n    70→  - Case study creation process\n    71→  - Portfolio maintenance procedures\n    72→  - Lead nurturing content templates\n    73→- ✅ Updated Rafael's CLAUDE.md with DevOps support responsibilities\n    74→  - Production infrastructure debugging\n    75→  - Application health monitoring\n    76→  - Hotfix procedures\n    77→  - Database migrations\n    78→  - Environment variable updates\n    79→  - Platform-specific troubleshooting\n    80→- ✅ Verified Maya in main CLAUDE.md team structure (AI Citizens section)\n    81→- ✅ Corrected client tracking system paths to `/clients/` (org-level)\n    82→- ✅ Created comprehensive financial dashboard (`/citizens/alexis/FINANCIAL_DASHBOARD.md`)\n    83→  - Weekly tracking template\n    84→  - Monthly metrics dashboard\n    85→  - Financial alerts system\n    86→  - Pricing strategy tracking\n    87→  - Developer economics tracking\n    88→  - Growth scenarios\n    89→\n    90→**2025-11-05 (Later)**\n    91→- ✅ Created automatic task system strategic vision (`/docs/automation/00-automatic-task-system-vision.md`)\n    92→- ✅ Updated automation README with automatic task system section\n    93→- ✅ Defined handoff workflow (task completion → AI citizen writes brief → next person)\n    94→- ✅ Documented morning brief system (8:00 AM WAT cron → personalized briefs)\n    95→- ✅ Specified mission pipeline state machine (with revision loops)\n    96→- ✅ Designed button interface for Telegram (one-tap task actions)\n    97→- ✅ Defined migration path (cron → event-driven → L2 Stimulus Collector)\n    98→- ✅ Clarified role boundaries (Alexis: strategy, Emma: specs, Inna: docs, Rafael: implementation)\n    99→\n   100→**2025-11-05 (Earlier)**\n   101→- ✅ Refactored payment structure to 4-way transparent split (Team/Upwork/Org/Nicolas)\n   102→- ✅ Documented Organization costs ($2100/month fixed AI + Claude Code)\n   103→- ✅ Showed Nicolas's margin scales 25% @ low volume → 50% @ high volume\n   104→- ✅ Added purchasing power context (PPP comparisons France vs Nigeria/Côte d'Ivoire)\n   105→- ✅ Created Maya \"The Bridge\" citizen (Client Success Manager)\n   106→- ✅ Defined Maya's responsibilities (onboarding, status updates, change requests, handoff)\n   107→- ✅ Added strategic tracking system to Alexis CLAUDE.md\n   108→- ✅ Created ROADMAP.md (strategic phases and metrics)\n   109→- ✅ Created IDEAS.md (improvement opportunities)\n   110→- ✅ Created TODOS.md (action items)\n   111→- ✅ Added \"Don't do other citizens' work\" guardrail to Alexis CLAUDE.md\n   112→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:22:55.446Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:23:00.184Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01M3N4bLp2mE3he3ru4TDkGV",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/TODOS.md",
+            "old_string": "# Strategic Action Items\n\n**Last Updated:** 2025-11-06\n\n---\n\n## High Priority (This Week)",
+            "new_string": "# Strategic Action Items\n\n**Last Updated:** 2025-11-07\n\n---\n\n## High Priority (This Week)\n\n**Creative AI Services Launch:**\n- [ ] Verify team access to creative AI tools (by 2025-11-08)\n  - Ideogram API access (image generation)\n  - Runway access (video generation)\n  - Suno/Udio access (music generation)\n  - ElevenLabs API access (voice generation)\n  - Gamma Pro subscription (presentation generation)\n  - Claude API access for translation/content (already have via Claude Code)"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:23:00.498Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01M3N4bLp2mE3he3ru4TDkGV",
+          "output": "The file /home/mind-protocol/scopelock/citizens/alexis/TODOS.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n     1→# Strategic Action Items\n     2→\n     3→**Last Updated:** 2025-11-07\n     4→\n     5→---\n     6→\n     7→## High Priority (This Week)\n     8→\n     9→**Creative AI Services Launch:**\n    10→- [ ] Verify team access to creative AI tools (by 2025-11-08)\n    11→  - Ideogram API access (image generation)\n    12→  - Runway access (video generation)\n    13→  - Suno/Udio access (music generation)\n    14→  - ElevenLabs API access (voice generation)\n    15→  - Gamma Pro subscription (presentation generation)\n    16→  - Claude API access for translation/content (already have via Claude Code)\n    17→\n    18→**Automatic Task System (Phase 2):**\n    19→- [ ] Review Emma's specifications when ready (by 2025-11-08)\n    20→  - Morning brief spec",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:23:03.825Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:23:12.520Z",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "toolu_01WxfArFyFr3299McDvBnHQP",
+          "tool": "Edit",
+          "input": {
+            "file_path": "/home/mind-protocol/scopelock/citizens/alexis/TODOS.md",
+            "old_string": "## Completed (Recent)\n\n**2025-11-06 (Later)**",
+            "new_string": "## Completed (Recent)\n\n**2025-11-07**\n- ✅ **STRATEGIC PIVOT: Creative AI Services as Competitive Moat**\n  - Added 7 new service categories to MISSION_SELECTION.md (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content)\n  - Each category: 3-6 mission types with full AC.md templates, pricing ($400-1500), margins (60-85%)\n  - Updated Mission Target Summary Table (split Creative AI vs Traditional Dev)\n  - Revised Week 1 targets: $400-1100 revenue (vs $250-800 previously)\n  - Updated Strategy Progression: Creative AI PRIMARY, Traditional Dev FALLBACK\n  - Documented competitive moat: Dev shops can't compete (no AI creative tools)\n  - Critical success factor: Template/style approval gates to ensure objective AC.md\n  - Updated ROADMAP.md, IDEAS.md, TODOS.md to reflect strategic pivot\n  - SYNC.md entry created with complete documentation\n\n**2025-11-06 (Later)**"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T18:23:13.098Z",
+      "content": "",
+      "tool_results": [
+        {
+          "id": "toolu_01WxfArFyFr3299McDvBnHQP",
+          "output": "The file /home/mind-protocol/scopelock/citizens/alexis/TODOS.md has been updated. Here's the result of running `cat -n` on a snippet of the edited file:\n    62→- [ ] Explore Upwork API for Emma auto-send proposals (feasibility check)\n    63→\n    64→---\n    65→\n    66→## Completed (Recent)\n    67→\n    68→**2025-11-07**\n    69→- ✅ **STRATEGIC PIVOT: Creative AI Services as Competitive Moat**\n    70→  - Added 7 new service categories to MISSION_SELECTION.md (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content)\n    71→  - Each category: 3-6 mission types with full AC.md templates, pricing ($400-1500), margins (60-85%)\n    72→  - Updated Mission Target Summary Table (split Creative AI vs Traditional Dev)\n    73→  - Revised Week 1 targets: $400-1100 revenue (vs $250-800 previously)\n    74→  - Updated Strategy Progression: Creative AI PRIMARY, Traditional Dev FALLBACK\n    75→  - Documented competitive moat: Dev shops can't compete (no AI creative tools)\n    76→  - Critical success factor: Template/style approval gates to ensure objective AC.md\n    77→  - Updated ROADMAP.md, IDEAS.md, TODOS.md to reflect strategic pivot\n    78→  - SYNC.md entry created with complete documentation\n    79→\n    80→**2025-11-06 (Later)**\n    81→- ✅ Fixed homepage messaging issues (5 critical changes based on user feedback)\n    82→  - Hero H1: \"Software locked to executable acceptance criteria\" (specific value, not vague \"good\")\n    83→  - Hero pitch: \"No trust required\" positioning (replaced weak \"121+ deployments\" line)\n    84→  - CTA alignment: Removed \"Book call\" → \"Start with Evidence Sprint\" (process-aligned)",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:23:20.656Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-06T18:23:40.189Z",
+      "content": "## ✅ MISSION_SELECTION.md Strategic Expansion Complete\n\nI've completed the comprehensive expansion of Emma's mission selection guide to prioritize creative AI services over traditional dev work.\n\n### What Was Delivered\n\n**1. Seven New Creative AI Service Categories** (Lines 225-981 in MISSION_SELECTION.md)\n\nEach category includes 3-6 complete mission types with:\n- Example job descriptions\n- Full AC.md templates with objective criteria\n- Budget ranges, time estimates, API costs\n- Margin calculations (60-85%)\n- Red/green flag filters\n\n**Categories added:**\n- **Tier 1A: Image Generation (Ideogram)** - 4 mission types, $400-800, 75-80% margin\n- **Tier 1B: Video Generation (Runway)** - 3 mission types, $600-1200, 50-60% margin\n- **Tier 1C: Music Generation (Suno/Udio)** - 4 mission types, $300-600, 75-80% margin\n- **Tier 1D: Voice Generation (ElevenLabs)** - 5 mission types, $300-600, 75-80% margin\n- **Tier 1E: Presentation/PDF (Gamma)** - 5 mission types, $400-800, 75-80% margin\n- **Tier 1F: Translation Services** - 4 mission types, $500-1000, 70-75% margin\n- **Tier 1G: Content Writing** - 6 mission types, $600-1200, 60-70% margin\n\n**2. Updated Summary Tables & Targets**\n\n- **Mission Target Summary Table:** Split into \"Creative AI Services\" (highest margin) vs \"Traditional Dev + AI Integration\"\n- **Week 1 Targets Revised:** $400-1100 revenue (vs $250-800 previously)\n  - 1× Gamma presentation ($500), 1× ElevenLabs voice ($400), 1× Translation ($600), 1× PDF parsing fallback ($500)\n- **Strategy Progression:** Creative AI = PRIMARY, Traditional Dev = FALLBACK\n\n**3. Strategic Documentation Updated**\n\n- `/citizens/alexis/ROADMAP.md` - Phase 2 updated with strategic pivot\n- `/citizens/alexis/IDEAS.md` - Creative AI services documented as \"Strategic Breakthrough (Implemented)\"\n- `/citizens/alexis/TODOS.md` - Added creative AI tools verification to high priority tasks\n- `/citizens/SYNC.md` - Complete entry documenting the expansion\n\n### The Competitive Moat\n\n**Why this works:**\n- ✅ Traditional dev shops CAN'T compete (no Ideogram/Runway/Suno/ElevenLabs/Gamma)\n- ✅ 70-85% margins (vs 50-60% for dev work)\n- ✅ Higher budgets ($400-1500 vs $200-400)\n- ✅ Faster delivery (4-10 hours vs 20-40 hours)\n- ✅ One human can QA 10× more creative output than code\n- ✅ Clear AC.md possible via template/style approval gates\n\n### Critical Success Factor\n\nEvery creative AI mission includes **objective acceptance criteria**:\n- Client approves 10 samples BEFORE bulk generation\n- Fixed 1-2 revision rounds (scoped in AC.md)\n- Reference materials required (client provides 3-5 examples)\n- No subjective \"make it beautiful\" requests\n\n### Next Steps\n\n1. **Verify creative AI tool access** - Ideogram API, Runway, Suno/Udio, ElevenLabs, Gamma Pro\n2. **Emma hunts creative AI jobs first** - Use updated MISSION_SELECTION.md priorities\n3. **Deliver first creative AI mission** - Prove the workflow works end-to-end\n\nFiles updated:\n- `/home/mind-protocol/scopelock/citizens/emma/MISSION_SELECTION.md` (lines 225-1517)\n- `/home/mind-protocol/scopelock/citizens/SYNC.md` (lines 1-64)\n- `/home/mind-protocol/scopelock/citizens/alexis/ROADMAP.md` (lines 60-75)\n- `/home/mind-protocol/scopelock/citizens/alexis/IDEAS.md` (lines 7-30)\n- `/home/mind-protocol/scopelock/citizens/alexis/TODOS.md` (lines 9-16, 68-78)"
     }
   ],
-  "last_updated": "2025-11-06T18:13:24.793907+00:00",
-  "message_count": 1044
+  "last_updated": "2025-11-06T18:23:40.669617+00:00",
+  "message_count": 1127
 }

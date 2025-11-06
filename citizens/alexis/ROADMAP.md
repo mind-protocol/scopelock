@@ -1,6 +1,6 @@
 # ScopeLock Strategic Roadmap
 
-**Last Updated:** 2025-11-05
+**Last Updated:** 2025-11-07
 
 ---
 
@@ -57,17 +57,22 @@
 - Quality maintained (Sofia QA pass rate >90%)
 - Proposal → delivery time <2 weeks average
 
-**Current Status (2025-11-05):**
+**Current Status (2025-11-07):**
 - Team structure defined ✅
 - AI citizens created (Emma, Inna, Rafael, Sofia, Alexis, Maya) ✅
 - Standard tech stack defined (Next.js + Vercel, Python + Render) ✅
-- First developer (Reanance) onboarding ⏳
-- First proposals: 0 sent (Emma needs activation)
+- **STRATEGIC PIVOT ✅ (2025-11-07):** Creative AI services prioritized over traditional dev
+  - 7 new service categories added (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content)
+  - Target margins: 70-85% (vs 50-60% for traditional dev)
+  - Competitive moat: Dev shops can't compete (no AI creative tools access)
+  - Week 1 targets revised: $400-1100 revenue (vs $250-800 previously)
+- Human team: Bigbosexf (QA), Reanance (specs/client mgmt), Kara (dev) ✅
+- First proposals: 0 sent (Emma ready to hunt creative AI jobs)
 
 **Blockers:**
-- Need to activate Emma to start sending proposals
-- Need to hire 1-2 more junior developers
+- Need to activate Emma to start sending proposals (prioritize creative AI services)
 - Need to test full workflow (proposal → delivery) at least once
+- Verify access to creative AI tools (Ideogram, Runway, Suno, ElevenLabs, Gamma)
 
 ---
 

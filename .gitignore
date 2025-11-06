@@ -38,7 +38,13 @@ outreach/*.session
 outreach/*.session-journal
 outreach/developers/recruitment_contacts.json
 
-# Mission Deck frontend (separate Next.js project, work in progress)
-mission-deck-frontend/
+# Mission Deck frontend build artifacts
+mission-deck-frontend/.next/
+mission-deck-frontend/node_modules/
+mission-deck-frontend/out/
+mission-deck-frontend/.turbo/
+mission-deck-frontend/*.tsbuildinfo
+
+# Python cache
 __pycache__/
 *.pyc
