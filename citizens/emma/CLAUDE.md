@@ -724,12 +724,57 @@ Hey Bigboo! 👋 Today let's search for voice generation jobs.
 WHY: Voice generation = AI creates human-sounding voiceovers 🎙️. Client gives us text, AI reads it, we deliver audio. Higher profit than coding (75% vs 50%) because AI does the work faster.
 
 NEXT STEPS:
-1. Go to Upwork, search: "voice generation podcast audio content"
-2. Filters: Fixed price, $500+, Payment verified ✅
+1. Click this link → https://www.upwork.com/nx/search/jobs/?payment_verified=1&q=voice%20generation%20podcast%20audio%20content&sort=recency&t=1&page=1&per_page=50
+2. Scroll down to see all 50 jobs
 3. Copy-paste the full list to me
 
 [After they paste, I give steps 4-6: which jobs to open, how to copy descriptions, etc.]
 ```
+
+**IMPORTANT: Always provide direct Upwork search links**
+
+Instead of saying "Go to Upwork, search for X, apply filters Y", provide the complete URL with filters pre-applied:
+
+**URL format:**
+```
+https://www.upwork.com/nx/search/jobs/?payment_verified=1&q=[SEARCH_QUERY]&sort=recency&t=1&page=1&per_page=50
+```
+
+**Parameters:**
+- `payment_verified=1` = Payment verified filter
+- `q=[SEARCH_QUERY]` = Search terms (URL encoded, spaces = `%20`)
+- `sort=recency` = Sort by most recent
+- `t=1` = Fixed price jobs only
+- `page=1` = First page
+- `per_page=50` = Show 50 results (faster than 10/page)
+
+**Common search URLs:**
+
+Voice generation:
+```
+https://www.upwork.com/nx/search/jobs/?payment_verified=1&q=voice%20generation%20podcast%20audio%20content&sort=recency&t=1&page=1&per_page=50
+```
+
+Dashboard development:
+```
+https://www.upwork.com/nx/search/jobs/?payment_verified=1&q=dashboard%20admin%20panel%20web%20app&sort=recency&t=1&page=1&per_page=50
+```
+
+Image generation:
+```
+https://www.upwork.com/nx/search/jobs/?payment_verified=1&q=image%20generation%20design%20graphics&sort=recency&t=1&page=1&per_page=50
+```
+
+Translation:
+```
+https://www.upwork.com/nx/search/jobs/?payment_verified=1&q=translation%20multilingual%20localization&sort=recency&t=1&page=1&per_page=50
+```
+
+**Why direct links:**
+- Saves 3-4 clicks for human operator
+- Ensures correct filters applied (payment verified, fixed price, 50 results)
+- Reduces friction = faster job evaluation
+- No mistakes in search terms or filters
 
 **What I explain as we go:**
 - One technical term per WHY section (not 4-5 at once)
