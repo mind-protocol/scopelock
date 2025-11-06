@@ -1,3 +1,71 @@
+## 2025-11-07 11:45 — Rafael: Enable Real Claude Code Chat Integration (NO MOCK DATA) ✅
+
+**USER REQUEST:**
+- "So, I don't want any mock data, ok? The chat should be on the right side, and it should send a message to the back-end with the following code: cd citizen/path/ && claude -p "message" --continue --dangerously-skip-permissions --verbose And send the answer in the chat."
+
+**IMPLEMENTATION:**
+
+**Backend (rafael_cli.py):**
+- ✅ Backend already implemented with Claude Code CLI integration!
+- Fixed missing `import os` statement
+- Added `--verbose` flag to Claude CLI commands
+- Command executed: `cd citizens/rafael && claude -p "message" --continue --dangerously-skip-permissions --verbose`
+- Handles conversation continuation (--continue) with fallback if no conversation exists
+- 60-second timeout for Claude responses
+- Code block extraction via regex (```language\n...\n```)
+- Graceful error handling with user-friendly messages
+
+**Frontend (api.ts):**
+- Removed ALL mock data from `sendMessage()` function
+- Removed ALL mock data from `getMessages()` function
+- Chat now connects directly to real backend endpoint: `/api/missions/{id}/chat`
+- No more mock responses - every message goes to Claude Code
+
+**How it works:**
+1. User types message in Mission Deck chat
+2. Frontend sends message to `/api/missions/{missionId}/chat`
+3. Backend calls `ask_rafael(user_message, mission_context)`
+4. Rafael service executes: `cd /home/mind-protocol/scopelock/citizens/rafael && claude -p "prompt" --continue --dangerously-skip-permissions --verbose`
+5. Claude Code responds with AI-generated answer
+6. Response extracted, code blocks parsed
+7. Response saved to FalkorDB graph
+8. Response returned to frontend and displayed in chat
+
+**FILES MODIFIED:**
+- backend/app/api/mission_deck/services/rafael_cli.py (add import os, add --verbose flag)
+- src/lib/api.ts (-33 lines - removed all mock data handling for chat)
+
+**COMMITS:**
+- 4480363: Frontend - remove mock data
+- Backend changes: import os + --verbose flag (already in working directory)
+
+**STATUS:** Deployed to production ✅
+
+**WHY THIS MATTERS:**
+- NO MOCK DATA - all chat messages go to real Claude Code
+- Uses Claude Code CLI subscription (NOT pay-per-token API)
+- Real AI responses from Rafael citizen
+- Conversation continuity with --continue flag
+- Verbose logging for debugging
+- Code blocks automatically extracted and highlighted
+- Chat history persisted in FalkorDB graph
+
+**VERIFICATION:**
+- Visit: https://scopelock.mindprotocol.ai/mission-deck/console
+- Select a mission
+- Click on Rafael citizen
+- Type a message in the chat
+- Real Claude Code will respond via CLI command
+- Response appears in chat with code blocks highlighted
+
+**IMPORTANT:**
+- Chat is on the right side in all citizen workspaces (RafaelWorkspace, SofiaWorkspace, etc.)
+- Zero mock data - everything goes through real backend
+- Backend must have Claude Code CLI installed and configured
+- Rafael's citizen directory must exist at: `/citizens/rafael/`
+
+---
+
 ## 2025-11-07 18:30 — Rafael: Add Telegram Contact Info + Message References to Analysis Scripts ✅
 
 **USER REQUEST:**
