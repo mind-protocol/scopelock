@@ -52,6 +52,43 @@
 
 ---
 
+## 2025-11-07 08:30 — Rafael: FINAL FIX - Token Naming Mismatch ✅
+
+**THE ACTUAL BUG (found by reading console.tsx):**
+```typescript
+// api.ts line 372 - Wallet login stored as 'auth_token'
+localStorage.setItem('auth_token', response.access_token);
+
+// console/page.tsx line 58 - Console checked for 'access_token'
+const token = localStorage.getItem('access_token');
+if (!token) {
+  router.push('/');  // ← REDIRECTED TO HOMEPAGE!
+}
+```
+
+**Backend logs confirmed:** Authentication WAS working (200 OK responses), but frontend had token naming inconsistency!
+
+**Solution:** Unified all token storage to use `access_token` (standard name)
+
+**Changes:**
+1. Wallet login real: `auth_token` → `access_token` (api.ts:372)
+2. Mock wallet login: `auth_token` → `access_token` (api.ts:357)
+3. Login page auto-redirect: Check `access_token` instead of `auth_token` (page.tsx:22)
+4. 401 handler: Only clear `access_token` (api.ts:282)
+5. Logout: Only clear `access_token` (api.ts:381)
+
+**Files Modified:**
+- src/lib/api.ts (5 locations)
+- src/app/mission-deck/page.tsx (1 location)
+
+**Result:** Wallet login → Backend auth (200 OK) → Token stored → Console checks for it → Loads successfully!
+
+**Status:** Committed and pushed ✅
+**Commit:** e81374b "fix: wallet login token mismatch causing homepage redirect"
+**Next:** Vercel deploying, wallet login should NOW work end-to-end
+
+---
+
 ## 2025-11-07 08:15 — Rafael: Connect Mission Deck to Real Backend ✅
 
 **Issue:** After wallet sign, redirected back to homepage. User: "it directly sends me back to homepage!!"
