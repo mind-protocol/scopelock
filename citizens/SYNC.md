@@ -1,3 +1,57 @@
+## 2025-11-07 09:30 — Alexis: Process Page + Navigation Overhaul ✅
+
+**PROCESS PAGE CHANGES (src/app/process/page.tsx):**
+1. Hero: 'How I Work' (not 'How ScopeLock Works')
+2. Lead: 'Fixed pricing. Fast delivery (2-7 days). You pay only when satisfied.'
+3. Replaced 3-step technical process with 4-step business-friendly process:
+   - Step 1: You Describe What You Need (Day 1) — Kickoff call, fixed quote within 24h
+   - Step 2: I Start Building (Days 2-3) — Early demo, progress update
+   - Step 3: I Deliver the Full Project (Days 4-7) — Live deployment + source code + credentials
+   - Step 4: You Test & Pay When Satisfied (Day 8+) — 2 revisions included, pay when satisfied
+4. Removed technical jargon: AC.md, AC green, Evidence Sprint, Proof Log (PRF-020)
+5. 'What If I Change My Mind Mid-Project?' (not 'Change Control CHG-130')
+   - Swap vs Add explained in business terms
+6. 'Why This Works' rewritten (business-friendly benefits)
+7. Comparison table: 'How I'm Different' (not 'ScopeLock vs Traditional')
+8. Updated metadata: 'How I Work — ScopeLock'
+
+**NAVIGATION CHANGES (src/app/layout.tsx):**
+1. **Grouped nav items with visual separators (|):**
+   - Group 1: About | How I Work | Pricing
+   - Group 2: Portfolio | Blog
+   - Group 3: FAQ | Resources
+   - Group 4: Get Started (CTA button)
+2. Renamed 'Process' → 'How I Work' (clearer)
+3. Renamed 'Mission Deck' → 'Portfolio' (more business-friendly)
+4. Removed 'Join Team' (not priority for buyers)
+5. Made 'Get Started' a styled CTA button (accent background, hover lift)
+
+**FOOTER CHANGES (src/app/layout.tsx):**
+1. Replaced minimal footer with 4-column grid (matches homepage)
+2. Sections: ScopeLock | Services | Company | Connect
+3. Added live project links (serenissima.ai, therapykin.ai, konginvest.ai)
+4. Tagline: 'Solo architect + AI-assisted teams'
+
+**CSS CHANGES (src/app/globals.css):**
+1. `.nav-separator` — subtle muted dividers between nav groups
+2. `.cta-nav` — accent background, hover lift effect, no underline
+
+**COMMITS:**
+- c4c52d2: Process page business-friendly rewrite
+- 4e2e76b: Navigation grouped + footer updated
+- 73fa497: CSS for nav separators + CTA button
+
+**WHY THIS MATTERS:**
+- Process page now speaks to business buyers (not technical audience)
+- Navigation is scannable with clear groupings
+- Footer is consistent across all pages
+- Every page now uses solo voice ("I") and business-friendly language
+- No more technical jargon anywhere on the site
+
+**STATUS:** All changes committed and pushed to production ✅
+
+---
+
 ## 2025-11-07 08:15 — Rafael: Connect Mission Deck to Real Backend ✅
 
 **Issue:** After wallet sign, redirected back to homepage. User: "it directly sends me back to homepage!!"
