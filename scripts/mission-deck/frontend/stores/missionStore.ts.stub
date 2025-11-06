@@ -1,0 +1,287 @@
+/**
+ * MissionStore - Zustand store for mission list and active mission
+ *
+ * DOCUMENTATION REFERENCES:
+ * ========================
+ * Primary:
+ * - docs/missions/mission-deck/architecture/03_state_management.md (Section: "2. MissionStore")
+ *
+ * Secondary:
+ * - docs/missions/mission-deck/architecture/04_data_flows.md (Section: "1. Mission Selection Flow")
+ * - docs/missions/mission-deck/architecture/05_api_design.md (Section: "Missions API")
+ *
+ * ACCEPTANCE CRITERIA:
+ * ===================
+ * - docs/missions/mission-deck/AC.md (F2: Mission Selector)
+ *
+ * TEST FILES:
+ * ===========
+ * Unit Tests:
+ * - frontend/src/__tests__/stores/missionStore.test.ts
+ *
+ * Integration Tests:
+ * - frontend/src/__tests__/integration/mission-switch.test.tsx
+ *
+ * Backend Tests:
+ * - backend/tests/test_missions.py
+ *
+ * Security Tests:
+ * - backend/tests/test_security.py (S4: Authorization boundaries - user can only see their missions)
+ *
+ * IMPLEMENTATION NOTES:
+ * ====================
+ * Store Responsibilities:
+ * - Fetch missions from API (GET /api/missions)
+ * - Track active mission ID
+ * - Filter missions by status (all, active, qa, complete)
+ * - Persist active mission to localStorage (reload → same mission shown)
+ *
+ * State Structure:
+ * {
+ *   missions: Mission[],
+ *   activeMissionId: string | null,
+ *   filter: MissionFilter,
+ *   loading: boolean,
+ *   fetchMissions: () => Promise<void>,
+ *   setActiveMission: (missionId: string) => void,
+ *   setFilter: (filter: MissionFilter) => void
+ * }
+ *
+ * Mission Type:
+ * {
+ *   id: string,
+ *   title: string,
+ *   client: string,
+ *   budget: number,
+ *   deadline: string (ISO 8601),
+ *   status: 'active' | 'qa' | 'complete',
+ *   assigned_to: string,
+ *   github_url?: string
+ * }
+ */
+
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+
+// ============================================================================
+// TYPES
+// ============================================================================
+
+export interface Mission {
+  id: string;
+  title: string;
+  client: string;
+  budget: number;
+  deadline: string;
+  status: 'active' | 'qa' | 'complete';
+  assigned_to: string;
+  github_url?: string;
+}
+
+export type MissionFilter = 'all' | 'active' | 'qa' | 'complete';
+
+// ============================================================================
+// STORE INTERFACE
+// ============================================================================
+
+export interface MissionStore {
+  // State
+  missions: Mission[];
+  activeMissionId: string | null;
+  filter: MissionFilter;
+  loading: boolean;
+
+  // Actions
+  fetchMissions: () => Promise<void>;
+  setActiveMission: (missionId: string) => void;
+  setFilter: (filter: MissionFilter) => void;
+}
+
+// ============================================================================
+// STORE IMPLEMENTATION
+// ============================================================================
+
+export const useMissionStore = create<MissionStore>()(
+  persist(
+    (set, get) => ({
+      // Initial state
+      missions: [],
+      activeMissionId: null,
+      filter: 'all',
+      loading: false,
+
+      /**
+       * Fetch missions from API
+       */
+      fetchMissions: async () => {
+        // TODO: Implement fetch missions logic
+        // 1. Set loading = true
+        // 2. GET /api/missions (only returns missions assigned to logged-in user)
+        // 3. Set missions array
+        // 4. If activeMissionId is null, set it to first mission
+        // 5. Set loading = false
+        // 6. Handle errors gracefully
+
+        set({ loading: true });
+
+        try {
+          const response = await fetch('/api/missions');
+
+          if (!response.ok) {
+            throw new Error('Failed to fetch missions');
+          }
+
+          const data = await response.json();
+
+          set({
+            missions: data.missions || [],
+            loading: false
+          });
+
+          // If no active mission, set it to first mission
+          const state = get();
+          if (!state.activeMissionId && data.missions.length > 0) {
+            set({ activeMissionId: data.missions[0].id });
+          }
+
+        } catch (error) {
+          console.error('Failed to fetch missions:', error);
+          set({ loading: false });
+        }
+      },
+
+      /**
+       * Set active mission
+       */
+      setActiveMission: (missionId: string) => {
+        // TODO: Implement set active mission logic
+        // 1. Update activeMissionId state
+        // 2. Trigger mission switch (see 04_data_flows.md)
+        // 3. Persist to localStorage (handled by Zustand persist middleware)
+
+        set({ activeMissionId: missionId });
+
+        // Optional: Emit analytics event for mission switch
+        // analytics.track('mission_switched', { missionId });
+      },
+
+      /**
+       * Set filter
+       */
+      setFilter: (filter: MissionFilter) => {
+        // TODO: Implement set filter logic
+        // 1. Update filter state
+        // 2. Filtered missions will be computed in component
+
+        set({ filter });
+      }
+    }),
+    {
+      name: 'mission-storage', // localStorage key
+      // Only persist activeMissionId and filter (not missions array or loading)
+      partialize: (state) => ({
+        activeMissionId: state.activeMissionId,
+        filter: state.filter
+      })
+    }
+  )
+);
+
+// ============================================================================
+// TESTS TO IMPLEMENT
+// ============================================================================
+
+/**
+ * Unit Tests (missionStore.test.ts):
+ *
+ * 1. test('fetchMissions fetches from /api/missions')
+ * 2. test('fetchMissions sets missions array')
+ * 3. test('fetchMissions sets activeMissionId to first mission if none selected')
+ * 4. test('fetchMissions does not overwrite activeMissionId if already set')
+ * 5. test('setActiveMission updates activeMissionId')
+ * 6. test('setActiveMission persists to localStorage')
+ * 7. test('setFilter updates filter')
+ * 8. test('loading is true during fetch, false after')
+ * 9. test('fetchMissions handles API errors gracefully')
+ *
+ * Integration Tests (mission-switch.test.tsx):
+ *
+ * 1. test('clicking mission switches active mission')
+ * 2. test('mission switch updates workspace content')
+ * 3. test('mission switch completes in <500ms')
+ * 4. test('active mission persists after page reload')
+ * 5. test('filter updates mission list in real-time')
+ *
+ * Backend Tests (test_missions.py):
+ *
+ * 1. test_get_missions - GET /api/missions returns only user's missions
+ * 2. test_get_mission_by_id - GET /api/missions/{id} returns mission details
+ * 3. test_unauthorized_access - User cannot access other user's missions (S4)
+ *
+ * Acceptance Criteria (AC.md F2):
+ *
+ * - [ ] Left panel shows list of missions assigned to logged-in user
+ * - [ ] Each mission shows: ID, title, client, budget, days until deadline
+ * - [ ] Filter dropdown: All, Active, QA, Complete
+ * - [ ] Click mission → right panel switches to that mission's workspace
+ * - [ ] Mission switch happens in <500ms
+ * - [ ] Active mission persists (reload → same mission shown)
+ */
+
+// ============================================================================
+// IMPLEMENTATION CHECKLIST
+// ============================================================================
+
+/**
+ * Week 1 MVP:
+ * - [x] Store structure defined
+ * - [ ] missions state (array)
+ * - [ ] activeMissionId state
+ * - [ ] filter state
+ * - [ ] loading state
+ * - [ ] fetchMissions action (GET /api/missions)
+ * - [ ] setActiveMission action
+ * - [ ] setFilter action
+ * - [ ] localStorage persistence (activeMissionId + filter)
+ * - [ ] Auto-select first mission if none selected
+ * - [ ] Error handling for API failures
+ * - [ ] Unit tests passing
+ * - [ ] Integration tests passing
+ * - [ ] Backend tests passing
+ * - [ ] AC criteria verified
+ *
+ * Week 2 (if needed):
+ * - [ ] Real-time updates (WebSocket for mission status changes)
+ * - [ ] Create new mission inline
+ * - [ ] Search missions by title/client
+ */
+
+// ============================================================================
+// USAGE EXAMPLE
+// ============================================================================
+
+/**
+ * In MissionSelector.tsx:
+ *
+ * const { missions, activeMissionId, filter, loading, fetchMissions, setActiveMission, setFilter } = useMissionStore();
+ *
+ * useEffect(() => {
+ *   fetchMissions();
+ * }, [fetchMissions]);
+ *
+ * const filteredMissions = missions.filter((mission) => {
+ *   if (filter === 'all') return true;
+ *   return mission.status === filter;
+ * });
+ *
+ * const handleMissionClick = (missionId: string) => {
+ *   setActiveMission(missionId);
+ * };
+ *
+ * In WorkspaceContainer.tsx:
+ *
+ * const { activeMissionId, missions } = useMissionStore();
+ * const currentMission = missions.find((m) => m.id === activeMissionId);
+ *
+ * <RafaelWorkspace missionId={activeMissionId} githubUrl={currentMission?.github_url} />
+ */

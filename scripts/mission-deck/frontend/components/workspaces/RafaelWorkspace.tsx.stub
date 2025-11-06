@@ -1,0 +1,221 @@
+/**
+ * RafaelWorkspace Component - GitHub view + Chat
+ *
+ * DOCUMENTATION REFERENCES:
+ * ========================
+ * Primary:
+ * - docs/missions/mission-deck/architecture/02_component_structure.md (Section: "3. RafaelWorkspace")
+ *
+ * Secondary:
+ * - docs/missions/mission-deck/architecture/01_overview.md (Section: "Key Design Decisions - Rafael workspace simplified")
+ * - docs/missions/mission-deck/architecture/04_data_flows.md (Section: "3. Chat with Rafael Flow")
+ *
+ * ACCEPTANCE CRITERIA:
+ * ===================
+ * - docs/missions/mission-deck/AC.md (F4: Rafael Workspace)
+ *
+ * TEST FILES:
+ * ===========
+ * Unit Tests:
+ * - frontend/src/__tests__/components/workspaces/RafaelWorkspace.test.tsx
+ *
+ * Integration Tests:
+ * - frontend/src/__tests__/integration/rafael-workflow.test.tsx
+ *
+ * IMPLEMENTATION NOTES:
+ * ====================
+ * Visual Layout:
+ * ┌─────────────────────────────────────────────┐
+ * │ Rafael "The Guide" — Code Generation        │
+ * ├─────────────────────────────────────────────┤
+ * │                                             │
+ * │  [GitHub Embed - 60% height]                │
+ * │  (iframe showing github.com/repo)           │
+ * │                                             │
+ * ├─────────────────────────────────────────────┤
+ * │                                             │
+ * │  [Chat Panel - 40% height]                  │
+ * │  (Reusable ChatPanel component)             │
+ * │                                             │
+ * └─────────────────────────────────────────────┘
+ *
+ * Key Simplification:
+ * - NO Monaco Editor (developers use VS Code)
+ * - NO xterm.js terminal (developers use their terminal)
+ * - NO file tree (GitHub shows files)
+ * - JUST: GitHub view + Chat
+ *
+ * Purpose:
+ * - Human asks Rafael to generate code via chat
+ * - Rafael responds with complete implementations (files, dependencies, configs)
+ * - Human reviews generated code on GitHub
+ * - Human deploys/tests locally (not in this interface)
+ */
+
+'use client';
+
+import React from 'react';
+import { ChatPanel } from '../shared/ChatPanel';
+
+// ============================================================================
+// TYPES
+// ============================================================================
+
+export interface RafaelWorkspaceProps {
+  missionId: string;
+  githubUrl?: string;
+}
+
+// ============================================================================
+// COMPONENT
+// ============================================================================
+
+export function RafaelWorkspace({ missionId, githubUrl }: RafaelWorkspaceProps) {
+
+  // TODO: Implement component logic
+  // 1. Render workspace header with Rafael's name and role
+  // 2. Render GitHub embed iframe (if githubUrl provided)
+  // 3. Render ChatPanel component (reusable across citizens)
+  // 4. Handle missing githubUrl gracefully (show message to add one)
+
+  /**
+   * Get GitHub embed URL
+   * Converts: https://github.com/mind-protocol/mission-47
+   * To: https://github.com/mind-protocol/mission-47/tree/main
+   */
+  const getGithubEmbedUrl = (url: string): string => {
+    // TODO: Implement GitHub URL transformation
+    // Ensure URL ends with /tree/main for proper embedding
+
+    if (!url) return '';
+
+    // Basic implementation (may need refinement)
+    if (url.endsWith('/')) {
+      url = url.slice(0, -1);
+    }
+
+    if (!url.includes('/tree/')) {
+      return `${url}/tree/main`;
+    }
+
+    return url;
+  };
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Workspace Header */}
+      <div className="p-4 border-b border-gray-800">
+        <h2 className="text-xl font-semibold text-white">
+          Rafael "The Guide"
+        </h2>
+        <p className="text-sm text-gray-400">
+          Code Generation, Mentorship & DevOps Support
+        </p>
+      </div>
+
+      {/* GitHub Embed (60% height) */}
+      <div className="flex-[3] border-b border-gray-800 overflow-hidden">
+        {githubUrl ? (
+          <iframe
+            src={getGithubEmbedUrl(githubUrl)}
+            className="w-full h-full border-0"
+            title="GitHub Repository"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full text-gray-400">
+            <div className="text-center">
+              <p className="mb-2">No GitHub URL configured for this mission</p>
+              <p className="text-sm">Ask your team lead to add the repository URL</p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Chat Panel (40% height) */}
+      <div className="flex-[2] overflow-hidden">
+        <ChatPanel
+          missionId={missionId}
+          citizen="rafael"
+        />
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// TESTS TO IMPLEMENT
+// ============================================================================
+
+/**
+ * Unit Tests (RafaelWorkspace.test.tsx):
+ *
+ * 1. test('renders workspace header with Rafael name and role')
+ * 2. test('renders GitHub iframe when githubUrl provided')
+ * 3. test('transforms GitHub URL correctly for embedding')
+ * 4. test('shows "No GitHub URL" message when githubUrl missing')
+ * 5. test('renders ChatPanel component with correct props')
+ * 6. test('GitHub iframe has correct sandbox attributes')
+ * 7. test('layout splits 60% GitHub / 40% Chat')
+ *
+ * Integration Tests (rafael-workflow.test.tsx):
+ *
+ * 1. test('user sends message to Rafael → Rafael responds')
+ * 2. test('Rafael response includes code blocks with syntax highlighting')
+ * 3. test('switching missions loads correct GitHub repo')
+ * 4. test('chat history persists when switching away and back')
+ * 5. test('GitHub iframe loads within 2s')
+ *
+ * Acceptance Criteria (AC.md F4):
+ *
+ * - [ ] Rafael workspace shows:
+ *   - GitHub repository view (60% height)
+ *   - Chat panel with Rafael (40% height)
+ * - [ ] User can type message → Rafael responds with:
+ *   - Complete implementation code
+ *   - File structure
+ *   - Dependencies
+ *   - Deployment steps
+ * - [ ] Rafael's responses include code blocks with syntax highlighting
+ * - [ ] Chat history persists (reload → history preserved)
+ * - [ ] GitHub iframe loads repository file browser
+ * - [ ] If no GitHub URL: Show message prompting to add one
+ */
+
+// ============================================================================
+// IMPLEMENTATION CHECKLIST
+// ============================================================================
+
+/**
+ * Week 1 MVP:
+ * - [x] Component structure defined
+ * - [ ] Workspace header (Rafael name + role)
+ * - [ ] GitHub iframe embed (with sandbox attributes)
+ * - [ ] GitHub URL transformation logic
+ * - [ ] Handle missing githubUrl gracefully
+ * - [ ] ChatPanel integration (reusable component)
+ * - [ ] 60/40 layout (GitHub top, Chat bottom)
+ * - [ ] Unit tests passing
+ * - [ ] Integration tests passing
+ * - [ ] AC criteria verified
+ *
+ * Week 2 (if needed):
+ * - [ ] Resize divider between GitHub and Chat
+ * - [ ] Full-screen GitHub view toggle
+ * - [ ] Link from Rafael's code blocks to GitHub files
+ */
+
+// ============================================================================
+// USAGE EXAMPLE
+// ============================================================================
+
+/**
+ * In WorkspaceContainer.tsx:
+ *
+ * {activeCitizen === 'rafael' && (
+ *   <RafaelWorkspace
+ *     missionId={activeMissionId}
+ *     githubUrl={currentMission?.github_url}
+ *   />
+ * )}
+ */

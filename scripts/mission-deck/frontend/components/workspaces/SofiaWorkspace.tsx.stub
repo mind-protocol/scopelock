@@ -1,0 +1,252 @@
+/**
+ * SofiaWorkspace Component - DoD Checklist + Test Results + Chat
+ *
+ * DOCUMENTATION REFERENCES:
+ * ========================
+ * Primary:
+ * - docs/missions/mission-deck/architecture/02_component_structure.md (Section: "4. SofiaWorkspace")
+ *
+ * Secondary:
+ * - docs/missions/mission-deck/architecture/01_overview.md (Section: "Week 1 MVP Scope")
+ * - docs/missions/mission-deck/architecture/04_data_flows.md (Sections: "4. DoD Checkbox Toggle Flow", "5. Sofia → Rafael Handoff")
+ *
+ * ACCEPTANCE CRITERIA:
+ * ===================
+ * - docs/missions/mission-deck/AC.md (F5: Sofia Workspace)
+ *
+ * TEST FILES:
+ * ===========
+ * Unit Tests:
+ * - frontend/src/__tests__/components/workspaces/SofiaWorkspace.test.tsx
+ *
+ * Integration Tests:
+ * - frontend/src/__tests__/integration/sofia-workflow.test.tsx
+ * - frontend/src/__tests__/integration/sofia-rafael-handoff.test.tsx
+ *
+ * IMPLEMENTATION NOTES:
+ * ====================
+ * Visual Layout:
+ * ┌──────────────────────────────────┬──────────────────┐
+ * │ Sofia "The Checker" — Pre-Delivery QA               │
+ * ├──────────────────────────────────┴──────────────────┤
+ * │ [Left 60%]                       │ [Right 40%]      │
+ * │                                  │                  │
+ * │  DoD Checklist (scrollable)      │  Chat with Sofia │
+ * │  ☑ Functional tests pass         │  (ChatPanel)     │
+ * │  ☐ Performance tests pass        │                  │
+ * │  ☐ Security scan clean           │                  │
+ * │                                  │                  │
+ * │  ─────────────────               │                  │
+ * │                                  │                  │
+ * │  Test Results (expandable)       │                  │
+ * │  ✓ 8/10 functional passed        │                  │
+ * │  ✗ 2/3 performance failed        │                  │
+ * │  [View Details]                  │                  │
+ * │                                  │                  │
+ * └──────────────────────────────────┴──────────────────┘
+ *
+ * Key Features:
+ * - DoD checklist with real-time checkbox toggle (optimistic updates)
+ * - Test results summary with pass/fail counts
+ * - Expandable test details (click to see individual test results)
+ * - Chat with Sofia for questions/clarifications
+ * - Sofia → Rafael handoff when issues found
+ */
+
+'use client';
+
+import React from 'react';
+import { DODChecklist } from '../shared/DODChecklist';
+import { TestResults } from '../shared/TestResults';
+import { ChatPanel } from '../shared/ChatPanel';
+
+// ============================================================================
+// TYPES
+// ============================================================================
+
+export interface SofiaWorkspaceProps {
+  missionId: string;
+}
+
+// ============================================================================
+// COMPONENT
+// ============================================================================
+
+export function SofiaWorkspace({ missionId }: SofiaWorkspaceProps) {
+
+  // TODO: Implement component logic
+  // 1. Render workspace header with Sofia's name and role
+  // 2. Render left panel (60%): DoD checklist + Test results
+  // 3. Render right panel (40%): Chat with Sofia
+  // 4. Handle DoD completion state (when all items checked)
+  // 5. Handle test failure state (show Sofia → Rafael handoff button)
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Workspace Header */}
+      <div className="p-4 border-b border-gray-800">
+        <h2 className="text-xl font-semibold text-white">
+          Sofia "The Checker"
+        </h2>
+        <p className="text-sm text-gray-400">
+          Pre-Delivery QA, DoD Verification, Testing
+        </p>
+      </div>
+
+      {/* Main Content: Left (DoD + Tests) + Right (Chat) */}
+      <div className="flex flex-1 overflow-hidden">
+
+        {/* Left Panel: DoD + Test Results (60%) */}
+        <div className="flex-[3] overflow-y-auto p-4 border-r border-gray-800">
+
+          {/* DoD Checklist Section */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-white mb-3">
+              Definition of Done
+            </h3>
+            <DODChecklist missionId={missionId} />
+          </div>
+
+          {/* Divider */}
+          <hr className="border-gray-800 my-6" />
+
+          {/* Test Results Section */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-3">
+              Test Results
+            </h3>
+            <TestResults missionId={missionId} />
+          </div>
+
+        </div>
+
+        {/* Right Panel: Chat with Sofia (40%) */}
+        <div className="flex-[2] overflow-hidden">
+          <ChatPanel
+            missionId={missionId}
+            citizen="sofia"
+          />
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// TESTS TO IMPLEMENT
+// ============================================================================
+
+/**
+ * Unit Tests (SofiaWorkspace.test.tsx):
+ *
+ * 1. test('renders workspace header with Sofia name and role')
+ * 2. test('renders DODChecklist component')
+ * 3. test('renders TestResults component')
+ * 4. test('renders ChatPanel component with citizen="sofia"')
+ * 5. test('layout splits 60% left (DoD + Tests) / 40% right (Chat)')
+ * 6. test('left panel is scrollable when content overflows')
+ *
+ * Integration Tests (sofia-workflow.test.tsx):
+ *
+ * 1. test('checking DoD item → item persists checked state')
+ * 2. test('all DoD items checked → shows "Ready for Delivery" state')
+ * 3. test('test failure → shows Sofia → Rafael handoff button')
+ * 4. test('Sofia → Rafael handoff → switches to Rafael workspace')
+ * 5. test('chat with Sofia → Sofia responds with QA guidance')
+ *
+ * Integration Tests (sofia-rafael-handoff.test.tsx):
+ *
+ * 1. test('Sofia detects test failure → suggests Rafael fix')
+ * 2. test('click "Ask Rafael to fix" → switches to Rafael workspace with context')
+ * 3. test('Rafael workspace receives Sofia's context in chat')
+ * 4. test('after fix → return to Sofia workspace shows updated test results')
+ *
+ * Acceptance Criteria (AC.md F5):
+ *
+ * - [ ] Sofia workspace shows:
+ *   - DoD checklist (left panel, 60% width)
+ *   - Test results summary (left panel, below DoD)
+ *   - Chat with Sofia (right panel, 40% width)
+ * - [ ] DoD checklist:
+ *   - Each item has checkbox (optimistic toggle)
+ *   - Shows functional, non-functional, test criteria
+ *   - Checkboxes persist (reload → state preserved)
+ * - [ ] Test results:
+ *   - Shows pass/fail counts (8/10 functional, 2/3 performance)
+ *   - Expandable to see individual test details
+ *   - Updates when new test run completes
+ * - [ ] Chat with Sofia:
+ *   - User asks questions → Sofia responds with QA guidance
+ *   - Sofia suggests fixes when tests fail
+ * - [ ] Sofia → Rafael handoff:
+ *   - When tests fail, Sofia shows "Ask Rafael to fix" button
+ *   - Click button → switches to Rafael workspace with context
+ */
+
+// ============================================================================
+// IMPLEMENTATION CHECKLIST
+// ============================================================================
+
+/**
+ * Week 1 MVP:
+ * - [x] Component structure defined
+ * - [ ] Workspace header (Sofia name + role)
+ * - [ ] Left panel (60%): DoD + Tests
+ * - [ ] Right panel (40%): Chat
+ * - [ ] DODChecklist component integration
+ * - [ ] TestResults component integration
+ * - [ ] ChatPanel component integration
+ * - [ ] Scrollable left panel
+ * - [ ] Unit tests passing
+ * - [ ] Integration tests passing
+ * - [ ] AC criteria verified
+ *
+ * Week 2 (if needed):
+ * - [ ] Sofia → Rafael handoff button (when tests fail)
+ * - [ ] "Ready for Delivery" state (when all DoD checked + tests pass)
+ * - [ ] Resize divider between DoD/Tests and Chat
+ */
+
+// ============================================================================
+// USAGE EXAMPLE
+// ============================================================================
+
+/**
+ * In WorkspaceContainer.tsx:
+ *
+ * {activeCitizen === 'sofia' && (
+ *   <SofiaWorkspace missionId={activeMissionId} />
+ * )}
+ */
+
+// ============================================================================
+// SOFIA → RAFAEL HANDOFF PATTERN
+// ============================================================================
+
+/**
+ * When Sofia detects a test failure, she can hand off to Rafael:
+ *
+ * Flow:
+ * 1. Sofia workspace shows: "2/3 performance tests failed"
+ * 2. User clicks "Ask Rafael to fix" button
+ * 3. workspaceStore.setActiveCitizen('rafael')
+ * 4. chatStore.sendMessage('47', 'rafael', 'Sofia detected performance test failures: [details]')
+ * 5. Rafael workspace opens with Sofia's context pre-populated in chat
+ * 6. Rafael responds with fix suggestions
+ * 7. After fix deployed → return to Sofia workspace → re-run tests
+ *
+ * Implementation (Week 2):
+ * ```typescript
+ * const handleHandoffToRafael = () => {
+ *   const testFailures = getFailedTests(); // From TestResults component
+ *   const context = `Sofia detected test failures:\n${testFailures.map(t => `- ${t.name}: ${t.error}`).join('\n')}`;
+ *
+ *   // Switch to Rafael workspace
+ *   workspaceStore.setActiveCitizen('rafael');
+ *
+ *   // Send context to Rafael
+ *   chatStore.sendMessage(missionId, 'rafael', context);
+ * };
+ * ```
+ */

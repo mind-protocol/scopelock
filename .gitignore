@@ -26,3 +26,11 @@ gmail-oauth.json
 gmail-token.json
 client_secret_*.json
 *:Zone.Identifier
+
+# Outreach automation (generated files and sensitive data)
+outreach/.env
+outreach/outreach_contacts_chunked.json
+outreach/outreach_log.csv
+outreach/scopelock_sender.session
+outreach/*.session
+outreach/*.session-journal

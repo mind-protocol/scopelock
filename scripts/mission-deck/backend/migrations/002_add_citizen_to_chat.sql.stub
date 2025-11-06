@@ -1,0 +1,147 @@
+/*
+ * Migration 002: Add citizen column to chat_messages table
+ *
+ * DOCUMENTATION REFERENCES:
+ * ========================
+ * Primary:
+ * - docs/missions/mission-deck/architecture/06_database_schema.md (Section: "3. chat_messages (Updated)")
+ *
+ * Secondary:
+ * - docs/missions/mission-deck/architecture/05_api_design.md (Section: "Chat API")
+ *
+ * TEST FILES:
+ * ===========
+ * Migration Tests:
+ * - backend/tests/test_migrations.py (test_002_add_citizen_column)
+ *
+ * Data Integrity Tests:
+ * - backend/tests/test_chat.py (test_chat_citizen_filtering)
+ *
+ * IMPLEMENTATION NOTES:
+ * ====================
+ * Purpose:
+ * - Add citizen column to chat_messages table
+ * - Enables multiple citizens per mission (Rafael, Sofia, Emma, Inna, Maya)
+ * - Allows separate chat history for each citizen
+ *
+ * Column Details:
+ * - Type: TEXT NOT NULL
+ * - Default: 'rafael' (for existing messages)
+ * - Valid values: 'rafael', 'sofia', 'emma', 'inna', 'maya'
+ *
+ * Index:
+ * - Composite index on (mission_id, citizen) for fast queries
+ *
+ * Rollback:
+ * - DROP COLUMN citizen
+ * - DROP INDEX idx_chat_mission_citizen
+ *
+ * Dependencies:
+ * - Requires missions table to exist (no direct dependency on 001)
+ */
+
+-- ============================================================================
+-- MIGRATION UP
+-- ============================================================================
+
+-- Add citizen column to chat_messages table
+-- Default to 'rafael' for existing messages
+ALTER TABLE chat_messages ADD COLUMN citizen TEXT NOT NULL DEFAULT 'rafael';
+
+-- Create composite index for fast queries by mission + citizen
+CREATE INDEX idx_chat_mission_citizen ON chat_messages(mission_id, citizen);
+
+-- Optional: Add check constraint to ensure valid citizen values
+-- (PostgreSQL 9.5+ supports CHECK constraints with IN)
+ALTER TABLE chat_messages
+ADD CONSTRAINT check_citizen_valid
+CHECK (citizen IN ('rafael', 'sofia', 'emma', 'inna', 'maya'));
+
+-- ============================================================================
+-- MIGRATION DOWN (Rollback)
+-- ============================================================================
+
+-- Uncomment below for rollback script
+-- ALTER TABLE chat_messages DROP CONSTRAINT IF EXISTS check_citizen_valid;
+-- DROP INDEX IF EXISTS idx_chat_mission_citizen;
+-- ALTER TABLE chat_messages DROP COLUMN citizen;
+
+-- ============================================================================
+-- TESTS TO IMPLEMENT
+-- ============================================================================
+
+/*
+ * Migration Tests (test_migrations.py):
+ *
+ * test_002_add_citizen_column():
+ *   - Given: chat_messages table exists without citizen column
+ *   - When: Migration 002 is run
+ *   - Then: chat_messages table has citizen column (TEXT NOT NULL, default 'rafael')
+ *   - AND: Index idx_chat_mission_citizen exists
+ *   - AND: Check constraint check_citizen_valid exists
+ *
+ * test_002_existing_messages_default_to_rafael():
+ *   - Given: 5 existing messages in chat_messages (before migration)
+ *   - When: Migration 002 is run
+ *   - Then: All 5 messages have citizen = 'rafael'
+ *
+ * test_002_rollback():
+ *   - Given: Migration 002 is applied
+ *   - When: Rollback is run
+ *   - Then: citizen column is removed
+ *   - AND: Index idx_chat_mission_citizen is removed
+ *   - AND: Check constraint check_citizen_valid is removed
+ *
+ * Data Integrity Tests (test_chat.py):
+ *
+ * test_chat_citizen_filtering():
+ *   - Given: 3 messages for rafael, 2 messages for sofia
+ *   - When: Query WHERE mission_id = '47' AND citizen = 'rafael'
+ *   - Then: Returns only 3 rafael messages
+ *
+ * test_invalid_citizen_rejected():
+ *   - Given: Attempt to insert message with citizen = 'invalid'
+ *   - When: INSERT INTO chat_messages
+ *   - Then: Raises check constraint violation error
+ */
+
+-- ============================================================================
+-- USAGE EXAMPLE
+-- ============================================================================
+
+/*
+ * Insert message for Rafael:
+ *
+ * INSERT INTO chat_messages (id, mission_id, citizen, sender, message, created_at)
+ * VALUES (
+ *   gen_random_uuid(),
+ *   '47',
+ *   'rafael',
+ *   'user',
+ *   'Can you generate the login API?',
+ *   NOW()
+ * );
+ *
+ * Query messages for Sofia + Mission 47:
+ *
+ * SELECT * FROM chat_messages
+ * WHERE mission_id = '47' AND citizen = 'sofia'
+ * ORDER BY created_at ASC;
+ */
+
+-- ============================================================================
+-- IMPLEMENTATION CHECKLIST
+-- ============================================================================
+
+/*
+ * Week 1 MVP:
+ * - [x] Migration SQL defined
+ * - [ ] Run migration in development
+ * - [ ] Verify citizen column exists
+ * - [ ] Verify index created
+ * - [ ] Verify check constraint created
+ * - [ ] Test existing messages have citizen = 'rafael'
+ * - [ ] Test rollback works
+ * - [ ] Migration tests passing
+ * - [ ] Data integrity tests passing
+ */

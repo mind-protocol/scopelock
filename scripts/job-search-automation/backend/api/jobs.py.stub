@@ -1,0 +1,304 @@
+"""
+Jobs API - Job search and scoring endpoints
+
+DOCUMENTATION REFERENCES:
+- API Design: /docs/automation/job-search-automation/architecture/03_api_design.md § Jobs API
+- Emma's Scoring: /citizens/emma/MISSION_SELECTION.md § Emma's Scoring System ⭐⭐ AUTHORITATIVE
+- Strategy: /docs/marketing/daily_job_search_strategy.md § Job Selection Criteria
+- Database: /docs/automation/job-search-automation/architecture/04_database_schema.md § U4_Work_Item (job_opportunity)
+
+TEST FILE:
+- scripts/job-search-automation/tests/backend/api/test_jobs_api.py
+
+PURPOSE:
+Fetch Upwork/Contra jobs and score them using Emma's 0-13 point system.
+
+ENDPOINTS:
+1. GET /api/jobs/search?platform={upwork|contra}
+   - Fetch jobs from platform (via RSS or API)
+   - Emma automatically scores each job (0-13 points)
+   - Returns jobs with scores
+
+2. POST /api/jobs/score { jobUrl }
+   - Manually score a specific job
+   - Returns Emma's 0-13 point breakdown
+
+KEY FUNCTIONALITY:
+- Integration with Upwork RSS feed (Phase 1)
+- Integration with Contra API (Phase 2)
+- Emma's 0-13 scoring engine
+- FalkorDB graph storage (U4_Work_Item nodes)
+- Authorization (only assigned agent sees jobs)
+"""
+
+from fastapi import APIRouter, Depends, HTTPException, Query
+from typing import List, Literal
+from pydantic import BaseModel, HttpUrl
+from datetime import datetime
+
+# Backend service imports
+# Implements: /docs/automation/job-search-automation/architecture/04_database_schema.md
+from ..services.job_scoring_engine import JobScoringEngine
+from ..dependencies import get_falkor_client, get_current_user
+
+router = APIRouter(prefix="/api/jobs", tags=["jobs"])
+
+
+# === MODELS === #
+
+
+class ClientInfo(BaseModel):
+    """Client information from job post"""
+
+    name: str
+    rating: float  # 1-5
+    payment_verified: bool
+    total_spent: float  # USD
+    jobs_posted: int
+
+
+class EmmaScoreBreakdown(BaseModel):
+    """Emma's 0-13 point score breakdown
+    
+    Based on: /citizens/emma/MISSION_SELECTION.md § Emma's Scoring System
+    """
+
+    stack_match: int  # 0-3 points
+    budget_fit: int  # 0-2 points
+    clear_scope: int  # 0-2 points
+    client_quality: int  # 0-2 points
+    timeline: int  # 0-1 point
+    ai_fit: int  # 0-3 points
+
+
+class EmmaScore(BaseModel):
+    """Emma's complete score with recommendation"""
+
+    total: int  # 0-13
+    breakdown: EmmaScoreBreakdown
+    recommendation: Literal["strong_yes", "maybe", "pass"]
+    # Decision logic from /citizens/emma/MISSION_SELECTION.md § Decision:
+    # - 8-13 points: Strong yes, write proposal
+    # - 6-7 points: Maybe, ask Alexis/NLR
+    # - 0-5 points: Pass
+
+
+class Job(BaseModel):
+    """Job listing with Emma's score"""
+
+    id: str
+    platform: Literal["upwork", "contra"]
+    title: str
+    budget: float  # USD
+    timeline: str  # "3-5 days", "1 week", etc.
+    client: ClientInfo
+    emma_score: EmmaScore
+    description: str
+    requirements: List[str]
+    proposals_drafted: int  # how many Emma has drafted for this job
+    status: Literal["new", "scored", "draft_ready", "submitted"]
+    created_at: datetime
+    job_url: HttpUrl  # Link to Upwork/Contra job
+
+
+class JobScoreRequest(BaseModel):
+    """Request to score a specific job"""
+
+    job_url: HttpUrl
+
+
+class JobScoreResponse(BaseModel):
+    """Response with Emma's score"""
+
+    job_id: str
+    score: EmmaScore
+
+
+# === ENDPOINTS === #
+
+
+@router.get("/search", response_model=List[Job])
+async def search_jobs(
+    platform: Literal["upwork", "contra"] = Query(..., description="Platform to search"),
+    current_user=Depends(get_current_user),
+    falkor_client=Depends(get_falkor_client),
+):
+    """
+    Fetch jobs from Upwork or Contra with Emma's scores
+    
+    IMPLEMENTS:
+    - /docs/automation/job-search-automation/architecture/03_api_design.md § GET /api/jobs/search
+    - /docs/marketing/daily_job_search_strategy.md § Search Frequency (3-4 times/day)
+    
+    AUTHORIZATION:
+    - Returns jobs assigned to current user (via U4_CANDIDATE_FOR link)
+    - Implements: /docs/automation/job-search-automation/architecture/04_database_schema.md § Authorization
+    
+    FLOW:
+    1. Fetch jobs from platform (RSS for Upwork, API for Contra)
+    2. For each job:
+       a. Check if already in FalkorDB (avoid duplicates)
+       b. If new, run Emma's scoring engine (0-13 points)
+       c. Create U4_Work_Item node (work_type='job_opportunity')
+       d. Link to current user via U4_CANDIDATE_FOR
+    3. Query FalkorDB for all jobs assigned to current user
+    4. Return with Emma's scores
+    """
+
+    # Query FalkorDB for jobs assigned to current user
+    # Implements: /docs/automation/job-search-automation/architecture/04_database_schema.md § Cypher Patterns
+    query = """
+    MATCH (job:U4_Work_Item {work_type: 'job_opportunity', platform: $platform})
+          -[:U4_CANDIDATE_FOR]->(agent:U4_Agent {email: $user_email})
+    WHERE job.status IN ['new', 'scored']
+    RETURN job
+    ORDER BY job.emma_score.total DESC, job.created_at DESC
+    """
+
+    result = falkor_client.query(
+        graph_name="scopelock",
+        query=query,
+        params={"platform": platform, "user_email": current_user.email},
+    )
+
+    jobs = [Job(**record["job"]) for record in result]
+
+    # TODO (Phase 2): Fetch new jobs from RSS/API and score them
+    # TODO (Phase 3): Real-time RSS alerts trigger automatic refresh
+
+    return jobs
+
+
+@router.post("/score", response_model=JobScoreResponse)
+async def score_job(
+    request: JobScoreRequest,
+    current_user=Depends(get_current_user),
+    falkor_client=Depends(get_falkor_client),
+):
+    """
+    Score a specific job using Emma's 0-13 point system
+    
+    IMPLEMENTS:
+    - /docs/automation/job-search-automation/architecture/03_api_design.md § POST /api/jobs/score
+    - /citizens/emma/MISSION_SELECTION.md § Emma's Scoring System ⭐⭐ AUTHORITATIVE
+    
+    FLOW:
+    1. Fetch job details from URL (scrape or API)
+    2. Run Emma's scoring engine (0-13 points)
+       - Stack match: 0-3 points
+       - Budget fit: 0-2 points
+       - Clear scope: 0-2 points
+       - Client quality: 0-2 points
+       - Timeline: 0-1 point
+       - AI fit: 0-3 points
+    3. Create U4_Work_Item node in FalkorDB
+    4. Link to current user via U4_CANDIDATE_FOR
+    5. Return score
+    """
+
+    # Initialize scoring engine
+    # Implements: /docs/automation/job-search-automation/architecture/04_database_schema.md
+    scoring_engine = JobScoringEngine(falkor_client)
+
+    # Fetch job details from URL (platform-specific scraping)
+    job_details = await fetch_job_from_url(str(request.job_url))
+
+    # Run Emma's 0-13 scoring
+    # Implements: /citizens/emma/MISSION_SELECTION.md § Emma's Scoring System
+    score = scoring_engine.score_job(job_details)
+
+    # Create U4_Work_Item node in FalkorDB
+    # Implements: /docs/automation/job-search-automation/architecture/04_database_schema.md § U4_Work_Item (job_opportunity)
+    job_id = await create_job_node(
+        falkor_client=falkor_client,
+        job_details=job_details,
+        emma_score=score,
+        user_email=current_user.email,
+    )
+
+    return JobScoreResponse(job_id=job_id, score=score)
+
+
+# === HELPER FUNCTIONS === #
+
+
+async def fetch_job_from_url(job_url: str) -> dict:
+    """
+    Fetch job details from Upwork/Contra URL
+    
+    Platform-specific scraping or API calls:
+    - Upwork: Parse job page HTML
+    - Contra: Use Contra API
+    
+    TODO: Implement platform-specific scrapers
+    """
+    # Placeholder implementation
+    raise HTTPException(
+        status_code=501, detail="Job URL scraping not yet implemented"
+    )
+
+
+async def create_job_node(
+    falkor_client, job_details: dict, emma_score: EmmaScore, user_email: str
+) -> str:
+    """
+    Create U4_Work_Item node in FalkorDB for job opportunity
+    
+    IMPLEMENTS:
+    - /docs/automation/job-search-automation/architecture/04_database_schema.md § U4_Work_Item (job_opportunity)
+    
+    NODE PROPERTIES:
+    - work_type: 'job_opportunity'
+    - platform: 'upwork' | 'contra'
+    - emma_score: EmmaScore (custom field)
+    - job_url: string (custom field)
+    - All universal attributes (created_at, updated_at, valid_from, etc.)
+    
+    LINKS CREATED:
+    - U4_CANDIDATE_FOR → U4_Agent (current user)
+    """
+    # TODO: Implement FalkorDB node creation
+    # See: /home/mind-protocol/scopelock/scripts/mission-deck/backend/migrations/002_seed_missions.json
+    pass
+
+
+"""
+IMPLEMENTATION NOTES:
+
+1. UPWORK RSS INTEGRATION (Phase 1):
+   - Upwork provides RSS feeds for job searches
+   - Example: https://www.upwork.com/ab/feed/jobs/rss?q=python&sort=recency
+   - Parse RSS XML → Extract job details → Score with Emma
+   - See: /docs/marketing/daily_job_search_strategy.md § Search Frequency
+
+2. CONTRA API INTEGRATION (Phase 2):
+   - Contra provides REST API for job listings
+   - Requires API key
+   - See: /docs/marketing/contra_tactical_guide.md § Platform Strategy
+
+3. EMMA'S SCORING ENGINE:
+   - Implemented in: ../services/job_scoring_engine.py
+   - Uses MISSION_SELECTION.md criteria
+   - 0-13 point system with breakdown
+   - Recommendation: strong_yes (8-13), maybe (6-7), pass (0-5)
+
+4. AUTHORIZATION:
+   - All jobs linked to user via U4_CANDIDATE_FOR
+   - Query includes: WHERE job -[:U4_CANDIDATE_FOR]-> (:U4_Agent {email: $user_email})
+   - Only user's jobs returned
+
+5. CACHING (Phase 2+):
+   - Cache jobs in FalkorDB to avoid re-scoring
+   - Check if job already exists before fetching/scoring
+   - Update scores if job details changed
+
+6. REAL-TIME UPDATES (Phase 3):
+   - RSS alerts trigger automatic job fetch + score
+   - WebSocket notifies frontend of new jobs
+   - Morning brief includes new jobs found overnight
+
+RELATED FILES:
+- job_scoring_engine.py - Emma's 0-13 scoring logic
+- 001_job_search_graph_schema.md - FalkorDB schema
+- JobFeedPanel.tsx - Frontend component consuming this API
+"""

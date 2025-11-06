@@ -1,0 +1,266 @@
+"""
+Tests API - Endpoints for test execution results
+
+DOCUMENTATION REFERENCES:
+========================
+Primary:
+- docs/missions/mission-deck/architecture/05_api_design.md (Section: "Tests API")
+
+Secondary:
+- docs/missions/mission-deck/architecture/06_database_schema.md (Section: "4. test_runs (New Table)")
+
+ACCEPTANCE CRITERIA:
+===================
+- docs/missions/mission-deck/AC.md (F5: Sofia Workspace - Test Results)
+
+TEST FILES:
+===========
+Unit Tests:
+- backend/tests/test_tests.py
+
+IMPLEMENTATION NOTES:
+====================
+Endpoints:
+1. GET /api/missions/{id}/tests/latest - Get latest test run for mission
+
+Database:
+- test_runs table (see 06_database_schema.md)
+- Columns: id, mission_id, status, summary (JSONB), results (JSONB), logs, created_at
+
+Status Values:
+- running: Test execution in progress
+- passed: All tests passed
+- failed: At least one test failed
+
+Summary Structure (JSONB):
+{
+  "functional_passed": 8,
+  "functional_total": 10,
+  "performance_passed": 2,
+  "performance_total": 3
+}
+
+Results Structure (JSONB):
+[
+  {
+    "name": "test_send_message",
+    "status": "passed",
+    "duration": 0.5
+  },
+  {
+    "name": "test_callback_handler",
+    "status": "failed",
+    "error": "KeyError: 'callback_data'",
+    "traceback": "..."
+  }
+]
+
+Example Response:
+{
+  "id": "run-123",
+  "mission_id": "47",
+  "status": "passed",
+  "summary": {
+    "functional_passed": 8,
+    "functional_total": 10,
+    "performance_passed": 2,
+    "performance_total": 3
+  },
+  "results": [
+    {
+      "name": "test_send_message",
+      "status": "passed",
+      "duration": 0.5
+    },
+    {
+      "name": "test_callback_handler",
+      "status": "failed",
+      "error": "KeyError: 'callback_data'"
+    }
+  ],
+  "logs": "...",
+  "created_at": "2025-11-05T12:34:56Z"
+}
+"""
+
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
+from pydantic import BaseModel
+from typing import List, Optional, Dict, Any
+
+# TODO: Import models and dependencies
+# from app.models import TestRun, Mission
+# from app.dependencies import get_db, get_current_user
+# from app.schemas import TestRunResponse
+
+router = APIRouter(prefix="/api", tags=["tests"])
+
+# ============================================================================
+# SCHEMAS
+# ============================================================================
+
+class TestResultItem(BaseModel):
+    name: str
+    status: str  # "passed", "failed", "skipped"
+    duration: Optional[float] = None
+    error: Optional[str] = None
+    traceback: Optional[str] = None
+
+class TestSummary(BaseModel):
+    functional_passed: int
+    functional_total: int
+    performance_passed: int
+    performance_total: int
+
+class TestRunResponse(BaseModel):
+    id: str
+    mission_id: str
+    status: str  # "running", "passed", "failed"
+    summary: TestSummary
+    results: List[TestResultItem]
+    logs: Optional[str] = None
+    created_at: str
+
+# ============================================================================
+# ENDPOINTS
+# ============================================================================
+
+@router.get("/missions/{mission_id}/tests/latest")
+async def get_latest_test_run(
+    mission_id: str,
+    # TODO: Add dependencies
+    # db: Session = Depends(get_db),
+    # current_user = Depends(get_current_user)
+):
+    """
+    Get latest test run for mission
+
+    Authorization:
+    - Requires authentication
+    - User can only access test runs for missions assigned to them
+
+    Path Params:
+    - mission_id: Mission ID
+
+    Returns:
+    - 200: TestRunResponse (latest test run)
+    - 401: Unauthorized
+    - 404: Mission not found OR no test runs exist
+
+    Implementation Steps (from 05_api_design.md):
+    1. Verify mission is assigned to current_user
+    2. Query test_runs: WHERE mission_id = {id} ORDER BY created_at DESC LIMIT 1
+    3. If no test runs: raise HTTPException(404, "No test runs found")
+    4. Return TestRunResponse
+
+    Week 1 Behavior:
+    - Returns most recent test run from database
+    - Tests are triggered manually (outside this API)
+    - Week 2: Add POST /api/missions/{id}/tests/run to trigger tests via API
+    """
+
+    # TODO: Implement get latest test run logic
+    # 1. Verify mission assignment:
+    #    mission = db.query(Mission).filter(
+    #        Mission.id == mission_id,
+    #        Mission.assigned_to == current_user.email
+    #    ).first()
+    #    if not mission: raise HTTPException(404, "Mission not found")
+    #
+    # 2. Query latest test run:
+    #    test_run = db.query(TestRun).filter(
+    #        TestRun.mission_id == mission_id
+    #    ).order_by(TestRun.created_at.desc()).first()
+    #
+    # 3. If no test runs: raise HTTPException(404, "No test runs found")
+    #
+    # 4. Return TestRunResponse.from_orm(test_run)
+
+    pass
+
+
+# ============================================================================
+# TESTS TO IMPLEMENT
+# ============================================================================
+
+"""
+Unit Tests (test_tests.py):
+
+1. test_get_latest_test_run_returns_most_recent():
+   - Given: 3 test runs for mission 47 (run-1, run-2, run-3)
+   - When: GET /api/missions/47/tests/latest
+   - Then: Returns run-3 (most recent by created_at)
+
+2. test_get_latest_test_run_includes_summary():
+   - Given: Test run with summary { functional_passed: 8, functional_total: 10 }
+   - When: GET /api/missions/47/tests/latest
+   - Then: Response includes summary with functional_passed, functional_total, etc.
+
+3. test_get_latest_test_run_includes_results():
+   - Given: Test run with 2 test results (1 passed, 1 failed)
+   - When: GET /api/missions/47/tests/latest
+   - Then: Response includes results array with test details
+
+4. test_no_test_runs_returns_404():
+   - Given: Mission 47 has no test runs
+   - When: GET /api/missions/47/tests/latest
+   - Then: Returns 404 "No test runs found"
+
+5. test_user_cannot_access_others_test_runs():
+   - Given: Mission 47 assigned to user1
+   - When: GET /api/missions/47/tests/latest as user2
+   - Then: Returns 404
+
+Acceptance Criteria (AC.md F5):
+
+- [ ] GET /api/missions/{id}/tests/latest returns latest test run
+- [ ] Response includes:
+  - status (running, passed, failed)
+  - summary (functional_passed, functional_total, performance_passed, performance_total)
+  - results (array of test results with name, status, duration, error)
+  - logs (full test output, optional)
+- [ ] Returns 404 if no test runs exist
+- [ ] Authorization enforced (user cannot access other users' test runs)
+"""
+
+# ============================================================================
+# IMPLEMENTATION CHECKLIST
+# ============================================================================
+
+"""
+Week 1 MVP:
+- [x] Endpoint structure defined
+- [ ] GET /api/missions/{id}/tests/latest endpoint
+- [ ] Authorization (verify mission assignment)
+- [ ] Query most recent test run
+- [ ] Return TestRunResponse with summary + results
+- [ ] Handle no test runs (404)
+- [ ] Unit tests passing
+- [ ] AC criteria verified
+
+Week 2:
+- [ ] POST /api/missions/{id}/tests/run (trigger test execution via API)
+- [ ] WebSocket for real-time test streaming
+- [ ] GET /api/missions/{id}/tests (list all test runs with pagination)
+"""
+
+# ============================================================================
+# USAGE EXAMPLE
+# ============================================================================
+
+"""
+Frontend (TestResults.tsx):
+
+const response = await fetch('/api/missions/47/tests/latest');
+const testRun = await response.json();
+
+// testRun.status = "passed" | "failed" | "running"
+// testRun.summary = { functional_passed: 8, functional_total: 10, ... }
+// testRun.results = [{ name, status, duration, error }, ...]
+
+Display:
+- Status badge (✓ Passed / ✗ Failed / ⏳ Running)
+- Functional tests: 8/10 passed (80% progress bar)
+- Performance tests: 2/3 passed (67% progress bar)
+- Expandable details: Individual test results
+"""

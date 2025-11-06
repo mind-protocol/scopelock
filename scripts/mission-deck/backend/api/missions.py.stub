@@ -1,0 +1,243 @@
+"""
+Missions API - Endpoints for mission management
+
+DOCUMENTATION REFERENCES:
+========================
+Primary:
+- docs/missions/mission-deck/architecture/05_api_design.md (Section: "Missions API")
+
+Secondary:
+- docs/missions/mission-deck/architecture/06_database_schema.md (Section: "1. missions (Updated)")
+- docs/missions/mission-deck/architecture/04_data_flows.md (Section: "1. Mission Selection Flow")
+
+ACCEPTANCE CRITERIA:
+===================
+- docs/missions/mission-deck/AC.md (F2: Mission Selector)
+
+TEST FILES:
+===========
+Unit Tests:
+- backend/tests/test_missions.py
+
+Security Tests:
+- backend/tests/test_security.py (S4: Authorization boundaries - user can only access their missions)
+
+Validation:
+- docs/missions/mission-deck/VALIDATION.md (F2 tests)
+
+IMPLEMENTATION NOTES:
+====================
+Endpoints:
+1. GET  /api/missions          - List all missions for logged-in user
+2. GET  /api/missions/{id}     - Get single mission by ID
+
+Authorization:
+- All endpoints require authentication (JWT token or Clerk session)
+- Users can only see missions where assigned_to = their email
+- Attempting to access another user's mission returns 404 (not 403, to avoid info leakage)
+
+Database:
+- missions table (see 06_database_schema.md)
+- Columns: id, title, client, budget, deadline, status, assigned_to, github_url, created_at
+
+Example Response:
+{
+  "missions": [
+    {
+      "id": "47",
+      "title": "Telegram Notifier",
+      "client": "Acme Corp",
+      "budget": 300,
+      "deadline": "2025-11-08T23:59:59Z",
+      "status": "active",
+      "assigned_to": "person1@scopelock.ai",
+      "github_url": "https://github.com/mind-protocol/mission-47",
+      "created_at": "2025-11-01T10:00:00Z"
+    }
+  ]
+}
+"""
+
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
+from typing import List
+
+# TODO: Import models and dependencies
+# from app.models import Mission
+# from app.dependencies import get_db, get_current_user
+# from app.schemas import MissionResponse, MissionListResponse
+
+router = APIRouter(prefix="/api", tags=["missions"])
+
+# ============================================================================
+# ENDPOINTS
+# ============================================================================
+
+@router.get("/missions")
+async def list_missions(
+    # TODO: Add dependencies
+    # db: Session = Depends(get_db),
+    # current_user = Depends(get_current_user)
+):
+    """
+    List all missions for logged-in user
+
+    Authorization:
+    - Requires authentication (JWT token or Clerk session)
+    - Returns only missions where assigned_to = current_user.email
+
+    Query Params:
+    - None (filtering by status happens client-side)
+
+    Returns:
+    - 200: { "missions": [Mission[]] }
+    - 401: Unauthorized (no valid token)
+
+    Implementation Steps (from 05_api_design.md):
+    1. Extract current_user from JWT token or Clerk session
+    2. Query missions table: WHERE assigned_to = current_user.email
+    3. Return missions array
+    """
+
+    # TODO: Implement list missions logic
+    # 1. Get current_user from dependency
+    # 2. Query: db.query(Mission).filter(Mission.assigned_to == current_user.email).all()
+    # 3. Return MissionListResponse(missions=missions)
+
+    pass
+
+
+@router.get("/missions/{mission_id}")
+async def get_mission(
+    mission_id: str,
+    # TODO: Add dependencies
+    # db: Session = Depends(get_db),
+    # current_user = Depends(get_current_user)
+):
+    """
+    Get single mission by ID
+
+    Authorization:
+    - Requires authentication
+    - User can only access missions where assigned_to = current_user.email
+    - Returns 404 if mission not found OR not assigned to current user
+      (Don't return 403, to avoid leaking information about mission existence)
+
+    Path Params:
+    - mission_id: Mission ID (UUID or string)
+
+    Returns:
+    - 200: MissionResponse
+    - 401: Unauthorized (no valid token)
+    - 404: Mission not found (or not assigned to current user)
+
+    Implementation Steps (from 05_api_design.md):
+    1. Extract current_user from JWT token or Clerk session
+    2. Query missions table: WHERE id = mission_id AND assigned_to = current_user.email
+    3. If not found: raise HTTPException(404, "Mission not found")
+    4. Return MissionResponse(mission)
+    """
+
+    # TODO: Implement get mission logic
+    # 1. Get current_user from dependency
+    # 2. Query: db.query(Mission).filter(
+    #       Mission.id == mission_id,
+    #       Mission.assigned_to == current_user.email
+    #    ).first()
+    # 3. If not found: raise HTTPException(status_code=404, detail="Mission not found")
+    # 4. Return MissionResponse.from_orm(mission)
+
+    pass
+
+
+# ============================================================================
+# TESTS TO IMPLEMENT
+# ============================================================================
+
+"""
+Unit Tests (test_missions.py):
+
+1. test_list_missions_returns_only_user_missions():
+   - Given: 3 missions in DB (2 assigned to user1, 1 assigned to user2)
+   - When: GET /api/missions as user1
+   - Then: Returns 2 missions (only user1's missions)
+
+2. test_list_missions_empty_when_no_missions():
+   - Given: No missions assigned to user
+   - When: GET /api/missions
+   - Then: Returns { "missions": [] }
+
+3. test_get_mission_by_id_success():
+   - Given: Mission 47 assigned to user1
+   - When: GET /api/missions/47 as user1
+   - Then: Returns mission 47 details
+
+4. test_get_mission_not_found():
+   - Given: Mission 99 does not exist
+   - When: GET /api/missions/99
+   - Then: Returns 404
+
+5. test_get_mission_unauthorized_returns_404():
+   - Given: Mission 47 assigned to user1
+   - When: GET /api/missions/47 as user2
+   - Then: Returns 404 (not 403, to avoid info leakage)
+
+6. test_list_missions_requires_authentication():
+   - Given: No auth token provided
+   - When: GET /api/missions
+   - Then: Returns 401 Unauthorized
+
+Security Tests (test_security.py):
+
+1. test_user_cannot_access_others_missions (S4):
+   - Given: Mission 47 assigned to user1
+   - When: GET /api/missions/47 as user2
+   - Then: Returns 404
+   - AND: No mission details leaked in response
+
+Acceptance Criteria (AC.md F2):
+
+- [ ] GET /api/missions returns missions assigned to logged-in user
+- [ ] Each mission includes: id, title, client, budget, deadline, status, github_url
+- [ ] Authorization enforced (user cannot see other users' missions)
+- [ ] Response time <500ms for list of 100 missions
+"""
+
+# ============================================================================
+# IMPLEMENTATION CHECKLIST
+# ============================================================================
+
+"""
+Week 1 MVP:
+- [x] Endpoint structure defined
+- [ ] GET /api/missions endpoint
+- [ ] GET /api/missions/{id} endpoint
+- [ ] Authorization (JWT or Clerk session)
+- [ ] Query missions by assigned_to = current_user.email
+- [ ] Return 404 (not 403) for unauthorized access
+- [ ] Pydantic schemas (MissionResponse, MissionListResponse)
+- [ ] Unit tests passing
+- [ ] Security tests passing (S4)
+- [ ] AC criteria verified
+
+Week 2 (if needed):
+- [ ] POST /api/missions (create new mission)
+- [ ] PATCH /api/missions/{id} (update mission)
+- [ ] Search/filter endpoint (by status, client, etc.)
+"""
+
+# ============================================================================
+# USAGE EXAMPLE
+# ============================================================================
+
+"""
+Frontend (missionStore.ts):
+
+const response = await fetch('/api/missions');
+const data = await response.json();
+// data.missions = [{ id, title, client, budget, deadline, status, github_url }]
+
+const response = await fetch('/api/missions/47');
+const mission = await response.json();
+// mission = { id, title, client, budget, deadline, status, github_url }
+"""

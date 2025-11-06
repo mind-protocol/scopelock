@@ -1,0 +1,73 @@
+{
+  "graph": "scopelock",
+  "operations": [
+    {
+      "type": "create_node",
+      "labels": ["U4_Work_Item"],
+      "properties": {
+        "created_at": "2025-11-01T10:00:00Z",
+        "updated_at": "2025-11-01T10:00:00Z",
+        "valid_from": "2025-11-01T10:00:00Z",
+        "valid_to": null,
+        "name": "Telegram Notifier",
+        "description": "Build Telegram notification bot with webhook integration",
+        "detailed_description": "Client needs real-time notifications sent to Telegram when specific events occur in their system. Requires webhook receiver, Telegram Bot API integration, message formatting, and error handling.",
+        "type_name": "U4_Work_Item",
+        "level": "L2",
+        "scope_ref": "scopelock",
+        "visibility": "partners",
+        "commitments": [],
+        "policy_ref": "l4://law/WORK-001",
+        "proof_uri": "l4://proof/mission-47",
+        "created_by": "scopelock-ingestion",
+        "substrate": "organizational",
+        "work_type": "mission",
+        "priority": "high",
+        "state": "doing",
+        "acceptance_criteria": "See AC.md for complete criteria",
+        "assignee_ref": "person1@scopelock.ai",
+        "due_date": "2025-11-08T23:59:59Z",
+        "slug": "mission-47",
+        "status": "active",
+        "client": "Acme Corp",
+        "budget": 300,
+        "github_url": "https://github.com/mind-protocol/mission-47"
+      },
+      "id_field": "slug"
+    },
+    {
+      "type": "create_node",
+      "labels": ["U4_Work_Item"],
+      "properties": {
+        "created_at": "2025-11-01T11:00:00Z",
+        "updated_at": "2025-11-01T11:00:00Z",
+        "valid_from": "2025-11-01T11:00:00Z",
+        "valid_to": null,
+        "name": "Landing Page",
+        "description": "Build marketing landing page with email capture",
+        "detailed_description": "Client needs responsive landing page with hero section, feature highlights, testimonials, and email capture form. Must be optimized for mobile, SEO-friendly, and integrate with their email marketing platform.",
+        "type_name": "U4_Work_Item",
+        "level": "L2",
+        "scope_ref": "scopelock",
+        "visibility": "partners",
+        "commitments": [],
+        "policy_ref": "l4://law/WORK-001",
+        "proof_uri": "l4://proof/mission-48",
+        "created_by": "scopelock-ingestion",
+        "substrate": "organizational",
+        "work_type": "mission",
+        "priority": "medium",
+        "state": "doing",
+        "acceptance_criteria": "See AC.md for complete criteria",
+        "assignee_ref": "person1@scopelock.ai",
+        "due_date": "2025-11-10T23:59:59Z",
+        "slug": "mission-48",
+        "status": "active",
+        "client": "Beta Inc",
+        "budget": 450,
+        "github_url": "https://github.com/mind-protocol/mission-48"
+      },
+      "id_field": "slug"
+    }
+  ]
+}

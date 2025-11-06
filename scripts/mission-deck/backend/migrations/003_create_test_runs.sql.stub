@@ -1,0 +1,195 @@
+/*
+ * Migration 003: Create test_runs table
+ *
+ * DOCUMENTATION REFERENCES:
+ * ========================
+ * Primary:
+ * - docs/missions/mission-deck/architecture/06_database_schema.md (Section: "4. test_runs (New Table)")
+ *
+ * Secondary:
+ * - docs/missions/mission-deck/architecture/05_api_design.md (Section: "Tests API")
+ *
+ * TEST FILES:
+ * ===========
+ * Migration Tests:
+ * - backend/tests/test_migrations.py (test_003_create_test_runs)
+ *
+ * API Tests:
+ * - backend/tests/test_tests.py (test_get_latest_test_run)
+ *
+ * IMPLEMENTATION NOTES:
+ * ====================
+ * Purpose:
+ * - Create test_runs table for Sofia workspace test results
+ * - Store test execution status, summary, and individual test results
+ *
+ * Table Structure:
+ * - id: UUID PRIMARY KEY
+ * - mission_id: UUID (foreign key to missions.id)
+ * - status: TEXT (running, passed, failed)
+ * - summary: JSONB (functional_passed, functional_total, performance_passed, performance_total)
+ * - results: JSONB (array of test results with name, status, duration, error)
+ * - logs: TEXT (full test output, optional)
+ * - created_at: TIMESTAMP (auto-set to NOW())
+ *
+ * Indexes:
+ * - Composite index on (mission_id, created_at DESC) for fast "latest test run" queries
+ *
+ * Rollback:
+ * - DROP TABLE test_runs
+ *
+ * Dependencies:
+ * - Requires missions table to exist (foreign key constraint)
+ */
+
+-- ============================================================================
+-- MIGRATION UP
+-- ============================================================================
+
+-- Create test_runs table
+CREATE TABLE test_runs (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  mission_id UUID NOT NULL REFERENCES missions(id) ON DELETE CASCADE,
+  status TEXT NOT NULL,
+  summary JSONB,
+  results JSONB,
+  logs TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Add check constraint for valid status values
+ALTER TABLE test_runs
+ADD CONSTRAINT check_status_valid
+CHECK (status IN ('running', 'passed', 'failed'));
+
+-- Create composite index for fast "latest test run" queries
+-- (mission_id, created_at DESC) allows efficient ORDER BY created_at DESC
+CREATE INDEX idx_test_runs_mission ON test_runs(mission_id, created_at DESC);
+
+-- ============================================================================
+-- MIGRATION DOWN (Rollback)
+-- ============================================================================
+
+-- Uncomment below for rollback script
+-- DROP TABLE IF EXISTS test_runs;
+
+-- ============================================================================
+-- TESTS TO IMPLEMENT
+-- ============================================================================
+
+/*
+ * Migration Tests (test_migrations.py):
+ *
+ * test_003_create_test_runs():
+ *   - Given: missions table exists
+ *   - When: Migration 003 is run
+ *   - Then: test_runs table exists with all columns
+ *   - AND: Foreign key constraint on mission_id exists
+ *   - AND: Check constraint check_status_valid exists
+ *   - AND: Index idx_test_runs_mission exists
+ *
+ * test_003_foreign_key_cascade_delete():
+ *   - Given: Mission 47 has 2 test runs
+ *   - When: DELETE FROM missions WHERE id = '47'
+ *   - Then: Both test runs are deleted (ON DELETE CASCADE)
+ *
+ * test_003_invalid_status_rejected():
+ *   - Given: Attempt to insert test run with status = 'invalid'
+ *   - When: INSERT INTO test_runs
+ *   - Then: Raises check constraint violation error
+ *
+ * test_003_rollback():
+ *   - Given: Migration 003 is applied
+ *   - When: Rollback is run
+ *   - Then: test_runs table is dropped
+ *
+ * API Tests (test_tests.py):
+ *
+ * test_get_latest_test_run():
+ *   - Given: 3 test runs for mission 47 (run-1, run-2, run-3)
+ *   - When: Query ORDER BY created_at DESC LIMIT 1
+ *   - Then: Returns run-3 (most recent)
+ */
+
+-- ============================================================================
+-- USAGE EXAMPLE
+-- ============================================================================
+
+/*
+ * Insert test run:
+ *
+ * INSERT INTO test_runs (id, mission_id, status, summary, results, created_at)
+ * VALUES (
+ *   'run-1',
+ *   '47',
+ *   'passed',
+ *   '{"functional_passed": 8, "functional_total": 10, "performance_passed": 2, "performance_total": 3}'::jsonb,
+ *   '[
+ *     {"name": "test_send_message", "status": "passed", "duration": 0.5},
+ *     {"name": "test_callback_handler", "status": "failed", "error": "KeyError: callback_data"}
+ *   ]'::jsonb,
+ *   NOW()
+ * );
+ *
+ * Query latest test run:
+ *
+ * SELECT * FROM test_runs
+ * WHERE mission_id = '47'
+ * ORDER BY created_at DESC
+ * LIMIT 1;
+ *
+ * Query summary from JSONB:
+ *
+ * SELECT
+ *   summary->>'functional_passed' AS functional_passed,
+ *   summary->>'functional_total' AS functional_total
+ * FROM test_runs
+ * WHERE id = 'run-1';
+ */
+
+-- ============================================================================
+-- JSONB STRUCTURE EXAMPLES
+-- ============================================================================
+
+/*
+ * Summary JSONB:
+ * {
+ *   "functional_passed": 8,
+ *   "functional_total": 10,
+ *   "performance_passed": 2,
+ *   "performance_total": 3
+ * }
+ *
+ * Results JSONB (array of test results):
+ * [
+ *   {
+ *     "name": "test_send_message",
+ *     "status": "passed",
+ *     "duration": 0.5
+ *   },
+ *   {
+ *     "name": "test_callback_handler",
+ *     "status": "failed",
+ *     "error": "KeyError: 'callback_data'",
+ *     "traceback": "..."
+ *   }
+ * ]
+ */
+
+-- ============================================================================
+-- IMPLEMENTATION CHECKLIST
+-- ============================================================================
+
+/*
+ * Week 1 MVP:
+ * - [x] Migration SQL defined
+ * - [ ] Run migration in development
+ * - [ ] Verify test_runs table created
+ * - [ ] Verify foreign key constraint works
+ * - [ ] Verify check constraint works
+ * - [ ] Verify index created
+ * - [ ] Test ON DELETE CASCADE works
+ * - [ ] Test rollback works
+ * - [ ] Migration tests passing
+ * - [ ] API tests passing (test_tests.py)
+ */

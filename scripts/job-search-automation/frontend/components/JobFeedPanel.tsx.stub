@@ -1,0 +1,271 @@
+/**
+ * JobFeedPanel - Left panel showing Upwork/Contra job listings with filters
+ *
+ * DOCUMENTATION REFERENCES:
+ * - Architecture: /docs/automation/job-search-automation/architecture/02_component_structure.md § JobFeedPanel
+ * - Strategy: /docs/marketing/daily_job_search_strategy.md § Job Selection Criteria
+ * - Emma's Scoring: /citizens/emma/MISSION_SELECTION.md § Green Light (ALL Must Match)
+ * - API: /docs/automation/job-search-automation/architecture/03_api_design.md § GET /api/jobs/search
+ *
+ * TEST FILE:
+ * - scripts/job-search-automation/tests/frontend/components/JobFeedPanel.test.tsx
+ *
+ * ZUSTAND STORE:
+ * - scripts/job-search-automation/frontend/stores/jobStore.ts
+ *
+ * PURPOSE:
+ * Display Upwork/Contra job listings with Emma's 0-13 point scores. Filter by:
+ * - Platform (Upwork / Contra tabs)
+ * - Emma's score (show only 8-13 points by default)
+ * - Budget range ($200-600, $600-1500)
+ * - Timeline (2-7 days)
+ *
+ * KEY FUNCTIONALITY:
+ * - Platform selector (Upwork / Contra tabs)
+ * - Filter controls (score, budget, timeline)
+ * - Infinite scroll for job list
+ * - Click job → onJobSelect() → ProposalReviewPanel updates
+ *
+ * VISUAL LAYOUT:
+ *
+ * ┌─────────────────────────────────┐
+ * │ [Upwork] [Contra]               │  ← Platform selector tabs
+ * │                                 │
+ * │ Filters:                        │
+ * │ • Score: 8-13 ▼                 │  ← Emma's score filter
+ * │ • Budget: $200-600 ▼            │
+ * │ • Timeline: 2-7 days ▼          │
+ * │                                 │
+ * │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+ * │                                 │
+ * │ [JobCard 1] ⭐ 11/13            │  ← Strong match (green)
+ * │ [JobCard 2] ⭐ 9/13             │
+ * │ [JobCard 3] ⭐ 8/13             │
+ * │ ...                             │
+ * │ [Load more]                     │  ← Infinite scroll
+ * └─────────────────────────────────┘
+ *
+ * PROPS:
+ */
+
+import React, { useEffect } from 'react';
+import { useJobStore } from '../../stores/jobStore';
+import { JobCard } from './JobCard';
+
+export interface JobFeedPanelProps {
+  onJobSelect: (jobId: string) => void;
+  selectedJobId: string | null;
+}
+
+/**
+ * JobFeedPanel Component
+ *
+ * Implements: /docs/automation/job-search-automation/architecture/02_component_structure.md § JobFeedPanel
+ */
+export function JobFeedPanel({ onJobSelect, selectedJobId }: JobFeedPanelProps) {
+  const {
+    jobs,
+    selectedPlatform,
+    filters,
+    fetchJobs,
+    setFilters,
+    selectPlatform
+  } = useJobStore();
+
+  // Fetch jobs when platform changes
+  useEffect(() => {
+    fetchJobs(selectedPlatform);
+  }, [selectedPlatform, fetchJobs]);
+
+  // Filter jobs by Emma's score (8-13 points = strong yes)
+  // Implements: /citizens/emma/MISSION_SELECTION.md § Emma's Scoring System
+  const filteredJobs = jobs.filter((job) => {
+    const { emmaScore, budget, timeline } = job;
+
+    // Emma's score filter (default: 8-13 = strong yes)
+    if (emmaScore.total < filters.minScore) return false;
+
+    // Budget filter (from strategy: $200-600 in Phase 1, $600-1500 in Phase 2)
+    // Implements: /docs/marketing/daily_job_search_strategy.md § Job Selection Criteria
+    if (budget < filters.budgetRange.min || budget > filters.budgetRange.max) {
+      return false;
+    }
+
+    // Timeline filter (2-7 days per strategy)
+    const timelineDays = parseTimelineDays(timeline);
+    if (timelineDays < filters.timeline.min || timelineDays > filters.timeline.max) {
+      return false;
+    }
+
+    return true;
+  });
+
+  return (
+    <div className="job-feed-panel h-full flex flex-col bg-surface border-r border-muted">
+      {/* Platform Selector */}
+      <div className="platform-selector flex border-b border-muted">
+        <button
+          onClick={() => selectPlatform('upwork')}
+          className={`flex-1 px-4 py-3 ${
+            selectedPlatform === 'upwork'
+              ? 'bg-accent text-bg font-semibold'
+              : 'text-text-muted hover:bg-muted'
+          }`}
+        >
+          Upwork
+        </button>
+        <button
+          onClick={() => selectPlatform('contra')}
+          className={`flex-1 px-4 py-3 ${
+            selectedPlatform === 'contra'
+              ? 'bg-accent text-bg font-semibold'
+              : 'text-text-muted hover:bg-muted'
+          }`}
+        >
+          Contra
+        </button>
+      </div>
+
+      {/* Filter Controls */}
+      {/* Implements: /docs/automation/job-search-automation/architecture/02_component_structure.md § Filter Controls */}
+      <div className="filter-controls p-4 border-b border-muted space-y-3">
+        {/* Score Filter */}
+        <div>
+          <label className="block text-sm text-text-muted mb-1">
+            Emma's Score (min):
+          </label>
+          <select
+            value={filters.minScore}
+            onChange={(e) => setFilters({ minScore: parseInt(e.target.value) })}
+            className="w-full px-3 py-2 bg-bg border border-muted rounded"
+          >
+            <option value="0">All (0+)</option>
+            <option value="6">Maybe (6+)</option>
+            <option value="8">Strong Yes (8-13)</option>
+          </select>
+        </div>
+
+        {/* Budget Filter */}
+        <div>
+          <label className="block text-sm text-text-muted mb-1">
+            Budget Range:
+          </label>
+          <select
+            value={`${filters.budgetRange.min}-${filters.budgetRange.max}`}
+            onChange={(e) => {
+              const [min, max] = e.target.value.split('-').map(Number);
+              setFilters({ budgetRange: { min, max } });
+            }}
+            className="w-full px-3 py-2 bg-bg border border-muted rounded"
+          >
+            <option value="200-600">$200-600 (Phase 1)</option>
+            <option value="600-1500">$600-1,500 (Phase 2+)</option>
+            <option value="200-1500">All ($200-1,500)</option>
+          </select>
+        </div>
+
+        {/* Timeline Filter */}
+        <div>
+          <label className="block text-sm text-text-muted mb-1">
+            Timeline:
+          </label>
+          <select
+            value={`${filters.timeline.min}-${filters.timeline.max}`}
+            onChange={(e) => {
+              const [min, max] = e.target.value.split('-').map(Number);
+              setFilters({ timeline: { min, max } });
+            }}
+            className="w-full px-3 py-2 bg-bg border border-muted rounded"
+          >
+            <option value="2-7">2-7 days (ideal)</option>
+            <option value="1-14">1-14 days (flexible)</option>
+          </select>
+        </div>
+
+        {/* Results Count */}
+        <div className="text-sm text-text-muted pt-2">
+          Showing {filteredJobs.length} of {jobs.length} jobs
+        </div>
+      </div>
+
+      {/* Job List */}
+      {/* Implements: /docs/automation/job-search-automation/architecture/02_component_structure.md § JobCard */}
+      <div className="job-list flex-1 overflow-y-auto">
+        {filteredJobs.length === 0 ? (
+          <div className="p-4 text-center text-text-muted">
+            No jobs match your filters.
+            <br />
+            Try lowering the score threshold or expanding the budget range.
+          </div>
+        ) : (
+          filteredJobs.map((job) => (
+            <JobCard
+              key={job.id}
+              job={job}
+              isSelected={job.id === selectedJobId}
+              onClick={() => onJobSelect(job.id)}
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Helper: Parse timeline string to days
+ * Examples: "3-5 days" → 4, "1 week" → 7
+ */
+function parseTimelineDays(timeline: string): number {
+  // Extract first number from timeline string
+  const match = timeline.match(/(\d+)/);
+  if (!match) return 0;
+
+  const num = parseInt(match[1]);
+
+  // If "week" mentioned, multiply by 7
+  if (timeline.includes('week')) {
+    return num * 7;
+  }
+
+  // Otherwise assume days
+  return num;
+}
+
+/**
+ * IMPLEMENTATION NOTES:
+ *
+ * 1. ZUSTAND STORE INTEGRATION:
+ *    - useJobStore() manages jobs, platform, filters
+ *    - fetchJobs() called when platform changes
+ *    - selectPlatform() switches between Upwork/Contra
+ *
+ * 2. EMMA'S SCORING FILTER:
+ *    - Default filter: minScore = 8 (strong yes)
+ *    - Based on: /citizens/emma/MISSION_SELECTION.md § Decision
+ *    - 8-13 points = Strong yes, write proposal
+ *    - 6-7 points = Maybe, ask Alexis/NLR
+ *    - 0-5 points = Pass
+ *
+ * 3. BUDGET RANGES (per strategy phases):
+ *    - Phase 1 (Week 1-4): $200-600
+ *    - Phase 2+ (Month 2+): $600-1,500
+ *    - Based on: /docs/marketing/daily_job_search_strategy.md § Job Selection Criteria
+ *
+ * 4. TIMELINE:
+ *    - Ideal: 2-7 days
+ *    - Based on: /docs/marketing/daily_job_search_strategy.md § Job Selection Criteria
+ *
+ * 5. INFINITE SCROLL:
+ *    - TODO: Add intersection observer for lazy loading
+ *    - Load more jobs when user scrolls to bottom
+ *
+ * 6. REAL-TIME UPDATES:
+ *    - TODO (Phase 2): WebSocket connection for new jobs
+ *    - TODO (Phase 3): RSS alerts trigger automatic refresh
+ *
+ * RELATED FILES:
+ * - JobCard.tsx - Individual job display with Emma's score
+ * - jobStore.ts - Zustand store for job data
+ * - jobs.py - Backend API for fetching jobs
+ */

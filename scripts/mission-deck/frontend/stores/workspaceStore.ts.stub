@@ -1,0 +1,169 @@
+/**
+ * WorkspaceStore - Zustand store for active citizen workspace state
+ *
+ * DOCUMENTATION REFERENCES:
+ * ========================
+ * Primary:
+ * - docs/missions/mission-deck/architecture/03_state_management.md (Section: "1. WorkspaceStore")
+ *
+ * Secondary:
+ * - docs/missions/mission-deck/architecture/01_overview.md (Section: "Key Design Decisions")
+ * - docs/missions/mission-deck/architecture/04_data_flows.md (Section: "2. Workspace Switch Flow")
+ *
+ * ACCEPTANCE CRITERIA:
+ * ===================
+ * - docs/missions/mission-deck/AC.md (F3: Citizen Workspace Selector)
+ *
+ * TEST FILES:
+ * ===========
+ * Unit Tests:
+ * - frontend/src/__tests__/stores/workspaceStore.test.ts
+ *
+ * Integration Tests:
+ * - frontend/src/__tests__/integration/workspace-switch.test.tsx
+ *
+ * IMPLEMENTATION NOTES:
+ * ====================
+ * Store Responsibilities:
+ * - Track active citizen (emma, inna, rafael, sofia, maya)
+ * - Persist active citizen to localStorage (reload → same workspace)
+ * - Trigger workspace switch events
+ *
+ * State Structure:
+ * {
+ *   activeCitizen: CitizenType,
+ *   setActiveCitizen: (citizen: CitizenType) => void
+ * }
+ *
+ * Key Behavior:
+ * - When user clicks citizen tab, setActiveCitizen('rafael') is called
+ * - Store updates activeCitizen state
+ * - React components re-render based on activeCitizen
+ * - WorkspaceContainer conditionally renders RafaelWorkspace or SofiaWorkspace
+ * - localStorage saves choice (persists across reloads)
+ */
+
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+
+// ============================================================================
+// TYPES
+// ============================================================================
+
+export type CitizenType = 'emma' | 'inna' | 'rafael' | 'sofia' | 'maya';
+
+// ============================================================================
+// STORE INTERFACE
+// ============================================================================
+
+export interface WorkspaceStore {
+  // State
+  activeCitizen: CitizenType;
+
+  // Actions
+  setActiveCitizen: (citizen: CitizenType) => void;
+}
+
+// ============================================================================
+// STORE IMPLEMENTATION
+// ============================================================================
+
+export const useWorkspaceStore = create<WorkspaceStore>()(
+  persist(
+    (set) => ({
+      // Default to Rafael workspace (most commonly used in Week 1 MVP)
+      activeCitizen: 'rafael',
+
+      /**
+       * Set active citizen workspace
+       */
+      setActiveCitizen: (citizen: CitizenType) => {
+        // TODO: Implement setActiveCitizen logic
+        // 1. Update activeCitizen state
+        // 2. Trigger workspace switch (see 04_data_flows.md)
+        // 3. Persist to localStorage (handled by Zustand persist middleware)
+
+        set({ activeCitizen: citizen });
+
+        // Optional: Emit analytics event for workspace switch
+        // analytics.track('workspace_switched', { from: currentCitizen, to: citizen });
+      }
+    }),
+    {
+      name: 'workspace-storage', // localStorage key
+      // Only persist activeCitizen (not actions)
+      partialize: (state) => ({ activeCitizen: state.activeCitizen })
+    }
+  )
+);
+
+// ============================================================================
+// TESTS TO IMPLEMENT
+// ============================================================================
+
+/**
+ * Unit Tests (workspaceStore.test.ts):
+ *
+ * 1. test('default activeCitizen is "rafael"')
+ * 2. test('setActiveCitizen updates activeCitizen state')
+ * 3. test('setActiveCitizen persists to localStorage')
+ * 4. test('reload restores activeCitizen from localStorage')
+ * 5. test('all citizen types are valid ("emma", "inna", "rafael", "sofia", "maya")')
+ *
+ * Integration Tests (workspace-switch.test.tsx):
+ *
+ * 1. test('clicking Rafael tab switches to Rafael workspace')
+ * 2. test('clicking Sofia tab switches to Sofia workspace')
+ * 3. test('workspace switch happens in <500ms')
+ * 4. test('workspace switch updates URL (optional: /deck?workspace=rafael)')
+ * 5. test('active citizen persists after page reload')
+ *
+ * Acceptance Criteria (AC.md F3):
+ *
+ * - [ ] Clicking citizen tab switches to that workspace
+ * - [ ] Workspace switch happens in <500ms
+ * - [ ] Active workspace persists (reload → same workspace shown)
+ * - [ ] URL updates to reflect active workspace (optional)
+ */
+
+// ============================================================================
+// IMPLEMENTATION CHECKLIST
+// ============================================================================
+
+/**
+ * Week 1 MVP:
+ * - [x] Store structure defined
+ * - [ ] activeCitizen state
+ * - [ ] setActiveCitizen action
+ * - [ ] localStorage persistence (Zustand persist middleware)
+ * - [ ] Default to 'rafael'
+ * - [ ] Unit tests passing
+ * - [ ] Integration tests passing
+ * - [ ] AC criteria verified
+ *
+ * Week 2 (if needed):
+ * - [ ] URL sync (/deck?workspace=rafael)
+ * - [ ] Analytics tracking for workspace switches
+ * - [ ] Workspace switch animations
+ */
+
+// ============================================================================
+// USAGE EXAMPLE
+// ============================================================================
+
+/**
+ * In CitizenSelector.tsx:
+ *
+ * const { activeCitizen, setActiveCitizen } = useWorkspaceStore();
+ *
+ * const handleCitizenClick = (citizen: CitizenType) => {
+ *   setActiveCitizen(citizen);
+ * };
+ *
+ * In WorkspaceContainer.tsx:
+ *
+ * const { activeCitizen } = useWorkspaceStore();
+ *
+ * {activeCitizen === 'rafael' && <RafaelWorkspace />}
+ * {activeCitizen === 'sofia' && <SofiaWorkspace />}
+ */

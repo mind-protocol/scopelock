@@ -1,0 +1,173 @@
+================================================================================
+YOUR EXACT ACTIONS - CHECKLIST (V2 - CHUNKED MESSAGES)
+================================================================================
+
+□ Step 1: Install dependencies (30 seconds)
+
+   pip install telethon python-dotenv
+
+================================================================================
+
+□ Step 2: Get Telegram API credentials (2 minutes)
+
+   1. Go to: https://my.telegram.org/apps
+   2. Log in with: +33621636737
+   3. Create application:
+      - App title: ScopeLock Outreach
+      - Short name: scopelock
+      - Platform: Desktop
+   4. Save these values:
+      - api_id (number like: 12345678)
+      - api_hash (string like: abc123def456...)
+
+================================================================================
+
+□ Step 3: Create .env file (1 minute)
+
+   # Copy template
+   cp .env.example .env
+
+   # Edit file
+   nano .env
+
+   # Change these three lines:
+   TELEGRAM_APP_ID=12345678              ← Your api_id here
+   TELEGRAM_APP_HASH=abc123def456...     ← Your api_hash here
+   TELEGRAM_PHONE=+33621636737           ← Already correct
+
+   # Save: Ctrl+X, then Y, then Enter
+
+================================================================================
+
+□ Step 4: Generate contacts file with chunked messages (10 seconds)
+
+   python3 telegram_outreach_sender_v2.py --generate
+
+   Expected output:
+   Parsing: outreach_batch_1_rewritten.txt...
+     ✓ Found XX contacts
+   Parsing: outreach_batch_2_rewritten.txt...
+     ✓ Found XX contacts
+   ...
+   ✓ Generated XX contacts with chunked messages
+     Priority 1: 10
+     Priority 2: XX
+     Saved to: outreach_contacts_chunked.json
+
+================================================================================
+
+□ Step 5: Test WITHOUT sending messages (2 minutes)
+
+   python3 telegram_outreach_sender_v2.py --dry-run
+
+   What happens:
+   1. Asks for phone (enter: +33621636737)
+   2. Telegram sends SMS code
+   3. Enter code
+   4. Shows preview of CHUNKED messages (NO ACTUAL SENDING)
+
+   You'll see:
+   [DRY RUN] Sending to: CodeSensei (4 chunks)
+     ✓ Found contact (dry run - not sending)
+     Chunk 1/4 preview: Saw your message about...
+     Chunk 2/4 preview: We built similar for...
+     Chunk 3/4 preview: The tricky part was...
+     Chunk 4/4 preview: Can send the pattern...
+
+================================================================================
+
+□ Step 6: Send messages FOR REAL (3+ hours total)
+
+   IMPORTANT: Messages now sent in CHUNKS:
+   - Each contact receives 2-4 separate messages
+   - 5-10 seconds between chunks (appears human)
+   - 2.5-3.5 minutes between contacts (rate limit)
+
+   # Send all contacts
+   python3 telegram_outreach_sender_v2.py
+
+   OR better: Send in batches
+
+   # Day 1: Top 5 (20 min)
+   python3 telegram_outreach_sender_v2.py
+   # Press Ctrl+C after 5 sends
+
+   # Day 2: Next 10 (45 min)
+   python3 telegram_outreach_sender_v2.py --start-from 5
+   # Press Ctrl+C after 10 more
+
+   # Day 3: Remaining (2+ hours)
+   python3 telegram_outreach_sender_v2.py --start-from 15
+   # Let it finish
+
+================================================================================
+
+□ Step 7: Track results
+
+   # Check log
+   cat outreach_log.csv
+
+   # Check progress
+   grep "status" outreach_contacts_chunked.json | head -20
+
+   # In Telegram app: watch for replies!
+
+================================================================================
+
+WHAT CHANGED FROM V1:
+
+✅ Messages now sent in CHUNKS (2-4 messages, not one block)
+✅ 5-10 second delays between chunks (appears human)
+✅ Proof-first approach (live links + metrics upfront)
+✅ Value-first (no "quick call" pressure)
+✅ Specific references (actual conversation details)
+✅ Technical depth (shows real expertise)
+
+EXAMPLE CHUNKED SEND:
+
+Contact: CodeSensei
+Chunk 1 → Wait 7s → Chunk 2 → Wait 6s → Chunk 3 → Wait 8s → Chunk 4
+[Done with CodeSensei]
+Wait 180 seconds...
+[Next contact: ØPTIMUS ONE]
+
+================================================================================
+
+CURRENT STATUS:
+
+✅ V2 script created (handles chunked messages)
+✅ All messages rewritten with proof-first approach
+✅ Template .env created (.env.example)
+✅ 59 personalized messages ready (Batches 1, 2, 4, 5)
+✅ Automation tested by parallel agents
+
+WAITING FOR YOU:
+
+□ pip install telethon python-dotenv
+□ Get API credentials from telegram.org
+□ Create .env file with your credentials
+□ Run --generate
+□ Run --dry-run
+□ Run live
+
+================================================================================
+
+FILES YOU HAVE:
+
+telegram_outreach_sender_v2.py          ← Main script (V2, chunked)
+.env.example                            ← Template for credentials
+outreach_batch_1_rewritten.txt          ← Proof-first messages (Batch 1)
+outreach_batch_2_rewritten.txt          ← Proof-first messages (Batch 2)
+outreach_batch_4_rewritten.txt          ← Proof-first messages (Batch 4)
+outreach_batch_5_rewritten.txt          ← Proof-first messages (Batch 5)
+
+Will be created:
+outreach_contacts_chunked.json          ← Generated by --generate
+outreach_log.csv                        ← Send tracking log
+/tmp/scopelock_sender.session                ← Telegram auth session
+
+================================================================================
+
+START HERE: Step 1 (pip install)
+
+================================================================================

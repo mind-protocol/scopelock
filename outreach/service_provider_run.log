@@ -1,0 +1,88 @@
+Loading Telegram export from: /mnt/c/Users/reyno/Downloads/Telegram Desktop/DataExport_2025-09-29 (1)/result.json
+✓ Loaded 2150 chats
+
+Analyzing 2150 conversations...
+Looking for people who offered dev/design services...
+
+Processed 100/2150 chats... Found 78 service providers
+Processed 200/2150 chats... Found 99 service providers
+Processed 300/2150 chats... Found 120 service providers
+Processed 400/2150 chats... Found 145 service providers
+Processed 500/2150 chats... Found 168 service providers
+Processed 600/2150 chats... Found 190 service providers
+Processed 800/2150 chats... Found 245 service providers
+Processed 900/2150 chats... Found 275 service providers
+Processed 1000/2150 chats... Found 299 service providers
+Processed 1100/2150 chats... Found 329 service providers
+Processed 1200/2150 chats... Found 356 service providers
+Processed 1300/2150 chats... Found 388 service providers
+Processed 1400/2150 chats... Found 409 service providers
+Processed 1500/2150 chats... Found 426 service providers
+Processed 1600/2150 chats... Found 451 service providers
+Processed 1700/2150 chats... Found 466 service providers
+Processed 1800/2150 chats... Found 483 service providers
+Processed 1900/2150 chats... Found 505 service providers
+Processed 2000/2150 chats... Found 524 service providers
+Processed 2100/2150 chats... Found 548 service providers
+
+================================================================================
+FOUND 557 SERVICE PROVIDERS
+================================================================================
+
+✓ Saved full analysis: /home/mind-protocol/scopelock/outreach/service_providers/service_providers.json
+✓ Saved summary: /home/mind-protocol/scopelock/outreach/service_providers/service_providers_summary.txt
+
+================================================================================
+TOP 10 SERVICE PROVIDERS (by score)
+================================================================================
+
+1. 🌌 Universe Engine - $COMPUTE (score: 704)
+   Sample: "Oh yes no! Those NFTs are the presale of the pieces that I will make on the road to Vladivostok.
+
+In..."
+
+2. Unknown (score: 588)
+   Sample: "Feeling: Anticipation/Eagerness 🥳
+Stress State: 163 (Calm)
+Arousal: 73 (Awake)
+🟨
+🍐
+🌱
+
+🟦
+🟪
+🟥
+🟧🟧
+
+Resp..."
+
+3. Defiant (score: 181)
+   Sample: "Lester - here one for you to consider. Would you like to showcase one of your Pieces in my exhibitio..."
+
+4. DreamKollab (score: 140)
+   Sample: "In terms of leasing, I can make a temporary discount code for the project to make it free...."
+
+5. Ineya (score: 136)
+   Sample: "I am calm when there is already accommodation where I am going for the first time (there is an agree..."
+
+6. 🪖 UE - Core Team (score: 105)
+   Sample: "Let me think about potential visual concepts that could capture the dual-world nature and key themes..."
+
+7. REANANCE (score: 91)
+   Sample: "If you need any assistance, I would be happy to help with the project...."
+
+8. Aqualis (score: 91)
+   Sample: "I'm happy to help my best friend is most likely one of your friends and kind of led me to this. And ..."
+
+9. Bass AI CFO (score: 75)
+   Sample: "18:15:44 Mihai Joca: Bon non en gros moi j'ai fait de la finance pendant une vingtaine d'années à Pa..."
+
+10. Bigbosefx2 (score: 61)
+   Sample: "For each Quote:
+- Ask for the wallet address
+- Put it in a doc to save it
+- Send the 15 000  $COMPUT..."
+
+
+✓ Complete! Found 557 service providers
+✓ Full results: /home/mind-protocol/scopelock/outreach/service_providers
