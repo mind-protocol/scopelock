@@ -17,41 +17,83 @@ export function CitizenSelector({
   activeCitizen,
   onSelect,
 }: CitizenSelectorProps) {
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'active': return 'var(--slk-accent)';
+      case 'complete': return 'var(--slk-success)';
+      default: return 'rgba(154, 163, 174, 0.4)';
+    }
+  };
+
   return (
-    <div className="border-b border-border bg-surface">
-      <div className="flex items-center px-6 py-4 gap-4">
+    <div style={{
+      borderBottom: '1px solid rgba(230, 234, 242, 0.08)',
+      background: 'var(--slk-surface)'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        padding: '16px 24px',
+        gap: '16px'
+      }}>
         {citizens.map((citizen, index) => (
-          <div key={citizen.id} className="flex items-center gap-2">
+          <div key={citizen.id} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             {/* Citizen card */}
             <button
               onClick={() => onSelect(citizen.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
-                activeCitizen === citizen.id
-                  ? 'bg-background border border-accent text-accent'
-                  : 'bg-surface-hover hover:bg-background text-muted hover:text-text'
-              }`}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 16px',
+                borderRadius: '6px',
+                transition: 'background 0.2s, color 0.2s',
+                background: activeCitizen === citizen.id ? 'var(--slk-bg)' : 'rgba(21, 26, 33, 0.5)',
+                border: activeCitizen === citizen.id ? '1px solid var(--slk-accent)' : '1px solid transparent',
+                color: activeCitizen === citizen.id ? 'var(--slk-accent)' : 'var(--slk-muted)',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                if (activeCitizen !== citizen.id) {
+                  e.currentTarget.style.background = 'var(--slk-bg)';
+                  e.currentTarget.style.color = 'var(--slk-text)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeCitizen !== citizen.id) {
+                  e.currentTarget.style.background = 'rgba(21, 26, 33, 0.5)';
+                  e.currentTarget.style.color = 'var(--slk-muted)';
+                }
+              }}
             >
               {/* Status indicator */}
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  citizen.status === 'active'
-                    ? 'bg-accent'
-                    : citizen.status === 'complete'
-                    ? 'bg-success'
-                    : 'bg-muted/40'
-                }`}
-              />
+              <span style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: getStatusColor(citizen.status),
+                display: 'inline-block'
+              }} />
 
               {/* Name + Role */}
-              <div className="flex flex-col items-start">
-                <span className="text-sm font-medium">{citizen.name}</span>
-                <span className="text-xs opacity-75">{citizen.role}</span>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start'
+              }}>
+                <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>{citizen.name}</span>
+                <span style={{ fontSize: '0.75rem', opacity: 0.75 }}>{citizen.role}</span>
               </div>
             </button>
 
             {/* Arrow separator (except after last citizen) */}
             {index < citizens.length - 1 && (
-              <div className="text-muted text-sm">──→</div>
+              <div style={{
+                color: 'var(--slk-muted)',
+                fontSize: '0.875rem'
+              }}>
+                ──→
+              </div>
             )}
           </div>
         ))}

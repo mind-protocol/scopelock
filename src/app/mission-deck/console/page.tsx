@@ -87,14 +87,26 @@ export default function ConsolePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-text">Loading missions...</div>
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'var(--slk-bg)',
+        color: 'var(--slk-text)'
+      }}>
+        <div>Loading missions...</div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen bg-background overflow-hidden">
+    <div style={{
+      display: 'flex',
+      height: '100vh',
+      background: 'var(--slk-bg)',
+      overflow: 'hidden'
+    }}>
       {/* Left panel: Mission Selector */}
       <MissionSelector
         missions={missions}
@@ -103,19 +115,34 @@ export default function ConsolePage() {
       />
 
       {/* Main area */}
-      <div className="flex-1 flex flex-col">
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         {/* Top bar */}
-        <div className="bg-surface border-b border-border px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <h1 className="text-xl font-bold text-text">Mission Deck</h1>
+        <div style={{
+          background: 'var(--slk-surface)',
+          borderBottom: '1px solid rgba(230, 234, 242, 0.08)',
+          padding: '12px 24px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <h1 style={{
+              fontSize: '1.25rem',
+              fontWeight: 'bold',
+              color: 'var(--slk-text)',
+              margin: 0
+            }}>Mission Deck</h1>
             {activeMissionId && (
-              <span className="text-muted text-sm">
+              <span style={{
+                color: 'var(--slk-muted)',
+                fontSize: '0.875rem'
+              }}>
                 Mission #{activeMissionId}
               </span>
             )}
           </div>
 
-          <button onClick={handleLogout} className="btn-secondary text-sm">
+          <button onClick={handleLogout} className="btn-secondary" style={{ fontSize: '0.875rem' }}>
             Log Out
           </button>
         </div>
@@ -130,9 +157,15 @@ export default function ConsolePage() {
         )}
 
         {/* Workspace area */}
-        <div className="flex-1 overflow-hidden">
+        <div style={{ flex: 1, overflow: 'hidden' }}>
           {!activeMissionId && (
-            <div className="h-full flex items-center justify-center text-muted">
+            <div style={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--slk-muted)'
+            }}>
               No mission selected. Select a mission from the left panel.
             </div>
           )}
@@ -148,7 +181,13 @@ export default function ConsolePage() {
           {activeMissionId &&
             activeCitizen !== 'rafael' &&
             activeCitizen !== 'sofia' && (
-              <div className="h-full flex items-center justify-center text-muted">
+              <div style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--slk-muted)'
+              }}>
                 {activeCitizen.charAt(0).toUpperCase() + activeCitizen.slice(1)}{' '}
                 workspace - Week 2 feature (not implemented yet)
               </div>

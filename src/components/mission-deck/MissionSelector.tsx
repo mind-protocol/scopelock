@@ -17,59 +17,126 @@ export function MissionSelector({
   activeMissionId,
   onSelect,
 }: MissionSelectorProps) {
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'active': return 'var(--slk-success)';
+      case 'qa': return 'var(--slk-accent-2)';
+      case 'done': return 'var(--slk-muted)';
+      default: return 'var(--slk-warning)';
+    }
+  };
+
   return (
-    <div className="w-[200px] bg-background border-r border-border h-screen overflow-y-auto flex-shrink-0">
-      <div className="p-4">
-        <h2 className="text-text font-semibold mb-4 text-sm uppercase tracking-wide">
+    <div style={{
+      width: '200px',
+      background: 'var(--slk-bg)',
+      borderRight: '1px solid rgba(230, 234, 242, 0.08)',
+      height: '100vh',
+      overflowY: 'auto',
+      flexShrink: 0
+    }}>
+      <div style={{ padding: '16px' }}>
+        <h2 style={{
+          color: 'var(--slk-text)',
+          fontWeight: 600,
+          marginBottom: '16px',
+          fontSize: '0.875rem',
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
+          margin: '0 0 16px 0'
+        }}>
           Missions
         </h2>
 
         {missions.length === 0 && (
-          <div className="text-muted text-sm p-3">No missions assigned</div>
+          <div style={{
+            color: 'var(--slk-muted)',
+            fontSize: '0.875rem',
+            padding: '12px'
+          }}>
+            No missions assigned
+          </div>
         )}
 
         {missions.map((mission) => (
           <div
             key={mission.id}
-            className={`p-3 rounded-md cursor-pointer mb-2 transition-colors ${
-              mission.id === activeMissionId
-                ? 'bg-surface'
-                : 'hover:bg-surface-hover'
-            }`}
+            style={{
+              padding: '12px',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              marginBottom: '8px',
+              background: mission.id === activeMissionId ? 'var(--slk-surface)' : 'transparent',
+              transition: 'background 0.2s'
+            }}
             onClick={() => onSelect(mission.id)}
+            onMouseEnter={(e) => {
+              if (mission.id !== activeMissionId) {
+                e.currentTarget.style.background = 'rgba(21, 26, 33, 0.5)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (mission.id !== activeMissionId) {
+                e.currentTarget.style.background = 'transparent';
+              }
+            }}
           >
             {/* Status indicator + Mission number */}
-            <div className="flex items-center gap-2 mb-1">
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  mission.status === 'active'
-                    ? 'bg-success'
-                    : mission.status === 'qa'
-                    ? 'bg-accent-2'
-                    : mission.status === 'done'
-                    ? 'bg-muted'
-                    : 'bg-warning'
-                }`}
-              />
-              <span className="text-muted text-xs font-mono">
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '4px'
+            }}>
+              <span style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: getStatusColor(mission.status),
+                display: 'inline-block'
+              }} />
+              <span style={{
+                color: 'var(--slk-muted)',
+                fontSize: '0.75rem',
+                fontFamily: 'monospace'
+              }}>
                 #{mission.id}
               </span>
             </div>
 
             {/* Mission title */}
-            <div className="text-text font-medium text-sm mb-1">
+            <div style={{
+              color: 'var(--slk-text)',
+              fontWeight: 500,
+              fontSize: '0.875rem',
+              marginBottom: '4px'
+            }}>
               {mission.title}
             </div>
 
             {/* Client + Budget */}
-            <div className="text-muted text-xs mb-1">{mission.client}</div>
+            <div style={{
+              color: 'var(--slk-muted)',
+              fontSize: '0.75rem',
+              marginBottom: '4px'
+            }}>
+              {mission.client}
+            </div>
 
             {/* Budget + Deadline */}
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-success font-medium">
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              fontSize: '0.75rem'
+            }}>
+              <span style={{
+                color: 'var(--slk-success)',
+                fontWeight: 500
+              }}>
                 ${mission.budget}
               </span>
-              <span className="text-muted">
+              <span style={{ color: 'var(--slk-muted)' }}>
                 {formatDeadline(mission.deadline)}
               </span>
             </div>
