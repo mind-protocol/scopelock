@@ -1,0 +1,24 @@
+You need Django developer to finalize 70%-built MVP with GPT integration, AWS deployment, handover pack - not someone starting from scratch. Public affairs automation requires research/drafting/monitoring workflow understanding.
+
+I built La Serenissima (serenissima.ai) - Python backend, 99.7% uptime 6+ months, AWS infrastructure. Also TherapyKin (therapykin.ai) - Django AI SaaS, 121+ deployments. We complete MVPs to production-ready with proper handovers.
+
+Django MVP Completion ($8K, 9 weeks):
+
+Weeks 1-3 ($3K): Audit Django 4.2/Python 3.9 codebase, refactor, GPT integration with Django Q async tasks, pytest-django tests. Deliverable: Audit report, GPT features working, test coverage ≥70%.
+
+Weeks 4-6 ($3K): AWS config (EC2, RDS, S3, Redis), Cloudflare security, CI/CD pipeline. Deliverable: Staging on AWS, automated deployments.
+
+Weeks 7-9 ($2K): Production deploy, monitoring/logging, performance tuning, handover pack (architecture docs, deployment guides, runbooks). Deliverable: Production-ready, complete handover.
+
+Stack: Django 4.2 + Python 3.9 + Django Q + AWS (EC2/RDS/S3/Redis) + Cloudflare + pytest-django.
+
+Questions: 1) Current GPT integration state? 2) AWS account access ready? 3) Pilot trial timeline?
+
+Pay when tests pass. Swap/Add. GMT+1. Start 72h.
+
+Projects:
+• La Serenissima: serenissima.ai (Python AI, 99.7% uptime, 6+ months)
+• TherapyKin: therapykin.ai (AI SaaS, 121+ deploys)
+• GitHub github.com/nlr-ai + github.com/mind-protocol
+
+Nicolas

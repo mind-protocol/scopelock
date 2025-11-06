@@ -1,0 +1,22 @@
+You need AI automation specialist who builds multi-modal pipelines (text, image, voice, video) transforming creative briefs into production-ready ad drafts, not someone chaining APIs. Goal: 80% automation.
+
+I built Terminal Velocity (github.com/mind-protocol/terminal-velocity) - 526-page novel by 13 AI agents, 1.1k stars, proves multi-modal content at scale. Also La Serenissima (97 agents, 99.7% uptime 6+ months) - workflow automation with continuous improvement.
+
+AI Automation - Creative Brief → Ad Drafts ($9K/mo to start):
+
+Month 1: Build N8N system (creative briefs → multi-modal AI → ad assets), document pipeline, integrate Airtable + Notion + Meta. Deliverable: Brief → text/image/voice/video ad drafts, documented, Meta sync.
+
+Month 2+: Expand coverage (80% target), continuous improvement (speed, accuracy, quality), optimize pipeline. Deliverable: Automation % increase, quality improvements, weekly updates.
+
+Stack: N8N + Airtable + Notion + Meta + multi-modal AI (text/image/voice/video generation). Documented, maintainable.
+
+Questions: 1) Current automation %? 2) Primary ad formats (video, carousel, static)? 3) Creative brief format?
+
+Pay monthly. Swap/Add. GMT+1, US hours. Start 72h.
+
+Projects:
+• Terminal Velocity: github.com/mind-protocol/terminal-velocity (1.1k stars, multi-modal content)
+• La Serenissima: serenissima.ai (97 agents, workflow automation, continuous improvement)
+• GitHub github.com/nlr-ai + github.com/mind-protocol
+
+Nicolas

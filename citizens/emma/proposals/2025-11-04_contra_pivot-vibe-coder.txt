@@ -1,0 +1,22 @@
+You need vibe coder who builds internal operating systems for AI media at scale, not someone who just connects APIs. 1M+ daily readers requires engineering mindset for publishing/analytics/monetization workflows.
+
+I built Terminal Velocity (github.com/mind-protocol/terminal-velocity) - 526-page novel by 13 AI agents, 1.1k stars, proves content operations at scale. Also Mind Protocol - infrastructure powering La Serenissima (97 agents, 99.7% uptime 6+ months). We architect operating systems, not just automations.
+
+Vibe Coder - Internal Operating System ($6K/mo to start):
+
+Month 1: Onboard to stack (N8N, Airtable, Supabase, Lovable, Claude Code, Cursor, Replit), map workflows (publishing, analytics, monetization), build first integration. Deliverable: 1-2 automations live, documented architecture.
+
+Month 2+: Build/maintain automations (N8N + APIs), prototype systems (Lovable/Cursor), troubleshoot workflows, optimize data flows. Deliverable: 3-5 automations/month, measurable improvements.
+
+Stack: N8N + Airtable + Supabase + Lovable + Claude Code + Cursor + Replit. Engineering mindset.
+
+Questions: 1) Workflow bottlenecks (publishing, analytics, monetization)? 2) Existing integrations? 3) Growth targets?
+
+Pay monthly. Swap/Add. GMT+1, US hours. Start 72h.
+
+Projects:
+• Terminal Velocity: github.com/mind-protocol/terminal-velocity (1.1k stars, content ops)
+• Mind Protocol: OS (powers La Serenissima, 97 agents)
+• TherapyKin: therapykin.ai (AI SaaS, Airtable + Supabase)
+
+Nicolas

@@ -1,0 +1,22 @@
+You need multi-location pediatric therapy scheduling (200+ daily sessions, 20 professionals, Bangalore/Coimbatore) with super admin/location admin, leaderboards, WhatsApp, waitlist, CSV export - not generic booking.
+
+I built TherapyKin (therapykin.ai) - AI therapy companion, 121+ deployments, HIPAA-aware, healthcare workflows. Same domain: therapy + sensitive patient data. Also built Next.js systems (BeatFoundry, TherapyKin) with PostgreSQL + multi-role dashboards.
+
+Pediatric Therapy Scheduling Platform ($2.5K, 2 months):
+
+Month 1 ($1.5K): Next.js app, PostgreSQL (patients, therapists, sessions, locations), super admin + location admin, scheduling with color coding (attended, absent, canceled, no-show, rescheduled). Deliverable: Scheduling system, role-based access.
+
+Month 2 ($1K): Leaderboards (daily/weekly/monthly), WhatsApp (parent reminders), waitlist + rescheduling, CSV export, payment portal. Deliverable: Production-ready, all features live.
+
+Stack: Next.js + React + Node.js + PostgreSQL + ExpressJS + WhatsApp Business API. HIPAA-aware.
+
+Questions: 1) Payment portal (Razorpay, Paytm)? 2) WhatsApp API ready? 3) Leaderboard metrics (sessions, attendance, ratings)?
+
+Pay when tests pass. Swap/Add. Start 72h.
+
+Projects:
+• TherapyKin: therapykin.ai (therapy AI, HIPAA-aware, 121+ deploys)
+• BeatFoundry: beatfoundry.vercel.app (Next.js, 55 deploys)
+• GitHub github.com/nlr-ai + github.com/mind-protocol
+
+Nicolas

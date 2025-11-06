@@ -20,7 +20,7 @@ Pay when tests pass. Swap/Add. Start 72h.
 
 Projects:
 • BeatFoundry: beatfoundry.vercel.app (music platform, 55 deploys)
-• DuoAI: duoai.vercel.app (real-time audio, 49 deploys)
+• DuoAI:[platform not up anymore] (real-time audio, 49 deploys)
 • GitHub: github.com/nlr-ai + github.com/mind-protocol
 
 Nicolas

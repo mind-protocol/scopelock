@@ -1,0 +1,20 @@
+{
+  "context_id": "2025-11-06_01-53-45",
+  "entity_type": "citizen",
+  "entity_id": "rafael",
+  "created_at": "2025-11-06T00:53:45.594137+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T00:53:45.594153+00:00",
+      "content": "hello ! your tasks: /home/mind-protocol/scopelock/docs/automation/job-sear\n      ch-automation/RAFAEL_2_TASKS.md  -- good luck!"
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T00:54:56.094508+00:00",
+      "content": "hello ! your tasks:\n/home/mind-protocol/scopelock/docs/automation/job-sear\n      ch-automation/RAFAEL_3_TASKS.md  -- good luck!"
+    }
+  ],
+  "last_updated": "2025-11-06T00:54:56.094524+00:00",
+  "message_count": 2
+}

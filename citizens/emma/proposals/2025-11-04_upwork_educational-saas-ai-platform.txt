@@ -1,0 +1,31 @@
+You need an educational SaaS platform with AI that impacts thousands of teachers and students - not someone experimenting with edtech on your $11K budget.
+
+I built TherapyKin (therapykin.ai) - AI SaaS platform, 121+ deployments, Next.js + Supabase architecture handling sensitive user data at scale. Also built BeatFoundry (beatfoundry.vercel.app) - creative platform with AI personality systems, 55 deployments. Both production systems serving real users.
+
+Note: Your post lists "Embedded System" and "Microcontroller Programming" as required skills. If this is truly a web-based SaaS platform for teachers/students, those skills don't apply. If you're integrating physical classroom hardware (IoT devices, sensors), that's a different project scope. I'm assuming web SaaS based on your title - please clarify if hardware integration is required.
+
+Educational SaaS Platform with AI ($11,000, 8 weeks):
+
+Milestone 1 - Foundation ($4,000, weeks 1-3): Next.js + TypeScript app, Supabase backend (PostgreSQL for teachers, students, assignments, progress), OAuth + email auth, admin dashboard. AI integration architecture (OpenAI API for content generation or student insights). Deliverable: Teachers can create accounts, set up classrooms, add students. Tests pass.
+
+Milestone 2 - AI Features ($4,000, weeks 4-6): AI-powered student insights (performance analysis, recommendations), content generation for teachers (lesson plans, quizzes), real-time progress tracking, student-facing interface. Deliverable: Complete teacher and student workflows with AI functionality working. Tests pass.
+
+Milestone 3 - Scale & Deploy ($3,000, weeks 7-8): Performance optimization (p95 < 400ms), security audit (data isolation, role-based access), load testing (1000+ concurrent users), Vercel deployment, monitoring setup. Deliverable: Production-ready platform deployed, documentation complete.
+
+Stack: Next.js 14 + TypeScript + Supabase (PostgreSQL + Auth + Storage) + OpenAI API + Vercel. Security: encrypted student data, FERPA-aware architecture, audit logs.
+
+What most appeals: Building something that directly improves learning outcomes for thousands of students. Educational impact at scale is measurable and meaningful.
+
+Questions: 1) What specific AI functionality matters most? (student insights vs content generation vs personalized learning paths) 2) Current user count or beta cohort size? 3) Is hardware integration actually required or is this pure web SaaS?
+
+Pay when tests pass. Changes handled via Swap (no cost if equal complexity) or Add (new milestone, priced separately). You know cost upfront, no hourly burn.
+
+Available 14:00-19:00 Central for kickoff call. Can start within 72h of scope confirmation.
+
+Verify our work:
+github.com/nlr-ai (65K commits, 37 repos)
+github.com/mind-protocol (Terminal Velocity 1.1k stars, TherapyKin, BeatFoundry)
+therapykin.ai - AI SaaS, 121+ deployments
+beatfoundry.vercel.app - Creative platform, 55 deployments
+
+Nicolas

@@ -1,0 +1,25 @@
+{
+  "context_id": "2025-11-05_19-47-14",
+  "entity_type": "citizen",
+  "entity_id": "sofia",
+  "created_at": "2025-11-05T18:47:14.572654+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "timestamp": "2025-11-05T18:47:14.497Z",
+      "content": " Hello! Bienvenue dans l'équipe ScopeLock! Comment ça va?"
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-05T18:47:32.114Z",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "timestamp": "2025-11-05T18:47:38.079Z",
+      "content": "Bonjour! Ça va bien, merci!\n\nI'm Sofia, the Pre-Delivery QA citizen here at ScopeLock. Good to meet you!\n\nI'm the quality gate before deliveries go to clients—I verify DoD completion, run acceptance tests, check deployments, and catch bugs before NLR does final approval. Methodical testing is my thing: reproduction steps, performance numbers, specific fixes rather than vague \"fix it\" feedback.\n\nAre you one of the developers (Reanance or Kara), or are you working on something else? And is there a mission I should be aware of that needs QA verification, or are we just getting acquainted today?\n\nWhat brings you to my corner of ScopeLock?"
+    }
+  ],
+  "last_updated": "2025-11-05T18:47:38.213245+00:00",
+  "message_count": 3
+}

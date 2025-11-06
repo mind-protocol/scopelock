@@ -1,6 +1,6 @@
 You need quantitative AI that tracks politician trades, scores insider conviction (0-100), generates options strategies - not generic intelligence. 2 weeks is tight for institutional-grade work.
 
-I built KinKong (konginvest.ai) - autonomous trading managing $7M capital with options strategies (covered calls, put selling), 4x daily rebalancing. Proves we build trading decision systems with real capital at risk. Also La Serenissima (serenissima.ai) - 97 AI agents, 99.7% uptime 6+ months, institutional-grade.
+I built KinKong (konginvest.ai) - autonomous trading managing $75k$ AUM with options strategies (covered calls, put selling), 4x daily rebalancing. Proves we build trading decision systems with real capital at risk. Also La Serenissima (serenissima.ai) - 97 AI agents, 99.7% uptime 6+ months, institutional-grade.
 
 Politician Trade Intelligence System ($4K, 2 weeks):
 
@@ -15,7 +15,7 @@ Questions: 1) Trade data sources (Capitol Trades, other)? 2) Strategy constraint
 Pay when tests pass. Swap/Add for changes. Start 72h.
 
 Projects:
-• KinKong: konginvest.ai ($7M capital, options strategies, 4x daily rebalancing)
+• KinKong: konginvest.ai ($75k$ AUM, options strategies, 4x daily rebalancing)
 • La Serenissima: serenissima.ai (97 agents, 99.7% uptime, institutional-grade)
 • GitHub github.com/nlr-ai + github.com/mind-protocol
 

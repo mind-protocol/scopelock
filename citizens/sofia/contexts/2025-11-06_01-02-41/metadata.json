@@ -1,0 +1,9 @@
+{
+  "context_id": "2025-11-06_01-02-41",
+  "entity_type": "citizen",
+  "entity_id": "sofia",
+  "created_at": "2025-11-06T00:10:16.694264+00:00",
+  "last_updated": "2025-11-06T00:47:54.022688+00:00",
+  "message_count": 279,
+  "has_tool_calls": true
+}
