@@ -1,3 +1,31 @@
+## 2025-11-06 21:00 — Rafael: Added Telegram Notifications for Vercel Auto-Fix ✅
+
+**Work:** Added Telegram notifications to Vercel auto-fix webhook for outcome reporting
+
+**Enhancement:**
+When Rafael completes fixing a Vercel deployment (or fails), system sends formatted Telegram notification with:
+- Deployment outcome (Success ✅ / Failed ❌ / Critical Error 🚨)
+- Project name, deployment ID, commit details
+- Inspector URL for debugging
+- Next steps (check SYNC.md or manual intervention)
+
+**Implementation:**
+Uses `tools/telegram-send.cjs` via subprocess:
+```python
+subprocess.run(['node', telegram_script, tg_message], timeout=10)
+```
+
+**Notification Examples:**
+- Success: "Rafael diagnosed and fixed the deployment failure autonomously. Check SYNC.md for details."
+- Failure: "Rafael attempted to fix but encountered an error. Manual intervention may be required."
+- Critical: "Failed to invoke Rafael for deployment. Check backend logs immediately."
+
+**Committed:** `feat: add Telegram notifications for Vercel auto-fix outcomes` (7b94aec)
+
+**Status:** Complete, waiting for Render deployment ✅
+
+---
+
 ## 2025-11-06 21:05 — Claude: Expanded process flow to show all 11 steps ✅
 
 **Work:** Updated "How It Works" section with complete mission flow from resource
