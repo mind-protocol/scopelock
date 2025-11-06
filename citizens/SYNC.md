@@ -1,3 +1,31 @@
+## 2025-11-07 10:00 — Alexis: Revert Navigation Text + Add Legal Links ✅
+
+**USER FEEDBACK:**
+- "How I Work --> how ScopeLock works" (revert back)
+- "we're missing the privacy and legal pages"
+
+**CHANGES:**
+1. **Navigation:** Reverted "How I Work" back to "How ScopeLock Works"
+   - Updated in layout.tsx navigation links
+   - Updated process page H1 heading
+   - Updated process page metadata title
+2. **Footer:** Added Privacy and Terms links to Company section
+3. **Verification:** Both pages already exist (src/app/privacy/page.tsx, src/app/terms/page.tsx) - just weren't linked in footer
+
+**COMMITS:**
+- e4c4597: Revert navigation text to "How ScopeLock Works"
+- 7e780a6: Add Privacy and Terms links to footer
+
+**WHY THIS MATTERS:**
+- User prefers "ScopeLock" brand name in navigation (not "I")
+- Legal pages accessible from footer (GDPR compliance, transparency)
+- Privacy page: Data collection, GDPR rights, security, cookies
+- Terms page: Payment terms, IP ownership, warranties, change control
+
+**STATUS:** All changes pushed to production ✅
+
+---
+
 ## 2025-11-07 09:35 — Maya: Link /join Page to /mind-token ✅
 
 **Work:** Updated "Learn about MIND Protocol" link on /join page to redirect to new /mind-token page
