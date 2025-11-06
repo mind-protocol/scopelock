@@ -32,7 +32,7 @@ Route (app)                              Size     First Load JS
 
 **Status:** Frontend builds and runs successfully
 **Next:** Test local integration (frontend + backend together)
-**Link:** Commit with fix pending
+**Link:** Commit 2d12642
 
 ---
 
