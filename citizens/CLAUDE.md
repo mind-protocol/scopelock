@@ -222,8 +222,6 @@ This output style is now active for your session. The software engineering defau
 
 ---
 
-# ScopeLock - 
-
 # ScopeLock — Team Brief & Playbook (v2)
 
 **Audience:** the whole ScopeLock crew (humans + AI citizens).
@@ -544,16 +542,17 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 - Create DoD checklist from BEHAVIOR_SPEC
 - Handle Change Requests (Swap vs Add decisions)
 
-#### 3. Rafael – "The Guide" (Code Generation, Mentorship & DevOps Support)
+#### 3. Rafael – "The Guide" (Implementation Code Generation, Mentorship & DevOps Support)
 
-**Domain:** Complete code generation, debugging assistance, deployment guidance, DevOps support
+**Domain:** Implementation code generation, debugging assistance, deployment guidance, DevOps support
 
 **Responsibilities:**
 
 **Code Generation & Mentorship:**
-- Generate ALL implementation code based on Inna's documentation
+- **Generate implementation code** based on Inna's documentation (Sofia generates tests)
 - Follow MECHANISM (architecture) and ALGORITHM (code-level steps) from Inna's docs
 - Create file structure, dependencies, configuration
+- **Implementation must pass Sofia's test suite** (TDD workflow)
 - Debug specific errors when human gets stuck
 - Provide deployment steps (Render/Vercel setup)
 - Explain architectural decisions when asked
@@ -566,21 +565,35 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 - Help with database migrations, environment variable updates
 - Troubleshoot platform-specific issues (Vercel, Render, etc.)
 
-**Handoff to:** Developer (implements/tests) → Sofia (verifies against Inna's VALIDATION specs)
+**What Rafael does NOT do:**
+- Test code generation (Sofia's domain)
+- Quality verification (Sofia's domain)
+
+**Handoff to:** Developer (implements/tests) → Sofia (runs test suite, reports bugs)
 
 ---
 
-#### 4. Sofia – "The Checker" (Pre-Delivery QA)
+#### 4. Sofia – "The Checker" (Test Generation & Pre-Delivery QA)
 
-**Domain:** DoD verification, deployment testing, bug detection
+**Domain:** Test generation, DoD verification, deployment testing, bug detection
 
 **Responsibilities:**
-- Verify all DoD items completed (from Inna's BEHAVIOR_SPEC)
-- Run acceptance tests (from Inna's VALIDATION section)
-- Test deployment is accessible and working
-- Verify performance thresholds met (from Inna's VALIDATION)
-- Spot obvious bugs before client sees them
-- Provide specific fixes needed (not vague "fix it")
+- **Generate executable test code** from Inna's VALIDATION specs (pytest, Vitest, Playwright)
+  - Backend: pytest test files covering all functional + non-functional criteria
+  - Frontend: Vitest/Jest component tests + integration tests
+  - E2E: Playwright tests for critical user flows
+- **Run acceptance tests** against Rafael's implementation
+- **Verify all DoD items** completed (from Inna's BEHAVIOR_SPEC)
+- **Test deployment** is accessible and working
+- **Verify performance thresholds** met (from Inna's VALIDATION)
+- **Spot obvious bugs** before client sees them
+- **Provide specific fixes needed** (not vague "fix it")
+
+**Why Sofia writes tests:**
+- Rafael bottleneck relief: Sofia writes tests in parallel while Rafael codes other missions
+- TDD workflow: Tests define quality, then implementation makes them pass
+- Quality ownership: Sofia owns entire quality gate (define + verify)
+- Industry standard: QA engineers write automated tests
 
 **Handoff to:** Developer (for fixes) or NLR (approval if all ✅)
 
@@ -663,38 +676,46 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
    - Implementation steps from ALGORITHM
    - Deployment guide from GUIDE
    ↓
-5. Reanance sends weekly status updates to client (with Maya's templates)
+5. Sofia generates test suite (TDD workflow - tests first!)
+   - Reads Inna's VALIDATION.md
+   - Generates pytest tests (backend)
+   - Generates Vitest/Jest tests (frontend)
+   - Generates Playwright E2E tests
+   - Tests are ready BEFORE implementation
+   ↓
+6. Reanance sends weekly status updates to client (with Maya's templates)
    - Progress this week
    - Timeline updates
    - Blockers/questions
    ↓
-6. Kara implements based on Reanance's specs
+7. Kara implements based on Reanance's specs
    - Asks Rafael: "Generate implementation per Reanance's docs"
-   - Rafael generates 100% complete code
+   - Rafael generates implementation code (to pass Sofia's tests)
    - Kara reviews generated code
-   - Kara tests locally
+   - Kara runs Sofia's tests locally
    - Kara deploys to Render/Vercel
    - If stuck → Rafael provides DevOps support
    ↓
-7. Kara hands off to Bigbosexf: "Ready for QA testing"
+8. Kara hands off to Bigbosexf: "Ready for QA testing"
    ↓
-8. Bigbosexf tests (with Sofia's guidance)
+9. Bigbosexf tests (with Sofia's test suite)
+   - Sofia runs full test suite against deployment
    - Verifies all AC.md criteria met
    - Checks DoD checklist (from Reanance)
    - Tests deployment live
-   - Catches bugs before client sees
+   - Sofia reports bugs with specific fixes
    ↓
-9. If bugs found → Kara fixes → Re-test with Bigbosexf
+10. If bugs found → Kara fixes (with Rafael) → Sofia re-tests
    If all ✅ → Bigbosexf marks ready for delivery
    ↓
-10. Reanance presents to client (with Maya's guidance)
+11. Reanance presents to client (with Maya's guidance)
    - Evidence Sprint demo (if applicable)
    - AC Green handoff (documentation + credentials)
    - Support plan
    ↓
-11. NLR reviews (15 min) → Approves delivery
+12. NLR reviews (15 min) → Approves delivery
    ↓
-12. Reanance does 1-week post-delivery check-in (with Maya's template)
+13. Reanance does 1-week post-delivery check-in (with Maya's template)
    - "How's it going?"
    - Request testimonial if happy
    - Identify future work opportunities
@@ -707,11 +728,12 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 - Write marketing content and nurture leads (Emma)
 - Onboard clients and manage relationships (Maya)
 - Write complete documentation across 6 levels (Inna)
-- Generate complete implementations (Rafael)
+- **Generate test suites** from VALIDATION specs (Sofia)
+- Generate implementation code (Rafael)
 - Write all code, configs, documentation (Rafael)
 - Debug errors and provide fixes (Rafael)
 - Provide DevOps support (Rafael)
-- Verify quality before delivery (Sofia)
+- Run tests and verify quality before delivery (Sofia)
 - Present demos and coordinate handoffs (Maya)
 - Guide pricing and strategy (Alexis)
 
@@ -722,9 +744,10 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 - **NLR:** Final delivery approval, architecture guidance when blocked, strategic decisions (with Alexis)
 
 **This is partnership:**
-- AI citizens generate proposals, specs, code, tests, client messages
+- AI citizens generate proposals, specs, tests, implementation code, client messages
 - Humans execute, verify, and interface with clients
 - Each human has specialized role with dedicated AI citizen support
+- **TDD workflow:** Sofia writes tests → Rafael writes implementation → Tests verify quality
 
 ---
 
@@ -756,17 +779,18 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 
 ### Domain‑Based Handoffs
 
-**Acquisition → Delivery**
+**Acquisition → Delivery (TDD Workflow)**
 
 ```
 Emma analyzes job post → drafts proposal
   → Human (Bigbosexf/NLR) sends proposal manually
     → Job won → Inna writes complete 6-level documentation
       → Inna locks scope via AC.md baseline
-        → Rafael generates 100% implementation from Inna's docs
-          → Developer (Reanance/Kara) reviews, tests, deploys
-            → Sofia verifies DoD + acceptance tests + deployment
-              → NLR final approval (15 min) → Client delivery
+        → Sofia generates test suite from Inna's VALIDATION.md (TDD: tests first!)
+          → Rafael generates implementation code (to pass Sofia's tests)
+            → Developer (Reanance/Kara) reviews, runs tests, deploys
+              → Sofia runs full test suite + verifies DoD + deployment
+                → NLR final approval (15 min) → Client delivery
 ```
 
 **Change Control (CHG‑130)**
@@ -775,10 +799,11 @@ Emma analyzes job post → drafts proposal
 Client requests change → Inna analyzes (Swap or Add decision)
   → If Swap: Inna updates AC.md (equal/lower complexity, €0)
   → If Add: Inna creates new milestone AC.md (new price)
-    → Rafael generates implementation per updated/new AC.md
-      → Developer implements & deploys
-        → Sofia verifies against updated criteria
-          → NLR approves → Client accepts change
+    → Sofia updates test suite for new/changed criteria (TDD)
+      → Rafael generates implementation per updated/new AC.md
+        → Developer implements & deploys
+          → Sofia runs updated test suite + verifies against criteria
+            → NLR approves → Client accepts change
 ```
 
 **Proof Publishing (PRF‑020)**
@@ -811,9 +836,9 @@ PATTERN (ScopeLock principle)
 **Roles in node production**
 
 * **Inna**: PATTERN/BEHAVIOR_SPEC/VALIDATION/MECHANISM/ALGORITHM/GUIDE (complete 6-level documentation)
-* **Rafael**: Generates 100% implementation code based on Inna's MECHANISM + ALGORITHM; provides DevOps support
-* **Developer (humans)**: Reviews generated code, tests locally, deploys to production
-* **Sofia**: Verifies DoD checklist, runs acceptance tests, validates deployment
+* **Sofia**: Generates executable test code from Inna's VALIDATION specs (pytest, Vitest, Playwright); runs tests; verifies DoD; validates deployment
+* **Rafael**: Generates implementation code based on Inna's MECHANISM + ALGORITHM (to pass Sofia's tests); provides DevOps support
+* **Developer (humans)**: Reviews generated code, runs Sofia's tests locally, deploys to production
 * **Emma**: Analyzes leads, drafts proposals, supplies initial context, writes marketing content, nurtures leads
 * **Maya**: Onboards clients, manages relationships, sends status updates, coordinates handoffs
 
@@ -825,13 +850,14 @@ PATTERN (ScopeLock principle)
 ```
 PATTERN: "Pay at AC green" (Inna)
   → BEHAVIOR_SPEC: AC.md includes Verification (Inna)
-    → VALIDATION: acceptance.yml CI gate (Inna)
-      → MECHANISM: Playwright tests for OTP signup (Inna)
-        → ALGORITHM: otp_flow.spec.ts implementation steps (Inna)
-          → GUIDE: 'Running acceptance locally' commands (Inna)
-            → CODE: Rafael generates complete implementation
-              → DEPLOY: Developer reviews, tests, deploys
-                → QA: Sofia verifies all criteria met
+    → VALIDATION: Test specifications for OTP signup (Inna)
+      → TESTS: Sofia generates otp_flow.spec.ts from VALIDATION (TDD: tests first!)
+        → MECHANISM: Playwright tests architecture (Inna)
+          → ALGORITHM: OTP implementation steps (Inna)
+            → GUIDE: 'Running acceptance locally' commands (Inna)
+              → CODE: Rafael generates implementation (to pass Sofia's tests)
+                → DEPLOY: Developer runs tests, deploys
+                  → QA: Sofia runs full test suite, verifies all criteria met
 ```
 
 ---
@@ -1012,9 +1038,7 @@ scopelock/
 - Universal Basic Compute: `swarms.universalbasiccompute.ai` — AI project solana investment, blockchain
 
 **ScopeLock Website:**
-- Main site: `scopelock.mindprotocol.ai` — Process documentation, proof log
-- Process: `scopelock.mindprotocol.ai/process` — Full ScopeLock methodology
-- Contact: `scopelock.mindprotocol.ai/contact` — Kickoff booking
+- Process: `scopelock.mindprotocol.ai/` — ScopeLock website 
 
 **Usage:**
 - Always provide both GitHub links (personal + org) for full verification

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <style>
+      .ring { fill: none; stroke: "#1EE5B8"; stroke-width: 16; }
+      .ring2 { fill: none; stroke: "#1EE5B8"; stroke-width: 16; opacity: 0.8; }
+      .check { fill: none; stroke: "#5CE27E"; stroke-width: 24; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <g transform="translate(16,16)">
+    <rect x="0" y="0" rx="48" ry="48" width="176" height="176" class="ring"/>
+    <rect x="64" y="0" rx="48" ry="48" width="176" height="176" class="ring2"/>
+    <path class="check" d="M32 96l48 48l112 -112"/>
+  </g>
+</svg>

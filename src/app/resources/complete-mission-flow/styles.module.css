@@ -1120,6 +1120,106 @@
   border-bottom-color: var(--accent);
 }
 
+/* Citizens Section */
+.citizensSection {
+  margin: 5rem 0;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(154, 163, 174, 0.2);
+  border-bottom: 1px solid rgba(154, 163, 174, 0.2);
+}
+
+.citizensSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.citizensIntro {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.citizensGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.citizenCard {
+  background: linear-gradient(135deg, #1a1f28 0%, #151a21 100%);
+  border: 2px solid rgba(30, 229, 184, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.citizenCard:hover {
+  border-color: #1ee5b8;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.2);
+}
+
+.citizenHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.citizenAvatar {
+  border-radius: 50%;
+  border: 3px solid #1ee5b8;
+  box-shadow: 0 0 16px rgba(30, 229, 184, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.citizenCard:hover .citizenAvatar {
+  transform: scale(1.05);
+}
+
+.citizenTitleBlock {
+  flex: 1;
+}
+
+.citizenName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1ee5b8;
+  margin: 0 0 0.25rem 0;
+}
+
+.citizenRole {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+  font-style: italic;
+}
+
+.citizenDescription {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.citizenQuote {
+  background: rgba(30, 229, 184, 0.05);
+  border-left: 3px solid #1ee5b8;
+  padding: 1rem 1.25rem;
+  margin: 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--muted);
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .missionFlow {
@@ -1183,5 +1283,32 @@
   .referenceTable th,
   .referenceTable td {
     padding: 0.75rem 0.5rem;
+  }
+
+  .citizensGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .citizenCard {
+    padding: 1.5rem;
+  }
+
+  .citizenAvatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .citizenName {
+    font-size: 1.3rem;
+  }
+
+  .citizenDescription {
+    font-size: 0.95rem;
+  }
+
+  .citizenQuote {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
   }
 }

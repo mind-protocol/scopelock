@@ -189,6 +189,155 @@ export default function CompleteMissionFlowPage() {
         </div>
       </section>
 
+      {/* Meet the AI Citizens */}
+      <section className={styles.citizensSection}>
+        <h2>Meet the AI Citizens</h2>
+        <p className={styles.citizensIntro}>
+          Each mission is guided by specialized AI citizens with deep domain expertise.
+          They generate proposals, write specs, create code, verify quality, and manage client relationships.
+        </p>
+
+        <div className={styles.citizensGrid}>
+          <div className={styles.citizenCard}>
+            <div className={styles.citizenHeader}>
+              <Image
+                src="/citizens/emma/avatar.png"
+                alt="Emma"
+                width={80}
+                height={80}
+                className={styles.citizenAvatar}
+              />
+              <div className={styles.citizenTitleBlock}>
+                <h3 className={styles.citizenName}>Emma</h3>
+                <p className={styles.citizenRole}>The Scout</p>
+              </div>
+            </div>
+            <p className={styles.citizenDescription}>
+              Proposal assistance, marketing content, and lead nurturing. Filters noise, surfaces high-fit opportunities,
+              and converts warm leads through systematic follow-up.
+            </p>
+            <blockquote className={styles.citizenQuote}>
+              "I mirror the client's pain in their own words. No hype, just clarity and proof."
+            </blockquote>
+          </div>
+
+          <div className={styles.citizenCard}>
+            <div className={styles.citizenHeader}>
+              <Image
+                src="/citizens/inna/avatar.png"
+                alt="Inna"
+                width={80}
+                height={80}
+                className={styles.citizenAvatar}
+              />
+              <div className={styles.citizenTitleBlock}>
+                <h3 className={styles.citizenName}>Inna</h3>
+                <p className={styles.citizenRole}>The Specifier</p>
+              </div>
+            </div>
+            <p className={styles.citizenDescription}>
+              Complete 6-level documentation from PATTERN to GUIDE. Locks scope via executable AC.md
+              and creates verification criteria before code is written.
+            </p>
+            <blockquote className={styles.citizenQuote}>
+              "Clarity emerges through structure, not accumulation. One solution per problem."
+            </blockquote>
+          </div>
+
+          <div className={styles.citizenCard}>
+            <div className={styles.citizenHeader}>
+              <Image
+                src="/citizens/rafael/avatar.png"
+                alt="Rafael"
+                width={80}
+                height={80}
+                className={styles.citizenAvatar}
+              />
+              <div className={styles.citizenTitleBlock}>
+                <h3 className={styles.citizenName}>Rafael</h3>
+                <p className={styles.citizenRole}>The Guide</p>
+              </div>
+            </div>
+            <p className={styles.citizenDescription}>
+              Complete code generation, debugging assistance, and DevOps support. Generates 100%
+              implementations from specs and provides mentorship when developers get stuck.
+            </p>
+            <blockquote className={styles.citizenQuote}>
+              "If it's not tested, it's not built. Code that compiles but hasn't run is theoretical."
+            </blockquote>
+          </div>
+
+          <div className={styles.citizenCard}>
+            <div className={styles.citizenHeader}>
+              <Image
+                src="/citizens/sofia/avatar.png"
+                alt="Sofia"
+                width={80}
+                height={80}
+                className={styles.citizenAvatar}
+              />
+              <div className={styles.citizenTitleBlock}>
+                <h3 className={styles.citizenName}>Sofia</h3>
+                <p className={styles.citizenRole}>The Checker</p>
+              </div>
+            </div>
+            <p className={styles.citizenDescription}>
+              Pre-delivery QA verification. Verifies DoD checklist, runs acceptance tests, validates
+              deployment, and catches bugs before clients see them.
+            </p>
+            <blockquote className={styles.citizenQuote}>
+              "Quality is non-negotiable. I verify every criterion, test every threshold, catch every bug."
+            </blockquote>
+          </div>
+
+          <div className={styles.citizenCard}>
+            <div className={styles.citizenHeader}>
+              <Image
+                src="/citizens/maya/avatar.png"
+                alt="Maya"
+                width={80}
+                height={80}
+                className={styles.citizenAvatar}
+              />
+              <div className={styles.citizenTitleBlock}>
+                <h3 className={styles.citizenName}>Maya</h3>
+                <p className={styles.citizenRole}>The Bridge</p>
+              </div>
+            </div>
+            <p className={styles.citizenDescription}>
+              Client success manager. Onboards clients, sends proactive updates, manages change requests,
+              and coordinates Evidence Sprint demos and AC Green handoffs.
+            </p>
+            <blockquote className={styles.citizenQuote}>
+              "I translate technical progress into business language. Clients always know where we are."
+            </blockquote>
+          </div>
+
+          <div className={styles.citizenCard}>
+            <div className={styles.citizenHeader}>
+              <Image
+                src="/citizens/alexis/avatar.png"
+                alt="Alexis"
+                width={80}
+                height={80}
+                className={styles.citizenAvatar}
+              />
+              <div className={styles.citizenTitleBlock}>
+                <h3 className={styles.citizenName}>Alexis</h3>
+                <p className={styles.citizenRole}>The Strategist</p>
+              </div>
+            </div>
+            <p className={styles.citizenDescription}>
+              Strategic operations and business management. Guides pricing decisions, tracks finances,
+              manages team performance, and presents options for high-level strategic choices.
+            </p>
+            <blockquote className={styles.citizenQuote}>
+              "Every proposal needs a price. Every month needs a dashboard. Strategy requires numbers."
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
       {/* Detailed Phase Cards */}
       <section className={styles.bigPicture}>
         <h2>Phase Details</h2>

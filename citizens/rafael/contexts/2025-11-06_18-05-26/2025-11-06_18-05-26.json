@@ -1,0 +1,15 @@
+{
+  "context_id": "2025-11-06_18-05-26",
+  "entity_type": "citizen",
+  "entity_id": "rafael",
+  "created_at": "2025-11-06T17:05:26.341556+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T17:05:26.341600+00:00",
+      "content": "Okay, Rafael, could you please split the task of implementing the deck between Rafael-1, Rafael-2, and Rafael-3, please?"
+    }
+  ],
+  "last_updated": "2025-11-06T17:05:26.341607+00:00",
+  "message_count": 1
+}

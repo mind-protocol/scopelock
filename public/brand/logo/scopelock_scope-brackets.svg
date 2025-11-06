@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="256" viewBox="0 0 1024 256">
+  <defs>
+    <style>
+      .mark { fill: none; stroke: "#1EE5B8"; stroke-width: 16; stroke-linecap: round; }
+      .check { fill: none; stroke: "#5CE27E"; stroke-width: 24; stroke-linecap: round; stroke-linejoin: round; }
+      .word { fill: "#E6EAF2"; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+    </style>
+  </defs>
+  <g transform="translate(16,16)">
+    <!-- Crop/scope brackets -->
+    <path class="mark" d="M0 48h48M0 48v48M224 48h-48M224 48v48M0 176h48M0 176v-48M224 176h-48M224 176v-48"/>
+    <!-- Subtle shackle hint (arc) -->
+    <path class="mark" d="M48 24a64 64 0 0 1 128 0" opacity="0.65"/>
+    <!-- Check -->
+    <path class="check" d="M32 112l48 48l112 -112"/>
+  </g>
+  <text class="word" x="320" y="160" font-size="112">ScopeLock</text>
+</svg>

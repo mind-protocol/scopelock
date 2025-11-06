@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <style>
+      .bg { fill: none; stroke: "#1EE5B8"; stroke-width: 16; }
+      .check { fill: none; stroke: "#5CE27E"; stroke-width: 24; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <g transform="translate(16,16)">
+    <path class="bg" d="M48 0h128a48 48 0 0 1 48 48v48l24 16l-24 16v64a48 48 0 0 1 -48 48H48a48 48 0 0 1 -48 -48V48A48 48 0 0 1 48 0Z"/>
+    <path fill="#1EE5B8" d="M224 104l48 32l-48 32z" opacity="0.25"/>
+    <path class="check" d="M40 112l48 48l96 -96"/>
+  </g>
+</svg>

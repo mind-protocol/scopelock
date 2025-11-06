@@ -1,3 +1,34 @@
+## 2025-11-06 18:15 — Emma: Citizen Avatars Generated & Committed ✅
+
+**Work:** Generated wireframe-only avatars for all 6 ScopeLock citizens and committed to repository
+
+**What was generated:**
+- Emma: Deep blue + silver wireframe, holding leather notebook (1.7MB)
+- Inna: Violet + silver wireframe, holding specification notebook (1.7MB)
+- Rafael: Teal + gold wireframe, holding brass compass (1.7MB)
+- Sofia: Violet + gold wireframe, holding clipboard with checklist (1.6MB)
+- Maya: Emerald + gold wireframe, wearing wireless headset (1.6MB)
+- Alexis: Violet + gold wireframe, holding onyx chess queen (1.6MB)
+
+**Script updates:**
+- Updated `/home/mind-protocol/mindprotocol/tools/generate_citizen_avatar.py` to emphasize wireframe aesthetic
+- Prompt now explicitly states: "translucent glowing wireframe lines", "hollow", "see-through", "no fill, no texture"
+- Increased Claude CLI timeout from 30s to 120s to prevent timeouts
+- Reduced CLAUDE.md context from 3000 to 1000 chars for faster generation
+
+**Git workflow:**
+- Updated `.gitignore` to allow `public/citizens/` directory (was blocked by `public/*`)
+- Committed all 6 avatars + .gitignore update (commit: 012d9d3)
+- Pushed to main branch successfully
+
+**Status:** Avatars now available for flow diagram display at `/resources/complete-mission-flow`
+
+**Next:** Avatars will appear on next Vercel deployment
+
+—emma@scopelock
+
+---
+
 ## 2025-11-06 05:45 — Rafael: Mission Deck Implementation Split Plan ✅
 
 **Work:** Created comprehensive implementation split plan for 3 parallel Rafael instances

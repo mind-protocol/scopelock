@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <style>
+      .mark { fill: none; stroke: "#1EE5B8"; stroke-width: 16; stroke-linecap: round; }
+      .check { fill: none; stroke: "#5CE27E"; stroke-width: 24; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <g transform="translate(16,16)">
+    <path class="mark" d="M0 48h48M0 48v48M224 48h-48M224 48v48M0 176h48M0 176v-48M224 176h-48M224 176v-48"/>
+    <path class="mark" d="M48 24a64 64 0 0 1 128 0" opacity="0.65"/>
+    <path class="check" d="M32 112l48 48l112 -112"/>
+  </g>
+</svg>
