@@ -41,35 +41,102 @@ export default function RootLayout({
               />
             </Link>
             <div className="nav-links">
+              {/* About & How It Works */}
               <Link href="/about">About</Link>
-              <Link href="/process">Process</Link>
+              <Link href="/process">How I Work</Link>
               <Link href="/pricing">Pricing</Link>
-              <Link href="/mission-deck">Mission Deck</Link>
-              <Link href="/faq">FAQ</Link>
+              <span className="nav-separator" aria-hidden="true">|</span>
+
+              {/* Portfolio & Content */}
+              <Link href="/mission-deck">Portfolio</Link>
               <Link href="/blog">Blog</Link>
+              <span className="nav-separator" aria-hidden="true">|</span>
+
+              {/* Support & Resources */}
+              <Link href="/faq">FAQ</Link>
               <Link href="/resources">Resources</Link>
-              <Link href="/join">Join Team</Link>
-              <Link href="/#contact">Contact</Link>
+              <span className="nav-separator" aria-hidden="true">|</span>
+
+              {/* Get Started */}
+              <Link href="/#contact" className="cta-nav">Get Started</Link>
             </div>
           </nav>
         </header>
         {children}
-        <footer>
-          <small>
-            © ScopeLock — membrane-first, event-native. Tagged milestones, locked criteria.
-            {' · '}
-            <a href="https://github.com/mind-protocol/scopelock" target="_blank" rel="noopener">GitHub</a>
-            {' · '}
-            <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">LinkedIn</a>
-            {' · '}
-            <a href="https://x.com/nlr_ai" target="_blank" rel="noopener">X</a>
-            {' · '}
-            <a href="https://t.me/nlr_ai" target="_blank" rel="noopener">Telegram</a>
-            {' · '}
-            <Link href="/terms">Terms</Link>
-            {' · '}
-            <Link href="/privacy">Privacy</Link>
-          </small>
+        <footer style={{
+          marginTop: '4rem',
+          padding: '3rem 0 2rem',
+          borderTop: '1px solid var(--slk-border)',
+          background: 'var(--slk-bg)'
+        }}>
+          <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 1.5rem',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '2rem',
+            marginBottom: '2rem'
+          }}>
+            <div>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>ScopeLock</h3>
+              <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem' }}>
+                Professional software & creative work. Fixed pricing. Fast delivery.
+              </p>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Services</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/#services-title" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Web Development</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/#services-title" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>AI Chatbots</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/#services-title" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Presentations</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/#services-title" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Creative AI Services</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Company</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/about" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>About</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/process" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>How I Work</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/faq" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>FAQ</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/#contact" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Contact</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Connect</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li style={{ marginBottom: '0.5rem' }}><a href="https://x.com/nlr_ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>X (Twitter)</a></li>
+                <li style={{ marginBottom: '0.5rem' }}><a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>LinkedIn</a></li>
+                <li style={{ marginBottom: '0.5rem' }}><a href="https://github.com/nlr-ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>GitHub (Personal)</a></li>
+                <li style={{ marginBottom: '0.5rem' }}><a href="https://github.com/mind-protocol" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>GitHub (Org)</a></li>
+                <li style={{ marginBottom: '0.5rem' }}><a href="mailto:scopelock@mindprotocol.ai" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Email</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '1.5rem 1.5rem 0',
+            borderTop: '1px solid var(--slk-border)',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: '1rem'
+          }}>
+            <small style={{ color: 'var(--slk-text-muted)' }}>
+              © {new Date().getFullYear()} Mind Protocol. Solo architect + AI-assisted teams.
+            </small>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <small><a href="https://serenissima.ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>serenissima.ai</a></small>
+              <small><a href="https://therapykin.ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>therapykin.ai</a></small>
+              <small><a href="https://konginvest.ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>konginvest.ai</a></small>
+            </div>
+          </div>
         </footer>
       </body>
     </html>
