@@ -10,7 +10,7 @@ export default function JoinPage() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Earn like a Developer<br />Without Needing to Know How to Code
+            Earn like a Developer, Without Needing to Know How to Code
           </h1>
 
           <p className={styles.heroSubtitle}>
