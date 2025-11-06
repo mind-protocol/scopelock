@@ -4,6 +4,15 @@ import Link from 'next/link';
 
 const resources = [
   {
+    title: 'Why ScopeLock Makes Development Super Easy',
+    description: 'You don\'t have to be a senior developer. AI does 95% of the work—you supervise, deploy, and verify. See the complete $600 mission walkthrough showing exactly what AI does vs what you do. Interactive timeline, citizen showcase, and Mission Deck preview.',
+    href: '/resources/why-scopelock-works',
+    icon: '🚀',
+    impact: 'Eliminates fear: "Can I do this?"',
+    timeToRead: '15 min',
+    category: 'Critical',
+  },
+  {
     title: 'The Complete Mission Flow: Who Does What When',
     description: 'Understand the complete flow from "job posted on Upwork" to "client paid." Learn WHO to ask when stuck, WHEN to escalate, and WHAT a good handoff looks like.',
     href: '/resources/complete-mission-flow',
