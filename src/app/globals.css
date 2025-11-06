@@ -94,6 +94,32 @@ button:focus-visible {
   transform: scaleX(1);
 }
 
+.nav-separator {
+  color: var(--slk-muted);
+  opacity: 0.3;
+  font-weight: 300;
+  user-select: none;
+}
+
+.nav-links .cta-nav {
+  background: var(--slk-accent);
+  color: var(--slk-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links .cta-nav:hover {
+  background: var(--slk-success);
+  color: var(--slk-bg);
+  transform: translateY(-1px);
+}
+
+.nav-links .cta-nav::after {
+  display: none;
+}
+
 main {
   max-width:1040px;
   margin:auto;
