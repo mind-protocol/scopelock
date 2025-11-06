@@ -4,6 +4,7 @@
 
 'use client';
 
+import Image from 'next/image';
 import type { CitizenInfo, CitizenName } from '../../types';
 
 interface CitizenSelectorProps {
@@ -44,7 +45,7 @@ export function CitizenSelector({
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
+                gap: '12px',
                 padding: '8px 16px',
                 borderRadius: '6px',
                 transition: 'background 0.2s, color 0.2s',
@@ -66,14 +67,31 @@ export function CitizenSelector({
                 }
               }}
             >
-              {/* Status indicator */}
-              <span style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: getStatusColor(citizen.status),
-                display: 'inline-block'
-              }} />
+              {/* Profile Picture */}
+              <div style={{ position: 'relative' }}>
+                <Image
+                  src={`/citizens/${citizen.id}/avatar.png`}
+                  alt={`${citizen.name} avatar`}
+                  width={40}
+                  height={40}
+                  style={{
+                    borderRadius: '50%',
+                    border: activeCitizen === citizen.id ? '2px solid var(--slk-accent)' : '2px solid transparent'
+                  }}
+                />
+                {/* Status indicator overlay */}
+                <span style={{
+                  position: 'absolute',
+                  bottom: '-2px',
+                  right: '-2px',
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  background: getStatusColor(citizen.status),
+                  border: '2px solid var(--slk-surface)',
+                  display: 'inline-block'
+                }} />
+              </div>
 
               {/* Name + Role */}
               <div style={{
