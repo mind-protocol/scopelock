@@ -13,7 +13,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from datetime import datetime
 
 from dependencies import get_current_user, get_current_user_mission, CurrentUser
-from services.rafael import ask_rafael
+from services.rafael_cli import ask_rafael  # Uses Claude CLI (subscription, not API)
 from services.graph import create_chat_message, get_mission_messages
 from schemas import (
     ChatMessageRequest,
@@ -102,7 +102,7 @@ async def send_chat_message(
             "notes": mission.get("notes")
         }
 
-        # Get response from Rafael (via Claude API)
+        # Get response from Rafael (via Claude CLI - subscription, not API)
         rafael_response, code_blocks = ask_rafael(request.message, mission_context)
 
         # Save Rafael response to graph
