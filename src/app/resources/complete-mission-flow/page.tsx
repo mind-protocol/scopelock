@@ -25,6 +25,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 1,
       name: 'ACQUIRE',
+      descriptiveName: 'Find & Win Jobs',
       emoji: '🎯',
       duration: '~2 min',
       owner: 'Bigbosexf',
@@ -35,6 +36,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 2,
       name: 'SPECIFY',
+      descriptiveName: 'Lock Scope & Write Docs',
       emoji: '📋',
       duration: 'TBD',
       owner: 'Reanance',
@@ -45,6 +47,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 3,
       name: 'BUILD',
+      descriptiveName: 'Generate & Deploy Code',
       emoji: '⚙️',
       duration: '2-5 days',
       owner: 'Kara',
@@ -55,6 +58,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 4,
       name: 'TEST',
+      descriptiveName: 'QA Testing & Bug Fixes',
       emoji: '✅',
       duration: '2-4 hours',
       owner: 'Bigbosexf',
@@ -65,6 +69,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 5,
       name: 'DELIVER',
+      descriptiveName: 'Client Demo & Payment',
       emoji: '🚀',
       duration: '~1 day',
       owner: 'Reanance',
@@ -124,10 +129,37 @@ export default function CompleteMissionFlowPage() {
           {phases.map((phase, index) => (
             <div key={phase.number} className={styles.flowPhaseWrapper}>
               <div className={styles.flowPhase}>
-                <div className={styles.flowPhaseIcon}>{phase.emoji}</div>
-                <div className={styles.flowPhaseNumber}>{phase.number}</div>
-                <div className={styles.flowPhaseName}>{phase.name}</div>
+                <div className={styles.flowPhaseTop}>
+                  <div className={styles.flowPhaseIcon}>{phase.emoji}</div>
+                  <div className={styles.flowPhaseNumber}>{phase.number}</div>
+                </div>
+
+                <div className={styles.flowPhaseName}>{phase.descriptiveName}</div>
+
+                <div className={styles.flowPhasePeople}>
+                  <div className={styles.flowPhaseOwner}>
+                    <span className={styles.ownerLabel}>👤</span>
+                    <span className={styles.ownerName}>{phase.owner}</span>
+                  </div>
+
+                  <div className={styles.flowPhaseAI}>
+                    <Image
+                      src={phase.avatar}
+                      alt={phase.aiSupport}
+                      width={24}
+                      height={24}
+                      className={styles.aiAvatar}
+                    />
+                    <span className={styles.aiName}>{phase.aiSupport}</span>
+                  </div>
+                </div>
+
                 <div className={styles.flowPhaseDuration}>{phase.duration}</div>
+
+                {/* Hover tooltip */}
+                <div className={styles.flowPhaseTooltip}>
+                  {phase.description}
+                </div>
               </div>
               {index < phases.length - 1 && (
                 <div className={styles.flowArrow}>
