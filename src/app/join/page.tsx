@@ -375,9 +375,7 @@ export default function JoinPage() {
           </p>
           <div style={{ textAlign: 'center', marginTop: '32px' }}>
             <a
-              href="https://mindprotocol.ai"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/mind-token"
               className={styles.ctaButton}
               style={{ background: 'rgba(100, 168, 255, 0.2)', color: '#64A8FF', border: '2px solid #64A8FF' }}
             >
