@@ -8,7 +8,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { api } from '../../../lib/api';
 import { MissionSelector } from '../../../components/mission-deck/MissionSelector';
-import { CitizenSelector } from '../../../components/mission-deck/CitizenSelector';
 import { EmmaWorkspace } from '../../../components/mission-deck/EmmaWorkspace';
 import { RafaelWorkspace } from '../../../components/mission-deck/RafaelWorkspace';
 import { SofiaWorkspace } from '../../../components/mission-deck/SofiaWorkspace';
@@ -88,11 +87,6 @@ export default function ConsolePage() {
     setIsMissionPanelCollapsed(true); // Collapse panel after selection
   };
 
-  const handleLogout = () => {
-    api.logout();
-    router.push('/');
-  };
-
   if (isLoading) {
     return (
       <div style={{
@@ -133,38 +127,23 @@ export default function ConsolePage() {
           padding: '12px 24px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          gap: '16px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <h1 style={{
-              fontSize: '1.25rem',
-              fontWeight: 'bold',
-              color: 'var(--slk-text)',
-              margin: 0
-            }}>Mission Deck</h1>
-            {activeMissionId && (
-              <span style={{
-                color: 'var(--slk-muted)',
-                fontSize: '0.875rem'
-              }}>
-                Mission #{activeMissionId}
-              </span>
-            )}
-          </div>
-
-          <button onClick={handleLogout} className="btn-secondary" style={{ fontSize: '0.875rem' }}>
-            Log Out
-          </button>
+          <h1 style={{
+            fontSize: '1.25rem',
+            fontWeight: 'bold',
+            color: 'var(--slk-text)',
+            margin: 0
+          }}>Mission Deck</h1>
+          {activeMissionId && (
+            <span style={{
+              color: 'var(--slk-muted)',
+              fontSize: '0.875rem'
+            }}>
+              Mission #{activeMissionId}
+            </span>
+          )}
         </div>
-
-        {/* Citizen selector */}
-        {activeMissionId && (
-          <CitizenSelector
-            citizens={CITIZENS}
-            activeCitizen={activeCitizen}
-            onSelect={setActiveCitizen}
-          />
-        )}
 
         {/* Workspace area */}
         <div style={{ flex: 1, overflow: 'hidden' }}>
@@ -185,7 +164,12 @@ export default function ConsolePage() {
           )}
 
           {activeMissionId && activeCitizen === 'rafael' && (
-            <RafaelWorkspace missionId={activeMissionId} />
+            <RafaelWorkspace
+              missionId={activeMissionId}
+              citizens={CITIZENS}
+              activeCitizen={activeCitizen}
+              onSelectCitizen={setActiveCitizen}
+            />
           )}
 
           {activeMissionId && activeCitizen === 'sofia' && (

@@ -6,19 +6,22 @@
 
 import { useState, useEffect } from 'react';
 import { api } from '../../lib/api';
-import type { ChatMessage, GitHubFile, GitHubCommit } from '../../types';
+import type { ChatMessage, GitHubFile, GitHubCommit, CitizenInfo, CitizenName } from '../../types';
 import { ChatInterface } from './ChatInterface';
 
 interface RafaelWorkspaceProps {
   missionId: string;
+  citizens: CitizenInfo[];
+  activeCitizen: CitizenName;
+  onSelectCitizen: (citizen: CitizenName) => void;
 }
 
-export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
+export function RafaelWorkspace({ missionId, citizens, activeCitizen, onSelectCitizen }: RafaelWorkspaceProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [files, setFiles] = useState<GitHubFile[]>([]);
   const [commits, setCommits] = useState<GitHubCommit[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [leftPanelWidth, setLeftPanelWidth] = useState(40); // percentage
+  const [leftPanelWidth, setLeftPanelWidth] = useState(70); // percentage
   const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
@@ -207,6 +210,9 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
           messages={messages}
           onSendMessage={handleSendMessage}
           isLoading={isLoading}
+          citizens={citizens}
+          activeCitizen={activeCitizen}
+          onSelectCitizen={onSelectCitizen}
         />
       </div>
     </div>

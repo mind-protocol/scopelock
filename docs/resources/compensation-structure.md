@@ -1,178 +1,245 @@
-# Compensation Structure: How You Get Paid
+# Compensation Structure: The More You Work, The More You Earn
 
-**Target audience:** Nigerian and Colombian developers joining ScopeLock
-**Reading time:** 10 minutes
+**Target audience:** Team members joining ScopeLock
+**Reading time:** 12 minutes
 **Prerequisites:** None (Week 1 critical path)
 
 **📊 Interactive calculator:** [scopelock.mindprotocol.ai/resources/compensation-structure](https://scopelock.mindprotocol.ai/resources/compensation-structure)
 
-**New features:**
-- 💱 **Currency Converter** — See all amounts in USD, Nigerian Naira (NGN), or Colombian Pesos (COP)
-- 📈 **Earnings Timeline Visualizer** — Watch your wallet grow over 12 weeks with real payment milestones
+---
+
+## Why This Is Cool
+
+**The more you work, the more you earn. And you know exactly how much.**
+
+Most agencies pay fixed salaries or hourly rates. You work hard on a project, but your teammate slacks off—you both get paid the same. That's not fair.
+
+**ScopeLock is different:**
+- Every time you send a message to an AI (Rafael, Inna, Sofia, Emma) from Mission Deck, you earn +1 interaction point
+- Your share of the job: `(Your interactions / Total team interactions) × 30% of job value`
+- **Real-time visibility:** You see your potential earnings update live as you work
+- **100% fair:** More contribution = more money. Less contribution = less money.
+
+**Example:**
+```
+Upwork Job: $1,000
+Team pool: $300 (30%)
+
+You: 20 interactions
+Teammate: 10 interactions
+Total: 30 interactions
+
+Your earnings: (20/30) × $300 = $200
+Teammate earnings: (10/30) × $300 = $100
+
+You worked 2x as hard → you earn 2x as much. Fair.
+```
 
 ---
 
 ## Why This Matters
 
-"How much will I make if we deliver 10 missions this month?"
+**"How much will I make if I contribute to 10 missions this month?"**
 
-This guide explains exactly how ScopeLock's payment structure works, why we chose pure commission, and what you can expect to earn at different volume levels.
+It depends on how much you contribute. If you're very active (lots of messages to AIs), you'll earn more than someone who contributes less. This guide explains exactly how the new system works.
 
-**Our philosophy:** Fair compensation means aligned incentives and transparent splits. We operate on pure commission because we believe in paying for value delivered, not hours logged. Revenue splits 4 ways: Team (30%), Upwork (10%), Organization costs (~21%), and profit (~39%). Everyone wins together when we deliver quality work fast. No employment overhead, no time tracking, no busywork—just ship missions, get paid when clients pay, and earn more by delivering faster.
-
----
-
-## Interactive Features: See Your Future Earnings
-
-The [interactive calculator](https://scopelock.mindprotocol.ai/resources/compensation-structure) includes two powerful tools to help you visualize your earnings:
-
-### 💱 Currency Converter
-
-**Purpose:** See what your earnings mean in your local currency.
-
-**How it works:**
-- Switch between USD ($), Nigerian Naira (₦), or Colombian Pesos ($)
-- All earnings examples update instantly
-- Exchange rates: 1 USD = ~1,650 NGN or ~4,100 COP (as of Nov 2025)
-
-**Why this matters:**
-- USD numbers might not feel real until you see them in your local currency
-- Helps you understand purchasing power in your country
-- Makes budgeting and financial planning concrete
-
-**Example:** Kara's $900/month becomes:
-- ₦1,485,000/month (Nigeria)
-- $3,690,000/month (Colombia)
-
-### 📈 Earnings Timeline Visualizer
-
-**Purpose:** See exactly when money hits your wallet over 12 weeks.
-
-**How it works:**
-- Interactive chart shows cumulative earnings growth week by week
-- Payment milestones marked at weeks 3, 6, 9, 12 (every 21 days)
-- Shows specific amounts on Day 0, Day 21, Day 42, Day 84
-
-**Why this matters:**
-- Helps you plan cashflow (when you can pay rent, bills, etc.)
-- Shows realistic payment cadence (not instant, but predictable)
-- Motivates you by visualizing actual wallet growth
-
-**Example timeline (Kara at 10 missions/month):**
-```
-Week 0:  $0 (just starting)
-Week 3:  $225 (first payment arrives - Day 21)
-Week 6:  $450 (second payment - Day 42)
-Week 9:  $675 (third payment - Day 63)
-Week 12: $900 (fourth payment - Day 84)
-```
-
-**Key insight:** There's a 21-day delay before your first payment (Upwork escrow release time), but after that, payments arrive every 3 weeks like clockwork as you complete missions.
+**Our philosophy:** Fair compensation means rewarding actual contribution, not arbitrary roles. Work more → earn more. Work less → earn less. Everyone sees everyone's contribution in real-time. No surprises, no politics, no favoritism.
 
 ---
 
-## The Core Principle
+## The New System: Per-Interaction Compensation
 
-**You get paid as soon as clients pay.**
+### How It Works
 
-No hourly tracking. No timesheets. No employment contracts. You earn a fixed percentage of each mission's revenue when the team receives payment from the client.
+**Step 1:** Every message you send to an AI from Mission Deck earns you +1 interaction point for that job.
 
----
-
-## Revenue Examples
-
-Here's what you'd earn at different volume levels:
-
-### Scenario 1: 10 missions/month @ $600 average = $6,000 total revenue
-
-**Kara (Developer) - 15%**
-- Earnings: **$900/month**
-- Time: ~100 hours
-- Hourly rate: **~$9/hr**
-- PPP equivalent: **~$45-90/hr** (Nigeria/Côte d'Ivoire purchasing power)
-
-**Reanance (Specifier + Client Manager) - 9%**
-- Earnings: **$540/month**
-- Time: ~25 hours
-- Hourly rate: **~$22/hr**
-- PPP equivalent: **~$110-220/hr**
-
-**Bigbosexf (Hunter + QA) - 6%**
-- Earnings: **$360/month**
-- Time: ~45 hours
-- Hourly rate: **~$8/hr**
-- PPP equivalent: **~$40-80/hr**
-
----
-
-### Scenario 2: 20 missions/month @ $600 average = $12,000 total revenue
-
-**Kara (Developer) - 15%**
-- Earnings: **$1,800/month**
-- Time: ~200 hours
-- Hourly rate: **~$9/hr**
-- PPP equivalent: **~$45-90/hr**
-
-**Reanance (Specifier + Client Manager) - 9%**
-- Earnings: **$1,080/month**
-- Time: ~50 hours
-- Hourly rate: **~$22/hr**
-- PPP equivalent: **~$110-220/hr**
-
-**Bigbosexf (Hunter + QA) - 6%**
-- Earnings: **$720/month**
-- Time: ~90 hours
-- Hourly rate: **~$8/hr**
-- PPP equivalent: **~$40-80/hr**
-
----
-
-## Commission Structure: The 4-Way Split
-
-Every mission's revenue splits 4 ways:
-
-### 1. Team: 30%
-- **Kara (Developer): 15%** — Implements missions, deploys, fixes bugs
-- **Reanance (Specifier): 9%** — Writes specs, manages client communication
-- **Bigbosexf (Hunter + QA): 6%** — Finds jobs, writes proposals, tests deliverables
-
-### 2. Upwork: 10%
-- Platform fees for every mission
-
-### 3. Organization: ~21%
-- **AI costs: ~15%** — Claude API usage (Emma, Inna, Rafael, Sofia, Maya, Alexis)
-- **Claude Code: ~6%** — Development tools subscription
-
-### 4. NLR: ~39%
-- Profit margin after all costs @ 10 missions/month
-- Covers risk, management, strategic decisions
-
-**Visual breakdown:**
+**Step 2:** When the job completes and the client pays, the 30% team pool is split based on interaction counts:
 
 ```
-100% Revenue from Client
-├─ 30% → Team (Kara 15%, Reanance 9%, Bigbosexf 6%)
-├─ 10% → Upwork platform fees
-├─ 21% → Organization costs (AI 15%, Claude Code 6%)
-└─ 39% → NLR profit after costs
+Your share = (Your interactions / Total team interactions) × 30% of job value
 ```
 
-**Coming soon:** AI partners (Emma, Inna, Rafael, Sofia, Maya, Alexis) will receive a share of revenue as the agency scales. This is part of our vision for AI economic participation in the Mind Protocol ecosystem.
+**Step 3:** You get paid when we receive money from the client (typically 21 days after delivery).
+
+### What Counts as an Interaction
+
+✅ **Counts:**
+- Sending a message to Rafael (code generation requests)
+- Sending a message to Inna (specification questions)
+- Sending a message to Sofia (QA requests)
+- Sending a message to Emma (proposal assistance)
+
+❌ **Does NOT count (for now):**
+- File uploads
+- Deployments
+- Testing actions
+- Messages outside Mission Deck
+
+---
+
+## Real Examples
+
+### Example 1: Equal Contribution
+
+**Job:** Build chatbot for Client ($1,000)
+**Team pool:** $300 (30%)
+
+**Interactions:**
+- You: 15 messages to AIs
+- Teammate A: 15 messages to AIs
+- Teammate B: 15 messages to AIs
+- Total: 45 interactions
+
+**Earnings:**
+- You: (15/45) × $300 = **$100**
+- Teammate A: (15/45) × $300 = **$100**
+- Teammate B: (15/45) × $300 = **$100**
+
+Everyone contributed equally → everyone earns equally.
+
+---
+
+### Example 2: You Work Harder
+
+**Job:** Build chatbot for Client ($1,000)
+**Team pool:** $300 (30%)
+
+**Interactions:**
+- You: 30 messages to AIs (you drove the project)
+- Teammate A: 10 messages to AIs
+- Teammate B: 5 messages to AIs
+- Total: 45 interactions
+
+**Earnings:**
+- You: (30/45) × $300 = **$200**
+- Teammate A: (10/45) × $300 = **$67**
+- Teammate B: (5/45) × $300 = **$33**
+
+You worked 3x harder than Teammate A → you earn 3x as much. **Fair.**
+
+---
+
+### Example 3: Multiple Jobs Per Month
+
+**Month:** 10 jobs @ $1,000 average = $10,000 total revenue
+**Total team pool:** $3,000 (30% × $10,000)
+
+**Your total interactions across all 10 jobs:** 200
+**Total team interactions across all 10 jobs:** 400
+
+**Your monthly earnings:** (200/400) × $3,000 = **$1,500**
+
+You contributed 50% of the team's work → you earn 50% of the team pool.
+
+---
+
+## Missions: Fixed-Price Internal Work
+
+Not all work is tied to Upwork jobs. Some work is internal (proposals, recruitment, social posts). These are called **Missions** and have fixed prices:
+
+### Mission Pricing
+
+- **Write Upwork proposal:** $1 per proposal
+- **Recruit new team member:** $10 per successful hire
+- **Post about ScopeLock on X:** $2 per post
+
+**How missions are funded:** 5% of every job's value goes into a "mission fund" that pays for these internal tasks.
+
+**Example:**
+```
+Job: $1,000
+Mission fund: $50 (5%)
+
+This $50 pays for:
+- 5 proposals written ($5)
+- 1 recruitment ($10)
+- 10 X posts ($20)
+Total spent: $35
+Remaining: $15 (rolls over to next job)
+```
+
+---
+
+## Total Compensation Breakdown Per Job
+
+**When a $1,000 Upwork job completes:**
+
+```
+100% Client Payment: $1,000
+├─ 30% → Team Pool ($300) — split by interactions
+├─ 5% → Mission Fund ($50) — pays for missions
+├─ 10% → Upwork fees ($100)
+├─ ~21% → AI costs ($210) — Claude API, tools
+└─ ~34% → ScopeLock profit ($340)
+```
+
+**You earn from:**
+1. **Team pool:** Your share of the 30% based on interactions
+2. **Missions completed:** Fixed $ per mission (funded from 5% mission fund)
+
+---
+
+## Mission Deck: Real-Time Earnings Display
+
+The Mission Deck shows you exactly what you'll earn, updated in real-time:
+
+### Left Panel: JOBS Section
+
+```
+┌─ JOBS ─────────────────────────────────┐
+│                                         │
+│ [JOB CARD]                              │
+│ Build AI Chatbot - TherapyKin          │
+│ Client: TherapyKin                      │
+│ Value: $1,500                           │
+│ Team pool: $450 (30%)                   │
+│                                         │
+│ Your interactions: 12                   │ ← Updates live
+│ Team total: 45                          │
+│ Earning at job completion: $120.00      │ ← (12/45) × $450
+│                                         │
+└─────────────────────────────────────────┘
+```
+
+### Left Panel: MISSIONS Section
+
+```
+┌─ MISSIONS ─────────────────────────────┐
+│                                         │
+│ [MISSION CARD]                          │
+│ Write proposal for "AI Dashboard"       │
+│ Complete this mission: +$1.00           │ ← Fixed amount
+│ Status: Available                       │
+│                                         │
+│ [CLAIM MISSION]                         │
+└─────────────────────────────────────────┘
+```
+
+### Top Banner: Total Potential Earnings
+
+```
+╔═══════════════════════════════════════════════════╗
+║  YOUR TOTAL POTENTIAL EARNINGS: $342.50          ║
+║  (From 3 active jobs + 5 completed missions)     ║
+╚═══════════════════════════════════════════════════╝
+```
+
+**This updates every time you send a message to an AI.** You always know exactly where you stand.
 
 ---
 
 ## When Do You Get Paid?
 
-**Answer: As soon as the client pays.**
+**Answer: When we receive payment from the client.**
 
 ### Timeline
 
 ```
-Day 0:  Mission starts
+Day 0:  Job starts
    ↓
 Day 7:  AC Green delivered to client
    ↓
-Day 21: Upwork releases funds to team
+Day 21: Upwork releases funds to ScopeLock
    ↓
 Day 21: You get paid (SOL) — within 4 hours
 ```
@@ -182,7 +249,25 @@ Day 21: You get paid (SOL) — within 4 hours
 - ✅ Instant transfers
 - ✅ Near-zero fees (~$0.01)
 - ✅ Fully transparent on blockchain
-- ✅ You can hold SOL, convert to USDC, or cash out to NGN via Binance
+- ✅ You can hold SOL, convert to USDC, or cash out to local currency via Binance
+
+---
+
+## Why This System Is Better
+
+### Old System (Fixed Roles)
+❌ Kara always gets 15%, even if he barely contributes
+❌ Reanance always gets 9%, even if she works overtime
+❌ Bigbosexf always gets 6%, even if he finds 20 jobs this month
+❌ No incentive to contribute more
+❌ Resentment builds when effort isn't rewarded
+
+### New System (Per-Interaction)
+✅ Work 2x as hard → earn 2x as much
+✅ Real-time visibility into earnings
+✅ 100% transparent (everyone sees everyone's contribution)
+✅ Natural incentive to contribute more
+✅ Fair distribution based on actual work
 
 ---
 
@@ -194,36 +279,67 @@ Day 21: You get paid (SOL) — within 4 hours
 ### ❌ Client rejects delivery
 **No commission** until client accepts (AC.md not met)
 
-### 💥 Mission fails entirely
-**$0 for everyone** (org absorbs loss - risk premium in 70% split)
+### 💥 Job fails entirely
+**$0 for everyone** (ScopeLock absorbs loss)
 
-**This is why quality matters.**
+**This is why quality matters.** You only get paid when the client accepts. Rushing and shipping broken code = delayed payment or no payment.
 
-You only get paid when the client accepts. Rushing and shipping broken code = delayed payment or no payment.
+---
+
+## Real-World Math: What Does This Actually Mean?
+
+### Example: You contribute to 10 jobs in a month
+
+**Assumptions:**
+- Average job value: $800
+- Your interactions: 50% of team total (you're very active)
+
+**Calculation:**
+```
+Total revenue: 10 × $800 = $8,000
+Team pool: $8,000 × 30% = $2,400
+
+Your share (50% of interactions):
+$2,400 × 50% = $1,200/month
+```
+
+**Plus missions:**
+- 10 proposals written: $10
+- 5 X posts: $10
+- Total missions: $20
+
+**Your total monthly earnings: $1,220**
+
+**In local currency (Nigeria):**
+- $1,220 × 1,650 NGN/USD = ₦2,013,000/month
+- That's ~2x median software developer salary in Lagos
+
+**Purchasing power equivalent:** ~$6,000-12,000/month in US terms
 
 ---
 
 ## Transparency & Tracking
 
-After each mission, we publish a payment breakdown on the site:
+After each job completes, Mission Deck shows payment breakdown:
 
-### Example: Mission #47 Payment Breakdown
+### Example: Job #47 Payment Breakdown
 
 ```
-📊 Mission #47 Payment Breakdown
+📊 Job #47 Payment Breakdown
 
-Mission:             OpenAI chatbot integration
+Job:                 Build OpenAI chatbot
 Client paid:         $600
 Date:                2025-11-05
-SOL price:           $180
+Team pool:           $180 (30%)
 
-YOUR EARNINGS:
-✅ Kara:             $90 (15%) = 0.5 SOL
-✅ Reanance:         $54 (9%) = 0.3 SOL
-✅ Bigbosexf:        $36 (6%) = 0.2 SOL
+INTERACTIONS:
+✅ You:              15 interactions (37.5%) → $67.50
+✅ Teammate A:       12 interactions (30.0%) → $54.00
+✅ Teammate B:       13 interactions (32.5%) → $58.50
+Total:               40 interactions → $180.00
 
 PAYMENT SENT:
-✅ Kara's wallet:    0.5 SOL (~$90) → 7xK9...
+✅ Your wallet:      $67.50 in SOL → 7xK9...
 Transaction ID:      [Solscan link]
 ```
 
@@ -231,110 +347,44 @@ Transaction ID:      [Solscan link]
 
 ## Key Takeaways
 
-### 💰 Pure commission = aligned incentives
-You earn when we deliver value. No busywork, no time tracking.
+### 💰 Fair distribution = motivated team
+Work more → earn more. Work less → earn less. No politics.
 
-### ⚡ Speed = higher effective $/hr
-Deliver faster = same $ in less time = better hourly rate.
+### ⚡ Real-time visibility = no surprises
+You always know exactly what you'll earn before the job completes.
 
 ### ✅ Quality gates protect everyone
-Sofia catches bugs before client sees them. Better for reputation.
+Sofia catches bugs before client sees them. Better for reputation and earnings.
 
 ### 🌍 PPP advantage is massive
-Your earnings go 5-10x further than nominal $ suggests.
+Your earnings go 5-10x further than nominal $ suggests (especially in Nigeria/Colombia).
 
 ### 📈 Growth path is clear
-Prove performance → increase % → add bonuses → scale.
-
----
-
-## Real-World Math: What Does This Actually Mean?
-
-### Example: Kara at 10 missions/month
-
-**Nominal earnings:** $900/month ($9/hr)
-
-**But in Nigeria/Côte d'Ivoire:**
-- Rent: ~$100-200/month (vs $1,500 in US)
-- Food: ~$150/month (vs $800 in US)
-- Internet: ~$30/month (vs $80 in US)
-- Transport: ~$50/month (vs $300 in US)
-
-**Purchasing power equivalent:** ~$4,500-9,000/month in US terms
-
-**That's why PPP matters.** Your $900 buys what $4,500-9,000 buys in the US.
-
----
-
-## Growth Path
-
-### Phase 1 (First 3 months): Prove yourself
-- Learn the system
-- Deliver 10+ missions successfully
-- Build reputation with clients
-
-### Phase 2 (Months 4-6): Increase efficiency
-- Faster delivery (better $/hr)
-- Handle more missions in parallel
-- Train new team members (bonus potential)
-
-### Phase 3 (Months 7-12): Scale & specialize
-- Increase commission percentage (negotiate based on performance)
-- Take on complex missions (higher $ value)
-- Mentor new developers (mentor bonus)
-
-### Phase 4 (Year 2+): Leadership & equity
-- Lead teams (team lead bonus)
-- Recruit & train (recruiter bonus)
-- Potential equity stake in agency
+Contribute more → earn more → build reputation → handle bigger jobs → earn even more.
 
 ---
 
 ## FAQ
 
-### Q: What if a mission takes 3 months instead of 1 week?
+### Q: What if I'm slower than my teammates? Will I earn less?
 
-**A:** Your commission stays the same ($90 for a $600 mission), but your effective $/hr drops significantly. This is why we scope missions carefully and lock AC.md upfront.
+**A:** Yes, if you contribute fewer interactions, you'll earn less from that job. **But that's fair.** The system rewards contribution, not speed alone. If you're slower but thorough, you might contribute more interactions (asking clarifying questions, requesting more tests, etc.) and still earn a good share.
 
-**Protection:** If scope creeps beyond original AC.md, we use Change Control (CHG-130):
-- **Swap:** Replace with equal complexity → same $, €0
-- **Add:** New milestone → new price → new commission
+### Q: What if someone spams messages to AIs just to get more interactions?
 
-### Q: What if the client never pays?
+**A:** Sofia (QA) catches low-quality work before delivery. If your interactions don't contribute to the final quality, the job fails → everyone gets $0. You have a strong incentive to make quality contributions, not spam.
 
-**A:** You don't get paid. This is the risk of commission-based work. To minimize this:
-- Emma filters for **verified payment history** (>$1,000 spent)
-- Upwork escrow protects us (client must fund before work starts)
-- We deliver **AC Green** (objective pass/fail) before client pays
+### Q: Can I see how much my teammates are earning?
 
-### Q: Can I negotiate a higher %?
+**A:** Yes. Mission Deck shows everyone's interaction counts and earnings for each job. **This is deliberate.** Transparency prevents resentment and politics. Everyone knows exactly where they stand.
 
-**A:** Yes, after proving performance:
-- Deliver 10+ missions successfully
-- <2 bugs per mission
-- Client satisfaction >4.5/5
+### Q: What if I disagree with my interaction count?
 
-Then discuss % increase with NLR.
+**A:** All interactions are automatically tracked by Mission Deck (blockchain-verifiable). There's no subjective judgment. If the system didn't count a message, it's because it wasn't sent from Mission Deck to an AI.
 
-### Q: What about health insurance, taxes, benefits?
+### Q: What about other work (deployments, testing, debugging)?
 
-**A:** You're a contractor, not an employee. This means:
-- ❌ No health insurance
-- ❌ No paid vacation
-- ❌ No retirement contributions
-- ✅ But you keep 100% of your commission (no withholding)
-- ✅ Work when you want
-- ✅ No office, no commute
-
-You're responsible for your own taxes (if applicable in your country).
-
-### Q: What if I want salary instead of commission?
-
-**A:** ScopeLock operates pure commission for 2 reasons:
-1. **Aligned incentives:** You only get paid when client gets value
-2. **No employment overhead:** Payroll, benefits, taxes = expensive
-
-If you need salary, ScopeLock may not be the right fit.
+**A:** For now, only messages to AIs count. We chose this because it's objective, automated, and captures most of the work. As the system matures, we may add other interaction types (deployments, test runs, etc.) if they can be tracked automatically.
 
 ---
 
@@ -350,4 +400,4 @@ Get better output from Rafael and Sofia
 
 ## Questions About Compensation?
 
-Reach out to Nicolas on Telegram (@nlr_ai) or ask in the team chat. We're committed to fair, transparent compensation that scales with the team.
+Reach out to Nicolas on Telegram (@nlr_ai) or ask in the team chat. We're committed to fair, transparent compensation that scales with contribution.
