@@ -730,14 +730,86 @@ Ready? Begin now.
         # Run Rafael via Citizen Runner
         result = runner._run_claude(prompt, citizen="rafael")
 
+        # Send Telegram notification with outcome
+        import subprocess
+        import os
+
         if result["success"]:
             logger.info(f"[vercel:rafael] ✅ Rafael completed for {deployment_id}")
             mark_vercel_deployment_handled(deployment_id)
+
+            # Success notification
+            tg_message = f"""<b>🤖 Vercel Auto-Fix: SUCCESS ✅</b>
+
+<b>Project:</b> {project_name}
+<b>Deployment:</b> {deployment_id[:12]}...
+<b>Commit:</b> {commit_sha[:7]} - {commit_msg[:50]}
+
+Rafael diagnosed and fixed the deployment failure autonomously.
+
+<b>Inspector:</b> https://vercel.com/mindprotocol/{project_name}/{deployment_id}
+
+Check SYNC.md for fix details."""
         else:
             logger.error(f"[vercel:rafael] ❌ Rafael failed: {result['error']}")
             # Don't mark as handled - allow retry on next failure
 
+            # Failure notification
+            error_msg = result.get('error', 'Unknown error')[:200]
+            tg_message = f"""<b>🤖 Vercel Auto-Fix: FAILED ❌</b>
+
+<b>Project:</b> {project_name}
+<b>Deployment:</b> {deployment_id[:12]}...
+<b>Commit:</b> {commit_sha[:7]} - {commit_msg[:50]}
+
+Rafael attempted to fix the deployment but encountered an error.
+
+<b>Error:</b> {error_msg}
+
+<b>Inspector:</b> https://vercel.com/mindprotocol/{project_name}/{deployment_id}
+
+Manual intervention may be required."""
+
+        # Send Telegram notification
+        try:
+            telegram_script = os.path.join(
+                os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+                'tools',
+                'telegram-send.cjs'
+            )
+            subprocess.run(
+                ['node', telegram_script, tg_message],
+                check=True,
+                capture_output=True,
+                timeout=10
+            )
+            logger.info(f"[vercel:rafael] Telegram notification sent")
+        except Exception as tg_error:
+            logger.error(f"[vercel:rafael] Failed to send Telegram notification: {tg_error}")
+
     except Exception as e:
         logger.error(f"[vercel:rafael] Failed to invoke Rafael: {e}", exc_info=True)
+
+        # Send critical error notification
+        try:
+            import subprocess
+            import os
+            tg_message = f"""<b>🚨 Vercel Auto-Fix: CRITICAL ERROR</b>
+
+Failed to invoke Rafael for deployment {deployment_id[:12]}...
+
+<b>Error:</b> {str(e)[:200]}
+
+Check backend logs immediately."""
+
+            telegram_script = os.path.join(
+                os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+                'tools',
+                'telegram-send.cjs'
+            )
+            subprocess.run(['node', telegram_script, tg_message], timeout=10)
+        except:
+            pass  # Don't fail if notification fails
+
         # Emit failure event per fail-loud principle
         raise
