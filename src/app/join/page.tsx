@@ -10,162 +10,171 @@ export default function JoinPage() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Earn like a Developer
+            Earn like a Developer<br />Without Needing to Know How to Code
           </h1>
 
           <p className={styles.heroSubtitle}>
-            Let AI do everything for you with ScopeLock. You guide the process, AI writes the code.
+            Our AI partners do 95% of the work, and 100% of the coding and writing. You just supervise.
             Earn commission on every mission clients accept.
           </p>
         </div>
       </section>
 
-      {/* How It Works - Horizontal Process with Mirroring */}
+      {/* How It Works - With Central Line and Avatars */}
       <section className={styles.section}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>How It Works</h2>
           <p className={styles.sectionSubtitle}>
-            Simple workflow. AI does the heavy lifting. You supervise and deploy.
+            AI does 95% of the work. You supervise, deploy, and get paid.
           </p>
 
-          <div className={styles.processHorizontal}>
-            {/* 1. You - Find job */}
-            <div className={styles.processStepTop}>
-              <div className={styles.stepNumber}>1</div>
-              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.stepIcon}>👤</div>
-                <div className={styles.stepName}>You</div>
+          <div className={styles.processFlow}>
+            {/* Central horizontal line (fil rouge) */}
+            <div className={styles.filRouge}></div>
+
+            {/* Process steps */}
+            <div className={styles.processSteps}>
+              {/* Step 1: You - Find job */}
+              <div className={styles.processStep}>
+                <div className={styles.stepTop} title="Search Upwork for jobs matching our criteria">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
+                    <div className={styles.humanIcon}>👤</div>
+                  </div>
+                  <div className={styles.stepLabel}>You</div>
+                  <div className={styles.stepAction}>Find job</div>
+                </div>
+                <div className={styles.stepDot}></div>
               </div>
-              <div className={styles.stepAction}>Find job on Upwork</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 2. Emma - Analyze */}
-            <div className={styles.processStepBottom}>
-              <div className={styles.stepNumber}>2</div>
-              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.stepIcon}>🤖</div>
-                <div className={styles.stepName}>Emma</div>
+              {/* Step 2: Emma - Analyze */}
+              <div className={styles.processStep}>
+                <div className={styles.stepDot}></div>
+                <div className={styles.stepBottom} title="Emma analyzes job posts and writes complete proposal with budget and timeline">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
+                    <img src="/citizens/emma/avatar.png" alt="Emma" />
+                  </div>
+                  <div className={styles.stepLabel}>Emma</div>
+                  <div className={styles.stepAction}>Write proposal</div>
+                </div>
               </div>
-              <div className={styles.stepAction}>Analyze & write proposal</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 3. You - Submit */}
-            <div className={styles.processStepTop}>
-              <div className={styles.stepNumber}>3</div>
-              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.stepIcon}>👤</div>
-                <div className={styles.stepName}>You</div>
+              {/* Step 3: You - Submit */}
+              <div className={styles.processStep}>
+                <div className={styles.stepTop} title="Review Emma's proposal and submit to client on Upwork">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
+                    <div className={styles.humanIcon}>👤</div>
+                  </div>
+                  <div className={styles.stepLabel}>You</div>
+                  <div className={styles.stepAction}>Submit</div>
+                </div>
+                <div className={styles.stepDot}></div>
               </div>
-              <div className={styles.stepAction}>Review & submit</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 4. Inna - Specs */}
-            <div className={styles.processStepBottom}>
-              <div className={styles.stepNumber}>4</div>
-              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.stepIcon}>🤖</div>
-                <div className={styles.stepName}>Inna</div>
+              {/* Step 4: Inna - Specs */}
+              <div className={styles.processStep}>
+                <div className={styles.stepDot}></div>
+                <div className={styles.stepBottom} title="Inna writes complete technical specifications with acceptance criteria">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
+                    <img src="/citizens/inna/avatar.png" alt="Inna" />
+                  </div>
+                  <div className={styles.stepLabel}>Inna</div>
+                  <div className={styles.stepAction}>Write specs</div>
+                </div>
               </div>
-              <div className={styles.stepAction}>Write complete specs</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 5. You - Lock scope */}
-            <div className={styles.processStepTop}>
-              <div className={styles.stepNumber}>5</div>
-              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.stepIcon}>👤</div>
-                <div className={styles.stepName}>You</div>
+              {/* Step 5: You - Lock scope */}
+              <div className={styles.processStep}>
+                <div className={styles.stepTop} title="Review and approve the scope with client">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
+                    <div className={styles.humanIcon}>👤</div>
+                  </div>
+                  <div className={styles.stepLabel}>You</div>
+                  <div className={styles.stepAction}>Lock scope</div>
+                </div>
+                <div className={styles.stepDot}></div>
               </div>
-              <div className={styles.stepAction}>Lock scope</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 6. Rafael - Generate code */}
-            <div className={styles.processStepBottom}>
-              <div className={styles.stepNumber}>6</div>
-              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.stepIcon}>🤖</div>
-                <div className={styles.stepName}>Rafael</div>
+              {/* Step 6: Rafael - Code */}
+              <div className={styles.processStep}>
+                <div className={styles.stepDot}></div>
+                <div className={styles.stepBottom} title="Rafael generates 100% of the code based on Inna's specifications">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
+                    <img src="/citizens/rafael/avatar.png" alt="Rafael" />
+                  </div>
+                  <div className={styles.stepLabel}>Rafael</div>
+                  <div className={styles.stepAction}>Generate code</div>
+                </div>
               </div>
-              <div className={styles.stepAction}>Generate all code</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 7. You - Deploy */}
-            <div className={styles.processStepTop}>
-              <div className={styles.stepNumber}>7</div>
-              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.stepIcon}>👤</div>
-                <div className={styles.stepName}>You</div>
+              {/* Step 7: You - Deploy */}
+              <div className={styles.processStep}>
+                <div className={styles.stepTop} title="Review Rafael's code and deploy to production">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
+                    <div className={styles.humanIcon}>👤</div>
+                  </div>
+                  <div className={styles.stepLabel}>You</div>
+                  <div className={styles.stepAction}>Deploy</div>
+                </div>
+                <div className={styles.stepDot}></div>
               </div>
-              <div className={styles.stepAction}>Review & deploy</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 8. Sofia - QA */}
-            <div className={styles.processStepBottom}>
-              <div className={styles.stepNumber}>8</div>
-              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.stepIcon}>🤖</div>
-                <div className={styles.stepName}>Sofia</div>
+              {/* Step 8: Sofia - QA */}
+              <div className={styles.processStep}>
+                <div className={styles.stepDot}></div>
+                <div className={styles.stepBottom} title="Sofia generates complete QA checklist with test cases">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
+                    <img src="/citizens/sofia/avatar.png" alt="Sofia" />
+                  </div>
+                  <div className={styles.stepLabel}>Sofia</div>
+                  <div className={styles.stepAction}>QA checklist</div>
+                </div>
               </div>
-              <div className={styles.stepAction}>Generate QA checklist</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 9. You - Test */}
-            <div className={styles.processStepTop}>
-              <div className={styles.stepNumber}>9</div>
-              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.stepIcon}>👤</div>
-                <div className={styles.stepName}>You</div>
+              {/* Step 9: You - Test */}
+              <div className={styles.processStep}>
+                <div className={styles.stepTop} title="Run through Sofia's QA checklist and test everything">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
+                    <div className={styles.humanIcon}>👤</div>
+                  </div>
+                  <div className={styles.stepLabel}>You</div>
+                  <div className={styles.stepAction}>Test</div>
+                </div>
+                <div className={styles.stepDot}></div>
               </div>
-              <div className={styles.stepAction}>Manual testing</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 10. Maya - Demo script */}
-            <div className={styles.processStepBottom}>
-              <div className={styles.stepNumber}>10</div>
-              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.stepIcon}>🤖</div>
-                <div className={styles.stepName}>Maya</div>
+              {/* Step 10: Maya - Demo */}
+              <div className={styles.processStep}>
+                <div className={styles.stepDot}></div>
+                <div className={styles.stepBottom} title="Maya creates demo script showing what to present to client">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
+                    <img src="/citizens/maya/avatar.png" alt="Maya" />
+                  </div>
+                  <div className={styles.stepLabel}>Maya</div>
+                  <div className={styles.stepAction}>Demo script</div>
+                </div>
               </div>
-              <div className={styles.stepAction}>Create demo script</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* 11. You - Present */}
-            <div className={styles.processStepTop}>
-              <div className={styles.stepNumber}>11</div>
-              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.stepIcon}>👤</div>
-                <div className={styles.stepName}>You</div>
+              {/* Step 11: You - Present */}
+              <div className={styles.processStep}>
+                <div className={styles.stepTop} title="Present completed work to client following Maya's script">
+                  <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
+                    <div className={styles.humanIcon}>👤</div>
+                  </div>
+                  <div className={styles.stepLabel}>You</div>
+                  <div className={styles.stepAction}>Present</div>
+                </div>
+                <div className={styles.stepDot}></div>
               </div>
-              <div className={styles.stepAction}>Present to client</div>
-            </div>
 
-            <div className={styles.processConnector}>→</div>
-
-            {/* Result */}
-            <div className={styles.processResult}>
-              <div className={styles.resultIcon}>✅</div>
-              <div className={styles.resultText}>Client accepts</div>
-              <div className={styles.resultPay}>You get paid</div>
+              {/* Result */}
+              <div className={styles.processStep}>
+                <div className={styles.stepDot}></div>
+                <div className={styles.stepResult}>
+                  <div className={styles.resultIcon}>✅</div>
+                  <div className={styles.resultText}>Client accepts</div>
+                  <div className={styles.resultPay}>You get paid</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -218,7 +227,6 @@ export default function JoinPage() {
             <div className={styles.scenario}>
               <div className={styles.scenarioHeader}>
                 <div className={styles.scenarioTitle}>10 missions/month</div>
-                <div className={styles.scenarioRevenue}>$6,000 total revenue</div>
               </div>
               <div className={styles.scenarioEarnings}>
                 <div className={styles.earningRow}>
@@ -240,7 +248,6 @@ export default function JoinPage() {
             <div className={styles.scenario}>
               <div className={styles.scenarioHeader}>
                 <div className={styles.scenarioTitle}>20 missions/month</div>
-                <div className={styles.scenarioRevenue}>$12,000 total revenue</div>
               </div>
               <div className={styles.scenarioEarnings}>
                 <div className={styles.earningRow}>
@@ -258,51 +265,42 @@ export default function JoinPage() {
               </div>
             </div>
           </div>
-
-          <div className={styles.commissionsNote}>
-            <strong>Commission structure:</strong> Team 30%, Upwork 10%, Organization 21%, NLR 39%
-          </div>
         </div>
       </section>
 
       {/* Payment */}
       <section className={styles.section} style={{ background: 'rgba(21, 26, 33, 0.4)' }}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>When Do You Get Paid?</h2>
+          <h2 className={styles.sectionTitle}>Get Paid Automatically</h2>
           <p className={styles.sectionSubtitle}>
             You get paid as soon as the client pays.
           </p>
 
-          <div className={styles.paymentTimeline}>
-            <div className={styles.timelineStep}>
+          <div className={styles.paymentTimelineHorizontal}>
+            <div className={styles.timelineStepHorizontal}>
               <div className={styles.timelineDay}>Day 0</div>
               <div className={styles.timelineAction}>Mission starts</div>
             </div>
-            <div className={styles.timelineArrow}>↓</div>
-            <div className={styles.timelineStep}>
+            <div className={styles.timelineArrowHorizontal}>→</div>
+            <div className={styles.timelineStepHorizontal}>
               <div className={styles.timelineDay}>Day 7</div>
-              <div className={styles.timelineAction}>AC Green delivered to client</div>
+              <div className={styles.timelineAction}>Delivered to client</div>
             </div>
-            <div className={styles.timelineArrow}>↓</div>
-            <div className={styles.timelineStep}>
+            <div className={styles.timelineArrowHorizontal}>→</div>
+            <div className={styles.timelineStepHorizontal}>
               <div className={styles.timelineDay}>Day 21</div>
-              <div className={styles.timelineAction}>Upwork releases funds to team</div>
+              <div className={styles.timelineAction}>Upwork releases <span className={styles.dollarAmount}>$</span></div>
             </div>
-            <div className={styles.timelineArrow}>↓</div>
-            <div className={styles.timelineStep} style={{ borderColor: '#1EE5B8' }}>
+            <div className={styles.timelineArrowHorizontal}>→</div>
+            <div className={styles.timelineStepHorizontal} style={{ borderColor: '#1EE5B8', background: 'rgba(30, 229, 184, 0.1)' }}>
               <div className={styles.timelineDay}>Day 21</div>
-              <div className={styles.timelineAction}><strong>You get paid (SOL) — within 4 hours</strong></div>
+              <div className={styles.timelineAction}><strong>You get <span className={styles.solAmount}>$SOL</span> (4 hours)</strong></div>
             </div>
           </div>
 
           <div className={styles.paymentMethod}>
-            <h3>Payment Method: Solana (SOL)</h3>
-            <ul>
-              <li>✅ Instant transfers</li>
-              <li>✅ Near-zero fees (~$0.01)</li>
-              <li>✅ Fully transparent on blockchain</li>
-              <li>✅ Convert to USDC or cash out to local currency via Binance</li>
-            </ul>
+            <h3>Payment in Solana</h3>
+            <p>We explain everything and make the process super simple. No crypto experience needed.</p>
           </div>
         </div>
       </section>
@@ -312,29 +310,57 @@ export default function JoinPage() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Your First Week</h2>
 
-          <div className={styles.firstWeek}>
-            <div className={styles.weekItem}>
-              <div className={styles.weekDay}>Day 1</div>
-              <div className={styles.weekContent}>
-                <div className={styles.weekWhat}>We onboard you</div>
-                <div className={styles.weekGet}>→ Read docs, set up wallet, get Mission Deck access</div>
-              </div>
+          <div className={styles.firstWeekHorizontal}>
+            <div className={styles.weekStage} style={{ background: 'linear-gradient(135deg, rgba(100, 168, 255, 0.1) 0%, rgba(100, 168, 255, 0.05) 100%)' }}>
+              <div className={styles.weekDay} style={{ color: '#64A8FF' }}>Day 1</div>
+              <div className={styles.weekWhat}>We onboard you</div>
+              <div className={styles.weekGet}>Set up wallet, access Mission Deck</div>
             </div>
 
-            <div className={styles.weekItem}>
-              <div className={styles.weekDay}>Day 2-7</div>
-              <div className={styles.weekContent}>
-                <div className={styles.weekWhat}>Complete real mission (AI-supervised)</div>
-                <div className={styles.weekGet}>→ Emma writes proposal, Rafael codes, you deploy, client accepts</div>
-              </div>
+            <div className={styles.weekArrow}>→</div>
+
+            <div className={styles.weekStage} style={{ background: 'linear-gradient(135deg, rgba(30, 229, 184, 0.15) 0%, rgba(30, 229, 184, 0.08) 100%)' }}>
+              <div className={styles.weekDay} style={{ color: '#1EE5B8' }}>Day 2-7</div>
+              <div className={styles.weekWhat}>First real mission</div>
+              <div className={styles.weekGet}>AI does the work, you supervise</div>
             </div>
 
-            <div className={styles.weekItem}>
-              <div className={styles.weekDay}>Week 2+</div>
-              <div className={styles.weekContent}>
-                <div className={styles.weekWhat}>Regular missions</div>
-                <div className={styles.weekGet}>→ Steady income, payments every 21 days</div>
-              </div>
+            <div className={styles.weekArrow}>→</div>
+
+            <div className={styles.weekStage} style={{ background: 'linear-gradient(135deg, rgba(30, 229, 184, 0.25) 0%, rgba(30, 229, 184, 0.15) 100%)', transform: 'scale(1.05)' }}>
+              <div className={styles.weekDay} style={{ color: '#1EE5B8', fontSize: '1.25rem' }}>Week 2+</div>
+              <div className={styles.weekWhat} style={{ fontSize: '1.125rem' }}>Regular missions</div>
+              <div className={styles.weekGet}>Steady income, every 21 days</div>
+              <div className={styles.weekEarnings}>$450-900/month</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className={styles.section} style={{ background: 'rgba(21, 26, 33, 0.4)' }}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Common Questions</h2>
+
+          <div className={styles.faqList}>
+            <div className={styles.faqItem}>
+              <div className={styles.faqQuestion}>What if I mess up?</div>
+              <div className={styles.faqAnswer}>The AI guides you and the human team helps each other. You're never alone—if you get stuck, ask in the team chat and someone will help.</div>
+            </div>
+
+            <div className={styles.faqItem}>
+              <div className={styles.faqQuestion}>How is this different from just using ChatGPT?</div>
+              <div className={styles.faqAnswer}>Our AI partners do 95% of the work, and 100% of the coding and writing. You just supervise. ChatGPT gives you code. We give you: proposal writing, client management, QA testing, deployment guides, and 5 specialized AI citizens who know the ScopeLock workflow.</div>
+            </div>
+
+            <div className={styles.faqItem}>
+              <div className={styles.faqQuestion}>Do I need to know how to code?</div>
+              <div className={styles.faqAnswer}>No. Rafael writes 100% of the code. You copy-paste, deploy, and test. If something breaks, Rafael fixes it.</div>
+            </div>
+
+            <div className={styles.faqItem}>
+              <div className={styles.faqQuestion}>What if the client doesn't pay?</div>
+              <div className={styles.faqAnswer}>Upwork escrow protects you. Client must fund before work starts. You only get paid when client pays, but clients can't run off without paying through Upwork.</div>
             </div>
           </div>
         </div>

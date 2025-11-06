@@ -37,49 +37,13 @@
   margin-bottom: 48px;
 }
 
-.heroHighlight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.highlightItem {
-  padding: 24px 32px;
-  background: rgba(21, 26, 33, 0.8);
-  border: 2px solid rgba(30, 229, 184, 0.3);
-  border-radius: 12px;
-}
-
-.highlightNumber {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #1EE5B8;
-  font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 8px;
-}
-
-.highlightLabel {
-  font-size: 0.9375rem;
-  color: #9AA3AE;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.highlightArrow {
-  font-size: 2rem;
-  color: #1EE5B8;
-  font-weight: 700;
-}
-
 /* Section Styles */
 .section {
   padding: 80px 20px;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -100,100 +64,124 @@
   line-height: 1.6;
 }
 
-/* Process Flow - Horizontal with Mirroring */
-.processHorizontal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  max-width: 1200px;
+/* Process Flow - With Central Line (Fil Rouge) */
+.processFlow {
+  position: relative;
+  max-width: 100%;
   margin: 0 auto;
-  flex-wrap: wrap;
+  padding: 60px 0;
 }
 
-.processStepTop,
-.processStepBottom {
+.filRouge {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1EE5B8 0%, #64A8FF 50%, #1EE5B8 100%);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.processSteps {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.processStep {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  min-width: 140px;
-  padding: 16px;
-}
-
-.processStepTop {
-  align-self: flex-start;
-}
-
-.processStepBottom {
-  align-self: flex-end;
-}
-
-.stepNumber {
-  width: 32px;
-  height: 32px;
-  background: rgba(30, 229, 184, 0.1);
-  border: 2px solid #1EE5B8;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: #1EE5B8;
-  font-size: 1rem;
-}
-
-.stepActor {
-  padding: 12px;
-  background: rgba(21, 26, 33, 0.8);
-  border: 2px solid;
-  border-radius: 12px;
-  text-align: center;
+  flex: 1;
   min-width: 100px;
 }
 
-.stepIcon {
-  font-size: 2rem;
-  margin-bottom: 4px;
-}
-
-.stepName {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #E6EAF2;
-}
-
-.stepAction {
-  font-size: 0.9375rem;
-  color: #9AA3AE;
-  text-align: center;
-}
-
-.stepTime {
-  font-size: 0.8125rem;
-  color: #64A8FF;
-  font-weight: 600;
-}
-
-.processConnector {
-  font-size: 1.5rem;
-  color: #1EE5B8;
-  font-weight: 700;
-  align-self: center;
-}
-
-.processResult {
+.stepTop {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  margin-bottom: 40px;
+  cursor: help;
+  transition: transform 0.2s ease;
+}
+
+.stepTop:hover {
+  transform: translateY(-4px);
+}
+
+.stepBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  cursor: help;
+  transition: transform 0.2s ease;
+}
+
+.stepBottom:hover {
+  transform: translateY(4px);
+}
+
+.stepDot {
+  width: 12px;
+  height: 12px;
+  background: #1EE5B8;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(30, 229, 184, 0.6);
+}
+
+.stepAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid;
+  background: rgba(21, 26, 33, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stepAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.humanIcon {
+  font-size: 1.75rem;
+}
+
+.stepLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #E6EAF2;
+  text-align: center;
+}
+
+.stepAction {
+  font-size: 0.8125rem;
+  color: #9AA3AE;
+  text-align: center;
+  max-width: 100px;
+}
+
+.stepResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
   padding: 20px;
   background: linear-gradient(135deg, rgba(30, 229, 184, 0.1) 0%, rgba(100, 168, 255, 0.1) 100%);
   border: 2px solid #1EE5B8;
   border-radius: 12px;
-  text-align: center;
-  min-width: 140px;
-  align-self: center;
+  margin-top: 40px;
 }
 
 .resultIcon {
@@ -212,27 +200,7 @@
   color: #1EE5B8;
 }
 
-/* Who This Is For - Personal */
-.personalMessage {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.personalMessage h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1EE5B8;
-  margin-bottom: 16px;
-}
-
-.personalMessage p {
-  font-size: 1.125rem;
-  color: #9AA3AE;
-  line-height: 1.7;
-  margin-bottom: 32px;
-}
-
+/* Requirements */
 .requirements {
   display: flex;
   flex-direction: column;
@@ -305,12 +273,6 @@
   margin-bottom: 8px;
 }
 
-.scenarioRevenue {
-  font-size: 1rem;
-  color: #1EE5B8;
-  font-weight: 600;
-}
-
 .scenarioEarnings {
   display: flex;
   flex-direction: column;
@@ -338,42 +300,27 @@
   font-family: 'JetBrains Mono', monospace;
 }
 
-.commissionsNote {
-  max-width: 700px;
-  margin: 32px auto 0;
-  padding: 16px 20px;
-  background: rgba(30, 229, 184, 0.05);
-  border: 1px solid rgba(30, 229, 184, 0.2);
-  border-radius: 8px;
-  font-size: 0.9375rem;
-  color: #9AA3AE;
-  text-align: center;
-}
-
-.commissionsNote strong {
-  color: #E6EAF2;
-}
-
-/* Payment Timeline */
-.paymentTimeline {
+/* Payment Timeline - Horizontal */
+.paymentTimelineHorizontal {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 16px;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto 32px;
+  flex-wrap: wrap;
 }
 
-.timelineStep {
+.timelineStepHorizontal {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 16px 32px;
+  padding: 20px 24px;
   background: rgba(21, 26, 33, 0.6);
   border: 2px solid rgba(154, 163, 174, 0.2);
   border-radius: 10px;
-  min-width: 300px;
+  min-width: 140px;
   text-align: center;
 }
 
@@ -388,8 +335,20 @@
   color: #9AA3AE;
 }
 
-.timelineArrow {
+.timelineArrowHorizontal {
   font-size: 1.5rem;
+  color: #1EE5B8;
+  font-weight: 700;
+}
+
+.dollarAmount {
+  font-family: 'JetBrains Mono', monospace;
+  color: #64A8FF;
+  font-weight: 700;
+}
+
+.solAmount {
+  font-family: 'JetBrains Mono', monospace;
   color: #1EE5B8;
   font-weight: 700;
 }
@@ -401,77 +360,106 @@
   background: rgba(21, 26, 33, 0.6);
   border: 1px solid rgba(154, 163, 174, 0.1);
   border-radius: 12px;
+  text-align: center;
 }
 
 .paymentMethod h3 {
   font-size: 1.25rem;
   font-weight: 700;
   color: #E6EAF2;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.paymentMethod ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.paymentMethod li {
+.paymentMethod p {
   font-size: 1rem;
   color: #9AA3AE;
-  padding-left: 0;
+  line-height: 1.6;
 }
 
-/* Your First Week */
-.firstWeek {
+/* First Week - Horizontal Growth */
+.firstWeekHorizontal {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.weekItem {
-  display: flex;
-  gap: 24px;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.weekStage {
+  flex: 1;
+  min-width: 200px;
+  padding: 28px 24px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.weekStage:hover {
+  transform: scale(1.03);
 }
 
 .weekDay {
-  flex-shrink: 0;
-  width: 100px;
-  padding: 16px;
-  background: rgba(30, 229, 184, 0.1);
-  border: 2px solid #1EE5B8;
-  border-radius: 8px;
-  text-align: center;
+  font-size: 1.125rem;
   font-weight: 700;
-  color: #1EE5B8;
-  font-size: 1rem;
-}
-
-.weekContent {
-  flex: 1;
-  padding: 20px;
-  background: rgba(21, 26, 33, 0.6);
-  border: 1px solid rgba(154, 163, 174, 0.1);
-  border-radius: 10px;
+  margin-bottom: 12px;
 }
 
 .weekWhat {
   font-size: 1rem;
   font-weight: 600;
   color: #E6EAF2;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .weekGet {
   font-size: 0.9375rem;
   color: #9AA3AE;
   line-height: 1.6;
+}
+
+.weekEarnings {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1EE5B8;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 12px;
+}
+
+.weekArrow {
+  font-size: 2rem;
+  color: #1EE5B8;
+  font-weight: 700;
+}
+
+/* FAQ */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  padding: 24px;
+  background: rgba(21, 26, 33, 0.6);
+  border: 1px solid rgba(154, 163, 174, 0.1);
+  border-radius: 10px;
+}
+
+.faqQuestion {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #E6EAF2;
+  margin-bottom: 12px;
+}
+
+.faqAnswer {
+  font-size: 1rem;
+  color: #9AA3AE;
+  line-height: 1.7;
 }
 
 /* CTA Section */
@@ -551,44 +539,55 @@
     padding: 60px 20px;
   }
 
-  .heroHighlight {
-    gap: 16px;
+  .processFlow {
+    padding: 40px 0;
   }
 
-  .processHorizontal {
+  .processSteps {
     flex-direction: column;
-    align-items: stretch;
+    gap: 24px;
   }
 
-  .processStepTop,
-  .processStepBottom {
-    align-self: center;
+  .processStep {
+    width: 100%;
   }
 
-  .processConnector {
-    transform: rotate(90deg);
-    align-self: center;
+  .stepTop, .stepBottom {
+    margin: 0;
+  }
+
+  .filRouge {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    height: auto;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #1EE5B8 0%, #64A8FF 50%, #1EE5B8 100%);
+  }
+
+  .stepResult {
+    margin-top: 0;
   }
 
   .scenarios {
     grid-template-columns: 1fr;
   }
 
-  .paymentTimeline {
-    max-width: 100%;
-  }
-
-  .timelineStep {
-    min-width: 100%;
-  }
-
-  .weekItem {
+  .paymentTimelineHorizontal {
     flex-direction: column;
-    text-align: center;
   }
 
-  .weekDay {
-    width: 100%;
+  .timelineArrowHorizontal {
+    transform: rotate(90deg);
+  }
+
+  .firstWeekHorizontal {
+    flex-direction: column;
+  }
+
+  .weekArrow {
+    transform: rotate(90deg);
   }
 }
 
@@ -597,11 +596,12 @@
     font-size: 2rem;
   }
 
-  .calculator {
-    padding: 24px;
+  .stepAvatar {
+    width: 50px;
+    height: 50px;
   }
 
-  .resultValue {
-    font-size: 1.75rem;
+  .stepAction {
+    font-size: 0.75rem;
   }
 }
