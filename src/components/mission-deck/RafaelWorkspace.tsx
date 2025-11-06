@@ -53,53 +53,55 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* Top panel: GitHub repository view */}
-      <div className="h-[45%] border-b border-border overflow-y-auto">
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-text">
+      <div style={{ height: '45%', borderBottom: '1px solid var(--slk-border)', overflowY: 'auto' }}>
+        <div style={{ padding: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--slk-text)' }}>
               GitHub Repository
             </h3>
             <a
               href={`https://github.com/mind-protocol/scopelock-mission-${missionId}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent hover:text-accent/80 text-sm flex items-center gap-1"
+              style={{ color: 'var(--slk-accent)', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
             >
               Open in GitHub ↗
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             {/* File tree */}
             <div>
-              <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wide">
+              <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--slk-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Files
               </h4>
-              <div className="space-y-2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {files.length === 0 && (
-                  <div className="text-muted text-sm p-3 panel">
+                  <div style={{ color: 'var(--slk-muted)', fontSize: '14px', padding: '12px', background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px' }}>
                     No files generated yet
                   </div>
                 )}
                 {files.map((file) => (
                   <div
                     key={file.path}
-                    className="panel p-3 hover:bg-surface-hover transition-colors cursor-pointer"
+                    style={{ background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px', padding: '12px', cursor: 'pointer', transition: 'background 0.2s' }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--slk-surface-hover)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'var(--slk-surface)'}
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-accent text-xs">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ color: 'var(--slk-accent)', fontSize: '12px' }}>
                         {file.type === 'directory' ? '📁' : '📄'}
                       </span>
-                      <span className="text-text text-sm font-mono">
+                      <span style={{ color: 'var(--slk-text)', fontSize: '14px', fontFamily: 'monospace' }}>
                         {file.name}
                       </span>
                     </div>
-                    <div className="text-xs text-muted truncate">
+                    <div style={{ fontSize: '12px', color: 'var(--slk-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {file.commitMessage}
                     </div>
-                    <div className="text-xs text-muted/60 mt-1">
+                    <div style={{ fontSize: '12px', color: 'var(--slk-muted)', opacity: 0.6, marginTop: '4px' }}>
                       {formatTime(file.lastModified)}
                     </div>
                   </div>
@@ -109,22 +111,22 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
 
             {/* Recent commits */}
             <div>
-              <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wide">
+              <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--slk-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Recent Commits
               </h4>
-              <div className="space-y-2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {commits.length === 0 && (
-                  <div className="text-muted text-sm p-3 panel">
+                  <div style={{ color: 'var(--slk-muted)', fontSize: '14px', padding: '12px', background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px' }}>
                     No commits yet
                   </div>
                 )}
                 {commits.map((commit) => (
-                  <div key={commit.sha} className="panel p-3">
-                    <div className="text-text text-sm mb-1">
+                  <div key={commit.sha} style={{ background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px', padding: '12px' }}>
+                    <div style={{ color: 'var(--slk-text)', fontSize: '14px', marginBottom: '4px' }}>
                       {commit.message}
                     </div>
-                    <div className="flex items-center justify-between text-xs text-muted">
-                      <span className="text-accent">{commit.author}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '12px', color: 'var(--slk-muted)' }}>
+                      <span style={{ color: 'var(--slk-accent)' }}>{commit.author}</span>
                       <span>{commit.relativeTime}</span>
                     </div>
                   </div>
@@ -136,7 +138,7 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
       </div>
 
       {/* Bottom panel: Chat with Rafael */}
-      <div className="h-[55%]">
+      <div style={{ height: '55%' }}>
         <ChatInterface
           messages={messages}
           onSendMessage={handleSendMessage}

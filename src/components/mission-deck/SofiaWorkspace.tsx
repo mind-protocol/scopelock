@@ -73,24 +73,23 @@ export function SofiaWorkspace({ missionId }: SofiaWorkspaceProps) {
   const testItems = dodItems.filter((item) => item.category === 'tests');
 
   return (
-    <div className="flex h-full">
+    <div style={{ display: 'flex', height: '100%' }}>
       {/* Left panel: DoD Checklist */}
-      <div className="w-1/2 border-r border-border overflow-y-auto p-6">
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-lg font-semibold text-text">
+      <div style={{ width: '50%', borderRight: '1px solid var(--slk-border)', overflowY: 'auto', padding: '24px' }}>
+        <div style={{ marginBottom: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--slk-text)' }}>
               Definition of Done
             </h3>
-            <span className="text-sm text-muted">
+            <span style={{ fontSize: '14px', color: 'var(--slk-muted)' }}>
               {completedCount}/{totalCount} ({progressPercent}%)
             </span>
           </div>
 
           {/* Progress bar */}
-          <div className="w-full bg-surface-hover rounded-full h-2">
+          <div style={{ width: '100%', background: 'var(--slk-surface-hover)', borderRadius: '9999px', height: '8px' }}>
             <div
-              className="bg-accent h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progressPercent}%` }}
+              style={{ background: 'var(--slk-accent)', height: '8px', borderRadius: '9999px', transition: 'all 0.3s', width: `${progressPercent}%` }}
             />
           </div>
         </div>
@@ -126,47 +125,48 @@ export function SofiaWorkspace({ missionId }: SofiaWorkspaceProps) {
         )}
 
         {dodItems.length === 0 && (
-          <div className="text-muted text-sm p-4 panel">
+          <div style={{ color: 'var(--slk-muted)', fontSize: '14px', padding: '16px', background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px' }}>
             No DoD items defined for this mission
           </div>
         )}
 
         {/* Action buttons */}
-        <div className="mt-6 flex gap-2">
-          <button className="btn-primary flex-1">Mark All Complete</button>
-          <button className="btn-secondary">Reset</button>
+        <div style={{ marginTop: '24px', display: 'flex', gap: '8px' }}>
+          <button style={{ flex: 1, padding: '10px 16px', background: 'var(--slk-accent)', color: 'var(--slk-bg)', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 600 }}>Mark All Complete</button>
+          <button style={{ padding: '10px 16px', background: 'var(--slk-surface)', color: 'var(--slk-text)', border: '1px solid var(--slk-border)', borderRadius: '4px', cursor: 'pointer' }}>Reset</button>
         </div>
       </div>
 
       {/* Right panel: Test Results */}
-      <div className="w-1/2 overflow-y-auto p-6">
-        <h3 className="text-lg font-semibold text-text mb-6">Test Results</h3>
+      <div style={{ width: '50%', overflowY: 'auto', padding: '24px' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--slk-text)', marginBottom: '24px' }}>Test Results</h3>
 
         {/* Test results */}
-        <div className="mb-8">
-          <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wide">
+        <div style={{ marginBottom: '32px' }}>
+          <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--slk-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Latest Test Run
           </h4>
 
           {testResults.length === 0 && (
-            <div className="text-muted text-sm p-4 panel">
+            <div style={{ color: 'var(--slk-muted)', fontSize: '14px', padding: '16px', background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px' }}>
               No test results yet. Run tests to see results here.
             </div>
           )}
 
-          <div className="space-y-2">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {testResults.map((test) => (
-              <div key={test.name} className="panel p-3">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2">
+              <div key={test.name} style={{ background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px', padding: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span
-                      className={`text-lg ${
-                        test.status === 'passed'
-                          ? 'text-success'
+                      style={{
+                        fontSize: '18px',
+                        color: test.status === 'passed'
+                          ? 'var(--slk-success)'
                           : test.status === 'failed'
-                          ? 'text-danger'
-                          : 'text-warning'
-                      }`}
+                          ? 'var(--slk-danger)'
+                          : 'var(--slk-warning)'
+                      }}
                     >
                       {test.status === 'passed'
                         ? '✓'
@@ -174,15 +174,15 @@ export function SofiaWorkspace({ missionId }: SofiaWorkspaceProps) {
                         ? '✗'
                         : '○'}
                     </span>
-                    <span className="text-text text-sm font-mono">
+                    <span style={{ color: 'var(--slk-text)', fontSize: '14px', fontFamily: 'monospace' }}>
                       {test.name}
                     </span>
                   </div>
-                  <span className="text-xs text-muted">{test.duration}ms</span>
+                  <span style={{ fontSize: '12px', color: 'var(--slk-muted)' }}>{test.duration}ms</span>
                 </div>
 
                 {test.error && (
-                  <div className="mt-2 text-xs text-danger bg-danger/10 p-2 rounded">
+                  <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--slk-danger)', background: 'color-mix(in srgb, var(--slk-danger) 10%, transparent)', padding: '8px', borderRadius: '4px' }}>
                     {test.error}
                   </div>
                 )}
@@ -194,36 +194,38 @@ export function SofiaWorkspace({ missionId }: SofiaWorkspaceProps) {
         {/* Performance metrics */}
         {performanceMetrics.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wide">
+            <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--slk-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Performance Metrics
             </h4>
 
-            <div className="space-y-2">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {performanceMetrics.map((metric) => (
-                <div key={metric.name} className="panel p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-text text-sm">{metric.name}</span>
+                <div key={metric.name} style={{ background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px', padding: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span style={{ color: 'var(--slk-text)', fontSize: '14px' }}>{metric.name}</span>
                     <span
-                      className={`text-sm font-semibold ${
-                        metric.status === 'pass'
-                          ? 'text-success'
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: metric.status === 'pass'
+                          ? 'var(--slk-success)'
                           : metric.status === 'warn'
-                          ? 'text-warning'
-                          : 'text-danger'
-                      }`}
+                          ? 'var(--slk-warning)'
+                          : 'var(--slk-danger)'
+                      }}
                     >
                       {metric.actual}
                       {metric.unit}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 text-xs text-muted">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--slk-muted)' }}>
                     <span>Threshold: {metric.threshold}{metric.unit}</span>
                     <span>•</span>
                     <span
-                      className={
-                        metric.status === 'pass' ? 'text-success' : 'text-danger'
-                      }
+                      style={{
+                        color: metric.status === 'pass' ? 'var(--slk-success)' : 'var(--slk-danger)'
+                      }}
                     >
                       {metric.status === 'pass' ? 'Within limits' : 'Exceeds threshold'}
                     </span>
@@ -235,9 +237,9 @@ export function SofiaWorkspace({ missionId }: SofiaWorkspaceProps) {
         )}
 
         {/* Action buttons */}
-        <div className="mt-6 flex gap-2">
-          <button className="btn-secondary flex-1">Re-run Tests</button>
-          <button className="btn-secondary">View Logs</button>
+        <div style={{ marginTop: '24px', display: 'flex', gap: '8px' }}>
+          <button style={{ flex: 1, padding: '10px 16px', background: 'var(--slk-surface)', color: 'var(--slk-text)', border: '1px solid var(--slk-border)', borderRadius: '4px', cursor: 'pointer' }}>Re-run Tests</button>
+          <button style={{ padding: '10px 16px', background: 'var(--slk-surface)', color: 'var(--slk-text)', border: '1px solid var(--slk-border)', borderRadius: '4px', cursor: 'pointer' }}>View Logs</button>
         </div>
       </div>
     </div>
@@ -256,32 +258,34 @@ function DODSection({
   isLoading: boolean;
 }) {
   return (
-    <div className="mb-6">
-      <h4 className="text-sm font-semibold text-muted mb-3 uppercase tracking-wide">
+    <div style={{ marginBottom: '24px' }}>
+      <h4 style={{ fontSize: '14px', fontWeight: 600, color: 'var(--slk-muted)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         {title}
       </h4>
 
-      <div className="space-y-2">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {items.map((item) => (
           <label
             key={item.id}
-            className="flex items-start gap-3 p-3 panel hover:bg-surface-hover transition-colors cursor-pointer"
+            style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '12px', background: 'var(--slk-surface)', border: '1px solid var(--slk-border)', borderRadius: '4px', cursor: 'pointer', transition: 'background 0.2s' }}
+            onMouseEnter={(e) => e.currentTarget.style.background = 'var(--slk-surface-hover)'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'var(--slk-surface)'}
           >
             <input
               type="checkbox"
               checked={item.completed}
               onChange={(e) => onToggle(item.id, e.target.checked)}
               disabled={isLoading}
-              className="mt-0.5 w-4 h-4 accent-accent"
+              style={{ marginTop: '2px', width: '16px', height: '16px', accentColor: 'var(--slk-accent)' }}
             />
 
-            <div className="flex-1">
-              <div className={`text-sm ${item.completed ? 'text-muted line-through' : 'text-text'}`}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: '14px', color: item.completed ? 'var(--slk-muted)' : 'var(--slk-text)', textDecoration: item.completed ? 'line-through' : 'none' }}>
                 {item.text}
               </div>
 
               {item.completed_at && (
-                <div className="text-xs text-muted mt-1">
+                <div style={{ fontSize: '12px', color: 'var(--slk-muted)', marginTop: '4px' }}>
                   Completed: {formatTime(item.completed_at)}
                 </div>
               )}
