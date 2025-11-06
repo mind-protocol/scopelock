@@ -7,16 +7,10 @@ export const metadata: Metadata = {
   description: 'Internal developer dashboard for ScopeLock missions',
 }
 
-export default function RootLayout({
+export default function MissionDeckLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body>
-        <SolanaWalletProvider>{children}</SolanaWalletProvider>
-      </body>
-    </html>
-  )
+  return <SolanaWalletProvider>{children}</SolanaWalletProvider>
 }
