@@ -24,6 +24,13 @@ export default function LoginPage() {
     }
   }, [router]);
 
+  // Auto-trigger authentication when wallet connects
+  useEffect(() => {
+    if (connected && publicKey && signMessage && !isLoading) {
+      handleWalletAuth();
+    }
+  }, [connected, publicKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Handle wallet authentication
   const handleWalletAuth = async () => {
     if (!publicKey || !signMessage) {
@@ -75,24 +82,19 @@ export default function LoginPage() {
               <WalletMultiButton className="!bg-accent hover:!bg-accent/80" />
             </div>
 
-            {/* Authenticate Button (shown when wallet connected) */}
+            {/* Authentication Status (shown when wallet connected) */}
             {connected && (
-              <>
-                <div className="text-center">
-                  <div className="text-sm text-muted mb-2">
-                    Connected: {publicKey?.toBase58().slice(0, 4)}...
-                    {publicKey?.toBase58().slice(-4)}
-                  </div>
+              <div className="text-center">
+                <div className="text-sm text-muted mb-2">
+                  Connected: {publicKey?.toBase58().slice(0, 4)}...
+                  {publicKey?.toBase58().slice(-4)}
                 </div>
-
-                <button
-                  onClick={handleWalletAuth}
-                  disabled={isLoading}
-                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isLoading ? 'Authenticating...' : 'Sign & Authenticate'}
-                </button>
-              </>
+                {isLoading && (
+                  <div className="text-accent font-medium mt-2">
+                    🔐 Signing message...
+                  </div>
+                )}
+              </div>
             )}
 
             {/* Error Display */}
@@ -108,7 +110,7 @@ export default function LoginPage() {
                 <strong>Supported Wallets:</strong> Phantom, Solflare
               </p>
               <p className="text-xs">
-                You'll be asked to sign a message to prove wallet ownership.
+                After connecting, you'll be asked to sign a message to prove wallet ownership.
                 <br />
                 No transaction fees required.
               </p>
