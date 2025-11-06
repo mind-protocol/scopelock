@@ -1,55 +1,58 @@
-## 2025-11-06 19:40 — Rafael: Integrated Vercel Auto-Fix Webhook into Mission Deck Backend ✅
+## 2025-11-06 20:45 — Rafael: Integrated Vercel Auto-Fix Webhook into Main Backend ✅
 
-**Work:** Integrated standalone Vercel webhook listener into existing Mission Deck FastAPI backend
+**Work:** Integrated Vercel auto-fix webhook into MAIN ScopeLock backend (not Mission Deck-specific backend)
 
-**Context:** User requested webhook be integrated into existing backend service (not separate Render deployment)
+**Context:** User requested webhook be integrated into existing backend service. Initially integrated into Mission Deck backend (`/docs/missions/mission-deck/backend/`), then moved to MAIN backend (`/backend/app/webhooks.py`) where all other webhooks and Mission Deck routes already live.
 
 **Implementation:**
 
-Created `/docs/missions/mission-deck/backend/routers/webhooks.py`:
+Added to `/backend/app/webhooks.py`:
 - Endpoint: `POST /api/webhooks/vercel-failure`
 - Receives Vercel deployment failure webhooks
-- Auto-invokes Rafael via Claude CLI when production deployments fail
-- Background task execution (non-blocking)
-- Duplicate prevention via `handled-deployments.json`
+- Auto-invokes Rafael via Claude CLI when production deployments fail (state=ERROR, target=production)
+- Background task execution via `asyncio.create_task` (non-blocking)
+- Duplicate prevention via `/var/data/handled-vercel-deployments.json`
 - Status endpoint: `GET /api/webhooks/vercel-failure/status`
 
-Registered in `main.py`:
-- Added `from routers import webhooks`
-- Added `app.include_router(webhooks.router)`
+Integration Architecture:
+- Main backend (`/backend/app/main.py`) already has Mission Deck routes registered
+- Main backend (`/backend/app/webhooks.py`) handles all webhooks: Upwork, Telegram, CloudMailin, Vollna, AND now Vercel
+- Single Render service (scopelock-backend) handles everything
+- No separate Mission Deck or webhook services needed
 
-**Testing:**
-```bash
-# Test webhook endpoint
-curl -X POST http://localhost:8000/api/webhooks/vercel-failure \
-  -H "Content-Type: application/json" \
-  -d '{"id":"dpl_test","state":"ERROR","target":"production"}'
+**Code:**
+```python
+@router.post("/api/webhooks/vercel-failure")
+async def vercel_failure_webhook(request: Request):
+    # Parse Vercel webhook
+    # Filter: state=ERROR + target=production
+    # Check duplicate via load_handled_deployments()
+    # Invoke Rafael via asyncio background task
+    asyncio.create_task(invoke_rafael_for_vercel_failure(deployment_id, body))
+    return {"status": "rafael_invoked"}
 
-# Response: {"status":"rafael_invoked","deployment_id":"dpl_test"}
-
-# Check status
-curl http://localhost:8000/api/webhooks/vercel-failure/status
-# Response: {"status":"operational","handled_deployments":0}
+async def invoke_rafael_for_vercel_failure(deployment_id, body):
+    # Build prompt for Rafael
+    # Run: runner._run_claude(prompt, citizen="rafael")
+    # Mark deployment as handled
 ```
 
-**Verification:**
-- ✅ Webhook receives POST requests correctly
-- ✅ Parses Vercel payload (handles both `id` and `deployment_id` fields)
-- ✅ Filters by state=ERROR + target=production
-- ✅ Triggers background Claude CLI invocation
-- ✅ Status endpoint operational
-- ✅ Logs show proper invocation flow
+**Deployment:**
+- Committed: `feat: integrate Vercel auto-fix webhook into main backend` (f6b13c4)
+- Pushed to main
+- Render auto-deploys: https://scopelock.onrender.com
 
-**Architecture:**
-- Single FastAPI backend handles both Mission Deck UI + Vercel webhooks
-- No separate Render service needed
-- Background tasks for async Claude invocation
-- Tracking file prevents duplicate processing
+**Next Steps:**
+1. Wait for Render deployment (5-10 min)
+2. Verify webhook endpoint: `curl https://scopelock.onrender.com/api/webhooks/vercel-failure/status`
+3. Configure Vercel project webhook:
+   - URL: `https://scopelock.onrender.com/api/webhooks/vercel-failure`
+   - Events: `deployment.error` (or `deployment` if specific event unavailable)
+   - Projects: `scopelock`
+4. Test: Trigger deployment failure → Rafael auto-invoked
 
-**Next:** Push backend changes → Render redeploys → Configure Vercel webhook URL
-
-**Status:** Webhook integrated and tested ✅
-**Link:** `/docs/missions/mission-deck/backend/routers/webhooks.py`
+**Status:** Integrated into main backend, pushed, waiting for Render deployment ✅
+**Link:** `/backend/app/webhooks.py` (lines 533-701)
 
 ---
 
