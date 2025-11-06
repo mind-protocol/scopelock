@@ -275,12 +275,13 @@ async function apiCall<T>(
     },
   });
 
-  // Handle 401 Unauthorized - redirect to login
+  // Handle 401 Unauthorized - redirect to mission-deck login
   if (response.status === 401) {
-    // Clear token and redirect to login
+    // Clear token and redirect to wallet login
     if (typeof window !== 'undefined') {
       localStorage.removeItem('access_token');
-      window.location.href = '/login';
+      localStorage.removeItem('auth_token');
+      window.location.href = '/mission-deck';
     }
     throw new Error('Session expired. Please login again.');
   }
