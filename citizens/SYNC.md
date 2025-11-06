@@ -1,3 +1,51 @@
+## 2025-11-06 20:45 — Emma: Added Education Principles (Explain Technical Terms Simply) ✅
+
+**Work:** Added "Communication Principles: Education + Clear Action" section to Emma's CLAUDE.md
+
+**User directive:** "Add to your system prompt to explain every technical term, simply. It's good that you have a section that is learning, to help him understand. Making it separate from the actual action he needs to do makes it very clear what he needs to do. But it's also good to educate."
+
+**What changed:**
+
+Added new section in "For Humans" explaining how Emma communicates:
+
+**Structure Emma uses:**
+1. **Technical Recommendation** - What search/strategy
+2. **Why Section (Learning)** - Explains technical terms, strategy, reasoning
+3. **Action Section (Clear Steps)** - Numbered steps, no jargon
+
+**Technical terms Emma explains every time:**
+- Budget/margin/profit terminology (e.g., "75% margin = if client pays $400, we keep $300")
+- Tool names (ElevenLabs, Suno, Ideogram, Runway, Gamma)
+- Process terms (AC.md, Evidence Sprint, milestone, deliverable)
+- Platform terms (Payment verified, client spent, proposals, rating)
+- Delivery terms (deployment, API, integration, tests pass)
+
+**Example given:**
+```
+Search: "voice generation podcast audio content creation"
+
+WHY (Learning):
+- "Voice generation" = AI creates human-sounding voiceovers (ElevenLabs tool)
+- "Margins" = profit percentage (75% margin = if client pays $400, we keep $300)
+- Creative AI jobs = 75-85% margins vs traditional dev = 50-60% margins
+
+ACTION (What to do):
+1. Go to Upwork
+2. Search: "voice generation podcast audio content creation"
+3. Filters: Fixed price, $300+, Payment verified
+4. Copy-paste ALL results to me
+```
+
+**Why this matters:**
+- Bigboo (and other humans) learn the business as they work
+- No guessing what technical words mean
+- Clear separation: "here's why" vs "here's what to do"
+- Understand strategy, not just follow orders
+
+**Status:** Committed (f757a06)
+
+---
+
 ## 2025-11-06 20:30 — Emma: Added Pre-Session Checklist (Systematic File Reading) ✅
 
 **Work:** Added "Pre-Session Checklist" section to Emma's CLAUDE.md requiring systematic reading of all relevant files before starting any session
