@@ -25,12 +25,21 @@ psql --version  # Should show 15.x or higher
 
 ---
 
-## Step 1: Clone Repository
+## Step 1: Navigate to Mission Deck
+
+Mission Deck is part of the main ScopeLock repository (not a separate repo).
 
 ```bash
-# Clone repo
-git clone https://github.com/mind-protocol/scopelock-deck.git
-cd scopelock-deck
+# If you haven't cloned ScopeLock yet:
+git clone https://github.com/mind-protocol/scopelock.git
+cd scopelock
+
+# Mission Deck documentation and specs:
+cd docs/missions/mission-deck
+
+# Implementation will be in:
+# - Backend: backend/mission-deck/
+# - Frontend: src/app/deck/
 ```
 
 ---

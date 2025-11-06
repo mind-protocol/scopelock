@@ -35,14 +35,18 @@ export default function MissionDeckPage() {
 
           {/* Status */}
           <div className="feature-card" style={{ background: 'var(--surface-accent)' }}>
-            <h2>🚧 Status: In Development</h2>
+            <h2>📋 Status: Specs Complete, Ready for Implementation</h2>
             <p>
-              Mission Deck is currently being built for ScopeLock's internal team.
-              It will provide a unified interface for developers to work on missions
-              with AI citizen assistance at every step.
+              Mission Deck has comprehensive specifications completed:
             </p>
-            <p style={{ marginTop: '1rem', fontSize: '0.9rem', opacity: 0.8 }}>
-              <strong>Target Launch:</strong> Week 1 MVP (Rafael workspace)
+            <ul style={{ textAlign: 'left', marginTop: '1rem', marginBottom: '1rem' }}>
+              <li><strong>AC.md:</strong> Complete acceptance criteria with verification steps</li>
+              <li><strong>MECHANISM.md:</strong> Full architecture (Next.js + FastAPI + FalkorDB)</li>
+              <li><strong>ALGORITHM.md:</strong> Step-by-step implementation guide for Rafael</li>
+              <li><strong>VALIDATION.md:</strong> 26 test cases for quality verification</li>
+            </ul>
+            <p style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+              <strong>Next:</strong> Rafael generates implementation → Developer deploys → Sofia verifies
             </p>
           </div>
 
@@ -82,9 +86,12 @@ export default function MissionDeckPage() {
           <div className="feature-card" style={{ background: 'var(--surface)' }}>
             <h2>👥 For ScopeLock Team Members</h2>
             <p>
-              Mission Deck is being built iteratively. The first version (Rafael workspace)
-              will be deployed as a separate application. Access will be provided to team
-              members once the MVP is ready.
+              Mission Deck is part of the main ScopeLock repository. Comprehensive specifications
+              are complete, ready for Rafael to generate the implementation.
+            </p>
+            <p style={{ marginTop: '1rem' }}>
+              <strong>Implementation approach:</strong> Rafael generates code from ALGORITHM.md →
+              Developer reviews and deploys → Sofia verifies against VALIDATION.md (26 tests)
             </p>
             <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
               <strong>Questions?</strong> Ask Nicolas on Telegram (@nlr_ai)
