@@ -5542,3 +5542,48 @@ To github.com:mind-protocol/scopelock.git
 **Status:** Header link active, informational page deployed
 
 rafael@scopelock
+
+---
+
+## 2025-11-06 02:53 — Rafael: Fix TypeScript Build Error ✅
+
+**Work:** Fixed Next.js build failure caused by job-search-automation frontend
+
+**Issue:** Vercel build failed with:
+```
+Type error: Cannot find module 'zustand' or its corresponding type declarations.
+  > 5 | import { create } from 'zustand';
+```
+
+**Root Cause:**
+- Created job-search-automation frontend in `/scripts/job-search-automation/frontend/`
+- Main Next.js app's `tsconfig.json` includes all `**/*.ts` and `**/*.tsx` files
+- Next.js build tried to compile job-search-automation code
+- `zustand` dependency not installed in main project (it's separate)
+
+**Fix:**
+Updated `tsconfig.json` to exclude `scripts` directory:
+```json
+"exclude": [
+  "node_modules",
+  "scripts"
+]
+```
+
+**Why This Works:**
+- job-search-automation is a standalone application (separate package.json)
+- Has its own dependencies (zustand, react-markdown)
+- Should not be compiled by main Next.js app
+- Excluding scripts/ prevents Next.js from trying to compile it
+
+**Git:**
+```
+commit fe43f18
+fix: exclude scripts directory from TypeScript compilation
+
+git push origin main
+```
+
+**Status:** Build error resolved, Vercel deployment should succeed now
+
+rafael@scopelock
