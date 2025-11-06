@@ -1,3 +1,89 @@
+## 2025-11-07 07:10 — Rafael: Removed /proof Page Completely ✅
+
+**Work:** Deleted /proof page and removed from site navigation
+
+**User Request:** "completely remove proff page (and from header)"
+
+**What Was Removed:**
+1. **Site Header Link:**
+   - Removed Proof link from navigation in `src/app/layout.tsx`
+   - Header now: About, Process, Pricing, Mission Deck, FAQ, Blog, Resources, Join Team, Contact
+
+2. **Page Files Deleted:**
+   - `src/app/proof/page.tsx` - Proof index page
+   - `src/app/proof/[tag]/` - Dynamic proof entry pages
+   - `public/proof/` - Static proof HTML pages and CSS
+
+3. **Files Removed:**
+   - proof/index.html
+   - proof/index.json
+   - proof/proof.css
+   - proof/ac-green_website_2025-11-02/index.html
+
+**Result:**
+- /proof URL now returns 404
+- No navigation link to proof page
+- All proof-related files deleted from codebase
+
+**Commit:** `940f40c` - feat: remove /proof page completely
+
+**Status:** Pushed, Vercel deploying ✅
+
+---
+
+## 2025-11-07 06:00 — Alexis: Competitive Intelligence Protection (Tool Mentions Removed) ✅
+
+**Problem:** Revealing specific AI tools (Claude, Cursor, aider) in website copy
+
+**Why This Is Bad:**
+- Makes it sound like 'anyone could do this' (just use Claude/Cursor)
+- Gives competitors a playbook to copy
+- Reduces perceived value ('he's just using off-the-shelf tools')
+
+**Changed To:**
+- 'custom AI-driven workflow' (sounds proprietary)
+- Honest about AI usage WITHOUT revealing specific stack
+
+**Files Updated:**
+- src/app/faq/page.tsx (2 mentions removed)
+- src/app/about/page.tsx (H2 + description updated)
+- citizens/emma/proposals/2025-11-02_upwork_ai-knowledge-platform.txt
+
+**Commit:** c6605de
+**Status:** Pushed to production
+
+---
+
+## SUMMARY OF TODAY'S WEBSITE OVERHAUL (3 Commits)
+
+**Commit 1 (ae4a130): Website Improvement Plan V2**
+- Hero: 'Professional Software & Creative Work. Delivered Fast.'
+- Services grid: 10 services (development + creative AI)
+- How I Work: business-friendly 4-step process
+- About Me: solo founder positioning
+- Business buyer FAQ: 7 questions
+
+**Commit 2 (2d77856): Honesty Fix - 'Solo Developer' → 'Solo Architect + AI-Assisted Teams'**
+- Removed lying claim: 'I do all the work myself'
+- Honest positioning: architect + implementation team
+- Still differentiated: direct access to founder, no account managers
+
+**Commit 3 (c6605de): Competitive Intelligence Protection**
+- Removed specific tool mentions (Claude, Cursor, aider)
+- Replaced with 'custom AI-driven workflow'
+- Sounds proprietary, protects competitive advantage
+
+**Impact:**
+- ✅ HONEST about team structure (no more lies)
+- ✅ BOTH development + creative services visible
+- ✅ Business buyer focus (no technical jargon)
+- ✅ Competitive advantage protected (no specific tool reveals)
+- ✅ Solo architect positioning (direct access to founder)
+
+**All changes live on production. Vercel deployed 3 times today.**
+
+---
+
 ## 2025-11-07 08:30 — Maya: Join Page Trust Improvements Based on User Feedback ✅
 
 **Work:** Complete redesign of /join page trust signals based on crypto-burned trader feedback
