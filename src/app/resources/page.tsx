@@ -28,17 +28,17 @@ const learningPath = [
         ],
       },
       {
-        title: 'How to Talk to AI Citizens: Context Is Everything',
-        description: 'Learn how to ask Rafael, Sofia, and Emma the right questions to get 3-5x faster results. Master the art of providing context for instant solutions instead of hours of debugging.',
-        href: '/resources/how-to-talk-to-ai-citizens',
-        icon: '🎯',
-        impact: '3-5x faster mission completion',
+        title: 'Compensation Structure: How You Get Paid',
+        description: 'Understand exactly how ScopeLock\'s payment works, why we chose pure commission, and what you can expect to earn at different volume levels. Interactive currency converter and earnings timeline.',
+        href: '/resources/compensation-structure',
+        icon: '💰',
+        impact: 'Aligned incentives, clear growth path',
         timeToRead: '10 min',
         whatYouLearn: [
-          'Good vs bad questions (with examples)',
-          'The Context Triangle: What, Why, Tried',
-          'Specific templates for Rafael/Sofia/Emma',
-          'How to avoid "garbage in, garbage out"'
+          'Pure commission model (no hourly tracking)',
+          '4-way split: Team 30%, Upwork 10%, Org 21%, Profit 39%',
+          'Payment timing: AC Green → 21 days → SOL',
+          'PPP advantage: $900 → $4,500+ purchasing power'
         ],
       },
       {
@@ -56,17 +56,17 @@ const learningPath = [
         ],
       },
       {
-        title: 'Compensation Structure: How You Get Paid',
-        description: 'Understand exactly how ScopeLock\'s payment works, why we chose pure commission, and what you can expect to earn at different volume levels. Interactive currency converter and earnings timeline.',
-        href: '/resources/compensation-structure',
-        icon: '💰',
-        impact: 'Aligned incentives, clear growth path',
+        title: 'How to Talk to AI Citizens: Context Is Everything',
+        description: 'Learn how to ask Rafael, Sofia, and Emma the right questions to get 3-5x faster results. Master the art of providing context for instant solutions instead of hours of debugging.',
+        href: '/resources/how-to-talk-to-ai-citizens',
+        icon: '🎯',
+        impact: '3-5x faster mission completion',
         timeToRead: '10 min',
         whatYouLearn: [
-          'Pure commission model (no hourly tracking)',
-          '4-way split: Team 30%, Upwork 10%, Org 21%, Profit 39%',
-          'Payment timing: AC Green → 21 days → SOL',
-          'PPP advantage: $900 → $4,500+ purchasing power'
+          'Good vs bad questions (with examples)',
+          'The Context Triangle: What, Why, Tried',
+          'Specific templates for Rafael/Sofia/Emma',
+          'How to avoid "garbage in, garbage out"'
         ],
       },
     ],
@@ -189,7 +189,7 @@ export default function ResourcesPage() {
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
         }}>
-          From Zero to Paid in 2 Weeks
+          ScopeLock: AI-Assisted Development for Junior Developers
         </h1>
 
         <p style={{
@@ -199,8 +199,9 @@ export default function ResourcesPage() {
           margin: '0 auto 40px',
           lineHeight: 1.6,
         }}>
-          A structured learning path from "Can I do this?" to completing your first mission and getting paid.
-          Follow the pipeline, complete each section, and prove AI-human partnership works.
+          This learning path shows you how ScopeLock works, what you'll actually do day-to-day, how you get paid,
+          and how to work with AI citizens (Rafael, Sofia, Emma) to complete missions faster. Read Week 1 before
+          starting your first mission.
         </p>
 
         {/* Pipeline Overview */}
