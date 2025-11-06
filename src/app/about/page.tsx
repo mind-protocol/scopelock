@@ -11,23 +11,24 @@ export default function AboutPage() {
   return (
     <main>
       <header className="hero">
-        <h1>About ScopeLock</h1>
+        <h1>About</h1>
         <p className="lead">
-          We lock scope and deliver against executable acceptance criteria.
-          Payment only at AC green.
+          Solo architect + AI-assisted teams. Professional software & creative work.
+          Fixed pricing. Fast delivery.
         </p>
       </header>
 
       <section className="card">
+        <h2>What I Build</h2>
         <p>
-          ScopeLock is a delivery practice built on:
+          <strong>Development Services:</strong> Web apps, AI chatbots, backend APIs, document processing
         </p>
-        <ul>
-          <li><strong>Executable acceptance criteria</strong> (not vague promises)</li>
-          <li><strong>Evidence Sprints</strong> (quantified deltas, ≤90s demos)</li>
-          <li><strong>Public proof</strong> (every milestone tagged and published)</li>
-          <li><strong>Clear change control</strong> (Swap at €0 or Add with new price)</li>
-        </ul>
+        <p>
+          <strong>Creative AI Services:</strong> Presentations, voiceovers, translations, content writing, images, music
+        </p>
+        <p style={{ marginTop: '1.5rem' }}>
+          <strong>How I work:</strong> Fixed pricing. Fast delivery (2-7 days). You pay only when satisfied. 2 revision rounds included.
+        </p>
       </section>
 
       <section className="card">
@@ -62,27 +63,27 @@ export default function AboutPage() {
           <li><strong>Kickoff:</strong> ≤72 hours from first contact</li>
         </ul>
 
-        <h3>Why ScopeLock Exists</h3>
+        <h3>Why This Approach Works</h3>
         <p>
-          Most freelance dev fails on ambiguity. Clients don&apos;t know if they&apos;re paying for &quot;working&quot; or &quot;working toward.&quot;
+          Most freelance work fails on ambiguity. You don&apos;t know if you&apos;re getting what you paid for until it&apos;s too late.
         </p>
         <p>
-          <strong>ScopeLock eliminates that:</strong> co-written <code>AC.md</code> defines done, acceptance tests verify it, you pay only at green. Evidence Sprints (≤90s demos + quantified deltas) prove value before full commitment.
+          <strong>My approach eliminates that:</strong> Fixed price quoted upfront. Daily progress updates. 2 revision rounds included. You only pay when you&apos;re completely satisfied.
         </p>
       </section>
 
       <TeamTools />
 
       <section className="card">
-        <h2>How We&apos;re Different</h2>
+        <h2>How I&apos;m Different</h2>
         <p>
-          Most freelancers sell hours. Agencies sell phases. We sell <strong>milestones with tests</strong>.
+          Most freelancers sell hours. Agencies sell phases. I deliver <strong>complete projects at fixed prices</strong>.
         </p>
         <ul>
-          <li>You know <strong>exactly what you&apos;re paying for</strong> (acceptance criteria in AC.md)</li>
-          <li>You see <strong>quantified progress</strong> (Evidence Sprint with before→after deltas)</li>
-          <li>You pay <strong>only when tests pass</strong> (AC green = invoice trigger)</li>
-          <li>You get <strong>public proof</strong> (/proof pages showing every milestone)</li>
+          <li>You know <strong>exactly what you&apos;re paying for</strong> (fixed price quoted upfront)</li>
+          <li>You see <strong>progress daily</strong> (updates without you having to ask)</li>
+          <li>You pay <strong>only when satisfied</strong> (2 revisions included, no surprise costs)</li>
+          <li>You work <strong>directly with me</strong> (the architect, not account managers)</li>
         </ul>
       </section>
 

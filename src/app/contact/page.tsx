@@ -13,14 +13,14 @@ export default function ContactPage() {
     <main>
       <header className="hero">
         <h1>Get in Touch</h1>
-        <p className="lead">Schedule a kickoff. Typical response &lt;2 hours.</p>
+        <p className="lead">Start within 24-48 hours. Typical response &lt;2 hours.</p>
       </header>
 
       <section className="card">
         <h2>Schedule a Kickoff</h2>
         <p>
-          The fastest way to start is to <strong>book a call</strong>. We&apos;ll discuss your needs,
-          co-write <code>AC.md</code>, and agree on price before any work begins.
+          The fastest way to start is to <strong>book a call</strong>. I&apos;ll understand your needs,
+          give you a fixed price + timeline, and we can start immediately.
         </p>
         <p>
           <a className="cta" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">
@@ -35,7 +35,7 @@ export default function ContactPage() {
       <section className="card">
         <h2>Send a Message</h2>
         <p>
-          Not ready to schedule a call? Send us a message and we&apos;ll get back to you.
+          Not ready to schedule a call? Send me a message and I&apos;ll get back to you within 2 hours.
         </p>
         <ContactForm />
       </section>
@@ -43,7 +43,7 @@ export default function ContactPage() {
       <section className="card">
         <h2>Email</h2>
         <p>
-          Prefer email? Reach us at:
+          Prefer email? Reach me at:
         </p>
         <p>
           <a href="mailto:scopelock@mindprotocol.ai" style={{fontSize: '1.25rem', fontWeight: 600}}>
@@ -63,8 +63,8 @@ export default function ContactPage() {
       </section>
 
       <section className="card">
-        <h2>Find Us Elsewhere</h2>
-        <p>Connect on other platforms:</p>
+        <h2>Connect on Social</h2>
+        <p>Find me on other platforms:</p>
         <ul>
           <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">nicolas-lester-reynolds</a></li>
           <li><strong>X (Twitter):</strong> <a href="https://x.com/nlr_ai" target="_blank" rel="noopener">@nlr_ai</a></li>
@@ -81,13 +81,14 @@ export default function ContactPage() {
       <section className="card">
         <h2>What Happens Next?</h2>
         <ol>
-          <li><strong>Initial call (30 min):</strong> Understand your needs, explain our model</li>
-          <li><strong>Co-write AC.md:</strong> Define acceptance criteria together</li>
-          <li><strong>Price & timeline:</strong> Fixed price for milestone(s), kickoff timing</li>
-          <li><strong>Start:</strong> Evidence Sprint or full feature development</li>
+          <li><strong>Initial call (30 min):</strong> I understand your needs and explain how I work</li>
+          <li><strong>Fixed price quote:</strong> I send you a detailed quote with timeline (2-7 days typical)</li>
+          <li><strong>Start immediately:</strong> Once you approve, I begin work within 24-48 hours</li>
+          <li><strong>Daily updates:</strong> You get progress updates without having to ask</li>
+          <li><strong>Delivery & payment:</strong> You test, request changes (2 revisions included), pay only when satisfied</li>
         </ol>
         <p>
-          No hourly billing. No vague estimates. Just locked scope, locked price, and AC green delivery.
+          No hourly billing. No surprise costs. Just fixed pricing and fast delivery.
         </p>
       </section>
 
