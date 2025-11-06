@@ -1,0 +1,9 @@
+{
+  "context_id": "2025-11-06_22-51-43",
+  "entity_type": "citizen",
+  "entity_id": "emma",
+  "created_at": "2025-11-06T21:51:43.767056+00:00",
+  "last_updated": "2025-11-06T21:55:23.992775+00:00",
+  "message_count": 2358,
+  "has_tool_calls": true
+}
