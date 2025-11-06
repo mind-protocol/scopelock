@@ -1,0 +1,610 @@
+/* Mind Token Page Styles */
+
+.container {
+  min-height: 100vh;
+  background: #0E1116;
+  color: #E6EAF2;
+}
+
+/* Hero Section */
+.hero {
+  padding: 120px 24px 80px;
+  background: linear-gradient(180deg, rgba(30, 229, 184, 0.1) 0%, rgba(14, 17, 22, 0) 100%);
+  border-bottom: 1px solid rgba(154, 163, 174, 0.2);
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(30, 229, 184, 0.15);
+  border: 1px solid #1EE5B8;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1EE5B8;
+  letter-spacing: 0.5px;
+  margin-bottom: 32px;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.ticker {
+  font-family: 'JetBrains Mono', monospace;
+  color: #1EE5B8;
+  font-size: 5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #9AA3AE;
+  max-width: 800px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto 48px;
+}
+
+.statCard {
+  padding: 24px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  border-color: #1EE5B8;
+  transform: translateY(-2px);
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1EE5B8;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* CTA Buttons */
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  padding: 16px 32px;
+  background: #1EE5B8;
+  color: #0E1116;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background: #5CE27E;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.3);
+}
+
+.secondaryButton {
+  padding: 16px 32px;
+  background: transparent;
+  color: #E6EAF2;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: 2px solid #64A8FF;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.secondaryButton:hover {
+  background: rgba(100, 168, 255, 0.1);
+  border-color: #1EE5B8;
+  color: #1EE5B8;
+}
+
+/* Section */
+.section {
+  padding: 80px 24px;
+  border-bottom: 1px solid rgba(154, 163, 174, 0.2);
+}
+
+.sectionContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  color: #9AA3AE;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+
+.highlight {
+  color: #1EE5B8;
+}
+
+/* Comparison Grid */
+.comparisonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.comparisonCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 2px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+}
+
+.comparisonLabel {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #9AA3AE;
+}
+
+.comparisonList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comparisonList li {
+  padding: 12px 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(154, 163, 174, 0.1);
+}
+
+.comparisonList li:last-child {
+  border-bottom: none;
+}
+
+/* UBC Explainer */
+.ubcExplainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.ubcCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.ubcIcon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.ubcCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #1EE5B8;
+}
+
+.ubcCard p {
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+/* Market Table */
+.marketTable {
+  overflow-x: auto;
+  margin-top: 48px;
+}
+
+.marketTable table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(21, 26, 33, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.marketTable th {
+  padding: 20px;
+  text-align: left;
+  font-weight: 700;
+  color: #1EE5B8;
+  border-bottom: 2px solid rgba(154, 163, 174, 0.2);
+  font-size: 1.125rem;
+}
+
+.marketTable td {
+  padding: 20px;
+  border-bottom: 1px solid rgba(154, 163, 174, 0.1);
+}
+
+.marketTable tr:last-child td {
+  border-bottom: none;
+}
+
+.marketCap {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #64A8FF;
+}
+
+.stageBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Callout Box */
+.calloutBox {
+  margin-top: 48px;
+  padding: 32px;
+  background: rgba(100, 168, 255, 0.1);
+  border: 2px solid #64A8FF;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.calloutBox p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.calloutBox strong {
+  color: #64A8FF;
+}
+
+/* Tokenomics Grid */
+.tokenomicsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.tokenomicsCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+}
+
+.tokenomicsCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: #1EE5B8;
+}
+
+.tokenomicsBigNumber {
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  color: #E6EAF2;
+  margin-bottom: 8px;
+}
+
+.tokenomicsDetail {
+  font-size: 1rem;
+  color: #9AA3AE;
+}
+
+/* Allocation Bar */
+.allocationBar {
+  display: flex;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.allocationBar div {
+  transition: all 0.3s ease;
+}
+
+.allocationBar div:hover {
+  opacity: 0.8;
+}
+
+.allocationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.allocationList li {
+  padding: 8px 0;
+  font-size: 1rem;
+  color: #9AA3AE;
+}
+
+.allocationList li span {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}
+
+/* Vesting Timeline */
+.vestingTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.vestingItem {
+  padding: 20px;
+  background: rgba(30, 229, 184, 0.05);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+}
+
+.vestingLabel {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.vestingValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1EE5B8;
+  margin-bottom: 8px;
+}
+
+.vestingNote {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  font-style: italic;
+}
+
+/* Utility Grid */
+.utilityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.utilityCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.utilityIcon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.utilityCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #E6EAF2;
+}
+
+.utilityCard p {
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+/* Proof Grid */
+.proofGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.proofCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(100, 168, 255, 0.3);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.proofMetric {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #64A8FF;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.proofLabel {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+}
+
+.linksRow {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.linksRow a {
+  color: #64A8FF;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: color 0.3s ease;
+}
+
+.linksRow a:hover {
+  color: #1EE5B8;
+}
+
+/* Timeline */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.timelineItem {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+  position: relative;
+}
+
+.timelinePhase {
+  font-size: 0.875rem;
+  color: #1EE5B8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.timelineTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #E6EAF2;
+}
+
+.timelineDescription {
+  font-size: 1rem;
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 120px 24px;
+  background: linear-gradient(180deg, rgba(30, 229, 184, 0.1) 0%, rgba(14, 17, 22, 0) 100%);
+  text-align: center;
+}
+
+.ctaContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.ctaSubtitle {
+  font-size: 1.5rem;
+  color: #9AA3AE;
+  margin-bottom: 48px;
+}
+
+/* Disclaimer */
+.disclaimer {
+  padding: 48px 24px;
+  background: rgba(21, 26, 33, 0.8);
+  border-top: 1px solid rgba(154, 163, 174, 0.2);
+}
+
+.disclaimer p {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .ticker {
+    font-size: 3rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.125rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .comparisonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tokenomicsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .marketTable {
+    font-size: 0.875rem;
+  }
+
+  .marketTable th,
+  .marketTable td {
+    padding: 12px;
+  }
+}
