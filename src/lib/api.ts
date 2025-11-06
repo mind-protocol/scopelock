@@ -280,7 +280,6 @@ async function apiCall<T>(
     // Clear token and redirect to wallet login
     if (typeof window !== 'undefined') {
       localStorage.removeItem('access_token');
-      localStorage.removeItem('auth_token');
       window.location.href = '/mission-deck';
     }
     throw new Error('Session expired. Please login again.');
@@ -355,7 +354,7 @@ export const api = {
           name: wallet_address.slice(0, 4) + '...' + wallet_address.slice(-4),
         },
       };
-      localStorage.setItem('auth_token', mockResponse.access_token);
+      localStorage.setItem('access_token', mockResponse.access_token);
       return mockResponse;
     }
 
@@ -370,7 +369,7 @@ export const api = {
 
     // Store JWT token for future authenticated requests
     if (typeof window !== 'undefined') {
-      localStorage.setItem('auth_token', response.access_token);
+      localStorage.setItem('access_token', response.access_token);
     }
 
     return response;
@@ -380,7 +379,6 @@ export const api = {
     // Clear local token immediately
     if (typeof window !== 'undefined') {
       localStorage.removeItem('access_token');
-      localStorage.removeItem('auth_token');
     }
 
     // Call backend logout endpoint in background (don't block UI)

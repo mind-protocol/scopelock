@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   // Auto-redirect if already authenticated
   useEffect(() => {
-    const token = localStorage.getItem('auth_token');
+    const token = localStorage.getItem('access_token');
     if (token) {
       router.push('/mission-deck/console');
     }
