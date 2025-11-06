@@ -1,3 +1,79 @@
+## 2025-11-07 08:00 — Rafael: Fix Multiple Wallet Sign Prompts (Stable Dependencies) ✅
+
+**Issue:** User reported sign prompt appearing multiple times: "i should have to sign the message ONCE"
+
+**Root Cause Diagnosed:**
+Even with `hasTriggeredAuth.current` guard, the `useEffect` was re-running because:
+- Dependencies: `[connected, publicKey, signMessage]`
+- `publicKey` and `signMessage` get **new references** on each render from Solana wallet adapter
+- New references → useEffect re-runs → multiple sign prompts (even with ref guard)
+
+**Solution Applied:**
+
+1. **Stable Dependency:** Only depend on `connected` (boolean, doesn't change refs)
+```typescript
+useEffect(() => {
+  if (connected && publicKey && signMessage && !isLoading && !hasTriggeredAuth.current) {
+    console.log('[Mission Deck] Auto-triggering wallet auth');
+    hasTriggeredAuth.current = true;
+    handleWalletAuth();
+  }
+}, [connected]); // Only 'connected' - stable boolean
+```
+
+2. **Concurrent Call Guard:** Added `isLoading` check at start of `handleWalletAuth()`
+```typescript
+if (isLoading) {
+  console.log('[Mission Deck] Auth already in progress, skipping');
+  return;
+}
+```
+
+3. **Console Logging:** Added debug logs to track auth flow
+
+**Result:**
+- Connect wallet → Sign prompt appears **ONCE**
+- No duplicate prompts on re-renders
+- Flag resets on disconnect (allows reconnection)
+- Flag resets on error (allows retry with "Try Again" button)
+
+**Files Modified:**
+- src/app/mission-deck/page.tsx (14 insertions, 5 deletions)
+
+**Testing:**
+- Cannot test wallet signing in Playwright (requires browser extension)
+- Needs manual verification at scopelock.mindprotocol.ai/mission-deck with Phantom/Solflare
+
+**Status:** Committed and pushed ✅
+**Commit:** fd87d10 "fix: prevent multiple wallet sign prompts - stable dependencies"
+**Next:** Vercel auto-deploy (~2-3 min), manual test with real wallet
+
+---
+
+## 2025-11-07 06:30 — Alexis: Footer Updates (Removed Proof Log, Added X + LinkedIn) ✅
+
+**Changes:**
+1. ❌ Removed 'Proof Log' from Company section
+2. ✅ Added X (Twitter) - x.com/nlr_ai
+3. ✅ Added LinkedIn - linkedin.com/in/nicolas-lester-reynolds-836ab828
+
+**Current Connect Section:**
+- X (Twitter)
+- LinkedIn
+- GitHub (Personal)
+- GitHub (Organization)
+- Email
+
+**Company Section:**
+- About
+- FAQ
+- Contact
+
+**Commits:** d5d9d75 (Proof Log removal) + 3e390ef (X + LinkedIn added)
+**Status:** Deployed to production
+
+---
+
 ## 2025-11-07 09:35 — Rafael: Fix Mission Deck Access (Enable Mock Data) ✅
 
 **Work:** Fixed `/mission-deck` redirecting to `/` by enabling mock data mode
