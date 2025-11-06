@@ -294,7 +294,7 @@ export default function JoinPage() {
             <div className={styles.timelineArrowHorizontal}>→</div>
             <div className={styles.timelineStepHorizontal} style={{ borderColor: '#1EE5B8', background: 'rgba(30, 229, 184, 0.1)' }}>
               <div className={styles.timelineDay}>Day 21</div>
-              <div className={styles.timelineAction}><strong>You get <span className={styles.usdtAmount}>$USDT</span> (4 hours)</strong></div>
+              <div className={styles.timelineAction}><strong>You get <span className={styles.dollarAmount}>$</span><span className={styles.usdtAmount}>USDT</span> (4 hours)</strong></div>
             </div>
           </div>
 
