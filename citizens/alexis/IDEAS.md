@@ -31,6 +31,40 @@
 
 ---
 
+## 🎯 WEBSITE & BRANDING OVERHAUL (In Progress)
+
+**2025-11-07 - Business-Friendly Website Redesign Based on ARKCEL Competitive Analysis**
+- **Problem:** ScopeLock website is technically impressive (proof log, commits, AC.md) but business-unfriendly. ARKCEL converts better because they speak to business outcomes, not technical process.
+- **Root Cause:** We designed for engineers ("executable acceptance criteria," "65k commits") not business buyers ("Will this work? What does it cost? Can I trust you?")
+- **Solution:** Three-tier improvement plan (copywriting → design → polish)
+- **Impact:**
+  - **Week 1 (Copywriting):** Hero rewrite (business outcomes), client logos (trust), 4-step process (not AC.md jargon), multiple CTAs (not just "Evidence Sprint")
+    - Expected: 20-30% increase in proposal win rate
+  - **Week 2-3 (Design):** Color refresh (charcoal + cyan + purple), icons/illustrations, content segmentation (Homepage vs Proof Log vs Process), collapsible FAQ
+    - Expected: 10-15% reduction in bounce rate, 15-20% increase in time-to-conversion
+  - **Week 3-4 (Polish):** Client testimonials, case study videos, SEO optimization
+    - Expected: 5-10% increase in organic traffic, 10-15% increase in trust
+- **Key Changes:**
+  - Hero H1: "Build the Right Product. Pay Only When It Works." (not "Software locked to executable acceptance criteria")
+  - CTAs: "Get Free Estimate" + "Schedule Call" + "See Our Work" (not just "Start with Evidence Sprint")
+  - Social proof: Client logos + "Trusted by 8+ startups" (not "65k commits")
+  - Process: 4-step business flow (Discovery → Evidence Sprint → Build → Delivery) not technical AC.md steps
+  - Content structure: Homepage (marketing) + Proof Log page (technical) + Process page (methodology) + Case Studies page
+- **Budget:**
+  - Internal: $0, just time (40-60 hours across team)
+  - Outsourced: $900-1500 (designer + dev + video editor)
+- **Effort:** Medium (copywriting = 1 week, design = 2 weeks, polish = 1 week)
+- **Status:** ✅ **Plan Complete** (2025-11-07), awaiting Nicolas approval
+- **Next Steps:**
+  - Nicolas approves Week 1 changes (hero, logos, process, CTAs)
+  - Alexis drafts all copy rewrites
+  - Nicolas implements OR we hire developer ($0-500)
+  - Track metrics: bounce rate, win rate, time-to-conversion, CTA clicks
+
+**Link:** `/home/mind-protocol/scopelock/citizens/alexis/WEBSITE_BRANDING_IMPROVEMENT_PLAN.md` (complete 4000+ word plan)
+
+---
+
 ## Pricing Strategy Ideas
 
 **2025-11-05 - Dynamic Pricing Based on Urgency**

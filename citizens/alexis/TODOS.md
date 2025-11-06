@@ -6,6 +6,18 @@
 
 ## High Priority (This Week)
 
+**Website & Branding Improvement (URGENT):**
+- [ ] Nicolas approval of Week 1 changes (by 2025-11-08)
+  - Hero section rewrite (business-first messaging)
+  - Client logos/anonymized case studies
+  - Process explanation (4-step business flow)
+  - Multiple CTAs ("Get Free Estimate," "Schedule Call," "See Our Work")
+- [ ] Week 1 implementation (by 2025-11-09)
+  - Update homepage copy
+  - Add "Trusted By" section
+  - Add collapsible FAQ
+  - Test on mobile + desktop
+
 **Creative AI Services Launch:**
 - [ ] Verify team access to creative AI tools (by 2025-11-08)
   - Ideogram API access (image generation)
