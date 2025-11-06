@@ -1,249 +1,259 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import styles from './styles.module.css';
 
 export default function JoinPage() {
-  // Interactive calculator state
-  const [selectedCountry, setSelectedCountry] = useState('nigeria');
-  const [hoursPerWeek, setHoursPerWeek] = useState(25);
-
-  const countries = {
-    nigeria: { name: 'Nigeria', flag: '🇳🇬', pppMultiplier: 7.5, earningsPerHour: 9 },
-    colombia: { name: 'Colombia', flag: '🇨🇴', pppMultiplier: 5, earningsPerHour: 9 },
-    pakistan: { name: 'Pakistan', flag: '🇵🇰', pppMultiplier: 7, earningsPerHour: 9 },
-    kenya: { name: 'Kenya', flag: '🇰🇪', pppMultiplier: 5.5, earningsPerHour: 9 },
-    philippines: { name: 'Philippines', flag: '🇵🇭', pppMultiplier: 4, earningsPerHour: 9 },
-    india: { name: 'India', flag: '🇮🇳', pppMultiplier: 6.5, earningsPerHour: 9 },
-  };
-
-  const country = countries[selectedCountry as keyof typeof countries];
-  const monthlyEarnings = Math.round((hoursPerWeek * 4) * country.earningsPerHour);
-  const pppEquivalent = Math.round(monthlyEarnings * country.pppMultiplier);
-
   return (
     <main className={styles.main}>
       {/* Hero - What YOU Get */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Earn $900/Month<br />Without Coding
+            Be a Developer<br />Without Coding
           </h1>
 
           <p className={styles.heroSubtitle}>
-            You don't need technical skills. AI does the coding. You just guide it, review it, and deploy it.
-            Get paid when clients accept the work.
+            Let AI do everything for you with ScopeLock. You guide the process, AI writes the code.
+            Earn commission on every mission clients accept.
           </p>
-
-          <div className={styles.heroHighlight}>
-            <div className={styles.highlightItem}>
-              <div className={styles.highlightNumber}>$900</div>
-              <div className={styles.highlightLabel}>Per month</div>
-            </div>
-            <div className={styles.highlightArrow}>→</div>
-            <div className={styles.highlightItem}>
-              <div className={styles.highlightNumber}>$4,500+</div>
-              <div className={styles.highlightLabel}>In Nigeria/Pakistan</div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* How It Works - Simple Process */}
+      {/* How It Works - Horizontal Process with Mirroring */}
       <section className={styles.section}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>How It Works</h2>
           <p className={styles.sectionSubtitle}>
-            AI does 95% of the work. You guide and supervise.
+            Simple workflow. AI does the heavy lifting. You supervise and deploy.
           </p>
 
-          <div className={styles.processFlow}>
-            <div className={styles.processStep}>
-              <div className={styles.processActor} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.processIcon}>👤</div>
-                <div className={styles.processName}>You</div>
+          <div className={styles.processHorizontal}>
+            {/* Step 1 - You (top) */}
+            <div className={styles.processStepTop}>
+              <div className={styles.stepNumber}>1</div>
+              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
+                <div className={styles.stepIcon}>👤</div>
+                <div className={styles.stepName}>You</div>
               </div>
-              <div className={styles.processTasks}>
-                <div className={styles.processTask}>Find job on Upwork (5 min)</div>
-                <div className={styles.processTask}>Review AI-generated code (30 min)</div>
-                <div className={styles.processTask}>Deploy to Render/Vercel (1h)</div>
-                <div className={styles.processTask}>Test it works (1h)</div>
-              </div>
+              <div className={styles.stepAction}>Find job on Upwork</div>
+              <div className={styles.stepTime}>5 min</div>
             </div>
 
-            <div className={styles.processArrow}>↓</div>
+            <div className={styles.processConnector}>→</div>
 
-            <div className={styles.processStep}>
-              <div className={styles.processActor} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.processIcon}>🤖</div>
-                <div className={styles.processName}>AI Citizens</div>
+            {/* Step 2 - AI (bottom) */}
+            <div className={styles.processStepBottom}>
+              <div className={styles.stepNumber}>2</div>
+              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
+                <div className={styles.stepIcon}>🤖</div>
+                <div className={styles.stepName}>Emma AI</div>
               </div>
-              <div className={styles.processTasks}>
-                <div className={styles.processTask}>Emma writes proposal (2 min)</div>
-                <div className={styles.processTask}>Inna writes specifications (5 min)</div>
-                <div className={styles.processTask}>Rafael generates code (2 min)</div>
-                <div className={styles.processTask}>Sofia tests quality (30s)</div>
-                <div className={styles.processTask}>Maya handles client (1 min)</div>
-              </div>
+              <div className={styles.stepAction}>Write complete proposal</div>
+              <div className={styles.stepTime}>2 min</div>
             </div>
 
-            <div className={styles.processArrow}>↓</div>
+            <div className={styles.processConnector}>→</div>
 
+            {/* Step 3 - AI (top) */}
+            <div className={styles.processStepTop}>
+              <div className={styles.stepNumber}>3</div>
+              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
+                <div className={styles.stepIcon}>🤖</div>
+                <div className={styles.stepName}>Rafael AI</div>
+              </div>
+              <div className={styles.stepAction}>Generate all code</div>
+              <div className={styles.stepTime}>2 min</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* Step 4 - You (bottom) */}
+            <div className={styles.processStepBottom}>
+              <div className={styles.stepNumber}>4</div>
+              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
+                <div className={styles.stepIcon}>👤</div>
+                <div className={styles.stepName}>You</div>
+              </div>
+              <div className={styles.stepAction}>Deploy & test</div>
+              <div className={styles.stepTime}>2 hours</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* Result */}
             <div className={styles.processResult}>
-              <div className={styles.resultBox}>
-                <div className={styles.resultIcon}>✅</div>
-                <div className={styles.resultText}>Client accepts</div>
-                <div className={styles.resultEarnings}>You get paid $90</div>
-              </div>
+              <div className={styles.resultIcon}>✅</div>
+              <div className={styles.resultText}>Client accepts</div>
+              <div className={styles.resultPay}>You get paid</div>
             </div>
-          </div>
-
-          <div className={styles.processSummary}>
-            <strong>Total time:</strong> 3 hours of supervision per $600 mission<br />
-            <strong>Your work:</strong> Review, deploy, test<br />
-            <strong>AI work:</strong> Proposals, code, specs, testing, client communication
           </div>
         </div>
       </section>
 
-      {/* Who This Is For - Personal */}
+      {/* Requirements */}
       <section className={styles.section} style={{ background: 'rgba(21, 26, 33, 0.4)' }}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Who This Is For</h2>
+          <h2 className={styles.sectionTitle}>Requirements</h2>
 
-          <div className={styles.personalMessage}>
-            <h3>You don't need to know how to code.</h3>
-            <p>
-              You don't need a computer science degree. You don't need years of experience.
-              You just need:
-            </p>
-
-            <div className={styles.requirements}>
-              <div className={styles.requirement}>
-                <div className={styles.requirementIcon}>✓</div>
-                <div className={styles.requirementText}>
-                  <strong>Basic English</strong> — Read documentation, write clear messages
-                </div>
+          <div className={styles.requirements}>
+            <div className={styles.requirement}>
+              <div className={styles.requirementIcon}>✓</div>
+              <div className={styles.requirementText}>
+                <strong>Understand English</strong> — Read documentation, write clear messages to clients
               </div>
-              <div className={styles.requirement}>
-                <div className={styles.requirementIcon}>✓</div>
-                <div className={styles.requirementText}>
-                  <strong>Follow instructions</strong> — Deploy guides are step-by-step
-                </div>
+            </div>
+            <div className={styles.requirement}>
+              <div className={styles.requirementIcon}>✓</div>
+              <div className={styles.requirementText}>
+                <strong>Follow step-by-step project guides</strong> — Deployment guides, testing checklists
               </div>
-              <div className={styles.requirement}>
-                <div className={styles.requirementIcon}>✓</div>
-                <div className={styles.requirementText}>
-                  <strong>15-30 hours/week</strong> — Flexible schedule, work when you want
-                </div>
+            </div>
+            <div className={styles.requirement}>
+              <div className={styles.requirementIcon}>✓</div>
+              <div className={styles.requirementText}>
+                <strong>5-30 hours per week</strong> — Flexible schedule, work when you want
               </div>
-              <div className={styles.requirement}>
-                <div className={styles.requirementIcon}>✓</div>
-                <div className={styles.requirementText}>
-                  <strong>Willingness to learn</strong> — AI helps you learn by doing
-                </div>
+            </div>
+            <div className={styles.requirement}>
+              <div className={styles.requirementIcon}>✓</div>
+              <div className={styles.requirementText}>
+                <strong>Willingness to learn</strong> — AI teaches you by showing you working code
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What You Can Expect - Interactive Calculator */}
+      {/* What You Can Expect */}
       <section className={styles.section}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>What You Can Expect</h2>
           <p className={styles.sectionSubtitle}>
-            Your earnings depend on your country and hours worked
+            You earn commission on every mission. Here's what that looks like at different volumes.
           </p>
 
-          <div className={styles.calculator}>
-            <div className={styles.calculatorControls}>
-              <div className={styles.controlGroup}>
-                <label className={styles.controlLabel}>Your Country</label>
-                <select
-                  value={selectedCountry}
-                  onChange={(e) => setSelectedCountry(e.target.value)}
-                  className={styles.countrySelect}
-                >
-                  {Object.entries(countries).map(([key, country]) => (
-                    <option key={key} value={key}>
-                      {country.flag} {country.name}
-                    </option>
-                  ))}
-                </select>
+          <div className={styles.scenarios}>
+            {/* Scenario 1 */}
+            <div className={styles.scenario}>
+              <div className={styles.scenarioHeader}>
+                <div className={styles.scenarioTitle}>10 missions/month</div>
+                <div className={styles.scenarioRevenue}>$6,000 total revenue</div>
               </div>
-
-              <div className={styles.controlGroup}>
-                <label className={styles.controlLabel}>
-                  Hours Per Week: <strong>{hoursPerWeek}</strong>
-                </label>
-                <input
-                  type="range"
-                  min="15"
-                  max="30"
-                  step="1"
-                  value={hoursPerWeek}
-                  onChange={(e) => setHoursPerWeek(parseInt(e.target.value))}
-                  className={styles.slider}
-                />
-                <div className={styles.sliderLabels}>
-                  <span>15h</span>
-                  <span>30h</span>
+              <div className={styles.scenarioEarnings}>
+                <div className={styles.earningRow}>
+                  <span className={styles.earningRole}>Developer (15%)</span>
+                  <span className={styles.earningAmount}>$900/month</span>
+                </div>
+                <div className={styles.earningRow}>
+                  <span className={styles.earningRole}>Specifier (9%)</span>
+                  <span className={styles.earningAmount}>$540/month</span>
+                </div>
+                <div className={styles.earningRow}>
+                  <span className={styles.earningRole}>QA Tester (6%)</span>
+                  <span className={styles.earningAmount}>$360/month</span>
                 </div>
               </div>
             </div>
 
-            <div className={styles.calculatorResult}>
-              <div className={styles.resultCard}>
-                <div className={styles.resultLabel}>You Earn (USD)</div>
-                <div className={styles.resultValue}>${monthlyEarnings}/month</div>
+            {/* Scenario 2 */}
+            <div className={styles.scenario}>
+              <div className={styles.scenarioHeader}>
+                <div className={styles.scenarioTitle}>20 missions/month</div>
+                <div className={styles.scenarioRevenue}>$12,000 total revenue</div>
               </div>
-              <div className={styles.resultArrow}>→</div>
-              <div className={styles.resultCard} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.resultLabel}>Real Purchasing Power</div>
-                <div className={styles.resultValue} style={{ color: '#1EE5B8' }}>
-                  ${pppEquivalent}/month
+              <div className={styles.scenarioEarnings}>
+                <div className={styles.earningRow}>
+                  <span className={styles.earningRole}>Developer (15%)</span>
+                  <span className={styles.earningAmount}>$1,800/month</span>
                 </div>
-                <div className={styles.resultNote}>
-                  In {country.name}, ${monthlyEarnings} USD buys what ${pppEquivalent} buys in the US
+                <div className={styles.earningRow}>
+                  <span className={styles.earningRole}>Specifier (9%)</span>
+                  <span className={styles.earningAmount}>$1,080/month</span>
+                </div>
+                <div className={styles.earningRow}>
+                  <span className={styles.earningRole}>QA Tester (6%)</span>
+                  <span className={styles.earningAmount}>$720/month</span>
                 </div>
               </div>
             </div>
           </div>
+
+          <div className={styles.commissionsNote}>
+            <strong>Commission structure:</strong> Team 30%, Upwork 10%, Organization 21%, NLR 39%
+          </div>
         </div>
       </section>
 
-      {/* Your First Week - Benefits */}
+      {/* Payment */}
       <section className={styles.section} style={{ background: 'rgba(21, 26, 33, 0.4)' }}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Your First Week</h2>
+          <h2 className={styles.sectionTitle}>When Do You Get Paid?</h2>
           <p className={styles.sectionSubtitle}>
-            From signup to first payment
+            You get paid as soon as the client pays.
           </p>
 
-          <div className={styles.weekTimeline}>
-            <div className={styles.weekStep}>
+          <div className={styles.paymentTimeline}>
+            <div className={styles.timelineStep}>
+              <div className={styles.timelineDay}>Day 0</div>
+              <div className={styles.timelineAction}>Mission starts</div>
+            </div>
+            <div className={styles.timelineArrow}>↓</div>
+            <div className={styles.timelineStep}>
+              <div className={styles.timelineDay}>Day 7</div>
+              <div className={styles.timelineAction}>AC Green delivered to client</div>
+            </div>
+            <div className={styles.timelineArrow}>↓</div>
+            <div className={styles.timelineStep}>
+              <div className={styles.timelineDay}>Day 21</div>
+              <div className={styles.timelineAction}>Upwork releases funds to team</div>
+            </div>
+            <div className={styles.timelineArrow}>↓</div>
+            <div className={styles.timelineStep} style={{ borderColor: '#1EE5B8' }}>
+              <div className={styles.timelineDay}>Day 21</div>
+              <div className={styles.timelineAction}><strong>You get paid (SOL) — within 4 hours</strong></div>
+            </div>
+          </div>
+
+          <div className={styles.paymentMethod}>
+            <h3>Payment Method: Solana (SOL)</h3>
+            <ul>
+              <li>✅ Instant transfers</li>
+              <li>✅ Near-zero fees (~$0.01)</li>
+              <li>✅ Fully transparent on blockchain</li>
+              <li>✅ Convert to USDC or cash out to local currency via Binance</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Your First Week */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Your First Week</h2>
+
+          <div className={styles.firstWeek}>
+            <div className={styles.weekItem}>
               <div className={styles.weekDay}>Day 1</div>
               <div className={styles.weekContent}>
-                <div className={styles.weekWhat}>Read docs, set up wallet</div>
-                <div className={styles.weekGet}>→ You're ready to work</div>
+                <div className={styles.weekWhat}>We onboard you</div>
+                <div className={styles.weekGet}>→ Read docs, set up wallet, get Mission Deck access</div>
               </div>
             </div>
 
-            <div className={styles.weekStep}>
+            <div className={styles.weekItem}>
               <div className={styles.weekDay}>Day 2-7</div>
               <div className={styles.weekContent}>
                 <div className={styles.weekWhat}>Complete real mission (AI-supervised)</div>
-                <div className={styles.weekGet}>→ You get paid $90</div>
+                <div className={styles.weekGet}>→ Emma writes proposal, Rafael codes, you deploy, client accepts</div>
               </div>
             </div>
 
-            <div className={styles.weekStep}>
+            <div className={styles.weekItem}>
               <div className={styles.weekDay}>Week 2+</div>
               <div className={styles.weekContent}>
-                <div className={styles.weekWhat}>Regular missions (10-12/month)</div>
-                <div className={styles.weekGet}>→ Steady income $900/month</div>
+                <div className={styles.weekWhat}>Regular missions</div>
+                <div className={styles.weekGet}>→ Steady income, payments every 21 days</div>
               </div>
             </div>
           </div>
@@ -275,7 +285,7 @@ export default function JoinPage() {
               <br />
               Country: [Your country]
               <br />
-              Hours/week: [15-30]
+              Hours/week: [5-30]
               <br />
               <br />
               I understand AI does the coding, I supervise and deploy.
