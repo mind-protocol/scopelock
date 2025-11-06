@@ -99,9 +99,11 @@ export default function RootLayout({
               <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Company</h3>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 <li style={{ marginBottom: '0.5rem' }}><Link href="/about" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>About</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/process" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>How I Work</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/process" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>How ScopeLock Works</Link></li>
                 <li style={{ marginBottom: '0.5rem' }}><Link href="/faq" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>FAQ</Link></li>
                 <li style={{ marginBottom: '0.5rem' }}><Link href="/#contact" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Contact</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/privacy" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Privacy</Link></li>
+                <li style={{ marginBottom: '0.5rem' }}><Link href="/terms" style={{ color: 'var(--slk-text-muted)', textDecoration: 'none' }}>Terms</Link></li>
               </ul>
             </div>
 
