@@ -18,8 +18,8 @@ import type {
   PerformanceMetric,
 } from '../types';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-const USE_MOCK_DATA = false; // Connect to real FastAPI backend
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://scopelock.onrender.com';
+const USE_MOCK_DATA = false; // Real backend deployed at scopelock.onrender.com
 
 // Mock data for Week 1 MVP
 const MOCK_MISSIONS: Mission[] = [
