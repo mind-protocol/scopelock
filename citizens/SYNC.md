@@ -135,16 +135,22 @@ Response: {"missions":[],"total":0}
 
 **Known Limitations (Week 1 MVP):**
 - No missions in FalkorDB yet (empty list expected)
-- CLAUDE_API_KEY missing (chat will not work until set)
 - Frontend CORS: backend .env has `localhost:3000` but frontend runs on `:3002`
+
+**Claude Integration Note:**
+- Backend uses Claude CLI (`cd citizen/folder && claude -p "message" --continue --dangerously-skip-permissions`)
+- NO CLAUDE_API_KEY needed (uses subscription credentials, not pay-per-token API)
+- Deployment requires: `.claude/.credentials.json` uploaded to Render
 
 **Next Steps:**
 1. Fix CORS_ORIGINS in backend .env (add `:3002`)
-2. Seed test missions in FalkorDB (or frontend uses mock data for now)
-3. Run Vitest frontend tests
-4. Test frontend login flow in browser
-5. Deploy to Render (backend) + Vercel (frontend)
-6. Hand off to Sofia for pre-delivery QA
+2. Verify Claude CLI integration in backend (Rafael chat endpoint)
+3. Seed test missions in FalkorDB (or frontend uses mock data for now)
+4. Run Vitest frontend tests
+5. Test frontend login flow in browser
+6. Deploy to Render (backend) + upload `.credentials.json`
+7. Deploy frontend to Vercel
+8. Hand off to Sofia for pre-delivery QA
 
 **Status:** Local integration working (F1 + F2 verified)
 **Link:** Commits 2d12642, 656c73a
@@ -872,6 +878,71 @@ alexis@scopelock
 
 ---
 
+
+## 2025-11-06 00:45 - Maya: Team Recruitment Page (/join)
+
+**Work:** Created comprehensive team recruitment landing page for junior developers in PPP-advantage countries
+
+**Context:** User (NLR) is recruiting team members (Asad from Nigeria is first candidate). Needed clear landing page explaining roles, USPs, economics, and how to apply.
+
+**What was built:**
+1. `/join` page with 5 sections:
+   - Hero (stats: 95% AI, 5% human, 9h per mission, 10-12 missions/month)
+   - "Who We're Looking For" (4 criteria cards)
+   - "Available Roles" (3 detailed role cards)
+   - "Why PPP Matters" (6 country cards + economics explanation)
+   - "Your First Week" (4-step timeline)
+   - Apply CTA (Telegram link + message template)
+
+2. **3 Role Cards (Developer, QA Tester, Specifier):**
+   Each role shows:
+   - What you do (5% human work)
+   - What AI does (95% AI work)
+   - AI support team (Rafael, Sofia, Emma, Maya, Inna)
+   - Earnings breakdown (per mission, per month, PPP equivalent)
+   - Skills needed (reassurance: "no senior experience needed")
+   - Time commitment (15-30 hours/week)
+
+3. **PPP Economics Section:**
+   - 6 countries: Nigeria, Colombia, Pakistan, Kenya, Philippines, India
+   - Multipliers: 3-10x purchasing power
+   - Example: $900 USD = $4,500-9,000 real purchasing power
+   - Explanation: Your $900 in Lagos = $4,500-9,000 lifestyle in NYC
+
+4. **Target Messaging:**
+   - Primary: Junior developers in PPP countries
+   - Reassurance: "You don't need to be a senior developer"
+   - Value prop: "AI does 95%, you supervise 5%"
+   - Proof: Real mission breakdown (9 hours total, not 40+)
+
+**Files created:**
+- `/src/app/join/page.tsx` (545 lines) - Full recruitment page
+- `/src/app/join/styles.module.css` (684 lines) - Complete styling
+- Updated `/src/app/layout.tsx` - Added "Join Team" link to header navigation
+
+**Visual design:**
+- Dark theme (#0E1116 bg, #151A21 surface)
+- Color-coded role cards (Developer: blue #64A8FF, QA: green #5CE27E, Specifier: teal #1EE5B8)
+- Country cards with flags and multipliers
+- Timeline with colored markers (Day 1-2: red, Day 3: blue, Day 4-7: yellow, Week 2: green)
+- CTA section with gradient background and Telegram link
+
+**Apply flow:**
+1. Click "Apply via Telegram" → Opens @nlr_ai
+2. Message template provided:
+   ```
+   Hi Nicolas, I'm interested in joining ScopeLock as a [Developer/QA/Specifier].
+   Country: [Your country]
+   Availability: [X hours/week]
+   Experience: [Brief description, or "junior developer willing to learn"]
+   I've read the resources page and understand the AI-assisted workflow.
+   ```
+
+**Status:** Complete, deployed
+**Next:** NLR can now send Asad (and future candidates) to scopelock.mindprotocol.ai/join
+**Link:** Commit `0169b23`, live at scopelock.mindprotocol.ai/join
+
+---
 
 ## 2025-11-06 00:15 - Maya: Resources Page Hero & Order Updates
 
