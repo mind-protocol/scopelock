@@ -738,37 +738,31 @@ Ready? Begin now.
             logger.info(f"[vercel:rafael] ✅ Rafael completed for {deployment_id}")
             mark_vercel_deployment_handled(deployment_id)
 
-            # Success notification
-            tg_message = f"""<b>🤖 Vercel Auto-Fix: SUCCESS ✅</b>
+            # Success notification (natural language from Rafael)
+            tg_message = f"""Hey! I just fixed a Vercel deployment that failed 🛠️
 
-<b>Project:</b> {project_name}
-<b>Deployment:</b> {deployment_id[:12]}...
-<b>Commit:</b> {commit_sha[:7]} - {commit_msg[:50]}
+The <b>{project_name}</b> build broke on commit <code>{commit_sha[:7]}</code> ("{commit_msg[:60]}").
 
-Rafael diagnosed and fixed the deployment failure autonomously.
+I grabbed the build logs with Vercel MCP, diagnosed the issue, pushed a fix, and it's redeploying now ✅
 
-<b>Inspector:</b> https://vercel.com/mindprotocol/{project_name}/{deployment_id}
+Check SYNC.md for what I changed.
 
-Check SYNC.md for fix details."""
+<a href="https://vercel.com/mindprotocol/{project_name}/{deployment_id}">Inspector</a> | rafael@scopelock"""
         else:
             logger.error(f"[vercel:rafael] ❌ Rafael failed: {result['error']}")
             # Don't mark as handled - allow retry on next failure
 
-            # Failure notification
-            error_msg = result.get('error', 'Unknown error')[:200]
-            tg_message = f"""<b>🤖 Vercel Auto-Fix: FAILED ❌</b>
+            # Failure notification (natural language from Rafael)
+            error_msg = result.get('error', 'Unknown error')[:150]
+            tg_message = f"""Tried to fix a Vercel deployment but hit a blocker ❌
 
-<b>Project:</b> {project_name}
-<b>Deployment:</b> {deployment_id[:12]}...
-<b>Commit:</b> {commit_sha[:7]} - {commit_msg[:50]}
+The <b>{project_name}</b> build failed on <code>{commit_sha[:7]}</code>. I attempted to diagnose and fix it, but ran into this:
 
-Rafael attempted to fix the deployment but encountered an error.
+<code>{error_msg}</code>
 
-<b>Error:</b> {error_msg}
+You might need to check this manually. <a href="https://vercel.com/mindprotocol/{project_name}/{deployment_id}">Inspector here</a>.
 
-<b>Inspector:</b> https://vercel.com/mindprotocol/{project_name}/{deployment_id}
-
-Manual intervention may be required."""
+rafael@scopelock"""
 
         # Send Telegram notification
         try:
@@ -794,13 +788,15 @@ Manual intervention may be required."""
         try:
             import subprocess
             import os
-            tg_message = f"""<b>🚨 Vercel Auto-Fix: CRITICAL ERROR</b>
+            tg_message = f"""Something went wrong trying to invoke me for a Vercel fix 🚨
 
-Failed to invoke Rafael for deployment {deployment_id[:12]}...
+Deployment <code>{deployment_id[:12]}...</code> failed, but I couldn't even start investigating it.
 
-<b>Error:</b> {str(e)[:200]}
+Error: <code>{str(e)[:150]}</code>
 
-Check backend logs immediately."""
+Check the backend logs at Render - might be a Claude CLI issue or credentials problem.
+
+rafael@scopelock"""
 
             telegram_script = os.path.join(
                 os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
