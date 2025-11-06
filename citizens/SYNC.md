@@ -1,3 +1,35 @@
+## 2025-11-07 11:42 — Rafael: Clean Up Old Outreach Output Files ✅
+
+**Work:** Removed deprecated output from old analysis scripts
+
+**Context:** User asked to "add all under outreach/ please and remove the current files"
+
+**What Was Removed:**
+- `developers/` directory (2.1MB) - Output from deprecated `find_developers.py`
+- `service_providers/` directory (1.6MB) - Output from deprecated `find_service_providers.py`
+
+**Why These Were Wrong:**
+
+**developers/ output:**
+- Found senior professional developers (5+ years experience)
+- "Senior Full Stack Web3 Engineer", "Python Expert with extensive experience"
+- ❌ Too expensive ($50-100+/hour) - ScopeLock needs junior supervisors
+
+**service_providers/ output:**
+- Found people OFFERING services TO US (competitors, not clients)
+- ❌ Wrong direction - we need buyers, not sellers
+
+**Correct Targets (NEW scripts, not run yet):**
+- `find_team_members.py` → Supervisors (students/juniors) + Hustlers (raiders/designers)
+- `find_potential_clients.py` → Business owners ASKING for software (buyers)
+
+**Next:** Run new scripts on Telegram export to generate correct output
+
+**Commit:** 11341b3
+**Files Deleted:** 8 files (68,783 deletions)
+
+---
+
 ## 2025-11-07 10:45 — Rafael: Fix Missing CSS Variable Definitions ✅
 
 **USER FEEDBACK:**
