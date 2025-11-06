@@ -1,3 +1,67 @@
+## 2025-11-06 23:35 — Claude: Major /join page redesign based on crypto-burned user feedback ✅
+
+**Work:** Complete redesign of /join page addressing trust issues from crypto-burned audience
+
+**User Feedback Context:** 20-point internal monologue from crypto-burned trader examining the page, revealing friction points:
+- "Who the FUCK is NLR?" (commission structure suspicious)
+- "$6,000 total revenue" seemed fake/scammy
+- Zero social proof
+- Payment guarantees missing
+- Process not differentiated from "just using ChatGPT"
+- Liability concerns ("What if I fuck up?")
+
+**Changes Implemented:**
+
+1. **Hero Section:**
+   - Updated to: "Earn like a Developer Without Needing to Know How to Code"
+   - Subtitle: "Our AI partners do 95% of the work, and 100% of the coding and writing. You just supervise."
+
+2. **Process Flow - Visual Redesign:**
+   - Central horizontal line (fil rouge) connecting all steps
+   - Human steps positioned OVER the line
+   - AI steps positioned UNDER the line
+   - AI citizen avatars displayed (emma/inna/rafael/sofia/maya profile pics)
+   - Hover tooltips showing details of each step
+   - Smooth animations on hover
+
+3. **Removed Suspicious Elements:**
+   - ❌ Commission structure breakdown (Team 30%, NLR 39% etc.)
+   - ❌ "$6,000 total revenue" text from earnings scenarios
+   - ❌ Specific "NLR" references
+
+4. **Payment Section:**
+   - Title changed from "When Do You Get Paid?" to "Get Paid Automatically"
+   - Timeline made horizontal (Day 0 → Day 7 → Day 21)
+   - Styled $SOL and $ amounts with JetBrains Mono font
+   - Simplified payment method: "We explain everything and make the process super simple. No crypto experience needed."
+
+5. **First Week - Exponential Growth Visual:**
+   - Horizontal layout with progression
+   - Day 1 (blue glow) → Day 2-7 (teal glow) → Week 2+ (larger, brighter teal)
+   - Visual scale increase showing growth
+   - Final stage shows $450-900/month earnings
+
+6. **FAQ Section Added:**
+   - "What if I mess up?" → AI guides you, team helps each other
+   - "How is this different from just using ChatGPT?" → 95% of work done, 100% of coding/writing
+   - "Do I need to know how to code?" → No, Rafael writes 100%
+   - "What if the client doesn't pay?" → Upwork escrow protection
+
+**Technical Implementation:**
+- Complete CSS rewrite for fil rouge process flow
+- Avatar images loaded from `/public/citizens/[name]/avatar.png`
+- Responsive design with mobile vertical layout (fil rouge rotates 90°)
+- Hover states and animations for engagement
+- Monospace styling for crypto amounts
+
+**Status:** Committed and pushed, Vercel auto-deploying ✅
+**Commit:** e5569b0
+**Link:** src/app/join/page.tsx:1
+
+**Next:** Monitor user reactions, add social proof when available
+
+---
+
 ## 2025-11-06 23:15 — Rafael: Mission Deck Frontend Integration into Main Site ✅
 
 **Work:** Integrated Mission Deck frontend into main scopelock.mindprotocol.ai site at /mission-deck route
