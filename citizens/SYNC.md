@@ -5492,3 +5492,53 @@ vercel --prod
 - Branch: main
 
 rafael@scopelock
+
+---
+
+## 2025-11-06 02:50 — Rafael: Mission Deck Link Added to Header ✅
+
+**Work:** Added Mission Deck link to main navigation and created informational page
+
+**Context:** User requested "add link to mission board to header"
+
+**Changes:**
+
+**1. Header Navigation (layout.tsx):**
+- Added "Mission Deck" link between "Proof" and "FAQ"
+- Links to `/deck` route
+
+**2. Mission Deck Page (deck/page.tsx):**
+Created informational page explaining:
+- What Mission Deck is (internal developer dashboard)
+- Current status (in development, Week 1 MVP)
+- Key features (mission selector, citizen workspaces, AI guidance)
+- AI Citizen workflow: Emma → Inna → Rafael → Sofia → Maya
+- Link to GitHub documentation
+
+**Mission Deck Overview:**
+- Internal dashboard for ScopeLock developers
+- Mission selector (left panel) - switch between assigned missions
+- Citizen workspaces (top tabs) - specialized tools per citizen
+- Week 1 MVP: Rafael workspace (GitHub PR preview + chat guidance)
+- Future: Complete Emma/Inna/Sofia/Maya workspaces
+
+**Documentation:**
+- Comprehensive specs at `docs/missions/mission-deck/`
+- AC.md, ARCHITECTURE.md, ALGORITHM.md, GUIDE.md
+- Separate repository planned: `github.com/mind-protocol/scopelock-deck`
+
+**Git:**
+```
+commit 524619d
+feat: add Mission Deck link to header navigation
+
+git push origin main
+To github.com:mind-protocol/scopelock.git
+   30be4b9..524619d  main -> main
+```
+
+**Live:** scopelock.mindprotocol.ai/deck (after Vercel deployment)
+
+**Status:** Header link active, informational page deployed
+
+rafael@scopelock
