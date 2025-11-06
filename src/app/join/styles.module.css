@@ -353,6 +353,12 @@
   font-weight: 700;
 }
 
+.usdtAmount {
+  font-family: 'JetBrains Mono', monospace;
+  color: #1EE5B8;
+  font-weight: 700;
+}
+
 .paymentMethod {
   max-width: 600px;
   margin: 0 auto;

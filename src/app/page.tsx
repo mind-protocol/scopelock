@@ -22,7 +22,7 @@ export default function HomePage() {
           I build websites, AI chatbots, and web apps. I also create presentations, voiceovers, translations, and content using AI. Fixed pricing. Fast delivery. You pay only when it works.
         </p>
         <p className="hero-tagline">
-          Solo developer + AI-assisted workflow · <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">65k commits in 2024</a> · <a href="https://github.com/mind-protocol" target="_blank" rel="noopener" className="verify-link">121+ deployments →</a>
+          Solo architect + AI-assisted teams · <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">65k commits in 2024</a> · <a href="https://github.com/mind-protocol" target="_blank" rel="noopener" className="verify-link">121+ deployments →</a>
         </p>
 
         <div className="hero-ctas">
@@ -509,7 +509,7 @@ export default function HomePage() {
           </ul>
 
           <p style={{ marginTop: '2rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', borderLeft: '3px solid var(--slk-success)' }}>
-            No agencies. No teams. Just me + AI-assisted workflow.
+            Solo architect + AI-assisted teams. You work directly with me, not account managers.
           </p>
         </div>
       </section>
@@ -535,7 +535,7 @@ export default function HomePage() {
         <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
           <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>Do you work with agencies or outsource the work?</summary>
           <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
-            No. I do all the work myself, with AI assistance. No teams, no outsourcing. You work directly with me.
+            No agencies or account managers. You work directly with me (the architect). I oversee a small team of developers who implement under my supervision, with AI-assisted code generation.
           </p>
         </details>
 

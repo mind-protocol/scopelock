@@ -294,13 +294,13 @@ export default function JoinPage() {
             <div className={styles.timelineArrowHorizontal}>→</div>
             <div className={styles.timelineStepHorizontal} style={{ borderColor: '#1EE5B8', background: 'rgba(30, 229, 184, 0.1)' }}>
               <div className={styles.timelineDay}>Day 21</div>
-              <div className={styles.timelineAction}><strong>You get <span className={styles.solAmount}>$SOL</span> (4 hours)</strong></div>
+              <div className={styles.timelineAction}><strong>You get <span className={styles.usdtAmount}>$USDT</span> (4 hours)</strong></div>
             </div>
           </div>
 
           <div className={styles.paymentMethod}>
-            <h3>Payment in Solana</h3>
-            <p>We explain everything and make the process super simple. No crypto experience needed.</p>
+            <h3>Payment in USDT (Tether)</h3>
+            <p>USD stablecoin. $900 = 900 USDT, no volatility. We explain everything and make the process super simple.</p>
           </div>
         </div>
       </section>
@@ -321,8 +321,8 @@ export default function JoinPage() {
 
             <div className={styles.weekStage} style={{ background: 'linear-gradient(135deg, rgba(30, 229, 184, 0.15) 0%, rgba(30, 229, 184, 0.08) 100%)' }}>
               <div className={styles.weekDay} style={{ color: '#1EE5B8' }}>Day 2-7</div>
-              <div className={styles.weekWhat}>First real mission</div>
-              <div className={styles.weekGet}>AI does the work, you supervise</div>
+              <div className={styles.weekWhat}>Simple quick mission</div>
+              <div className={styles.weekGet}>We'll start you with an easy one</div>
             </div>
 
             <div className={styles.weekArrow}>→</div>
@@ -366,13 +366,47 @@ export default function JoinPage() {
         </div>
       </section>
 
+      {/* MIND Token (Optional) */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Interested in $MIND Token?</h2>
+          <p className={styles.sectionSubtitle}>
+            ScopeLock is part of Mind Protocol, building consciousness infrastructure for AI agents.
+          </p>
+          <div style={{ textAlign: 'center', marginTop: '32px' }}>
+            <a
+              href="https://mindprotocol.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.ctaButton}
+              style={{ background: 'rgba(100, 168, 255, 0.2)', color: '#64A8FF', border: '2px solid #64A8FF' }}
+            >
+              Learn about MIND Protocol →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className={styles.ctaSection}>
         <div className={styles.ctaContainer}>
           <h2 className={styles.ctaTitle}>Ready to Start?</h2>
           <p className={styles.ctaSubtitle}>
-            Message Nicolas on Telegram. Include your country and hours/week you can work.
+            Message Nicolas on Telegram. Include your country, hours/week, background, and any relevant experience.
           </p>
+
+          <div className={styles.nicolasLinks}>
+            <p className={styles.nicolasName}>Nicolas Lester Reynolds (@nlr_ai)</p>
+            <div className={styles.socialLinks}>
+              <a href="https://twitter.com/nlr_ai" target="_blank" rel="noopener noreferrer">X</a>
+              <span>·</span>
+              <a href="https://github.com/nlr-ai" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <span>·</span>
+              <a href="https://www.linkedin.com/in/nicolaslesterreynolds" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <span>·</span>
+              <a href="https://www.upwork.com/freelancers/~01f6b3c9e8f5e3d4a2" target="_blank" rel="noopener noreferrer">Upwork</a>
+            </div>
+          </div>
 
           <a
             href="https://t.me/nlr_ai"
@@ -392,6 +426,10 @@ export default function JoinPage() {
               Country: [Your country]
               <br />
               Hours/week: [5-30]
+              <br />
+              Background: [Your current work/studies]
+              <br />
+              Experience: [Any relevant experience, or "Complete beginner"]
               <br />
               <br />
               I understand AI does the coding, I supervise and deploy.

@@ -154,12 +154,12 @@ const faqSections = [
         answer: (
           <>
             <p>
-              <strong>No.</strong> I'm Nicolas—a solo engineer who replaced a 5-person dev team with AI tooling (Claude, Cursor, aider).
-              No subcontractors. No outsourcing. One architect, AI workforce, clear accountability.
+              <strong>No traditional agency.</strong> I'm Nicolas—the solo architect who designs everything. I oversee a small team of developers
+              who implement under my supervision, with heavy AI assistance (Claude, Cursor, aider) for code generation.
+              You work directly with me, not account managers.
             </p>
             <p>
               <strong>Mind Protocol</strong> is the organization name, but it's not an agency. It's my research org for AI consciousness infrastructure.
-              You're working directly with me.
             </p>
           </>
         ),

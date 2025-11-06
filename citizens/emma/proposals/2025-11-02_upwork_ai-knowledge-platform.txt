@@ -27,7 +27,7 @@ Available 14:00-19:00 Central for calls. Kick off within 72 hours after acceptan
 Reply with: which content sources (podcast transcripts, articles, video captions, social)? Determines extraction complexity and if 8 weeks works or need 10.
 
 Questions answered:
-- Intro: Nicolas, full-stack engineer specializing in AI knowledge systems. Built RAG pipelines, graph databases, production subscription apps. Solo engineer using AI-assisted dev (Claude, Cursor) for team-level output.
+- Intro: Nicolas, architect specializing in AI knowledge systems. Built RAG pipelines, graph databases, production subscription apps. Solo architect with AI-assisted teams (Claude, Cursor) for rapid execution.
 - AI apps built: Mind Protocol (graph knowledge extraction), DuoAI (real-time AI with structured JSON), TherapyKin (subscription SaaS with LLM). All live at links above.
 - Tech stack: Next.js 14 (React, TypeScript) frontend, Python FastAPI or Node.js backend, Postgres (Supabase), Pinecone/Chroma vectors, D3.js/React-SVG viz, Stripe payments, Vercel hosting. Balances velocity with reliability.
 - Timeline: Phase 1 is 8 weeks fixed as above. Phase 2 (advanced features) 4-6 weeks. Total launch-ready: 12-14 weeks, 2 clear milestones.
