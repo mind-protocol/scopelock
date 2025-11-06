@@ -28,23 +28,30 @@ export default function LoginPage() {
   // Auto-trigger authentication when wallet connects (only ONCE per connection)
   useEffect(() => {
     if (connected && publicKey && signMessage && !isLoading && !hasTriggeredAuth.current) {
+      console.log('[Mission Deck] Auto-triggering wallet auth');
       hasTriggeredAuth.current = true;
       handleWalletAuth();
-    }
-
-    // Reset flag when wallet disconnects
-    if (!connected) {
+    } else if (!connected) {
+      // Reset flag when wallet disconnects
+      console.log('[Mission Deck] Wallet disconnected, resetting auth flag');
       hasTriggeredAuth.current = false;
     }
-  }, [connected, publicKey, signMessage]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [connected]); // Only depend on connected to avoid re-triggering on publicKey/signMessage ref changes
 
   // Handle wallet authentication
   const handleWalletAuth = async () => {
+    // Prevent concurrent calls
+    if (isLoading) {
+      console.log('[Mission Deck] Auth already in progress, skipping');
+      return;
+    }
+
     if (!publicKey || !signMessage) {
       setError('Wallet not connected');
       return;
     }
 
+    console.log('[Mission Deck] Starting wallet authentication');
     setError('');
     setIsLoading(true);
 
@@ -54,7 +61,9 @@ export default function LoginPage() {
       const encodedMessage = new TextEncoder().encode(message);
 
       // Sign message with wallet
+      console.log('[Mission Deck] Requesting signature from wallet...');
       const signature = await signMessage(encodedMessage);
+      console.log('[Mission Deck] Signature received');
       const signatureBase58 = bs58.encode(signature);
 
       // Send to backend for verification
