@@ -1,3 +1,54 @@
+## 2025-11-07 07:45 — Rafael: Mission Deck Wallet UX - Auto-Sign After Connection ✅
+
+**Feature:** Remove extra button click - auto-trigger signing immediately after wallet connection
+
+**User Request:** "connect wallet should ask for signing directly without additional button click"
+
+**Problem:**
+- After connecting wallet, users had to click separate "Sign & Authenticate" button
+- Extra click adds friction to login flow
+- Not intuitive - why connect then click again?
+
+**Solution Implemented:**
+Added `useEffect` hook that automatically triggers `handleWalletAuth()` when wallet connects:
+
+```typescript
+// Auto-trigger authentication when wallet connects
+useEffect(() => {
+  if (connected && publicKey && signMessage && !isLoading) {
+    handleWalletAuth();
+  }
+}, [connected, publicKey]);
+```
+
+**UI Changes:**
+- **Removed:** "Sign & Authenticate" button (line 88-94)
+- **Added:** "🔐 Signing message..." status indicator during auth
+- **Updated:** Help text to say "After connecting, you'll be asked to sign a message..."
+
+**New User Flow:**
+1. User clicks "Select Wallet" button
+2. User chooses wallet (Phantom/Solflare)
+3. Wallet connects → **Sign prompt appears immediately** (auto-triggered)
+4. User signs → Redirects to /mission-deck/console
+
+**Before:** Connect → See "Sign & Authenticate" button → Click → Sign
+**After:** Connect → Sign (no intermediate button)
+
+**Files Modified:**
+- src/app/mission-deck/page.tsx (19 insertions, 17 deletions)
+
+**Testing:**
+- Compiled successfully (no errors)
+- Cannot test wallet signing in Playwright (requires browser extensions)
+- Needs manual verification in production with real Phantom/Solflare wallet
+
+**Status:** Committed and pushed ✅
+**Commit:** 807d680 "feat: auto-trigger wallet signing after connection"
+**Next:** Vercel auto-deploy triggered (~2-3 min), manual test at scopelock.mindprotocol.ai/mission-deck
+
+---
+
 ## 2025-11-07 07:30 — Rafael: Expanded Team Member Detection (Solana Hustlers) ✅
 
 **Work:** Added dual-profile detection to `find_team_members.py`
