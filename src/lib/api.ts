@@ -499,38 +499,11 @@ export const api = {
     );
   },
 
-  // Chat
+  // Chat - NO MOCK DATA (always use real backend with Claude Code CLI)
   sendMessage: async (
     missionId: string,
     message: string
   ): Promise<SendMessageResponse> => {
-    if (USE_MOCK_DATA) {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      const mockResponse: SendMessageResponse = {
-        response: `Rafael: This is a mock response to "${message}". In production, this will connect to the Claude API.`,
-        code_blocks: [],
-      };
-      // Add mock message to chat history
-      const userMsg: ChatMessage = {
-        id: `msg-${Date.now()}`,
-        role: 'user',
-        content: message,
-        created_at: new Date().toISOString(),
-      };
-      const assistantMsg: ChatMessage = {
-        id: `msg-${Date.now() + 1}`,
-        role: 'assistant',
-        content: mockResponse.response,
-        code_blocks: mockResponse.code_blocks,
-        created_at: new Date().toISOString(),
-      };
-      if (!MOCK_CHAT_MESSAGES[missionId]) {
-        MOCK_CHAT_MESSAGES[missionId] = [];
-      }
-      MOCK_CHAT_MESSAGES[missionId].push(userMsg, assistantMsg);
-      return mockResponse;
-    }
-
     return apiCall<SendMessageResponse>(
       `/api/missions/${missionId}/chat`,
       {
@@ -541,11 +514,6 @@ export const api = {
   },
 
   getMessages: async (missionId: string): Promise<ChatMessage[]> => {
-    if (USE_MOCK_DATA) {
-      await new Promise((resolve) => setTimeout(resolve, 200));
-      return MOCK_CHAT_MESSAGES[missionId] || [];
-    }
-
     // Fetch from backend and extract messages array from MessageHistoryResponse
     const response = await apiCall<{
       messages: ChatMessage[];
