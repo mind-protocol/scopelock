@@ -298,6 +298,186 @@
   white-space: pre-wrap;
 }
 
+/* Methods Grid - How to Give Context */
+.methodsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.methodCard {
+  background: linear-gradient(135deg, #1a1f28 0%, #151a21 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.methodCard.best {
+  border: 2px solid #5CE27E;
+  box-shadow: 0 4px 12px rgba(92, 226, 126, 0.2);
+}
+
+.methodCard.good {
+  border: 2px solid #64A8FF;
+  box-shadow: 0 4px 12px rgba(100, 168, 255, 0.2);
+}
+
+.methodCard.bad {
+  border: 2px solid #FF5D5D;
+  box-shadow: 0 4px 12px rgba(255, 93, 93, 0.2);
+}
+
+.methodRank {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.methodTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #E6EAF2;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.methodExample {
+  background: rgba(14, 17, 22, 0.6);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #9AA3AE;
+  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.methodWhy {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #9AA3AE;
+}
+
+/* Collaboration Scale */
+.collaborationScale {
+  margin-top: 2rem;
+}
+
+.scaleHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.scaleLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #9AA3AE;
+}
+
+.scaleBar {
+  position: relative;
+  height: 8px;
+  background: linear-gradient(90deg, #64A8FF 0%, #1EE5B8 50%, #5CE27E 100%);
+  border-radius: 4px;
+  margin-bottom: 3rem;
+}
+
+.scaleMarker {
+  position: absolute;
+  top: -8px;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  background: #E6EAF2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0E1116;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modeCards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.modeCard {
+  background: linear-gradient(135deg, #1a1f28 0%, #151a21 100%);
+  border: 2px solid rgba(30, 229, 184, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modeCard:hover {
+  border-color: #1EE5B8;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.3);
+}
+
+.modeNumber {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #1EE5B8 0%, #64A8FF 100%);
+  color: #0E1116;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.modeTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1EE5B8;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.modeExample {
+  background: rgba(14, 17, 22, 0.6);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #9AA3AE;
+  margin-bottom: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.modeUse {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #9AA3AE;
+}
+
+/* Responsive - Methods Grid */
+@media (max-width: 1024px) {
+  .methodsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .modeCards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
 /* Footer CTA */
 .footerCta {
   text-align: center;

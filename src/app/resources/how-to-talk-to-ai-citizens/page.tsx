@@ -85,6 +85,170 @@ export default function HowToTalkToAICitizensPage() {
           </div>
         </section>
 
+        {/* How to Give Context */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>📋</span>
+            How to Give Context (The Right Way)
+          </h2>
+          <p className={styles.sectionIntro}>
+            Don't explain what you think the AI needs to know. Show them the actual source material:
+          </p>
+
+          <div className={styles.methodsGrid}>
+            <div className={styles.methodCard + ' ' + styles.best}>
+              <div className={styles.methodRank}>🥇 Best</div>
+              <div className={styles.methodTitle}>Copy-Paste Content Directly</div>
+              <div className={styles.methodExample}>
+                "Here's the error I'm getting:<br/><br/>
+                <code style={{ display: 'block', padding: '8px', background: 'rgba(0,0,0,0.3)', borderRadius: '4px', marginTop: '8px' }}>
+                TypeError: Cannot read property 'map' of undefined<br/>
+                  at UserList.tsx:42:18<br/>
+                  at renderWithHooks
+                </code>
+                <br/>
+                Here's the component code:<br/><br/>
+                <code style={{ display: 'block', padding: '8px', background: 'rgba(0,0,0,0.3)', borderRadius: '4px', marginTop: '8px' }}>
+                const UserList = ({'{'} users {'}'}) =&gt; {'{'}<br/>
+                &nbsp;&nbsp;return users.map(user =&gt; ...<br/>
+                {'}'}
+                </code>"
+              </div>
+              <div className={styles.methodWhy}>
+                <strong>Why:</strong> AI sees exactly what you see. No ambiguity. Instant understanding.
+              </div>
+            </div>
+
+            <div className={styles.methodCard + ' ' + styles.good}>
+              <div className={styles.methodRank}>🥈 Good</div>
+              <div className={styles.methodTitle}>Give File Pointers</div>
+              <div className={styles.methodExample}>
+                "I'm getting an error in <code>/src/components/UserList.tsx</code> line 42.<br/><br/>
+                The relevant code is in the <code>renderUsers</code> function.<br/><br/>
+                Also check <code>/src/types/User.ts</code> for the User interface."
+              </div>
+              <div className={styles.methodWhy}>
+                <strong>Why:</strong> AI can read the files and see the exact code. Still precise.
+              </div>
+            </div>
+
+            <div className={styles.methodCard + ' ' + styles.bad}>
+              <div className={styles.methodRank}>❌ Don't</div>
+              <div className={styles.methodTitle}>Try to Explain</div>
+              <div className={styles.methodExample}>
+                "There's a problem with the user list component. It's not working right when I try to show the users. I think it's something about the data not loading properly."
+              </div>
+              <div className={styles.methodWhy}>
+                <strong>Why:</strong> Vague. AI has to guess what "not working" means. Wastes time.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Collaboration Modes */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionIcon}>🎚️</span>
+            Setting the Pace: Collaboration Modes
+          </h2>
+          <p className={styles.sectionIntro}>
+            You control how much autonomy you give the AI. Choose your mode based on complexity and familiarity:
+          </p>
+
+          <div className={styles.collaborationScale}>
+            <div className={styles.scaleHeader}>
+              <span className={styles.scaleLabel}>Very Collaborative</span>
+              <span className={styles.scaleLabel}>Balanced</span>
+              <span className={styles.scaleLabel}>Very Autonomous</span>
+            </div>
+
+            <div className={styles.scaleBar}>
+              <div className={styles.scaleMarker} style={{ left: '0%' }}>1</div>
+              <div className={styles.scaleMarker} style={{ left: '25%' }}>2</div>
+              <div className={styles.scaleMarker} style={{ left: '50%' }}>3</div>
+              <div className={styles.scaleMarker} style={{ left: '75%' }}>4</div>
+              <div className={styles.scaleMarker} style={{ left: '100%' }}>5</div>
+            </div>
+
+            <div className={styles.modeCards}>
+              <div className={styles.modeCard}>
+                <div className={styles.modeNumber}>1</div>
+                <div className={styles.modeTitle}>Micro-Step Mode</div>
+                <div className={styles.modeExample}>
+                  "Goal: Add user authentication.<br/><br/>
+                  First, tell me your plan. Don't implement yet.<br/><br/>
+                  [AI gives plan]<br/><br/>
+                  OK, start with step 1 only. Show me the code for just the login form."
+                </div>
+                <div className={styles.modeUse}>
+                  <strong>Use when:</strong> Learning new tech, critical feature, need to understand each step
+                </div>
+              </div>
+
+              <div className={styles.modeCard}>
+                <div className={styles.modeNumber}>2</div>
+                <div className={styles.modeTitle}>Plan-First Mode</div>
+                <div className={styles.modeExample}>
+                  "Goal: Add user authentication.<br/><br/>
+                  What's your plan? List the steps and files you'll modify.<br/><br/>
+                  [Review plan]<br/><br/>
+                  Looks good. Go ahead and implement the whole thing."
+                </div>
+                <div className={styles.modeUse}>
+                  <strong>Use when:</strong> Medium complexity, want to verify approach before implementation
+                </div>
+              </div>
+
+              <div className={styles.modeCard}>
+                <div className={styles.modeNumber}>3</div>
+                <div className={styles.modeTitle}>Checkpoint Mode</div>
+                <div className={styles.modeExample}>
+                  "Goal: Add user authentication.<br/><br/>
+                  Implement it following our standard pattern (JWT + bcrypt).<br/><br/>
+                  Check in with me before deploying."
+                </div>
+                <div className={styles.modeUse}>
+                  <strong>Use when:</strong> Standard feature, trust the AI, just want final review
+                </div>
+              </div>
+
+              <div className={styles.modeCard}>
+                <div className={styles.modeNumber}>4</div>
+                <div className={styles.modeTitle}>Test-First Mode</div>
+                <div className={styles.modeExample}>
+                  "Goal: Add user authentication.<br/><br/>
+                  Here's the AC.md with acceptance criteria. Implement it, run the tests, deploy to staging.<br/><br/>
+                  Just ping me when it's live."
+                </div>
+                <div className={styles.modeUse}>
+                  <strong>Use when:</strong> Well-defined requirements, tests exist, routine implementation
+                </div>
+              </div>
+
+              <div className={styles.modeCard}>
+                <div className={styles.modeNumber}>5</div>
+                <div className={styles.modeTitle}>Full Autonomy Mode</div>
+                <div className={styles.modeExample}>
+                  "Goal: Add user authentication following our standard pattern.<br/><br/>
+                  Go ahead and do everything. Deploy to production when tests pass. Update the SYNC.md when done."
+                </div>
+                <div className={styles.modeUse}>
+                  <strong>Use when:</strong> Simple task, established patterns, high trust, time-sensitive
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.alertBox + ' ' + styles.info}>
+            <div className={styles.alertTitle}>💡 Pro Tip: Start Collaborative, Build Trust</div>
+            <div className={styles.alertContent}>
+              New to working with an AI citizen? Start at Mode 1-2 until you understand their capabilities.
+              After a few successful missions, shift to Mode 3-4 for routine work.
+              Mode 5 is for when you've built complete trust and have strong tests.
+            </div>
+          </div>
+        </section>
+
         {/* Bad vs Good Examples */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>
