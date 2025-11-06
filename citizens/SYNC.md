@@ -1,3 +1,118 @@
+## 2025-11-06 23:45 — Rafael: Solana Wallet Authentication for Mission Deck ✅
+
+**Work:** Replaced email/password login with Solana wallet authentication (Phantom, Solflare, Backpack)
+
+**User Request:** "The login should be made via SOL wallet" + "add the link in the header (remove the /deck dumb page)"
+
+**Implementation:**
+
+**Frontend Changes:**
+1. **Solana Wallet Dependencies Added:**
+   - `@solana/wallet-adapter-react` - Wallet context & hooks
+   - `@solana/wallet-adapter-react-ui` - Pre-built wallet UI components
+   - `@solana/wallet-adapter-wallets` - Phantom, Solflare, Backpack adapters
+   - `@solana/web3.js` - Solana blockchain library
+   - `bs58` - Base58 encoding for signatures
+
+2. **Wallet Provider Component:**
+   - Created `src/components/mission-deck/WalletProvider.tsx`
+   - Wraps Mission Deck with Solana wallet context
+   - Supports mainnet-beta (production)
+   - Auto-connect enabled for returning users
+
+3. **Login Page Rewrite:**
+   - Replaced email/password form with `WalletMultiButton`
+   - User connects wallet (Phantom/Solflare/Backpack)
+   - User signs message to prove ownership
+   - No transaction fees (signature only, no blockchain transaction)
+   - Auto-redirect if already authenticated
+
+4. **API Client Update:**
+   - Added `api.loginWithWallet(wallet_address, signature, message)`
+   - Stores JWT token in localStorage as `auth_token`
+   - Backend endpoint: POST `/api/auth/wallet-login`
+
+5. **Header + Navigation:**
+   - Updated site header: `/deck` → `/mission-deck` link
+   - Removed `/deck` description page (obsolete)
+
+**Backend Changes:**
+1. **Auth Routes:**
+   - Created `backend/app/api/mission_deck/auth_routes.py`
+   - POST `/api/auth/wallet-login` - Verify Solana wallet signature
+   - POST `/api/auth/logout` - Logout endpoint
+
+2. **Signature Verification:**
+   - Decode wallet address from base58 (Solana public key)
+   - Decode signature from base58
+   - Verify Ed25519 signature using `PyNaCl`
+   - If valid → generate JWT token
+   - If invalid → 401 Unauthorized
+
+3. **Dependencies Added:**
+   - `PyNaCl==1.5.0` - Ed25519 signature verification
+   - `base58==2.1.1` - Solana address/signature decoding
+
+4. **Integration:**
+   - Registered auth_router in `backend/app/main.py`
+   - JWT token uses wallet address as user_id
+   - Pseudo-email: `{wallet_address}@wallet`
+
+**Authentication Flow:**
+```
+User clicks "Connect Wallet"
+  → Wallet extension opens (Phantom/Solflare/Backpack)
+    → User approves connection
+      → Frontend: publicKey available
+        → User clicks "Sign & Authenticate"
+          → Wallet signs message (proves ownership, no fees)
+            → Frontend sends: wallet_address + signature + message
+              → Backend: Verify Ed25519 signature
+                → If valid: Generate JWT token
+                  → Frontend: Store token, redirect to /mission-deck/console
+```
+
+**Security:**
+- Message includes wallet address + timestamp (prevents replay attacks)
+- Ed25519 signature verification (Solana standard)
+- JWT token for subsequent API calls (7-day expiration)
+- No transaction fees required (signature only)
+
+**Supported Wallets:**
+- Phantom (most popular Solana wallet)
+- Solflare (power user wallet)
+- Backpack (multichain wallet)
+
+**Files Modified:**
+- Frontend:
+  - `src/app/layout.tsx` (header link update)
+  - `src/app/mission-deck/layout.tsx` (wallet provider)
+  - `src/app/mission-deck/page.tsx` (wallet login UI)
+  - `src/lib/api.ts` (loginWithWallet method)
+  - `src/components/mission-deck/WalletProvider.tsx` (new)
+  - `package.json` (Solana dependencies)
+  - Deleted: `src/app/deck/` (obsolete description page)
+
+- Backend:
+  - `backend/app/api/mission_deck/auth_routes.py` (new)
+  - `backend/app/main.py` (auth router registration)
+  - `backend/requirements.txt` (PyNaCl + base58)
+
+**Commits:**
+- `40e695a` - Solana wallet authentication integration
+
+**Status:** Deployed to Vercel + Render ✅
+
+**Next Steps:**
+1. Test wallet connection at https://scopelock.mindprotocol.ai/mission-deck
+2. Verify signature verification works in production
+3. Test with Phantom/Solflare/Backpack wallets
+4. Confirm JWT token allows access to Mission Deck console
+
+**Link:** src/app/mission-deck/page.tsx (wallet login)
+
+---
+
 ## 2025-11-06 23:35 — Claude: Major /join page redesign based on crypto-burned user feedback ✅
 
 **Work:** Complete redesign of /join page addressing trust issues from crypto-burned audience
