@@ -1,3 +1,75 @@
+## 2025-11-07 06:30 — Claude: Emma Business Buyer Refocus + Direct Upwork Links ✅
+
+**Work Context:** Continuation of session after context limit. Completed Business Buyer refocus (already committed ae4a130) + added direct Upwork link improvement (305ea34).
+
+**Completed ALL Business Buyer changes:**
+
+1. ✅ **proposal_framework.md** - Added Business Buyer template + pricing psychology
+   - Business Buyer Template (200-300 words, outcome-focused)
+   - 3 examples: dashboard development, voice generation, image generation
+   - Pricing Psychology section (6 rules):
+     * Always fixed price (never hourly)
+     * Risk reversal ("2 free revisions")
+     * Price anchoring (start high-middle, negotiate down)
+     * All-inclusive language (no hidden costs)
+     * Justify with value not hours
+     * Payment milestones for $800+ projects
+
+2. ✅ **MISSION_SELECTION.md** - Updated budget targeting + Business Buyer detection
+   - Budget: $400-1500 (Business Buyer sweet spot, NOT $200-600)
+   - Business Buyer signals: job title, language patterns, budget psychology, decision timeline
+   - Technical Buyer signals to SKIP (CTO, process-focused, $200-600, 10-14 day timeline)
+
+3. ✅ **WORKFLOW.md** - Added follow-up strategy (3-5 day timeline)
+   - Follow-up Day 3 (72 hours after proposal)
+   - 4 message templates: Value Reminder, Deadline Urgency, Discount Anchor, Social Proof
+   - Tracking columns for leads-tracker.md
+   - Stop following up Day 5 (Business Buyers decide in 3-5 days)
+
+4. ✅ **Emma's CLAUDE.md** - Updated to focus only on Business Buyers
+   - Evaluation Heuristics: STRONG GO / QUALIFIED MAYBE / HARD NO for Business Buyers
+   - Client Type Detection: Business Buyers PRIMARY, Technical Buyers SKIP
+   - Pre-Session Checklist: Updated budget references ($400-1500)
+   - HARD NO: Budget < $400, skip Technical Buyers
+
+5. ✅ **Direct Upwork Link Improvement** (commit 305ea34)
+   - Added direct Upwork search URLs with filters pre-applied
+   - Example: https://www.upwork.com/nx/search/jobs/?payment_verified=1&q=voice%20generation%20podcast%20audio%20content&sort=recency&t=1&page=1&per_page=50
+   - URL format documentation with parameter explanations
+   - Common search URLs: voice, dashboard, image, translation
+   - Benefits: Saves 3-4 clicks, ensures correct filters, reduces friction
+
+**Why Business Buyers:**
+- 70% of target revenue (vs 30% Technical Buyers)
+- Budget: $400-1500 (higher than Technical Buyers $200-600)
+- Decision timeline: 3-5 days (NOT 10-14 days)
+- Communication: Outcome-focused, non-technical, speed-focused
+- Pricing: Fixed price (removes uncertainty)
+
+**Impact:**
+- Emma now filters for Business Buyer signals (job title, outcome language, $400-1500 budget)
+- Proposal templates are 200-300 words (shorter, skimmable)
+- No technical jargon in proposals (no "API," "CI/CD," "acceptance criteria")
+- Follow-up strategy matches Business Buyer timeline (Day 3 follow-up)
+- Pricing psychology addresses Business Buyer fears (budget anxiety, risk aversion)
+- Direct Upwork links reduce friction (3-4 fewer clicks per search)
+
+**Testing:**
+- All files successfully committed and pushed to main
+- No syntax errors or conflicts
+- Documentation cross-referenced (MISSION_SELECTION ↔ proposal_framework ↔ WORKFLOW ↔ CLAUDE.md)
+
+**Next Steps:**
+- Test Emma with real Upwork job posts (Business Buyers vs Technical Buyers)
+- Track conversion rates for Business Buyer proposals vs old approach
+- Monitor Day 3 follow-up response rates
+
+**Links:**
+- Commit ae4a130: Business Buyer refocus (proposal template, pricing, detection, follow-up)
+- Commit 305ea34: Direct Upwork search links
+
+---
+
 ## 2025-11-07 05:00 — Alexis: Website Improvement Plan V2 FULLY IMPLEMENTED ✅
 
 **Completed ALL homepage changes:**
