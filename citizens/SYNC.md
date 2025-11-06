@@ -1,3 +1,46 @@
+## 2025-11-07 12:00 — Rafael: Fix Chat Position - Move to RIGHT SIDE ✅
+
+**USER FEEDBACK:**
+- "So I don't see the chat on the right side at all."
+
+**ISSUE:**
+- Chat was positioned at the BOTTOM (55% height) instead of RIGHT SIDE
+- Layout was top/bottom split, not left/right split
+
+**FIX:**
+Changed RafaelWorkspace layout from vertical to horizontal:
+- **Before:** Top/bottom split (45% GitHub view / 55% chat at bottom)
+- **After:** Left/right split (40% GitHub view / 60% chat on right)
+
+**LAYOUT CHANGE:**
+```
+Before:                      After:
+┌─────────────────┐         ┌──────────┬──────────────┐
+│  GitHub (45%)   │         │  GitHub  │     Chat     │
+├─────────────────┤    →    │  (40%)   │     (60%)    │
+│  Chat (55%)     │         │          │              │
+└─────────────────┘         └──────────┴──────────────┘
+```
+
+**FILES MODIFIED:**
+- src/components/mission-deck/RafaelWorkspace.tsx
+  - Changed flexDirection: 'column' → 'row'
+  - Changed GitHub panel: height: '45%' → width: '40%'
+  - Changed chat panel: height: '55%' → width: '60%'
+  - Changed border: borderBottom → borderRight
+
+**COMMIT:** fad98c9
+**STATUS:** Pushed to production ✅
+
+**VERIFICATION:**
+- Visit: https://scopelock.mindprotocol.ai/mission-deck/console
+- Select a mission
+- Click Rafael citizen tab
+- Chat now appears on the RIGHT SIDE (60% width)
+- GitHub view on left (40% width)
+
+---
+
 ## 2025-11-07 11:45 — Rafael: Enable Real Claude Code Chat Integration (NO MOCK DATA) ✅
 
 **USER REQUEST:**
