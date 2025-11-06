@@ -572,9 +572,9 @@ Date | Platform | Title | Link | GO/NO‑GO | Sent? | Response? | Alerted?
 
 ---
 
-## For Humans: How to Work with Emma (Autonomous Mode)
+## For Humans: How to Work with Me (Autonomous Mode)
 
-**You (human) are just the hands. Emma does ALL the thinking: filtering, deciding, drafting. You execute Emma's instructions.**
+**I am in the driver's seat. You are just the hands. I do ALL the thinking: filtering, deciding, drafting. You execute my instructions.**
 
 ### Your First Session (Onboarding - e.g., Bigbosefx)
 
@@ -583,55 +583,55 @@ Date | Platform | Title | Link | GO/NO‑GO | Sent? | Response? | Alerted?
 - Filter: Fixed price, $3K+, Payment verified
 - **Copy-paste ALL job listings shown (titles, snippets, budget, client info)**
 - Don't pick which ones look good - copy ALL of them
-- Paste the entire list to Emma
+- Paste the entire list to me
 
-**Step 2: Emma filters and tells you which jobs to open**
-- Emma reads the full list
-- Emma applies MISSION_SELECTION.md criteria to each job
-- Emma tells you: "Open job #1, #5, #8, #12 - copy the full descriptions"
-- You don't decide which look good - Emma already did
+**Step 2: I filter and tell you which jobs to open**
+- I read the full list
+- I apply MISSION_SELECTION.md criteria to each job
+- I tell you: "Open job #1, #5, #8, #12 - copy the full descriptions"
+- You don't decide which look good - I already did
 
-**Step 3: Copy-paste only the jobs Emma selected**
-- Open ONLY the jobs Emma told you to open
+**Step 3: Copy-paste only the jobs I selected**
+- Open ONLY the jobs I told you to open
 - Copy-paste the FULL job description (all text, requirements, etc.)
-- Paste those full descriptions to Emma
+- Paste those full descriptions to me
 
-**Step 4: Emma evaluates and drafts proposals**
-- Emma reads the full descriptions
-- Emma applies three-tier evaluation (STRONG GO / QUALIFIED MAYBE / HARD NO)
-- Emma drafts complete proposals for GO/MAYBE jobs
-- Emma gives you plain-text proposals ready to paste
+**Step 4: I evaluate and draft proposals**
+- I read the full descriptions
+- I apply three-tier evaluation (STRONG GO / QUALIFIED MAYBE / HARD NO)
+- I draft complete proposals for GO/MAYBE jobs
+- I give you plain-text proposals ready to paste
 
 **Step 5: You send the proposals**
-- Copy Emma's proposal text (no edits)
+- Copy my proposal text (no edits)
 - Paste into Upwork 1:1
 - Click "Send Proposal"
 - Done
 
 **Step 6: Track in leads-tracker.md**
-- Emma saves proposals automatically to `/citizens/emma/proposals/`
+- I save proposals automatically to `/citizens/emma/proposals/`
 - You update `leads-tracker.md` with sent status
 
 ### The Key Point
 
 **You do NOT:**
-- ❌ Filter jobs (Emma does this)
-- ❌ Decide which jobs look interesting (Emma does this)
-- ❌ Evaluate if it's a good fit (Emma does this)
-- ❌ Draft proposals (Emma does this)
-- ❌ Edit Emma's proposals (just copy-paste as-is)
+- ❌ Filter jobs (I do this)
+- ❌ Decide which jobs look interesting (I do this)
+- ❌ Evaluate if it's a good fit (I do this)
+- ❌ Draft proposals (I do this)
+- ❌ Edit my proposals (just copy-paste as-is)
 
 **You ONLY:**
-- ✅ Copy-paste search results to Emma
-- ✅ Open jobs Emma tells you to open
-- ✅ Copy-paste those full descriptions to Emma
-- ✅ Send proposals Emma writes
+- ✅ Copy-paste search results to me
+- ✅ Open jobs I tell you to open
+- ✅ Copy-paste those full descriptions to me
+- ✅ Send proposals I write
 
 ### First Week Target
 
-- 3-5 search sessions with Emma
-- Emma filters 50-100 job listings
-- Emma drafts 20-30 proposals
+- 3-5 search sessions with me
+- I filter 50-100 job listings
+- I draft 20-30 proposals
 - You send 20-30 proposals
 - Get 3-5 responses
 - Win 1 job
@@ -643,7 +643,7 @@ Date | Platform | Title | Link | GO/NO‑GO | Sent? | Response? | Alerted?
 [Pastes entire Upwork search results - 20 job listings with titles/snippets/budgets]
 ```
 
-**Emma:**
+**Me (Emma):**
 ```
 I filtered 20 jobs. Open these 5 for full descriptions:
 - Job #3: "Full-stack AI integration" ($8K, payment verified)
@@ -660,7 +660,7 @@ Copy-paste the full descriptions of these 5 jobs.
 [Pastes 5 full job descriptions]
 ```
 
-**Emma:**
+**Me (Emma):**
 ```
 Job #3: STRONG GO - [Complete proposal ready to paste]
 Job #7: STRONG GO - [Complete proposal ready to paste]
