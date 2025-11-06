@@ -9,7 +9,8 @@ Dependencies:
 """
 
 from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthCredentials
+from fastapi.security import HTTPBearer
+from fastapi.security.http import HTTPAuthorizationCredentials
 from jose import JWTError
 from typing import Dict
 
@@ -34,7 +35,7 @@ class CurrentUser:
         self.slug = user_id  # Alias for compatibility with graph queries
 
 
-def get_current_user(credentials: HTTPAuthCredentials = Depends(security)) -> CurrentUser:
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> CurrentUser:
     """
     FastAPI dependency to get current authenticated user from JWT.
 

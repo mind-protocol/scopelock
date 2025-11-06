@@ -56,7 +56,7 @@ def query_graph(cypher: str, params: Optional[Dict[str, Any]] = None) -> List[Di
             FALKORDB_API_URL,
             headers={"Authorization": f"Bearer {FALKORDB_API_KEY}"},
             json={
-                "graph": GRAPH_NAME,
+                "graph_name": GRAPH_NAME,
                 "query": cypher,
                 "params": params or {}
             },
