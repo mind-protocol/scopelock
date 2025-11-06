@@ -14,11 +14,14 @@
     "test": "node scripts/run-test.mjs"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.90.7",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "axios": "^1.13.2",
     "next": "^14.2.33",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "zustand": "^4.5.7"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
