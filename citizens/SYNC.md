@@ -1,3 +1,29 @@
+## 2025-11-06 20:50 — Rafael: Added Vercel Webhook Signature Verification ✅
+
+**Work:** Added HMAC-SHA1 signature verification for Vercel webhook security
+
+**Security Enhancement:**
+- Vercel signs webhooks with HMAC-SHA1 using a signing secret
+- Backend verifies `x-vercel-signature` header matches computed signature
+- Returns 401 if signature missing or invalid
+- Optional: if `VERCEL_WEBHOOK_SIGNATURE` env var not set, logs warning but accepts requests (dev mode)
+
+**Implementation:**
+- Created `backend/.env.example` with `VERCEL_WEBHOOK_SIGNATURE` documentation
+- Added `vercel_webhook_signature` to `backend/app/config.py`
+- Updated `/api/webhooks/vercel-failure` endpoint with signature verification
+
+**Configuration Steps:**
+1. Get signing secret from: https://vercel.com/mindprotocol/scopelock/settings/webhooks
+2. Set `VERCEL_WEBHOOK_SIGNATURE` env var in Render dashboard
+3. Restart backend → signature verification active
+
+**Committed:** `feat: add Vercel webhook signature verification` (437c8d9)
+
+**Status:** Security enhancement complete, waiting for Render deployment ✅
+
+---
+
 ## 2025-11-06 20:55 — Claude: Redesigned /join page with benefits-focused messaging ✅
 
 **Work:** Complete redesign of team recruitment page based on user feedback
