@@ -56,7 +56,15 @@
 
 ## Completed (Recent)
 
-**2025-11-06**
+**2025-11-06 (Later)**
+- ✅ Fixed homepage messaging issues (5 critical changes based on user feedback)
+  - Hero H1: "Software locked to executable acceptance criteria" (specific value, not vague "good")
+  - Hero pitch: "No trust required" positioning (replaced weak "121+ deployments" line)
+  - CTA alignment: Removed "Book call" → "Start with Evidence Sprint" (process-aligned)
+  - Empathy section: Answers in titles, not questions (solution-first, green borders not red)
+  - Commit feed: Added timestamps ("2h ago", "5d ago") for recency proof
+
+**2025-11-06 (Earlier)**
 - ✅ Updated Emma's CLAUDE.md with Marketing/Content responsibilities
   - Weekly blog post workflow (1/week, SEO-optimized)
   - Case study creation process

@@ -419,6 +419,7 @@ async def main():
     parser.add_argument('--generate', action='store_true', help='Generate contacts JSON from rewritten batch files')
     parser.add_argument('--dry-run', action='store_true', help='Test without sending messages')
     parser.add_argument('--start-from', type=int, default=0, help='Resume from contact index')
+    parser.add_argument('--contacts', type=str, help='Custom contacts JSON file (default: outreach_contacts_chunked.json)')
     parser.add_argument('--api-id', type=int, help='Telegram API ID')
     parser.add_argument('--api-hash', help='Telegram API Hash')
     parser.add_argument('--phone', help='Phone number')
@@ -455,12 +456,15 @@ async def main():
         sys.exit(1)
 
     # Load contacts
-    if not OUTREACH_FILE.exists():
-        print("ERROR: Contacts file not found!")
-        print("Run: python telegram_outreach_sender_v2.py --generate")
+    contacts_file = Path(args.contacts) if args.contacts else OUTREACH_FILE
+
+    if not contacts_file.exists():
+        print(f"ERROR: Contacts file not found: {contacts_file}")
+        if not args.contacts:
+            print("Run: python telegram_outreach_sender_v2.py --generate")
         sys.exit(1)
 
-    with open(OUTREACH_FILE) as f:
+    with open(contacts_file) as f:
         contacts = json.load(f)
 
     # Filter pending only (skip already sent)

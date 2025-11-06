@@ -5,6 +5,33 @@
   max-width: 600px;
 }
 
+.formIntro {
+  background: rgba(30, 229, 184, 0.08);
+  border: 1px solid rgba(30, 229, 184, 0.2);
+  border-radius: 8px;
+  padding: var(--slk-gap-4);
+  margin-bottom: var(--slk-gap-3);
+}
+
+.formIntro p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--slk-text);
+  line-height: 1.6;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--slk-gap-4);
+}
+
+@media (max-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
 .formGroup {
   display: flex;
   flex-direction: column;

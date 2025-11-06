@@ -52,7 +52,7 @@
 
 .commitLink {
   display: grid;
-  grid-template-columns: 70px 1fr auto auto;
+  grid-template-columns: 70px 1fr auto auto auto;
   gap: var(--slk-gap-3);
   align-items: center;
   padding: var(--slk-gap-2) var(--slk-gap-3);
@@ -91,6 +91,12 @@
   background: rgba(230, 234, 242, 0.05);
   padding: var(--slk-gap-1) var(--slk-gap-2);
   border-radius: 4px;
+}
+
+.commitTime {
+  font-size: 0.75rem;
+  color: var(--slk-text-muted);
+  white-space: nowrap;
 }
 
 .commitAuthor {
@@ -155,7 +161,8 @@
     gap: var(--slk-gap-2);
   }
 
-  .commitRepo {
+  .commitRepo,
+  .commitTime {
     display: none;
   }
 

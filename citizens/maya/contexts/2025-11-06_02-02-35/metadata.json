@@ -1,0 +1,9 @@
+{
+  "context_id": "2025-11-06_02-02-35",
+  "entity_type": "citizen",
+  "entity_id": "maya",
+  "created_at": "2025-11-06T01:07:18.597585+00:00",
+  "last_updated": "2025-11-06T01:33:13.814939+00:00",
+  "message_count": 321,
+  "has_tool_calls": true
+}

@@ -16,48 +16,48 @@ export default function HomePage() {
           <a href="https://github.com/nlr-ai/terminal-velocity" target="_blank" rel="noopener" style={{ marginLeft: '0.5rem' }}>1.1k ⭐</a>
         </p>
 
-        <h1>You&apos;ll know if we&apos;re good<br />before you pay.</h1>
+        <h1>Software locked to executable acceptance criteria.<br />Pay only when tests pass.</h1>
 
         <p className="hero-pitch">
-          Fixed-price software delivery. 121+ deployments across 7 production systems.
-          Pay only when acceptance tests pass.
+          I write the tests with you. You verify them yourself. No hourly billing, no scope creep, no trust required.
         </p>
         <p className="hero-tagline">
           Solo engineer + AI workforce · <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">65K commits in 2024 →</a>
         </p>
 
-        {/* CHANGE #7: Optimized CTA hierarchy - contact form primary, calendar secondary */}
+        {/* CHANGE #7: CTA hierarchy aligned to process */}
         <div className="hero-ctas">
           <a className="cta-primary" href="#contact">
-            <span>Get pricing for your project</span>
+            <span>Start with Evidence Sprint</span>
             <span aria-hidden="true">→</span>
           </a>
-          <a className="cta-secondary" href="https://cal.com/lester-reynolds-ieksyx/30min" target="_blank" rel="noopener">
-            Book 30min call
-          </a>
-          <Link className="cta-tertiary" href="/proof">See proof log</Link>
+          <Link className="cta-secondary" href="/proof">See proof log</Link>
         </div>
       </header>
 
-      {/* CHANGE #4: "Is This You?" empathy section */}
+      {/* CHANGE #4: Empathy section - answers in titles, not questions */}
       <section className="card card-empathy" style={{ background: 'var(--slk-surface)', border: '1px solid var(--slk-border)' }}>
-        <h2>Is this you?</h2>
+        <h2>You see working code before you pay.</h2>
         <div className="empathy-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
-          <div className="empathy-item" style={{ padding: '1rem', background: 'var(--slk-bg)', borderRadius: '8px', borderLeft: '3px solid var(--slk-danger)' }}>
-            <p>&quot;I paid $4K to an agency. They disappeared after 2 weeks.&quot;</p>
+          <div className="empathy-item" style={{ padding: '1rem', background: 'var(--slk-bg)', borderRadius: '8px', borderLeft: '3px solid var(--slk-success)' }}>
+            <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--slk-text)' }}>No disappearing act</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--slk-text-muted)' }}>
+              Milestones tagged with <code>ac-green_*</code>. You verify tests pass yourself. Payment only after green.
+            </p>
           </div>
-          <div className="empathy-item" style={{ padding: '1rem', background: 'var(--slk-bg)', borderRadius: '8px', borderLeft: '3px solid var(--slk-danger)' }}>
-            <p>&quot;Developer said &apos;90% done&apos; for 3 months. Never shipped.&quot;</p>
+          <div className="empathy-item" style={{ padding: '1rem', background: 'var(--slk-bg)', borderRadius: '8px', borderLeft: '3px solid var(--slk-success)' }}>
+            <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--slk-text)' }}>No endless &quot;90% done&quot;</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--slk-text-muted)' }}>
+              Acceptance criteria locked in <code>AC.md</code>. Tests run in CI. Done means tests pass, not &quot;almost.&quot;
+            </p>
           </div>
-          <div className="empathy-item" style={{ padding: '1rem', background: 'var(--slk-bg)', borderRadius: '8px', borderLeft: '3px solid var(--slk-danger)' }}>
-            <p>&quot;Freelancer quoted $2K, delivered garbage, demanded $8K more.&quot;</p>
+          <div className="empathy-item" style={{ padding: '1rem', background: 'var(--slk-bg)', borderRadius: '8px', borderLeft: '3px solid var(--slk-success)' }}>
+            <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--slk-text)' }}>No surprise invoices</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--slk-text-muted)' }}>
+              Price locked after co-writing <code>AC.md</code>. Changes? <strong>Swap</strong> (€0) or <strong>Add</strong> (new milestone, new price).
+            </p>
           </div>
         </div>
-
-        <p className="empathy-answer" style={{ marginTop: '1.5rem', fontSize: '1.1rem', color: 'var(--slk-text)' }}>
-          <strong>Here&apos;s what&apos;s different:</strong> You see the working demo before committing to full build.
-          You verify tests pass yourself. You pay only when <code>ac-green_*</code> tag is emitted.
-        </p>
       </section>
 
       <section className="card scope-steps" aria-labelledby="process">

@@ -2,10 +2,10 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, demo, problem, timeline, budget } = await request.json();
 
     // Validate inputs
-    if (!name || !email || !message) {
+    if (!name || !email || !demo || !problem || !timeline || !budget) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -26,16 +26,23 @@ export async function POST(request: Request) {
     const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
     if (telegramBotToken && telegramChatId) {
-      const telegramMessage = `📧 **New Contact Form Submission**
+      const telegramMessage = `🚀 **New Evidence Sprint Request**
 
-**Name:** ${name}
+**From:** ${name}
 **Email:** ${email}
 
-**Message:**
-${message}
+**Demo Request (90s):**
+${demo}
+
+**Problem to Solve:**
+${problem}
+
+**Timeline:** ${timeline}
+**Budget:** ${budget}
 
 ---
-_From scopelock.mindprotocol.ai/contact_`;
+**Next Step:** Send Evidence Sprint spec (what they'll see, timeline, price) within 6 hours.
+_From scopelock.mindprotocol.ai_`;
 
       const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
 

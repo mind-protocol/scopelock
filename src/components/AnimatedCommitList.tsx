@@ -9,10 +9,30 @@ interface CommitData {
   url: string;
   repo: string;
   isAI: boolean;
+  timestamp: string;
 }
 
 interface AnimatedCommitListProps {
   commits: CommitData[];
+}
+
+function getRelativeTime(timestamp: string): string {
+  const now = new Date();
+  const commitDate = new Date(timestamp);
+  const diffMs = now.getTime() - commitDate.getTime();
+  const diffMinutes = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMinutes / 60);
+  const diffDays = Math.floor(diffHours / 24);
+
+  if (diffMinutes < 60) {
+    return `${diffMinutes}m ago`;
+  } else if (diffHours < 24) {
+    return `${diffHours}h ago`;
+  } else if (diffDays < 7) {
+    return `${diffDays}d ago`;
+  } else {
+    return commitDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
 }
 
 export function AnimatedCommitList({ commits }: AnimatedCommitListProps) {
@@ -55,6 +75,7 @@ export function AnimatedCommitList({ commits }: AnimatedCommitListProps) {
               <span className={styles.commitSha}>{commit.sha}</span>
               <span className={styles.commitMsg}>{commit.message}</span>
               <span className={styles.commitRepo}>{commit.repo.split('/')[1]}</span>
+              <span className={styles.commitTime}>{getRelativeTime(commit.timestamp)}</span>
               <span className={`${styles.commitAuthor} ${commit.isAI ? styles.ai : styles.human}`}>
                 {commit.isAI ? 'AI' : 'Human'}
               </span>

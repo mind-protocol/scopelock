@@ -8,6 +8,7 @@ interface GitHubCommit {
     author: {
       name: string;
       email: string;
+      date: string;
     };
   };
   html_url: string;
@@ -41,6 +42,7 @@ const fetchRepoCommits = cache(async (owner: string, repo: string, limit: number
       message: commit.commit.message.split('\n')[0], // First line only
       url: commit.html_url,
       repo: `${owner}/${repo}`,
+      timestamp: commit.commit.author.date,
       // Detect AI authorship from commit message or author
       isAI: commit.commit.message.includes('🤖 Generated with') ||
             commit.commit.message.includes('aider:') ||

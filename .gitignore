@@ -34,3 +34,4 @@ outreach/outreach_log.csv
 outreach/scopelock_sender.session
 outreach/*.session
 outreach/*.session-journal
+outreach/developers/recruitment_contacts.json
