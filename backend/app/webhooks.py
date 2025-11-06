@@ -581,12 +581,54 @@ async def vercel_failure_webhook(request: Request):
     5. Rafael diagnoses and pushes fix
     6. Vercel auto-deploys fixed version
 
+    Security:
+    - Verifies HMAC-SHA1 signature using VERCEL_WEBHOOK_SIGNATURE env var
+    - If signature env var not set, accepts all requests (dev mode)
+
     Args:
         request: Vercel webhook payload
 
     Returns:
         {"status": "rafael_invoked"|"already_handled"|"ignored", ...}
     """
+    # Verify webhook signature if configured
+    from app.config import settings
+    if hasattr(settings, 'vercel_webhook_signature') and settings.vercel_webhook_signature:
+        import hmac
+        import hashlib
+
+        # Get signature from header
+        signature_header = request.headers.get('x-vercel-signature')
+        if not signature_header:
+            logger.error(f"[vercel:webhook] Missing x-vercel-signature header")
+            return JSONResponse(
+                status_code=401,
+                content={"status": "error", "message": "Missing webhook signature"}
+            )
+
+        # Get raw body for signature verification
+        body_bytes = await request.body()
+
+        # Compute expected signature
+        expected_signature = hmac.new(
+            settings.vercel_webhook_signature.encode(),
+            body_bytes,
+            hashlib.sha1
+        ).hexdigest()
+
+        # Verify signature
+        if not hmac.compare_digest(signature_header, expected_signature):
+            logger.error(f"[vercel:webhook] Invalid signature")
+            return JSONResponse(
+                status_code=401,
+                content={"status": "error", "message": "Invalid webhook signature"}
+            )
+
+        logger.info(f"[vercel:webhook] Signature verified ✅")
+    else:
+        logger.warning(f"[vercel:webhook] No signature verification (VERCEL_WEBHOOK_SIGNATURE not set)")
+
+    # Parse JSON body
     try:
         body = await request.json()
     except Exception as e:

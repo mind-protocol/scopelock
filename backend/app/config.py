@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     telegram_bot_token: str = ""
     telegram_chat_id: str = ""
     webhook_secret: str = ""  # HMAC secret for webhook verification
+    vercel_webhook_signature: str = ""  # Vercel webhook signing secret (optional)
 
     # Environment
     environment: Literal["development", "production"] = "development"
