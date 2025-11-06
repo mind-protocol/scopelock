@@ -10,16 +10,32 @@ If Rafael can't build it in one conversation → we pass.
 
 ## Green Light Criteria (All Must Match)
 
-### 1. **Budget: $200-$600 (Week 1-2), $600-$1500 (Week 3+)**
+### 1. **Budget: $400-$1500 (Business Buyer Sweet Spot)**
 
 **Why this range:**
-- Below $200: Client expects "cheap freelancer," high support burden
-- $200-600: Perfect for 2-3 day missions, good client quality
-- Above $1500: Scope too large OR client expectations too high for Week 1
+- Below $400: Too small for Business Buyers (marketing managers, founders, small business owners)
+- $400-1500: Business Buyer sweet spot (70% of our target revenue)
+- Above $1500: Enterprise complexity or requires multi-milestone structure
+
+**Budget by service type:**
+
+**Creative AI Services (70-85% margin):**
+- Voice generation: $400-700
+- Image generation (bulk): $400-800
+- Presentation/PDF design: $400-800
+- Translation: $500-1000
+- Content writing: $600-1200
+- Music generation: $300-600
+- Video generation: $600-1200
+
+**Development Services (50-60% margin):**
+- Simple dashboards: $600-1200
+- API integrations: $600-1000
+- CRUD apps: $800-1500
 
 **Red flag budgets:**
-- $50-150: "Looking for cheap labor"
-- $2000+: Enterprise complexity or scope creep risk
+- $50-300: "Looking for cheap labor," not Business Buyers
+- $2000+: Enterprise complexity or scope creep risk (need multi-milestone structure)
 
 ---
 
@@ -119,7 +135,72 @@ If Rafael can't build it in one conversation → we pass.
 
 ---
 
-### 6. **Competition: <15 Proposals**
+### 6. **Business Buyer Detection (Target 70% of Revenue)**
+
+**Why Business Buyers:**
+- Time-scarce (drowning in tasks, need fast results)
+- Results-driven (don't care about process, only outcomes)
+- Risk-averse (fear overpaying, making bad decisions)
+- Decision timeline: 3-5 days (move fast once credible)
+- Budget: $400-1500 (higher than Technical Buyers)
+
+---
+
+#### Business Buyer Signals (Look for 3+)
+
+**Job Title Signals:**
+- ✅ Marketing Manager, Content Manager, Social Media Manager
+- ✅ Founder, Co-Founder, CEO, Business Owner
+- ✅ Operations Manager, Project Manager
+- ✅ "Small business owner," "Entrepreneur"
+- ✅ Agency roles: "Agency owner," "Agency director"
+
+**Language Patterns (Outcome-Focused):**
+- ✅ "I need X delivered by [date]"
+- ✅ "Looking for someone to handle Y"
+- ✅ "Need help getting Z done quickly"
+- ✅ "Deliver X so I can focus on my business"
+- ✅ "Fast turnaround," "Quick delivery," "Need this ASAP"
+
+**Description Style (Non-Technical):**
+- ✅ Plain language (no technical jargon)
+- ✅ Describes desired outcome, not implementation ("a dashboard to see my customers" not "React admin panel with PostgreSQL backend")
+- ✅ Focuses on "what" not "how" ("10 podcast voiceovers" not "ElevenLabs API integration")
+- ✅ Time pressure mentioned ("launching next week," "urgent," "deadline Friday")
+- ✅ Business impact described ("save time," "grow audience," "launch faster")
+
+**Budget Psychology Signals:**
+- ✅ Fixed price explicitly requested
+- ✅ "All-inclusive" or "turnkey" language
+- ✅ Asks about revisions upfront ("how many revisions included?")
+- ✅ Mentions past bad experiences ("need reliable person," "had issues before")
+- ✅ Budget is round number ($500, $800, $1000 not $487 or $923)
+
+**Decision Timeline Signals:**
+- ✅ "Need to start immediately"
+- ✅ "Looking to make decision this week"
+- ✅ "Deadline in 5-7 days"
+- ✅ Posts on Monday/Tuesday (ready to commit by Friday)
+- ✅ Responds to proposals within 24 hours
+
+---
+
+#### Technical Buyer Signals (AVOID - Different Persona)
+
+**These are NOT Business Buyers (30% revenue, different communication style):**
+
+❌ Job titles: CTO, Tech Lead, Senior Developer, Engineering Manager
+❌ Language: "CI/CD," "acceptance criteria," "test coverage," "scalability," "architecture"
+❌ Process-focused: Mentions "methodology," "workflow," "best practices"
+❌ Budget: $200-600 (lower than Business Buyers)
+❌ Decision timeline: 10-14 days (slower, more technical evaluation)
+❌ Description style: Technical implementation details, stack requirements
+
+**If you see Technical Buyer signals:** SKIP (not our target persona for now)
+
+---
+
+### 7. **Competition: <15 Proposals**
 
 **Why:**
 - More than 15 proposals = lottery, low win rate

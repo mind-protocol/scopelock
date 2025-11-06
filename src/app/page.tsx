@@ -16,22 +16,21 @@ export default function HomePage() {
           <a href="https://github.com/nlr-ai/terminal-velocity" target="_blank" rel="noopener" style={{ marginLeft: '0.5rem' }}>1.1k ⭐</a>
         </p>
 
-        <h1>Software locked to executable acceptance criteria.<br />Pay only when tests pass.</h1>
+        <h1>Professional Software & Creative Work.<br />Delivered Fast.</h1>
 
         <p className="hero-pitch">
-          I write the tests with you. You verify them yourself. No hourly billing, no scope creep, no trust required.
+          I build websites, AI chatbots, and web apps. I also create presentations, voiceovers, translations, and content using AI. Fixed pricing. Fast delivery. You pay only when it works.
         </p>
         <p className="hero-tagline">
-          Solo engineer + AI workforce · <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">65K commits in 2024 →</a>
+          Solo developer + AI-assisted workflow · <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" className="verify-link">65k commits in 2024</a> · <a href="https://github.com/mind-protocol" target="_blank" rel="noopener" className="verify-link">121+ deployments →</a>
         </p>
 
-        {/* CHANGE #7: CTA hierarchy aligned to process */}
         <div className="hero-ctas">
           <a className="cta-primary" href="#contact">
-            <span>Start with Evidence Sprint</span>
+            <span>Get Free Estimate</span>
             <span aria-hidden="true">→</span>
           </a>
-          <Link className="cta-secondary" href="/proof">See proof log</Link>
+          <Link className="cta-secondary" href="/proof">See My Work</Link>
         </div>
       </header>
 
@@ -60,17 +59,152 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="card card-services" aria-labelledby="services-title">
+        <h2 id="services-title">What I Build</h2>
+        <p className="services-intro" style={{ marginTop: '1rem', marginBottom: '2rem', color: 'var(--slk-text-muted)' }}>
+          From web development to AI-powered creative work. Fixed pricing. Fast delivery.
+        </p>
+
+        <div className="services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>💻</span> Web Development
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Landing pages, web apps, SaaS products
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $200 | 2-7 days | Next.js + Vercel
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🤖</span> AI Chatbot Integration
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Add AI chat to your website or app
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $400 | 3-7 days | OpenAI/Claude API
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🗄️</span> Backend APIs
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              REST APIs, database integrations
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $300 | 3-7 days | FastAPI + PostgreSQL
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>📄</span> Document Processing
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Extract data from PDFs, emails, documents using AI
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $400 | 3-7 days | Python + Claude API
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>📊</span> Presentations & PDFs
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Pitch decks, sales presentations, handbooks
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $400 | 1-3 days | AI-powered design
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🎤</span> Voice & Audio
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Voiceovers for videos, audiobooks, podcast intros
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $300 | 1-3 days | ElevenLabs AI
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🌐</span> Translation
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Translate websites, apps, content to 50+ languages
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $500 | 2-5 days | Claude AI
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>✍️</span> Content Writing
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              SEO blog posts, product descriptions, email campaigns
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $600 | 2-5 days | AI-assisted writing
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🎨</span> Images & Graphics
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Product images, social media graphics, marketing materials
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $400 | 1-3 days | Ideogram AI
+            </p>
+          </div>
+
+          <div style={{ padding: '1.5rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🎵</span> Music & Sound
+            </h3>
+            <p style={{ color: 'var(--slk-text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+              Background music, podcast intros, custom jingles
+            </p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--slk-accent)' }}>
+              Starting at $300 | 1-3 days | Suno/Udio AI
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="card scope-steps" aria-labelledby="process">
-        <h2 id="process">How we work</h2>
+        <h2 id="process">How I Work</h2>
+        <p style={{ marginTop: '1rem', marginBottom: '2rem', color: 'var(--slk-text-muted)' }}>
+          Simple 4-step process. No meetings required. Daily updates.
+        </p>
         <ol>
           <li>
-            <strong>ScopeLock</strong> — We co-write <code>AC.md</code> (acceptance criteria) and write the corresponding acceptance tests.
+            <strong>You Describe What You Need (Day 1)</strong> — Send me a message or fill out the estimate form. I'll confirm I understand and give you a fixed price + timeline.
           </li>
           <li>
-            <strong>Evidence Sprint</strong> — We produce a visible artifact (demo ≤90s + <code>DELTA.md</code>) to validate choices and tighten <code>AC.md</code>.
+            <strong>I Create Samples (Days 2-3)</strong> — For creative work: I create 5-10 samples in your style. For development: I build a working demo or first feature. You approve or request changes.
           </li>
           <li>
-            <strong>Build → AC green</strong> — We deliver through tagged milestones until the criteria pass in CI/CD.
+            <strong>I Deliver the Full Project (Days 4-7)</strong> — I complete the rest based on your approved samples/demo. You get daily updates (no need to check in).
+          </li>
+          <li>
+            <strong>You Test & Pay When Satisfied (Day 8+)</strong> — Test everything. Request changes if needed (2 revision rounds included). You only pay when you're completely happy.
           </li>
         </ol>
       </section>
@@ -337,65 +471,120 @@ export default function HomePage() {
         </div>
 
         <p className="pricing-footer" style={{ marginTop: '2rem', textAlign: 'center', color: 'var(--slk-text-muted)' }}>
-          Final price locked after co-writing AC.md. No hourly rates, no surprises.
+          Final price fixed upfront. No hourly rates, no surprises.
         </p>
       </section>
 
-      {/* CHANGE #6: Technical FAQ section */}
-      <section className="card card-technical-faq" aria-labelledby="technical-faq-title">
-        <h2 id="technical-faq-title">Technical FAQ</h2>
+      <section className="card card-about" aria-labelledby="about-title">
+        <h2 id="about-title">About Me</h2>
+
+        <div style={{ marginTop: '1.5rem', lineHeight: '1.8' }}>
+          <p style={{ marginBottom: '1.5rem' }}>
+            I'm Nicolas, a solo developer who ships fast.
+          </p>
+
+          <p style={{ marginBottom: '1.5rem' }}>
+            I've built AI companion platforms (121+ deployments), trading bots ($75K AUM),
+            and multi-agent systems (97 agents, 99.7% uptime). My open-source CLI tool has
+            1,051 GitHub stars (top 0.01% of GitHub).
+          </p>
+
+          <p style={{ marginBottom: '1.5rem' }}>
+            I use AI to speed up delivery without compromising quality. What used to take
+            agencies 4 weeks, I deliver in 4 days. You get professional work at fair prices.
+          </p>
+
+          <p style={{ fontWeight: 'bold', marginBottom: '1rem' }}>Links:</p>
+          <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2' }}>
+            <li>
+              → <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-accent)' }}>
+                GitHub (Personal)
+              </a> — 65K commits in 2024, 37 repos
+            </li>
+            <li>
+              → <a href="https://github.com/mind-protocol" target="_blank" rel="noopener" style={{ color: 'var(--slk-accent)' }}>
+                GitHub (Organization)
+              </a> — 23 repos, Terminal Velocity (1.1k stars)
+            </li>
+          </ul>
+
+          <p style={{ marginTop: '2rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', borderLeft: '3px solid var(--slk-success)' }}>
+            No agencies. No teams. Just me + AI-assisted workflow.
+          </p>
+        </div>
+      </section>
+
+      <section className="card card-faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Frequently Asked Questions</h2>
 
         <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
-          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>What test frameworks do you use?</summary>
+          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>How fast can you deliver?</summary>
           <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
-            Playwright for E2E (web apps), pytest for Python, Jest for Node.js.
-            We match your existing stack or choose based on AC.md requirements.
+            Most projects are delivered in 2-7 days. Simple projects (landing pages, presentations) in 2-3 days.
+            Complex projects (web apps, integrations) in 5-7 days. Rush delivery (1-2 days) available for +30%.
           </p>
         </details>
 
         <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
-          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>How do you handle CI/CD?</summary>
+          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>What if I don't like the result?</summary>
           <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
-            GitHub Actions by default. We emit <code>ac-green_*</code> tags when
-            acceptance tests pass in CI. You can run tests locally before approving payment.
+            You don't pay until you're happy. 2 revision rounds included. I'll keep revising until it meets your standards.
           </p>
         </details>
 
         <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
-          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>What if our stack is [specific framework]?</summary>
+          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>Do you work with agencies or outsource the work?</summary>
           <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
-            We work in: Next.js, Django, FastAPI, React Native, Go. If your stack is different,
-            we&apos;ll assess fit during ScopeLock phase (before committing).
+            No. I do all the work myself, with AI assistance. No teams, no outsourcing. You work directly with me.
+          </p>
+        </details>
+
+        <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>What's your pricing model?</summary>
+          <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
+            Fixed price, quoted upfront. No hourly rates. No surprise costs. Development: $200-600. Creative services: $300-1500.
+          </p>
+        </details>
+
+        <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>Can you start immediately?</summary>
+          <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
+            Yes. Most projects I can start same day or next day.
           </p>
         </details>
 
         <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
           <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>Do you sign NDAs?</summary>
           <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
-            Yes. Standard mutual NDA available on request.
+            Yes, I'm happy to sign your NDA before we start.
+          </p>
+        </details>
+
+        <details style={{ marginTop: '1rem', padding: '1rem', background: 'var(--slk-surface)', borderRadius: '8px', border: '1px solid var(--slk-border)' }}>
+          <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>What if my project is larger than your typical scope?</summary>
+          <p style={{ marginTop: '0.5rem', color: 'var(--slk-text-muted)' }}>
+            I can break it into smaller milestones. You pay per milestone, only when each milestone is delivered and tested.
           </p>
         </details>
       </section>
 
-      {/* CHANGE #9: "Not a Good Fit If..." filter */}
       <section className="card card-not-fit" style={{ background: 'var(--slk-surface)', border: '1px solid var(--slk-border)' }} aria-labelledby="not-fit-title">
         <h2 id="not-fit-title">Not a Good Fit If...</h2>
         <ul className="not-fit-list" style={{ marginTop: '1rem', lineHeight: '1.8', color: 'var(--slk-text-muted)' }}>
-          <li>✗ You need someone full-time (we work on milestones, not retainers)</li>
-          <li>✗ You want hourly billing (we only do fixed-price)</li>
+          <li>✗ You need someone full-time (I work on milestones, not retainers)</li>
+          <li>✗ You want hourly billing (I only do fixed-price)</li>
           <li>✗ Scope is undefined (&quot;just start building, we&apos;ll figure it out&quot;)</li>
           <li>✗ You need hardware, blockchain, or WordPress customization</li>
         </ul>
 
         <p style={{ marginTop: '1.5rem', padding: '1rem', background: 'var(--slk-bg)', borderRadius: '8px', borderLeft: '3px solid var(--slk-success)' }}>
-          <strong>Good fit:</strong> AI integration, web apps, APIs, SaaS MVPs,
-          data pipelines - where we can write executable acceptance criteria.
+          <strong>Good fit:</strong> Web development, AI chatbots, creative AI services (presentations, voice, content), backend APIs.
         </p>
       </section>
 
       <section className="card" id="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">Contact</h2>
-        <p><strong>Kickoff ≤ 72h.</strong> Tell us about a milestone: we write <code>AC.md</code> together and deliver until &quot;AC green&quot;.</p>
+        <p><strong>Start within 24-48 hours.</strong> Tell me what you need and I'll send you a fixed price + timeline. No obligation.</p>
 
         <ContactForm />
 

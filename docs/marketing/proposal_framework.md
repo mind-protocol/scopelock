@@ -270,7 +270,333 @@ I'd rather build than stay idle.
 
 ## Complete Proposal Templates
 
-### Template A: Process-Skeptical Client
+### Business Buyer Template (PRIMARY - 70% of revenue)
+
+**Target:** Marketing managers, founders, small business owners - time-scarce, results-driven, risk-averse
+
+**Budget range:** $400-1500
+
+**Decision timeline:** 3-5 days (they move fast once they decide you're credible)
+
+**Works for:** Creative AI (voice, images, presentations) AND development (dashboards, APIs, automation)
+
+**Length:** 200-300 words (shorter than Technical Buyer templates - they skim fast)
+
+---
+
+#### Structure
+
+1. **Personal greeting + pain mirror** (1 sentence - show you read their post)
+2. **What they'll GET** (specific deliverables, outcome-focused, no jargon)
+3. **When they'll get it** (timeline - speed matters)
+4. **Fixed price with risk reversal** (removes budget anxiety)
+5. **One relevant sample/proof link** (show, don't tell)
+6. **Simple CTA** (frictionless next step, removes decision fatigue)
+
+---
+
+#### Language Rules
+
+**❌ NEVER use:**
+- Technical jargon: "API", "CI/CD", "acceptance criteria", "executable tests", "p95 latency"
+- Process terms: "ScopeLock", "Evidence Sprint", "AC.md", "milestone", "acceptance criteria"
+- Tool names: "Next.js", "Python", "Vercel", "FastAPI", "PostgreSQL"
+- Time estimates: "10-12 hours of work", "this will take X days"
+
+**✅ ALWAYS use:**
+- Outcome focus: "You'll have X", "You'll be able to Y"
+- Speed signals: "delivered in 5 days", "first version by Friday", "ready by Monday"
+- Visual/live proof: Show working examples (live URLs, not GitHub repos)
+- Plain language: "dashboard" not "admin panel", "works on mobile" not "responsive design"
+
+---
+
+#### Example 1: Development (Dashboard)
+
+```
+Hi Sarah,
+
+I saw you need a dashboard to manage customer data. Here's what you'll get:
+
+1. Clean dashboard showing all your customers in one place
+2. Search and filter by name, email, or signup date
+3. Export to Excel anytime
+4. Works on desktop and mobile
+
+Delivered in 7 days. Fixed price: $800 (includes 2 free revision rounds if anything needs tweaking).
+
+You can see a similar dashboard I built here: therapykin.ai/demo
+
+Want to start Monday? I'll send you the first working version by Friday.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls
+```
+
+**Why this works:**
+- Time-scarce founders can skim in 30 seconds
+- No jargon = no imposter syndrome trigger ("what's an API?")
+- Fixed price + risk reversal = removes budget anxiety
+- Live proof link = credibility without bragging
+- Simple CTA = removes decision fatigue ("Want to start Monday?")
+- Timeline shows urgency ("first version by Friday")
+
+---
+
+#### Example 2: Creative AI (Voice Generation)
+
+```
+Hey Marcus,
+
+I can generate those 10 podcast voiceovers for you. Here's what you'll get:
+
+1. 10 professional voiceovers (your scripts, any voice style you want)
+2. High quality audio files (ready to publish)
+3. 2 free revisions per voiceover if the tone isn't quite right
+
+Delivered in 3 days. Fixed price: $400.
+
+You can hear voice samples I've generated here: [portfolio URL with audio players]
+
+Ready to start tomorrow? Send me the first 3 scripts and I'll show you what's possible.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls
+```
+
+**Why this works:**
+- Addresses their immediate pain (need voiceovers)
+- Speed signal (3 days = faster than hiring voice actors)
+- Risk reversal (2 free revisions per voiceover)
+- Live audio samples (proof they can actually hear)
+- Low friction CTA ("send me first 3 scripts")
+
+---
+
+#### Example 3: Creative AI (Image Generation - Presentation Slides)
+
+```
+Hi Jessica,
+
+I can create those 20 custom images for your investor presentation. Here's what you'll get:
+
+1. 20 professional images matching your brand colors
+2. High resolution (perfect for slides and printouts)
+3. 2 free revisions if any image doesn't match your vision
+
+Delivered in 4 days. Fixed price: $600.
+
+You can see examples of presentation images I've created here: [portfolio with visual examples]
+
+Need these by Friday? I can prioritize your project - just send me the 5 most important slides first.
+
+Nicolas
+github.com/nlr-ai • github.com/mind-protocol
+Available 14:00-19:00 Central for calls
+```
+
+**Why this works:**
+- Addresses urgent need (investor presentation = high stakes)
+- Clear deliverable (20 images, not "image generation service")
+- Risk reversal builds confidence (2 revisions per image)
+- Visual proof (they can see quality before committing)
+- Urgency acknowledged ("Need these by Friday?")
+
+---
+
+## Pricing Psychology for Business Buyers
+
+**Context:** Business Buyers fear overpaying and making bad decisions. They're not technical, so they can't evaluate code quality or technical complexity. They evaluate on three factors: price transparency, speed, and risk.
+
+### The 6 Pricing Rules
+
+#### 1. ALWAYS Propose Fixed Price (Never Hourly for Defined Work)
+
+**Why it works:**
+
+Hourly pricing triggers three fears in Business Buyers:
+- **Uncertainty fear:** "What if it takes longer than estimated? Will I get surprised with a bigger bill?"
+- **Verification anxiety:** "How do I know they're not padding hours? I can't watch them work."
+- **Budgeting paralysis:** "I can't plan my budget if the final cost is a range."
+
+Fixed pricing removes all three fears. One number = they can decide yes/no immediately.
+
+**Examples:**
+
+❌ **BAD (hourly with range):**
+"I charge $50/hour, this will take about 10-15 hours = $500-750"
+
+✅ **GOOD (fixed with included value):**
+"Fixed price: $650 (dashboard with 3 main features + 2 revision rounds)"
+
+**When to use hourly (rare exceptions):**
+- Ongoing retainer relationships after first project
+- Truly undefined scope (exploration/research work)
+- Client explicitly requests hourly AND you've established trust
+
+#### 2. Include Risk Reversal ("2 Free Revisions" or "First Draft in 24h, Pay Only If You Like It")
+
+**Why it works:**
+
+Business Buyers are risk-averse. They've been burned before (see upwork_client_personas_research.md - the $80K disaster stories). Risk reversal flips the risk from them to you, which builds instant trust.
+
+**Risk reversal options:**
+
+**For creative work ($400-800):**
+- "2 free revision rounds if anything needs tweaking"
+- "First 3 samples delivered in 24h - if you don't like the style, no charge"
+- "Unlimited revisions until you're happy (within original scope)"
+
+**For development work ($600-1200):**
+- "2 weeks of free bug fixes after delivery"
+- "First working version in 48h - you can test it before paying anything"
+- "Full refund if dashboard doesn't load in under 2 seconds"
+
+**For high-value projects ($1200+):**
+- "30-day money-back guarantee if it doesn't do what we agreed"
+- "Free fixes for any issues in first 60 days"
+- "Pay 50% upfront, rest only when you approve final version"
+
+**Examples:**
+
+❌ **BAD (no risk reversal):**
+"Fixed price: $800. Payment upfront."
+
+✅ **GOOD (risk reversal reduces fear):**
+"Fixed price: $800 (includes 2 free revision rounds if anything needs tweaking)"
+
+#### 3. Price Anchoring (Start High-Middle, Can Negotiate Down)
+
+**Why it works:**
+
+Business Buyers expect to negotiate (they're used to vendor negotiations). If you start at your floor price, they'll still ask for a discount and you'll either lose margin or have to say no (which feels confrontational).
+
+**The anchoring strategy:**
+
+1. **Calculate your acceptable range** based on AI-assisted time:
+   - Low: Minimum you'll accept (e.g., $600 for 8 hours AI work)
+   - High: Maximum they'd pay (e.g., $900 for similar scope)
+
+2. **Quote high-middle** (e.g., $850):
+   - Leaves room for small discount without losing margin
+   - Positions you as premium (not desperate)
+
+3. **Have negotiation plan ready:**
+   - If they say "too expensive": "I can do $700 if we simplify feature X to just Y"
+   - If they ghost: Follow up Day 3 with "$750 if you commit by Friday"
+   - Floor price: $650 (below this, decline politely)
+
+**Examples:**
+
+❌ **BAD (starting at floor):**
+"Fixed price: $600" → Client asks for $500 → You lose margin or say no
+
+✅ **GOOD (anchoring high-middle):**
+"Fixed price: $850" → Client asks for discount → "I can do $700 if we remove the Excel export feature"
+
+#### 4. Use "All-Inclusive" Language (No Hidden Costs)
+
+**Why it works:**
+
+Business Buyers fear surprise charges. "All-inclusive" removes that fear and makes decision simple: one price = everything you need.
+
+**What to include explicitly:**
+
+For development work:
+- Hosting setup (if applicable)
+- Testing
+- Deployment
+- Documentation
+- X revision rounds
+- X days/weeks of bug fixes
+
+For creative work:
+- Source files (if applicable)
+- Different formats (PNG, JPG, MP4, etc.)
+- X revisions
+- Commercial usage rights
+
+**Examples:**
+
+❌ **BAD (vague, implies hidden costs):**
+"Fixed price: $800 for dashboard development"
+
+✅ **GOOD (all-inclusive, transparent):**
+"Fixed price: $800 (includes dashboard development, hosting setup, 2 revision rounds, and 30 days of bug fixes - no surprise charges)"
+
+#### 5. Justify Price with Value, Not Hours
+
+**Why it works:**
+
+Business Buyers don't care how long it takes you. They care what it does for them (time saved, money made, problem solved). Justifying with hours makes them think "Why should I pay $50/hour when Fiverr is $10/hour?"
+
+**The value justification formula:**
+
+[Fixed price] - [Tangible outcome they care about]
+
+**Examples:**
+
+❌ **BAD (justifying with hours):**
+"$800 because this is 10-12 hours of development work at my rate"
+
+✅ **GOOD (justifying with value):**
+"$800 - you'll save 5+ hours/week managing customers manually. That's 20+ hours/month back."
+
+❌ **BAD (technical justification):**
+"$500 for 8 hours of voice generation work using ElevenLabs API"
+
+✅ **GOOD (outcome justification):**
+"$500 - you'll have 10 podcast episodes ready to publish this week instead of waiting weeks for voice actor availability"
+
+**More value justification examples:**
+
+For dashboards:
+- "See all your customer data in one place instead of juggling 3 spreadsheets"
+- "Your team can update records themselves without asking you"
+
+For voice generation:
+- "Publish content 3x faster than hiring voice actors"
+- "Consistent voice across all episodes (no scheduling conflicts)"
+
+For image generation:
+- "Professional images without waiting days for designer revisions"
+- "Change images anytime (no designer retainer needed)"
+
+#### 6. Payment Milestones for Projects $800+ (Not Full Upfront)
+
+**Why it works:**
+
+Business Buyers are cautious with money, especially with new vendors. Milestones build trust by showing you're confident in delivering value incrementally.
+
+**Milestone structure by budget:**
+
+**Under $600:** Full payment on delivery (one milestone)
+- Why: Small enough that risk feels manageable
+- Example: "$400 - pay when I deliver all 10 voiceovers"
+
+**$600-1200:** 50% upfront, 50% on delivery (two milestones)
+- Why: Balanced risk (you get commitment, they get proof before full payment)
+- Example: "$800 total. $400 to start, $400 when dashboard is live and tested"
+
+**$1200+:** 40% upfront, 40% at midpoint, 20% on delivery (three milestones)
+- Why: Reduces risk for both (you get paid as you deliver, they pay as they verify)
+- Example: "$1500 total. $600 to start, $600 when first version is live, $300 when everything is approved"
+
+**Examples:**
+
+❌ **BAD (full upfront for high-value work):**
+"Fixed price: $1200. Payment upfront."
+→ Business Buyer thinks: "What if they take my money and disappear?"
+
+✅ **GOOD (milestone structure):**
+"Fixed price: $1200. Payment: $500 upfront (to start work), $500 when dashboard is live for testing, $200 when everything is approved."
+→ Business Buyer thinks: "I only pay the full amount after I see it works."
+
+---
+
+### Template A: Process-Skeptical Client (TECHNICAL BUYERS)
 
 **Signals:**
 - "No Agencies" in post

@@ -134,8 +134,177 @@ After each post, update `citizens/emma/leads-tracker.md`:
 
 **Next steps:**
 - Wait 24-48h for responses
-- Follow up on high-value posts (>$10K) after 48h
+- Follow up on Business Buyer posts after Day 3 (see Follow-Up Strategy below)
 - Repeat workflow when ready for next batch
+
+---
+
+## Follow-Up Strategy (Business Buyers - 3-5 Day Timeline)
+
+**Context:** Business Buyers (marketing managers, founders, small business owners) decide in 3-5 days, NOT 10-14 days like Technical Buyers. If you don't follow up by Day 3, they've likely hired someone else.
+
+---
+
+### When to Follow Up
+
+**Day 3 (72 hours after proposal sent):**
+- If no response from Business Buyer post
+- Only follow up on jobs with $400+ budget (don't waste time on low-value)
+- Skip Technical Buyer posts (they take 10-14 days)
+
+**How to identify Business Buyer posts in tracker:**
+- Budget: $400-1500 (not $200-600)
+- Job title: Marketing Manager, Founder, CEO, Business Owner
+- Language: Outcome-focused ("I need X delivered"), no technical jargon
+
+---
+
+### Follow-Up Message Templates (Business Buyers)
+
+**Template 1: Value Reminder (Day 3)**
+
+*Use when client is time-scarce and may have just forgotten to respond.*
+
+```
+Hi [Name],
+
+Following up on my proposal for [brief project description]. I have capacity this week and can deliver by [specific date if you mentioned one].
+
+Quick reminder of what you'll get:
+- [Key deliverable 1]
+- [Key deliverable 2]
+- Fixed price: $[amount] (includes [risk reversal from original proposal])
+
+Ready to start whenever you are.
+
+Nicolas
+```
+
+**Why this works:**
+- Brief (Business Buyers skim fast)
+- Outcome-focused (what they'll GET)
+- Specific timeline (removes uncertainty)
+- No pressure (respectful of their time)
+
+---
+
+**Template 2: Deadline Urgency (Day 3, if they mentioned deadline)**
+
+*Use when original post mentioned deadline like "need by Friday" or "launching next week".*
+
+```
+Hi [Name],
+
+Saw your deadline is [date mentioned in post]. I have availability this week and can prioritize your project to meet that timeline.
+
+[Key deliverable] delivered by [date] - fixed price $[amount].
+
+Want me to block off time for you? Just confirm and I'll get started.
+
+Nicolas
+```
+
+**Why this works:**
+- Acknowledges their deadline urgency
+- Positions you as solution to their time problem
+- Simple yes/no decision (removes decision fatigue)
+
+---
+
+**Template 3: Discount Anchor (Day 3, if competitive budget)**
+
+*Use when original budget was competitive or you quoted high-middle of your range.*
+
+```
+Hi [Name],
+
+I can reduce the price to $[reduced by $50-100] if you commit by Friday.
+
+Same deliverables:
+- [Key deliverable 1]
+- [Key deliverable 2]
+- Fixed price, [risk reversal]
+
+Let me know if that works.
+
+Nicolas
+```
+
+**Why this works:**
+- Price anchoring: Started higher, now "discount" feels like win
+- Time-bound offer (creates urgency)
+- Business Buyers expect to negotiate
+
+---
+
+**Template 4: Social Proof (Day 3, if you have relevant portfolio)**
+
+*Use when you have highly relevant completed project to show.*
+
+```
+Hi [Name],
+
+Quick follow-up - I just finished a similar project for another client:
+[Live URL of relevant completed project]
+
+Same type of work you need ([brief description]). Delivered in [X days], they were happy with results.
+
+Still available this week if you want to move forward.
+
+Nicolas
+```
+
+**Why this works:**
+- Social proof reduces risk fear
+- Live example is concrete (not just claims)
+- Shows recent delivery (you're actively working, not desperate)
+
+---
+
+### When to Stop Following Up
+
+**Day 5 (120 hours after proposal):**
+- If no response after Day 3 follow-up → Move on
+- Business Buyers decide in 3-5 days, if they haven't responded by Day 5, they've hired someone else
+- Don't waste time on more follow-ups
+
+**Exception:**
+- High-value jobs ($1200+): One final follow-up on Day 7 with social proof template
+- After Day 7: Archive and move on
+
+---
+
+### Tracking Follow-Ups
+
+**Add these columns to `leads-tracker.md`:**
+
+```markdown
+| Date | Platform | Title | Budget | Sent? | Follow-Up Day 3? | Response? | Status |
+|------|----------|-------|--------|-------|------------------|-----------|--------|
+| 2025-11-02 | Upwork | Podcast voiceovers | $600 | Yes | 2025-11-05 | No | Archived |
+| 2025-11-03 | Upwork | Dashboard for CRM | $900 | Yes | 2025-11-06 | Yes! | Client replied |
+```
+
+**Status values:**
+- "Waiting" = Proposal sent, waiting for response
+- "Follow-up sent" = Day 3 follow-up sent
+- "Client replied" = Got response (escalate to Nicolas)
+- "Archived" = No response by Day 5, move on
+
+---
+
+### Success Metrics (Follow-Up)
+
+**Target follow-up conversion:**
+- 10 proposals sent → 3 Day 3 follow-ups → 1 client response (10% total conversion)
+- Without follow-ups: ~5% conversion
+- With follow-ups: ~10-15% conversion (2-3x improvement)
+
+**Quality indicators:**
+- Follow-up messages are <100 words (Business Buyers skim)
+- Always outcome-focused (what they'll get, when they'll get it)
+- No apologies ("sorry to bother you") - you're offering value
+- Clear CTA (simple yes/no decision)
 
 ---
 
