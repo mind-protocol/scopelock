@@ -1,3 +1,35 @@
+## 2025-11-06 21:05 — Claude: Expanded process flow to show all 11 steps ✅
+
+**Work:** Updated "How It Works" section with complete mission flow from resource
+
+**Changes:**
+- Expanded from 4 steps to **11 complete steps** from complete-mission-flow.md
+- Shows all AI citizens: Emma, Inna, Rafael, Sofia, Maya
+- Human steps on top, AI steps below (alternating left to right)
+- Complete workflow: Find job → Analyze → Submit → Specs → Lock scope → Generate code → Deploy → QA → Test → Demo script → Present → Client accepts
+
+**Steps:**
+1. You - Find job on Upwork
+2. Emma (AI) - Analyze & write proposal
+3. You - Review & submit
+4. Inna (AI) - Write complete specs
+5. You - Lock scope
+6. Rafael (AI) - Generate all code
+7. You - Review & deploy
+8. Sofia (AI) - Generate QA checklist
+9. You - Manual testing
+10. Maya (AI) - Create demo script
+11. You - Present to client
+→ Result: Client accepts, you get paid
+
+**Hero Updated:** Changed to "Earn like a Developer"
+
+**Status:** Committed and pushed ✅
+**Commits:** 626768f (hero), 0e2cd08 (process flow)
+**Link:** src/app/join/page.tsx:31
+
+---
+
 ## 2025-11-06 21:55 — Rafael: Mission Deck Integration Complete ✅
 
 **Work:** Connected Mission Deck frontend to real backend, integration complete
