@@ -29,7 +29,7 @@ export default function LoginPage() {
     if (connected && publicKey && signMessage && !isLoading) {
       handleWalletAuth();
     }
-  }, [connected, publicKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [connected, publicKey, signMessage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Handle wallet authentication
   const handleWalletAuth = async () => {
