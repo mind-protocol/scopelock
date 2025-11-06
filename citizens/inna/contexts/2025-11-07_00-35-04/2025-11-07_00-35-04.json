@@ -1,0 +1,15 @@
+{
+  "context_id": "2025-11-07_00-35-04",
+  "entity_type": "citizen",
+  "entity_id": "inna",
+  "created_at": "2025-11-06T23:35:04.171999+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T23:35:04.172029+00:00",
+      "content": "\n● Bash(node /home/mind-protocol/scopelock/tools/telegram-send.cjs\n      \"<b>Emma Workspace Live!</b>…)\n  ⎿  Error: Exit code 1\n     Error: Missing environment variables\n     Required: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID Okay, the environment variables are in the.env file. Could you fix the script, please?"
+    }
+  ],
+  "last_updated": "2025-11-06T23:35:04.172032+00:00",
+  "message_count": 1
+}

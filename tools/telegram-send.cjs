@@ -34,6 +34,10 @@
  */
 
 const https = require('https');
+const path = require('path');
+
+// Load .env file from project root (one level up from /tools/)
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 // Check environment variables
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;

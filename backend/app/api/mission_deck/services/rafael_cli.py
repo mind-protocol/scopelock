@@ -13,6 +13,7 @@ Architecture:
 
 import subprocess
 import re
+import os
 from typing import List, Dict, Optional
 
 
@@ -115,7 +116,7 @@ Keep response concise but thorough."""
     try:
         # Try with --continue first (for ongoing conversations)
         result = subprocess.run(
-            ["claude", "-p", prompt, "--continue", "--dangerously-skip-permissions"],
+            ["claude", "-p", prompt, "--continue", "--dangerously-skip-permissions", "--verbose"],
             cwd=rafael_dir,
             capture_output=True,
             text=True,
@@ -127,7 +128,7 @@ Keep response concise but thorough."""
            "no conversation found to continue" in result.stderr.lower():
             print("[rafael_cli.py:ask_rafael] No conversation found, retrying without --continue")
             result = subprocess.run(
-                ["claude", "-p", prompt, "--dangerously-skip-permissions"],
+                ["claude", "-p", prompt, "--dangerously-skip-permissions", "--verbose"],
                 cwd=rafael_dir,
                 capture_output=True,
                 text=True,

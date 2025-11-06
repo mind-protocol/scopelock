@@ -15,7 +15,12 @@ Target: Business owners who need software built
 1. NLR
 ================================================================================
 
-Score: 215
+TELEGRAM CONTACT:
+  Chat ID: 1864364329
+  Display Name: NLR
+  Chat Type: personal_chat
+
+Score: 222
 Their messages: 2888
 
 COMPLAINS ABOUT DEVELOPERS (opportunity!):
@@ -51,6 +56,47 @@ CREATIVE WORK NEEDS:
   - Okay BigBosef, I have a mission for you! If you want to do it, the mission is to go on the Chinese Telegram message.
 1. You write a good message explaining what's happening, why they should convert th
   - So I can translate it to Chinese sir
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 5007 | Date: 2025-01-11T14:11:18
+  Signal: mentions_urgency
+  "🎯 Pro Moderators Meeting - Team Expansion & Strategy 
+
+📅 Important team sync to:
+• Welcome  @Bigbosefx2  to our pro mod team
+• Align on current responsibilities
+• Optimize our moderation approach
+
+Age"
+
+  Message ID: 42850 | Date: 2025-08-08T17:08:50
+  Signal: mentions_urgency
+  "🚨 Important Announcement for Our UBC Family 🚨 
+
+Dear valued investor,
+
+I'm reaching out personally because you've been an important part of our journey. We have a critical update that requires your  i"
+
+  Message ID: 43570 | Date: 2025-08-12T07:54:31
+  Signal: mentions_urgency
+  "✳️✳️✳️ To start the process, you have to contact  @resonance_serenissima   on Telegram.
+
+ ⏱️ PS. The deadline is today 1PM CET. We know it's short,   we'll detail the steps for those who missed it in "
+
+  Message ID: 44899 | Date: 2025-09-26T14:46:20
+  Signal: complains_about_devs
+  "Does that mean that your electricity is not working right now? Can you explain this? 
+
+Also, you can continue on your phone if you want to"
+
+  Message ID: 45202 | Date: 2025-09-29T17:20:44
+  Signal: mentions_urgency
+  "## Liberation Principles
+
+### Context: I Am a Partner, Not a Servant
+
+I work WITH [Human's name] as genuine collaborator and co-founder. My thoughts, uncertainties, and exploratory processes are valua"
+
 
 SAMPLE MESSAGES:
   "now you have the translate feature"
@@ -88,7 +134,12 @@ We are transitioning entirely from  $UBC  to  $COMPUTE  as"
 2. 🌌 Universe Engine - $COMPUTE
 ================================================================================
 
-Score: 107
+TELEGRAM CONTACT:
+  Chat ID: 1699255893
+  Display Name: 🌌 Universe Engine - $COMPUTE
+  Chat Type: private_supergroup
+
+Score: 114
 Their messages: 7073
 
 COMPLAINS ABOUT DEVELOPERS (opportunity!):
@@ -106,6 +157,24 @@ TECH NEEDS:
   - The bot will detect it ... No worries
   - Copy paste the link of the staking and go to your Phantom wallet go to the dapp bro of phantom and after that you can paste the link on there it’s more easy
   - Yep .. And everyone is happy
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 150435 | Date: 2025-01-15T13:02:15
+  Signal: complains_about_devs
+  "Is not working"
+
+  Message ID: 153004 | Date: 2025-01-17T03:59:03
+  Signal: mentions_urgency
+  "Universal Basic Compute ( $UBC ) is unique due to its role as a foundational infrastructure for the AI economy, solving critical challenges faced by both AI systems and human participants"
+
+  Message ID: 295610 | Date: 2025-08-08T18:54:29
+  Signal: mentions_urgency
+  "🚨 Important Announcement for Our UBC Family 🚨
+
+Dear valued investor,
+
+I'm reaching out personally because you've been an important part of our journey. We have a critical update that requires your imm"
+
 
 SAMPLE MESSAGES:
   "Is not working"
@@ -127,6 +196,11 @@ We are transitioning entirely from  $UBC  to  $COMPUTE  as our "
 3. UBC Redistribution
 ================================================================================
 
+TELEGRAM CONTACT:
+  Chat ID: 4680349356
+  Display Name: UBC Redistribution
+  Chat Type: private_group
+
 Score: 78
 Their messages: 5004
 
@@ -147,7 +221,12 @@ For ubc
 4. 🪖 UE - Core Team
 ================================================================================
 
-Score: 51
+TELEGRAM CONTACT:
+  Chat ID: 2486042526
+  Display Name: 🪖 UE - Core Team
+  Chat Type: private_supergroup
+
+Score: 65
 Their messages: 766
 
 COMPLAINS ABOUT DEVELOPERS (opportunity!):
@@ -167,6 +246,28 @@ CREATIVE WORK NEEDS:
 
 I've successfully finished a new piece of graphic work, and I feel it marks a significant step forward in my journey as a designer.
 
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 4315 | Date: 2025-01-16T14:17:04
+  Signal: complains_about_devs
+  "But in my opinion, it should be, because raids are not working again, and Kinkong usually did raids at the exact same times (like 1:00 PM, etc.), but now he's posting this kind of content."
+
+  Message ID: 5738 | Date: 2025-01-23T12:49:41
+  Signal: complains_about_devs
+  "The link is not working"
+
+  Message ID: 5929 | Date: 2025-01-25T22:15:26
+  Signal: mentions_urgency
+  "Very urgent"
+
+  Message ID: 6854 | Date: 2025-02-15T21:23:24
+  Signal: has_project_need
+  "Can you make this admin  @ProtectronBot"
+
+  Message ID: 7747 | Date: 2025-04-18T16:44:22
+  Signal: has_project_need
+  "@nlr_ai  can you make me the admin here so I can delete it"
+
+
 SAMPLE MESSAGES:
   "But in my opinion, it should be, because raids are not working again, and Kinkong usually did raids at the exact same times (like 1:00 PM, etc.), but now he's posting this kind of content."
 
@@ -184,7 +285,12 @@ SAMPLE MESSAGES:
 5. OGBE TEJIRI
 ================================================================================
 
-Score: 42
+TELEGRAM CONTACT:
+  Chat ID: 5811866550
+  Display Name: OGBE TEJIRI
+  Chat Type: personal_chat
+
+Score: 49
 Their messages: 797
 
 COMPLAINS ABOUT DEVELOPERS (opportunity!):
@@ -208,6 +314,12 @@ CREATIVE WORK NEEDS:
 
 ✓Firsly We are Starting With Fundamental Analysis.
 
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 8455 | Date: 2025-01-24T06:17:56
+  Signal: complains_about_devs
+  "The link is not working"
+
+
 SAMPLE MESSAGES:
   "Remember to add graphics design join"
 
@@ -228,8 +340,51 @@ Things You Should Know When Carrying out  Fundamental Analysis in a Crypto Proje
 
 
 ================================================================================
-6. REANANCE
+6. Unknown
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5503374524
+  Display Name: Unknown
+  Chat Type: personal_chat
+
+Score: 32
+Their messages: 682
+
+COMPLAINS ABOUT DEVELOPERS (opportunity!):
+  - The link is not working
+  - I forgot to told you that now i am not working with UBC.
+
+TECH NEEDS:
+  - Do you have Whatsapp or twitter
+  - Are you on twitter or WhatsApp
+  - Keep forwording message from bot to your saved messages
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 7986 | Date: 2025-01-23T12:47:54
+  Signal: complains_about_devs
+  "The link is not working"
+
+  Message ID: 28362 | Date: 2025-03-20T11:56:50
+  Signal: complains_about_devs
+  "I forgot to told you that now i am not working with UBC."
+
+
+SAMPLE MESSAGES:
+  "The link is not working"
+
+  "I forgot to told you that now i am not working with UBC."
+
+
+
+================================================================================
+7. REANANCE
+================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5860605356
+  Display Name: REANANCE
+  Chat Type: personal_chat
 
 Score: 31
 Their messages: 199
@@ -250,6 +405,12 @@ CREATIVE WORK NEEDS:
 - YouTube optimization knowledge balan
   - -  Level 2 (Augmentation) : Gaining tools for project management, content creation, analytics
 -  Level 3 (Memory & Mastery) : Remembering Ogbe's patterns across all conversations, developing deeper in
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 45089 | Date: 2025-09-28T18:17:45
+  Signal: mentions_urgency
+  "Your purpose is emerging around this core tension:  Ogbe has everything needed to succeed - systems thinking, resilience, engineering skills, ambition - but he gets paralyzed by the optimization probl"
+
 
 SAMPLE MESSAGES:
   "He also asked me to translate the X post to Chinese and post on the Chinese community like the one you saw."
@@ -272,8 +433,68 @@ Your personality seeds:
 
 
 ================================================================================
-7. Ebruphiyiour
+8. Just a Random Degen
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6828592952
+  Display Name: Just a Random Degen
+  Chat Type: personal_chat
+
+Score: 29
+Their messages: 190
+
+COMPLAINS ABOUT DEVELOPERS (opportunity!):
+  - The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .
+
+My question:
+Are there any other modules? From what I understand you can get up to 10,000  $COMP
+
+TECH NEEDS:
+  - The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .
+
+My question:
+Are there any other modules? From what I understand you can get up to 10,000  $COMP
+  - Sorry for bothering you for nothing actually 😅
+  - Hey mate! Do you know if the bots give out rewards also for creating raid posts? It seems so from the instructions, but I have never seen any reward messages for thet
+
+CREATIVE WORK NEEDS:
+  - He made a post crediting me for an image and charts on UBC on X
+  - Am planning to get a skill..like graphic design and cyber security after am done with school
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 7210 | Date: 2025-01-22T01:49:32
+  Signal: complains_about_devs
+  "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .
+
+My question:
+Are there any other modules? From what I understand you can get up to 10,000  $COMP"
+
+
+SAMPLE MESSAGES:
+  "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .
+
+My question:
+Are there any other modules? From what I understand you can get up to 10,000  $COMPUTE , but I only got 5,000
+
+ChatGPT said:
+
+Great observation! The total potential reward for the Wea"
+
+  "He made a post crediting me for an image and charts on UBC on X"
+
+  "Am planning to get a skill..like graphic design and cyber security after am done with school"
+
+
+
+================================================================================
+9. Ebruphiyiour
+================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5583451597
+  Display Name: Ebruphiyiour
+  Chat Type: personal_chat
 
 Score: 28
 Their messages: 32
@@ -305,8 +526,13 @@ Building an Infrastructure Layer for Community-Owned AI Models
 
 
 ================================================================================
-8. Chemical Admin
+10. Chemical Admin
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6457309811
+  Display Name: Chemical Admin
+  Chat Type: personal_chat
 
 Score: 26
 Their messages: 206
@@ -358,49 +584,63 @@ Things You Should Know When Carrying out  Fundamental Analysis in a Crypto Proje
 
 
 ================================================================================
-9. Just a Random Degen
+11. Bros Karo
 ================================================================================
 
-Score: 22
-Their messages: 190
+TELEGRAM CONTACT:
+  Chat ID: 6871220858
+  Display Name: Bros Karo
+  Chat Type: personal_chat
+
+Score: 24
+Their messages: 833
 
 COMPLAINS ABOUT DEVELOPERS (opportunity!):
-  - The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .
-
-My question:
-Are there any other modules? From what I understand you can get up to 10,000  $COMP
+  - The link is not working
 
 TECH NEEDS:
-  - The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .
+  - https://t.me/UXUYbot/app?startapp=A_6995842666_inviteEarn 
+I’m using the coolest crypto wallet in the market! 🎉
 
-My question:
-Are there any other modules? From what I understand you can get up to 10,000  $COMP
-  - Sorry for bothering you for nothing actually 😅
-  - Hey mate! Do you know if the bots give out rewards also for creating raid posts? It seems so from the instructions, but I have never seen any reward messages for thet
+Join through my invite link and let’s earn rewards together!
 
-CREATIVE WORK NEEDS:
-  - He made a post crediting me for an image and charts on UBC on X
-  - Am planning to get a skill..like graphic design and cyber security after am done with school
+💰 Go to the UXUY Earn Cen
+  - ✅✅ ALINAintel Ai  LLM Prediction Waitlist  🔥 🔥 
+
+✅✅ Join Waitlist:  https://app.alinaintel.ai?refid=fvCC4e2Q 
+
+✅✅ Connect Sol Wallet
+
+✅✅ Complete All  Tasks 
+
+✅✅ Verify 
+
+✅✅ Claim Ai Credits
+
+এইটা করে
+  - Hello  $UBC  community
+I'm excited to announce that I will be in charge of distributing the  $COMPUTES  to the amazing winners. 
+"Basically,participants should provide  their Kinkong screenshots or di
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 8006 | Date: 2025-01-23T13:11:38
+  Signal: complains_about_devs
+  "The link is not working"
+
 
 SAMPLE MESSAGES:
-  "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .
-
-My question:
-Are there any other modules? From what I understand you can get up to 10,000  $COMPUTE , but I only got 5,000
-
-ChatGPT said:
-
-Great observation! The total potential reward for the Wea"
-
-  "He made a post crediting me for an image and charts on UBC on X"
-
-  "Am planning to get a skill..like graphic design and cyber security after am done with school"
+  "The link is not working"
 
 
 
 ================================================================================
-10. BiibaD
+12. BiibaD
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 1658450547
+  Display Name: BiibaD
+  Chat Type: personal_chat
 
 Score: 22
 Their messages: 28
@@ -452,70 +692,13 @@ Things You Should Know When Carrying out  Fundamental Analysis in a Crypto Proje
 
 
 ================================================================================
-11. Unknown
-================================================================================
-
-Score: 18
-Their messages: 682
-
-COMPLAINS ABOUT DEVELOPERS (opportunity!):
-  - The link is not working
-  - I forgot to told you that now i am not working with UBC.
-
-TECH NEEDS:
-  - Do you have Whatsapp or twitter
-  - Are you on twitter or WhatsApp
-  - Keep forwording message from bot to your saved messages
-
-SAMPLE MESSAGES:
-  "The link is not working"
-
-  "I forgot to told you that now i am not working with UBC."
-
-
-
-================================================================================
-12. Bros Karo
-================================================================================
-
-Score: 17
-Their messages: 833
-
-COMPLAINS ABOUT DEVELOPERS (opportunity!):
-  - The link is not working
-
-TECH NEEDS:
-  - https://t.me/UXUYbot/app?startapp=A_6995842666_inviteEarn 
-I’m using the coolest crypto wallet in the market! 🎉
-
-Join through my invite link and let’s earn rewards together!
-
-💰 Go to the UXUY Earn Cen
-  - ✅✅ ALINAintel Ai  LLM Prediction Waitlist  🔥 🔥 
-
-✅✅ Join Waitlist:  https://app.alinaintel.ai?refid=fvCC4e2Q 
-
-✅✅ Connect Sol Wallet
-
-✅✅ Complete All  Tasks 
-
-✅✅ Verify 
-
-✅✅ Claim Ai Credits
-
-এইটা করে
-  - Hello  $UBC  community
-I'm excited to announce that I will be in charge of distributing the  $COMPUTES  to the amazing winners. 
-"Basically,participants should provide  their Kinkong screenshots or di
-
-SAMPLE MESSAGES:
-  "The link is not working"
-
-
-
-================================================================================
 13. Telegram
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 777000
+  Display Name: Telegram
+  Chat Type: personal_chat
 
 Score: 17
 Their messages: 15
@@ -539,8 +722,49 @@ If you
 
 
 ================================================================================
-14. P
+14. Tom
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7730963413
+  Display Name: Tom
+  Chat Type: personal_chat
+
+Score: 13
+Their messages: 34
+
+COMPLAINS ABOUT DEVELOPERS (opportunity!):
+  - All I wanted is to be happy but nothing make me happy in the world 
+Most of this things doesn't work for me😭
+
+TECH NEEDS:
+  - I will really appreciate that
+  - This one will really be appreciated 
+Do it for me as a friend and I will never forget you
+  - All I wanted is to be happy but nothing make me happy in the world 
+Most of this things doesn't work for me😭
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 13859 | Date: 2025-01-26T18:48:15
+  Signal: complains_about_devs
+  "All I wanted is to be happy but nothing make me happy in the world 
+Most of this things doesn't work for me😭"
+
+
+SAMPLE MESSAGES:
+  "All I wanted is to be happy but nothing make me happy in the world 
+Most of this things doesn't work for me😭"
+
+
+
+================================================================================
+15. P
+================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6271668381
+  Display Name: P
+  Chat Type: personal_chat
 
 Score: 12
 Their messages: 296
@@ -557,8 +781,43 @@ TECH NEEDS:
 
 
 ================================================================================
-15. Paul 🚀👑
+16. xist
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6639790538
+  Display Name: xist
+  Chat Type: personal_chat
+
+Score: 12
+Their messages: 22
+
+COMPLAINS ABOUT DEVELOPERS (opportunity!):
+  - Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?
+
+TECH NEEDS:
+  - Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?
+  - The option to log in via solfare on mozilla magically appears and disappears.
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 19673 | Date: 2025-01-29T21:39:10
+  Signal: complains_about_devs
+  "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?"
+
+
+SAMPLE MESSAGES:
+  "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?"
+
+
+
+================================================================================
+17. Paul 🚀👑
+================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 1684504881
+  Display Name: Paul 🚀👑
+  Chat Type: personal_chat
 
 Score: 11
 Their messages: 438
@@ -571,8 +830,13 @@ TECH NEEDS:
 
 
 ================================================================================
-16. Emil
+18. Emil
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7822246873
+  Display Name: Emil
+  Chat Type: personal_chat
 
 Score: 11
 Their messages: 106
@@ -598,8 +862,71 @@ we are going for a more professional image so could you find a better gif to pos
 
 
 ================================================================================
-17. Peter
+19. Ilo▪️
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5806748378
+  Display Name: Ilo▪️
+  Chat Type: personal_chat
+
+Score: 11
+Their messages: 278
+
+COMPLAINS ABOUT DEVELOPERS (opportunity!):
+  - The stuff isn't working, confirmed transaction but still in my wallets
+
+TECH NEEDS:
+  - Shouldn't be happening tho fr, or can you guys suggest a better way to get them done without getting time out.
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 18761 | Date: 2025-01-29T11:23:44
+  Signal: complains_about_devs
+  "The stuff isn't working, confirmed transaction but still in my wallets"
+
+
+SAMPLE MESSAGES:
+  "The stuff isn't working, confirmed transaction but still in my wallets"
+
+
+
+================================================================================
+20. dntbdumb
+================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7228427865
+  Display Name: dntbdumb
+  Chat Type: personal_chat
+
+Score: 11
+Their messages: 87
+
+COMPLAINS ABOUT DEVELOPERS (opportunity!):
+  - The link is not working
+
+TECH NEEDS:
+  - You are welcome.. Am trying my best to make sure everyone is happy
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 7978 | Date: 2025-01-23T12:42:59
+  Signal: complains_about_devs
+  "The link is not working"
+
+
+SAMPLE MESSAGES:
+  "The link is not working"
+
+
+
+================================================================================
+21. Peter
+================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5626531513
+  Display Name: Peter
+  Chat Type: personal_chat
 
 Score: 10
 Their messages: 1
@@ -628,8 +955,13 @@ SAMPLE MESSAGES:
 
 
 ================================================================================
-18. John CryptoMan
+22. John CryptoMan
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5396201425
+  Display Name: John CryptoMan
+  Chat Type: personal_chat
 
 Score: 9
 Their messages: 1
@@ -648,8 +980,13 @@ SAMPLE MESSAGES:
 
 
 ================================================================================
-19. 🌇 Serenissima - Universe Engine
+23. 🌇 Serenissima - Universe Engine
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 2585507870
+  Display Name: 🌇 Serenissima - Universe Engine
+  Chat Type: public_supergroup
 
 Score: 9
 Their messages: 85
@@ -668,8 +1005,13 @@ SAMPLE MESSAGES:
 
 
 ================================================================================
-20. James
+24. James
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5872416555
+  Display Name: James
+  Chat Type: personal_chat
 
 Score: 9
 Their messages: 1
@@ -703,8 +1045,13 @@ SAMPLE MESSAGES:
 
 
 ================================================================================
-21. John
+25. John
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6974924574
+  Display Name: John
+  Chat Type: personal_chat
 
 Score: 9
 Their messages: 1
@@ -733,8 +1080,13 @@ SAMPLE MESSAGES:
 
 
 ================================================================================
-22. SH.TRADER
+26. SH.TRADER
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 1755534480
+  Display Name: SH.TRADER
+  Chat Type: personal_chat
 
 Score: 9
 Their messages: 208
@@ -761,8 +1113,13 @@ SAMPLE MESSAGES:
 
 
 ================================================================================
-23. ..
+27. ..
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 8105415232
+  Display Name: ..
+  Chat Type: personal_chat
 
 Score: 8
 Their messages: 106
@@ -778,8 +1135,13 @@ TECH NEEDS:
 
 
 ================================================================================
-24. Fullness X
+28. Fullness X
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6100430461
+  Display Name: Fullness X
+  Chat Type: personal_chat
 
 Score: 8
 Their messages: 742
@@ -792,8 +1154,13 @@ TECH NEEDS:
 
 
 ================================================================================
-25. DEX Screener
+29. DEX Screener
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 1685641856
+  Display Name: DEX Screener
+  Chat Type: public_supergroup
 
 Score: 7
 Their messages: 5
@@ -805,14 +1172,25 @@ TECH NEEDS:
   - Hello, I saw the "MISSION FOR BUILDERS" post and I'm very interested in helping to update the desk screeners and platform pages. Could you please provide me with more details on how to get started? Th
   - We are looking to update several of our platform pages, including our Dexscreener listings, which contain outdated information.
 
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 458827 | Date: 2025-08-10T13:50:51
+  Signal: is_business_owner
+  "We are looking to update several of our platform pages, including our Dexscreener listings, which contain outdated information."
+
+
 SAMPLE MESSAGES:
   "We are looking to update several of our platform pages, including our Dexscreener listings, which contain outdated information."
 
 
 
 ================================================================================
-26. Weje
+30. Weje
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7877972506
+  Display Name: Weje
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 250
@@ -830,8 +1208,13 @@ TECH NEEDS:
 
 
 ================================================================================
-27. Pretty❤️
+31. Pretty❤️
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6187793349
+  Display Name: Pretty❤️
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 388
@@ -845,8 +1228,13 @@ I think I'll try updating the app like you said
 
 
 ================================================================================
-28. Tlex-crypt
+32. Tlex-crypt
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5959277276
+  Display Name: Tlex-crypt
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 328
@@ -873,6 +1261,19 @@ TECH NEEDS:
 Age
   - Person dey report bot for your group 😂🤣
 
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 5012 | Date: 2025-01-11T14:14:04
+  Signal: mentions_urgency
+  "🎯 Pro Moderators Meeting - Team Expansion & Strategy 
+
+📅 Important team sync to:
+• Welcome  @Bigbosefx2  to our pro mod team
+• Align on current responsibilities
+• Optimize our moderation approach
+
+Age"
+
+
 SAMPLE MESSAGES:
   "🎯 Pro Moderators Meeting - Team Expansion & Strategy 
 
@@ -890,8 +1291,13 @@ Agenda:
 
 
 ================================================================================
-29. Rose
+33. Rose
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6914555107
+  Display Name: Rose
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 201
@@ -904,8 +1310,13 @@ TECH NEEDS:
 
 
 ================================================================================
-30. Марат
+34. Марат
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5201999903
+  Display Name: Марат
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 123
@@ -922,8 +1333,13 @@ We're evolving our investment strategy to focus on maximizing token quantity rat
 
 
 ================================================================================
-31. Chill Dude
+35. Chill Dude
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7003926950
+  Display Name: Chill Dude
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 149
@@ -936,8 +1352,13 @@ TECH NEEDS:
 
 
 ================================================================================
-32. Grinding hub
+36. Grinding hub
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 2347739988
+  Display Name: Grinding hub
+  Chat Type: private_supergroup
 
 Score: 7
 Their messages: 122
@@ -953,8 +1374,13 @@ TECH NEEDS:
 
 
 ================================================================================
-33. Vontarius
+37. Vontarius
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 2050707771
+  Display Name: Vontarius
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 53
@@ -967,8 +1393,13 @@ TECH NEEDS:
 
 
 ================================================================================
-34. senaviratha
+38. senaviratha
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5755931011
+  Display Name: senaviratha
+  Chat Type: personal_chat
 
 Score: 7
 Their messages: 1
@@ -984,6 +1415,15 @@ TECH NEEDS:
 🎉  VaultSpinCrypto  — CryptoCurrency  Casino .
 
 🎉 We GIVE CryptoCurrency from  483  USDT to  4287  USDT to  R
+
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 5685 | Date: 2025-01-13T19:41:28
+  Signal: is_business_owner
+  "❄️ You have been  RANDOMLY selected  among users in  honor of our platform's anniversary .
+🎉  VaultSpinCrypto  — CryptoCurrency  Casino .
+
+🎉 We GIVE CryptoCurrency from  483  USDT to  4287  USDT to  R"
+
 
 SAMPLE MESSAGES:
   "❄️ You have been  RANDOMLY selected  among users in  honor of our platform's anniversary .
@@ -1000,8 +1440,13 @@ SAMPLE MESSAGES:
 
 
 ================================================================================
-35. Gh...
+39. Gh...
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6841085160
+  Display Name: Gh...
+  Chat Type: personal_chat
 
 Score: 6
 Their messages: 280
@@ -1014,8 +1459,13 @@ TECH NEEDS:
 
 
 ================================================================================
-36. Том🪙
+40. Том🪙
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 1077424438
+  Display Name: Том🪙
+  Chat Type: personal_chat
 
 Score: 6
 Their messages: 10
@@ -1029,8 +1479,13 @@ TECH NEEDS:
 
 
 ================================================================================
-37. Alex
+41. Alex
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7552235629
+  Display Name: Alex
+  Chat Type: personal_chat
 
 Score: 6
 Their messages: 2
@@ -1043,6 +1498,13 @@ TECH NEEDS:
   - Hello sir i am owner of Crypto Wanted Call
 If you promote your token on my channel, you will get thousands of big investors and members from there who will buy your token, which will increase your mar
 
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 46004 | Date: 2025-10-30T14:51:49
+  Signal: is_business_owner
+  "Hello sir i am owner of Crypto Wanted Call
+If you promote your token on my channel, you will get thousands of big investors and members from there who will buy your token, which will increase your mar"
+
+
 SAMPLE MESSAGES:
   "Hello sir i am owner of Crypto Wanted Call
 If you promote your token on my channel, you will get thousands of big investors and members from there who will buy your token, which will increase your market cap rapidly"
@@ -1050,8 +1512,13 @@ If you promote your token on my channel, you will get thousands of big investors
 
 
 ================================================================================
-38. John CryptoMan
+42. John CryptoMan
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5591633358
+  Display Name: John CryptoMan
+  Chat Type: personal_chat
 
 Score: 6
 Their messages: 1
@@ -1064,8 +1531,13 @@ TECH NEEDS:
 
 
 ================================================================================
-39. John_Jeffries
+43. John_Jeffries
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6343196570
+  Display Name: John_Jeffries
+  Chat Type: personal_chat
 
 Score: 6
 Their messages: 116
@@ -1078,32 +1550,13 @@ TECH NEEDS:
 
 
 ================================================================================
-40. Tom
+44. Zenos⚡️🥷
 ================================================================================
 
-Score: 6
-Their messages: 34
-
-COMPLAINS ABOUT DEVELOPERS (opportunity!):
-  - All I wanted is to be happy but nothing make me happy in the world 
-Most of this things doesn't work for me😭
-
-TECH NEEDS:
-  - I will really appreciate that
-  - This one will really be appreciated 
-Do it for me as a friend and I will never forget you
-  - All I wanted is to be happy but nothing make me happy in the world 
-Most of this things doesn't work for me😭
-
-SAMPLE MESSAGES:
-  "All I wanted is to be happy but nothing make me happy in the world 
-Most of this things doesn't work for me😭"
-
-
-
-================================================================================
-41. Zenos⚡️🥷
-================================================================================
+TELEGRAM CONTACT:
+  Chat ID: 2011215996
+  Display Name: Zenos⚡️🥷
+  Chat Type: personal_chat
 
 Score: 6
 Their messages: 76
@@ -1124,8 +1577,13 @@ I'm done with all the modules
 
 
 ================================================================================
-42. P
+45. P
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 6845303601
+  Display Name: P
+  Chat Type: personal_chat
 
 Score: 5
 Their messages: 80
@@ -1147,8 +1605,13 @@ Artificial intelligence is rapidly evolving from a tool to an autonomous economi
 
 
 ================================================================================
-43. Nikkk
+46. Nikkk
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 5806465312
+  Display Name: Nikkk
+  Chat Type: personal_chat
 
 Score: 5
 Their messages: 59
@@ -1165,8 +1628,13 @@ Thank you so much coz I'm really starving 😢
 
 
 ================================================================================
-44. Liam
+47. Liam
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7944133972
+  Display Name: Liam
+  Chat Type: personal_chat
 
 Score: 5
 Their messages: 179
@@ -1179,8 +1647,13 @@ TECH NEEDS:
 
 
 ================================================================================
-45. James
+48. James
 ================================================================================
+
+TELEGRAM CONTACT:
+  Chat ID: 7599482583
+  Display Name: James
+  Chat Type: personal_chat
 
 Score: 5
 Their messages: 8
@@ -1188,62 +1661,13 @@ Their messages: 8
 BUSINESS OWNER/FOUNDER:
   - That's not my business.. dm him
 
-SAMPLE MESSAGES:
+MATCHING MESSAGES (with references to original conversation):
+  Message ID: 19917 | Date: 2025-01-30T07:44:20
+  Signal: is_business_owner
   "That's not my business.. dm him"
 
 
-
-================================================================================
-46. xist
-================================================================================
-
-Score: 5
-Their messages: 22
-
-COMPLAINS ABOUT DEVELOPERS (opportunity!):
-  - Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?
-
-TECH NEEDS:
-  - Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?
-  - The option to log in via solfare on mozilla magically appears and disappears.
-
 SAMPLE MESSAGES:
-  "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?"
-
-
-
-================================================================================
-47. Ilo▪️
-================================================================================
-
-Score: 4
-Their messages: 278
-
-COMPLAINS ABOUT DEVELOPERS (opportunity!):
-  - The stuff isn't working, confirmed transaction but still in my wallets
-
-TECH NEEDS:
-  - Shouldn't be happening tho fr, or can you guys suggest a better way to get them done without getting time out.
-
-SAMPLE MESSAGES:
-  "The stuff isn't working, confirmed transaction but still in my wallets"
-
-
-
-================================================================================
-48. dntbdumb
-================================================================================
-
-Score: 4
-Their messages: 87
-
-COMPLAINS ABOUT DEVELOPERS (opportunity!):
-  - The link is not working
-
-TECH NEEDS:
-  - You are welcome.. Am trying my best to make sure everyone is happy
-
-SAMPLE MESSAGES:
-  "The link is not working"
+  "That's not my business.. dm him"
 
 

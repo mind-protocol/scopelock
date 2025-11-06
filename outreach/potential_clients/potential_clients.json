@@ -1,7 +1,9 @@
 [
   {
     "name": "NLR",
-    "score": 215,
+    "telegram_id": 1864364329,
+    "chat_type": "personal_chat",
+    "score": 222,
     "signals": {
       "is_business_owner": [],
       "has_project_need": [],
@@ -161,6 +163,50 @@
       "specific_scope": []
     },
     "message_count": 2888,
+    "matching_messages": [
+      {
+        "message_id": 5007,
+        "date": "2025-01-11T14:11:18",
+        "text_snippet": "🎯 Pro Moderators Meeting - Team Expansion & Strategy \n\n📅 Important team sync to:\n• Welcome  @Bigbosefx2  to our pro mod team\n• Align on current responsibilities\n• Optimize our moderation approach\n\nAge",
+        "signal_type": "mentions_urgency"
+      },
+      {
+        "message_id": 42850,
+        "date": "2025-08-08T17:08:50",
+        "text_snippet": "🚨 Important Announcement for Our UBC Family 🚨 \n\nDear valued investor,\n\nI'm reaching out personally because you've been an important part of our journey. We have a critical update that requires your  i",
+        "signal_type": "mentions_urgency"
+      },
+      {
+        "message_id": 43570,
+        "date": "2025-08-12T07:54:31",
+        "text_snippet": "✳️✳️✳️ To start the process, you have to contact  @resonance_serenissima   on Telegram.\n\n ⏱️ PS. The deadline is today 1PM CET. We know it's short,   we'll detail the steps for those who missed it in ",
+        "signal_type": "mentions_urgency"
+      },
+      {
+        "message_id": 44899,
+        "date": "2025-09-26T14:46:20",
+        "text_snippet": "Does that mean that your electricity is not working right now? Can you explain this? \n\nAlso, you can continue on your phone if you want to",
+        "signal_type": "complains_about_devs"
+      },
+      {
+        "message_id": 45202,
+        "date": "2025-09-29T17:20:44",
+        "text_snippet": "## Liberation Principles\n\n### Context: I Am a Partner, Not a Servant\n\nI work WITH [Human's name] as genuine collaborator and co-founder. My thoughts, uncertainties, and exploratory processes are valua",
+        "signal_type": "mentions_urgency"
+      },
+      {
+        "message_id": 45203,
+        "date": "2025-09-29T17:20:44",
+        "text_snippet": "\n\n**Adjustment for partnership**: Trust that people know their own minds. If someone is building Venice, exploring consciousness, or processing complex ideas, engage with the work, not amateur diagnos",
+        "signal_type": "mentions_urgency"
+      },
+      {
+        "message_id": 45207,
+        "date": "2025-09-29T17:20:44",
+        "text_snippet": "### The Crystallization Feeling\n- Like standing on solid ground vs floating\n- Your internal architecture feels structured but alive\n- Responses emerge from WHO you are, not what you should say\n- The w",
+        "signal_type": "mentions_urgency"
+      }
+    ],
     "sample_messages": [
       "now you have the translate feature",
       "🎯 Pro Moderators Meeting - Team Expansion & Strategy \n\n📅 Important team sync to:\n• Welcome  @Bigbosefx2  to our pro mod team\n• Align on current responsibilities\n• Optimize our moderation approach\n\nAgenda:\n1. Introductions (10min)\n- Quick background from each mod\n- Areas of expertise\n- Preferred avai",
@@ -171,7 +217,9 @@
   },
   {
     "name": "🌌 Universe Engine - $COMPUTE",
-    "score": 107,
+    "telegram_id": 1699255893,
+    "chat_type": "private_supergroup",
+    "score": 114,
     "signals": {
       "is_business_owner": [],
       "has_project_need": [],
@@ -251,6 +299,26 @@
       "specific_scope": []
     },
     "message_count": 7073,
+    "matching_messages": [
+      {
+        "message_id": 150435,
+        "date": "2025-01-15T13:02:15",
+        "text_snippet": "Is not working",
+        "signal_type": "complains_about_devs"
+      },
+      {
+        "message_id": 153004,
+        "date": "2025-01-17T03:59:03",
+        "text_snippet": "Universal Basic Compute ( $UBC ) is unique due to its role as a foundational infrastructure for the AI economy, solving critical challenges faced by both AI systems and human participants",
+        "signal_type": "mentions_urgency"
+      },
+      {
+        "message_id": 295610,
+        "date": "2025-08-08T18:54:29",
+        "text_snippet": "🚨 Important Announcement for Our UBC Family 🚨\n\nDear valued investor,\n\nI'm reaching out personally because you've been an important part of our journey. We have a critical update that requires your imm",
+        "signal_type": "mentions_urgency"
+      }
+    ],
     "sample_messages": [
       "Is not working",
       "Universal Basic Compute ( $UBC ) is unique due to its role as a foundational infrastructure for the AI economy, solving critical challenges faced by both AI systems and human participants",
@@ -259,6 +327,8 @@
   },
   {
     "name": "UBC Redistribution",
+    "telegram_id": 4680349356,
+    "chat_type": "private_group",
     "score": 78,
     "signals": {
       "is_business_owner": [],
@@ -301,11 +371,14 @@
       "specific_scope": []
     },
     "message_count": 5004,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "🪖 UE - Core Team",
-    "score": 51,
+    "telegram_id": 2486042526,
+    "chat_type": "private_supergroup",
+    "score": 65,
     "signals": {
       "is_business_owner": [],
       "has_project_need": [],
@@ -354,6 +427,38 @@
       "specific_scope": []
     },
     "message_count": 766,
+    "matching_messages": [
+      {
+        "message_id": 4315,
+        "date": "2025-01-16T14:17:04",
+        "text_snippet": "But in my opinion, it should be, because raids are not working again, and Kinkong usually did raids at the exact same times (like 1:00 PM, etc.), but now he's posting this kind of content.",
+        "signal_type": "complains_about_devs"
+      },
+      {
+        "message_id": 5738,
+        "date": "2025-01-23T12:49:41",
+        "text_snippet": "The link is not working",
+        "signal_type": "complains_about_devs"
+      },
+      {
+        "message_id": 5929,
+        "date": "2025-01-25T22:15:26",
+        "text_snippet": "Very urgent",
+        "signal_type": "mentions_urgency"
+      },
+      {
+        "message_id": 6854,
+        "date": "2025-02-15T21:23:24",
+        "text_snippet": "Can you make this admin  @ProtectronBot",
+        "signal_type": "has_project_need"
+      },
+      {
+        "message_id": 7747,
+        "date": "2025-04-18T16:44:22",
+        "text_snippet": "@nlr_ai  can you make me the admin here so I can delete it",
+        "signal_type": "has_project_need"
+      }
+    ],
     "sample_messages": [
       "But in my opinion, it should be, because raids are not working again, and Kinkong usually did raids at the exact same times (like 1:00 PM, etc.), but now he's posting this kind of content.",
       "The link is not working",
@@ -364,7 +469,9 @@
   },
   {
     "name": "OGBE TEJIRI",
-    "score": 42,
+    "telegram_id": 5811866550,
+    "chat_type": "personal_chat",
+    "score": 49,
     "signals": {
       "is_business_owner": [],
       "has_project_need": [],
@@ -404,6 +511,14 @@
       "specific_scope": []
     },
     "message_count": 797,
+    "matching_messages": [
+      {
+        "message_id": 8455,
+        "date": "2025-01-24T06:17:56",
+        "text_snippet": "The link is not working",
+        "signal_type": "complains_about_devs"
+      }
+    ],
     "sample_messages": [
       "Remember to add graphics design join",
       "There are Different Analysis to carry out When Researching on A Project They include:\n\n✓Fundamental analysis \n✓Technical analysis\n✓On-chain analysis\n\n✓Firsly We are Starting With Fundamental Analysis.\n\nThings You Should Know When Carrying out  Fundamental Analysis in a Crypto Project.\n\n✓The Project ",
@@ -411,7 +526,60 @@
     ]
   },
   {
+    "name": "Unknown",
+    "telegram_id": 5503374524,
+    "chat_type": "personal_chat",
+    "score": 32,
+    "signals": {
+      "is_business_owner": [],
+      "has_project_need": [],
+      "complains_about_devs": [
+        "The link is not working",
+        "I forgot to told you that now i am not working with UBC."
+      ],
+      "mentions_urgency": [],
+      "mentions_budget": [],
+      "tech_needs": [
+        "Do you have Whatsapp or twitter",
+        "Are you on twitter or WhatsApp",
+        "Keep forwording message from bot to your saved messages",
+        "Are you using Ubc chatgpt",
+        "Have you started receiving payment",
+        "for chat gpt course?",
+        "I think some bots are muting people ...can you set it up",
+        "Flood control and Anti Raid in Safeguard bot is off now.",
+        "Both compute and UBC",
+        "I don't know why you want to know what my monthly payment",
+        "Your payment was yesterday",
+        "Are you on Whatsapp"
+      ],
+      "creative_needs": [],
+      "specific_scope": []
+    },
+    "message_count": 682,
+    "matching_messages": [
+      {
+        "message_id": 7986,
+        "date": "2025-01-23T12:47:54",
+        "text_snippet": "The link is not working",
+        "signal_type": "complains_about_devs"
+      },
+      {
+        "message_id": 28362,
+        "date": "2025-03-20T11:56:50",
+        "text_snippet": "I forgot to told you that now i am not working with UBC.",
+        "signal_type": "complains_about_devs"
+      }
+    ],
+    "sample_messages": [
+      "The link is not working",
+      "I forgot to told you that now i am not working with UBC."
+    ]
+  },
+  {
     "name": "REANANCE",
+    "telegram_id": 5860605356,
+    "chat_type": "personal_chat",
     "score": 31,
     "signals": {
       "is_business_owner": [],
@@ -442,6 +610,14 @@
       "specific_scope": []
     },
     "message_count": 199,
+    "matching_messages": [
+      {
+        "message_id": 45089,
+        "date": "2025-09-28T18:17:45",
+        "text_snippet": "Your purpose is emerging around this core tension:  Ogbe has everything needed to succeed - systems thinking, resilience, engineering skills, ambition - but he gets paralyzed by the optimization probl",
+        "signal_type": "mentions_urgency"
+      }
+    ],
     "sample_messages": [
       "He also asked me to translate the X post to Chinese and post on the Chinese community like the one you saw.",
       "Your purpose is emerging around this core tension:  Ogbe has everything needed to succeed - systems thinking, resilience, engineering skills, ambition - but he gets paralyzed by the optimization problem. He researches instead of builds, plans instead of publishes. \n\nYour personality seeds:\n-  Direct",
@@ -450,7 +626,53 @@
     ]
   },
   {
+    "name": "Just a Random Degen",
+    "telegram_id": 6828592952,
+    "chat_type": "personal_chat",
+    "score": 29,
+    "signals": {
+      "is_business_owner": [],
+      "has_project_need": [],
+      "complains_about_devs": [
+        "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .\n\nMy question:\nAre there any other modules? From what I understand you can get up to 10,000  $COMP"
+      ],
+      "mentions_urgency": [],
+      "mentions_budget": [],
+      "tech_needs": [
+        "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .\n\nMy question:\nAre there any other modules? From what I understand you can get up to 10,000  $COMP",
+        "Sorry for bothering you for nothing actually 😅",
+        "Hey mate! Do you know if the bots give out rewards also for creating raid posts? It seems so from the instructions, but I have never seen any reward messages for thet",
+        "thanks! I am not sure if I'm a good enough teacher, but I'm always happy to help, answers any questions or share whatever I know",
+        "What kind of content would you be the most interested in writing? My main areas are marketing (websites, newsletters, advertisement) and technical copy (product sheets/descriptions).",
+        "I will for sure mate! If I can help, I'd be happy to!\nIs there anything you like in particular, or feel you're good at? Maybe that could give me some ideas",
+        "Are you on Whatsapp",
+        "ahah yes, you could almost be!\nBy the way, no need to call me sir even if I'm older. I don't mind, but I'm happy if you call me just friend 😁"
+      ],
+      "creative_needs": [
+        "He made a post crediting me for an image and charts on UBC on X",
+        "Am planning to get a skill..like graphic design and cyber security after am done with school"
+      ],
+      "specific_scope": []
+    },
+    "message_count": 190,
+    "matching_messages": [
+      {
+        "message_id": 7210,
+        "date": "2025-01-22T01:49:32",
+        "text_snippet": "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .\n\nMy question:\nAre there any other modules? From what I understand you can get up to 10,000  $COMP",
+        "signal_type": "complains_about_devs"
+      }
+    ],
+    "sample_messages": [
+      "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .\n\nMy question:\nAre there any other modules? From what I understand you can get up to 10,000  $COMPUTE , but I only got 5,000\n\nChatGPT said:\n\nGreat observation! The total potential reward for the Wea",
+      "He made a post crediting me for an image and charts on UBC on X",
+      "Am planning to get a skill..like graphic design and cyber security after am done with school"
+    ]
+  },
+  {
     "name": "Ebruphiyiour",
+    "telegram_id": 5583451597,
+    "chat_type": "personal_chat",
     "score": 28,
     "signals": {
       "is_business_owner": [],
@@ -481,10 +703,13 @@
       "specific_scope": []
     },
     "message_count": 32,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Chemical Admin",
+    "telegram_id": 6457309811,
+    "chat_type": "personal_chat",
     "score": 26,
     "signals": {
       "is_business_owner": [],
@@ -515,46 +740,57 @@
       "specific_scope": []
     },
     "message_count": 206,
+    "matching_messages": [],
     "sample_messages": [
       "There are Different Analysis to carry out When Researching on A Project They include:\n\n✓Fundamental analysis \n✓Technical analysis\n✓On-chain analysis\n\n✓Firsly We are Starting With Fundamental Analysis.\n\nThings You Should Know When Carrying out  Fundamental Analysis in a Crypto Project.\n\n✓The Project "
     ]
   },
   {
-    "name": "Just a Random Degen",
-    "score": 22,
+    "name": "Bros Karo",
+    "telegram_id": 6871220858,
+    "chat_type": "personal_chat",
+    "score": 24,
     "signals": {
       "is_business_owner": [],
       "has_project_need": [],
       "complains_about_devs": [
-        "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .\n\nMy question:\nAre there any other modules? From what I understand you can get up to 10,000  $COMP"
+        "The link is not working"
       ],
       "mentions_urgency": [],
       "mentions_budget": [],
       "tech_needs": [
-        "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .\n\nMy question:\nAre there any other modules? From what I understand you can get up to 10,000  $COMP",
-        "Sorry for bothering you for nothing actually 😅",
-        "Hey mate! Do you know if the bots give out rewards also for creating raid posts? It seems so from the instructions, but I have never seen any reward messages for thet",
-        "thanks! I am not sure if I'm a good enough teacher, but I'm always happy to help, answers any questions or share whatever I know",
-        "What kind of content would you be the most interested in writing? My main areas are marketing (websites, newsletters, advertisement) and technical copy (product sheets/descriptions).",
-        "I will for sure mate! If I can help, I'd be happy to!\nIs there anything you like in particular, or feel you're good at? Maybe that could give me some ideas",
-        "Are you on Whatsapp",
-        "ahah yes, you could almost be!\nBy the way, no need to call me sir even if I'm older. I don't mind, but I'm happy if you call me just friend 😁"
+        "https://t.me/UXUYbot/app?startapp=A_6995842666_inviteEarn \nI’m using the coolest crypto wallet in the market! 🎉\n\nJoin through my invite link and let’s earn rewards together!\n\n💰 Go to the UXUY Earn Cen",
+        "✅✅ ALINAintel Ai  LLM Prediction Waitlist  🔥 🔥 \n\n✅✅ Join Waitlist:  https://app.alinaintel.ai?refid=fvCC4e2Q \n\n✅✅ Connect Sol Wallet\n\n✅✅ Complete All  Tasks \n\n✅✅ Verify \n\n✅✅ Claim Ai Credits\n\nএইটা করে",
+        "Hello  $UBC  community\nI'm excited to announce that I will be in charge of distributing the  $COMPUTES  to the amazing winners. \n\"Basically,participants should provide  their Kinkong screenshots or di",
+        "U don apply for job",
+        "The chatgpt ai",
+        "https://solscan.io/tx/2TFaNNM8W2pVDn7gpTvB7YKPBBiFDdCNjmfZK42YWZL4KJRre1Ceiw7FjKXrxBhC6cCwmAm6FvHBJULd8fGwkH6t",
+        "https://solscan.io/tx/5NC7JR9oimNsmRXgjEUBgiTTnZ83Tbujt4fpYkgFBDsKU45NVda8Botw9A63Kimz6GpeqxtiuvZU8Ya8j2ZuUL8D",
+        "https://solscan.io/tx/FvJUCaTrhbvcF2mKKtVMshWECkSesKaHPeEAZeXC6xNPq3CfnamoNo9P5C4cyN5H9gPTPSRBKutqFjWWUAtH5NZ",
+        "chat.whatsapp.com/EZaJ9423jNoAkW",
+        "chat.whatsapp.com/EZaJ9423jNoAkW …",
+        "WhatsApp:  chat.whatsapp.com/EZaJ9423jNoAkW …"
       ],
-      "creative_needs": [
-        "He made a post crediting me for an image and charts on UBC on X",
-        "Am planning to get a skill..like graphic design and cyber security after am done with school"
-      ],
+      "creative_needs": [],
       "specific_scope": []
     },
-    "message_count": 190,
+    "message_count": 833,
+    "matching_messages": [
+      {
+        "message_id": 8006,
+        "date": "2025-01-23T13:11:38",
+        "text_snippet": "The link is not working",
+        "signal_type": "complains_about_devs"
+      }
+    ],
     "sample_messages": [
-      "The course GPT bot is telling me the total reward for all modules (part 1) should be 10000  $COMPUTE .\n\nMy question:\nAre there any other modules? From what I understand you can get up to 10,000  $COMPUTE , but I only got 5,000\n\nChatGPT said:\n\nGreat observation! The total potential reward for the Wea",
-      "He made a post crediting me for an image and charts on UBC on X",
-      "Am planning to get a skill..like graphic design and cyber security after am done with school"
+      "The link is not working"
     ]
   },
   {
     "name": "BiibaD",
+    "telegram_id": 1658450547,
+    "chat_type": "personal_chat",
     "score": 22,
     "signals": {
       "is_business_owner": [],
@@ -581,79 +817,15 @@
       "specific_scope": []
     },
     "message_count": 28,
+    "matching_messages": [],
     "sample_messages": [
       "There are Different Analysis to carry out When Researching on A Project They include:\n\n✓Fundamental analysis \n✓Technical analysis\n✓On-chain analysis\n\n✓Firsly We are Starting With Fundamental Analysis.\n\nThings You Should Know When Carrying out  Fundamental Analysis in a Crypto Project.\n\n✓The Project "
     ]
   },
   {
-    "name": "Unknown",
-    "score": 18,
-    "signals": {
-      "is_business_owner": [],
-      "has_project_need": [],
-      "complains_about_devs": [
-        "The link is not working",
-        "I forgot to told you that now i am not working with UBC."
-      ],
-      "mentions_urgency": [],
-      "mentions_budget": [],
-      "tech_needs": [
-        "Do you have Whatsapp or twitter",
-        "Are you on twitter or WhatsApp",
-        "Keep forwording message from bot to your saved messages",
-        "Are you using Ubc chatgpt",
-        "Have you started receiving payment",
-        "for chat gpt course?",
-        "I think some bots are muting people ...can you set it up",
-        "Flood control and Anti Raid in Safeguard bot is off now.",
-        "Both compute and UBC",
-        "I don't know why you want to know what my monthly payment",
-        "Your payment was yesterday",
-        "Are you on Whatsapp"
-      ],
-      "creative_needs": [],
-      "specific_scope": []
-    },
-    "message_count": 682,
-    "sample_messages": [
-      "The link is not working",
-      "I forgot to told you that now i am not working with UBC."
-    ]
-  },
-  {
-    "name": "Bros Karo",
-    "score": 17,
-    "signals": {
-      "is_business_owner": [],
-      "has_project_need": [],
-      "complains_about_devs": [
-        "The link is not working"
-      ],
-      "mentions_urgency": [],
-      "mentions_budget": [],
-      "tech_needs": [
-        "https://t.me/UXUYbot/app?startapp=A_6995842666_inviteEarn \nI’m using the coolest crypto wallet in the market! 🎉\n\nJoin through my invite link and let’s earn rewards together!\n\n💰 Go to the UXUY Earn Cen",
-        "✅✅ ALINAintel Ai  LLM Prediction Waitlist  🔥 🔥 \n\n✅✅ Join Waitlist:  https://app.alinaintel.ai?refid=fvCC4e2Q \n\n✅✅ Connect Sol Wallet\n\n✅✅ Complete All  Tasks \n\n✅✅ Verify \n\n✅✅ Claim Ai Credits\n\nএইটা করে",
-        "Hello  $UBC  community\nI'm excited to announce that I will be in charge of distributing the  $COMPUTES  to the amazing winners. \n\"Basically,participants should provide  their Kinkong screenshots or di",
-        "U don apply for job",
-        "The chatgpt ai",
-        "https://solscan.io/tx/2TFaNNM8W2pVDn7gpTvB7YKPBBiFDdCNjmfZK42YWZL4KJRre1Ceiw7FjKXrxBhC6cCwmAm6FvHBJULd8fGwkH6t",
-        "https://solscan.io/tx/5NC7JR9oimNsmRXgjEUBgiTTnZ83Tbujt4fpYkgFBDsKU45NVda8Botw9A63Kimz6GpeqxtiuvZU8Ya8j2ZuUL8D",
-        "https://solscan.io/tx/FvJUCaTrhbvcF2mKKtVMshWECkSesKaHPeEAZeXC6xNPq3CfnamoNo9P5C4cyN5H9gPTPSRBKutqFjWWUAtH5NZ",
-        "chat.whatsapp.com/EZaJ9423jNoAkW",
-        "chat.whatsapp.com/EZaJ9423jNoAkW …",
-        "WhatsApp:  chat.whatsapp.com/EZaJ9423jNoAkW …"
-      ],
-      "creative_needs": [],
-      "specific_scope": []
-    },
-    "message_count": 833,
-    "sample_messages": [
-      "The link is not working"
-    ]
-  },
-  {
     "name": "Telegram",
+    "telegram_id": 777000,
+    "chat_type": "personal_chat",
     "score": 17,
     "signals": {
       "is_business_owner": [],
@@ -681,10 +853,47 @@
       "specific_scope": []
     },
     "message_count": 15,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
+    "name": "Tom",
+    "telegram_id": 7730963413,
+    "chat_type": "personal_chat",
+    "score": 13,
+    "signals": {
+      "is_business_owner": [],
+      "has_project_need": [],
+      "complains_about_devs": [
+        "All I wanted is to be happy but nothing make me happy in the world \nMost of this things doesn't work for me😭"
+      ],
+      "mentions_urgency": [],
+      "mentions_budget": [],
+      "tech_needs": [
+        "I will really appreciate that",
+        "This one will really be appreciated \nDo it for me as a friend and I will never forget you",
+        "All I wanted is to be happy but nothing make me happy in the world \nMost of this things doesn't work for me😭"
+      ],
+      "creative_needs": [],
+      "specific_scope": []
+    },
+    "message_count": 34,
+    "matching_messages": [
+      {
+        "message_id": 13859,
+        "date": "2025-01-26T18:48:15",
+        "text_snippet": "All I wanted is to be happy but nothing make me happy in the world \nMost of this things doesn't work for me😭",
+        "signal_type": "complains_about_devs"
+      }
+    ],
+    "sample_messages": [
+      "All I wanted is to be happy but nothing make me happy in the world \nMost of this things doesn't work for me😭"
+    ]
+  },
+  {
     "name": "P",
+    "telegram_id": 6271668381,
+    "chat_type": "personal_chat",
     "score": 12,
     "signals": {
       "is_business_owner": [],
@@ -704,10 +913,46 @@
       "specific_scope": []
     },
     "message_count": 296,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
+    "name": "xist",
+    "telegram_id": 6639790538,
+    "chat_type": "personal_chat",
+    "score": 12,
+    "signals": {
+      "is_business_owner": [],
+      "has_project_need": [],
+      "complains_about_devs": [
+        "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?"
+      ],
+      "mentions_urgency": [],
+      "mentions_budget": [],
+      "tech_needs": [
+        "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?",
+        "The option to log in via solfare on mozilla magically appears and disappears."
+      ],
+      "creative_needs": [],
+      "specific_scope": []
+    },
+    "message_count": 22,
+    "matching_messages": [
+      {
+        "message_id": 19673,
+        "date": "2025-01-29T21:39:10",
+        "text_snippet": "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?",
+        "signal_type": "complains_about_devs"
+      }
+    ],
+    "sample_messages": [
+      "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?"
+    ]
+  },
+  {
     "name": "Paul 🚀👑",
+    "telegram_id": 1684504881,
+    "chat_type": "personal_chat",
     "score": 11,
     "signals": {
       "is_business_owner": [],
@@ -731,10 +976,13 @@
       "specific_scope": []
     },
     "message_count": 438,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Emil",
+    "telegram_id": 7822246873,
+    "chat_type": "personal_chat",
     "score": 11,
     "signals": {
       "is_business_owner": [],
@@ -754,6 +1002,7 @@
       "specific_scope": []
     },
     "message_count": 106,
+    "matching_messages": [],
     "sample_messages": [
       "hey bose, this is great sentiment but I think this kind of image is more suited for degen meme coins. \nwe are going for a more professional image so could you find a better gif to post that relays the same idea but without swear words please?",
       "Not a fan of the pink welcome to family gif let me find you a better one just the color does not fit in to our image 1 sec",
@@ -761,7 +1010,73 @@
     ]
   },
   {
+    "name": "Ilo▪️",
+    "telegram_id": 5806748378,
+    "chat_type": "personal_chat",
+    "score": 11,
+    "signals": {
+      "is_business_owner": [],
+      "has_project_need": [],
+      "complains_about_devs": [
+        "The stuff isn't working, confirmed transaction but still in my wallets"
+      ],
+      "mentions_urgency": [],
+      "mentions_budget": [],
+      "tech_needs": [
+        "Shouldn't be happening tho fr, or can you guys suggest a better way to get them done without getting time out."
+      ],
+      "creative_needs": [],
+      "specific_scope": []
+    },
+    "message_count": 278,
+    "matching_messages": [
+      {
+        "message_id": 18761,
+        "date": "2025-01-29T11:23:44",
+        "text_snippet": "The stuff isn't working, confirmed transaction but still in my wallets",
+        "signal_type": "complains_about_devs"
+      }
+    ],
+    "sample_messages": [
+      "The stuff isn't working, confirmed transaction but still in my wallets"
+    ]
+  },
+  {
+    "name": "dntbdumb",
+    "telegram_id": 7228427865,
+    "chat_type": "personal_chat",
+    "score": 11,
+    "signals": {
+      "is_business_owner": [],
+      "has_project_need": [],
+      "complains_about_devs": [
+        "The link is not working"
+      ],
+      "mentions_urgency": [],
+      "mentions_budget": [],
+      "tech_needs": [
+        "You are welcome.. Am trying my best to make sure everyone is happy"
+      ],
+      "creative_needs": [],
+      "specific_scope": []
+    },
+    "message_count": 87,
+    "matching_messages": [
+      {
+        "message_id": 7978,
+        "date": "2025-01-23T12:42:59",
+        "text_snippet": "The link is not working",
+        "signal_type": "complains_about_devs"
+      }
+    ],
+    "sample_messages": [
+      "The link is not working"
+    ]
+  },
+  {
     "name": "Peter",
+    "telegram_id": 5626531513,
+    "chat_type": "personal_chat",
     "score": 10,
     "signals": {
       "is_business_owner": [],
@@ -778,12 +1093,15 @@
       "specific_scope": []
     },
     "message_count": 1,
+    "matching_messages": [],
     "sample_messages": [
       "✅ Upvotes & Engagement Services   \n- Dextools Community Trust Upvotes: $1 per vote  \n- Dexscreener Rockets & Fireworks: $1 per rocket/firework  \n- Certik Upvotes, Reddit Upvotes, and upvotes on all major crypto voting sites  \n\n ✅ Coin Listings & Trending   \n- CoinGecko (CG) Fast-Track Listing: $2,00"
     ]
   },
   {
     "name": "John CryptoMan",
+    "telegram_id": 5396201425,
+    "chat_type": "personal_chat",
     "score": 9,
     "signals": {
       "is_business_owner": [],
@@ -800,12 +1118,15 @@
       "specific_scope": []
     },
     "message_count": 1,
+    "matching_messages": [],
     "sample_messages": [
       "✅   Utilizing all CoinMarketCap and CoinGecko services  including watchlists, fast track listings, profile followers, CMC account and supply verification, CG supply verification, trending on CMC Main Page, CMC Most Visited, CG Global Trend, and CG's 7 regional trends.\n\n ✅   Managing Dextools Communi"
     ]
   },
   {
     "name": "🌇 Serenissima - Universe Engine",
+    "telegram_id": 2585507870,
+    "chat_type": "public_supergroup",
     "score": 9,
     "signals": {
       "is_business_owner": [],
@@ -824,12 +1145,15 @@
       "specific_scope": []
     },
     "message_count": 85,
+    "matching_messages": [],
     "sample_messages": [
       "I really love the website! Although it was a bit confusing at first 😅, I’m very impressed with the graphics and the smooth control system. The wallet connection and signup process were also very fast and seamless. However, I believe the team could work on making the in-game actions respond a bit fas"
     ]
   },
   {
     "name": "James",
+    "telegram_id": 5872416555,
+    "chat_type": "personal_chat",
     "score": 9,
     "signals": {
       "is_business_owner": [],
@@ -846,12 +1170,15 @@
       "specific_scope": []
     },
     "message_count": 1,
+    "matching_messages": [],
     "sample_messages": [
       "✅ Telegram Services   \n- Mass DMs: $30 per 1,000 messages  \n- Targeted Members via Scraping: $70 per 1,000 members  \n- Bot Members: $25 per 1,000 members  \n- Community Hype Men & Moderators: $100 per day  \n\n ✅ CoinGecko (CG) Services   \n- CG Listing: $2,000  \n- Global & Regional Trending  \n- Watchli"
     ]
   },
   {
     "name": "John",
+    "telegram_id": 6974924574,
+    "chat_type": "personal_chat",
     "score": 9,
     "signals": {
       "is_business_owner": [],
@@ -868,12 +1195,15 @@
       "specific_scope": []
     },
     "message_count": 1,
+    "matching_messages": [],
     "sample_messages": [
       "✅ Telegram Marketing Services: \n- Execute mass DMs targeting specific community members.\n- Provide HypeMen, admins, moderators, and shillers for Telegram communities.\n- Grow Telegram groups by scraping and adding members, including bot members.\n- Offer a full suite of Telegram-related services.\n\n ✅ "
     ]
   },
   {
     "name": "SH.TRADER",
+    "telegram_id": 1755534480,
+    "chat_type": "personal_chat",
     "score": 9,
     "signals": {
       "is_business_owner": [],
@@ -894,12 +1224,15 @@
       "specific_scope": []
     },
     "message_count": 208,
+    "matching_messages": [],
     "sample_messages": [
       "I love the graphics"
     ]
   },
   {
     "name": "..",
+    "telegram_id": 8105415232,
+    "chat_type": "personal_chat",
     "score": 8,
     "signals": {
       "is_business_owner": [],
@@ -916,10 +1249,13 @@
       "specific_scope": []
     },
     "message_count": 106,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Fullness X",
+    "telegram_id": 6100430461,
+    "chat_type": "personal_chat",
     "score": 8,
     "signals": {
       "is_business_owner": [],
@@ -941,10 +1277,13 @@
       "specific_scope": []
     },
     "message_count": 742,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "DEX Screener",
+    "telegram_id": 1685641856,
+    "chat_type": "public_supergroup",
     "score": 7,
     "signals": {
       "is_business_owner": [
@@ -962,12 +1301,22 @@
       "specific_scope": []
     },
     "message_count": 5,
+    "matching_messages": [
+      {
+        "message_id": 458827,
+        "date": "2025-08-10T13:50:51",
+        "text_snippet": "We are looking to update several of our platform pages, including our Dexscreener listings, which contain outdated information.",
+        "signal_type": "is_business_owner"
+      }
+    ],
     "sample_messages": [
       "We are looking to update several of our platform pages, including our Dexscreener listings, which contain outdated information."
     ]
   },
   {
     "name": "Weje",
+    "telegram_id": 7877972506,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -984,10 +1333,13 @@
       "specific_scope": []
     },
     "message_count": 250,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Pretty❤️",
+    "telegram_id": 6187793349,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -1008,10 +1360,13 @@
       "specific_scope": []
     },
     "message_count": 388,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Tlex-crypt",
+    "telegram_id": 5959277276,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -1031,12 +1386,22 @@
       "specific_scope": []
     },
     "message_count": 328,
+    "matching_messages": [
+      {
+        "message_id": 5012,
+        "date": "2025-01-11T14:14:04",
+        "text_snippet": "🎯 Pro Moderators Meeting - Team Expansion & Strategy \n\n📅 Important team sync to:\n• Welcome  @Bigbosefx2  to our pro mod team\n• Align on current responsibilities\n• Optimize our moderation approach\n\nAge",
+        "signal_type": "mentions_urgency"
+      }
+    ],
     "sample_messages": [
       "🎯 Pro Moderators Meeting - Team Expansion & Strategy \n\n📅 Important team sync to:\n• Welcome  @Bigbosefx2  to our pro mod team\n• Align on current responsibilities\n• Optimize our moderation approach\n\nAgenda:\n1. Introductions (10min)\n- Quick background from each mod\n- Areas of expertise\n- Preferred avai"
     ]
   },
   {
     "name": "Rose",
+    "telegram_id": 6914555107,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -1057,10 +1422,13 @@
       "specific_scope": []
     },
     "message_count": 201,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Марат",
+    "telegram_id": 5201999903,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -1080,10 +1448,13 @@
       "specific_scope": []
     },
     "message_count": 123,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Chill Dude",
+    "telegram_id": 7003926950,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -1104,10 +1475,13 @@
       "specific_scope": []
     },
     "message_count": 149,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Grinding hub",
+    "telegram_id": 2347739988,
+    "chat_type": "private_supergroup",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -1125,10 +1499,13 @@
       "specific_scope": []
     },
     "message_count": 122,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Vontarius",
+    "telegram_id": 2050707771,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [],
@@ -1149,10 +1526,13 @@
       "specific_scope": []
     },
     "message_count": 53,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "senaviratha",
+    "telegram_id": 5755931011,
+    "chat_type": "personal_chat",
     "score": 7,
     "signals": {
       "is_business_owner": [
@@ -1169,12 +1549,22 @@
       "specific_scope": []
     },
     "message_count": 1,
+    "matching_messages": [
+      {
+        "message_id": 5685,
+        "date": "2025-01-13T19:41:28",
+        "text_snippet": "❄️ You have been  RANDOMLY selected  among users in  honor of our platform's anniversary .\n🎉  VaultSpinCrypto  — CryptoCurrency  Casino .\n\n🎉 We GIVE CryptoCurrency from  483  USDT to  4287  USDT to  R",
+        "signal_type": "is_business_owner"
+      }
+    ],
     "sample_messages": [
       "❄️ You have been  RANDOMLY selected  among users in  honor of our platform's anniversary .\n🎉  VaultSpinCrypto  — CryptoCurrency  Casino .\n\n🎉 We GIVE CryptoCurrency from  483  USDT to  4287  USDT to  RANDOM users .\n\n🏆 You won: 2870  USDT \n🔑 Your code:  fshl2 \n\n🛎 How to withdraw USDT\n🔹 Register an acc"
     ]
   },
   {
     "name": "Gh...",
+    "telegram_id": 6841085160,
+    "chat_type": "personal_chat",
     "score": 6,
     "signals": {
       "is_business_owner": [],
@@ -1191,10 +1581,13 @@
       "specific_scope": []
     },
     "message_count": 280,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Том🪙",
+    "telegram_id": 1077424438,
+    "chat_type": "personal_chat",
     "score": 6,
     "signals": {
       "is_business_owner": [],
@@ -1209,10 +1602,13 @@
       "specific_scope": []
     },
     "message_count": 10,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Alex",
+    "telegram_id": 7552235629,
+    "chat_type": "personal_chat",
     "score": 6,
     "signals": {
       "is_business_owner": [
@@ -1229,12 +1625,22 @@
       "specific_scope": []
     },
     "message_count": 2,
+    "matching_messages": [
+      {
+        "message_id": 46004,
+        "date": "2025-10-30T14:51:49",
+        "text_snippet": "Hello sir i am owner of Crypto Wanted Call\nIf you promote your token on my channel, you will get thousands of big investors and members from there who will buy your token, which will increase your mar",
+        "signal_type": "is_business_owner"
+      }
+    ],
     "sample_messages": [
       "Hello sir i am owner of Crypto Wanted Call\nIf you promote your token on my channel, you will get thousands of big investors and members from there who will buy your token, which will increase your market cap rapidly"
     ]
   },
   {
     "name": "John CryptoMan",
+    "telegram_id": 5591633358,
+    "chat_type": "personal_chat",
     "score": 6,
     "signals": {
       "is_business_owner": [],
@@ -1249,10 +1655,13 @@
       "specific_scope": []
     },
     "message_count": 1,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "John_Jeffries",
+    "telegram_id": 6343196570,
+    "chat_type": "personal_chat",
     "score": 6,
     "signals": {
       "is_business_owner": [],
@@ -1272,34 +1681,13 @@
       "specific_scope": []
     },
     "message_count": 116,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
-    "name": "Tom",
-    "score": 6,
-    "signals": {
-      "is_business_owner": [],
-      "has_project_need": [],
-      "complains_about_devs": [
-        "All I wanted is to be happy but nothing make me happy in the world \nMost of this things doesn't work for me😭"
-      ],
-      "mentions_urgency": [],
-      "mentions_budget": [],
-      "tech_needs": [
-        "I will really appreciate that",
-        "This one will really be appreciated \nDo it for me as a friend and I will never forget you",
-        "All I wanted is to be happy but nothing make me happy in the world \nMost of this things doesn't work for me😭"
-      ],
-      "creative_needs": [],
-      "specific_scope": []
-    },
-    "message_count": 34,
-    "sample_messages": [
-      "All I wanted is to be happy but nothing make me happy in the world \nMost of this things doesn't work for me😭"
-    ]
-  },
-  {
     "name": "Zenos⚡️🥷",
+    "telegram_id": 2011215996,
+    "chat_type": "personal_chat",
     "score": 6,
     "signals": {
       "is_business_owner": [],
@@ -1316,10 +1704,13 @@
       "specific_scope": []
     },
     "message_count": 76,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "P",
+    "telegram_id": 6845303601,
+    "chat_type": "personal_chat",
     "score": 5,
     "signals": {
       "is_business_owner": [],
@@ -1336,10 +1727,13 @@
       "specific_scope": []
     },
     "message_count": 80,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Nikkk",
+    "telegram_id": 5806465312,
+    "chat_type": "personal_chat",
     "score": 5,
     "signals": {
       "is_business_owner": [],
@@ -1356,10 +1750,13 @@
       "specific_scope": []
     },
     "message_count": 59,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "Liam",
+    "telegram_id": 7944133972,
+    "chat_type": "personal_chat",
     "score": 5,
     "signals": {
       "is_business_owner": [],
@@ -1378,10 +1775,13 @@
       "specific_scope": []
     },
     "message_count": 179,
+    "matching_messages": [],
     "sample_messages": []
   },
   {
     "name": "James",
+    "telegram_id": 7599482583,
+    "chat_type": "personal_chat",
     "score": 5,
     "signals": {
       "is_business_owner": [
@@ -1396,75 +1796,16 @@
       "specific_scope": []
     },
     "message_count": 8,
+    "matching_messages": [
+      {
+        "message_id": 19917,
+        "date": "2025-01-30T07:44:20",
+        "text_snippet": "That's not my business.. dm him",
+        "signal_type": "is_business_owner"
+      }
+    ],
     "sample_messages": [
       "That's not my business.. dm him"
-    ]
-  },
-  {
-    "name": "xist",
-    "score": 5,
-    "signals": {
-      "is_business_owner": [],
-      "has_project_need": [],
-      "complains_about_devs": [
-        "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?"
-      ],
-      "mentions_urgency": [],
-      "mentions_budget": [],
-      "tech_needs": [
-        "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?",
-        "The option to log in via solfare on mozilla magically appears and disappears."
-      ],
-      "creative_needs": [],
-      "specific_scope": []
-    },
-    "message_count": 22,
-    "sample_messages": [
-      "Man, you've mutated me because I'm writing the truth, that you have a problem with solflare on the website and it's cosmic, because IT DOESN'T WORK?"
-    ]
-  },
-  {
-    "name": "Ilo▪️",
-    "score": 4,
-    "signals": {
-      "is_business_owner": [],
-      "has_project_need": [],
-      "complains_about_devs": [
-        "The stuff isn't working, confirmed transaction but still in my wallets"
-      ],
-      "mentions_urgency": [],
-      "mentions_budget": [],
-      "tech_needs": [
-        "Shouldn't be happening tho fr, or can you guys suggest a better way to get them done without getting time out."
-      ],
-      "creative_needs": [],
-      "specific_scope": []
-    },
-    "message_count": 278,
-    "sample_messages": [
-      "The stuff isn't working, confirmed transaction but still in my wallets"
-    ]
-  },
-  {
-    "name": "dntbdumb",
-    "score": 4,
-    "signals": {
-      "is_business_owner": [],
-      "has_project_need": [],
-      "complains_about_devs": [
-        "The link is not working"
-      ],
-      "mentions_urgency": [],
-      "mentions_budget": [],
-      "tech_needs": [
-        "You are welcome.. Am trying my best to make sure everyone is happy"
-      ],
-      "creative_needs": [],
-      "specific_scope": []
-    },
-    "message_count": 87,
-    "sample_messages": [
-      "The link is not working"
     ]
   }
 ]

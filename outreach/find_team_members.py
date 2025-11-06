@@ -210,6 +210,10 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
     if not isinstance(name, str):
         name = 'Unknown'
 
+    # Extract Telegram chat information
+    telegram_id = chat.get('id')
+    chat_type = chat.get('type', 'unknown')
+
     # Track signals
     signals = {
         'geographic_fit': [],
@@ -232,6 +236,7 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
     score = 0
     hustler_score = 0  # Separate score for hustler profile
     exclude = False
+    matching_messages = []  # Track message references
 
     # Analyze messages from OTHER person (not us)
     for msg in messages:
@@ -260,26 +265,47 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
                 score += 5  # High weight (cost of living fit)
                 if text[:200] not in signals['geographic_fit']:
                     signals['geographic_fit'].append(text[:200])
+                # Track message reference
+                if len(matching_messages) < 10:  # Limit to 10 message refs
+                    matching_messages.append({
+                        'message_id': msg.get('id'),
+                        'date': msg.get('date'),
+                        'text_snippet': text[:200],
+                        'signal_type': 'geographic_fit'
+                    })
 
         # Check work seeking
         for pattern in WORK_SEEKING_PATTERNS:
             if re.search(pattern, text_lower, re.IGNORECASE):
                 score += 3
+                signal_type = 'seeking_work'
                 if 'hour' in pattern:
                     if text[:200] not in signals['hours_availability']:
                         signals['hours_availability'].append(text[:200])
+                    signal_type = 'hours_availability'
                 elif 'need' in pattern or 'earn' in pattern:
                     if text[:200] not in signals['income_need']:
                         signals['income_need'].append(text[:200])
+                    signal_type = 'income_need'
                 elif 'remote' in pattern or 'work from home' in pattern:
                     if text[:200] not in signals['remote_work_interest']:
                         signals['remote_work_interest'].append(text[:200])
+                    signal_type = 'remote_work_interest'
                 elif 'willing' in pattern or 'learn' in pattern:
                     if text[:200] not in signals['learning_willing']:
                         signals['learning_willing'].append(text[:200])
+                    signal_type = 'learning_willing'
                 else:
                     if text[:200] not in signals['seeking_work']:
                         signals['seeking_work'].append(text[:200])
+                # Track message reference
+                if len(matching_messages) < 10:
+                    matching_messages.append({
+                        'message_id': msg.get('id'),
+                        'date': msg.get('date'),
+                        'text_snippet': text[:200],
+                        'signal_type': signal_type
+                    })
 
         # Check junior/educational indicators
         for pattern in JUNIOR_PATTERNS:
@@ -299,27 +325,41 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
         for pattern in SOL_HUSTLER_PATTERNS:
             if re.search(pattern, text_lower, re.IGNORECASE):
                 hustler_score += 3  # High weight for hustler signals
+                signal_type = 'sol_hustler'
 
                 # Categorize by type
                 if any(x in pattern for x in ['raid', 'engagement', 'spaces']):
                     if text[:200] not in signals['raider']:
                         signals['raider'].append(text[:200])
+                    signal_type = 'raider'
                 elif any(x in pattern for x in ['design', 'figma', 'logo', 'ui/ux']):
                     if text[:200] not in signals['designer']:
                         signals['designer'].append(text[:200])
+                    signal_type = 'designer'
                 elif any(x in pattern for x in ['ama', 'host', 'event']):
                     if text[:200] not in signals['ama_host']:
                         signals['ama_host'].append(text[:200])
+                    signal_type = 'ama_host'
                 elif any(x in pattern for x in ['mod', 'community manager', 'discord', 'telegram']):
                     if text[:200] not in signals['moderator']:
                         signals['moderator'].append(text[:200])
+                    signal_type = 'moderator'
                 elif any(x in pattern for x in ['marketing', 'growth', 'kol', 'influencer', 'social media']):
                     if text[:200] not in signals['marketing']:
                         signals['marketing'].append(text[:200])
+                    signal_type = 'marketing'
                 else:
                     # General sol/crypto signal
                     if text[:200] not in signals['sol_hustler']:
                         signals['sol_hustler'].append(text[:200])
+                # Track message reference
+                if len(matching_messages) < 10:
+                    matching_messages.append({
+                        'message_id': msg.get('id'),
+                        'date': msg.get('date'),
+                        'text_snippet': text[:200],
+                        'signal_type': signal_type
+                    })
 
         # Check hustler keywords
         for keyword in HUSTLER_KEYWORDS:
@@ -365,11 +405,14 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
 
     analysis = {
         'name': name,
+        'telegram_id': telegram_id,
+        'chat_type': chat_type,
         'score': score,
         'hustler_score': hustler_score,
         'profile_type': profile_type,
         'signals': signals,
         'message_count': len([m for m in messages if m.get('from') != 'You']),
+        'matching_messages': matching_messages,  # Message references with IDs and dates
         'sample_messages': []
     }
 
@@ -479,6 +522,13 @@ def main():
             f.write(f"\n{'='*80}\n")
             f.write(f"{i}. {member['name']}\n")
             f.write(f"{'='*80}\n\n")
+
+            # Telegram contact info
+            f.write(f"TELEGRAM CONTACT:\n")
+            f.write(f"  Chat ID: {member['telegram_id']}\n")
+            f.write(f"  Display Name: {member['name']}\n")
+            f.write(f"  Chat Type: {member['chat_type']}\n\n")
+
             f.write(f"Profile Type: {member['profile_type'].upper()}\n")
             f.write(f"Supervisor Score: {member['score']}\n")
             f.write(f"Hustler Score: {member['hustler_score']}\n")
@@ -570,6 +620,15 @@ def main():
                 f.write("SOL/WEB3 INVOLVEMENT:\n")
                 for sig in signals['sol_hustler'][:3]:
                     f.write(f"  - {sig}\n")
+                f.write("\n")
+
+            # Show matching messages with references
+            if member.get('matching_messages'):
+                f.write("MATCHING MESSAGES (with references to original conversation):\n")
+                for msg_ref in member['matching_messages'][:5]:
+                    f.write(f"  Message ID: {msg_ref['message_id']} | Date: {msg_ref['date']}\n")
+                    f.write(f"  Signal: {msg_ref['signal_type']}\n")
+                    f.write(f"  \"{msg_ref['text_snippet']}\"\n\n")
                 f.write("\n")
 
             if member['sample_messages']:

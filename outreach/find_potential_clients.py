@@ -157,6 +157,10 @@ def analyze_potential_client(chat: Dict) -> Tuple[bool, Dict]:
     if not isinstance(name, str):
         name = 'Unknown'
 
+    # Extract Telegram chat information
+    telegram_id = chat.get('id')
+    chat_type = chat.get('type', 'unknown')
+
     # Track signals
     signals = {
         'is_business_owner': [],
@@ -171,6 +175,7 @@ def analyze_potential_client(chat: Dict) -> Tuple[bool, Dict]:
 
     score = 0
     exclude = False
+    matching_messages = []  # Track message references
 
     # Analyze messages from OTHER person (not us)
     for msg in messages:
@@ -199,27 +204,51 @@ def analyze_potential_client(chat: Dict) -> Tuple[bool, Dict]:
                 score += 5  # High weight (actual business owner)
                 if text[:200] not in signals['is_business_owner']:
                     signals['is_business_owner'].append(text[:200])
+                # Track message reference
+                if len(matching_messages) < 10:
+                    matching_messages.append({
+                        'message_id': msg.get('id'),
+                        'date': msg.get('date'),
+                        'text_snippet': text[:200],
+                        'signal_type': 'is_business_owner'
+                    })
 
         # Check project needs
         for pattern in PROJECT_NEED_PATTERNS:
             if re.search(pattern, text_lower, re.IGNORECASE):
                 score += 3
+                signal_type = 'has_project_need'
 
                 if 'need' in pattern or 'looking for' in pattern or 'can someone' in pattern:
                     if text[:200] not in signals['has_project_need']:
                         signals['has_project_need'].append(text[:200])
+                    signal_type = 'has_project_need'
                 elif 'disappeared' in pattern or 'slow' in pattern or 'broken' in pattern or 'unreliable' in pattern:
                     if text[:200] not in signals['complains_about_devs']:
                         signals['complains_about_devs'].append(text[:200])
+                    signal_type = 'complains_about_devs'
+                    score += 7  # Extra weight for complaints (pain point!)
                 elif 'asap' in pattern or 'urgent' in pattern or 'deadline' in pattern:
                     if text[:200] not in signals['mentions_urgency']:
                         signals['mentions_urgency'].append(text[:200])
+                    signal_type = 'mentions_urgency'
                 elif 'budget' in pattern or '$' in pattern:
                     if text[:200] not in signals['mentions_budget']:
                         signals['mentions_budget'].append(text[:200])
+                    signal_type = 'mentions_budget'
                 elif 'login' in pattern or 'stripe' in pattern or 'integrate' in pattern:
                     if text[:200] not in signals['specific_scope']:
                         signals['specific_scope'].append(text[:200])
+                    signal_type = 'specific_scope'
+
+                # Track message reference
+                if len(matching_messages) < 10:
+                    matching_messages.append({
+                        'message_id': msg.get('id'),
+                        'date': msg.get('date'),
+                        'text_snippet': text[:200],
+                        'signal_type': signal_type
+                    })
 
         # Check creative work needs
         for pattern in CREATIVE_WORK_PATTERNS:
@@ -255,9 +284,12 @@ def analyze_potential_client(chat: Dict) -> Tuple[bool, Dict]:
 
     analysis = {
         'name': name,
+        'telegram_id': telegram_id,
+        'chat_type': chat_type,
         'score': score,
         'signals': signals,
         'message_count': len([m for m in messages if m.get('from') != 'You']),
+        'matching_messages': matching_messages,  # Message references with IDs and dates
         'sample_messages': []
     }
 
@@ -360,6 +392,13 @@ def main():
             f.write(f"\n{'='*80}\n")
             f.write(f"{i}. {client['name']}\n")
             f.write(f"{'='*80}\n\n")
+
+            # Telegram contact info
+            f.write(f"TELEGRAM CONTACT:\n")
+            f.write(f"  Chat ID: {client['telegram_id']}\n")
+            f.write(f"  Display Name: {client['name']}\n")
+            f.write(f"  Chat Type: {client['chat_type']}\n\n")
+
             f.write(f"Score: {client['score']}\n")
             f.write(f"Their messages: {client['message_count']}\n\n")
 
@@ -412,6 +451,15 @@ def main():
                 f.write("SPECIFIC SCOPE:\n")
                 for sig in signals['specific_scope'][:3]:
                     f.write(f"  - {sig}\n")
+                f.write("\n")
+
+            # Show matching messages with references
+            if client.get('matching_messages'):
+                f.write("MATCHING MESSAGES (with references to original conversation):\n")
+                for msg_ref in client['matching_messages'][:5]:
+                    f.write(f"  Message ID: {msg_ref['message_id']} | Date: {msg_ref['date']}\n")
+                    f.write(f"  Signal: {msg_ref['signal_type']}\n")
+                    f.write(f"  \"{msg_ref['text_snippet']}\"\n\n")
                 f.write("\n")
 
             if client['sample_messages']:
