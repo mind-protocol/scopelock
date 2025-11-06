@@ -528,3 +528,174 @@ Skills: {', '.join(project.get('skills', []))}
 
     except Exception as e:
         logger.error(f"[vollna:project] Failed to process project: {e}", exc_info=True)
+
+
+# ============================================================================
+# Vercel Auto-Fix Webhook
+# ============================================================================
+
+# Deployment tracking for Vercel webhooks
+import json
+from pathlib import Path
+
+HANDLED_DEPLOYMENTS_FILE = Path("/var/data/handled-vercel-deployments.json")
+
+def load_handled_deployments() -> set:
+    """Load set of already-handled Vercel deployment IDs"""
+    if not HANDLED_DEPLOYMENTS_FILE.exists():
+        return set()
+
+    try:
+        with open(HANDLED_DEPLOYMENTS_FILE, 'r') as f:
+            data = json.load(f)
+            return set(data.get("handled", []))
+    except Exception as e:
+        logger.error(f"[vercel:load_handled] Error: {e}")
+        return set()
+
+def mark_vercel_deployment_handled(deployment_id: str):
+    """Add Vercel deployment ID to handled set"""
+    handled = load_handled_deployments()
+    handled.add(deployment_id)
+
+    try:
+        HANDLED_DEPLOYMENTS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(HANDLED_DEPLOYMENTS_FILE, 'w') as f:
+            json.dump({
+                "handled": list(handled),
+                "last_updated": datetime.utcnow().isoformat() + "Z"
+            }, f, indent=2)
+    except Exception as e:
+        logger.error(f"[vercel:mark_handled] Error: {e}")
+
+@router.post("/api/webhooks/vercel-failure")
+async def vercel_failure_webhook(request: Request):
+    """
+    Receive Vercel deployment failure webhooks and auto-invoke Rafael
+
+    Flow:
+    1. Vercel deployment fails (state=ERROR, target=production)
+    2. Vercel POSTs to this endpoint
+    3. Backend invokes Rafael via Claude CLI (background task)
+    4. Rafael uses Vercel MCP to get build logs
+    5. Rafael diagnoses and pushes fix
+    6. Vercel auto-deploys fixed version
+
+    Args:
+        request: Vercel webhook payload
+
+    Returns:
+        {"status": "rafael_invoked"|"already_handled"|"ignored", ...}
+    """
+    try:
+        body = await request.json()
+    except Exception as e:
+        logger.error(f"[vercel:webhook] Invalid JSON: {e}")
+        return {"status": "error", "message": "Invalid JSON payload"}
+
+    logger.info(f"[vercel:webhook] Received - project: {body.get('name')}, state: {body.get('state')}")
+
+    # Extract deployment ID
+    deployment_id = body.get("deployment_id") or body.get("id")
+    if not deployment_id:
+        logger.error(f"[vercel:webhook] Missing deployment ID")
+        return {"status": "error", "message": "Missing deployment ID"}
+
+    # Only process ERROR state on production
+    state = body.get("state")
+    target = body.get("target")
+
+    if state != "ERROR":
+        logger.info(f"[vercel:webhook] Ignored (state={state})")
+        return {"status": "ignored", "reason": "not_an_error"}
+
+    if target != "production":
+        logger.info(f"[vercel:webhook] Ignored (target={target})")
+        return {"status": "ignored", "reason": "not_production"}
+
+    # Check if already handled
+    if deployment_id in load_handled_deployments():
+        logger.info(f"[vercel:webhook] Already handled: {deployment_id}")
+        return {"status": "already_handled", "deployment_id": deployment_id}
+
+    # Invoke Rafael asynchronously
+    logger.info(f"[vercel:webhook] 🚨 PRODUCTION FAILURE - Invoking Rafael for {deployment_id}")
+
+    import asyncio
+    asyncio.create_task(invoke_rafael_for_vercel_failure(deployment_id, body))
+
+    return {
+        "status": "rafael_invoked",
+        "deployment_id": deployment_id,
+        "project": body.get("name")
+    }
+
+@router.get("/api/webhooks/vercel-failure/status")
+async def vercel_webhook_status():
+    """Get Vercel auto-fix webhook status"""
+    handled = load_handled_deployments()
+    return {
+        "status": "operational",
+        "service": "vercel-auto-fix",
+        "handled_deployments": len(handled),
+        "recent_deployments": list(handled)[-10:] if handled else []
+    }
+
+async def invoke_rafael_for_vercel_failure(deployment_id: str, body: dict):
+    """
+    Invoke Rafael via Claude CLI to fix Vercel deployment failure
+
+    This runs as a background task (non-blocking webhook response).
+    """
+    try:
+        project_name = body.get("name")
+        deployment_url = body.get("url", "N/A")
+        commit_sha = body.get("meta", {}).get("githubCommitSha", "N/A")
+        commit_msg = body.get("meta", {}).get("githubCommitMessage", "N/A")
+
+        logger.info("=" * 80)
+        logger.info("🤖 VERCEL AUTO-FIX - INVOKING RAFAEL")
+        logger.info(f"  Deployment: {deployment_id}")
+        logger.info(f"  Project: {project_name}")
+        logger.info(f"  Commit: {commit_sha[:7]} - {commit_msg}")
+        logger.info(f"  Inspector: https://vercel.com/mindprotocol/{project_name}/{deployment_id}")
+        logger.info("=" * 80)
+
+        # Build prompt for Rafael
+        prompt = f"""Vercel deployment FAILED - Auto-fix requested
+
+Project: {project_name}
+Deployment ID: {deployment_id}
+URL: {deployment_url}
+Inspector: https://vercel.com/mindprotocol/{project_name}/{deployment_id}
+
+Commit: {commit_sha}
+Message: {commit_msg}
+
+TASK: Fix this deployment failure autonomously
+1. Use Vercel MCP to get build logs
+2. Diagnose root cause from logs
+3. Fix the issue (code, config, dependencies, etc.)
+4. Commit fix and push to main
+5. Update SYNC.md with fix details
+
+Work autonomously. No human intervention needed.
+If you cannot fix, document blockers in SYNC.md.
+
+Ready? Begin now.
+"""
+
+        # Run Rafael via Citizen Runner
+        result = runner._run_claude(prompt, citizen="rafael")
+
+        if result["success"]:
+            logger.info(f"[vercel:rafael] ✅ Rafael completed for {deployment_id}")
+            mark_vercel_deployment_handled(deployment_id)
+        else:
+            logger.error(f"[vercel:rafael] ❌ Rafael failed: {result['error']}")
+            # Don't mark as handled - allow retry on next failure
+
+    except Exception as e:
+        logger.error(f"[vercel:rafael] Failed to invoke Rafael: {e}", exc_info=True)
+        # Emit failure event per fail-loud principle
+        raise
