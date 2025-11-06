@@ -1,3 +1,54 @@
+## 2025-11-07 07:00 — Rafael: Fixed Mission Deck Layout (Lost Header/CSS) ✅
+
+**Work:** Fixed Mission Deck losing site header and CSS styling
+
+**User Report:** "lost the header and css for some reason"
+
+**Problem:**
+- Mission Deck layout.tsx was creating new `<html>` and `<body>` tags
+- This overrode the root layout completely
+- Site header disappeared
+- Main site CSS was not applied
+
+**Root Cause:**
+In Next.js 14 App Router, nested layouts should NOT create new html/body tags. They should just wrap children with their specific context/styling.
+
+**Fix:**
+Changed mission-deck/layout.tsx from:
+```tsx
+return (
+  <html lang="en">
+    <body>
+      <SolanaWalletProvider>{children}</SolanaWalletProvider>
+    </body>
+  </html>
+)
+```
+
+To proper nested layout:
+```tsx
+return <SolanaWalletProvider>{children}</SolanaWalletProvider>
+```
+
+**Now Working:**
+- ✅ Site header visible on Mission Deck pages
+- ✅ Main site CSS applied
+- ✅ Mission Deck CSS (globals.css) also applied
+- ✅ Solana wallet provider wraps all Mission Deck pages
+
+**Layout Nesting:**
+```
+Root Layout (html/body + header + main CSS)
+  → Mission Deck Layout (Solana wallet provider + Mission Deck CSS)
+    → Mission Deck Pages (login, console, etc.)
+```
+
+**Commit:** `5069b9e` - fix: make Mission Deck layout a proper nested layout
+
+**Status:** Pushed, Vercel rebuilding ✅
+
+---
+
 ## 2025-11-07 06:50 — Rafael: Fixed Wallet Adapter Build Error ✅
 
 **Work:** Fixed Vercel build failure due to BackpackWalletAdapter not being available
