@@ -29,7 +29,7 @@ export default function JoinPage() {
           </p>
 
           <div className={styles.processHorizontal}>
-            {/* Step 1 - You (top) */}
+            {/* 1. You - Find job */}
             <div className={styles.processStepTop}>
               <div className={styles.stepNumber}>1</div>
               <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
@@ -37,46 +37,126 @@ export default function JoinPage() {
                 <div className={styles.stepName}>You</div>
               </div>
               <div className={styles.stepAction}>Find job on Upwork</div>
-              <div className={styles.stepTime}>5 min</div>
             </div>
 
             <div className={styles.processConnector}>→</div>
 
-            {/* Step 2 - AI (bottom) */}
+            {/* 2. Emma - Analyze */}
             <div className={styles.processStepBottom}>
               <div className={styles.stepNumber}>2</div>
               <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
                 <div className={styles.stepIcon}>🤖</div>
-                <div className={styles.stepName}>Emma AI</div>
+                <div className={styles.stepName}>Emma</div>
               </div>
-              <div className={styles.stepAction}>Write complete proposal</div>
-              <div className={styles.stepTime}>2 min</div>
+              <div className={styles.stepAction}>Analyze & write proposal</div>
             </div>
 
             <div className={styles.processConnector}>→</div>
 
-            {/* Step 3 - AI (top) */}
+            {/* 3. You - Submit */}
             <div className={styles.processStepTop}>
               <div className={styles.stepNumber}>3</div>
-              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.stepIcon}>🤖</div>
-                <div className={styles.stepName}>Rafael AI</div>
-              </div>
-              <div className={styles.stepAction}>Generate all code</div>
-              <div className={styles.stepTime}>2 min</div>
-            </div>
-
-            <div className={styles.processConnector}>→</div>
-
-            {/* Step 4 - You (bottom) */}
-            <div className={styles.processStepBottom}>
-              <div className={styles.stepNumber}>4</div>
               <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
                 <div className={styles.stepIcon}>👤</div>
                 <div className={styles.stepName}>You</div>
               </div>
-              <div className={styles.stepAction}>Deploy & test</div>
-              <div className={styles.stepTime}>2 hours</div>
+              <div className={styles.stepAction}>Review & submit</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 4. Inna - Specs */}
+            <div className={styles.processStepBottom}>
+              <div className={styles.stepNumber}>4</div>
+              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
+                <div className={styles.stepIcon}>🤖</div>
+                <div className={styles.stepName}>Inna</div>
+              </div>
+              <div className={styles.stepAction}>Write complete specs</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 5. You - Lock scope */}
+            <div className={styles.processStepTop}>
+              <div className={styles.stepNumber}>5</div>
+              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
+                <div className={styles.stepIcon}>👤</div>
+                <div className={styles.stepName}>You</div>
+              </div>
+              <div className={styles.stepAction}>Lock scope</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 6. Rafael - Generate code */}
+            <div className={styles.processStepBottom}>
+              <div className={styles.stepNumber}>6</div>
+              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
+                <div className={styles.stepIcon}>🤖</div>
+                <div className={styles.stepName}>Rafael</div>
+              </div>
+              <div className={styles.stepAction}>Generate all code</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 7. You - Deploy */}
+            <div className={styles.processStepTop}>
+              <div className={styles.stepNumber}>7</div>
+              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
+                <div className={styles.stepIcon}>👤</div>
+                <div className={styles.stepName}>You</div>
+              </div>
+              <div className={styles.stepAction}>Review & deploy</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 8. Sofia - QA */}
+            <div className={styles.processStepBottom}>
+              <div className={styles.stepNumber}>8</div>
+              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
+                <div className={styles.stepIcon}>🤖</div>
+                <div className={styles.stepName}>Sofia</div>
+              </div>
+              <div className={styles.stepAction}>Generate QA checklist</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 9. You - Test */}
+            <div className={styles.processStepTop}>
+              <div className={styles.stepNumber}>9</div>
+              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
+                <div className={styles.stepIcon}>👤</div>
+                <div className={styles.stepName}>You</div>
+              </div>
+              <div className={styles.stepAction}>Manual testing</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 10. Maya - Demo script */}
+            <div className={styles.processStepBottom}>
+              <div className={styles.stepNumber}>10</div>
+              <div className={styles.stepActor} style={{ borderColor: '#1EE5B8' }}>
+                <div className={styles.stepIcon}>🤖</div>
+                <div className={styles.stepName}>Maya</div>
+              </div>
+              <div className={styles.stepAction}>Create demo script</div>
+            </div>
+
+            <div className={styles.processConnector}>→</div>
+
+            {/* 11. You - Present */}
+            <div className={styles.processStepTop}>
+              <div className={styles.stepNumber}>11</div>
+              <div className={styles.stepActor} style={{ borderColor: '#64A8FF' }}>
+                <div className={styles.stepIcon}>👤</div>
+                <div className={styles.stepName}>You</div>
+              </div>
+              <div className={styles.stepAction}>Present to client</div>
             </div>
 
             <div className={styles.processConnector}>→</div>
