@@ -535,6 +535,41 @@
   line-height: 1.8;
 }
 
+.nicolasLinks {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.nicolasName {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #E6EAF2;
+  margin-bottom: 12px;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.socialLinks a {
+  color: #1EE5B8;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.socialLinks a:hover {
+  color: #64A8FF;
+}
+
+.socialLinks span {
+  color: #9AA3AE;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero {
