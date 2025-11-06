@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
@@ -15,6 +15,7 @@ export default function LoginPage() {
   const { publicKey, signMessage, connected } = useWallet();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const hasTriggeredAuth = useRef(false);
 
   // Auto-redirect if already authenticated
   useEffect(() => {
@@ -24,10 +25,16 @@ export default function LoginPage() {
     }
   }, [router]);
 
-  // Auto-trigger authentication when wallet connects
+  // Auto-trigger authentication when wallet connects (only ONCE per connection)
   useEffect(() => {
-    if (connected && publicKey && signMessage && !isLoading) {
+    if (connected && publicKey && signMessage && !isLoading && !hasTriggeredAuth.current) {
+      hasTriggeredAuth.current = true;
       handleWalletAuth();
+    }
+
+    // Reset flag when wallet disconnects
+    if (!connected) {
+      hasTriggeredAuth.current = false;
     }
   }, [connected, publicKey, signMessage]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -58,6 +65,8 @@ export default function LoginPage() {
     } catch (err) {
       console.error('Wallet auth error:', err);
       setError(err instanceof Error ? err.message : 'Authentication failed');
+      // Reset flag so user can try again after error
+      hasTriggeredAuth.current = false;
     } finally {
       setIsLoading(false);
     }
@@ -99,9 +108,23 @@ export default function LoginPage() {
 
             {/* Error Display */}
             {error && (
-              <div className="bg-danger/10 border border-danger text-danger text-sm p-3 rounded-md">
-                {error}
-              </div>
+              <>
+                <div className="bg-danger/10 border border-danger text-danger text-sm p-3 rounded-md">
+                  {error}
+                </div>
+                {connected && (
+                  <button
+                    onClick={() => {
+                      setError('');
+                      hasTriggeredAuth.current = false;
+                      handleWalletAuth();
+                    }}
+                    className="btn-primary w-full"
+                  >
+                    Try Again
+                  </button>
+                )}
+              </>
             )}
 
             {/* Info */}
