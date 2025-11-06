@@ -1,3 +1,70 @@
+## 2025-11-06 23:15 — Rafael: Mission Deck Frontend Integration into Main Site ✅
+
+**Work:** Integrated Mission Deck frontend into main scopelock.mindprotocol.ai site at /mission-deck route
+
+**User Feedback:** "no the link should go to the fking real dashboard" + "It is part of the same site."
+
+**Problem Discovered:** Mission Deck frontend was in separate directory (mission-deck-frontend/) and not integrated into main site structure. The Mission Deck description link wasn't pointing to an accessible dashboard.
+
+**Solution:**
+1. **Copied Mission Deck files to main site:**
+   - `mission-deck-frontend/app/*` → `src/app/mission-deck/`
+   - `mission-deck-frontend/components/*` → `src/components/mission-deck/`
+   - `mission-deck-frontend/lib/*` → `src/lib/` (api.ts)
+   - `mission-deck-frontend/types/*` → `src/types/` (index.ts)
+
+2. **Fixed import paths for new structure:**
+   - `src/app/mission-deck/console/page.tsx`: Updated component imports to `../../../components/mission-deck/`
+   - All components in `src/components/mission-deck/`: Changed `../lib/api` to `../../lib/api`
+   - All type imports: Changed `../types` to `../../types`
+
+3. **Added missing dependencies to main site:**
+   - `react-syntax-highlighter@15.5.0` (for code display in chat)
+   - `@types/react-syntax-highlighter@15.5.13`
+   - `@tanstack/react-query@^5.56.2` (for data fetching)
+   - `axios@^1.7.9` (for HTTP requests)
+   - `zustand@^4.5.5` (for state management)
+
+**Deployment Issues Fixed:**
+- First deploy failed: Missing react-syntax-highlighter dependency
+- Added all required dependencies from mission-deck-frontend/package.json
+- Triggered redeployment with complete dependencies
+
+**Architecture:**
+```
+scopelock.mindprotocol.ai/mission-deck (Login)
+  → /mission-deck/console (Developer Dashboard)
+    → Connects to: scopelock.onrender.com/api/*
+      → FalkorDB (mindprotocol.onrender.com)
+```
+
+**Commits:**
+- `91820cb` - Integrated Mission Deck frontend into main site
+- `cf827e4` - Added react-syntax-highlighter dependencies
+- `7741c7e` - Added remaining dependencies (react-query, axios, zustand)
+
+**Files Modified:**
+- `src/app/mission-deck/page.tsx` - Login page
+- `src/app/mission-deck/console/page.tsx` - Developer dashboard
+- `src/components/mission-deck/*.tsx` - All UI components
+- `src/lib/api.ts` - API client (USE_MOCK_DATA = false)
+- `package.json` - Added Mission Deck dependencies
+
+**Status:** Deployed to Vercel ✅
+
+**Ready For:** Manual testing → https://scopelock.mindprotocol.ai/mission-deck
+
+**Next Steps:**
+1. Test login at /mission-deck
+2. Verify missions load from backend (not mock data)
+3. Test Rafael chat functionality
+4. Test DoD toggle persistence
+5. Hand off to Sofia for QA
+
+**Link:** src/app/mission-deck/
+
+---
+
 ## 2025-11-06 22:30 — Rafael: Simplified Bandwidth Solutions Page ✅
 
 **Work:** Completely rewrote bandwidth solutions resource page to focus on benefits over technical details
