@@ -1,3 +1,55 @@
+## 2025-11-06 21:55 — Rafael: Mission Deck Integration Complete ✅
+
+**Work:** Connected Mission Deck frontend to real backend, integration complete
+
+**What Was Done:**
+
+1. **Backend Integration (scopelock.onrender.com):**
+   - Integrated Mission Deck APIs into main backend (no separate service)
+   - Routes: /api/auth/login, /api/missions, /api/chat/message, /api/dod
+   - Environment variables set: FALKORDB_API_KEY, JWT_SECRET, CORS_ORIGINS
+   - Fixed circular imports, JWT validation, router issues
+   - Status: ✅ Deployed and live
+
+2. **Frontend Configuration (scopelock.mindprotocol.ai):**
+   - Set NEXT_PUBLIC_API_URL=https://scopelock.onrender.com in Vercel dashboard
+   - USE_MOCK_DATA = false (line 22 of mission-deck-frontend/lib/api.ts)
+   - Triggered redeployment → environment variable active
+   - Status: ✅ Deployed (dpl_Ft1hhXyySzmdL9EK7rDcU3UG5r1E)
+
+**Architecture:**
+```
+Vercel (scopelock.mindprotocol.ai)
+  ↓ HTTPS
+Render (scopelock.onrender.com)
+  ↓ HTTPS
+FalkorDB (mindprotocol.onrender.com)
+```
+
+**Files Modified:**
+- backend/app/api/mission_deck/ (all routes integrated)
+- backend/requirements.txt (python-jose, passlib, email-validator)
+- backend/app/config.py (Mission Deck env vars)
+- backend/app/main.py (Mission Deck routers registered)
+- mission-deck-frontend/lib/api.ts (USE_MOCK_DATA = false)
+
+**Commits:**
+- `3fbd0df` - Triggered Vercel redeploy with NEXT_PUBLIC_API_URL
+- `c700fb1` - Added Mission Deck integration completion handoff doc
+
+**Documentation:** `/home/mind-protocol/scopelock/MISSION_DECK_INTEGRATION_COMPLETE.md`
+
+**Next Steps:**
+1. Manual testing: Test login flow in browser (Nicolas)
+2. Verify: All requests go to scopelock.onrender.com (not localhost)
+3. QA handoff: Hand off to Sofia for pre-delivery QA
+
+**Status:** Integration complete, ready for manual testing + QA ✅
+
+**Link:** MISSION_DECK_INTEGRATION_COMPLETE.md
+
+---
+
 ## 2025-11-06 20:50 — Rafael: Added Vercel Webhook Signature Verification ✅
 
 **Work:** Added HMAC-SHA1 signature verification for Vercel webhook security
