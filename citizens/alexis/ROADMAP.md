@@ -61,18 +61,27 @@
 - Team structure defined ✅
 - AI citizens created (Emma, Inna, Rafael, Sofia, Alexis, Maya) ✅
 - Standard tech stack defined (Next.js + Vercel, Python + Render) ✅
-- **STRATEGIC PIVOT ✅ (2025-11-07):** Creative AI services prioritized over traditional dev
+- **STRATEGIC PIVOT #1 ✅ (2025-11-07 AM):** Creative AI services prioritized over traditional dev
   - 7 new service categories added (Gamma, ElevenLabs, Ideogram, Runway, Suno, translation, content)
   - Target margins: 70-85% (vs 50-60% for traditional dev)
   - Competitive moat: Dev shops can't compete (no AI creative tools access)
   - Week 1 targets revised: $400-1100 revenue (vs $250-800 previously)
-- Human team: Bigbosexf (QA), Reanance (specs/client mgmt), Kara (dev) ✅
+- **STRATEGIC PIVOT #2 ✅ (2025-11-07 PM):** New mission compensation system
+  - **Flexible roles:** Anyone can work on anything (no more dedicated roles)
+  - **Pay per interaction:** Every message to AI = +1 point, earn % of 30% team pool
+  - **Gamified earnings:** Real-time display of potential earnings per job/mission
+  - **Jobs vs Missions:** Jobs = Upwork client work, Missions = internal work (proposals, social, recruitment)
+  - **Mission pricing:** Write proposal $1, recruit $10, post on X $2
+  - **Team gets 35% total:** 30% pool (split by interactions) + 5% mission fund
+  - **Spec created:** `/docs/mission-compensation-system.md` (awaiting Inna's detailed docs)
+- Human team: Bigbosexf, Reanance, Kara (now flexible, not dedicated roles)
 - First proposals: 0 sent (Emma ready to hunt creative AI jobs)
 
 **Blockers:**
 - Need to activate Emma to start sending proposals (prioritize creative AI services)
 - Need to test full workflow (proposal → delivery) at least once
 - Verify access to creative AI tools (Ideogram, Runway, Suno, ElevenLabs, Gamma)
+- **NEW:** Implement mission compensation system in Mission Deck (Inna → Rafael → Developer)
 
 ---
 
