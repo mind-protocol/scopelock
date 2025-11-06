@@ -1,0 +1,151 @@
+{
+  "client_id": "client-name-slug",
+  "created_at": "2025-11-05",
+  "last_updated": "2025-11-05",
+  "status": "active",
+
+  "basic_info": {
+    "name": "Client Full Name",
+    "company": "Company Name Inc.",
+    "role": "CEO / CTO / Product Manager",
+    "email": "client@example.com",
+    "phone": "+1-234-567-8900",
+    "timezone": "EST / CET / PST",
+    "platform": "Upwork / Contra / Direct / LinkedIn"
+  },
+
+  "availability": {
+    "preferred_contact_method": "Email / Phone / Slack / WhatsApp",
+    "work_hours": "9am-6pm EST",
+    "best_time_for_calls": "Mornings / Afternoons / Evenings",
+    "response_pattern": "Fast <1h / Moderate 4h / Slow 24h+"
+  },
+
+  "communication_preferences": {
+    "technical_literacy": "High / Medium / Low",
+    "prefers": "Detailed updates / Executive summaries / Bullet points",
+    "tone_preference": "Formal / Professional / Casual",
+    "client_type": "Process-skeptical / Process-oriented / Time-pressed CEO",
+    "status_update_frequency": "Daily / Weekly / Bi-weekly",
+    "preferred_day": "Monday / Wednesday / Friday",
+    "preferred_time": "10am their timezone",
+    "sensitivities": [
+      "Example: Very concerned about timeline",
+      "Example: Burned by agencies before",
+      "Example: Prefers calls over email"
+    ]
+  },
+
+  "project_context": {
+    "current_mission": {
+      "mission_name": "Mission Name",
+      "mission_id": "mission-slug-2025-11",
+      "repository_url": "https://github.com/org/repo",
+      "deployment_url": "https://app.vercel.app",
+      "budget_eur": 5000,
+      "start_date": "2025-11-05",
+      "evidence_sprint_date": "2025-11-12",
+      "ac_green_target": "2025-11-19"
+    },
+    "business_context": {
+      "industry": "Healthcare / Finance / AI / E-commerce / SaaS",
+      "problem_solving": "Brief description of the problem they're solving",
+      "target_users": "Who will use this system",
+      "success_metric": "What makes this a win for them"
+    },
+    "technical_context": {
+      "tech_stack": ["Next.js", "Django", "PostgreSQL", "Vercel", "Render"],
+      "integrations_needed": ["Stripe API", "Twilio", "etc."],
+      "constraints": ["HIPAA compliance", "Real-time required", "Offline-first"]
+    }
+  },
+
+  "important_links": {
+    "upwork_job_url": "https://www.upwork.com/jobs/~...",
+    "upwork_contract_url": "https://www.upwork.com/ab/...",
+    "original_proposal": "https://github.com/mind-protocol/scopelock/...",
+    "client_website": "https://clientcompany.com",
+    "client_existing_system": "https://old-system.clientcompany.com",
+    "ac_md": "https://github.com/org/repo/blob/main/docs/AC.md",
+    "mechanism_md": "https://github.com/org/repo/blob/main/docs/MECHANISM.md",
+    "deployment_production": "https://app.clientcompany.com",
+    "client_provided_docs": [
+      "https://docs.google.com/...",
+      "https://figma.com/..."
+    ]
+  },
+
+  "key_decisions": [
+    {
+      "date": "2025-11-05",
+      "decision": "Agreed to replace email auth with phone auth (Swap)",
+      "rationale": "Client prefers SMS for their user base"
+    }
+  ],
+
+  "timeline_adjustments": [
+    {
+      "date": "2025-11-07",
+      "reason": "Client delayed API key delivery",
+      "original_date": "2025-11-15",
+      "new_date": "2025-11-18"
+    }
+  ],
+
+  "change_requests": [
+    {
+      "cr_id": "CR-001",
+      "title": "Add real-time notifications",
+      "decision": "Add",
+      "status": "Approved / Pending / Delivered",
+      "price_eur": 2000,
+      "requested_date": "2025-11-10"
+    }
+  ],
+
+  "communication_history": [
+    {
+      "date": "2025-11-05",
+      "type": "Kickoff Call",
+      "summary": "Discussed project goals, confirmed timeline",
+      "client_concerns": ["Worried about mobile responsiveness"],
+      "agreements": ["Weekly updates every Wednesday 10am EST"]
+    },
+    {
+      "date": "2025-11-06",
+      "type": "Weekly Update #1",
+      "status": "On track, authentication module completed",
+      "client_response": "Very happy with progress"
+    }
+  ],
+
+  "relationship_notes": {
+    "working_well": [
+      "Loves the weekly updates",
+      "Appreciates fast response time"
+    ],
+    "potential_concerns": [
+      "Anxious about timeline",
+      "Worried about budget"
+    ],
+    "opportunities": [
+      "Mentioned future features: mobile app, analytics dashboard",
+      "Referred a colleague in same industry"
+    ],
+    "red_flags": [
+      "Attempting scope creep",
+      "Questioning every technical decision"
+    ]
+  },
+
+  "post_delivery": {
+    "handoff_date": null,
+    "satisfaction": "Happy / Neutral / Issues",
+    "future_work_interest": "Yes - Phase 2 / No plans / Referred others",
+    "testimonial": null,
+    "lessons_learned": {
+      "went_well": [],
+      "to_improve": []
+    }
+  }
+}
