@@ -778,6 +778,142 @@
   color: var(--color-muted, #9AA3AE);
 }
 
+/* Currency Selector */
+.currencySelector {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.currencySelector label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--color-text, #E6EAF2);
+}
+
+.currencyButtons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.currencyButton {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--color-text, #E6EAF2);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.currencyButton:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-accent, #1EE5B8);
+}
+
+.currencyButton.active {
+  background: rgba(30, 229, 184, 0.15);
+  border-color: var(--color-accent, #1EE5B8);
+  color: var(--color-accent, #1EE5B8);
+}
+
+/* Timeline Visualizer */
+.timeline {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timelineHeader {
+  margin-bottom: 2rem;
+}
+
+.timelineInfo strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-accent, #1EE5B8);
+}
+
+.timelineNote {
+  color: var(--color-muted, #9AA3AE);
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-accent, #1EE5B8);
+}
+
+.timelineChart {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.chartSvg {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.timelineMilestones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.milestone {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+}
+
+.milestoneDay {
+  font-size: 0.85rem;
+  color: var(--color-muted, #9AA3AE);
+  margin-bottom: 0.5rem;
+}
+
+.milestoneEvent {
+  font-weight: 600;
+  color: var(--color-text, #E6EAF2);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.milestoneAmount {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-accent, #1EE5B8);
+}
+
+.milestoneArrow {
+  color: var(--color-accent-2, #64A8FF);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header h1 {

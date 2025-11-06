@@ -7,12 +7,34 @@ import styles from './styles.module.css';
 export default function CompensationStructurePage() {
   const [missionsPerMonth, setMissionsPerMonth] = useState(10);
   const [avgMissionValue, setAvgMissionValue] = useState(600);
+  const [selectedCurrency, setSelectedCurrency] = useState<'USD' | 'NGN' | 'COP'>('USD');
 
   // Commission percentages
   const commissions = {
     kara: 0.15,      // 15% - Developer
     reanance: 0.09,  // 9% - Specifier + Client
     bigbosexf: 0.06  // 6% - Hunter + QA
+  };
+
+  // Exchange rates (approximate, as of Nov 2025)
+  const exchangeRates = {
+    USD: 1,
+    NGN: 1650,  // Nigerian Naira
+    COP: 4100   // Colombian Peso
+  };
+
+  // Currency symbols
+  const currencySymbols = {
+    USD: '$',
+    NGN: '₦',
+    COP: '$'
+  };
+
+  // Format currency based on selection
+  const formatCurrency = (amount: number) => {
+    const converted = amount * exchangeRates[selectedCurrency];
+    const symbol = currencySymbols[selectedCurrency];
+    return `${symbol}${converted.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
   };
 
   // Calculate earnings
@@ -43,6 +65,24 @@ export default function CompensationStructurePage() {
 
   // PPP multiplier (Nigeria/Côte d'Ivoire purchasing power)
   const pppMultiplier = { min: 5, max: 10 };
+
+  // Calculate earnings timeline (Kara's wallet over time)
+  const earningsTimeline = [];
+  let cumulativeEarnings = 0;
+  const missionsPerWeek = missionsPerMonth / 4;
+  const earningsPerMission = avgMissionValue * commissions.kara;
+
+  for (let week = 0; week <= 12; week++) {
+    if (week > 0 && week % 3 === 0) { // Payment every 3 weeks (21 days)
+      const missionsCompleted = Math.floor((week / 3) * missionsPerWeek * 3);
+      cumulativeEarnings = missionsCompleted * earningsPerMission;
+    }
+    earningsTimeline.push({
+      week,
+      earnings: cumulativeEarnings,
+      day: week * 7
+    });
+  }
 
   return (
     <main className={styles.compensationStructure}>
@@ -96,6 +136,31 @@ export default function CompensationStructurePage() {
         <h2>Revenue Projector</h2>
         <p>Use the sliders below to see what you'd earn at different volume levels:</p>
 
+        {/* Currency Selector */}
+        <div className={styles.currencySelector}>
+          <label>Show amounts in:</label>
+          <div className={styles.currencyButtons}>
+            <button
+              className={`${styles.currencyButton} ${selectedCurrency === 'USD' ? styles.active : ''}`}
+              onClick={() => setSelectedCurrency('USD')}
+            >
+              USD ($)
+            </button>
+            <button
+              className={`${styles.currencyButton} ${selectedCurrency === 'NGN' ? styles.active : ''}`}
+              onClick={() => setSelectedCurrency('NGN')}
+            >
+              NGN (₦) Nigeria
+            </button>
+            <button
+              className={`${styles.currencyButton} ${selectedCurrency === 'COP' ? styles.active : ''}`}
+              onClick={() => setSelectedCurrency('COP')}
+            >
+              COP ($) Colombia
+            </button>
+          </div>
+        </div>
+
         <div className={styles.projector}>
           <div className={styles.controls}>
             <div className={styles.control}>
@@ -143,7 +208,7 @@ export default function CompensationStructurePage() {
           <div className={styles.results}>
             <div className={styles.totalRevenue}>
               <span className={styles.label}>Total Monthly Revenue</span>
-              <span className={`${styles.value} ${styles.metallicText}`}>${totalRevenue.toLocaleString()}</span>
+              <span className={`${styles.value} ${styles.metallicText}`}>{formatCurrency(totalRevenue)}</span>
             </div>
 
             <div className={styles.earnings}>
@@ -155,7 +220,7 @@ export default function CompensationStructurePage() {
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.mainEarning}>
-                    <span className={styles.metallicText}>${karaEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}</span>
+                    <span className={styles.metallicText}>{formatCurrency(karaEarnings)}</span>
                     <span className={styles.perMonth}>/month</span>
                   </div>
                   <div className={styles.details}>
@@ -187,7 +252,7 @@ export default function CompensationStructurePage() {
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.mainEarning}>
-                    <span className={styles.metallicText}>${reananceEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}</span>
+                    <span className={styles.metallicText}>{formatCurrency(reananceEarnings)}</span>
                     <span className={styles.perMonth}>/month</span>
                   </div>
                   <div className={styles.details}>
@@ -219,7 +284,7 @@ export default function CompensationStructurePage() {
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.mainEarning}>
-                    <span className={styles.metallicText}>${bigbosexfEarnings.toLocaleString(undefined, {maximumFractionDigits: 0})}</span>
+                    <span className={styles.metallicText}>{formatCurrency(bigbosexfEarnings)}</span>
                     <span className={styles.perMonth}>/month</span>
                   </div>
                   <div className={styles.details}>
@@ -243,6 +308,141 @@ export default function CompensationStructurePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Earnings Timeline Visualizer */}
+      <section className={styles.section}>
+        <h2>Your Wallet Over Time</h2>
+        <p>Here's how your wallet grows as you deliver missions (example for Kara at {missionsPerMonth} missions/month):</p>
+
+        <div className={styles.timeline}>
+          <div className={styles.timelineHeader}>
+            <div className={styles.timelineInfo}>
+              <strong>Cumulative Earnings Timeline</strong>
+              <span className={styles.timelineNote}>Payment arrives every 21 days after mission delivery</span>
+            </div>
+          </div>
+
+          {/* Timeline Chart */}
+          <div className={styles.timelineChart}>
+            <svg viewBox="0 0 800 300" className={styles.chartSvg}>
+              {/* Grid lines */}
+              {[0, 1, 2, 3, 4].map((i) => (
+                <line
+                  key={`grid-${i}`}
+                  x1="60"
+                  y1={50 + i * 50}
+                  x2="750"
+                  y2={50 + i * 50}
+                  stroke="rgba(255, 255, 255, 0.1)"
+                  strokeWidth="1"
+                />
+              ))}
+
+              {/* Y-axis labels */}
+              {earningsTimeline.length > 0 && (
+                <>
+                  <text x="50" y="55" textAnchor="end" fill="#9AA3AE" fontSize="12">
+                    {formatCurrency(earningsTimeline[earningsTimeline.length - 1].earnings)}
+                  </text>
+                  <text x="50" y="155" textAnchor="end" fill="#9AA3AE" fontSize="12">
+                    {formatCurrency(earningsTimeline[earningsTimeline.length - 1].earnings / 2)}
+                  </text>
+                  <text x="50" y="255" textAnchor="end" fill="#9AA3AE" fontSize="12">
+                    {formatCurrency(0)}
+                  </text>
+                </>
+              )}
+
+              {/* Timeline line */}
+              <polyline
+                points={earningsTimeline.map((point, i) => {
+                  const x = 60 + (i / (earningsTimeline.length - 1)) * 690;
+                  const maxEarnings = earningsTimeline[earningsTimeline.length - 1].earnings;
+                  const y = 250 - (point.earnings / maxEarnings) * 200;
+                  return `${x},${y}`;
+                }).join(' ')}
+                fill="none"
+                stroke="#1EE5B8"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              {/* Data points */}
+              {earningsTimeline.map((point, i) => {
+                const x = 60 + (i / (earningsTimeline.length - 1)) * 690;
+                const maxEarnings = earningsTimeline[earningsTimeline.length - 1].earnings;
+                const y = 250 - (point.earnings / maxEarnings) * 200;
+
+                // Only show points at payment milestones (every 3 weeks)
+                if (point.week % 3 === 0 && point.week > 0) {
+                  return (
+                    <g key={`point-${i}`}>
+                      <circle cx={x} cy={y} r="6" fill="#1EE5B8" stroke="#0E1116" strokeWidth="2" />
+                      <text x={x} y={y - 15} textAnchor="middle" fill="#1EE5B8" fontSize="12" fontWeight="600">
+                        {formatCurrency(point.earnings)}
+                      </text>
+                    </g>
+                  );
+                }
+                return null;
+              })}
+
+              {/* X-axis labels (weeks) */}
+              {[0, 3, 6, 9, 12].map((week) => {
+                const x = 60 + (week / 12) * 690;
+                return (
+                  <text key={`week-${week}`} x={x} y="280" textAnchor="middle" fill="#9AA3AE" fontSize="12">
+                    Week {week}
+                  </text>
+                );
+              })}
+
+              {/* Payment milestones markers */}
+              {[3, 6, 9, 12].map((week) => {
+                const x = 60 + (week / 12) * 690;
+                return (
+                  <g key={`payment-${week}`}>
+                    <line x1={x} y1="50" x2={x} y2="260" stroke="#1EE5B8" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+                    <text x={x} y="40" textAnchor="middle" fill="#1EE5B8" fontSize="10">💰</text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* Timeline Milestones */}
+          <div className={styles.timelineMilestones}>
+            <div className={styles.milestone}>
+              <div className={styles.milestoneDay}>Day 0</div>
+              <div className={styles.milestoneEvent}>Start Mission 1</div>
+              <div className={styles.milestoneAmount}>{formatCurrency(0)}</div>
+            </div>
+            <div className={styles.milestoneArrow}>→</div>
+            <div className={styles.milestone}>
+              <div className={styles.milestoneDay}>Day 21</div>
+              <div className={styles.milestoneEvent}>💰 First Payment</div>
+              <div className={styles.milestoneAmount}>{formatCurrency(earningsPerMission * Math.floor(missionsPerWeek * 3))}</div>
+            </div>
+            <div className={styles.milestoneArrow}>→</div>
+            <div className={styles.milestone}>
+              <div className={styles.milestoneDay}>Day 42</div>
+              <div className={styles.milestoneEvent}>💰 Second Payment</div>
+              <div className={styles.milestoneAmount}>{formatCurrency(earningsPerMission * Math.floor(missionsPerWeek * 6))}</div>
+            </div>
+            <div className={styles.milestoneArrow}>→</div>
+            <div className={styles.milestone}>
+              <div className={styles.milestoneDay}>Day 84</div>
+              <div className={styles.milestoneEvent}>💰 Month 3 Total</div>
+              <div className={styles.milestoneAmount}>{formatCurrency(karaEarnings * 3)}</div>
+            </div>
+          </div>
+
+          <div className={styles.timelineNote}>
+            <strong>How payments work:</strong> Clients pay Upwork 14 days after AC Green delivery. Upwork releases funds 7 days later. Total: 21 days from delivery to your wallet.
           </div>
         </div>
       </section>

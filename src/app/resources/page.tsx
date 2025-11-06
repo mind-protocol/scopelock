@@ -57,6 +57,15 @@ const resources = [
     timeToRead: '15 min',
     category: 'Essential',
   },
+  {
+    title: 'Mission Planning: From Job Post to Locked Scope',
+    description: 'Master the 7-step framework from parsing job posts to locking AC.md baselines. Learn Evidence Sprint vs Full Mission decisions, milestone breakdown, timeline estimation, risk identification, and scope protection via change control.',
+    href: '/resources/mission-planning',
+    icon: '📋',
+    impact: 'Profitable missions, no scope creep',
+    timeToRead: '20 min',
+    category: 'Critical',
+  },
   // Future resources: Add new resources here following the same structure
   // {
   //   title: 'Your Resource Title',
