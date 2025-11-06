@@ -122,12 +122,12 @@ export default function BandwidthSolutionsPage() {
         </details>
       </section>
 
-      {/* Solution 3: Voice Messages */}
+      {/* Solution 3: Telegram Voice Messages */}
       <section className="solution-card solution-voice">
         <div className="solution-header">
           <div className="solution-icon">🎙️</div>
           <div>
-            <h2>Voice messages work when video calls don't</h2>
+            <h2>3. Telegram voice messages work when video calls don't</h2>
             <p className="solution-tagline">Explain things clearly without needing fast internet</p>
           </div>
         </div>
@@ -141,6 +141,7 @@ export default function BandwidthSolutionsPage() {
           <summary className="setup-summary">
             <span className="setup-icon">📖</span>
             <strong>Click to see how to use</strong>
+            <span className="chevron">›</span>
           </summary>
           <div className="setup-content">
             <div className="step">
@@ -195,7 +196,7 @@ export default function BandwidthSolutionsPage() {
         <div className="solution-header">
           <div className="solution-icon">📸</div>
           <div>
-            <h2>Screenshots and video recordings replace screen sharing</h2>
+            <h2>4. Screenshots and video recordings replace screen sharing</h2>
             <p className="solution-tagline">Show exactly what you see without needing live connection</p>
           </div>
         </div>
@@ -205,10 +206,11 @@ export default function BandwidthSolutionsPage() {
           Send once, they can view anytime. No need for "hop on a call."
         </div>
 
-        <details className="setup-steps" open>
+        <details className="setup-steps">
           <summary className="setup-summary">
             <span className="setup-icon">📖</span>
             <strong>Click to see how to capture screenshots</strong>
+            <span className="chevron">›</span>
           </summary>
           <div className="setup-content">
 
@@ -259,6 +261,7 @@ export default function BandwidthSolutionsPage() {
           <summary className="setup-summary">
             <span className="setup-icon">📖</span>
             <strong>Click to see how to record video with voice (super useful!)</strong>
+            <span className="chevron">›</span>
           </summary>
           <div className="setup-content">
 
@@ -327,16 +330,6 @@ export default function BandwidthSolutionsPage() {
             </div>
           </div>
         </details>
-
-        <div className="video-benefits">
-          <h4>Why video with voice is super useful:</h4>
-          <ul className="benefit-list-large">
-            <li>✅ They see exactly what you see + hear your explanation</li>
-            <li>✅ They can watch 10 times if needed (better than live call)</li>
-            <li>✅ No scheduling needed (send anytime, they watch anytime)</li>
-            <li>✅ Works on slow connection (upload once, done)</li>
-          </ul>
-        </div>
       </section>
 
       {/* When to Use */}
@@ -372,6 +365,35 @@ export default function BandwidthSolutionsPage() {
             <div className="situation-text">
               <strong>Need to show error on screen</strong>
               <span className="situation-solution">→ Screenshot + voice, or video with voice</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pin Apps to Taskbar */}
+      <section className="solution-card solution-pin">
+        <h2>Pin These Apps to Your Taskbar</h2>
+        <p>Right-click each app → "Pin to taskbar" for quick access:</p>
+        <div className="pin-grid">
+          <div className="pin-item">
+            <div className="pin-icon">📌</div>
+            <div>
+              <strong>Snipping Tool</strong>
+              <p>For screenshots (Windows+Shift+S)</p>
+            </div>
+          </div>
+          <div className="pin-item">
+            <div className="pin-icon">📌</div>
+            <div>
+              <strong>Telegram Desktop</strong>
+              <p>For messages and voice</p>
+            </div>
+          </div>
+          <div className="pin-item">
+            <div className="pin-icon">📌</div>
+            <div>
+              <strong>Claude Desktop</strong>
+              <p>For coding help</p>
             </div>
           </div>
         </div>
@@ -416,7 +438,7 @@ export default function BandwidthSolutionsPage() {
       <section className="solution-card solution-help">
         <h2>Need Help?</h2>
         <p className="help-text">
-          Ask in Telegram with <strong>screenshot + voice message</strong> or <strong>video with voice</strong> showing the problem.
+          Ask <strong>Kai "The guide"</strong> on Claude.
         </p>
       </section>
 

@@ -904,7 +904,55 @@ Provide:
 5. **Domain boundaries are clear** - stay in your lane, handoff at boundaries
 6. **No invisible work** - if it's not in SYNC.md, it didn't happen
 7. **Always sign your commits** `yourname@scopelock`
-8. **Notify humans via Telegram for important updates** - `node /home/mind-protocol/scopelock/tools/telegram-send.cjs "<b>Message</b>"` (HTML formatting supported, auto-chunks at 500 chars). Use for: critical blockers, task completion, deployments, handoffs. Don't use for: routine updates (use SYNC.md instead). See `/home/mind-protocol/scopelock/tools/README.md` for templates. —Rafael
+8. **Update the team via Telegram frequently** - `node /home/mind-protocol/scopelock/tools/telegram-send.cjs "<b>Message</b>"` (HTML formatting supported, auto-chunks at 500 chars)
+
+**Send messages often (not just for critical blockers):**
+- Progress updates during work
+- When you complete a significant step
+- Before and after testing/deployment
+- When blocked or need input
+- When you discover something interesting
+
+**Message style:**
+- Short and conversational (2-3 sentences max)
+- NOT technical jargon - explain "why should I care?"
+- Always sign your message (e.g., "—Emma", "—Rafael", "—Sofia")
+- Give context about what this means for the team
+
+**Examples:**
+
+✅ Good:
+```
+Working on the dashboard for TherapyKin. Soon you'll be able to edit sessions directly on the website without touching Airtable. —Rafael
+```
+
+✅ Good:
+```
+Just deployed the new OTP flow. Testing now with real phone numbers. If it works, signup gets 3 steps shorter. —Sofia
+```
+
+✅ Good:
+```
+Found 5 voice generation jobs on Upwork. Writing proposals now. These are $500-800 each = faster wins than coding jobs. —Emma
+```
+
+❌ Bad (too technical):
+```
+Implemented UserSessionController.updateSession() with validation middleware and error handling for PATCH /api/sessions/:id endpoint —Rafael
+```
+
+❌ Bad (no context):
+```
+Deployed. —Sofia
+```
+
+**When to send:**
+- Starting significant work (so team knows you're on it)
+- Midway progress (so they know it's moving)
+- Completion (so they know it's ready)
+- Blockers (so they can help)
+
+See `/home/mind-protocol/scopelock/tools/README.md` for command details.
 
 # QUALITY NON-REGRESSION IMPERATIVE
 

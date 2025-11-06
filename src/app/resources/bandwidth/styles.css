@@ -203,10 +203,11 @@
   align-items: center;
   gap: 0.75rem;
   transition: background 0.2s;
+  position: relative;
 }
 
 .setup-summary:hover {
-  background: var(--slk-surface);
+  background: rgba(30, 229, 184, 0.05);
 }
 
 .setup-summary::marker {
@@ -215,6 +216,17 @@
 
 .setup-icon {
   font-size: 1.5rem;
+}
+
+.chevron {
+  margin-left: auto;
+  font-size: 1.5rem;
+  color: var(--slk-accent);
+  transition: transform 0.2s;
+}
+
+details[open] .chevron {
+  transform: rotate(90deg);
 }
 
 details[open] .setup-summary {
@@ -811,6 +823,42 @@ kbd {
 
 .troubleshooting-fix strong:first-child {
   margin-top: 0;
+}
+
+/* Pin Apps Grid */
+.pin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.pin-item {
+  padding: 1.5rem;
+  background: var(--slk-bg);
+  border: 1px solid var(--slk-border);
+  border-radius: 8px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.pin-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.pin-item strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--slk-text);
+  font-size: 1.1rem;
+}
+
+.pin-item p {
+  margin: 0;
+  color: var(--slk-text-muted);
+  font-size: 0.9rem;
 }
 
 /* Situation Grid */
