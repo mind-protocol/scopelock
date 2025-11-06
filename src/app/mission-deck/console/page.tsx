@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { api } from '../../../lib/api';
 import { MissionSelector } from '../../../components/mission-deck/MissionSelector';
 import { CitizenSelector } from '../../../components/mission-deck/CitizenSelector';
+import { EmmaWorkspace } from '../../../components/mission-deck/EmmaWorkspace';
 import { RafaelWorkspace } from '../../../components/mission-deck/RafaelWorkspace';
 import { SofiaWorkspace } from '../../../components/mission-deck/SofiaWorkspace';
 import type { Mission, CitizenInfo, CitizenName } from '../../../types';
@@ -52,6 +53,7 @@ export default function ConsolePage() {
   const [activeMissionId, setActiveMissionId] = useState<string>('');
   const [activeCitizen, setActiveCitizen] = useState<CitizenName>('rafael');
   const [isLoading, setIsLoading] = useState(true);
+  const [isMissionPanelCollapsed, setIsMissionPanelCollapsed] = useState(false);
 
   useEffect(() => {
     // Check auth
@@ -72,12 +74,18 @@ export default function ConsolePage() {
       // Select first mission by default
       if (missionsData.length > 0) {
         setActiveMissionId(missionsData[0].id);
+        setIsMissionPanelCollapsed(true); // Auto-collapse when mission selected
       }
     } catch (error) {
       console.error('Failed to load missions:', error);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleMissionSelect = (id: string) => {
+    setActiveMissionId(id);
+    setIsMissionPanelCollapsed(true); // Collapse panel after selection
   };
 
   const handleLogout = () => {
@@ -111,7 +119,9 @@ export default function ConsolePage() {
       <MissionSelector
         missions={missions}
         activeMissionId={activeMissionId}
-        onSelect={setActiveMissionId}
+        onSelect={handleMissionSelect}
+        isCollapsed={isMissionPanelCollapsed}
+        onToggleCollapse={() => setIsMissionPanelCollapsed(!isMissionPanelCollapsed)}
       />
 
       {/* Main area */}
@@ -170,6 +180,10 @@ export default function ConsolePage() {
             </div>
           )}
 
+          {activeMissionId && activeCitizen === 'emma' && (
+            <EmmaWorkspace missionId={activeMissionId} />
+          )}
+
           {activeMissionId && activeCitizen === 'rafael' && (
             <RafaelWorkspace missionId={activeMissionId} />
           )}
@@ -179,6 +193,7 @@ export default function ConsolePage() {
           )}
 
           {activeMissionId &&
+            activeCitizen !== 'emma' &&
             activeCitizen !== 'rafael' &&
             activeCitizen !== 'sofia' && (
               <div style={{

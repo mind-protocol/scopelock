@@ -10,6 +10,8 @@ interface MissionSelectorProps {
   missions: Mission[];
   activeMissionId: string;
   onSelect: (id: string) => void;
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
 }
 
 export function MissionSelector({

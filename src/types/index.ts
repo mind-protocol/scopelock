@@ -118,3 +118,25 @@ export interface PerformanceMetric {
   unit: string; // e.g., "ms", "MB", "%"
   status: 'pass' | 'warn' | 'fail';
 }
+
+// Emma workspace data types
+export interface Lead {
+  id: string;
+  title: string;
+  description: string;
+  source: string; // e.g., "Upwork", "RSS Feed", etc.
+  confidence: number; // 0-100
+  reason?: string; // Emma's reasoning for confidence score
+  discoveredAt: string; // ISO 8601 datetime
+}
+
+export interface Proposal {
+  id: string;
+  jobTitle: string;
+  proposalText: string;
+  budget: number;
+  confidence: number; // 0-100
+  status: 'auto_sent' | 'pending_approval' | 'approved' | 'rejected';
+  decision?: string; // Emma's decision reasoning
+  generatedAt: string; // ISO 8601 datetime
+}

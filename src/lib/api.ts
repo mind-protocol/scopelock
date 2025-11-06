@@ -16,6 +16,8 @@ import type {
   GitHubCommit,
   TestResult,
   PerformanceMetric,
+  Lead,
+  Proposal,
 } from '../types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://scopelock.onrender.com';
@@ -249,6 +251,63 @@ const MOCK_PERFORMANCE_METRICS: Record<string, PerformanceMetric[]> = {
       threshold: 100,
       unit: 'MB',
       status: 'pass',
+    },
+  ],
+};
+
+const MOCK_LEADS: Record<string, Lead[]> = {
+  '47': [
+    {
+      id: 'lead-1',
+      title: 'Build AI Chatbot for E-commerce',
+      description: 'Looking for a developer to build a chatbot using GPT-4 that can handle customer inquiries and product recommendations.',
+      source: 'Upwork',
+      confidence: 85,
+      reason: 'Strong match: chatbot + GPT-4, budget $500-800, client is process-friendly',
+      discoveredAt: '2025-11-06T10:30:00Z',
+    },
+    {
+      id: 'lead-2',
+      title: 'Next.js Landing Page with Animations',
+      description: 'Need a modern landing page with smooth animations and mobile responsiveness.',
+      source: 'Upwork',
+      confidence: 75,
+      reason: 'Good match: Next.js expertise, clear scope, but budget slightly low at $400',
+      discoveredAt: '2025-11-06T09:15:00Z',
+    },
+    {
+      id: 'lead-3',
+      title: 'Python Data Pipeline on AWS',
+      description: 'Build ETL pipeline using Python, S3, and Lambda functions.',
+      source: 'Upwork',
+      confidence: 50,
+      reason: 'Weak match: requires AWS expertise not in standard stack, unclear requirements',
+      discoveredAt: '2025-11-06T08:00:00Z',
+    },
+  ],
+};
+
+const MOCK_PROPOSALS: Record<string, Proposal[]> = {
+  '47': [
+    {
+      id: 'proposal-1',
+      jobTitle: 'Build AI Chatbot for E-commerce',
+      proposalText: 'Hi! I can deliver your GPT-4 chatbot with ScopeLock\'s proven process: executable acceptance criteria, Evidence Sprint demo, and payment only at AC green. Similar to our TherapyKin project (121+ deployments). Budget: $600 | Timeline: 5-7 days',
+      budget: 600,
+      confidence: 85,
+      status: 'auto_sent',
+      decision: 'Auto-sent (confidence ≥80%): Strong portfolio match + process-friendly client',
+      generatedAt: '2025-11-06T10:45:00Z',
+    },
+    {
+      id: 'proposal-2',
+      jobTitle: 'Next.js Landing Page with Animations',
+      proposalText: 'Hi! I can build your Next.js landing page with smooth animations using Framer Motion. ScopeLock process: lock scope via AC.md, demo within 90s, pay only at AC green. See scopelock.mindprotocol.ai for our methodology. Budget: $450 | Timeline: 3-4 days',
+      budget: 450,
+      confidence: 75,
+      status: 'pending_approval',
+      decision: 'Pending approval (confidence <80%): Budget slightly low, waiting for human review',
+      generatedAt: '2025-11-06T09:30:00Z',
     },
   ],
 };
@@ -587,5 +646,16 @@ export const api = {
   getPerformanceMetrics: async (missionId: string): Promise<PerformanceMetric[]> => {
     await new Promise((resolve) => setTimeout(resolve, 300));
     return MOCK_PERFORMANCE_METRICS[missionId] || [];
+  },
+
+  // Emma workspace - Leads and Proposals
+  getLeads: async (missionId: string): Promise<Lead[]> => {
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    return MOCK_LEADS[missionId] || [];
+  },
+
+  getProposals: async (missionId: string): Promise<Proposal[]> => {
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    return MOCK_PROPOSALS[missionId] || [];
   },
 };
