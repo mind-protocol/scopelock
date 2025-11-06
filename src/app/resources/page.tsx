@@ -7,9 +7,9 @@ const learningPath = [
   {
     section: 'Week 1: Critical Path',
     subtitle: 'Day 1-2 • Must Read Before First Mission',
-    description: 'Build the foundational mindset and skills. Learn why you can succeed (even as a junior), how to communicate with AI citizens effectively, who does what in each phase, and how you get paid.',
-    outcome: 'After this section: You understand the AI-human partnership model, know who to ask for what, and feel confident you can complete missions.',
-    totalTime: '47 min',
+    description: 'Build the foundational mindset and skills. Learn why you can succeed (even as a junior), how to communicate with AI citizens effectively, who does what in each phase, how you get paid, and how to work on slow connections.',
+    outcome: 'After this section: You understand the AI-human partnership model, know who to ask for what, have your connection optimized, and feel confident you can complete missions.',
+    totalTime: '62 min',
     badge: 'Start Here',
     badgeColor: '#FF5D5D',
     resources: [
@@ -67,6 +67,20 @@ const learningPath = [
           'The Context Triangle: What, Why, Tried',
           'Specific templates for Rafael/Sofia/Emma',
           'How to avoid "garbage in, garbage out"'
+        ],
+      },
+      {
+        title: 'Bandwidth Solutions for Remote Teams',
+        description: '4 practical solutions to work effectively on slow or unstable internet connections. Set these up once, work 50-90% faster forever. Essential for Nigeria, India, Philippines, rural areas.',
+        href: '/resources/bandwidth',
+        icon: '📶',
+        impact: 'Works on ANY connection',
+        timeToRead: '15 min',
+        whatYouLearn: [
+          'Opera Turbo Mode (50-90% bandwidth savings)',
+          'Telegram Desktop (works offline, caches everything)',
+          'Voice messages instead of video calls',
+          'Snipping Tool (replace screen sharing, step-by-step)'
         ],
       },
     ],
@@ -545,227 +559,6 @@ export default function ResourcesPage() {
         ))}
       </section>
 
-      {/* Operational Resources Section */}
-      <section style={{
-        maxWidth: '1200px',
-        margin: '80px auto 0',
-        padding: '0 20px',
-      }}>
-        <div style={{
-          marginBottom: '40px',
-          padding: '32px',
-          background: 'rgba(21, 26, 33, 0.6)',
-          border: '1px solid rgba(255, 200, 87, 0.3)',
-          borderLeft: '4px solid #FFC857',
-          borderRadius: '12px',
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '16px',
-            marginBottom: '16px',
-            flexWrap: 'wrap',
-          }}>
-            <div style={{
-              padding: '6px 14px',
-              background: 'rgba(255, 200, 87, 0.2)',
-              border: '1px solid #FFC857',
-              borderRadius: '6px',
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              color: '#FFC857',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-            }}>
-              TOOLS & SETUP
-            </div>
-          </div>
-
-          <h2 style={{
-            fontSize: '2rem',
-            fontWeight: 700,
-            color: '#E6EAF2',
-            marginBottom: '8px',
-          }}>
-            Operational Resources
-          </h2>
-
-          <div style={{
-            fontSize: '1rem',
-            color: '#FFC857',
-            marginBottom: '20px',
-            fontWeight: 500,
-          }}>
-            Practical Tools for Remote Work
-          </div>
-
-          <p style={{
-            fontSize: '1.125rem',
-            color: '#9AA3AE',
-            lineHeight: 1.6,
-            marginBottom: '20px',
-          }}>
-            Essential tools and setup guides for working effectively on ScopeLock, especially for team members in
-            Nigeria, India, Philippines, and other regions with connectivity challenges.
-          </p>
-        </div>
-
-        {/* Operational Resources Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: '32px',
-          marginBottom: '80px',
-        }}>
-          <Link
-            href="/resources/bandwidth"
-            style={{
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            <div style={{
-              background: 'rgba(21, 26, 33, 0.8)',
-              border: '1px solid rgba(154, 163, 174, 0.1)',
-              borderRadius: '12px',
-              padding: '32px',
-              height: '100%',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer',
-              position: 'relative',
-              overflow: 'hidden',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#FFC857';
-              e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 200, 87, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(154, 163, 174, 0.1)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-            >
-              {/* Icon */}
-              <div style={{
-                fontSize: '3rem',
-                marginBottom: '16px',
-              }}>
-                📶
-              </div>
-
-              {/* Title */}
-              <h3 style={{
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                color: '#E6EAF2',
-                marginBottom: '12px',
-                lineHeight: 1.3,
-              }}>
-                Bandwidth Solutions for Remote Teams
-              </h3>
-
-              {/* Description */}
-              <p style={{
-                color: '#9AA3AE',
-                fontSize: '1rem',
-                lineHeight: 1.6,
-                marginBottom: '20px',
-              }}>
-                4 practical solutions to work effectively on slow or unstable internet connections. Reduce
-                bandwidth usage by 50-90% and eliminate connection drops.
-              </p>
-
-              {/* What you'll learn */}
-              <div style={{
-                marginBottom: '20px',
-                paddingTop: '20px',
-                borderTop: '1px solid rgba(154, 163, 174, 0.1)',
-              }}>
-                <div style={{
-                  fontSize: '0.875rem',
-                  color: '#64A8FF',
-                  fontWeight: 600,
-                  marginBottom: '12px',
-                }}>
-                  Solutions Included:
-                </div>
-                <ul style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '8px',
-                }}>
-                  {[
-                    'Opera Turbo Mode (50-90% bandwidth savings)',
-                    'Telegram Desktop (works offline, caches everything)',
-                    'Voice messages (replace video calls)',
-                    'Snipping Tool (replace screen sharing)'
-                  ].map((item, idx) => (
-                    <li key={idx} style={{
-                      fontSize: '0.875rem',
-                      color: '#9AA3AE',
-                      paddingLeft: '20px',
-                      position: 'relative',
-                    }}>
-                      <span style={{
-                        position: 'absolute',
-                        left: '0',
-                        color: '#FFC857',
-                      }}>
-                        •
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Meta info */}
-              <div style={{
-                display: 'flex',
-                gap: '16px',
-                paddingTop: '20px',
-                borderTop: '1px solid rgba(154, 163, 174, 0.1)',
-              }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.75rem', color: '#9AA3AE', marginBottom: '4px' }}>
-                    Impact
-                  </div>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#FFC857' }}>
-                    Works on ANY connection
-                  </div>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.75rem', color: '#9AA3AE', marginBottom: '4px' }}>
-                    Setup Time
-                  </div>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#E6EAF2' }}>
-                    15 min total
-                  </div>
-                </div>
-              </div>
-
-              {/* Read arrow */}
-              <div style={{
-                marginTop: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                color: '#FFC857',
-                fontWeight: 600,
-                fontSize: '0.9375rem',
-              }}>
-                View Guide
-                <span style={{ transition: 'transform 0.2s ease' }}>→</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section style={{
         maxWidth: '1200px',
@@ -794,7 +587,7 @@ export default function ResourcesPage() {
             margin: '0 auto 40px',
             lineHeight: 1.6,
           }}>
-            Begin with Week 1 Critical Path. Complete all 4 resources (47 minutes total reading),
+            Begin with Week 1 Critical Path. Complete all 5 resources (62 minutes total reading),
             then move to Quality Foundations. After Week 1, you'll be ready for your first supervised mission.
           </p>
 
@@ -816,7 +609,7 @@ export default function ResourcesPage() {
                 Week 1: Day 1-2
               </div>
               <div style={{ fontSize: '0.875rem', color: '#9AA3AE' }}>
-                Read Critical Path (47 min) → Understand mindset, skills, flow, compensation
+                Read Critical Path (62 min) → Mindset, skills, flow, compensation, bandwidth setup
               </div>
             </div>
 
