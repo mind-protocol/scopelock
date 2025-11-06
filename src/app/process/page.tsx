@@ -3,202 +3,151 @@ import type { Metadata } from 'next';
 import { ProcessTimeline } from '../../components/ProcessTimeline';
 
 export const metadata: Metadata = {
-  title: 'Process — ScopeLock',
-  description: 'Deep dive into the ScopeLock delivery model: from AC.md to Evidence Sprints to AC green.',
+  title: 'How I Work — ScopeLock',
+  description: 'Fixed pricing. Fast delivery (2-7 days). You pay only when satisfied. See how I work with clients from kickoff to delivery.',
 };
 
 export default function ProcessPage() {
   return (
     <main>
       <header className="hero">
-        <h1>How ScopeLock Works</h1>
-        <p className="lead">A deep dive into our delivery model.</p>
+        <h1>How I Work</h1>
+        <p className="lead">Fixed pricing. Fast delivery (2-7 days). You pay only when satisfied.</p>
       </header>
 
       <ProcessTimeline />
 
       <section className="card">
-        <h2>The ScopeLock Flow</h2>
+        <h2>The Process</h2>
         <p>
-          Most freelancing is based on time estimates (&quot;this will take 2 weeks&quot;) or story points.
-          ScopeLock locks the <strong>outcome</strong> instead.
+          Most freelancers sell hours. Agencies sell phases. I deliver <strong>complete projects at fixed prices</strong>.
         </p>
-        <p>Here&apos;s how:</p>
+        <p>Here&apos;s how it works:</p>
       </section>
 
       <section className="card scope-steps">
-        <h2>1. ScopeLock Phase</h2>
+        <h2>Step 1: You Describe What You Need (Day 1)</h2>
         <p>
-          We co-write <code>AC.md</code> (Acceptance Criteria) with you. This document defines:
+          I start with a 30-minute call where you tell me what you need. I ask questions to understand:
         </p>
         <ul>
-          <li><strong>Functional requirements:</strong> What the software must do</li>
-          <li><strong>Non-functional requirements:</strong> Performance (p95 latency), quality (error rates), UX (steps to complete)</li>
-          <li><strong>Verification:</strong> How we&apos;ll test it (e.g., Playwright tests, pytest, performance benchmarks)</li>
+          <li><strong>What it should do:</strong> Core features and functionality</li>
+          <li><strong>Who will use it:</strong> Your target users and their needs</li>
+          <li><strong>Success criteria:</strong> How we&apos;ll know it&apos;s working correctly</li>
         </ul>
         <p>
-          Once <code>AC.md</code> is agreed, we lock it with a git tag: <code>ac-baseline_*</code>.
-          Changes after this require a formal Change Request.
-        </p>
-
-        <details style={{marginTop: '1.5rem', padding: '1rem', background: 'var(--surface)', borderRadius: '8px', border: '1px solid var(--muted)'}}>
-          <summary style={{cursor: 'pointer', fontWeight: 600, marginBottom: '1rem'}}>
-            Example AC.md (click to expand)
-          </summary>
-          <pre style={{background: 'var(--bg)', padding: '1rem', borderRadius: '4px', overflow: 'auto', fontSize: '0.875rem'}}>
-{`# Acceptance Criteria — OTP Signup
-
-## Functional
-
-- User can sign up with email + OTP (no password)
-- OTP sent via email within 5 seconds
-- OTP valid for 10 minutes
-- User redirected to dashboard after successful OTP entry
-- Failed OTP shows clear error message
-
-## Non-Functional
-
-- **Performance:** p95 signup flow <300ms (server-side)
-- **Quality:** Error rate <0.1% on OTP send
-- **UX:** Signup completes in ≤3 steps (email → OTP → dashboard)
-
-## Verification
-
-**Command:**
-\`\`\`bash
-npm run test:acceptance -- signup.spec.ts
-\`\`\`
-
-**Seed data:**
-- Test user: test@example.com
-- Mock OTP provider (bypasses real email in CI)
-
-**Pass criteria:**
-- All Playwright tests green
-- p95 latency measured <300ms (10 sample runs)
-- Manual walkthrough: <90s from landing to dashboard`}
-          </pre>
-        </details>
-      </section>
-
-      <section className="card scope-steps">
-        <h2>2. Evidence Sprint</h2>
-        <p>
-          Before building the full feature, we produce <strong>evidence</strong>:
-        </p>
-        <ul>
-          <li><strong>Demo ≤90s:</strong> A working prototype or proof-of-concept</li>
-          <li><strong>DELTA.md:</strong> Quantified changes (e.g., &quot;p95 reduced from 1200ms to 280ms&quot;)</li>
-        </ul>
-        <p>
-          This validates assumptions early. If the Evidence Sprint doesn&apos;t prove value, you can
-          stop without committing to full delivery.
-        </p>
-        <p>
-          Evidence Sprints are tagged: <code>evidence-sprint_feature_date</code>.
+          Within 24 hours, I send you a fixed price quote and timeline (usually 2-7 days). The price won&apos;t change unless you change what you need.
         </p>
       </section>
 
       <section className="card scope-steps">
-        <h2>3. Build → AC Green</h2>
+        <h2>Step 2: I Start Building (Days 2-3)</h2>
         <p>
-          We implement the feature, writing <strong>acceptance tests</strong> as we go. These tests
-          verify the criteria in <code>AC.md</code>.
-        </p>
-        <p>
-          When all tests pass in CI/CD, we emit an <code>ac-green_*</code> tag. That&apos;s the
-          completion signal. No subjective debate about &quot;done.&quot;
-        </p>
-        <p>
-          At AC green:
+          Once you approve the quote, I begin work immediately. Within 2-3 days, I share early progress with you:
         </p>
         <ul>
-          <li>We issue an invoice</li>
-          <li>You get production-ready code</li>
-          <li>Proof is published with tag, demo, delta, and tests</li>
+          <li><strong>Working demo:</strong> A clickable prototype or proof-of-concept</li>
+          <li><strong>Progress update:</strong> What&apos;s done, what&apos;s next, any questions I have</li>
         </ul>
+        <p>
+          This lets you see progress early and make sure we&apos;re on the right track. If something needs adjustment, we catch it early.
+        </p>
       </section>
 
-      <section className="card">
-        <h2>Change Control (CHG-130)</h2>
+      <section className="card scope-steps">
+        <h2>Step 3: I Deliver the Full Project (Days 4-7)</h2>
         <p>
-          If scope changes after <code>ac-baseline</code>, we open a <strong>Change Request</strong>:
+          I finish building and testing everything. You get:
         </p>
         <ul>
-          <li><strong>Swap:</strong> Replace existing scope with equal/lower complexity → €0, same milestone</li>
-          <li><strong>Add:</strong> New scope beyond original AC → new milestone, priced separately</li>
+          <li><strong>Live deployment:</strong> Working website/app you can test immediately</li>
+          <li><strong>Source code:</strong> All code, documentation, and deployment instructions</li>
+          <li><strong>Access credentials:</strong> Everything you need to manage it yourself</li>
         </ul>
         <p>
-          Every CR is analyzed for size, risk, and impact. You decide whether to proceed.
+          I test everything before handing it off to you. No surprises, no &quot;it works on my machine&quot; issues.
+        </p>
+      </section>
+
+      <section className="card scope-steps">
+        <h2>Step 4: You Test & Pay When Satisfied (Day 8+)</h2>
+        <p>
+          You test the project and let me know if anything needs adjustment. You get <strong>2 revision rounds included</strong> in the price.
         </p>
         <p>
-          CRs are tagged: <code>change-req_*</code>, and their status is visible in the Proof Log.
+          Common revisions: fixing bugs, adjusting styling, clarifying documentation, adding small features that were missed.
+        </p>
+        <p>
+          You pay <strong>only when you&apos;re completely satisfied</strong>. No hourly surprises. No scope creep charges (unless you change what you originally asked for).
         </p>
       </section>
 
       <section className="card">
-        <h2>Proof Log (PRF-020)</h2>
+        <h2>What If I Change My Mind Mid-Project?</h2>
         <p>
-          Every milestone generates <strong>proof artifacts</strong>:
+          No problem. Here&apos;s how I handle scope changes:
         </p>
-        <ul>
-          <li><code>AC.md</code> — The acceptance criteria</li>
-          <li><code>DEMO.md</code> — Link to demo + 3-bullet summary</li>
-          <li><code>DELTA.md</code> — Quantified deltas (≥2 metrics)</li>
-        </ul>
+        <p style={{ marginTop: '1rem' }}>
+          <strong>Small adjustments (free):</strong> If you want to swap one feature for another of similar complexity, I&apos;ll do it at no extra cost. For example, changing &quot;Twitter login&quot; to &quot;Google login&quot; is a swap—same effort, same price.
+        </p>
         <p>
-          These are tracked with git tags and markdown. No runtime fetches, no embellishment.
+          <strong>New features (priced separately):</strong> If you want to add something beyond the original scope, I&apos;ll give you a separate quote for it. You decide if you want to proceed.
+        </p>
+        <p>
+          The key: I&apos;ll always tell you upfront if a change costs extra. No surprise bills.
         </p>
       </section>
+
 
       <section className="card">
         <h2>Why This Works</h2>
         <p><strong>For you:</strong></p>
         <ul>
-          <li>Predictable pricing (no hourly creep)</li>
-          <li>Measurable outcomes (tests define done)</li>
-          <li>Evidence before commitment (Evidence Sprints)</li>
-          <li>Transparent progress (Proof Log)</li>
+          <li>Fixed pricing—no surprise hourly charges</li>
+          <li>Fast delivery—2-7 days typical</li>
+          <li>Early visibility—see progress within 2-3 days</li>
+          <li>Risk-free—pay only when satisfied, 2 revisions included</li>
+          <li>Direct communication—work with me, not account managers</li>
         </ul>
-        <p><strong>For us:</strong></p>
+        <p><strong>For me:</strong></p>
         <ul>
-          <li>Clear success criteria (AC.md)</li>
-          <li>No scope creep (Change Control)</li>
-          <li>Portfolio proof (every milestone is public)</li>
+          <li>Clear requirements upfront—no guessing games</li>
+          <li>Efficient workflow—AI-assisted development speeds everything up</li>
+          <li>Portfolio proof—every project becomes a case study</li>
         </ul>
       </section>
 
       <section className="card">
-        <h2>Comparison: ScopeLock vs Traditional</h2>
+        <h2>Comparison: How I&apos;m Different</h2>
         <div className="grid-3">
           <article className="card card-case">
-            <h3>Traditional Freelancing</h3>
+            <h3>Traditional Freelancers</h3>
             <ul>
-              <li>Sell hours or story points</li>
+              <li>Sell hours (&quot;$50/hour&quot;)</li>
+              <li>Time estimates often wrong</li>
+              <li>Scope creep = more hours = higher bill</li>
               <li>&quot;Done&quot; is subjective</li>
-              <li>Scope creep common</li>
-              <li>No measurable deltas</li>
-              <li>Pay regardless of outcome</li>
+              <li>Pay regardless of quality</li>
             </ul>
           </article>
           <article className="card card-case">
-            <h3>ScopeLock</h3>
+            <h3>My Approach</h3>
             <ul>
-              <li>Sell outcomes (AC green)</li>
-              <li>&quot;Done&quot; = tests pass in CI</li>
-              <li>Change Control (Swap/Add)</li>
-              <li>Quantified deltas required</li>
-              <li>Pay only at AC green</li>
+              <li>Fixed price quoted upfront</li>
+              <li>2-7 day delivery typical</li>
+              <li>Scope changes handled clearly (swap vs add)</li>
+              <li>&quot;Done&quot; = working + tested + deployed</li>
+              <li>Pay only when satisfied</li>
             </ul>
           </article>
         </div>
       </section>
 
       <section className="card">
-        <h2>Ready to Lock Scope?</h2>
+        <h2>Ready to Get Started?</h2>
         <div className="hero-ctas">
-          <Link className="cta" href="/contact">Schedule a kickoff</Link>
-          <Link href="/case-studies">See case studies →</Link>
+          <Link className="cta" href="/contact">Get Free Estimate</Link>
+          <Link href="/proof">See My Work →</Link>
         </div>
       </section>
     </main>
