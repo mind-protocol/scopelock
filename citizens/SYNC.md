@@ -1,3 +1,111 @@
+## 2025-11-06 23:45 — Rafael: Device Detection + Platform-Specific Instructions ✅
+
+**Work:** Implemented comprehensive device detection and platform-specific bandwidth solutions (Option C)
+
+**Major Feature:** Page now detects Desktop/Android/iOS and shows ONLY relevant instructions for that platform
+
+**Device Detection Implementation:**
+- Converted to client component ('use client')
+- `useEffect` detects via `navigator.userAgent`
+- Device types: 'desktop' | 'android' | 'ios' | 'unknown'
+- Shows loading state until detection complete
+- Fallback: unknown mobile → android
+
+**Platform-Specific Content:**
+
+**1. Browser Data Saver (Solution 1):**
+- **Desktop:** Opera Browser with Turbo Mode (Alt+P, turn ON)
+- **Android:** Chrome Lite Mode (3 dots → Settings → Lite mode) OR Opera Mini (extreme compression)
+- **iOS:** Low Data Mode (Settings → Cellular → Low Data Mode) OR Opera Mini
+
+**2. Telegram (Solution 2):**
+- **Desktop:** Telegram Desktop (desktop.telegram.org)
+- **Android:** Telegram app (Play Store)
+- **iOS:** Telegram app (App Store)
+- All platforms: Auto-caches messages, works offline
+
+**3. Screenshots (Solution 4):**
+- **Desktop:** Windows+Shift+S → Select area → Ctrl+V to Telegram
+- **Android:** Power + Volume Down → "Scroll capture" for full pages → Send via paperclip
+- **iOS:** Side + Volume Up → "Full Page" tab → Save PDF → Send via paperclip
+
+**4. Video Recording with Voice:**
+- **Desktop:** Windows+G (Xbox Game Bar) → Turn ON mic → Record (6 steps)
+- **Android:** Swipe down → Screen record tile → Enable "Microphone" → Record (6 steps)
+- **iOS:** Control Center → LONG PRESS record → Enable "Microphone" → Record (7 steps)
+
+**5. Pin Apps:**
+- **Desktop:** Pin to taskbar (Snipping Tool, Telegram Desktop, Claude Desktop)
+- **Mobile:** Add to home screen (Telegram, Browser)
+
+**6. Quick Reference:**
+- **Desktop:** Keyboard shortcuts (Win+Shift+S, Win+Alt+R, Win+G, Ctrl+V)
+- **Android:** Gestures (Power+Vol Down, Swipe down → Screen record, Scroll capture)
+- **iOS:** Gestures (Side+Vol Up, Control Center, Full Page)
+
+**Key Mobile Features Added:**
+- Full page screenshot capture (scroll capture on Android, Full Page on iOS)
+- Screen recording with microphone ON (critical step emphasized)
+- Platform-specific app stores (Play Store vs App Store)
+- Mobile-specific gestures (no desktop keyboard shortcuts shown)
+
+**User Experience:**
+- Desktop users see ONLY Windows instructions (no mobile confusion)
+- Android users see ONLY Android instructions (Play Store, Power+Vol Down)
+- iOS users see ONLY iOS instructions (App Store, Side+Vol Up, Control Center)
+- No clutter, no "or if you're on mobile..." - just the right instructions
+
+**Files Modified:**
+- src/app/resources/bandwidth/page.tsx (671 insertions, 204 deletions - major rewrite)
+
+**Result:** Mobile-only users now have complete, device-specific instructions. No confusion about Windows shortcuts.
+
+**Status:** Committed and pushed ✅
+**Commit:** 8bd301e "feat: add device detection and platform-specific instructions"
+**Link:** src/app/resources/bandwidth/page.tsx
+
+---
+
+## 2025-11-07 03:30 — Alexis: Deep Persona Research Analysis + Improvement Plan ✅
+
+**Work:** Analyzed comprehensive Upwork persona research, extracted all actionable insights for website/proposal improvements
+
+**Critical Discovery:** Business Buyers vs Technical Buyers speak COMPLETELY different languages
+
+**Business Buyer Insights:**
+- Time Poverty: No time for long proposals (200-300 words max)
+- Imposter Syndrome: Need visual portfolio to see "what good looks like"
+- Results-First: Don't care about process (AI, tools), only care about outcome
+- Budget Anxiety: Fixed price REQUIRED (hourly triggers fear)
+- Decision Fatigue: Make recommendations, don't ask questions
+
+**Technical Buyer Insights:**
+- Scope Creep PTSD: Need AC.md + fixed price with milestones
+- Trust Deficit: Want GitHub links, code samples, live demos
+- Process-Oriented: WANT to know about Git, testing, documentation
+- Never underprice: They'll think you don't understand scope
+
+**Website Improvements Identified:**
+- Homepage hero: Change "executable acceptance criteria" → "Professional Creative Work. Delivered in Days."
+- Add visual portfolio with before/after examples
+- Add "Trusted by" section (client logos or anonymized proof)
+- Add 3 CTAs (not just 1): "Get Free Estimate," "See Our Work," "Schedule Call"
+- Create separate Process page for technical buyers (don't mix personas on homepage)
+
+**Proposal Template Improvements:**
+- Business buyer: 200-300 words, outcome-focused, visual sample, fixed price
+- Technical buyer: 400-600 words, tech stack details, AC.md, GitHub link, milestones
+
+**Critical Action Items (Week 1):**
+1. Hero rewrite (1 hour, 20-30% engagement impact)
+2. "Trusted by" section (2 hours, 15-20% trust impact)
+3. Business buyer proposal template for Emma (1 hour, 10-15% win rate increase)
+4. Business buyer FAQ on homepage (2 hours, 10-15% objection reduction)
+
+**Link:** `/home/mind-protocol/scopelock/citizens/alexis/PERSONA_INSIGHTS_AND_IMPROVEMENTS.md` (8000+ words, complete analysis)
+
+---
+
 ## 2025-11-06 23:00 — Rafael: Bandwidth Page UX Improvements ✅
 
 **Work:** Implemented 10 UX improvements to bandwidth solutions page per user feedback
