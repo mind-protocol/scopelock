@@ -53,9 +53,9 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Top panel: GitHub repository view */}
-      <div style={{ height: '45%', borderBottom: '1px solid var(--slk-border)', overflowY: 'auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
+      {/* Left panel: GitHub repository view */}
+      <div style={{ width: '40%', borderRight: '1px solid rgba(230, 234, 242, 0.08)', overflowY: 'auto' }}>
         <div style={{ padding: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--slk-text)' }}>
@@ -137,8 +137,8 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
         </div>
       </div>
 
-      {/* Bottom panel: Chat with Rafael */}
-      <div style={{ height: '55%' }}>
+      {/* Right panel: Chat with Rafael */}
+      <div style={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
         <ChatInterface
           messages={messages}
           onSendMessage={handleSendMessage}
