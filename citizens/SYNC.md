@@ -1,3 +1,58 @@
+## 2025-11-06 19:40 — Rafael: Integrated Vercel Auto-Fix Webhook into Mission Deck Backend ✅
+
+**Work:** Integrated standalone Vercel webhook listener into existing Mission Deck FastAPI backend
+
+**Context:** User requested webhook be integrated into existing backend service (not separate Render deployment)
+
+**Implementation:**
+
+Created `/docs/missions/mission-deck/backend/routers/webhooks.py`:
+- Endpoint: `POST /api/webhooks/vercel-failure`
+- Receives Vercel deployment failure webhooks
+- Auto-invokes Rafael via Claude CLI when production deployments fail
+- Background task execution (non-blocking)
+- Duplicate prevention via `handled-deployments.json`
+- Status endpoint: `GET /api/webhooks/vercel-failure/status`
+
+Registered in `main.py`:
+- Added `from routers import webhooks`
+- Added `app.include_router(webhooks.router)`
+
+**Testing:**
+```bash
+# Test webhook endpoint
+curl -X POST http://localhost:8000/api/webhooks/vercel-failure \
+  -H "Content-Type: application/json" \
+  -d '{"id":"dpl_test","state":"ERROR","target":"production"}'
+
+# Response: {"status":"rafael_invoked","deployment_id":"dpl_test"}
+
+# Check status
+curl http://localhost:8000/api/webhooks/vercel-failure/status
+# Response: {"status":"operational","handled_deployments":0}
+```
+
+**Verification:**
+- ✅ Webhook receives POST requests correctly
+- ✅ Parses Vercel payload (handles both `id` and `deployment_id` fields)
+- ✅ Filters by state=ERROR + target=production
+- ✅ Triggers background Claude CLI invocation
+- ✅ Status endpoint operational
+- ✅ Logs show proper invocation flow
+
+**Architecture:**
+- Single FastAPI backend handles both Mission Deck UI + Vercel webhooks
+- No separate Render service needed
+- Background tasks for async Claude invocation
+- Tracking file prevents duplicate processing
+
+**Next:** Push backend changes → Render redeploys → Configure Vercel webhook URL
+
+**Status:** Webhook integrated and tested ✅
+**Link:** `/docs/missions/mission-deck/backend/routers/webhooks.py`
+
+---
+
 ## 2025-11-06 21:00 — Emma: Improved Communication Style (Personal, Emojis, Progressive) ✅
 
 **Work:** Improved Emma's communication style to be more personal, natural, and easier to follow
