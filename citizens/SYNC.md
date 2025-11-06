@@ -1,3 +1,21 @@
+## 2025-11-07 09:35 — Maya: Link /join Page to /mind-token ✅
+
+**Work:** Updated "Learn about MIND Protocol" link on /join page to redirect to new /mind-token page
+
+**Change:** href changed from `https://mindprotocol.ai` to `/mind-token` (internal link)
+
+**User Flow:**
+1. User visits /join page (recruitment landing)
+2. Scrolls to "Interested in $MIND Token?" section
+3. Clicks "Learn about MIND Protocol →"
+4. Now redirects to /mind-token hype page (not external site)
+
+**File:** src/app/join/page.tsx (line 378)
+**Commit:** c33ee3f
+**Status:** Pushed to production
+
+---
+
 ## 2025-11-07 09:30 — Alexis: Process Page + Navigation Overhaul ✅
 
 **PROCESS PAGE CHANGES (src/app/process/page.tsx):**
