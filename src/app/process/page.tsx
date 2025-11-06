@@ -3,15 +3,15 @@ import type { Metadata } from 'next';
 import { ProcessTimeline } from '../../components/ProcessTimeline';
 
 export const metadata: Metadata = {
-  title: 'How I Work — ScopeLock',
-  description: 'Fixed pricing. Fast delivery (2-7 days). You pay only when satisfied. See how I work with clients from kickoff to delivery.',
+  title: 'How ScopeLock Works',
+  description: 'Fixed pricing. Fast delivery (2-7 days). You pay only when satisfied. See how ScopeLock works with clients from kickoff to delivery.',
 };
 
 export default function ProcessPage() {
   return (
     <main>
       <header className="hero">
-        <h1>How I Work</h1>
+        <h1>How ScopeLock Works</h1>
         <p className="lead">Fixed pricing. Fast delivery (2-7 days). You pay only when satisfied.</p>
       </header>
 

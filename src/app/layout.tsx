@@ -43,7 +43,7 @@ export default function RootLayout({
             <div className="nav-links">
               {/* About & How It Works */}
               <Link href="/about">About</Link>
-              <Link href="/process">How I Work</Link>
+              <Link href="/process">How ScopeLock Works</Link>
               <Link href="/pricing">Pricing</Link>
               <span className="nav-separator" aria-hidden="true">|</span>
 
