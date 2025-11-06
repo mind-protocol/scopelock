@@ -1,3 +1,40 @@
+## 2025-11-06 23:00 — Rafael: Bandwidth Page UX Improvements ✅
+
+**Work:** Implemented 10 UX improvements to bandwidth solutions page per user feedback
+
+**Changes Implemented:**
+
+1. **Removed geographic tags** - Deleted Nigeria, India, Philippines, Rural areas audience indicators
+2. **Numbered solution titles** - Added 1-4 numbering to all main sections
+3. **Closed by default** - Removed "open" attribute from all `<details>` tags (setup sections start collapsed)
+4. **Added chevron indicators** - Inserted `<span className="chevron">›</span>` to all expandable summaries
+5. **Fixed hover disappearing issue** - Changed `.setup-summary:hover` from solid background to subtle accent `rgba(30, 229, 184, 0.05)`
+6. **Removed auto-download step** - Deleted "Turn OFF auto-download media" from Telegram section (users need to see media)
+7. **Clarified voice messages** - Changed title from "Voice messages" to "3. Telegram voice messages"
+8. **Removed benefits section** - Deleted "Why video with voice is super useful" explanatory section
+9. **Added pinning section** - NEW "Pin These Apps to Your Taskbar" with 3 apps:
+   - Snipping Tool (screenshots)
+   - Telegram Desktop (messages/voice)
+   - Claude Desktop (coding help)
+10. **Updated help text** - Changed from "Ask in Telegram with screenshot" to "Ask Kai 'The guide' on Claude"
+
+**CSS Improvements:**
+- Chevron rotation animation (`transform: rotate(90deg)` when open)
+- Pin grid layout (`.pin-grid` with 3-column responsive grid)
+- Hover state no longer causes visual jump/disappear
+
+**Files Modified:**
+- src/app/resources/bandwidth/page.tsx (135 insertions, 17 deletions)
+- src/app/resources/bandwidth/styles.css (chevron styles + pin-grid styles)
+
+**Result:** Cleaner, more discoverable interface with better affordances for expandable sections
+
+**Status:** Committed and pushed ✅
+**Commit:** bc92f57 "refactor: improve bandwidth page UX per user feedback"
+**Link:** src/app/resources/bandwidth/page.tsx
+
+---
+
 ## 2025-11-06 23:45 — Rafael: Solana Wallet Authentication for Mission Deck ✅
 
 **Work:** Replaced email/password login with Solana wallet authentication (Phantom, Solflare, Backpack)
