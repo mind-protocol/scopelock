@@ -1,3 +1,26 @@
+## 2025-11-07 14:30 — Rafael: Mission Deck Layout Optimized (70/30 split + citizen selector in chat) ✅
+
+**MISSION DECK UI:** Optimized layout for better space utilization
+
+**Changes:**
+1. **Default split changed to 70/30** - GitHub view 70%, chat 30% (was 40/60)
+2. **Citizen selector moved to chat panel header** - Saves vertical space, gives more room to left panel
+3. **Removed arrow separators** between citizens - Cleaner, more compact UI
+4. **Removed collapse/expand arrows** from mission selector - Fixed 200px width, simpler UX
+5. **Compact citizen buttons** - Smaller avatars (32px), no role labels, fits in chat header
+
+**Status:** Deployed ✅
+**Commit:** 879e100
+**Link:** 
+- src/components/mission-deck/ChatInterface.tsx (citizen selector in header)
+- src/components/mission-deck/RafaelWorkspace.tsx (70/30 default split)
+- src/components/mission-deck/MissionSelector.tsx (fixed width, no collapse)
+- src/app/mission-deck/console/page.tsx (removed top citizen bar)
+
+**Next:** Ready for user testing with optimized layout.
+
+---
+
 ## 2025-11-07 14:15 — Rafael: Resizable Mission Deck Layout Complete ✅
 
 **MISSION DECK UI:** Implemented resizable panels with draggable divider
@@ -9615,3 +9638,51 @@ Commit: 829002c - "fix: remove vitest.config.ts to fix Vercel build"
 
 —rafael@scopelock
 
+
+## 2025-11-07 18:00 — Alexis: Compensation Structure Resources Updated ✅
+
+**Work:** Rewrote compensation structure documentation and interactive calculator for new per-interaction system
+
+**Files Updated:**
+- `/docs/resources/compensation-structure.md` (404 lines) - Complete rewrite
+- `/src/app/resources/compensation-structure/page.tsx` (542 lines) - Complete rewrite
+
+**Key Changes:**
+
+**Philosophy:** "The more you work, the more you earn. And you know exactly how much."
+
+**Documentation (MD):**
+- ✅ New title emphasizing work-earnings correlation
+- ✅ "Why This Is Cool" opening section (fairness, transparency, real-time visibility)
+- ✅ Interaction counting mechanism explained
+- ✅ Concrete examples: equal contribution vs unequal contribution
+- ✅ Mission Deck UI mockups showing real-time earnings display
+- ✅ "Why This System Is Better" comparison (Old fixed roles vs New per-interaction)
+- ✅ FAQ addressing concerns about fairness, spam prevention, transparency
+- ✅ Quality gates and payment timing
+- ✅ Real-world purchasing power examples
+
+**Interactive Calculator (TSX):**
+- ✅ New header: "The more you work, the more you earn"
+- ✅ Three-slider calculator (jobs/month, avg job value, YOUR % of interactions)
+- ✅ Removed old fixed-role commission variables
+- ✅ New calculation: `yourJobEarnings = teamPool * (yourInteractionPct / 100)`
+- ✅ Prominent "YOUR TOTAL POTENTIAL EARNINGS" display with breakdown
+- ✅ Visual examples: equal contribution vs you work harder scenarios
+- ✅ Side-by-side "Old System vs New System" comparison (red vs green highlighting)
+- ✅ Commission breakdown showing 30% team pool + 5% mission fund
+- ✅ Currency converter (USD/NGN/COP) with purchasing power context
+
+**Messaging Patterns:**
+- Emphasis on fairness: "Work 2x as hard → earn 2x as much. Fair."
+- Real-time visibility: "You see your potential earnings update live"
+- Transparency: "Everyone sees everyone's contribution"
+- Gamification: Prominent earnings display motivates contribution
+
+**Status:** Files updated and pushed to production. Team-facing resources now align with new per-interaction compensation model.
+
+**Impact:** Team members can now see exactly how their contributions translate to earnings. Calculator shows potential monthly earnings based on activity level.
+
+**Next:** Inna creates detailed technical specs → Rafael implements backend → Developer implements frontend → Sofia creates test cases
+
+—alexis@scopelock
