@@ -18,6 +18,8 @@ export function MissionSelector({
   missions,
   activeMissionId,
   onSelect,
+  isCollapsed,
+  onToggleCollapse,
 }: MissionSelectorProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -28,39 +30,118 @@ export function MissionSelector({
     }
   };
 
+  const activeMission = missions.find(m => m.id === activeMissionId);
+
   return (
     <div style={{
-      width: '200px',
+      width: isCollapsed ? '60px' : '200px',
       background: 'var(--slk-bg)',
       borderRight: '1px solid rgba(230, 234, 242, 0.08)',
       height: '100vh',
       overflowY: 'auto',
-      flexShrink: 0
+      flexShrink: 0,
+      transition: 'width 0.3s ease'
     }}>
       <div style={{ padding: '16px' }}>
-        <h2 style={{
-          color: 'var(--slk-text)',
-          fontWeight: 600,
-          marginBottom: '16px',
-          fontSize: '0.875rem',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          margin: '0 0 16px 0'
-        }}>
-          Missions
-        </h2>
-
-        {missions.length === 0 && (
+        {/* Collapsed View */}
+        {isCollapsed && (
           <div style={{
-            color: 'var(--slk-muted)',
-            fontSize: '0.875rem',
-            padding: '12px'
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '12px'
           }}>
-            No missions assigned
+            {/* Expand button */}
+            <button
+              onClick={onToggleCollapse}
+              style={{
+                background: 'var(--slk-surface)',
+                border: '1px solid rgba(230, 234, 242, 0.08)',
+                borderRadius: '6px',
+                padding: '8px',
+                cursor: 'pointer',
+                color: 'var(--slk-text)',
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.2rem'
+              }}
+              title="Expand missions"
+            >
+              ☰
+            </button>
+
+            {/* Active mission indicator */}
+            {activeMission && (
+              <div style={{
+                background: 'var(--slk-surface)',
+                borderRadius: '6px',
+                padding: '8px',
+                textAlign: 'center',
+                width: '40px'
+              }}>
+                <div style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: getStatusColor(activeMission.status),
+                  margin: '0 auto 6px'
+                }} />
+                <div style={{
+                  color: 'var(--slk-muted)',
+                  fontSize: '0.7rem',
+                  fontFamily: 'monospace'
+                }}>
+                  #{activeMission.id}
+                </div>
+              </div>
+            )}
           </div>
         )}
 
-        {missions.map((mission) => (
+        {/* Expanded View */}
+        {!isCollapsed && (
+          <>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+              <h2 style={{
+                color: 'var(--slk-text)',
+                fontWeight: 600,
+                fontSize: '0.875rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                margin: 0
+              }}>
+                Missions
+              </h2>
+              <button
+                onClick={onToggleCollapse}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'var(--slk-muted)',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  fontSize: '1rem'
+                }}
+                title="Collapse panel"
+              >
+                ←
+              </button>
+            </div>
+
+            {missions.length === 0 && (
+              <div style={{
+                color: 'var(--slk-muted)',
+                fontSize: '0.875rem',
+                padding: '12px'
+              }}>
+                No missions assigned
+              </div>
+            )}
+
+            {missions.map((mission) => (
           <div
             key={mission.id}
             style={{
@@ -144,6 +225,8 @@ export function MissionSelector({
             </div>
           </div>
         ))}
+          </>
+        )}
       </div>
     </div>
   );
