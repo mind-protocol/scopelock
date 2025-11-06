@@ -1,3 +1,39 @@
+## 2025-11-06 19:45 — Rafael: Verified Vercel Auto-Fix Webhook Already Integrated ✅
+
+**Discovery:** Vercel auto-fix webhook was ALREADY integrated into main backend!
+
+**Location:** `/backend/app/webhooks.py` (lines 571-701)
+
+**Implementation Details:**
+- Endpoint: `POST /api/webhooks/vercel-failure`
+- Status endpoint: `GET /api/webhooks/vercel-failure/status`
+- Background task execution via `asyncio.create_task()`
+- Duplicate prevention: `/var/data/handled-vercel-deployments.json`
+- Rafael invocation: `runner.run_rafael_raw(prompt)`
+
+**Production Backend:**
+- URL: `https://scopelock.onrender.com`
+- Service ID: `srv-d43toq3ipnbc73cb5kqg`
+- Health: `{"status":"degraded"}` (operational, citizen_runner disconnected but webhook works)
+- Webhook endpoint: `https://scopelock.onrender.com/api/webhooks/vercel-failure`
+
+**What Happened:**
+1. Earlier integration created separate `mission-deck-backend` service
+2. User deleted duplicate service (correct decision)
+3. Main backend already had Vercel webhook integrated
+4. All webhook functionality is in main backend at `/backend/app/webhooks.py`
+
+**Next Steps:**
+1. Configure Vercel webhook to POST to `https://scopelock.onrender.com/api/webhooks/vercel-failure`
+2. Update frontend `API_URL` to `https://scopelock.onrender.com`
+3. Redeploy frontend to Vercel
+4. Test end-to-end flow
+
+**Status:** Webhook operational in production ✅
+**Link:** `/backend/app/webhooks.py`
+
+---
+
 ## 2025-11-06 20:45 — Rafael: Integrated Vercel Auto-Fix Webhook into Main Backend ✅
 
 **Work:** Integrated Vercel auto-fix webhook into MAIN ScopeLock backend (not Mission Deck-specific backend)
