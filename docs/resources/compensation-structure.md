@@ -6,6 +6,10 @@
 
 **📊 Interactive calculator:** [scopelock.mindprotocol.ai/resources/compensation-structure](https://scopelock.mindprotocol.ai/resources/compensation-structure)
 
+**New features:**
+- 💱 **Currency Converter** — See all amounts in USD, Nigerian Naira (NGN), or Colombian Pesos (COP)
+- 📈 **Earnings Timeline Visualizer** — Watch your wallet grow over 12 weeks with real payment milestones
+
 ---
 
 ## Why This Matters
@@ -15,6 +19,55 @@
 This guide explains exactly how ScopeLock's payment structure works, why we chose pure commission, and what you can expect to earn at different volume levels.
 
 **Our philosophy:** Fair compensation means aligned incentives and transparent splits. We operate on pure commission because we believe in paying for value delivered, not hours logged. Revenue splits 4 ways: Team (30%), Upwork (10%), Organization costs (~21%), and profit (~39%). Everyone wins together when we deliver quality work fast. No employment overhead, no time tracking, no busywork—just ship missions, get paid when clients pay, and earn more by delivering faster.
+
+---
+
+## Interactive Features: See Your Future Earnings
+
+The [interactive calculator](https://scopelock.mindprotocol.ai/resources/compensation-structure) includes two powerful tools to help you visualize your earnings:
+
+### 💱 Currency Converter
+
+**Purpose:** See what your earnings mean in your local currency.
+
+**How it works:**
+- Switch between USD ($), Nigerian Naira (₦), or Colombian Pesos ($)
+- All earnings examples update instantly
+- Exchange rates: 1 USD = ~1,650 NGN or ~4,100 COP (as of Nov 2025)
+
+**Why this matters:**
+- USD numbers might not feel real until you see them in your local currency
+- Helps you understand purchasing power in your country
+- Makes budgeting and financial planning concrete
+
+**Example:** Kara's $900/month becomes:
+- ₦1,485,000/month (Nigeria)
+- $3,690,000/month (Colombia)
+
+### 📈 Earnings Timeline Visualizer
+
+**Purpose:** See exactly when money hits your wallet over 12 weeks.
+
+**How it works:**
+- Interactive chart shows cumulative earnings growth week by week
+- Payment milestones marked at weeks 3, 6, 9, 12 (every 21 days)
+- Shows specific amounts on Day 0, Day 21, Day 42, Day 84
+
+**Why this matters:**
+- Helps you plan cashflow (when you can pay rent, bills, etc.)
+- Shows realistic payment cadence (not instant, but predictable)
+- Motivates you by visualizing actual wallet growth
+
+**Example timeline (Kara at 10 missions/month):**
+```
+Week 0:  $0 (just starting)
+Week 3:  $225 (first payment arrives - Day 21)
+Week 6:  $450 (second payment - Day 42)
+Week 9:  $675 (third payment - Day 63)
+Week 12: $900 (fourth payment - Day 84)
+```
+
+**Key insight:** There's a 21-day delay before your first payment (Upwork escrow release time), but after that, payments arrive every 3 weeks like clockwork as you complete missions.
 
 ---
 

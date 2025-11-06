@@ -9,6 +9,22 @@
 
 ### Week 1 Critical Path (Must Read Before First Mission)
 
+#### 0. [Why ScopeLock Makes Development Super Easy](./why-scopelock-works.md) ⭐ **READ THIS FIRST**
+
+**Why this matters:**
+- Shows you don't need to be a senior developer (AI does 95% of work)
+- Explains exactly how AI-human partnership works
+- Walks through complete real mission from job post to payment
+- Proves why this is easier than traditional freelancing
+
+**ROI:** Eliminates fear ("Can I actually do this?"), builds confidence
+
+**Blocker if missing:** Developer thinks they need to write code from scratch, gets overwhelmed, quits
+
+**Key insight:** Rafael writes the code. Inna writes the specs. Sofia checks quality. You supervise, deploy, and verify. That's it.
+
+---
+
 #### 1. [How to Talk to AI Citizens: Context Is Everything](./how-to-talk-to-ai-citizens.md)
 
 **Why this matters:**
