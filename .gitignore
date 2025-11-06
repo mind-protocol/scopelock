@@ -37,3 +37,6 @@ outreach/scopelock_sender.session
 outreach/*.session
 outreach/*.session-journal
 outreach/developers/recruitment_contacts.json
+
+# Mission Deck frontend (separate Next.js project, work in progress)
+mission-deck-frontend/

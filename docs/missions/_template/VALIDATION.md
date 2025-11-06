@@ -4,6 +4,8 @@
 **Purpose:** Test specifications mapped to AC.md acceptance criteria
 **Date Created:** YYYY-MM-DD
 
+**TDD Workflow:** Sofia (The Checker) generates executable test code (pytest, Vitest, Playwright) from these specifications BEFORE Rafael starts implementation. Tests define quality criteria; implementation makes tests pass.
+
 ---
 
 ## Test Framework

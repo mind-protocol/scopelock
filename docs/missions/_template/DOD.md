@@ -89,6 +89,11 @@
 - [ ] Failure threshold specified (0 failures)
 - [ ] Performance gate defined
 
+**TDD Workflow:**
+- [ ] Sofia generates executable test code from VALIDATION.md (TDD: tests first!)
+- [ ] Test suite ready before Rafael starts implementation
+- [ ] Tests define quality criteria (implementation makes tests pass)
+
 ---
 
 ## ✅ Implementation Guidance Complete
@@ -101,7 +106,8 @@
 - [ ] External service calls documented
 
 **Code-level clarity:**
-- [ ] Rafael can generate code without asking questions
+- [ ] Sofia can generate test code from VALIDATION.md without asking questions
+- [ ] Rafael can generate implementation code from ALGORITHM.md without asking questions
 - [ ] File structure specified (which files to create)
 - [ ] Import statements listed
 - [ ] Function signatures provided
@@ -167,16 +173,16 @@
 ## ✅ Tests Pass
 
 **Unit tests:**
-- [ ] All unit tests written
+- [ ] All unit tests written (Sofia generates from VALIDATION.md)
 - [ ] All unit tests pass (100% pass rate)
 
 **Acceptance tests:**
-- [ ] All acceptance tests written (per VALIDATION.md)
-- [ ] All acceptance tests pass (100% pass rate)
+- [ ] All acceptance tests written by Sofia (per VALIDATION.md - TDD workflow)
+- [ ] Rafael's implementation passes all Sofia's tests (100% pass rate)
 - [ ] Tests run successfully in CI
 
 **Performance tests:**
-- [ ] Performance benchmarks implemented
+- [ ] Performance benchmarks implemented (Sofia generates from VALIDATION.md)
 - [ ] All p95 thresholds met (per AC.md NF1)
 - [ ] No performance regressions vs baseline
 

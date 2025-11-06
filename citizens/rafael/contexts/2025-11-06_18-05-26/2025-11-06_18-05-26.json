@@ -8,8 +8,18 @@
       "role": "user",
       "timestamp": "2025-11-06T17:05:26.341600+00:00",
       "content": "Okay, Rafael, could you please split the task of implementing the deck between Rafael-1, Rafael-2, and Rafael-3, please?"
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T17:16:46.153917+00:00",
+      "content": "do   Rafael-2: Frontend Implementation\n\n  Responsibility: Complete Next.js 14 frontend with citizen\n  workspaces\n\n  Key Deliverables:\n  - Mission Selector (left panel, 200px fixed, scrollable)\n  - Citizen Selector (horizontal tabs: Emma → Inna → Rafael →\n  Sofia → Maya)\n  - Rafael Workspace:\n    - Top: GitHub repository view (file tree, commits, [Open in\n   GitHub ↗])\n    - Bottom: Chat with Rafael\n  - Sofia Workspace:\n    - Left: DoD checklist (Functional, Non-Functional, Tests\n  sections)\n    - Right: Test results placeholder\n  - Chat components (message list, code blocks with syntax\n  highlighting, [Copy Code])\n  - API client (lib/api.ts with mock data initially)\n\n  Verification Before Handoff:\n  - Frontend runs locally: npm run dev\n  - Mission selector shows 3 mock missions\n  - Citizen selector shows 5 citizens\n  - Clicking Rafael shows 2-panel layout\n  - Clicking Sofia shows DoD checklist\n  - TypeScript compiles: npm run build\n  - Vitest tests pass (quality.test.ts)"
+    },
+    {
+      "role": "user",
+      "timestamp": "2025-11-06T17:17:04.842285+00:00",
+      "content": "do   Rafael-3: Integration & Testing\n\n  Responsibility: Connect frontend to backend, run all tests,\n  deploy\n\n  Key Deliverables:\n  - Remove mock data from frontend, connect to backend API\n  - Run all 26 tests (17 backend pytest + 9 frontend Vitest) →\n  100% passing\n  - Manual AC verification (F1-F5 Auth, Mission Selector,\n  Citizen Selector, Rafael Workspace, Sofia Workspace)\n  - Deploy backend to Render (scopelock-deck-api.onrender.com)\n  - Deploy frontend to Vercel (scopelock.mindprotocol.ai/deck)\n  - Create Evidence Sprint artifacts (DEMO.md + DELTA.md)\n  - Hand off to Sofia for pre-delivery QA\n\n  Verification Before Delivery:\n  - Local integration: Frontend + Backend running together\n  - All 26 tests passing\n  - Production deployment works (health checks pass)\n  - Performance meets thresholds (page load <3s, chat <10s)\n  - Security verified (JWT auth, CORS, HTTPS)"
     }
   ],
-  "last_updated": "2025-11-06T17:05:26.341607+00:00",
-  "message_count": 1
+  "last_updated": "2025-11-06T17:17:04.842314+00:00",
+  "message_count": 3
 }

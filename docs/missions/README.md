@@ -63,10 +63,12 @@ Plus **DoD** (Definition of Done) checklist derived from BEHAVIOR_SPEC.
    git push origin --tags
    ```
 
-4. **Handoff to Rafael:**
-   - Rafael generates implementation from MECHANISM + ALGORITHM
-   - Developer reviews and deploys per GUIDE
-   - Sofia verifies using VALIDATION + DOD
+4. **TDD Workflow (Tests First!):**
+   - Sofia generates executable test code from VALIDATION.md (pytest, Vitest, Playwright)
+   - Tests define quality criteria BEFORE implementation begins
+   - Rafael generates implementation from MECHANISM + ALGORITHM to pass Sofia's tests
+   - Developer runs Sofia's tests locally, reviews, and deploys per GUIDE
+   - Sofia verifies deployment using her test suite + DOD
 
 ---
 
@@ -104,6 +106,8 @@ Plus **DoD** (Definition of Done) checklist derived from BEHAVIOR_SPEC.
 - Specific test scenarios mapped to AC.md sections
 - Performance test specifications
 - CI/CD integration requirements
+
+**TDD Workflow:** Sofia generates executable test code (pytest, Vitest, Playwright) from these specifications BEFORE Rafael starts implementation. Tests define quality; implementation makes tests pass.
 
 ---
 
@@ -213,11 +217,11 @@ If client requests scope change after AC baseline:
 **Mission documentation is complete when:**
 - ✅ All 6 levels written (PATTERN → GUIDE)
 - ✅ DoD checklist complete
-- ✅ Rafael can generate code without asking questions
-- ✅ Sofia can verify using VALIDATION specs
-- ✅ Developer can deploy using GUIDE commands
+- ✅ Sofia can generate test code from VALIDATION.md without asking questions (TDD: tests first!)
+- ✅ Rafael can generate implementation code from ALGORITHM.md without asking questions
+- ✅ Developer can run Sofia's tests and deploy using GUIDE commands
 
-**If any fails, documentation is incomplete. Do not hand off to Rafael.**
+**If any fails, documentation is incomplete. Do not hand off to Sofia/Rafael.**
 
 ---
 

@@ -1,251 +1,419 @@
 # Mission Deck Backend
 
-FastAPI backend for Mission Deck - internal developer dashboard for ScopeLock missions.
+Internal developer dashboard API for ScopeLock mission execution.
 
-## Architecture
+## Overview
 
-- **Framework:** FastAPI 0.104+ (Python 3.11+)
-- **Database:** FalkorDB (Mind Protocol v2 production graph)
-- **Auth:** JWT with bcrypt password hashing
-- **AI:** Claude 3.5 Sonnet (for Rafael chat simulation)
-- **Deployment:** Render Web Service
+FastAPI-based REST API that provides:
+- **Authentication** - JWT-based auth with bcrypt password hashing
+- **Mission Management** - CRUD operations for developer missions
+- **Rafael Chat** - AI assistant integration via Claude API
+- **DoD Tracking** - Definition of Done checklist management
+- **FalkorDB Integration** - Graph database queries for missions, messages, tasks
 
-## Quick Start
+**Architecture:**
+- FastAPI 0.104+ for REST API
+- FalkorDB (Mind Protocol v2 production) for data persistence
+- JWT authentication with 7-day token expiry
+- Claude 3.5 Sonnet for Rafael chat functionality
+- CORS enabled for frontend integration
 
-### 1. Install Dependencies
+## Prerequisites
+
+- **Python 3.10+**
+- **FalkorDB API access** (Mind Protocol production instance)
+- **Claude API key** (Anthropic)
+- **Git** (for cloning repository)
+
+## Installation
+
+### 1. Clone Repository
 
 ```bash
+cd /home/mind-protocol/scopelock/docs/missions/mission-deck
+```
+
+### 2. Install Dependencies
+
+```bash
+cd backend
 pip install -r requirements.txt
 ```
 
-### 2. Configure Environment
+### 3. Configure Environment
+
+Copy `.env.example` to `.env`:
 
 ```bash
-# Copy example env file
 cp .env.example .env
-
-# Generate JWT secret
-openssl rand -hex 32
-
-# Edit .env and set:
-# - JWT_SECRET (from openssl command above)
-# - CLAUDE_API_KEY (from Anthropic dashboard)
-# - CORS_ORIGINS (your frontend URL)
 ```
 
-### 3. Run Locally
+Edit `.env` and fill in your actual values:
 
 ```bash
-# Development mode (auto-reload)
-uvicorn main:app --reload --port 8000
-
-# Or use Python directly
-python main.py
-
-# API available at: http://localhost:8000
-# Swagger docs: http://localhost:8000/docs
-# Health check: curl http://localhost:8000/health
+# Required variables
+FALKORDB_API_URL=https://mindprotocol.onrender.com/admin/query
+FALKORDB_API_KEY=your_actual_api_key_here
+GRAPH_NAME=scopelock
+JWT_SECRET=your_generated_jwt_secret_here
+CLAUDE_API_KEY=your_anthropic_api_key_here
+CORS_ORIGINS=http://localhost:3000
 ```
+
+**Generate JWT secret:**
+
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(32))"
+```
+
+Copy the output and paste into `JWT_SECRET` in `.env`.
+
+## Running Locally
+
+### Start Development Server
+
+```bash
+uvicorn main:app --reload
+```
+
+Expected output:
+
+```
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process
+INFO:     Started server process
+INFO:     Waiting for application startup.
+
+================================================================================
+Mission Deck API - Starting Up
+================================================================================
+
+✅ All required environment variables configured
+✅ FalkorDB connected (X nodes)
+
+🚀 Mission Deck API ready
+   Docs: http://localhost:8000/docs
+   Health: http://localhost:8000/health
+================================================================================
+```
+
+### Verify Health Check
+
+In a new terminal:
+
+```bash
+curl http://localhost:8000/health
+```
+
+Expected response:
+
+```json
+{
+  "status": "ok",
+  "service": "mission-deck-api",
+  "timestamp": "2025-11-06T12:00:00Z"
+}
+```
+
+## API Documentation
+
+Once running, visit:
+
+- **Swagger UI:** http://localhost:8000/docs
+- **ReDoc:** http://localhost:8000/redoc
+
+Interactive API documentation with request/response examples and "Try it out" functionality.
 
 ## API Endpoints
 
 ### Authentication
-- `POST /api/auth/login` - Login with email/password → JWT token
-- `POST /api/auth/logout` - Logout (stateless, client discards token)
+
+- `POST /api/auth/login` - Login with email/password, returns JWT token
+- `POST /api/auth/logout` - Logout (client-side token removal)
 
 ### Missions
-- `GET /api/missions` - List user's assigned missions
-- `GET /api/missions/{mission_id}` - Get mission details
-- `PATCH /api/missions/{mission_id}/notes` - Update developer notes
+
+- `GET /api/missions` - List all missions for authenticated user
+- `GET /api/missions/{mission_id}` - Get single mission details
+- `PATCH /api/missions/{mission_id}/notes` - Update mission notes
 
 ### Chat (Rafael)
-- `POST /api/missions/{mission_id}/chat` - Send message to Rafael
-- `GET /api/missions/{mission_id}/messages` - Get chat history (limit 50)
 
-### Definition of Done (DoD)
+- `POST /api/missions/{mission_id}/chat` - Send message to Rafael, get AI response
+- `GET /api/missions/{mission_id}/messages` - Get chat history for mission
+
+### DoD (Definition of Done)
+
 - `GET /api/missions/{mission_id}/dod` - List DoD checklist items
-- `PATCH /api/missions/{mission_id}/dod/{item_id}` - Toggle item state
-- `PATCH /api/missions/{mission_id}/dod/complete` - Mark all items complete
+- `PATCH /api/missions/{mission_id}/dod/{item_id}` - Toggle DoD item completion
+- `PATCH /api/missions/{mission_id}/dod/complete` - Mark all items complete, transition to QA
 
-### Health & Docs
-- `GET /health` - Health check (returns `{"status": "ok"}`)
-- `GET /docs` - Swagger UI (interactive API documentation)
-- `GET /redoc` - ReDoc (alternative API documentation)
+### Health
 
-## Environment Variables
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `JWT_SECRET` | Secret key for JWT signing (256-bit) | `openssl rand -hex 32` |
-| `FALKORDB_API_URL` | FalkorDB REST API endpoint | `https://mindprotocol.onrender.com/admin/query` |
-| `FALKORDB_API_KEY` | FalkorDB authentication key | *(from Mind Protocol v2)* |
-| `GRAPH_NAME` | Graph name in FalkorDB | `scopelock` |
-| `CLAUDE_API_KEY` | Anthropic Claude API key | `sk-ant-api03-...` |
-| `CORS_ORIGINS` | Allowed frontend origins (comma-separated) | `http://localhost:3000,https://scopelock.mindprotocol.ai` |
-
-## Deployment (Render)
-
-### 1. Create Web Service
-
-1. Go to [Render Dashboard](https://dashboard.render.com)
-2. Click "New +" → "Web Service"
-3. Connect GitHub repository: `mind-protocol/scopelock`
-4. Configure:
-   - **Name:** `scopelock-deck-api`
-   - **Region:** Oregon (or closest to users)
-   - **Branch:** `main`
-   - **Root Directory:** `docs/missions/mission-deck/backend`
-   - **Runtime:** Python 3
-   - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
-
-### 2. Set Environment Variables
-
-In Render dashboard, add all environment variables from `.env.example`:
-- `JWT_SECRET`
-- `FALKORDB_API_URL`
-- `FALKORDB_API_KEY`
-- `GRAPH_NAME`
-- `CLAUDE_API_KEY`
-- `CORS_ORIGINS`
-
-### 3. Deploy
-
-Click "Create Web Service" → Wait for build → Service will be live at:
-`https://scopelock-deck-api.onrender.com`
-
-### 4. Verify Deployment
-
-```bash
-# Health check
-curl https://scopelock-deck-api.onrender.com/health
-# Expected: {"status":"ok"}
-
-# API docs
-open https://scopelock-deck-api.onrender.com/docs
-```
+- `GET /health` - Health check endpoint (no auth required)
 
 ## Testing
 
-### Run Existing Test Suite
+### Run All Tests
 
 ```bash
-# Backend tests (pytest)
-pytest tests/test_error_handling.py tests/test_security.py
-
-# Expected: 17 tests passing
+pytest
 ```
 
-### Manual Testing
+### Run Specific Test Files
 
 ```bash
-# 1. Health check
-curl http://localhost:8000/health
+# Error handling tests
+pytest tests/test_error_handling.py
 
-# 2. Login (if test user exists in FalkorDB)
+# Security tests
+pytest tests/test_security.py
+```
+
+### Run with Verbose Output
+
+```bash
+pytest -v
+```
+
+### Run with Coverage
+
+```bash
+pytest --cov=. --cov-report=html
+```
+
+Coverage report will be in `htmlcov/index.html`.
+
+## Testing Authentication
+
+### 1. Get JWT Token
+
+```bash
 curl -X POST http://localhost:8000/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"email": "test@example.com", "password": "testpass"}'
-
-# 3. Get missions (with JWT token from login)
-curl http://localhost:8000/api/missions \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+  -d '{
+    "email": "person1@scopelock.ai",
+    "password": "testpass"
+  }'
 ```
 
-## Project Structure
+Response:
 
-```
-backend/
-├── main.py                     # FastAPI app entry point
-├── auth.py                     # JWT authentication
-├── dependencies.py             # Reusable FastAPI dependencies
-├── schemas.py                  # Pydantic request/response models
-├── requirements.txt            # Python dependencies
-├── .env.example                # Environment variables template
-├── README.md                   # This file
-├── routers/                    # API endpoint routers
-│   ├── auth.py                 # /api/auth/*
-│   ├── missions.py             # /api/missions/*
-│   ├── chat.py                 # /api/missions/:id/chat
-│   └── dod.py                  # /api/missions/:id/dod
-├── services/                   # External integrations
-│   ├── graph.py                # FalkorDB client
-│   └── rafael.py               # Claude API (Rafael simulation)
-└── tests/                      # Test suite
-    ├── test_error_handling.py  # Error handling tests (467 lines)
-    └── test_security.py        # Security tests (454 lines)
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "bearer",
+  "user": {
+    "id": "bigbosexf",
+    "email": "person1@scopelock.ai",
+    "name": "Person 1"
+  }
+}
 ```
 
-## Troubleshooting
+### 2. Use Token for Protected Endpoints
 
-### Issue: "JWT_SECRET environment variable is required"
-
-**Cause:** Missing or empty `JWT_SECRET` in `.env`
-
-**Fix:**
 ```bash
-# Generate secret
-openssl rand -hex 32
+TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 
-# Add to .env
-echo "JWT_SECRET=<your-generated-secret>" >> .env
+curl -X GET http://localhost:8000/api/missions \
+  -H "Authorization: Bearer $TOKEN"
 ```
 
-### Issue: "FalkorDB credentials missing"
+## Testing Rafael Chat
 
-**Cause:** `FALKORDB_API_URL` or `FALKORDB_API_KEY` not set
+### Send Message to Rafael
 
-**Fix:** Check `.env` file has correct FalkorDB credentials from Mind Protocol v2
-
-### Issue: "Claude API connection error"
-
-**Cause:** Invalid `CLAUDE_API_KEY` or API rate limit
-
-**Fix:**
-1. Verify API key: https://console.anthropic.com/
-2. Check rate limits (Claude API usage dashboard)
-3. Rafael will gracefully return error message to user (won't crash)
-
-### Issue: CORS errors from frontend
-
-**Cause:** Frontend origin not in `CORS_ORIGINS`
-
-**Fix:**
 ```bash
-# Add frontend URL to .env
-CORS_ORIGINS=http://localhost:3000,https://your-frontend.vercel.app
+TOKEN="your_jwt_token_here"
+MISSION_ID="mission-47-telegram-bot"
+
+curl -X POST http://localhost:8000/api/missions/$MISSION_ID/chat \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "How do I send a Telegram message in Python?"
+  }'
 ```
 
-## Development Notes
+Response includes Rafael's answer and any extracted code blocks:
 
-### Architecture Decisions
+```json
+{
+  "response": "Here's how to send a Telegram message...\n```python\nfrom telegram import Bot\n```",
+  "code_blocks": [
+    {
+      "language": "python",
+      "code": "from telegram import Bot",
+      "filename": "code.py"
+    }
+  ]
+}
+```
 
-- **JWT Auth (not Clerk):** Custom JWT implementation for Week 1 MVP (faster setup)
-- **FalkorDB REST API:** Direct HTTP calls (no ORM) for graph queries
-- **Claude API Direct:** Week 1 simulates Rafael via API (Week 2 will use actual citizen)
-- **No Database Migrations:** Schema-free graph structure evolves with new attributes
+## Week 1 MVP Test Users
+
+Hardcoded test users for development (password: `testpass` for all):
+
+| Email | User ID | Name |
+|-------|---------|------|
+| person1@scopelock.ai | bigbosexf | Person 1 |
+| person2@scopelock.ai | kara | Person 2 |
+| person3@scopelock.ai | reanance | Person 3 |
+
+**Note:** Week 2 will integrate with FalkorDB U4_Agent nodes for real user authentication.
+
+## Architecture Notes
+
+### FalkorDB Integration
+
+- **Access Method:** REST API (not direct database connection)
+- **Query Language:** Cypher (similar to Neo4j)
+- **Node Types Used:**
+  - `U4_Work_Item` - Missions (work_type='mission') and DoD tasks (work_type='task')
+  - `U4_Event` - Chat messages (event_kind='message')
+  - `U4_Agent` - Developers and AI citizens
+- **Relationships:**
+  - `U4_ABOUT` - Links messages to missions
+  - `U4_MEMBER_OF` - Links DoD tasks to missions
+  - `U4_ASSIGNED_TO` - Links missions to developers
+
+### Error Handling
+
+Follows ScopeLock **fail-loud** principle:
+
+```python
+try:
+    # Operation
+except Exception as e:
+    print(f"[module:function] Error: {e}")  # Log with location
+    # Emit failure event if applicable
+    raise HTTPException(status_code=500, detail="User-friendly message")
+```
+
+All errors are:
+1. Logged with file location and context
+2. Converted to appropriate HTTP status codes
+3. Returned with user-friendly messages (no internal details exposed)
 
 ### Security
 
-- **Password Hashing:** bcrypt with salt rounds (via passlib)
-- **JWT Expiry:** 7 days (configurable in `auth.py`)
-- **CORS:** Whitelist-only (no wildcard `*`)
-- **HTTPS:** Required in production (Render provides free SSL)
+- **Password Hashing:** bcrypt via passlib
+- **JWT Algorithm:** HS256
+- **Token Expiry:** 7 days
+- **CORS:** Configurable allowed origins
+- **SQL Injection Prevention:** All Cypher queries use parameterization
+- **Authentication:** Required for all endpoints except /health and /api/auth/login
 
-### Performance
+## Troubleshooting
 
-- **Response Times:** <100ms for graph queries (FalkorDB REST API)
-- **Chat Latency:** 3-10s (Claude API inference time)
-- **Health Check:** <50ms (no database query)
+### Issue: "Missing environment variables" on startup
+
+**Solution:** Ensure `.env` file exists and contains all required variables. Copy from `.env.example` and fill in actual values.
+
+### Issue: "FalkorDB connection failed"
+
+**Solution:** 
+1. Verify `FALKORDB_API_URL` is correct
+2. Check `FALKORDB_API_KEY` is valid
+3. Ensure network connectivity to FalkorDB instance
+4. Test connection manually:
+
+```bash
+python3 tools/query_production.py "MATCH (n) RETURN count(n)"
+```
+
+### Issue: "Invalid authentication token"
+
+**Solution:**
+1. Verify JWT_SECRET is the same used to generate the token
+2. Check token hasn't expired (7-day expiry)
+3. Ensure token format is correct: `Bearer <token>`
+
+### Issue: "Rafael chat not working"
+
+**Solution:**
+1. Verify `CLAUDE_API_KEY` is valid
+2. Check Anthropic API quota/limits
+3. Review logs for specific API error messages
+
+### Issue: Port 8000 already in use
+
+**Solution:**
+
+```bash
+# Find process using port 8000
+lsof -ti:8000
+
+# Kill the process
+kill -9 $(lsof -ti:8000)
+
+# Or run on different port
+uvicorn main:app --reload --port 8001
+```
+
+## Development
+
+### Code Structure
+
+```
+backend/
+├── main.py                 # FastAPI app entry point
+├── auth.py                 # JWT token creation/validation
+├── dependencies.py         # FastAPI dependencies for auth
+├── schemas.py              # Pydantic models for API
+├── requirements.txt        # Python dependencies
+├── routers/
+│   ├── auth.py            # Login/logout endpoints
+│   ├── missions.py        # Mission CRUD endpoints
+│   ├── chat.py            # Rafael chat endpoints
+│   └── dod.py             # DoD checklist endpoints
+├── services/
+│   ├── graph.py           # FalkorDB client
+│   └── rafael.py          # Claude API integration
+└── tests/
+    ├── test_error_handling.py
+    └── test_security.py
+```
+
+### Adding New Endpoints
+
+1. Create function in appropriate router file (routers/*.py)
+2. Use `@router.[method](path)` decorator
+3. Add authentication dependency: `current_user: CurrentUser = Depends(get_current_user)`
+4. Update schemas.py with request/response models
+5. Add Cypher queries to services/graph.py if needed
+6. Add tests to tests/
+
+### Code Style
+
+- **Imports:** Standard library → Third-party → Local
+- **Docstrings:** All public functions have docstrings
+- **Error Handling:** Fail-loud with location logging
+- **Type Hints:** Use Python type hints for function parameters/returns
+
+## Deployment
+
+**Week 1 MVP:** Local development only
+
+**Week 2:** Deploy to Render
+
+```bash
+# Will include:
+# - render.yaml configuration
+# - Environment variable setup in Render dashboard
+# - Database connection configuration
+# - Production CORS origins
+```
 
 ## Support
 
-- **Documentation:** See `/docs/missions/mission-deck/` for complete specs
-- **Issues:** Open issue in `mind-protocol/scopelock` GitHub repo
-- **Team Contact:** @nlr_ai (Telegram)
+For issues or questions:
+- **Documentation:** See `/docs/missions/mission-deck/`
+- **Team:** @Rafael on ScopeLock Telegram
+- **SYNC:** Update `/citizens/SYNC.md` with blockers
 
 ---
 
-**Last Updated:** 2025-11-06  
-**Version:** 1.0 (Week 1 MVP)  
-**Status:** Production-ready
+**Mission Deck Backend** - Part of ScopeLock internal tooling
+Built with FastAPI + FalkorDB + Claude API

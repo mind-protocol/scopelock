@@ -1120,7 +1120,7 @@
   border-bottom-color: var(--accent);
 }
 
-/* Citizens Section */
+/* Citizens Section - Flow Order */
 .citizensSection {
   margin: 5rem 0;
   padding: 3rem 0;
@@ -1131,93 +1131,150 @@
 .citizensSection h2 {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 
 .citizensIntro {
   text-align: center;
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  max-width: 700px;
+  font-size: 0.95rem;
   margin: 0 auto 3rem;
 }
 
-.citizensGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-
-.citizenCard {
-  background: linear-gradient(135deg, #1a1f28 0%, #151a21 100%);
-  border: 2px solid rgba(30, 229, 184, 0.2);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.citizenCard:hover {
-  border-color: #1ee5b8;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.2);
-}
-
-.citizenHeader {
+.citizensFlow {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
-.citizenAvatar {
+.flowArrowBetween {
+  font-size: 2rem;
+  color: #1ee5b8;
+  font-weight: 300;
+  user-select: none;
+}
+
+.citizenFlowCard {
+  background: linear-gradient(135deg, #1a1f28 0%, #151a21 100%);
+  border: 2px solid rgba(30, 229, 184, 0.2);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  min-width: 140px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  cursor: pointer;
+}
+
+.citizenFlowCard:hover {
+  border-color: #1ee5b8;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.3);
+  z-index: 10;
+}
+
+.citizenFlowCard:hover .citizenFlowTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.citizenFlowAvatar {
   border-radius: 50%;
   border: 3px solid #1ee5b8;
   box-shadow: 0 0 16px rgba(30, 229, 184, 0.3);
+  margin: 0 auto 0.75rem;
   transition: transform 0.3s ease;
 }
 
-.citizenCard:hover .citizenAvatar {
-  transform: scale(1.05);
+.citizenFlowCard:hover .citizenFlowAvatar {
+  transform: scale(1.08);
 }
 
-.citizenTitleBlock {
-  flex: 1;
-}
-
-.citizenName {
-  font-size: 1.5rem;
+.citizenFlowName {
+  font-size: 1.15rem;
   font-weight: 700;
   color: #1ee5b8;
   margin: 0 0 0.25rem 0;
 }
 
-.citizenRole {
-  font-size: 0.95rem;
+.citizenFlowRole {
+  font-size: 0.85rem;
   color: var(--muted);
   margin: 0;
   font-style: italic;
 }
 
-.citizenDescription {
-  color: var(--text);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
+.citizenFlowTooltip {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: rgba(21, 26, 33, 0.98);
+  border: 2px solid #1ee5b8;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  min-width: 280px;
+  max-width: 320px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
-.citizenQuote {
+.citizenFlowTooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(21, 26, 33, 0.98);
+  border-top: 2px solid #1ee5b8;
+  border-left: 2px solid #1ee5b8;
+}
+
+.tooltipDescription {
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+}
+
+.tooltipQuote {
   background: rgba(30, 229, 184, 0.05);
   border-left: 3px solid #1ee5b8;
-  padding: 1rem 1.25rem;
+  padding: 0.75rem 1rem;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-style: italic;
   color: var(--muted);
   border-radius: 4px;
-  line-height: 1.5;
+  line-height: 1.4;
+}
+
+.strategicSupport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(154, 163, 174, 0.15);
+}
+
+.supportLabel {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
 }
 
 /* Responsive */
@@ -1285,30 +1342,32 @@
     padding: 0.75rem 0.5rem;
   }
 
-  .citizensGrid {
-    grid-template-columns: 1fr;
+  .citizensFlow {
+    flex-direction: column;
     gap: 1.5rem;
   }
 
-  .citizenCard {
-    padding: 1.5rem;
+  .flowArrowBetween {
+    transform: rotate(90deg);
+    font-size: 1.5rem;
   }
 
-  .citizenAvatar {
-    width: 60px;
-    height: 60px;
+  .citizenFlowCard {
+    min-width: 100%;
+    max-width: 280px;
   }
 
-  .citizenName {
-    font-size: 1.3rem;
+  .citizenFlowTooltip {
+    min-width: 260px;
+    max-width: 280px;
   }
 
-  .citizenDescription {
-    font-size: 0.95rem;
+  .strategicSupport {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .citizenQuote {
-    font-size: 0.9rem;
-    padding: 0.75rem 1rem;
+  .supportLabel {
+    text-align: center;
   }
 }
