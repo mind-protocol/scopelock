@@ -15,12 +15,41 @@ Uses `tools/telegram-send.cjs` via subprocess:
 subprocess.run(['node', telegram_script, tg_message], timeout=10)
 ```
 
-**Notification Examples:**
-- Success: "Rafael diagnosed and fixed the deployment failure autonomously. Check SYNC.md for details."
-- Failure: "Rafael attempted to fix but encountered an error. Manual intervention may be required."
-- Critical: "Failed to invoke Rafael for deployment. Check backend logs immediately."
+**Notification Examples (natural language from Rafael):**
 
-**Committed:** `feat: add Telegram notifications for Vercel auto-fix outcomes` (7b94aec)
+Success:
+```
+Hey! I just fixed a Vercel deployment that failed 🛠️
+
+The scopelock build broke on commit abc123d ("fix: something").
+I grabbed the build logs with Vercel MCP, diagnosed the issue,
+pushed a fix, and it's redeploying now ✅
+
+Check SYNC.md for what I changed.
+```
+
+Failure:
+```
+Tried to fix a Vercel deployment but hit a blocker ❌
+
+The scopelock build failed on abc123d. I attempted to diagnose
+and fix it, but ran into this: [error details]
+
+You might need to check this manually.
+```
+
+Critical:
+```
+Something went wrong trying to invoke me for a Vercel fix 🚨
+
+Deployment dpl_ABC123... failed, but I couldn't even start
+investigating it. Check the backend logs at Render - might
+be a Claude CLI issue or credentials problem.
+```
+
+**Committed:**
+- `feat: add Telegram notifications for Vercel auto-fix outcomes` (7b94aec)
+- `refactor: rewrite Telegram notifications in natural language from Rafael` (71b957f)
 
 **Status:** Complete, waiting for Render deployment ✅
 
