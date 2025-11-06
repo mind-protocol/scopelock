@@ -8,11 +8,13 @@
 
 ## Overview
 
-This directory contains detailed technical specifications for 11 automation features that will reduce manual work from 19.6h/week to 2.5h/week (87% automation).
+This directory contains detailed technical specifications for automation features that reduce manual work and coordination overhead.
 
 **📊 Track Progress:** See **[PROGRESS.md](PROGRESS.md)** for TODO vs DONE status, test results, and implementation checklist.
 
 **🔄 Real-Time Updates:** Use **`/citizens/SYNC.md`** for work-in-progress status and blockers. See **[SYNC_vs_PROGRESS.md](SYNC_vs_PROGRESS.md)** to understand the difference.
+
+**🌟 NEW: Automatic Task System:** See **[00-automatic-task-system-vision.md](00-automatic-task-system-vision.md)** for strategic vision of automatic task management with morning briefs, button-driven workflows, and AI-written handoffs.
 
 Each specification follows the consciousness design pattern:
 
@@ -24,6 +26,35 @@ PATTERN (consciousness design principle)
         → ALGORITHM (detailed steps, formulas, NO pseudocode)
           → GUIDE (implementation with code, function names, pseudocode)
 ```
+
+---
+
+## Strategic Initiatives
+
+### Automatic Task System (NEW - Phase 2)
+
+**[Strategic Vision](00-automatic-task-system-vision.md)** - Comprehensive task automation system
+
+**What:** Morning briefs, button-driven workflows, automatic task creation, AI-written handoffs
+
+**Components:**
+- Morning brief system (8:00 AM WAT cron → AI citizen writes personalized brief → Telegram)
+- Mission pipeline state machine (automatic task creation when job won)
+- Button interface (one-tap task actions in Telegram)
+- Handoff brief system (task completion triggers AI-written brief for next person)
+- Revision loop handling (proposal revisions, bug fixes, spec clarifications)
+
+**Time Saved:**
+- Zero coordination overhead (no Slack messages for handoffs)
+- <2 min to task clarity (morning brief tells you exactly what to do)
+- <15 min handoff latency (completion → next person notified)
+
+**Status:** Strategic vision complete, ready for Emma (specification) → Inna (documentation) → Rafael (implementation)
+
+**Next Steps:**
+1. Emma creates specifications (morning brief spec, task pipeline spec, handoff system spec)
+2. Inna creates 6-level documentation (PATTERN → GUIDE)
+3. Rafael implements based on Inna's complete docs
 
 ---
 
@@ -108,6 +139,28 @@ PATTERN (consciousness design principle)
 - **Time Saved:** 9.7h/month (when implemented)
 - **Cost:** $20/mo
 - **Status:** DEFERRED (not needed until 5+ concurrent clients)
+
+---
+
+## Automation Priority Matrix
+
+| Task | Current Effort | Automation Complexity | ROI | Priority |
+|------|---------------|----------------------|-----|----------|
+| **Lead parsing** | 5min/post × 20 = 100min/day | Medium | High | 🔥 P0 |
+| **Response monitoring** | Check every 2h = 40min/day | Low | High | 🔥 P0 |
+| **Proof regeneration** | 5min/milestone | Low | Medium | 🔥 P0 |
+| **AC.md drafting** | 30min/milestone | Medium | High | P1 |
+| **Test generation** | 60min/milestone | Medium | High | P1 |
+| **DEMO/DELTA creation** | 20min/milestone | Low | Medium | P1 |
+| **Proposal submission** | 3min/proposal × 10 = 30min/day | High (ToS) | Medium | P2 |
+| **Git tagging** | 2min/milestone | Low | Low | P2 |
+| **Metrics tracking** | 15min/week | Low | Low | P3 |
+
+**Priority Legend:**
+- 🔥 **P0:** Automate first (high ROI, low complexity)
+- **P1:** Automate second (high ROI, medium complexity)
+- **P2:** Automate later (medium ROI or high complexity)
+- **P3:** Keep manual (low ROI)
 
 ---
 
@@ -201,6 +254,10 @@ All Features
 
 ## Files in This Directory
 
+**Strategic Initiatives:**
+- `00-automatic-task-system-vision.md` ⭐ NEW - Strategic vision for automatic task management
+
+**Feature Specifications:**
 - `README.md` (this file) - Index and overview
 - `01_proof_regeneration.md` - Auto-regenerate proof pages on git tag
 - `02_response_monitoring.md` - Wake Rafael on client responses
@@ -243,5 +300,5 @@ All Features
 ## Questions or Issues?
 
 - Check individual feature spec for detailed implementation
-- See `/docs/AUTOMATION_ROADMAP.md` for high-level overview
-- Update SYNC.md with automation progress and blockers
+- See **[PROGRESS.md](PROGRESS.md)** for TODO vs DONE tracking
+- Update `/citizens/SYNC.md` with automation progress and blockers

@@ -45,7 +45,7 @@ github.com/mind-protocol (org - includes terminal-velocity with
 1.1k stars, therapykin, kinkong).
 ```
 
-**Plus relevant portfolio project:** duoai.vercel.app, konginvest.ai, therapykin.ai
+**Plus relevant portfolio project:**[platform not up anymore], konginvest.ai, therapykin.ai
 
 ---
 

@@ -214,7 +214,7 @@ with clear milestones.
 We built La Serenissima (serenissima.ai), an AI system with 130+ persistent
 agents running for 6+ months in production (50,000+ state updates/hour).
 Check github.com/nlr-ai and github.com/mind-protocol (includes
-terminal-velocity with 1.1k stars, KinKong trading $7M capital). We know how
+terminal-velocity with 1.1k stars, KinKong trading $75k$ AUM). We know how
 to ship complex AI systems that don't just demo well—they run reliably under
 load.
 

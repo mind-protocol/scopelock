@@ -133,7 +133,7 @@ know how to ship complex AI systems that run reliably under load.
 
 **For trading / financial systems:**
 ```
-KinKong (konginvest.ai): Autonomous trading bot managing $7M capital, 4x
+KinKong (konginvest.ai): Autonomous trading bot managing $75k$ AUM, 4x
 daily rebalancing, Solana DEX integration. Proves we can build real-time
 financial systems with actual capital at risk.
 ```

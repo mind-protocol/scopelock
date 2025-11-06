@@ -12,7 +12,7 @@
 
 ## What It Is
 
-KinKong is an AI-powered autonomous trading specialist focused exclusively on the AI token sector within the Solana ecosystem. It operates with a $7M $COMPUTE investment structure, executing 4x daily trading cycles with dynamic portfolio rebalancing based on market conditions.
+KinKong is an AI-powered autonomous trading specialist focused exclusively on the AI token sector within the Solana ecosystem. It operates with a $75k$ AUM investment structure, executing 4x daily trading cycles with dynamic portfolio rebalancing based on market conditions.
 
 **Core insight:** AI tokens form a distinct sector with unique momentum patterns; specialized AI analysis of on-chain data, social signals, and technical indicators outperforms generalist trading bots.
 
@@ -116,7 +116,7 @@ Chrome extension that brings KinKong's trading intelligence directly into the br
 
 **Trading Performance:**
 - 4x daily rebalancing cycles (every 6 hours)
-- $7M $COMPUTE investment structure (real capital at risk)
+- $75k$ AUM investment structure (real capital at risk)
 - Dynamic risk management (volatility-adjusted position sizing)
 
 **Production Stability:**
@@ -190,7 +190,7 @@ Chrome extension that brings KinKong's trading intelligence directly into the br
 ## Proof Points
 
 **Quantitative:**
-- $7M capital deployment (real money, not paper trading)
+- $75k$ AUM deployment (real money, not paper trading)
 - 4x daily cycles (6-hour rebalancing frequency)
 - 229 production deployments (high iteration velocity)
 - Dynamic allocation (70/20/10 in bull, 50/30/20 in bear)
@@ -214,7 +214,7 @@ Chrome extension that brings KinKong's trading intelligence directly into the br
 - Portfolio management/rebalancing systems
 
 **Talk track:**
-- "We built KinKong, an autonomous trading specialist managing $7M across Solana AI tokens. It rebalances 4x daily based on on-chain signals, social sentiment, and technical indicators. 229 production deployments prove we can ship high-stakes financial automation with real capital at risk."
+- "We built KinKong, an autonomous trading specialist managing $75k$ AUMacross Solana AI tokens. It rebalances 4x daily based on on-chain signals, social sentiment, and technical indicators. 229 production deployments prove we can ship high-stakes financial automation with real capital at risk."
 - For DeFi: emphasize Jupiter integration, slippage protection, gas optimization
 - For AI: emphasize specialized ML models for AI token sector analysis
 - For governance: emphasize community token suggestions + transparent trade logs

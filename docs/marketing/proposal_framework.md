@@ -69,7 +69,7 @@ then expand to the full feature set.
 You can verify our work at:
 - github.com/nlr-ai (personal - 65K commits in 2024, includes aider-assisted development)
 - github.com/mind-protocol (org - terminal-velocity with 1.1k stars, therapykin, duoai)
-- duoai.vercel.app (live demo - Claude vision API integration)
+-[platform not up anymore] (live demo - Claude vision API integration)
 ```
 
 **Why it works:**
@@ -207,6 +207,65 @@ and determines if 7 days is realistic.
 - Positions you as strategic partner
 - Makes proposal a conversation, not a pitch
 
+### 9. P.S. (Positioning Automation)
+
+**Purpose:** Address the "Why is this senior person applying to my small job?" objection
+
+**The Problem:**
+- Your profile shows $75k$ AUMprojects, 1.1k GitHub stars, successful exits
+- Client has a $600 chatbot job
+- Implicit question: "What's the catch? Why is he here?"
+
+**The Solution:**
+Add a brief P.S. that positions automation as the reason:
+
+```
+P.S. I apply to small missions because I automate a lot. AI generates
+the code, I supervise. It keeps me sharp on new patterns while staying
+cost-effective for clients. Win-win.
+```
+
+**Why it works:**
+- **Addresses objection proactively** (doesn't leave it as mystery)
+- **Positions automation as advantage** (not "I'm desperate")
+- **Confidence signal** (testing automation, not grinding for rent)
+- **Differentiates from competition** (most won't mention automation)
+- **True** (Rafael generates code, you supervise)
+
+**When to use:**
+- ✅ For $200-$1000 missions (where credibility gap is largest)
+- ✅ For process-skeptical clients (reduces "too good to be true" fear)
+- ⚠️ Skip for $2K+ missions (automation mention might reduce perceived value)
+- ⚠️ Skip if client explicitly wants "no AI" or "human-only"
+
+**Variations:**
+
+**For chatbot/AI missions:**
+```
+P.S. I apply to small AI missions because I'm testing new Claude/GPT
+patterns at scale. You get senior architecture at tactical pricing
+because I'm optimizing for learning, not maximum revenue.
+```
+
+**For dashboard/CRUD missions:**
+```
+P.S. I apply to small missions because my AI workflow makes them
+profitable at this price point. What used to take 40 hours takes 8.
+I'd rather build than stay idle.
+```
+
+**What NOT to say:**
+- ❌ "I'm using this to test my AI team" (sounds like guinea pig)
+- ❌ "AI does everything" (reduces your value)
+- ❌ "I have free time" (sounds desperate)
+- ❌ Over-explain automation details (keep it brief)
+
+**Strategic notes:**
+- Keep it **1-2 sentences maximum** (P.S. should be quick read)
+- Place it **after** the strategic question (last thing they read)
+- Tone should be **confident, not defensive**
+- Frame automation as **your advantage**, not apology
+
 ---
 
 ## Complete Proposal Templates
@@ -249,6 +308,10 @@ WHAT'S THE CATCH?
 [Q&A format addressing scope change, broken tests, revisions]
 
 Reply with one thing: [strategic product question]?
+
+P.S. I apply to small missions because I automate a lot. AI generates
+the code, I supervise. It keeps me sharp on new patterns while staying
+cost-effective for clients. Win-win.
 
 Nicolas
 github.com/nlr-ai • github.com/mind-protocol
@@ -483,7 +546,7 @@ we build the core value first (vision API quality), validate it works, then expa
 You can verify our work at:
 - github.com/nlr-ai (65K commits in 2024)
 - github.com/mind-protocol (terminal-velocity: 1.1k stars)
-- duoai.vercel.app (Claude vision API in production)
+-[platform not up anymore] (Claude vision API in production)
 
 Here's the actual work for Milestone 1 ($3,000):
 1. Vision API Integration...

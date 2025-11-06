@@ -148,7 +148,7 @@ Autonomous AI trading specialist for Solana AI tokens with $75k$ capital deploym
 - GitHub (trading system): https://github.com/mind-protocol/kinkong (public)
 - GitHub (Chrome extension): https://github.com/mind-protocol/kinkong-copilot (public)
 
-**Timeline:** 2024-2025 (229+ deployments, $7M capital)
+**Timeline:** 2024-2025 (229+ deployments, $75k$ AUM)
 
 ---
 
@@ -249,7 +249,7 @@ reliably under load.
 ### For Trading / DeFi / Financial Systems
 
 ```
-KinKong (konginvest.ai): Autonomous trading bot managing $7M capital, 4x
+KinKong (konginvest.ai): Autonomous trading bot managing $75k$ AUM, 4x
 daily rebalancing, Solana DEX integration. Proves we can build real-time
 financial systems with actual capital at risk, not just prototypes.
 ```

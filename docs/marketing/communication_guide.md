@@ -86,7 +86,7 @@
 
 **What They Respect (Green Flags):**
 - ✅ "Ambitious for $3,000" - Pushback = peer positioning, not yes-man
-- ✅ Verifiable links immediately - duoai.vercel.app, GitHub repos
+- ✅ Verifiable links immediately -[platform not up anymore], GitHub repos
 - ✅ Deliverables first, numbered - "Here's the actual work for Milestone 1: 1. 2. 3..."
 - ✅ "What's the catch?" paragraph - Addresses their fears proactively
 - ✅ Plain terminology - "Milestone 1/2," "tests pass," not branded terms
@@ -270,7 +270,7 @@ A: Change Request: document what changed, Swap ($0) or Add (new price),
 ### The Verification Hierarchy
 
 **Primary Verification (within 2 minutes):**
-1. Live demo - duoai.vercel.app (upload test image, does it work?)
+1. Live demo -[platform not up anymore] (upload test image, does it work?)
 2. Personal GitHub - nlr-ai (commit messages, code quality, aider usage)
 
 **Secondary Verification (20+ minutes deep dive):**

@@ -6,7 +6,7 @@
 
 ## One-Line Description
 
-> Autonomous AI trading specialist managing $7M across Solana AI tokens with 4x daily rebalancing, Jupiter DEX integration, and community governance.
+> Autonomous AI trading specialist managing $75k$ AUMacross Solana AI tokens with 4x daily rebalancing, Jupiter DEX integration, and community governance.
 
 ---
 
@@ -15,7 +15,7 @@
 ### For DeFi/Trading Projects
 
 ```
-We built KinKong, an autonomous trading system managing $7M in Solana AI tokens. It executes 4x daily rebalancing cycles using Jupiter DEX for best price routing, with slippage protection (max 1%) and gas optimization. 229 production deployments prove high-stakes financial automation works.
+We built KinKong, an autonomous trading system managing $75k$ AUMin Solana AI tokens. It executes 4x daily rebalancing cycles using Jupiter DEX for best price routing, with slippage protection (max 1%) and gas optimization. 229 production deployments prove high-stakes financial automation works.
 ```
 
 ### For AI + Blockchain Integration
@@ -98,4 +98,4 @@ Proof-of-concept connecting to [your target DEX] with best price routing, slippa
 - GitHub (trading system): https://github.com/mind-protocol/kinkong
 - GitHub (Chrome extension): https://github.com/mind-protocol/kinkong-copilot
 - Timeline: 2024-2025 (229+ deployments)
-- Capital: $7M $COMPUTE investment structure
+- Capital: $75k$ AUM investment structure

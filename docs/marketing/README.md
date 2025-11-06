@@ -1,7 +1,10 @@
 # ScopeLock Marketing Documentation
 
-**Last Updated:** 2025-11-02
+**Last Updated:** 2025-11-05
 **Purpose:** All client-facing communication assets, branding guidelines, and proposal resources
+
+**For team structure & operations:** See `/citizens/CLAUDE.md` at repo root
+**For project documentation (portfolio, automation):** See `/docs/README.md`
 
 ---
 
@@ -103,6 +106,27 @@ What's inside:
 - Drafting any Upwork proposal
 - Responding to initial client inquiries
 - Emma (Scout) writing first contact
+
+### [contra_tactical_guide.md](./contra_tactical_guide.md) ⭐
+**Platform-specific tactics for Contra proposals**
+
+What's inside:
+- 1,500 character limit optimization techniques
+- Three-tier evaluation system (STRONG GO/QUALIFIED MAYBE/HARD NO)
+- Converting hourly posts to fixed-price milestones
+- Portfolio proof matching decision tree
+- Character count compression without losing technical specificity
+- Client type detection on Contra
+- Real success metrics (20-30 proposals/day target)
+- What we DON'T do (anti-patterns)
+
+**Based on:** Proven results (11 proposals, $75.5K pipeline, 2025-11-04)
+
+**Use this when:**
+- Writing Contra proposals (strict character limit)
+- Evaluating Contra job posts
+- Optimizing proposal compression
+- Matching portfolio projects to job domains
 
 ### Two Client Archetypes
 
@@ -316,7 +340,8 @@ Individual blog post drafts
 docs/marketing/
 ├── README.md (this file - index)
 ├── communication_guide.md ← Core reference (20+ pages)
-├── proposal_framework.md ← Templates & structure
+├── proposal_framework.md ← Templates & structure (Upwork-focused)
+├── contra_tactical_guide.md ← Contra-specific tactics (NEW 2025-11-04)
 ├── branding_communication_update_2025_11_02.md ← What changed
 ├── upwork_profile.txt ← Profile text
 ├── blog_content_plan.md ← Editorial calendar
@@ -326,7 +351,11 @@ docs/marketing/
     └── la-serenissima-case-study.md ← First case study
 ```
 
+**Archived:**
+- `Contra_best_practices_generic.md` → `/docs/archive/` (generic advice, replaced by tactical guide)
+
 ---
 
-**Last major update:** 2025-11-02 (branding & communication learnings from client friction analysis)
-**Next review:** After 20 proposals using new framework
+**Last major update:** 2025-11-04 (Contra tactical guide based on 11-proposal session)
+**Previous update:** 2025-11-02 (branding & communication learnings)
+**Next review:** After 20 Contra proposals using new tactical framework
