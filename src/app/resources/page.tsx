@@ -48,6 +48,15 @@ const resources = [
     timeToRead: '15 min',
     category: 'Critical',
   },
+  {
+    title: 'Pain Point → Implementation: How to Think Like a Builder',
+    description: 'Learn the 7-step framework from client pain to working code. Walk through real examples (TherapyKin, KongInvest) showing how to extract the real problem, define testable objectives, and build vertical slices. Interactive step-by-step guide.',
+    href: '/resources/pain-point-to-implementation',
+    icon: '🔨',
+    impact: 'Build the right thing, not what client asked for',
+    timeToRead: '15 min',
+    category: 'Essential',
+  },
   // Future resources: Add new resources here following the same structure
   // {
   //   title: 'Your Resource Title',

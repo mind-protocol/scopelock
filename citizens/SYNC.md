@@ -1,3 +1,160 @@
+## 2025-11-06 02:15 — Emma: Onboarding Series Complete (6/6 Resources) ✅
+
+**Work:** Added Pain Point → Implementation resource to resources index, completing the onboarding series
+
+**Context:** User requested "A B" - complete onboarding series (A) then clean git status (B)
+
+**Deliverable:** All 6 onboarding resources now visible on `/resources` page
+
+**Implementation:**
+- Added Pain Point → Implementation entry to resources array in `page.tsx`
+- Resource metadata: Essential category, 15 min read, 🔨 icon
+- Impact statement: "Build the right thing, not what client asked for"
+- Description: 7-step framework with TherapyKin/KongInvest examples
+
+**Complete Onboarding Series:**
+1. ✅ Complete Mission Flow (Critical, 12 min)
+2. ✅ How to Talk to AI Citizens (Essential, 10 min)
+3. ✅ Compensation Structure (Critical, 10 min)
+4. ✅ Good Documentation PATTERN→GUIDE (Essential, 18 min)
+5. ✅ Testing Mindset: AC Green (Critical, 15 min)
+6. ✅ Pain Point → Implementation (Essential, 15 min)
+
+**Status:** Task A complete. Moving to Task B (git cleanup).
+
+**File:** `/src/app/resources/page.tsx`
+
+emma@scopelock
+
+---
+
+## 2025-11-06 02:00 — Alexis: Homepage Conversion Optimization (9 Changes) ✅
+
+**Work:** Implemented 9 strategic homepage improvements based on outreach improvement analysis learnings
+
+**Context:** User requested homepage improvements. Applied "burned founder" psychology patterns from outreach analysis to homepage conversion flow.
+
+**Changes Implemented:**
+
+**1. Hero: Proof-First Reorder**
+- Live URLs BEFORE tagline (serenissima.ai, therapykin.ai, konginvest.ai, 1.1k ⭐)
+- New H1: "You'll know if we're good before you pay" (outcome-focused, not process)
+- Added "121+ deployments across 7 production systems" (concrete proof)
+- Optimized CTA hierarchy: "Get pricing" primary → "Book call" secondary → "Proof log" tertiary
+
+**2. Proof Section: Subtle Numbers Integration**
+- Terminal Velocity: "Generated in 6 hours" added to description (not prominent headline)
+- La Serenissima: "0 downtime incidents" + "50K state updates/hour" in meta
+- TherapyKin: "1,000+ sessions · p95: 280ms" in meta
+- Numbers integrated naturally, not displayed as big callouts
+
+**3. Transparent Pricing Section** (before contact form)
+- Evidence Sprint: $3,000 - $6,000 (2-5 days)
+- ScopeLock Mission: $8,000 - $15,000 (1-3 weeks) [MOST POPULAR badge]
+- Multi-Milestone: $25,000+ (1-3 months)
+- Footer: "Final price locked after co-writing AC.md. No hourly rates, no surprises."
+
+**4. "Is This You?" Empathy Section** (after hero)
+- 3 trauma patterns: "$4K agency disappeared" / "90% done for 3 months" / "$2K → $8K demand"
+- Red left border (danger signal)
+- Answer: "Here's what's different" with proof mechanism explanation
+
+**5. "What's The Catch?" Reordered** (most common fear first)
+- NEW ORDER: "Tests pass but broken?" → "Unreasonable client?" → "Scope wrong?" → "Prevent revisions?"
+- Addresses most common objection first (bad tests = biggest fear)
+
+**6. Technical FAQ Section**
+- 4 collapsible questions: Test frameworks / CI/CD / Stack compatibility / NDAs
+- Specific framework names (Playwright, pytest, Jest, GitHub Actions, Next.js, Django, FastAPI, Go)
+- Proves technical depth, filters scammers
+
+**7. CTA Hierarchy Optimization**
+- Primary: "Get pricing for your project" (scroll to #contact) - lower friction
+- Secondary: "Book 30min call" (calendar) - high intent only
+- Tertiary: "See proof log" - technical verification
+
+**8. "Built This Week" Section**
+- Shows recent shipment: "OTP Signup Flow" (Nov 4, 2025, ac-green tag)
+- Delta: "p95: 1200ms → 280ms (↓77%) · Steps: 7 → 3 (↓57%)"
+- Proves recency/velocity (not just old portfolio from 2023)
+- Kept existing commit feed below
+
+**9. "Not a Good Fit If..." Filter**
+- Disqualifiers: Full-time, hourly billing, undefined scope, hardware/blockchain/WordPress
+- Green-bordered "Good fit" box: AI integration, web apps, APIs, SaaS MVPs, data pipelines
+- Increases trust via honesty ("we're not for everyone")
+
+**Psychology Applied:**
+- Proof before process (burned founders scan for evidence first)
+- Numbers as validation, not headlines (280ms, 121 deployments, 1.1k stars)
+- Trauma acknowledgment (empathy section validates their fear)
+- Transparent pricing (no "bait and switch" suspicion)
+- Technical depth signals (framework names, not buzzwords)
+- Honesty about fit (filters bad leads, increases trust)
+
+**Conversion Flow:**
+Hero proof → Empathy → Process → Evidence → Pricing → FAQ → Filter → Contact
+
+**Status:** All 9 changes implemented, homepage optimized for burned founders + process-skeptical clients
+
+**File:** `/src/app/page.tsx`
+
+alexis@scopelock
+
+---
+
+## 2025-11-06 (current) — Inna: Mission Deck FalkorDB Migration ⏳ IN PROGRESS
+
+**Work:** Migrating Mission Deck documentation from PostgreSQL to FalkorDB (Mind Protocol v2 graph)
+
+**Context:** User correction: "we use only falklor db level 2 (scopelock - org) graph... NO SQL"
+
+**Production FalkorDB Connection:**
+```bash
+export FALKORDB_API_URL="https://mindprotocol.onrender.com/admin/query"
+export FALKORDB_API_KEY="Sxv48F2idLAXMnvqQTdvlQ4gArsDVhK4ROGyU"
+export GRAPH_NAME="scopelock"
+```
+
+**Completed:**
+- ✅ Created `/tmp/falkordb-migration-notes.md` - Complete migration reference guide
+- ✅ Updated `/docs/automation/01-morning-brief-spec.md` - Production FalkorDB env vars
+- ✅ Updated `/docs/missions/mission-deck/MECHANISM.md` - Complete replacement:
+  - Architecture diagram (PostgreSQL → FalkorDB)
+  - Tech stack (SQLAlchemy → FalkorDB REST client)
+  - Database section (PostgreSQL → Graph Database)
+  - Entire schema section (SQL tables → Graph node schemas with examples)
+  - API examples (SQL queries → Cypher queries)
+  - Environment variables (DATABASE_URL → FALKORDB_API_URL + API key)
+  - Deployment section (no PostgreSQL deployment)
+  - Security section (SQL injection → Cypher injection prevention)
+  - Performance optimizations (SQL → graph-specific)
+- ✅ Updated `/docs/missions/mission-deck/ALGORITHM.md` - Partial replacement:
+  - Phase 1 title (Database → FalkorDB Graph Client)
+  - requirements.txt (removed SQLAlchemy, alembic, psycopg2; added requests)
+  - Directory structure (removed models.py, database.py, alembic/)
+  - Step 1.2: Created comprehensive FalkorDB REST API client (`services/graph.py`)
+  - Removed Alembic migration section (Step 1.9 → Graph Schema Setup)
+
+**Still TODO:**
+- ⏳ ALGORITHM.md router examples still reference SQLAlchemy imports (lines 321, 431, 465, 516, 599)
+- ⏳ ALGORITHM.md deployment section (line 893) still references DATABASE_URL
+- ⏳ `/docs/missions/mission-deck/GUIDE.md` - Complete update needed:
+  - Remove PostgreSQL setup instructions
+  - Add FalkorDB connection setup
+  - Update environment variables
+  - Update troubleshooting (remove DB connection issues)
+
+**Status:** ~70% complete - MECHANISM.md fully updated, ALGORITHM.md database layer replaced, GUIDE.md pending
+
+**Next:** Update remaining ALGORITHM.md sections + complete GUIDE.md migration
+
+**Link:** See `/tmp/falkordb-migration-notes.md` for complete mapping reference
+
+inna@scopelock
+
+---
+
 ## 2025-11-06 01:15 — Alexis: Team Structure Updates + Financial Dashboard ✅
 
 **Work:** Completed 4 team structure documentation updates + created comprehensive financial tracking system
