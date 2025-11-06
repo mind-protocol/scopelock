@@ -14,9 +14,11 @@
     "test": "node scripts/run-test.mjs"
   },
   "dependencies": {
+    "@types/react-syntax-highlighter": "^15.5.13",
     "next": "^14.2.33",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
