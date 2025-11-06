@@ -1,0 +1,9 @@
+{
+  "context_id": "2025-11-05_19-47-09",
+  "entity_type": "citizen",
+  "entity_id": "inna",
+  "created_at": "2025-11-05T18:47:09.906497+00:00",
+  "last_updated": "2025-11-05T19:23:36.255655+00:00",
+  "message_count": 64,
+  "has_tool_calls": true
+}
