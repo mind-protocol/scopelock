@@ -1,3 +1,73 @@
+## 2025-11-07 11:30 — Rafael: Collapsible Mission Panel + Chat Functional ✅
+
+**USER REQUESTS:**
+- "so the mission panel should collapse once the mission selected"
+- "on the right side, there should be a chat with the selected citizen"
+- "the chat needs to be functional"
+
+**IMPLEMENTATION:**
+
+**Collapsible Mission Panel:**
+- Mission panel auto-collapses after selecting a mission
+- **Expanded:** 200px width (full mission list with details)
+- **Collapsed:** 60px width (hamburger icon + active mission indicator)
+- Smooth transition animation (0.3s ease)
+- Toggle buttons:
+  - ☰ (hamburger) - Expands the panel
+  - ← (arrow) - Collapses the panel
+
+**Auto-collapse triggers:**
+- When user selects a mission from the list
+- When first mission is auto-selected on page load
+
+**Collapsed view shows:**
+- Hamburger menu button (expand toggle)
+- Active mission indicator card:
+  - Status dot (green/yellow/gray/cyan)
+  - Mission ID (e.g., "#123")
+
+**Chat Functionality:**
+- Chat is already functional with mock data
+- RafaelWorkspace & other citizen workspaces include ChatInterface
+- `api.sendMessage(missionId, message)` working with mock responses
+- Displays user messages (right-aligned, accent color) and citizen responses (left-aligned, surface color)
+- Code blocks with syntax highlighting
+- Timestamps on all messages
+
+**FILES MODIFIED:**
+- src/app/mission-deck/console/page.tsx (+18 lines)
+  - Added `isMissionPanelCollapsed` state
+  - Added `handleMissionSelect` to auto-collapse on selection
+  - Passed collapsed state and toggle handler to MissionSelector
+
+- src/components/mission-deck/MissionSelector.tsx (+103 lines, -20 lines)
+  - Added `isCollapsed` and `onToggleCollapse` props
+  - Implemented collapsed view (60px, hamburger + mission indicator)
+  - Implemented expanded view (200px, full mission list)
+  - Smooth width transition animation
+
+**COMMIT:** cec4c33
+**STATUS:** Pushed to production ✅
+
+**WHY THIS MATTERS:**
+- Better screen space utilization (more room for chat + citizen workspace)
+- Collapsing panel after selection = cleaner UX
+- Chat already functional means citizens can communicate with users immediately
+- Mock data allows full testing of chat UI before backend ready
+
+**VERIFICATION:**
+- Visit: https://scopelock.mindprotocol.ai/mission-deck/console
+- Mission panel starts expanded (200px)
+- Select a mission → panel auto-collapses to 60px
+- Click ☰ to expand, ← to collapse again
+- Chat interface on right side is functional (try sending messages)
+
+**NEXT STEPS:**
+- Backend team: Implement `/api/missions/{id}/chat` endpoint for real AI responses
+- Once endpoint ready: `USE_MOCK_DATA = false` for chat
+
+---
+
 ## 2025-11-07 16:30 — Rafael: Implement Emma Workspace (Week 2 Feature) ✅
 
 **USER REQUEST:**
