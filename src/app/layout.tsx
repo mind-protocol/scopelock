@@ -44,7 +44,6 @@ export default function RootLayout({
               <Link href="/about">About</Link>
               <Link href="/process">Process</Link>
               <Link href="/pricing">Pricing</Link>
-              <Link href="/proof">Proof</Link>
               <Link href="/mission-deck">Mission Deck</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/blog">Blog</Link>

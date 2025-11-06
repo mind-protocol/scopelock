@@ -155,7 +155,7 @@ const faqSections = [
           <>
             <p>
               <strong>No traditional agency.</strong> I'm Nicolas—the solo architect who designs everything. I oversee a small team of developers
-              who implement under my supervision, with heavy AI assistance (Claude, Cursor, aider) for code generation.
+              who implement under my supervision, with custom AI-driven workflow for code generation.
               You work directly with me, not account managers.
             </p>
             <p>
@@ -169,9 +169,9 @@ const faqSections = [
         answer: (
           <>
             <p>
-              <strong>Yes, transparently.</strong> I use Claude, Cursor, and aider for AI-assisted development.
-              GitHub shows <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">65,000 commits in 2024</a>—you can see what's human-authored vs. AI-scaffolded.
-              I don't hide the tooling.
+              <strong>Yes, transparently.</strong> I use a custom AI-driven workflow for code generation and development.
+              GitHub shows <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">65,000 commits in 2024</a>—you can see the velocity.
+              I don't hide the AI assistance.
             </p>
             <p>
               <strong>Result:</strong> 10-15 features/week vs. 2-3 for traditional solo dev. You get team-level throughput with single-architect clarity.

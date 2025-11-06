@@ -2,12 +2,21 @@
 """
 Find potential ScopeLock team members from Telegram conversations.
 
-TARGET: People who can supervise (NOT professional developers)
-- From Nigeria, India, Philippines, Latin America (cost of living fit)
-- Looking for remote/part-time work (5-30 hours/week)
-- Students, recent graduates, junior developers
-- Basic English, willing to learn, can follow instructions
-- NOT requiring: GitHub, years of experience, specific tech stack
+TARGET PROFILES:
+
+1. SUPERVISORS (NOT professional developers)
+   - From Nigeria, India, Philippines, Latin America (cost of living fit)
+   - Looking for remote/part-time work (5-30 hours/week)
+   - Students, recent graduates, junior developers
+   - Basic English, willing to learn, can follow instructions
+   - NOT requiring: GitHub, years of experience, specific tech stack
+
+2. SOLANA HUSTLERS (marketing/community/creative)
+   - Raiders (coordinate raids, engage communities)
+   - Designers (UI/UX, graphics, branding)
+   - AMA hosts (community engagement, hosting)
+   - Moderators (community management, Discord/Telegram)
+   - Marketing types (growth, campaigns, content creators)
 
 ScopeLock offers:
 - AI does 95% of work + 100% of coding
@@ -82,6 +91,58 @@ BASIC_TECH_PATTERNS = [
     r'\b(i know|i use|i\'ve used|i\'ve tried)\s+(a bit|a little|some|basic)?\s*(html|css|python|javascript)\b',
     r'\b(understand|familiar with)\s+(websites|web|apps|apis|deployment)\b',
     r'\bcan (read|follow|understand)\s+(code|documentation|instructions)\b',
+]
+
+# SOLANA HUSTLER PATTERNS (raiders, designers, AMA, mods, marketing)
+SOL_HUSTLER_PATTERNS = [
+    # Raiders
+    r'\b(raid|raiding|raiders|raid team|raid squad)\b',
+    r'\b(coordinate raids|organize raids|lead raids)\b',
+    r'\b(engagement farming|engagement team)\b',
+    r'\b(twitter spaces|x spaces|hosting spaces)\b',
+
+    # Designers
+    r'\b(designer|ui/ux|ux/ui|graphic design|visual design|brand design)\b',
+    r'\b(figma|sketch|adobe|illustrator|photoshop)\b',
+    r'\b(i design|i create|i make)\s+(logos|graphics|visuals|ui|ux|brands)\b',
+    r'\b(portfolio|behance|dribbble)\s+(is|link|here)\b',
+
+    # AMA hosts
+    r'\b(ama|ask me anything|host ama|hosting ama)\b',
+    r'\b(community host|event host|space host)\b',
+    r'\b(i host|hosting|moderat(e|or|ing))\s+(amas|events|spaces|calls)\b',
+
+    # Moderators
+    r'\b(mod|moderator|modding|community mod|discord mod|telegram mod)\b',
+    r'\b(i moderate|moderating)\s+(discord|telegram|community)\b',
+    r'\b(community manager|community management|cm)\b',
+    r'\b(manage (discord|telegram|community))\b',
+
+    # Marketing / Growth
+    r'\b(marketing|marketer|growth|growth hacker|growth marketing)\b',
+    r'\b(social media|sm manager|content creator|content creation)\b',
+    r'\b(kol|key opinion leader|influencer)\b',
+    r'\b(twitter|x\.com|instagram|tiktok)\s+(marketing|growth|strategy)\b',
+    r'\b(viral|organic growth|community growth)\b',
+    r'\b(campaign|campaigns|marketing campaign)\b',
+
+    # Solana ecosystem signals
+    r'\b(solana|sol|spl|phantom|backpack wallet)\b',
+    r'\b(jupiter|jup|orca|raydium|marinade)\b',
+    r'\b(degen|ape|gm|wagmi|ngmi)\b',
+    r'\b(nft|nfts|mint|minting|pfp)\b',
+    r'\b(web3|crypto|defi|token)\b',
+]
+
+# Hustler keywords
+HUSTLER_KEYWORDS = [
+    'raid', 'raiding', 'raiders', 'engagement',
+    'designer', 'design', 'figma', 'ui/ux', 'graphics', 'logo',
+    'ama', 'host', 'hosting', 'spaces',
+    'mod', 'moderator', 'community manager', 'discord', 'telegram',
+    'marketing', 'growth', 'social media', 'content creator', 'kol', 'influencer',
+    'campaign', 'viral', 'organic growth',
+    'solana', 'sol', 'degen', 'web3', 'crypto', 'nft',
 ]
 
 # Negative signals (filter out professional developers)
@@ -159,9 +220,17 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
         'junior_indicators': [],
         'basic_tech': [],
         'remote_work_interest': [],
+        # HUSTLER signals
+        'sol_hustler': [],
+        'raider': [],
+        'designer': [],
+        'ama_host': [],
+        'moderator': [],
+        'marketing': [],
     }
 
     score = 0
+    hustler_score = 0  # Separate score for hustler profile
     exclude = False
 
     # Analyze messages from OTHER person (not us)
@@ -226,6 +295,37 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
                 if text[:200] not in signals['basic_tech']:
                     signals['basic_tech'].append(text[:200])
 
+        # Check SOL HUSTLER patterns
+        for pattern in SOL_HUSTLER_PATTERNS:
+            if re.search(pattern, text_lower, re.IGNORECASE):
+                hustler_score += 3  # High weight for hustler signals
+
+                # Categorize by type
+                if any(x in pattern for x in ['raid', 'engagement', 'spaces']):
+                    if text[:200] not in signals['raider']:
+                        signals['raider'].append(text[:200])
+                elif any(x in pattern for x in ['design', 'figma', 'logo', 'ui/ux']):
+                    if text[:200] not in signals['designer']:
+                        signals['designer'].append(text[:200])
+                elif any(x in pattern for x in ['ama', 'host', 'event']):
+                    if text[:200] not in signals['ama_host']:
+                        signals['ama_host'].append(text[:200])
+                elif any(x in pattern for x in ['mod', 'community manager', 'discord', 'telegram']):
+                    if text[:200] not in signals['moderator']:
+                        signals['moderator'].append(text[:200])
+                elif any(x in pattern for x in ['marketing', 'growth', 'kol', 'influencer', 'social media']):
+                    if text[:200] not in signals['marketing']:
+                        signals['marketing'].append(text[:200])
+                else:
+                    # General sol/crypto signal
+                    if text[:200] not in signals['sol_hustler']:
+                        signals['sol_hustler'].append(text[:200])
+
+        # Check hustler keywords
+        for keyword in HUSTLER_KEYWORDS:
+            if keyword in text_lower:
+                hustler_score += 1
+
         # Check positive keywords
         for keyword in POSITIVE_KEYWORDS:
             if keyword in text_lower:
@@ -235,17 +335,39 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
     if exclude:
         return False, {}
 
-    # Determine if this person is a good fit
-    is_potential_member = (
+    # Determine profile type and if this person is a good fit
+    profile_type = 'unknown'
+    is_supervisor = (
         score >= 5 or  # Multiple positive signals
         len(signals['geographic_fit']) >= 1 or  # In target region
         len(signals['seeking_work']) >= 1 or  # Looking for work
         len(signals['income_need']) >= 1  # Needs income
     )
 
+    is_hustler = (
+        hustler_score >= 5 or  # Multiple hustler signals
+        len(signals['raider']) >= 1 or
+        len(signals['designer']) >= 1 or
+        len(signals['ama_host']) >= 1 or
+        len(signals['moderator']) >= 1 or
+        len(signals['marketing']) >= 1
+    )
+
+    # Determine profile type
+    if is_supervisor and is_hustler:
+        profile_type = 'hybrid'  # Both supervisor AND hustler (best!)
+    elif is_supervisor:
+        profile_type = 'supervisor'
+    elif is_hustler:
+        profile_type = 'hustler'
+
+    is_potential_member = is_supervisor or is_hustler
+
     analysis = {
         'name': name,
         'score': score,
+        'hustler_score': hustler_score,
+        'profile_type': profile_type,
         'signals': signals,
         'message_count': len([m for m in messages if m.get('from') != 'You']),
         'sample_messages': []
@@ -260,8 +382,8 @@ def analyze_team_member_fit(chat: Dict) -> Tuple[bool, Dict]:
         if not text:
             continue
 
-        # Check if this message shows good signals
-        for pattern_list in [GEO_PATTERNS, WORK_SEEKING_PATTERNS, JUNIOR_PATTERNS]:
+        # Check if this message shows good signals (supervisor OR hustler)
+        for pattern_list in [GEO_PATTERNS, WORK_SEEKING_PATTERNS, JUNIOR_PATTERNS, SOL_HUSTLER_PATTERNS]:
             for pattern in pattern_list:
                 if re.search(pattern, text, re.IGNORECASE):
                     if text not in analysis['sample_messages']:
@@ -287,11 +409,18 @@ def main():
 
     print(f"\nAnalyzing {len(chats)} conversations...")
     print("Looking for potential ScopeLock team members...\n")
-    print("Target: People who can SUPERVISE (not professional developers)")
+    print("TARGET PROFILES:")
+    print("\n1. SUPERVISORS (NOT professional developers)")
     print("  - From target regions (Nigeria, India, Philippines, etc.)")
     print("  - Looking for remote/part-time work (5-30 hours/week)")
     print("  - Students, graduates, junior devs, willing to learn")
     print("  - Basic English, can follow guides")
+    print("\n2. SOLANA HUSTLERS (marketing/community/creative)")
+    print("  - Raiders (coordinate raids, engagement)")
+    print("  - Designers (UI/UX, graphics, branding)")
+    print("  - AMA hosts (community engagement)")
+    print("  - Moderators (Discord/Telegram mgmt)")
+    print("  - Marketing (growth, content, KOLs)")
     print()
 
     # Analyze each chat
@@ -350,7 +479,9 @@ def main():
             f.write(f"\n{'='*80}\n")
             f.write(f"{i}. {member['name']}\n")
             f.write(f"{'='*80}\n\n")
-            f.write(f"Score: {member['score']}\n")
+            f.write(f"Profile Type: {member['profile_type'].upper()}\n")
+            f.write(f"Supervisor Score: {member['score']}\n")
+            f.write(f"Hustler Score: {member['hustler_score']}\n")
             f.write(f"Their messages: {member['message_count']}\n\n")
 
             # Signals
@@ -404,6 +535,43 @@ def main():
                     f.write(f"  - {sig}\n")
                 f.write("\n")
 
+            # HUSTLER SIGNALS
+            if signals['raider']:
+                f.write("RAIDER (engagement/raids/spaces):\n")
+                for sig in signals['raider'][:3]:
+                    f.write(f"  - {sig}\n")
+                f.write("\n")
+
+            if signals['designer']:
+                f.write("DESIGNER (UI/UX/graphics):\n")
+                for sig in signals['designer'][:3]:
+                    f.write(f"  - {sig}\n")
+                f.write("\n")
+
+            if signals['ama_host']:
+                f.write("AMA HOST (community events):\n")
+                for sig in signals['ama_host'][:3]:
+                    f.write(f"  - {sig}\n")
+                f.write("\n")
+
+            if signals['moderator']:
+                f.write("MODERATOR (community mgmt):\n")
+                for sig in signals['moderator'][:3]:
+                    f.write(f"  - {sig}\n")
+                f.write("\n")
+
+            if signals['marketing']:
+                f.write("MARKETING (growth/content/KOL):\n")
+                for sig in signals['marketing'][:3]:
+                    f.write(f"  - {sig}\n")
+                f.write("\n")
+
+            if signals['sol_hustler']:
+                f.write("SOL/WEB3 INVOLVEMENT:\n")
+                for sig in signals['sol_hustler'][:3]:
+                    f.write(f"  - {sig}\n")
+                f.write("\n")
+
             if member['sample_messages']:
                 f.write("SAMPLE MESSAGES:\n")
                 for msg in member['sample_messages'][:5]:
@@ -419,11 +587,21 @@ def main():
     print(f"{'='*80}\n")
 
     for i, member in enumerate(potential_members[:20], 1):
-        print(f"{i}. {member['name']} (score: {member['score']})")
+        profile_emoji = {
+            'supervisor': '👤',
+            'hustler': '🚀',
+            'hybrid': '⭐',
+            'unknown': '❓'
+        }.get(member['profile_type'], '❓')
+
+        print(f"{i}. {profile_emoji} {member['name']} (supervisor: {member['score']}, hustler: {member['hustler_score']})")
+        print(f"   Type: {member['profile_type'].upper()}")
 
         # Show key signals
         signals = member['signals']
         key_signals = []
+
+        # Supervisor signals
         if signals['geographic_fit']:
             key_signals.append("📍 Target region")
         if signals['seeking_work']:
@@ -434,6 +612,18 @@ def main():
             key_signals.append("🎓 Junior/student")
         if signals['remote_work_interest']:
             key_signals.append("🌐 Remote work")
+
+        # Hustler signals
+        if signals['raider']:
+            key_signals.append("🎯 Raider")
+        if signals['designer']:
+            key_signals.append("🎨 Designer")
+        if signals['ama_host']:
+            key_signals.append("🎙️ AMA host")
+        if signals['moderator']:
+            key_signals.append("🛡️ Moderator")
+        if signals['marketing']:
+            key_signals.append("📢 Marketing")
 
         if key_signals:
             print(f"   {' | '.join(key_signals)}")

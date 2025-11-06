@@ -31,23 +31,24 @@ export default function AboutPage() {
       </section>
 
       <section className="card">
-        <h2>Nicolas Lester Reynolds — Solo Engineer + AI Workforce</h2>
+        <h2>Nicolas Lester Reynolds — Solo Architect + AI-Assisted Teams</h2>
 
         <p>
-          <strong>I&apos;m not an agency.</strong> I&apos;m a solo engineer who replaced a 5-person dev team with AI tooling (Claude, Cursor, aider).
+          <strong>I&apos;m not a traditional agency.</strong> I&apos;m the solo architect who designs everything. I oversee a small team of developers
+          who implement under my supervision, with custom AI-driven workflow for code generation.
         </p>
 
         <p>
-          <strong>Result:</strong> 10-15 features/week vs. 2-3 for traditional solo dev.
+          <strong>Result:</strong> 10-15 features/week vs. 2-3 for traditional solo dev. Team-level throughput with single-architect clarity.
         </p>
 
         <p>
-          <strong>Proof:</strong> GitHub shows <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">65,000 commits in 2024</a>—check the messages yourself. You&apos;ll see what&apos;s human-authored vs. AI-scaffolded. I don&apos;t hide the tooling.
+          <strong>Proof:</strong> GitHub shows <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">65,000 commits in 2024</a>—you can verify the velocity. I don&apos;t hide the AI assistance.
         </p>
 
         <h3>Verification Links</h3>
         <ul>
-          <li><strong>Personal GitHub:</strong> <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">@nlr-ai</a> — 65K commits, daily activity, aider tags visible</li>
+          <li><strong>Personal GitHub:</strong> <a href="https://github.com/nlr-ai" target="_blank" rel="noopener">@nlr-ai</a> — 65K commits, daily activity</li>
           <li><strong>Org GitHub:</strong> <a href="https://github.com/mind-protocol" target="_blank" rel="noopener">@mind-protocol</a> — Terminal Velocity (1.1k stars), La Serenissima, 23 repos</li>
           <li><strong>Live Systems:</strong> <a href="https://serenissima.ai" target="_blank" rel="noopener">La Serenissima</a> (97+ agents, 6+ months, 99.7% uptime), <a href="https://therapykin.ai" target="_blank" rel="noopener">TherapyKin</a>, <a href="https://konginvest.ai" target="_blank" rel="noopener">KongInvest</a></li>
           <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener">nicolas-lester-reynolds</a></li>
