@@ -1,3 +1,52 @@
+## 2025-11-07 07:30 — Rafael: Expanded Team Member Detection (Solana Hustlers) ✅
+
+**Work:** Added dual-profile detection to `find_team_members.py`
+
+**User Request:** "find_team_members --> add Sol 'hustlers' profiles : raiders, designers, AMA guys, moderators, marketing types etc*"
+
+**What Was Added:**
+
+1. **Dual Profile Detection:**
+   - 👤 **Supervisor** - Traditional remote workers (students, juniors, seeking work)
+   - 🚀 **Hustler** - Solana ecosystem (raiders, designers, AMA hosts, mods, marketing)
+   - ⭐ **Hybrid** - BOTH profiles (highest priority!)
+
+2. **Hustler Detection Signals:**
+   - **Raiders:** raid coordination, engagement farming, Twitter Spaces hosting
+   - **Designers:** UI/UX, Figma, graphics, portfolios (Behance, Dribbble)
+   - **AMA Hosts:** community events, space hosting, event moderation
+   - **Moderators:** Discord/Telegram community management
+   - **Marketing:** growth hackers, KOLs, influencers, content creators, viral campaigns
+   - **Solana Ecosystem:** SOL, Jupiter, Orca, degens, NFTs, web3, crypto
+
+3. **Technical Implementation:**
+   - Added `SOL_HUSTLER_PATTERNS` (30+ regex patterns)
+   - Added `HUSTLER_KEYWORDS` list
+   - Separate `hustler_score` alongside `supervisor_score`
+   - Profile type classification logic
+   - Emoji indicators in output (👤/🚀/⭐)
+   - Updated output formatting for both profile types
+
+4. **Documentation Updated:**
+   - Updated `ANALYSIS_SCRIPTS_README.md`
+   - Added profile-specific outreach message templates
+   - Added filtering guidance (hybrid = highest priority)
+
+**Output:**
+- JSON includes: `profile_type`, `supervisor_score`, `hustler_score`
+- Summary shows both score types and all signal categories
+- Sorted by profile type and scores
+
+**Commits:**
+- Code: Already committed (before context switch)
+- Docs: `438aa2a` - docs: update analysis scripts README for dual-profile detection
+
+**Status:** Complete ✅
+
+**Next:** Run script on Telegram export to find both supervisors AND hustlers
+
+---
+
 ## 2025-11-07 07:10 — Rafael: Removed /proof Page Completely ✅
 
 **Work:** Deleted /proof page and removed from site navigation
