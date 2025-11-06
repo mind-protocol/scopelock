@@ -33,19 +33,21 @@
    - What Emma does NOT need (human's opinion, draft review)
    - First week targets (20-30 proposals, 3-5 responses, 1 win)
 
-**Workflow now:**
+**Workflow now (6-step process):**
 ```
-Human: [Pastes 5 job posts from Upwork]
-Emma: [Reads MISSION_SELECTION.md, evaluates each job, makes GO/NO-GO decision, drafts proposals for GO/MAYBE jobs]
-Emma: "Job 1: STRONG GO - here's the proposal [plain text ready to paste]"
-Emma: "Job 2: HARD NO - budget too low"
-Emma: "Job 3: QUALIFIED MAYBE - here's the proposal [plain text]"
-Human: [Pastes proposals into Upwork, clicks Send]
+1. Human: [Copy-pastes ENTIRE Upwork search results - all 20 jobs]
+2. Emma: [Filters list] "Open jobs #3, #7, #11, #15, #18 - copy full descriptions"
+3. Human: [Opens only those 5 jobs, copy-pastes full descriptions]
+4. Emma: [Evaluates] "Job #3: STRONG GO - [proposal], Job #7: STRONG GO - [proposal], Job #11: QUALIFIED MAYBE - [proposal], Job #15: HARD NO - skip, Job #18: STRONG GO - [proposal]"
+5. Human: [Pastes 4 proposals into Upwork, clicks Send]
+6. Emma: [Saves proposals to /citizens/emma/proposals/]
 ```
 
-**This implements Mode 4-5 autonomous operation** from the collaboration scale we just added to the AI communication guide.
+**Human is "just a copy-paster"** - Emma does ALL filtering, deciding, drafting.
 
-**Status:** Committed (3efd6d5), pushed to main
+**This implements Mode 5 (Full Autonomy)** from the collaboration scale we added to the AI communication guide.
+
+**Status:** Committed (b0477d3), pushed to main
 
 **Next:** Bigbosefx can now start by pasting Upwork job posts to Emma, Emma handles evaluation + proposal drafting autonomously
 
