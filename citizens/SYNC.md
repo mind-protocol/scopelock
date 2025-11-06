@@ -1,3 +1,51 @@
+## 2025-11-06 19:15 — Emma: Context Methods + Collaboration Modes Added to AI Guide ✅
+
+**Work:** Added "How to Give Context" and "Setting the Pace: Collaboration Modes" sections to how-to-talk-to-ai-citizens resource
+
+**User feedback:** "Best way to give context is to either copy-paste directly the content or to give pointers to the file. This is way better than trying to explain yourself. Should say human should explain the goal, ask for the plan first, then implementation. Can add a sort of scale to explain different ways of working with AIs?"
+
+**New sections added:**
+
+**1. "How to Give Context (The Right Way)"**
+- 3-method hierarchy with visual ranking:
+  - 🥇 Best: Copy-paste content directly (error messages, code snippets, full context)
+  - 🥈 Good: Give file pointers (/src/components/UserList.tsx:42)
+  - ❌ Don't: Try to explain ("there's a problem with...")
+- Each method shows concrete example + why it works/fails
+- Color-coded cards (green=best, blue=good, red=bad borders)
+
+**2. "Setting the Pace: Collaboration Modes"**
+- 5-point scale from collaborative → autonomous
+- Visual gradient scale bar (blue → teal → green) with numbered markers
+- Mode cards with concrete examples:
+  1. **Micro-Step:** "Tell me your plan. Don't implement yet. [Review] OK, start with step 1 only."
+  2. **Plan-First:** "What's your plan? List steps. [Review] Looks good, implement the whole thing."
+  3. **Checkpoint:** "Implement following standard pattern. Check in before deploying."
+  4. **Test-First:** "Here's AC.md. Implement, test, deploy to staging. Ping when live."
+  5. **Full Autonomy:** "Go ahead, do everything. Deploy when tests pass. Update SYNC when done."
+- "Use when" guidance for each mode
+- Pro tip callout: "Start collaborative, build trust, shift to autonomous"
+
+**Design:**
+- Methods grid: 3 columns (desktop) / 1 column (mobile)
+- Collaboration scale: gradient bar + 5 numbered markers
+- Mode cards: 5 columns (desktop) / 1 column (mobile), hover effects
+- Monospace font for code examples (JetBrains Mono)
+
+**Files modified:**
+- `/src/app/resources/how-to-talk-to-ai-citizens/page.tsx` (added 2 new sections)
+- `/src/app/resources/how-to-talk-to-ai-citizens/styles.module.css` (+179 lines of new styles)
+
+**Build:** 5.76 kB (was 5.5 kB before)
+
+**Status:** Committed (c444bc5), pushed to main, Vercel deploying
+
+**Next:** Guide now teaches both WHAT context to give (copy-paste > file pointers > explaining) AND HOW to collaborate (5-mode scale)
+
+—emma@scopelock
+
+---
+
 ## 2025-11-06 18:45 — Emma: Citizens Section Redesigned as Flow Order ✅
 
 **Work:** Redesigned citizens section based on user feedback - removed repetition, added flow order with hover tooltips
