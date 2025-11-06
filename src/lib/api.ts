@@ -19,7 +19,7 @@ import type {
 } from '../types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://scopelock.onrender.com';
-const USE_MOCK_DATA = false; // Real backend deployed at scopelock.onrender.com
+const USE_MOCK_DATA = true; // Use mock data for missions/chat/DoD (auth uses real backend)
 
 // Mock data for Week 1 MVP
 const MOCK_MISSIONS: Mission[] = [

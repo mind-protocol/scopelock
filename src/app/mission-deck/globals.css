@@ -1,49 +1,86 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  body {
-    @apply bg-background text-text font-sans;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-surface;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-muted rounded-md;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted/80;
-  }
+/* Mission Deck - uses same design tokens as main site */
+* {
+  box-sizing: border-box;
 }
 
-@layer components {
-  .panel {
-    @apply bg-surface border border-border rounded-lg;
-  }
+body {
+  background: var(--slk-bg);
+  color: var(--slk-text);
+  font-family: "Inter", system-ui, sans-serif;
+  margin: 0;
+}
 
-  .btn-primary {
-    @apply bg-accent text-background font-medium px-4 py-2 rounded-md hover:bg-accent/90 transition-colors;
-  }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-  .btn-secondary {
-    @apply bg-surface-hover text-text font-medium px-4 py-2 rounded-md hover:bg-surface border border-border transition-colors;
-  }
+::-webkit-scrollbar-track {
+  background: var(--slk-surface);
+}
 
-  .input {
-    @apply bg-surface border border-border text-text px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-accent;
-  }
+::-webkit-scrollbar-thumb {
+  background: var(--slk-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(154, 163, 174, 0.8);
+}
+
+/* Components */
+.panel {
+  background: var(--slk-surface);
+  border: 1px solid rgba(230, 234, 242, 0.08);
+  border-radius: var(--slk-radius);
+}
+
+.btn-primary {
+  background: var(--slk-accent);
+  color: var(--slk-bg);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--slk-surface);
+  color: var(--slk-text);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(230, 234, 242, 0.08);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--slk-elev-2);
+}
+
+.input {
+  background: var(--slk-surface);
+  border: 1px solid rgba(230, 234, 242, 0.08);
+  color: var(--slk-text);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--slk-accent);
+  box-shadow: 0 0 0 2px rgba(30, 229, 184, 0.2);
 }
