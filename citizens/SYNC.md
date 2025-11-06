@@ -1,3 +1,82 @@
+## 2025-11-07 08:15 — Rafael: Connect Mission Deck to Real Backend ✅
+
+**Issue:** After wallet sign, redirected back to homepage. User: "it directly sends me back to homepage!!"
+
+**Root Cause:**
+- Frontend was connecting to `http://localhost:8000` (default when NEXT_PUBLIC_API_URL not set)
+- localhost doesn't work in production browser
+- API calls failed → redirect to homepage
+
+**Solution:**
+- Changed API_URL default to `https://scopelock.onrender.com` (the deployed backend)
+- Set `USE_MOCK_DATA = false` (NO MOCK DATA - real backend)
+- Backend verified:
+  - Health check: https://scopelock.onrender.com/health → 200 OK
+  - wallet-login endpoint: Working (returns error for invalid signature = correct behavior)
+
+**Files Modified:**
+- src/lib/api.ts (2 lines changed)
+
+**Status:** Committed and pushed ✅
+**Commit:** f704d09 "fix: connect Mission Deck to real backend at scopelock.onrender.com"
+**Next:** Vercel auto-deploy (~2-3 min), wallet login should work end-to-end
+
+---
+
+## 2025-11-07 06:45 — Alexis: About & Contact Pages Updated to Match Homepage ✅
+
+**ABOUT PAGE CHANGES:**
+1. Hero: 'Solo architect + AI-assisted teams. Professional software & creative work.'
+2. What I Build: Lists development + creative services (not ScopeLock methodology)
+3. All 'we' → 'I' (solo voice consistency)
+4. Removed technical jargon: AC.md, AC green, Evidence Sprint
+5. Business-friendly: 'Fixed pricing. Fast delivery (2-7 days). Pay only when satisfied.'
+6. 'How I'm Different' (not 'How We're Different')
+
+**CONTACT PAGE CHANGES:**
+1. Hero: 'Start within 24-48 hours' (clearer value)
+2. All 'we/us' → 'I/me' (solo voice)
+3. Removed technical jargon: AC.md, AC green
+4. 'What Happens Next?' rewritten for business buyers:
+   - 5-step process with clear timelines
+   - 'Fixed price quote' not 'Co-write AC.md'
+   - 'Daily updates' (proactive)
+   - '2 revisions included, pay only when satisfied'
+5. 'Connect on Social' (not 'Find Us Elsewhere')
+
+**WHY THIS MATTERS:**
+- Business buyers don't care about AC.md/AC green/Evidence Sprint
+- They want: fixed price, fast delivery, no surprises
+- Solo voice = direct access to Nicolas (not account managers)
+- Consistency across homepage, about, contact, FAQ
+
+**Commit:** 876ab05 (pushed to production)
+
+---
+
+## COMPLETE WEBSITE OVERHAUL SUMMARY (7 Commits Today)
+
+**1. ae4a130:** Website Improvement Plan V2 (hero, services grid, how I work, about me, FAQ)
+**2. 2d77856:** Honesty fix ('solo developer' → 'solo architect + AI-assisted teams')
+**3. c6605de:** Competitive intelligence (removed Claude/Cursor mentions → 'custom AI-driven workflow')
+**4. b97abd1:** Proper footer (4-column navigation, social links)
+**5. d5d9d75:** Removed Proof Log from footer
+**6. 3e390ef:** Added X (Twitter) + LinkedIn to footer
+**7. 876ab05:** Updated About + Contact pages to match homepage
+
+**IMPACT:**
+- ✅ Honest positioning (solo architect + implementation team)
+- ✅ Business buyer focus (no technical jargon)
+- ✅ Both services visible (development + creative AI)
+- ✅ Competitive advantage protected (no specific tools revealed)
+- ✅ Solo voice throughout (I, not we)
+- ✅ Proper footer with navigation
+- ✅ Consistent messaging across all pages
+
+**All changes deployed to production via Vercel.**
+
+---
+
 ## 2025-11-07 08:00 — Rafael: Fix Multiple Wallet Sign Prompts (Stable Dependencies) ✅
 
 **Issue:** User reported sign prompt appearing multiple times: "i should have to sign the message ONCE"
