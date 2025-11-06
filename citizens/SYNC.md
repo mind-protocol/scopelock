@@ -1,3 +1,58 @@
+## 2025-11-07 02:30 — Alexis: Website & Branding Improvement Plan Complete ✅
+
+**Work:** Created comprehensive plan to improve ScopeLock website based on ARKCEL competitive analysis
+
+**Strategic Analysis:**
+- **Problem Identified:** ScopeLock website is technically impressive but business-unfriendly
+- **Root Cause:** Designed for engineers (AC.md, commits, proof log) not business buyers (speed, reliability, trust)
+- **ARKCEL Advantages:** Business-first language, visual hierarchy, multiple CTAs, social proof, segmented content
+
+**Comprehensive Plan Created:**
+- **Tier 1 (Week 1-2):** High impact, low effort (copywriting only)
+  - Rewrite hero section: "Build the Right Product. Pay Only When It Works." (business outcome, not technical process)
+  - Add client logos/anonymized case studies (trust signal)
+  - Simplify process explanation: 4-step business flow (not AC.md jargon)
+  - Add multiple CTAs: "Get Free Estimate," "Schedule Call," "See Our Work" (not just "Evidence Sprint")
+- **Tier 2 (Week 2-3):** High impact, medium effort (design + content)
+  - Visual design refresh: Update color palette (charcoal + cyan + purple vs teal + green)
+  - Add icons, illustrations, product screenshots (less text-heavy)
+  - Restructure content by audience: Homepage (marketing) + Proof Log (technical) + Process (methodology) + Case Studies
+  - Add collapsible FAQ (like ARKCEL)
+- **Tier 3 (Week 3-4):** Medium impact, high effort (polish)
+  - Client testimonials (Maya requests from past clients)
+  - Case study videos (2-3 min walkthroughs)
+  - SEO optimization (meta tags, blog content, alt text)
+
+**Expected Impact:**
+- Proposal win rate: 15% → 30% (clearer messaging, multiple CTAs)
+- Average project value: $400 → $800 (premium positioning)
+- Time-to-conversion: 5 days → 2 days (easier navigation)
+- Bounce rate: 60% → 40% (better UX)
+
+**Budget:**
+- Internal (Nicolas + team): $0, just time (40-60 hours)
+- Outsourced (designer + dev): $900-1500 for full overhaul
+
+**Key Insights:**
+- ARKCEL speaks to business outcomes ("market-ready products"), we speak to technical process ("AC.md")
+- They have 5+ CTAs across page (multiple entry points), we have 1 ("Evidence Sprint")
+- They show client logos (trust), we show commits (means nothing to business buyers)
+- They segment content by audience, we mix marketing + technical proof on one page
+
+**Recommendation:** Approve Week 1 changes (low effort, high impact), execute immediately.
+
+**Questions for Nicolas:**
+1. Can we use TherapyKin/KinKong/La Serenissima logos publicly?
+2. Do you want to implement yourself or hire developer?
+3. For visual design, do yourself or outsource ($300-500)?
+
+**Status:** ✅ Plan complete, awaiting Nicolas approval
+**Next:** Execute Week 1 changes (hero rewrite, client logos, process simplification, multiple CTAs)
+
+**Link:** `/home/mind-protocol/scopelock/citizens/alexis/WEBSITE_BRANDING_IMPROVEMENT_PLAN.md`
+
+---
+
 ## 2025-11-07 01:45 — Alexis: MISSION_SELECTION.md Strategic Expansion Complete ✅
 
 **Work:** Completed major strategic expansion of Emma's mission selection criteria to prioritize creative AI services
@@ -140,7 +195,9 @@ Response: {"missions":[],"total":0}
 **Claude Integration Note:**
 - Backend uses Claude CLI (`cd citizen/folder && claude -p "message" --continue --dangerously-skip-permissions`)
 - NO CLAUDE_API_KEY needed (uses subscription credentials, not pay-per-token API)
-- Deployment requires: `.claude/.credentials.json` uploaded to Render
+- Deployment requires:
+  1. Install Claude CLI: `curl -fsSL https://claude.ai/install.sh | bash`
+  2. Upload `.claude/.credentials.json` to Render (from `\\wsl.localhost\Ubuntu-22.04\home\mind-protocol\.claude\.credentials.json`)
 
 **Next Steps:**
 1. Fix CORS_ORIGINS in backend .env (add `:3002`)

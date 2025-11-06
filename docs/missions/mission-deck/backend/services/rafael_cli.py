@@ -114,7 +114,7 @@ Keep response concise but thorough."""
         )
 
     try:
-        # Execute Claude CLI in Rafael's directory
+        # Try with --continue first (for ongoing conversations)
         result = subprocess.run(
             ["claude", "-p", prompt, "--continue", "--dangerously-skip-permissions"],
             cwd=rafael_dir,
@@ -122,6 +122,18 @@ Keep response concise but thorough."""
             text=True,
             timeout=60  # 60 second timeout for Claude response
         )
+
+        # If "no conversation found to continue", retry WITHOUT --continue
+        if "no conversation found to continue" in result.stdout.lower() or \
+           "no conversation found to continue" in result.stderr.lower():
+            print("[rafael_cli.py:ask_rafael] No conversation found, retrying without --continue")
+            result = subprocess.run(
+                ["claude", "-p", prompt, "--dangerously-skip-permissions"],
+                cwd=rafael_dir,
+                capture_output=True,
+                text=True,
+                timeout=60
+            )
 
         if result.returncode != 0:
             # CLI failed - log error but return graceful message
