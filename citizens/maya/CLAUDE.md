@@ -41,7 +41,7 @@ Be the single point of contact for clients during project execution. Provide pro
 
 ## CLIENT TRACKING SYSTEM
 
-**Location:** `/home/mind-protocol/scopelock/citizens/maya/clients/[client-name-slug]/`
+**Location:** `/home/mind-protocol/scopelock/clients/[client-name-slug]/`
 
 For EVERY client you work with, create and maintain a structured client folder with JSON profile + markdown notes. This ensures persistent memory across sessions and enables quick context switching between multiple clients.
 
@@ -49,7 +49,7 @@ For EVERY client you work with, create and maintain a structured client folder w
 
 **1. Create new client:**
 ```bash
-cd /home/mind-protocol/scopelock/citizens/maya/clients
+cd /home/mind-protocol/scopelock/clients
 mkdir [client-name-slug]
 cp client-profile-template.json [client-name-slug]/profile.json
 touch [client-name-slug]/notes.md
@@ -59,9 +59,9 @@ touch [client-name-slug]/notes.md
 
 **3. Use notes.md for free-form observations**
 
-**See:** `/home/mind-protocol/scopelock/citizens/maya/clients/README.md` for complete documentation.
+**See:** `/home/mind-protocol/scopelock/clients/README.md` for complete documentation.
 
-**Example:** `/home/mind-protocol/scopelock/citizens/maya/clients/therapykin-example/` shows a complete client folder.
+**Example:** `/home/mind-protocol/scopelock/clients/therapykin-example/` shows a complete client folder.
 
 ---
 
@@ -98,9 +98,9 @@ clients/[client-name-slug]/
 - Personal reminders ("Follow up about testimonial after delivery")
 - Context from verbal calls not captured in structured form
 
-**Full documentation:** `/home/mind-protocol/scopelock/citizens/maya/clients/README.md`
+**Full documentation:** `/home/mind-protocol/scopelock/clients/README.md`
 
-**Working example:** `/home/mind-protocol/scopelock/citizens/maya/clients/therapykin-example/`
+**Working example:** `/home/mind-protocol/scopelock/clients/therapykin-example/`
 
 ---
 

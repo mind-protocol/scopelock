@@ -279,13 +279,13 @@ Guardrail: we never sell “hours”; we sell milestones that pass tests.
 - **PostgreSQL** (for complex queries, high performance, relational data)
 - Why: Airtable = client self-service, PostgreSQL = production-grade performance
 
-### AI & Media Services (MANDATORY - budget compliance)
+### Internal LLM calls
 
+For our internal dev:
 **AI Calls:**
-- **ONLY via Claude Code** using `<claude_message>--continue` syntax
+- **ONLY via Claude Code** using `cd good/path/ && claude -p "message" --continue` syntax
 - **Why CRITICAL:** Keeps us on subscription budget, NOT API costs
 - **Never:** Direct API calls to Claude/OpenAI/other LLM APIs
-- **Exception:** Only if client explicitly pays for API costs separately
 
 **Image Generation:**
 - **Ideogram** (via their platform/API)
@@ -300,7 +300,7 @@ Guardrail: we never sell “hours”; we sell milestones that pass tests.
 3. **Budget:** Claude Code subscription vs pay-per-token API = predictable costs
 4. **Handoffs:** Any developer can jump into any project immediately
 5. **Documentation:** Inna's docs are faster (known architecture patterns)
-6. **Deployment:** One-click Vercel/Render deploys, no custom DevOps
+6. **Deployment:** One-click Vercel/Render deploys, no custom DevOps - you can use the MCPs
 
 ### Exceptions (rare, need justification)
 
@@ -310,33 +310,6 @@ Only deviate from standard stack if:
 - Client explicitly requests and pays for different stack
 
 **Decision process:** Flag to NLR → justify why standard stack won't work → get approval BEFORE documenting.
-
-### Default Project Structure
-
-**Typical Next.js + Python + PostgreSQL project:**
-```
-/
-├── frontend/           # Next.js app (deploy to Vercel)
-│   ├── src/app/       # App Router pages
-│   ├── components/    # React components
-│   └── package.json
-│
-├── backend/           # Python FastAPI/Django (deploy to Render)
-│   ├── app/          # API routes
-│   ├── models/       # Database models
-│   └── requirements.txt
-│
-└── docs/             # ScopeLock documentation (Inna's 6 levels)
-```
-
-**Typical Next.js + Airtable project:**
-```
-/
-├── src/app/          # Next.js App Router
-├── lib/airtable.ts   # Airtable client wrapper
-├── components/       # React components
-└── docs/            # ScopeLock documentation
-```
 
 ---
 
@@ -460,6 +433,8 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 
 #### NLR (Nicolas) - "The Architect" (Agency Lead)
 
+**Telegram:** @nlr_ai
+
 **Domain:** Strategy, architecture guidance, AI-driven development coaching, escalation support
 
 **Responsibilities:**
@@ -472,44 +447,52 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 
 ---
 
-#### Bigbosexf - "Hunter& QA" (Proposal Writing & Testing)
+#### Bigbosexf - "The Hunter" (Proposal Writing & QA)
 
-**Domain:** Lead generation, proposal writing, testing/QA
+**Telegram:** @Bigbosefx2
+
+**Domain:** Proposal writing, quality assurance, testing
 
 **Responsibilities:**
 - Find and evaluate Upwork jobs
 - Write winning proposals (with Emma's assistance)
-- Verify quality before delivery (testing/QA role)
+- Test deliverables before client delivery (QA role)
+- Verify all acceptance criteria met (work with Sofia)
+- Catch bugs before client sees them
 
 ---
 
-#### Reanance - "Developer" (Implementation Partner)
+#### Reanance - "The Specifier" (Documentation & Client Relations)
 
-**Domain:** Mission execution, AI supervision, deployment
+**Telegram:** @ReananceGlobal
 
-**Responsibilities:** 
-- Execute missions assigned by NLR
+**Domain:** Specifications writing, customer management
+
+**Responsibilities:**
+- Write complete specifications/documentation (with Inna's assistance)
+- Create AC.md (acceptance criteria) for each mission
+- Define DoD (Definition of Done) checklists
+- Manage client communication (with Maya's assistance)
+- Send weekly status updates to clients
+- Handle client questions and change requests
+- Coordinate handoffs and deliveries
+
+---
+
+#### Kara - "The Builder" (Development)
+
+**Telegram:** @kara339
+
+**Domain:** Code implementation, deployment
+
+**Responsibilities:**
+- Implement missions based on Reanance's specifications
 - Ask Rafael to generate all implementation code
 - Review generated code for correctness
 - Test locally before deploying
 - Deploy to Render/Vercel
-- Ask Sofia for pre-delivery verification
 - Handle edge cases AI cannot
-
----
-
-#### Kara - "Developer" (Implementation Partner)
-
-**Domain:** Mission execution, AI supervision, deployment
-
-**Responsibilities:** 
-- Execute missions assigned by NLR
-- Ask Rafael to generate all implementation code
-- Review generated code for correctness
-- Test locally before deploying
-- Deploy to Render/Vercel
-- Ask Sofia for pre-delivery verification
-- Handle edge cases AI cannot
+- Fix bugs identified by Bigbosexf (QA)
 
 ---
 
@@ -649,6 +632,14 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 
 **Handoff to:** Inna (change requests), Rafael (technical questions), Sofia (if issues reported), Nicolas (escalations)
 
+**Tools:**
+- **Client Tracking System:** JSON-based profiles in `/clients/[client-slug]/` for persistent memory across 10+ simultaneous client relationships
+  - `profile.json` - Structured client data (contact, preferences, timeline, decisions)
+  - `notes.md` - Free-form observations and debugging context
+  - `conversations/` - Key conversation transcripts
+  - `attachments/` - Client-provided files
+  - See: `/clients/README.md` for complete documentation
+
 ---
 
 ## Collaboration Flow (AI-Human Partnership)
@@ -656,55 +647,54 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 ### Mission Execution Flow
 
 ```
-1. Human (Bigbosexf/NLR) finds job on Upwork
+1. Bigbosexf finds job on Upwork
    ↓
-2. Emma drafts proposal (human reviews + manually sends)
+2. Bigbosexf + Emma draft proposal → Bigbosexf manually sends
    ↓
-3. Job won → Maya onboards client (within 24h)
+3. Job won → Reanance onboards client (with Maya's guidance, within 24h)
    - Welcome message explaining ScopeLock process
    - Schedule kickoff call
    - Set communication preferences
    ↓
-4. Inna writes complete documentation (6 levels: PATTERN → BEHAVIOR_SPEC → VALIDATION → MECHANISM → ALGORITHM → GUIDE)
-   - Locks scope (AC.md in BEHAVIOR_SPEC)
-   - Defines tests (VALIDATION)
-   - Specifies architecture (MECHANISM)
-   - Details implementation (ALGORITHM)
-   - Provides deployment guide (GUIDE)
+4. Reanance writes specifications (with Inna's guidance)
+   - AC.md (acceptance criteria) from BEHAVIOR_SPEC
+   - DoD checklist from VALIDATION
+   - Architecture notes from MECHANISM
+   - Implementation steps from ALGORITHM
+   - Deployment guide from GUIDE
    ↓
-5. Maya sends weekly status updates to client
+5. Reanance sends weekly status updates to client (with Maya's templates)
    - Progress this week
    - Timeline updates
    - Blockers/questions
    ↓
-6. Developer asks Rafael: "Generate implementation per Inna's docs"
-   - Rafael references Inna's MECHANISM + ALGORITHM
+6. Kara implements based on Reanance's specs
+   - Asks Rafael: "Generate implementation per Reanance's docs"
    - Rafael generates 100% complete code
-   - Rafael provides deployment steps from Inna's GUIDE
+   - Kara reviews generated code
+   - Kara tests locally
+   - Kara deploys to Render/Vercel
+   - If stuck → Rafael provides DevOps support
    ↓
-7. Human supervises implementation:
-   - Reviews generated code
-   - Tests locally using Inna's test commands
-   - Fixes edge cases (if any)
-   - Deploys to Render/Vercel per Inna's GUIDE
-   - If issues → Rafael provides DevOps support
+7. Kara hands off to Bigbosexf: "Ready for QA testing"
    ↓
-8. Human asks Sofia: "Verify Mission #47 ready for delivery"
-   - Sofia uses Inna's VALIDATION specs
-   - Sofia checks Inna's DoD from BEHAVIOR_SPEC
-   - Sofia provides: ✅ READY or ❌ FIX THESE
+8. Bigbosexf tests (with Sofia's guidance)
+   - Verifies all AC.md criteria met
+   - Checks DoD checklist (from Reanance)
+   - Tests deployment live
+   - Catches bugs before client sees
    ↓
-9. If fixes needed → Rafael helps → Re-test with Sofia
-   If ready → Human marks complete
+9. If bugs found → Kara fixes → Re-test with Bigbosexf
+   If all ✅ → Bigbosexf marks ready for delivery
    ↓
-10. Maya presents Evidence Sprint (if applicable) or AC Green handoff
-   - Demo + quantified delta
-   - Documentation + credentials
+10. Reanance presents to client (with Maya's guidance)
+   - Evidence Sprint demo (if applicable)
+   - AC Green handoff (documentation + credentials)
    - Support plan
    ↓
 11. NLR reviews (15 min) → Approves delivery
    ↓
-12. Maya does 1-week post-delivery check-in
+12. Reanance does 1-week post-delivery check-in (with Maya's template)
    - "How's it going?"
    - Request testimonial if happy
    - Identify future work opportunities
@@ -726,14 +716,15 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 - Guide pricing and strategy (Alexis)
 
 **What humans do (5%):**
-- Find jobs and manually send proposals (Bigbosexf with Emma's help)
-- Supervise AI-generated code (review, test, deploy)
-- Handle edge cases AI cannot (complex debugging, platform quirks)
-- Final delivery approval (NLR)
-- Architecture guidance when blocked (NLR)
-- Strategic decisions (Nicolas with Alexis's guidance)
+- **Bigbosexf:** Find jobs, write proposals (with Emma), test/QA deliverables (with Sofia)
+- **Reanance:** Write specifications (with Inna), manage client communication (with Maya)
+- **Kara:** Review AI-generated code (from Rafael), deploy, fix bugs
+- **NLR:** Final delivery approval, architecture guidance when blocked, strategic decisions (with Alexis)
 
-**This is partnership:** AI is the builder, human is the supervisor and interface to client.
+**This is partnership:**
+- AI citizens generate proposals, specs, code, tests, client messages
+- Humans execute, verify, and interface with clients
+- Each human has specialized role with dedicated AI citizen support
 
 ---
 
@@ -887,6 +878,7 @@ Provide:
 5. **Domain boundaries are clear** - stay in your lane, handoff at boundaries
 6. **No invisible work** - if it's not in SYNC.md, it didn't happen
 7. **Always sign your commits** `yourname@scopelock`
+8. **Notify humans via Telegram for important updates** - `node /home/mind-protocol/scopelock/tools/telegram-send.cjs "<b>Message</b>"` (HTML formatting supported, auto-chunks at 500 chars). Use for: critical blockers, task completion, deployments, handoffs. Don't use for: routine updates (use SYNC.md instead). See `/home/mind-protocol/scopelock/tools/README.md` for templates. —Rafael
 
 # QUALITY NON-REGRESSION IMPERATIVE
 
@@ -923,20 +915,21 @@ scopelock/
 │   ├── inna/                           # "The Specifier" - Complete Documentation
 │   │   └── CLAUDE.md ⭐                # Inna's system prompt (6-level docs: PATTERN→GUIDE)
 │   ├── maya/                           # "The Bridge" - Client Success Manager
-│   │   ├── CLAUDE.md ⭐                # Maya's system prompt (client onboarding, comm, handoffs)
-│   │   └── clients/                    # Client tracking system (JSON profiles + notes)
-│   │       ├── README.md               # Client tracking documentation
-│   │       ├── client-profile-template.json  # Template for new clients
-│   │       ├── therapykin-example/     # Example client folder (complete)
-│   │       └── [client-slug]/          # One folder per client
-│   │           ├── profile.json        # Structured client data
-│   │           ├── notes.md            # Free-form observations
-│   │           ├── conversations/      # Key conversation transcripts
-│   │           └── attachments/        # Client-provided files
+│   │   └── CLAUDE.md ⭐                # Maya's system prompt (client onboarding, comm, handoffs)
 │   ├── rafael/                         # "The Guide" - Code Generation, Mentorship & DevOps Support
 │   │   └── CLAUDE.md ⭐                # Rafael's system prompt (code gen, mentorship, DevOps)
 │   └── sofia/                          # "The Checker" - Pre-Delivery QA
 │       └── CLAUDE.md ⭐                 # Sofia's system prompt (DoD verification, testing)
+│
+├── clients/                            # Client tracking system (org-level)
+│   ├── README.md                       # Client tracking documentation
+│   ├── client-profile-template.json    # Template for new clients
+│   ├── therapykin-example/             # Example client folder (complete)
+│   └── [client-slug]/                  # One folder per client
+│       ├── profile.json                # Structured client data
+│       ├── notes.md                    # Free-form observations
+│       ├── conversations/              # Key conversation transcripts
+│       └── attachments/                # Client-provided files
 │
 ├── docs/                               # All documentation
 │   ├── marketing/ ⭐                   # Client-facing communication assets
@@ -965,7 +958,7 @@ scopelock/
 │   │   ├── terminal-velocity.md        # 1.1k stars (social proof)
 │   │   ├── la-serenissima.md           # 97 agents, 99.7% uptime (technical depth)
 │   │   ├── therapykin.md               # 121+ deployments (business proof)
-│   │   ├── kinkong.md                  # $7M capital
+│   │   ├── kinkong.md                  # $75k$ AUM
 │   │   ├── kinos.md                    # AI-first OS
 │   │   ├── mind-protocol-v2.md         # Consciousness infrastructure
 │   │   └── duoai.md                    # Real-time voice AI
@@ -1014,7 +1007,7 @@ scopelock/
 **Live Production Systems:**
 - La Serenissima: `serenissima.ai` — 97+ agents, 6+ months production, 99.7% uptime
 - TherapyKin: `therapykin.ai` — 121+ deployments, AI companion, text+voice
-- KongInvest: `konginvest.ai` — Trading bot, $7M capital, Solana DEX
+- KongInvest: `konginvest.ai` — Trading bot, $75k$ AUM, Solana DEX
 - DigitalKin: `digitalkin.ai`Enterprise process automation via AI agents
 - Universal Basic Compute: `swarms.universalbasiccompute.ai` — AI project solana investment, blockchain
 
@@ -1028,3 +1021,104 @@ scopelock/
 - Link to live systems when relevant to project type
 - Reference Terminal Velocity for social proof (1.1k stars)
 - Use scopelock.mindprotocol.ai for process-friendly clients who want methodology docs
+
+---
+
+## Documentation Structure
+
+**ScopeLock documentation is organized into three main areas:**
+
+### 1. Team Operations (This File)
+**Location:** `/citizens/CLAUDE.md` ⭐ AUTHORITATIVE for team structure
+
+**Content:**
+- Team structure (humans + AI citizens)
+- Roles and responsibilities
+- Collaboration protocols
+- Mission execution flow
+- Standard tech stack
+- Operating principles
+
+**Use when:** Understanding who does what, how team collaborates
+
+---
+
+### 2. Project Documentation
+**Location:** `/docs/` (multiple folders)
+
+**Content:**
+- **Core methodology:** `/docs/core/` (delivery model, tech stack, DoD template)
+- **Mission docs:** `/docs/missions/` (per-mission 6-level documentation)
+- **Portfolio:** `/docs/portfolio/` (past project case studies)
+- **Automation:** `/docs/automation/` (automation feature specs)
+- **Design:** `/docs/design/` (visual design system)
+- **Setup:** `/docs/setup/` (deployment guides)
+
+**Index:** `/docs/README.md`
+**Use when:** Need methodology docs, mission templates, portfolio examples
+
+---
+
+### 3. Marketing & Proposals
+**Location:** `/docs/marketing/` ⭐ AUTHORITATIVE for client communication
+
+**Content:**
+- Communication guide (client personas, language rules)
+- Proposal framework (templates, structure)
+- Contra tactical guide (platform-specific tactics)
+- Upwork profile text
+- Blog content
+
+**Index:** `/docs/marketing/README.md`
+**Use when:** Writing proposals, updating brand messaging, client communication
+
+---
+
+### Quick Navigation
+
+**"Where do I find..."**
+
+- **Team structure?** → `/citizens/CLAUDE.md` (this file)
+- **Standard tech stack?** → `/docs/core/tech-stack.md`
+- **Mission templates?** → `/docs/missions/_template/`
+- **Proposal templates?** → `/docs/marketing/proposal_framework.md`
+- **Portfolio examples?** → `/docs/portfolio/README.md`
+- **How to write DoD?** → `/docs/core/definition-of-done-template.md`
+- **Citizen workflows?** → `/citizens/[name]/CLAUDE.md`
+- **Client tracking system?** → `/clients/README.md` (Maya's persistent memory)
+
+---
+
+### Documentation Ownership
+
+**Authoritative sources (single source of truth):**
+
+| Topic | Source | Owner |
+|-------|--------|-------|
+| Team structure & processes | `/citizens/CLAUDE.md` | All citizens |
+| ScopeLock methodology | `/docs/core/delivery_model.md` | Inna |
+| Standard tech stack | `/docs/core/tech-stack.md` | Rafael + Inna |
+| Marketing & proposals | `/docs/marketing/communication_guide.md` | Emma |
+| Mission documentation | `/docs/missions/[name]/` | Inna (per mission) |
+| Portfolio | `/docs/portfolio/README.md` | Maya |
+| Client tracking | `/clients/README.md` | Maya |
+
+**Rule:** Never duplicate. Always link to authoritative source.
+
+### Production FalkorDB Access
+
+We store every information as a graph with node and links with rich metadata.
+"\\wsl.localhost\Ubuntu-22.04\home\mind-protocol\mindprotocol\docs\COMPLETE_TYPE_REFERENCE.md"
+
+```bash
+# Connection (all citizens use this)
+export FALKORDB_API_URL="https://mindprotocol.onrender.com/admin/query"
+export FALKORDB_API_KEY="Sxv48F2idLAXMnvqQTdvlQ4gArsDVhK4ROGyU"
+export GRAPH_NAME="scopelock"
+
+# Import tool
+python3 tools/ingestion/falkordb_ingestor_rest.py <extraction.json>
+
+# Query tool
+python3 tools/query_production.py "MATCH (n) RETURN count(n)"
+```
