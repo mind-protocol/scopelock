@@ -16,12 +16,19 @@ export function ContactForm() {
     setStatus('submitting');
 
     try {
-      // For now, just log to console and show success
-      // In production, this would send to an API endpoint
-      console.log('Form submission:', formData);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -29,6 +36,7 @@ export function ContactForm() {
       // Reset success message after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
     } catch (error) {
+      console.error('Contact form error:', error);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }

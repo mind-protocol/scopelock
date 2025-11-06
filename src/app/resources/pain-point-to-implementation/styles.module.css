@@ -1,0 +1,723 @@
+/* Pain Point to Implementation Resource Page */
+
+.painPointPage {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  color: var(--color-text, #E6EAF2);
+  line-height: 1.7;
+}
+
+/* Header */
+.header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.backLink {
+  display: inline-block;
+  color: var(--color-accent, #1EE5B8);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.2s;
+}
+
+.backLink:hover {
+  opacity: 0.7;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-muted, #9AA3AE);
+  font-size: 0.9rem;
+}
+
+/* Lead Section */
+.lead {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 4px solid var(--color-accent, #1EE5B8);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+}
+
+.leadQuote {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent, #1EE5B8);
+  line-height: 1.4;
+}
+
+.lead p {
+  margin-bottom: 1rem;
+}
+
+.lead p:last-child {
+  margin-bottom: 0;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 4rem;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--color-text, #E6EAF2);
+}
+
+.section h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.section h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  color: var(--color-accent-2, #64A8FF);
+}
+
+/* Step Navigator */
+.stepTabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stepTab {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 0.75rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stepTab:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stepTab.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: currentColor;
+}
+
+.stepNumber {
+  font-size: 1.2rem;
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+.stepTab.active .stepNumber {
+  opacity: 1;
+}
+
+.stepName {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Progress Bar */
+.progressBar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.progressFill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Step Content */
+.stepContent {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.stepHeader {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stepHeader h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.stepQuestion {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--color-accent-2, #64A8FF);
+}
+
+.stepDescription {
+  font-size: 1rem;
+  color: var(--color-muted, #9AA3AE);
+  margin-bottom: 0;
+}
+
+.stepDetails h4 {
+  color: var(--color-text, #E6EAF2);
+}
+
+/* Comparison Blocks */
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .comparison {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.comparisonBad,
+.comparisonGood {
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid;
+}
+
+.comparisonBad {
+  background: rgba(255, 93, 93, 0.05);
+  border-color: rgba(255, 93, 93, 0.3);
+}
+
+.comparisonGood {
+  background: rgba(30, 229, 184, 0.05);
+  border-color: rgba(30, 229, 184, 0.3);
+}
+
+.comparisonLabel {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.comparisonContent {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Insight/Formula Boxes */
+.insight,
+.formula {
+  background: rgba(100, 168, 255, 0.1);
+  border-left: 4px solid var(--color-accent-2, #64A8FF);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+
+.insight strong,
+.formula strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-accent-2, #64A8FF);
+}
+
+.insight ul,
+.insight ol {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.insight p {
+  margin-top: 0.5rem;
+}
+
+/* Example Boxes */
+.example {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.example p {
+  margin-bottom: 0.75rem;
+}
+
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+.example ol {
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+
+/* Architecture Diagram */
+.architectureDiagram {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.diagramSvg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.component {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.component:hover {
+  opacity: 0.8;
+}
+
+/* Flow Paths */
+.flowPaths {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.flowPath {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flowPathHeader {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flowSteps {
+  padding: 1rem 1.5rem;
+  margin: 0;
+  list-style-position: inside;
+}
+
+.flowSteps li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.flowSteps li:last-child {
+  margin-bottom: 0;
+}
+
+/* Test Plan */
+.testPlan {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.testCase {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testHeader {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-accent, #1EE5B8);
+}
+
+.testSteps {
+  padding: 1rem 1.5rem;
+}
+
+.testSteps ol {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.testSteps li {
+  margin-bottom: 0.5rem;
+}
+
+.pass {
+  color: var(--color-success, #5CE27E);
+  font-weight: 600;
+}
+
+.fail {
+  color: var(--color-danger, #FF5D5D);
+  font-weight: 600;
+}
+
+/* Implementation Priorities */
+.implementationPriorities {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.priority {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.priorityHeader {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.priority ul {
+  padding: 1rem 1.5rem;
+  margin: 0;
+  list-style-position: inside;
+}
+
+.priority li {
+  margin-bottom: 0.5rem;
+}
+
+/* Verification Results */
+.verificationResults {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.verificationItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.verificationLabel {
+  flex: 1;
+  font-weight: 500;
+}
+
+.verificationResult {
+  font-weight: 700;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+/* Step Navigation */
+.stepNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navButton {
+  background: var(--color-accent, #1EE5B8);
+  color: var(--color-bg, #0E1116);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.navButton:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.stepIndicator {
+  color: var(--color-muted, #9AA3AE);
+  font-size: 0.9rem;
+}
+
+/* Interactive Checklist */
+.checklist {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.checklistStep {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.checklistHeader {
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid;
+}
+
+.checklistHeader h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.checklistItems {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.checklistItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.checklistItem input[type="checkbox"] {
+  margin-top: 0.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: var(--color-accent, #1EE5B8);
+}
+
+.checklistItem span {
+  flex: 1;
+  line-height: 1.5;
+}
+
+.checklistProgress {
+  background: rgba(30, 229, 184, 0.1);
+  border: 2px solid var(--color-accent, #1EE5B8);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.checklistProgress strong {
+  font-size: 1.2rem;
+  color: var(--color-accent, #1EE5B8);
+}
+
+.checklistComplete {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--color-success, #5CE27E);
+  font-weight: 600;
+}
+
+/* Common Mistakes */
+.mistakes {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.mistake {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mistake h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--color-danger, #FF5D5D);
+}
+
+.mistakeExample {
+  background: rgba(255, 93, 93, 0.05);
+  border-left: 4px solid var(--color-danger, #FF5D5D);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+
+.mistakeExample p {
+  margin-bottom: 0.5rem;
+}
+
+.mistakeExample p:last-child {
+  margin-bottom: 0;
+}
+
+.mistakeFix {
+  background: rgba(30, 229, 184, 0.05);
+  border-left: 4px solid var(--color-accent, #1EE5B8);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.mistakeFix p {
+  margin-bottom: 0.75rem;
+}
+
+.mistakeFix ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Related Resources */
+.relatedLinks {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.relatedLink {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.relatedLink:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-accent, #1EE5B8);
+}
+
+.relatedIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.relatedTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text, #E6EAF2);
+  margin-bottom: 0.25rem;
+}
+
+.relatedDesc {
+  font-size: 0.9rem;
+  color: var(--color-muted, #9AA3AE);
+}
+
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, rgba(30, 229, 184, 0.1) 0%, rgba(100, 168, 255, 0.1) 100%);
+  border: 2px solid var(--color-accent, #1EE5B8);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.cta h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent, #1EE5B8);
+}
+
+.cta p {
+  margin-bottom: 1rem;
+}
+
+.cta ul {
+  text-align: left;
+  max-width: 600px;
+  margin: 1.5rem auto;
+  padding-left: 1.5rem;
+}
+
+.cta li {
+  margin-bottom: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .painPointPage {
+    padding: 2rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .leadQuote {
+    font-size: 1.25rem;
+  }
+
+  .stepTabs {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .stepContent {
+    padding: 1.5rem;
+  }
+
+  .verificationItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .verificationResult {
+    margin-left: 0;
+  }
+}

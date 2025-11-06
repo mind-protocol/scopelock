@@ -178,11 +178,11 @@ export default function CaseStudiesPage() {
           <div className="case-meta">
             <span>DeFi / Solana</span>
             <span>Python + TypeScript</span>
-            <span>$7M Capital</span>
+            <span>$75k$ AUM</span>
           </div>
         </header>
         <p className="case-delta">
-          <em>Scope:</em> Autonomous trading → <em>Delivered:</em> $7M capital deployment, 4x daily rebalancing, 229+ deployments
+          <em>Scope:</em> Autonomous trading → <em>Delivered:</em> $75k$ AUM deployment, 4x daily rebalancing, 229+ deployments
         </p>
         <h3>Challenge</h3>
         <p>
@@ -207,7 +207,7 @@ export default function CaseStudiesPage() {
         </ul>
         <h3>Quantified Outcomes</h3>
         <p>
-          <strong>Capital:</strong> $7M $COMPUTE investment structure • <strong>Execution:</strong> 4x daily
+          <strong>Capital:</strong> $75k$ AUM investment structure • <strong>Execution:</strong> 4x daily
           rebalancing (every 6 hours) • <strong>Deployments:</strong> 229+ production iterations •{' '}
           <strong>Risk:</strong> Dynamic allocation, volatility-adjusted position sizing •{' '}
           <strong>Transparency:</strong> All trades publicly visible, community governance
