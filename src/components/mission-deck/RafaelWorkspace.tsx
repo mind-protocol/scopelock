@@ -18,10 +18,43 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
   const [files, setFiles] = useState<GitHubFile[]>([]);
   const [commits, setCommits] = useState<GitHubCommit[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [leftPanelWidth, setLeftPanelWidth] = useState(40); // percentage
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     loadData();
   }, [missionId]);
+
+  // Handle mouse drag for resizing panels
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      const windowWidth = window.innerWidth;
+      const newWidth = (e.clientX / windowWidth) * 100;
+      // Constrain between 20% and 80%
+      if (newWidth >= 20 && newWidth <= 80) {
+        setLeftPanelWidth(newWidth);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+  }, [isDragging]);
 
   const loadData = async () => {
     try {
@@ -53,9 +86,13 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', height: '100%', overflow: 'hidden' }}>
       {/* Left panel: GitHub repository view */}
-      <div style={{ width: '40%', borderRight: '1px solid rgba(230, 234, 242, 0.08)', overflowY: 'auto' }}>
+      <div style={{
+        width: `${leftPanelWidth}%`,
+        overflowY: 'auto',
+        overflowX: 'hidden'
+      }}>
         <div style={{ padding: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--slk-text)' }}>
@@ -137,8 +174,35 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
         </div>
       </div>
 
+      {/* Draggable divider */}
+      <div
+        onMouseDown={() => setIsDragging(true)}
+        style={{
+          width: '4px',
+          cursor: 'col-resize',
+          background: isDragging ? 'var(--slk-accent)' : 'rgba(230, 234, 242, 0.08)',
+          transition: 'background 0.2s',
+          flexShrink: 0
+        }}
+        onMouseEnter={(e) => {
+          if (!isDragging) {
+            e.currentTarget.style.background = 'var(--slk-accent)';
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isDragging) {
+            e.currentTarget.style.background = 'rgba(230, 234, 242, 0.08)';
+          }
+        }}
+      />
+
       {/* Right panel: Chat with Rafael */}
-      <div style={{ width: '60%', display: 'flex', flexDirection: 'column' }}>
+      <div style={{
+        width: `${100 - leftPanelWidth}%`,
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden'
+      }}>
         <ChatInterface
           messages={messages}
           onSendMessage={handleSendMessage}
