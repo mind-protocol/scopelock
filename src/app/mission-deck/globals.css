@@ -1,4 +1,26 @@
 /* Mission Deck - uses same design tokens as main site */
+
+/* Design Tokens */
+:root {
+  --slk-bg: #0E1116;
+  --slk-surface: #151A21;
+  --slk-elev-2: #1B222C;
+  --slk-text: #E6EAF2;
+  --slk-muted: #9AA3AE;
+  --slk-accent: #1EE5B8;
+  --slk-accent-2: #64A8FF;
+  --slk-danger: #FF5D5D;
+  --slk-warning: #FFC857;
+  --slk-success: #5CE27E;
+  --slk-radius: 10px;
+  --slk-gap-1: 4px;
+  --slk-gap-2: 8px;
+  --slk-gap-3: 12px;
+  --slk-gap-4: 16px;
+  --slk-gap-5: 24px;
+  --slk-gap-6: 32px;
+}
+
 * {
   box-sizing: border-box;
 }
