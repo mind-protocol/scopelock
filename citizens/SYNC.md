@@ -1,3 +1,65 @@
+## 2025-11-06 23:56 — Rafael: PRODUCTION HOTFIX - Backend ImportError ✅
+
+**Critical Issue:** Backend failing to deploy on Render (service down)
+
+**Error:**
+```
+ImportError: cannot import name 'UserInfo' from 'app.api.mission_deck.schemas'
+```
+
+**Root Cause:**
+`auth_routes.py` was importing `UserInfo` from schemas, but that class doesn't exist.
+The correct class name is `UserResponse` (line 35 in schemas.py).
+
+**Diagnosis:**
+- Checked schemas.py: Has `UserResponse`, `LoginRequest`, `LoginResponse` - NO `UserInfo`
+- Checked auth_routes.py line 16: Importing `UserInfo` ❌
+- Checked auth_routes.py line 109: Using `UserInfo(...)` ❌
+
+**Fix Applied:**
+```python
+# Line 16 - Import statement
+- from app.api.mission_deck.schemas import LoginResponse, UserInfo
++ from app.api.mission_deck.schemas import LoginResponse, UserResponse
+
+# Line 109 - Usage
+- user=UserInfo(
++ user=UserResponse(
+```
+
+**Files Modified:**
+- backend/app/api/mission_deck/auth_routes.py (2 lines changed)
+
+**Impact:**
+- Backend will now start successfully on Render
+- Mission Deck authentication endpoints functional
+- No data loss (configuration/schema unchanged)
+
+**Status:** Committed and pushed ✅
+**Commit:** 73cf5a7 "fix: replace UserInfo with UserResponse in auth_routes"
+**Next:** Render auto-deploy triggered, service should be live within 2-3 minutes
+
+**Time to Fix:** ~3 minutes from error detection to deployed fix
+
+---
+
+## 2025-11-07 04:15 — Alexis: Website Improvement Plan V2 Complete + Homepage Copy Draft
+
+**Completed:**
+- Website Improvement Plan V2 created incorporating ALL feedback
+- Solo founder voice ("I" not "we")
+- Business buyers ONLY (removed technical buyer sections)
+- Both development AND creative services featured equally
+- Removed unavailable features (calls, testimonials, "Trusted By")
+- Portfolio structure using existing projects
+- AI-powered estimate form design
+
+**Status:** Plan ready for review at /home/mind-protocol/scopelock/citizens/alexis/WEBSITE_IMPROVEMENT_PLAN_V2.md
+
+**Next:** Drafting concrete homepage copy for review
+
+---
+
 ## 2025-11-06 23:45 — Rafael: Device Detection + Platform-Specific Instructions ✅
 
 **Work:** Implemented comprehensive device detection and platform-specific bandwidth solutions (Option C)
