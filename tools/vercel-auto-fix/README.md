@@ -1,6 +1,15 @@
 # Vercel Auto-Fix - Rafael Auto-Invocation
 
+**Status:** ✅ INTEGRATED into Mission Deck backend (see below)
+
 **Purpose:** Automatically invoke Rafael when Vercel deployments fail, enabling autonomous deployment fixing.
+
+**Integration:** This webhook is now integrated into the Mission Deck FastAPI backend at:
+- **File:** `/docs/missions/mission-deck/backend/routers/webhooks.py`
+- **Endpoint:** `POST /api/webhooks/vercel-failure`
+- **Registered in:** `main.py` (included with other routers)
+
+The standalone Express server in this directory is **no longer used** and kept only for reference.
 
 ## Architecture
 

@@ -63,10 +63,11 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS middleware (adjust origins in production)
+# CORS middleware
+CORS_ORIGINS = settings.cors_origins.split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://scopelock.mindprotocol.ai", "http://localhost:3000"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -173,6 +174,14 @@ async def root():
 # Import and include routers
 from app.webhooks import router as webhooks_router
 app.include_router(webhooks_router, tags=["webhooks"])
+
+# Mission Deck routers
+from app.api.mission_deck.missions import router as missions_router
+from app.api.mission_deck.chat import router as chat_router
+from app.api.mission_deck.dod import router as dod_router
+app.include_router(missions_router, prefix="/api", tags=["Mission Deck"])
+app.include_router(chat_router, prefix="/api", tags=["Mission Deck"])
+app.include_router(dod_router, prefix="/api", tags=["Mission Deck"])
 
 
 if __name__ == "__main__":

@@ -2,6 +2,6 @@
 API routers for ScopeLock backend
 """
 
-from app.api import drafts, events, webhooks
+# Routers are imported directly in main.py to avoid circular imports
 
-__all__ = ["drafts", "events", "webhooks"]
+__all__ = []

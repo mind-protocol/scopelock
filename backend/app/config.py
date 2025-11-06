@@ -33,6 +33,13 @@ class Settings(BaseSettings):
     citizen_runner_url: str = "http://localhost:3000"  # Citizen Runner service
     backend_api_url: str = "http://localhost:8000"  # This backend (for citizens to call back)
 
+    # Mission Deck Configuration
+    falkordb_api_url: str = "https://mindprotocol.onrender.com/admin/query"
+    falkordb_api_key: str = ""
+    graph_name: str = "scopelock"
+    jwt_secret: str = ""
+    cors_origins: str = "https://scopelock.mindprotocol.ai,http://localhost:3000"
+
     class Config:
         env_file = ".env"
         case_sensitive = False
@@ -47,6 +54,10 @@ class Settings(BaseSettings):
                 missing.append("TELEGRAM_CHAT_ID")
             if not self.webhook_secret:
                 missing.append("WEBHOOK_SECRET")
+            if not self.falkordb_api_key:
+                missing.append("FALKORDB_API_KEY")
+            if not self.jwt_secret:
+                missing.append("JWT_SECRET")
 
             if missing:
                 raise ValueError(

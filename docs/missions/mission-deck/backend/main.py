@@ -29,7 +29,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Import routers
-from routers import auth, missions, chat, dod
+from routers import auth, missions, chat, dod, webhooks
 
 # ============================================================================
 # FastAPI App Configuration
@@ -65,6 +65,7 @@ app.include_router(auth.router)
 app.include_router(missions.router)
 app.include_router(chat.router)
 app.include_router(dod.router)
+app.include_router(webhooks.router)
 
 # ============================================================================
 # Health Check Endpoint
