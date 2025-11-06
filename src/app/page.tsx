@@ -634,7 +634,6 @@ export default function HomePage() {
             <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Company</h3>
             <ul style={{ listStyle: 'none', padding: 0, fontSize: '0.9rem', lineHeight: '2' }}>
               <li><Link href="/about" style={{ color: 'var(--slk-text-muted)' }}>About</Link></li>
-              <li><Link href="/proof" style={{ color: 'var(--slk-text-muted)' }}>Proof Log</Link></li>
               <li><a href="#faq-title" style={{ color: 'var(--slk-text-muted)' }}>FAQ</a></li>
               <li><a href="#contact" style={{ color: 'var(--slk-text-muted)' }}>Contact</a></li>
             </ul>
