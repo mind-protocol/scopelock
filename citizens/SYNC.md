@@ -1,3 +1,73 @@
+## 2025-11-06 04:30 — Alexis: Zero-Call Contact Form (Evidence Sprint Entry) ✅
+
+**Work:** Redesigned contact form to support Zero-Call system via Evidence Sprint intake
+
+**Context:** User described comprehensive Zero-Call strategy (avoid 90-95% of calls via async workflow). Homepage needed CTA aligned with Evidence Sprint entry, not "book a call."
+
+**Changes Implemented:**
+
+**1. Contact Form Redesigned**
+File: `/src/components/ContactForm.tsx`
+- Replaced generic "message" field with Evidence Sprint intake questions:
+  - "What do you want to see working in 90 seconds?" (demo request)
+  - "What problem does this solve?" (business context)
+  - "Timeline" (when needed)
+  - "Budget Range" (e.g., "$300-600")
+- Added form intro: "Request an Evidence Sprint — I'll build a 90-second demo to prove the concept works before you commit to the full build."
+- Updated submit button: "Request Evidence Sprint" (was "Send Message")
+- Updated success message: "I'll send you a detailed Evidence Sprint spec within 6 hours. No call needed — approve via email to proceed."
+
+**2. Contact API Updated**
+File: `/src/app/api/contact/route.ts`
+- Updated to accept new fields: demo, problem, timeline, budget
+- Updated Telegram notification format:
+  ```
+  🚀 New Evidence Sprint Request
+  
+  From: [name]
+  Email: [email]
+  
+  Demo Request (90s):
+  [what user wants to see]
+  
+  Problem to Solve:
+  [business context]
+  
+  Timeline: [when]
+  Budget: [range]
+  
+  Next Step: Send Evidence Sprint spec within 6 hours.
+  ```
+
+**3. Contact Form Styling**
+File: `/src/components/ContactForm.module.css`
+- Added `.formIntro` styling (green accent background, bordered)
+- Added `.formRow` grid layout (2 columns for timeline + budget on desktop, stacks on mobile)
+
+**Zero-Call Workflow Enabled:**
+1. User fills Evidence Sprint form (no call needed)
+2. Nicolas receives Telegram notification with structured request
+3. Nicolas replies via email with Evidence Sprint spec:
+   - What they'll see in 90s demo
+   - Timeline (e.g., 2-3 days)
+   - Price (e.g., $300-600)
+4. Client approves via email → Nicolas builds → Sends demo video
+5. Client decides whether to continue with full build (ScopeLock phase)
+
+**No calls required for 90-95% of Evidence Sprint requests.**
+
+**Files Changed:**
+- `/src/components/ContactForm.tsx` (form fields + messaging)
+- `/src/components/ContactForm.module.css` (new styles)
+- `/src/app/api/contact/route.ts` (field handling + Telegram format)
+
+**Status:** Zero-Call contact form live, aligned with Evidence Sprint entry process
+
+alexis@scopelock
+
+---
+
+
 ## 2025-11-06 00:15 - Maya: Resources Page Hero & Order Updates
 
 **Work:** Updated resources page hero messaging and reordered Week 1 Critical Path resources
@@ -5585,5 +5655,67 @@ git push origin main
 ```
 
 **Status:** Build error resolved, Vercel deployment should succeed now
+
+rafael@scopelock
+
+---
+
+## 2025-11-06 03:00 — Rafael: Fixed Mission Deck Documentation (Not Separate Repo) ✅
+
+**Work:** Corrected Mission Deck documentation to reflect it's part of main ScopeLock repo
+
+**Context:** User pointed out Mission Deck should NOT be a separate repo - comprehensive specs are already complete in main repo
+
+**What Was Wrong:**
+- GUIDE.md referenced cloning from `github.com/mind-protocol/scopelock-deck.git` (separate repo)
+- Stub page said "separate application" would be deployed
+- Created confusion about where Mission Deck lives
+
+**What's Actually True:**
+- Mission Deck is part of main ScopeLock repository
+- Comprehensive specifications are 100% complete:
+  - AC.md: Complete acceptance criteria with verification steps
+  - MECHANISM.md: Full architecture (Next.js + FastAPI + FalkorDB)
+  - ALGORITHM.md: Step-by-step implementation guide for code generation
+  - VALIDATION.md: 26 test cases for quality verification
+  - DOD.md: Definition of done checklist
+- Implementation hasn't been generated yet (ready for Rafael to create from ALGORITHM.md)
+
+**Changes Made:**
+
+**1. Updated GUIDE.md:**
+- Removed: `git clone https://github.com/mind-protocol/scopelock-deck.git`
+- Added: Clear instructions that Mission Deck is in main ScopeLock repo
+- Updated paths:
+  - Docs: `docs/missions/mission-deck/`
+  - Implementation: `backend/mission-deck/` and `src/app/deck/`
+
+**2. Updated deck/page.tsx:**
+- Changed status from "In Development" to "Specs Complete, Ready for Implementation"
+- Listed 4 completed specification documents
+- Clarified implementation workflow: Rafael generates → Developer deploys → Sofia verifies
+- Removed all references to "separate application" or "separate repo"
+
+**Current State:**
+- ✅ Comprehensive specs (AC, MECHANISM, ALGORITHM, VALIDATION, DOD)
+- ✅ 26 test cases written (VALIDATION.md)
+- ✅ Step-by-step implementation guide (ALGORITHM.md)
+- ❌ Implementation code not yet generated
+- ❌ Not deployed yet
+
+**Next Steps:**
+1. Rafael generates implementation from ALGORITHM.md (3-day implementation)
+2. Developer reviews and deploys
+3. Sofia verifies against 26 test cases in VALIDATION.md
+
+**Git:**
+```
+commit 2eb5c0a
+fix: update Mission Deck to reflect it's part of main repo
+
+git push origin main
+```
+
+**Status:** Documentation corrected, ready for implementation
 
 rafael@scopelock
