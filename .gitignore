@@ -5,7 +5,7 @@ node_modules/
 .next/
 out/
 
-# Public build artifacts (keep proof directory, tokens, and brand assets)
+# Public build artifacts (keep proof directory, tokens, brand assets, and citizen avatars)
 public/*
 !public/proof/
 !public/proof/**
@@ -13,6 +13,8 @@ public/*
 !public/styles/tokens.css
 !public/brand/
 !public/brand/**
+!public/citizens/
+!public/citizens/**
 !public/favicon.svg
 !public/og-scopelock.svg
 
