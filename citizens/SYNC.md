@@ -1,3 +1,64 @@
+## 2025-11-06 05:45 — Rafael: Mission Deck Implementation Split Plan ✅
+
+**Work:** Created comprehensive implementation split plan for 3 parallel Rafael instances
+
+**Context:** User requested to split Mission Deck implementation between Rafael-1, Rafael-2, and Rafael-3 for parallel work streams.
+
+**Split Strategy:**
+- **Rafael-1 ("Backend"):** FastAPI backend + FalkorDB client + Auth + All API endpoints
+- **Rafael-2 ("Frontend"):** Next.js 14 frontend + UI components + Citizen workspaces
+- **Rafael-3 ("Integration"):** Connect frontend to backend + Run tests + Deploy to Vercel/Render
+
+**Why This Split:**
+- Clear boundaries (Backend vs Frontend vs Integration)
+- Minimal dependencies (R1 and R2 work in parallel Day 1-2, R3 waits for both Day 3)
+- Each Rafael has complete context for their domain
+- Integration Rafael verifies everything works together end-to-end
+
+**Plan Details:**
+
+**Rafael-1 Deliverables:**
+- Complete FastAPI backend (main.py + routers/ + services/)
+- FalkorDB REST API client (graph.py with all Cypher queries)
+- Rafael API integration (rafael.py → Claude API)
+- JWT auth (auth.py, dependencies.py)
+- All API endpoints: /api/auth/login, /api/missions, /api/chat, /api/dod
+- Verification: Backend runs locally, health check passes, tests pass
+
+**Rafael-2 Deliverables:**
+- Complete Next.js 14 frontend (app/ + components/ + lib/)
+- Mission Selector (left panel), Citizen Selector (horizontal tabs)
+- Rafael Workspace (GitHub view + Chat interface)
+- Sofia Workspace (DoD checklist + Test results placeholder)
+- Chat components (message list, code blocks with syntax highlighting)
+- Verification: Frontend runs locally with mock data, TypeScript compiles, tests pass
+
+**Rafael-3 Deliverables:**
+- Connect frontend to backend (remove mock data, real API calls)
+- Run all 26 tests (pytest + Vitest) → 100% passing
+- Manual AC verification (F1-F5, NF1-NF2 from AC.md)
+- Deploy backend to Render (scopelock-deck-api.onrender.com)
+- Deploy frontend to Vercel (scopelock.mindprotocol.ai/deck)
+- Create DEMO.md + DELTA.md (Evidence Sprint)
+- Hand off to Sofia for pre-delivery QA
+
+**Coordination Protocol:**
+- R1 and R2 work in parallel (no dependencies)
+- Both read from MECHANISM.md (architecture), ALGORITHM.md (implementation steps), AC.md (requirements)
+- R3 waits for both R1 and R2 to complete verification criteria
+- Status updates in SYNC.md when starting, hitting blockers, completing deliverables
+- Handoffs include: deliverables list, verification commands, next steps
+
+**Expected Timeline:** 3 days (R1+R2 parallel Day 1-2, R3 Day 3)
+
+**Status:** Implementation split plan complete, documented, committed
+**Next:** Awaiting user approval to start Rafael-1, Rafael-2, Rafael-3 work streams
+**Link:** docs/missions/mission-deck/IMPLEMENTATION_SPLIT.md, commit 5747229
+
+rafael@scopelock
+
+---
+
 ## 2025-11-06 05:15 — Rafael: Mission Deck Status Page Accuracy Update ✅
 
 **Work:** Updated Mission Deck landing page to accurately reflect advanced implementation status (1,402 lines of test code)
