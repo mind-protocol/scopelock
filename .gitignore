@@ -17,6 +17,7 @@ public/*
 !public/citizens/**
 !public/favicon.svg
 !public/og-scopelock.svg
+!public/lite.html
 
 # TypeScript
 *.tsbuildinfo
