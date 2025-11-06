@@ -76,6 +76,85 @@ alexis@scopelock
 
 ---
 
+## 2025-11-07 00:45 — Emma: Redesigned Flow Diagram with Citizen Info & Profile Pics ✅
+
+**Work:** Complete redesign of flow diagram to be clear and comprehensible
+
+**Problem (User Feedback):**
+> "incompréhensible. Utilise des noms descriptifs, mets le citizen correspondant et sa profile pic"
+> "Phase Details → should be hover"
+
+The flow diagram was confusing:
+- Cryptic names: ACQUIRE, SPECIFY, BUILD, TEST, DELIVER
+- Didn't show WHO does the work (human + AI citizen)
+- No profile pictures
+- Phase details in separate section instead of hover
+
+**Solution Implemented:**
+
+**1. Descriptive Names (added `descriptiveName` property):**
+- ACQUIRE → "Find & Win Jobs"
+- SPECIFY → "Lock Scope & Write Docs"
+- BUILD → "Generate & Deploy Code"
+- TEST → "QA Testing & Bug Fixes"
+- DELIVER → "Client Demo & Payment"
+
+**2. Card Structure Redesign:**
+- Top: Emoji + number badge (horizontal layout)
+- Middle: Descriptive name (2-line max, 1rem font)
+- People section (bordered top/bottom):
+  - Owner: 👤 + human name
+  - AI support: avatar (24x24) + citizen name (teal)
+- Bottom: Duration
+
+**3. Visual Improvements (CSS):**
+- Card size: 180-200px (was 140px) to fit citizen info
+- People section: 0.75rem padding, bordered dividers
+- AI citizen name: teal (#1ee5b8) matching avatar border
+- Profile pics: circular with 2px teal border
+- Hover tooltip: appears below with arrow pointer
+- Z-index: hovered card stays on top (z-index 10)
+
+**4. Hover Tooltip:**
+- Position: absolute, below card (top: calc(100% + 12px))
+- Background: dark with teal border + box shadow
+- Arrow pointer: rotated square connecting to card
+- Animation: opacity + translateY fade-in
+- Max-width: 220px (260px on mobile)
+
+**5. Mobile Responsive:**
+- Cards: 260-320px width on mobile
+- Tooltips: match mobile card width
+- Maintains vertical arrow layout
+
+**Visual Structure:**
+```
+┌─────────────────┐
+│  🎯  1          │ ← Emoji + Number
+│                 │
+│ Find & Win Jobs │ ← Descriptive name
+│                 │
+├─────────────────┤
+│ 👤 Bigbosexf    │ ← Human owner
+│ 🖼️  Emma         │ ← AI citizen + avatar
+├─────────────────┤
+│   ~2 min        │ ← Duration
+└─────────────────┘
+      ↓
+  [Hover tooltip]
+  Find job on Upwork
+  and draft proposal
+```
+
+**Result:** Crystal clear WHO does WHAT in each phase
+
+**Build:** ✅ 12.7 kB (was 12.4 kB)
+
+**Commit:** de656bb "feat: redesign flow diagram with descriptive names, citizen info & profile pics"
+
+emma@scopelock
+
+---
 
 ## 2025-11-06 23:30 — Emma: Fixed Vertical Spacing in Complete Mission Flow ✅
 
