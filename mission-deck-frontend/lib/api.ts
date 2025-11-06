@@ -19,7 +19,7 @@ import type {
 } from '../types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-const USE_MOCK_DATA = true; // Set to false when backend is ready
+const USE_MOCK_DATA = false; // Connect to real FastAPI backend
 
 // Mock data for Week 1 MVP
 const MOCK_MISSIONS: Mission[] = [
@@ -259,23 +259,45 @@ function getToken(): string | null {
   return localStorage.getItem('access_token');
 }
 
-// Helper to make API calls
+// Helper to make API calls with automatic token handling
 async function apiCall<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
+  const token = getToken();
+
   const response = await fetch(`${API_URL}${endpoint}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${getToken()}`,
+      ...(token && { Authorization: `Bearer ${token}` }),
       ...options?.headers,
     },
   });
 
+  // Handle 401 Unauthorized - redirect to login
+  if (response.status === 401) {
+    // Clear token and redirect to login
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('access_token');
+      window.location.href = '/login';
+    }
+    throw new Error('Session expired. Please login again.');
+  }
+
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
-    throw new Error(error.detail || 'Something went wrong');
+    let errorDetail = 'Something went wrong';
+    try {
+      const errorData = await response.json();
+      errorDetail = errorData.detail || errorData.message || errorDetail;
+    } catch {
+      // Couldn't parse error response, use status text
+      errorDetail = response.statusText || errorDetail;
+    }
+
+    const error = new Error(errorDetail);
+    (error as any).status = response.status;
+    throw error;
   }
 
   return response.json();
@@ -301,14 +323,32 @@ export const api = {
       return mockResponse;
     }
 
-    return apiCall<LoginResponse>('/api/auth/login', {
+    const response = await apiCall<LoginResponse>('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
+
+    // Store JWT token for future authenticated requests
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('access_token', response.access_token);
+    }
+
+    return response;
   },
 
-  logout: () => {
-    localStorage.removeItem('access_token');
+  logout: (): void => {
+    // Clear local token immediately
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('access_token');
+    }
+
+    // Call backend logout endpoint in background (don't block UI)
+    if (!USE_MOCK_DATA) {
+      apiCall('/api/auth/logout', { method: 'POST' }).catch((error) => {
+        // Log but don't throw - logout already succeeded locally
+        console.warn('Backend logout request failed:', error);
+      });
+    }
   },
 
   // Missions
@@ -318,7 +358,11 @@ export const api = {
       return MOCK_MISSIONS;
     }
 
-    return apiCall<Mission[]>('/api/missions');
+    // Fetch from backend and extract missions array from MissionListResponse
+    const response = await apiCall<{ missions: Mission[]; total: number }>(
+      '/api/missions'
+    );
+    return response.missions;
   },
 
   getMission: async (id: string): Promise<Mission> => {
@@ -330,6 +374,31 @@ export const api = {
     }
 
     return apiCall<Mission>(`/api/missions/${id}`);
+  },
+
+  updateMissionNotes: async (
+    missionId: string,
+    notes: string
+  ): Promise<{ mission_id: string; notes: string; updated_at: string }> => {
+    if (USE_MOCK_DATA) {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const mission = MOCK_MISSIONS.find((m) => m.id === missionId);
+      if (!mission) throw new Error('Mission not found');
+      mission.notes = notes;
+      return {
+        mission_id: missionId,
+        notes,
+        updated_at: new Date().toISOString(),
+      };
+    }
+
+    return apiCall(
+      `/api/missions/${missionId}/notes`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify({ notes }),
+      }
+    );
   },
 
   // Chat
@@ -364,10 +433,13 @@ export const api = {
       return mockResponse;
     }
 
-    return apiCall<SendMessageResponse>(`/api/missions/${missionId}/chat`, {
-      method: 'POST',
-      body: JSON.stringify({ message }),
-    });
+    return apiCall<SendMessageResponse>(
+      `/api/missions/${missionId}/chat`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ message }),
+      }
+    );
   },
 
   getMessages: async (missionId: string): Promise<ChatMessage[]> => {
@@ -376,7 +448,12 @@ export const api = {
       return MOCK_CHAT_MESSAGES[missionId] || [];
     }
 
-    return apiCall<ChatMessage[]>(`/api/missions/${missionId}/messages`);
+    // Fetch from backend and extract messages array from MessageHistoryResponse
+    const response = await apiCall<{
+      messages: ChatMessage[];
+      total: number;
+    }>(`/api/missions/${missionId}/messages`);
+    return response.messages;
   },
 
   // DoD
@@ -386,7 +463,13 @@ export const api = {
       return MOCK_DOD_ITEMS[missionId] || [];
     }
 
-    return apiCall<DODItem[]>(`/api/missions/${missionId}/dod`);
+    // Fetch from backend and extract items array from DoDListResponse
+    const response = await apiCall<{
+      items: DODItem[];
+      total: number;
+      completed: number;
+    }>(`/api/missions/${missionId}/dod`);
+    return response.items;
   },
 
   toggleDODItem: async (
@@ -414,6 +497,34 @@ export const api = {
         method: 'PATCH',
         body: JSON.stringify({ completed }),
       }
+    );
+  },
+
+  markAllDODComplete: async (
+    missionId: string
+  ): Promise<{
+    message: string;
+    mission_status: string;
+    completed_count: number;
+  }> => {
+    if (USE_MOCK_DATA) {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const items = MOCK_DOD_ITEMS[missionId] || [];
+      const incompleteItems = items.filter((i) => !i.completed);
+      incompleteItems.forEach((item) => {
+        item.completed = true;
+        item.completed_at = new Date().toISOString();
+      });
+      return {
+        message: 'All DoD items marked complete',
+        mission_status: 'qa',
+        completed_count: incompleteItems.length,
+      };
+    }
+
+    return apiCall(
+      `/api/missions/${missionId}/dod/complete`,
+      { method: 'PATCH' }
     );
   },
 
