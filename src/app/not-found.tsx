@@ -30,7 +30,7 @@ export default function NotFound() {
         <h2>Where to Go?</h2>
         <div className="hero-ctas">
           <Link className="cta" href="/">Go to homepage</Link>
-          <Link href="/proof">See proof log</Link>
+          <Link href="/case-studies">See proof log</Link>
           <Link href="/contact">Contact us</Link>
         </div>
         <p style={{ marginTop: 'var(--slk-gap-5)' }}>

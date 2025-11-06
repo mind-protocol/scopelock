@@ -622,7 +622,7 @@ npm run acceptance:signup`}</pre>
           <Link href="/#contact" className={styles.ctaPrimary}>
             Book an Evidence Sprint
           </Link>
-          <Link href="/proof" className={styles.ctaSecondary}>
+          <Link href="/case-studies" className={styles.ctaSecondary}>
             See real Evidence Sprints
           </Link>
         </div>

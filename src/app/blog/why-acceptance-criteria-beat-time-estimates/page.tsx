@@ -131,7 +131,7 @@ export default function WhyAcceptanceCriteriaPage() {
         </div>
 
         <div className={styles.verifyLinks}>
-          <Link href="/proof">View proof log →</Link>
+          <Link href="/case-studies">View proof log →</Link>
           <a href="https://github.com/mind-protocol/scopelock" target="_blank" rel="noopener">View ScopeLock on GitHub →</a>
         </div>
       </section>
@@ -453,7 +453,7 @@ Running 10 tests using 4 workers
             <p>mind-protocol/scopelock</p>
           </a>
 
-          <Link href="/proof" className={styles.verifyCard}>
+          <Link href="/case-studies" className={styles.verifyCard}>
             <h3>View Proof Log</h3>
             <p>/proof</p>
           </Link>
@@ -486,11 +486,11 @@ Running 10 tests using 4 workers
 
         <div className={styles.ctaButtons}>
           <Link href="/contact" className={styles.ctaPrimary}>Schedule 30-min call</Link>
-          <Link href="/proof" className={styles.ctaSecondary}>See more examples</Link>
+          <Link href="/case-studies" className={styles.ctaSecondary}>See more examples</Link>
         </div>
 
         <p className={styles.ctaAlt}>
-          Or verify first: <Link href="/proof">Browse /proof</Link> (all delivered projects) •
+          Or verify first: <Link href="/case-studies">Browse /proof</Link> (all delivered projects) •
           <a href="https://github.com/mind-protocol" target="_blank" rel="noopener"> Check GitHub org</a> •
           <Link href="/blog"> Read more blog posts</Link>
         </p>

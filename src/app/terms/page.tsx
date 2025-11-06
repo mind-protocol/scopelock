@@ -95,7 +95,7 @@ export default function TermsPage() {
           code, data, or business details without permission.
         </p>
         <p>
-          If Client agrees, we may create anonymized case studies for our <Link href="/proof">Proof Log</Link> and portfolio.
+          If Client agrees, we may create anonymized case studies for our portfolio.
         </p>
       </section>
 

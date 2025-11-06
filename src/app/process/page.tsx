@@ -95,8 +95,7 @@ npm run test:acceptance -- signup.spec.ts
           stop without committing to full delivery.
         </p>
         <p>
-          Evidence Sprints are tagged: <code>evidence-sprint_feature_date</code> and published
-          to our <Link href="/proof">Proof Log</Link>.
+          Evidence Sprints are tagged: <code>evidence-sprint_feature_date</code>.
         </p>
       </section>
 
@@ -148,8 +147,7 @@ npm run test:acceptance -- signup.spec.ts
           <li><code>DELTA.md</code> — Quantified deltas (≥2 metrics)</li>
         </ul>
         <p>
-          These are compiled into a static <Link href="/proof">Proof Log</Link> at build time.
-          No runtime fetches, no embellishment—just git tags and markdown.
+          These are tracked with git tags and markdown. No runtime fetches, no embellishment.
         </p>
       </section>
 
@@ -200,7 +198,7 @@ npm run test:acceptance -- signup.spec.ts
         <h2>Ready to Lock Scope?</h2>
         <div className="hero-ctas">
           <Link className="cta" href="/contact">Schedule a kickoff</Link>
-          <Link href="/proof">See proof of delivery →</Link>
+          <Link href="/case-studies">See case studies →</Link>
         </div>
       </section>
     </main>

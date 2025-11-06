@@ -590,7 +590,7 @@ export default function ChangeControlPage() {
         </div>
 
         <div className={styles.ctaButtons}>
-          <Link href="/proof" className={styles.ctaPrimary}>
+          <Link href="/case-studies" className={styles.ctaPrimary}>
             See CHG-130 in action
           </Link>
           <Link href="/#contact" className={styles.ctaSecondary}>
@@ -599,7 +599,7 @@ export default function ChangeControlPage() {
         </div>
 
         <div className={styles.ctaNote}>
-          Check our <Link href="/proof">Proof Log</Link> for real change request examples
+          Check our <Link href="/case-studies">Proof Log</Link> for real change request examples
         </div>
       </section>
 

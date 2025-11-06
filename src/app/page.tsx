@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { LiveCommits } from '../components/LiveCommits';
-import { ProofTeaser } from '../components/ProofTeaser';
 import { ContactForm } from '../components/ContactForm';
 
 export default function HomePage() {
@@ -30,7 +29,7 @@ export default function HomePage() {
             <span>Get Free Estimate</span>
             <span aria-hidden="true">→</span>
           </a>
-          <Link className="cta-secondary" href="/proof">See My Work</Link>
+          <Link className="cta-secondary" href="/case-studies">See My Work</Link>
         </div>
       </header>
 
@@ -282,8 +281,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ProofTeaser />
-
       {/* CHANGE #8: "Built This Week" section */}
       <section className="card card-membrane proof-live" aria-labelledby="built-this-week">
         <h2 id="built-this-week">Built This Week</h2>
@@ -299,7 +296,7 @@ export default function HomePage() {
             <p className="ship-delta" style={{ color: 'var(--slk-text-muted)', marginBottom: '0.75rem' }}>
               p95: 1200ms → 280ms (↓77%) · Steps: 7 → 3 (↓57%)
             </p>
-            <Link href="/proof" className="ship-link" style={{ fontSize: '0.9rem', color: 'var(--slk-accent)' }}>View proof →</Link>
+            <Link href="/case-studies" className="ship-link" style={{ fontSize: '0.9rem', color: 'var(--slk-accent)' }}>View case studies →</Link>
           </article>
         </div>
 
@@ -328,8 +325,8 @@ export default function HomePage() {
         </div>
 
         <div className="proof-footer">
-          <p>Looking for tagged milestones and acceptance criteria?</p>
-          <Link href="/proof" className="cta-secondary">View full Proof Log →</Link>
+          <p>Looking for project examples and case studies?</p>
+          <Link href="/case-studies" className="cta-secondary">View case studies →</Link>
         </div>
       </section>
 

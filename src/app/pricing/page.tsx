@@ -183,7 +183,7 @@ export default function PricingPage() {
         <h2>Ready to Start?</h2>
         <div className="hero-ctas">
           <Link className="cta" href="/contact">Schedule a ScopeLock call →</Link>
-          <Link href="/proof">View recent proof →</Link>
+          <Link href="/case-studies">View case studies →</Link>
         </div>
       </section>
     </main>

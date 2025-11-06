@@ -107,11 +107,11 @@ export default function AboutPage() {
       <section className="card">
         <h2>See Our Work</h2>
         <p>
-          We practice what we promise. Check our <Link href="/proof">Proof Log</Link> to see tagged milestones,
-          Evidence Sprints, and acceptance criteria going green in CI/CD.
+          We practice what we promise. Check our <Link href="/case-studies">Case Studies</Link> to see delivered projects
+          and real-world examples of our work.
         </p>
         <div className="hero-ctas">
-          <Link className="cta" href="/proof">View Proof Log →</Link>
+          <Link className="cta" href="/case-studies">View Case Studies →</Link>
           <Link href="/contact">Schedule a kickoff</Link>
         </div>
       </section>

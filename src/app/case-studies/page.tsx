@@ -19,9 +19,6 @@ export default function CaseStudiesPage() {
           Every project we deliver generates <strong>proof artifacts</strong>: executable acceptance criteria,
           working demos ≤90s, and quantified deltas. Below are detailed writeups of select engagements.
         </p>
-        <p>
-          For real-time proof, see our <Link href="/proof">Proof Log</Link> with all tagged milestones.
-        </p>
       </section>
 
       <article className="card">
@@ -230,12 +227,10 @@ export default function CaseStudiesPage() {
       <section className="card">
         <h2>More Case Studies Coming</h2>
         <p>
-          As we deliver more milestones, we&apos;ll add detailed writeups here. For the latest proof,
-          check the <Link href="/proof">Proof Log</Link>.
+          As we deliver more milestones, we&apos;ll add detailed writeups here.
         </p>
         <div className="hero-ctas">
           <Link className="cta" href="/contact">Work with us</Link>
-          <Link href="/proof">See all proof →</Link>
         </div>
       </section>
     </main>
