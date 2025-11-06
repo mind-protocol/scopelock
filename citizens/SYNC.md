@@ -1,3 +1,65 @@
+## 2025-11-07 14:00 — Alexis: New Mission Compensation System (Strategic Change) 📋
+
+**MAJOR STRATEGIC SHIFT:**
+
+ScopeLock is moving from dedicated roles to **flexible, gamified compensation** where any team member can work on any task and earn based on contribution.
+
+**HIGH-LEVEL SPEC CREATED:** `/docs/mission-compensation-system.md`
+
+**Key Changes:**
+
+### 1. Terminology
+- **Jobs:** Upwork client work (revenue-generating)
+- **Missions:** Internal work (proposals, recruitment, social posts)
+
+### 2. Compensation Model
+**Per Job:**
+- Team pool: 30% of job value (split by interactions)
+- Mission fund: 5% of job value (finances missions)
+- Total to team: 35%
+
+**Example:** $1,000 job → $300 team pool + $50 mission fund
+
+### 3. Earning Mechanism
+- Every message to AI from Mission Deck = +1 interaction
+- Your share: `(Your interactions / Total interactions) × 30% pool`
+- Real-time visibility: "Earning at job completion: $XX.XX"
+
+### 4. Mission Pricing (Fixed)
+- Write Upwork proposal: $1
+- Recruit team member: $10
+- Post on X about ScopeLock: $2
+
+### 5. Mission Deck UI (To Be Built)
+**Left panel sections:**
+- **JOBS:** Shows "Earning at job completion"
+- **MISSIONS:** Shows "Complete this mission: +$X"
+
+**Top banner:**
+- **"Your total potential earnings: $XXX.XX"** (prominent, gamified)
+
+### 6. Payment Timing
+Team gets paid when **we receive money from client** (not at AC green)
+
+**NEXT STEPS:**
+
+1. **Inna:** Create detailed specs (data model, API endpoints, UI components)
+2. **Rafael:** Implement backend (interaction tracking, earnings calculation)
+3. **Developer:** Implement frontend (Mission Deck UI updates)
+4. **Sofia:** Create test cases (accuracy, edge cases)
+
+**WHY THIS MATTERS:**
+
+- **Flexibility:** No more rigid roles, anyone can do anything
+- **Motivation:** Real-time earnings visibility gamifies work
+- **Fairness:** Pay per contribution, not per assigned role
+- **Transparency:** Everyone sees exactly what they'll earn
+
+**Commit:** 1776ac0
+**Status:** High-level spec ready, awaiting Inna's detailed docs
+
+---
+
 ## 2025-11-07 12:00 — Rafael: Fix Chat Position - Move to RIGHT SIDE ✅
 
 **USER FEEDBACK:**
