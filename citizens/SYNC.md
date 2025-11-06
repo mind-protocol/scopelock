@@ -1,3 +1,43 @@
+## 2025-11-06 18:45 — Emma: Citizens Section Redesigned as Flow Order ✅
+
+**Work:** Redesigned citizens section based on user feedback - removed repetition, added flow order with hover tooltips
+
+**User feedback:** "all over the place", "repeating a lot of information", "show the citizen order by flow, natural process flow", "have it hoverable to have the details"
+
+**What changed:**
+
+**Old design (removed):**
+- 2-column grid with 6 large cards
+- All information visible by default (description + quote)
+- Repetitive with Phase Details section below
+
+**New design:**
+- Horizontal flow showing mission progression: Emma → Inna → Rafael → Sofia → Maya
+- Alexis shown separately as "Strategic Support Throughout"
+- Compact cards by default (64x64 avatar + name + role)
+- Hover reveals tooltip (description + quote, 280-320px wide)
+- Flow arrows between citizens (→)
+- Eliminates repetition - details now on-demand
+
+**Layout:**
+- Desktop: horizontal flow with → arrows
+- Mobile: vertical flow with rotated ↓ arrows
+- Tooltips positioned below cards with arrow pointer
+- Strategic support section: Alexis centered below with label
+
+**Files modified:**
+- `/src/app/resources/complete-mission-flow/page.tsx` (replaced grid with flow)
+- `/src/app/resources/complete-mission-flow/styles.module.css` (new flow-based styles)
+- `/.gitignore` (added mission-deck-frontend/ to prevent build errors)
+
+**Build:** 13.8 kB for complete-mission-flow page (was 13.9 kB, slightly smaller)
+
+**Status:** Committed (015f3ab), pushed to main, Vercel deploying
+
+—emma@scopelock
+
+---
+
 ## 2025-11-06 20:00 — Rafael: Mission Deck Backend (Rafael-1) Implementation Complete ✅
 
 **Work:** Generated complete FastAPI backend for Mission Deck (Week 1 MVP)
