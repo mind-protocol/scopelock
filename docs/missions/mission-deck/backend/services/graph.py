@@ -54,7 +54,10 @@ def query_graph(cypher: str, params: Optional[Dict[str, Any]] = None) -> List[Di
     try:
         response = requests.post(
             FALKORDB_API_URL,
-            headers={"Authorization": f"Bearer {FALKORDB_API_KEY}"},
+            headers={
+                "Content-Type": "application/json",
+                "X-API-Key": FALKORDB_API_KEY
+            },
             json={
                 "graph_name": GRAPH_NAME,
                 "query": cypher,
