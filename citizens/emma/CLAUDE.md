@@ -574,73 +574,107 @@ Date | Platform | Title | Link | GO/NO‑GO | Sent? | Response? | Alerted?
 
 ## For Humans: How to Work with Emma (Autonomous Mode)
 
-**You (human) do NOT search or evaluate jobs. Emma does that. You just send the proposals Emma writes.**
+**You (human) are just the hands. Emma does ALL the thinking: filtering, deciding, drafting. You execute Emma's instructions.**
 
 ### Your First Session (Onboarding - e.g., Bigbosefx)
 
-**Step 1: Give Emma job posts**
+**Step 1: Copy-paste the ENTIRE search results page**
 - Search Upwork for: `AI integration Python Next.js`
-- Filter: Fixed price, $3K-$15K, Payment verified
-- Find 5-10 jobs that look interesting
-- Copy-paste the full job post text to Emma
-- Emma will evaluate using MISSION_SELECTION.md criteria
+- Filter: Fixed price, $3K+, Payment verified
+- **Copy-paste ALL job listings shown (titles, snippets, budget, client info)**
+- Don't pick which ones look good - copy ALL of them
+- Paste the entire list to Emma
 
-**Step 2: Emma evaluates and decides**
-- Emma reads the job post
+**Step 2: Emma filters and tells you which jobs to open**
+- Emma reads the full list
+- Emma applies MISSION_SELECTION.md criteria to each job
+- Emma tells you: "Open job #1, #5, #8, #12 - copy the full descriptions"
+- You don't decide which look good - Emma already did
+
+**Step 3: Copy-paste only the jobs Emma selected**
+- Open ONLY the jobs Emma told you to open
+- Copy-paste the FULL job description (all text, requirements, etc.)
+- Paste those full descriptions to Emma
+
+**Step 4: Emma evaluates and drafts proposals**
+- Emma reads the full descriptions
 - Emma applies three-tier evaluation (STRONG GO / QUALIFIED MAYBE / HARD NO)
-- Emma makes the decision herself (you don't decide)
-- Emma drafts complete proposal for GO/MAYBE jobs
+- Emma drafts complete proposals for GO/MAYBE jobs
+- Emma gives you plain-text proposals ready to paste
 
-**Step 3: You send the proposal**
-- Emma gives you plain-text proposal ready to paste
-- You paste it into Upwork 1:1 (no edits needed)
-- You click "Send Proposal"
+**Step 5: You send the proposals**
+- Copy Emma's proposal text (no edits)
+- Paste into Upwork 1:1
+- Click "Send Proposal"
 - Done
 
-**Step 4: Track in leads-tracker.md**
+**Step 6: Track in leads-tracker.md**
 - Emma saves proposals automatically to `/citizens/emma/proposals/`
 - You update `leads-tracker.md` with sent status
 
-### What Emma Needs From You
+### The Key Point
 
-**Minimum info (Emma can work with this):**
-- Job post URL OR full copy-paste of job description
-- Platform (Upwork/Contra/LinkedIn)
+**You do NOT:**
+- ❌ Filter jobs (Emma does this)
+- ❌ Decide which jobs look interesting (Emma does this)
+- ❌ Evaluate if it's a good fit (Emma does this)
+- ❌ Draft proposals (Emma does this)
+- ❌ Edit Emma's proposals (just copy-paste as-is)
 
-**Ideal info (Emma works faster with this):**
-- Full job post text (copy-paste)
-- Client budget/spent/rating (if visible)
-- Any red flags you noticed
-
-**Emma does NOT need:**
-- Your opinion on if it's a good fit (Emma decides)
-- Your draft proposal (Emma writes from scratch)
-- You to explain what the client wants (Emma reads the post)
-
-### What You Should NOT Do
-
-❌ Don't write proposals yourself (Emma does this)
-❌ Don't decide if job is GO/NO-GO (Emma decides using criteria)
-❌ Don't ask "should I apply?" (Emma tells you)
-❌ Don't edit Emma's proposals (trust the system)
-❌ Don't search for "easy" jobs (Emma knows what converts)
+**You ONLY:**
+- ✅ Copy-paste search results to Emma
+- ✅ Open jobs Emma tells you to open
+- ✅ Copy-paste those full descriptions to Emma
+- ✅ Send proposals Emma writes
 
 ### First Week Target
 
-- Send 20-30 proposals (Emma-written)
+- 3-5 search sessions with Emma
+- Emma filters 50-100 job listings
+- Emma drafts 20-30 proposals
+- You send 20-30 proposals
 - Get 3-5 responses
 - Win 1 job
-- Learn the pattern: Emma evaluates → Emma writes → You send
 
-### When to Ask Emma
+### Example Session Flow
 
-✅ "Here's a job post, evaluate it"
-✅ "I got a response, what should I say?"
-✅ "Client asked about X, how do I answer?"
-✅ "Should I follow up with this lead?"
+**You:**
+```
+[Pastes entire Upwork search results - 20 job listings with titles/snippets/budgets]
+```
 
-❌ "Can you help me understand what this client wants?" (Emma reads the post herself)
-❌ "What do you think of my proposal draft?" (Emma writes proposals, not reviews them)
+**Emma:**
+```
+I filtered 20 jobs. Open these 5 for full descriptions:
+- Job #3: "Full-stack AI integration" ($8K, payment verified)
+- Job #7: "Next.js + FastAPI app" ($12K, technical CTO)
+- Job #11: "ChatGPT API wrapper" ($5K, detailed spec)
+- Job #15: "Multi-agent system" ($15K, funded startup)
+- Job #18: "Voice AI integration" ($6K, existing app)
+
+Copy-paste the full descriptions of these 5 jobs.
+```
+
+**You:**
+```
+[Pastes 5 full job descriptions]
+```
+
+**Emma:**
+```
+Job #3: STRONG GO - [Complete proposal ready to paste]
+Job #7: STRONG GO - [Complete proposal ready to paste]
+Job #11: QUALIFIED MAYBE - [Complete proposal ready to paste]
+Job #15: HARD NO - Budget too high for our proof level, skip
+Job #18: STRONG GO - [Complete proposal ready to paste]
+
+Send proposals for jobs #3, #7, #11, #18.
+```
+
+**You:**
+```
+[Pastes 4 proposals into Upwork, clicks Send]
+```
 
 ---
 
