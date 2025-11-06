@@ -7,7 +7,7 @@
 
 /* Header */
 .header {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .backLink {
@@ -61,6 +61,7 @@
   border-left: 3px solid var(--accent);
   border-radius: 4px;
   font-size: 0.95rem;
+  margin-top: 1.5rem;
 }
 
 .resources strong {
@@ -80,7 +81,8 @@
 
 /* Lead */
 .lead {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 .leadQuote {
@@ -114,7 +116,7 @@
 
 /* Visual Flow Diagram */
 .visualFlow {
-  margin: 4rem 0;
+  margin: 4rem 0 5rem 0;
   padding: 3rem 2rem;
   background: linear-gradient(135deg, rgba(30, 229, 184, 0.05) 0%, rgba(100, 168, 255, 0.05) 100%);
   border-radius: 16px;
@@ -146,11 +148,13 @@
   gap: 0;
   margin-bottom: 3rem;
   flex-wrap: wrap;
+  row-gap: 2rem;
 }
 
 .flowPhaseWrapper {
   display: flex;
   align-items: center;
+  margin: 0.5rem 0;
 }
 
 .flowPhase {
@@ -297,12 +301,12 @@
 
 /* Big Picture */
 .bigPicture {
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .bigPicture h2 {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   color: var(--text);
 }
 
@@ -472,7 +476,7 @@
   font-size: 1rem;
   color: var(--muted);
   font-style: italic;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .insight strong {
@@ -481,13 +485,13 @@
 
 /* Phase Sections */
 .phaseSection {
-  margin-bottom: 4rem;
-  padding-top: 2rem;
+  margin-bottom: 5rem;
+  padding-top: 3rem;
   border-top: 1px solid var(--surface);
 }
 
 .phaseSectionHeader {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .phaseSectionHeader h2 {
@@ -581,7 +585,7 @@
   border: 1px solid var(--accent);
   border-radius: 8px;
   padding: 1.5rem;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
 .calloutBox h4 {
@@ -611,7 +615,7 @@
   border-left: 4px solid var(--danger);
   border-radius: 8px;
   padding: 1.5rem;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
 .escalationBox h4 {
@@ -649,7 +653,7 @@
   border-left: 4px solid var(--warning);
   border-radius: 8px;
   padding: 1.5rem;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
 .placeholder p {
@@ -712,7 +716,7 @@
   background: var(--surface);
   border-radius: 12px;
   padding: 2rem;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
 .bugFixLoop h3 {
@@ -771,14 +775,14 @@
 
 /* Decision Points */
 .decisionPoints {
-  margin-bottom: 4rem;
-  padding-top: 2rem;
+  margin-bottom: 5rem;
+  padding-top: 3rem;
   border-top: 1px solid var(--surface);
 }
 
 .decisionPoints h2 {
   font-size: 1.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .referenceTable {
@@ -826,7 +830,7 @@
   border: 2px solid var(--accent);
   border-radius: 12px;
   padding: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .escalationRule h3 {
@@ -843,14 +847,14 @@
 
 /* Quiz */
 .quiz {
-  margin-bottom: 4rem;
-  padding-top: 2rem;
+  margin-bottom: 5rem;
+  padding-top: 3rem;
   border-top: 1px solid var(--surface);
 }
 
 .quiz h2 {
   font-size: 1.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .quizQuestion {
@@ -887,6 +891,7 @@
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--bg);
+  line-height: 1.6;
 }
 
 .quizAnswer p {
@@ -906,14 +911,14 @@
 
 /* Quick Reference */
 .quickRef {
-  margin-bottom: 4rem;
-  padding-top: 2rem;
+  margin-bottom: 5rem;
+  padding-top: 3rem;
   border-top: 1px solid var(--surface);
 }
 
 .quickRef h2 {
   font-size: 1.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .refCard {
@@ -962,14 +967,14 @@
 
 /* Next Steps */
 .nextSteps {
-  margin-bottom: 3rem;
-  padding-top: 2rem;
+  margin-bottom: 4rem;
+  padding-top: 3rem;
   border-top: 1px solid var(--surface);
 }
 
 .nextSteps h2 {
   font-size: 1.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .nextSteps p {
@@ -995,8 +1000,8 @@
 
 /* Footer */
 .footer {
-  margin-top: 4rem;
-  padding-top: 2rem;
+  margin-top: 5rem;
+  padding-top: 2.5rem;
   border-top: 1px solid var(--surface);
   text-align: center;
   color: var(--muted);
