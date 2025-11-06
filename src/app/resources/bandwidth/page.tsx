@@ -438,7 +438,7 @@ export default function BandwidthSolutionsPage() {
       <section className="solution-card solution-help">
         <h2>Need Help?</h2>
         <p className="help-text">
-          Ask <strong>Kai "The guide"</strong> on Claude.
+          Ask <a href="https://claude.ai/project/019a5a06-1096-71ee-bd64-4963bf6d4857" target="_blank" rel="noopener" className="kai-link">Kai "The guide"</a> on Claude.
         </p>
       </section>
 

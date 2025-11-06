@@ -946,6 +946,19 @@ kbd {
   margin: 1rem 0;
 }
 
+.kai-link {
+  color: var(--slk-accent);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.kai-link:hover {
+  border-bottom-color: var(--slk-accent);
+  text-decoration: none;
+}
+
 .help-meta {
   font-size: 0.9rem;
   color: var(--slk-text-muted);
