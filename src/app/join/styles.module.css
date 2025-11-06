@@ -53,6 +53,14 @@
   text-align: center;
   margin-bottom: 16px;
   color: #E6EAF2;
+  background: none;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle::before,
+.sectionTitle::after {
+  content: none;
 }
 
 .sectionSubtitle {
