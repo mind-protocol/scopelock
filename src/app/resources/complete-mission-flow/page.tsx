@@ -25,6 +25,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 1,
       name: 'ACQUIRE',
+      emoji: '🎯',
       duration: '~2 min',
       owner: 'Bigbosexf',
       aiSupport: 'Emma',
@@ -34,6 +35,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 2,
       name: 'SPECIFY',
+      emoji: '📋',
       duration: 'TBD',
       owner: 'Reanance',
       aiSupport: 'Inna',
@@ -43,6 +45,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 3,
       name: 'BUILD',
+      emoji: '⚙️',
       duration: '2-5 days',
       owner: 'Kara',
       aiSupport: 'Rafael',
@@ -52,6 +55,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 4,
       name: 'TEST',
+      emoji: '✅',
       duration: '2-4 hours',
       owner: 'Bigbosexf',
       aiSupport: 'Sofia',
@@ -61,6 +65,7 @@ export default function CompleteMissionFlowPage() {
     {
       number: 5,
       name: 'DELIVER',
+      emoji: '🚀',
       duration: '~1 day',
       owner: 'Reanance',
       aiSupport: 'Maya',
@@ -110,9 +115,51 @@ export default function CompleteMissionFlowPage() {
         </p>
       </section>
 
-      {/* The Big Picture: 5 Phases */}
-      <section className={styles.bigPicture}>
+      {/* Visual Flow Diagram */}
+      <section className={styles.visualFlow}>
         <h2>The Big Picture: 5 Phases</h2>
+        <p className={styles.flowSubtitle}>From job post to payment in 1-2 weeks</p>
+
+        <div className={styles.flowDiagram}>
+          {phases.map((phase, index) => (
+            <div key={phase.number} className={styles.flowPhaseWrapper}>
+              <div className={styles.flowPhase}>
+                <div className={styles.flowPhaseIcon}>{phase.emoji}</div>
+                <div className={styles.flowPhaseNumber}>{phase.number}</div>
+                <div className={styles.flowPhaseName}>{phase.name}</div>
+                <div className={styles.flowPhaseDuration}>{phase.duration}</div>
+              </div>
+              {index < phases.length - 1 && (
+                <div className={styles.flowArrow}>
+                  <svg width="60" height="24" viewBox="0 0 60 24" fill="none">
+                    <path d="M0 12 L50 12 M50 12 L45 7 M50 12 L45 17"
+                          stroke="#1ee5b8"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.flowTimeline}>
+          <div className={styles.timelineBar}>
+            <div className={styles.timelineProgress}></div>
+          </div>
+          <div className={styles.timelineLabels}>
+            <span>Day 1</span>
+            <span>Week 1</span>
+            <span>Week 2</span>
+            <span>Payment</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Phase Cards */}
+      <section className={styles.bigPicture}>
+        <h2>Phase Details</h2>
 
         <div className={styles.phaseDiagram}>
           {phases.map((phase, index) => (

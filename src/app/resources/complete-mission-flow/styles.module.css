@@ -112,6 +112,189 @@
   color: var(--accent);
 }
 
+/* Visual Flow Diagram */
+.visualFlow {
+  margin: 4rem 0;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(30, 229, 184, 0.05) 0%, rgba(100, 168, 255, 0.05) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(30, 229, 184, 0.2);
+}
+
+.visualFlow h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #1ee5b8 0%, #64a8ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flowSubtitle {
+  text-align: center;
+  font-size: 1.125rem;
+  color: #9aa3ae;
+  margin-bottom: 3rem;
+}
+
+.flowDiagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.flowPhaseWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.flowPhase {
+  background: linear-gradient(135deg, #1a1f28 0%, #151a21 100%);
+  border: 2px solid rgba(30, 229, 184, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  min-width: 140px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.flowPhase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(30, 229, 184, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.flowPhase:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: #1ee5b8;
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.3);
+}
+
+.flowPhase:hover::before {
+  left: 100%;
+}
+
+.flowPhaseIcon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.flowPhaseNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #1ee5b8 0%, #64a8ff 100%);
+  color: #0e1116;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.flowPhaseName {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #e6eaf2;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.flowPhaseDuration {
+  font-size: 0.875rem;
+  color: #9aa3ae;
+}
+
+.flowArrow {
+  padding: 0 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}
+
+.flowArrow svg {
+  display: block;
+}
+
+/* Timeline Progress Bar */
+.flowTimeline {
+  margin-top: 2rem;
+}
+
+.timelineBar {
+  position: relative;
+  height: 8px;
+  background: rgba(154, 163, 174, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.timelineProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 75%;
+  background: linear-gradient(90deg, #1ee5b8 0%, #64a8ff 100%);
+  border-radius: 4px;
+  animation: progressFill 2s ease-out;
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 75%;
+  }
+}
+
+.timelineLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #9aa3ae;
+}
+
+.timelineLabels span:last-child {
+  color: #5ce27e;
+  font-weight: 600;
+}
+
 /* Big Picture */
 .bigPicture {
   margin-bottom: 4rem;
@@ -139,23 +322,49 @@
 }
 
 .phase {
-  background: var(--surface);
-  border: 2px solid var(--surface);
+  background: linear-gradient(135deg, rgba(21, 26, 33, 0.9) 0%, rgba(26, 31, 40, 0.9) 100%);
+  border: 2px solid rgba(154, 163, 174, 0.2);
   border-radius: 12px;
   padding: 1.5rem;
   min-width: 220px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.phase::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #1ee5b8 0%, #64a8ff 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
 .phase:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  border-color: rgba(30, 229, 184, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.2);
+}
+
+.phase:hover::after {
+  transform: scaleX(1);
 }
 
 .phaseExpanded {
-  border-color: var(--accent);
-  background: rgba(30, 229, 184, 0.05);
+  border-color: #1ee5b8;
+  background: linear-gradient(135deg, rgba(30, 229, 184, 0.08) 0%, rgba(100, 168, 255, 0.08) 100%);
+  box-shadow: 0 4px 16px rgba(30, 229, 184, 0.3);
+}
+
+.phaseExpanded::after {
+  transform: scaleX(1);
 }
 
 .phaseHeader {
@@ -817,6 +1026,30 @@
 
   .header h1 {
     font-size: 2rem;
+  }
+
+  .visualFlow {
+    padding: 2rem 1rem;
+  }
+
+  .flowDiagram {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .flowPhaseWrapper {
+    flex-direction: column;
+  }
+
+  .flowArrow {
+    transform: rotate(90deg);
+    padding: 0.75rem 0;
+  }
+
+  .flowPhase {
+    min-width: 200px;
+    width: 100%;
+    max-width: 280px;
   }
 
   .phaseDiagram {
