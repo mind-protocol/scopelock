@@ -14,22 +14,24 @@ These scripts analyze Telegram conversation exports to identify:
 
 ### 1. `find_team_members.py` ⭐ NEW
 
-**Purpose:** Find people who could join ScopeLock team (supervise missions, not code)
+**Purpose:** Find people who could join ScopeLock team using dual-profile detection
 
-**Target Profile:**
+**Target Profiles:**
+
+#### Profile Type 1: SUPERVISORS (NOT professional developers)
 - From Nigeria, India, Philippines, Latin America, etc. (cost of living fit)
 - Looking for remote/part-time work (5-30 hours/week)
 - Students, recent graduates, junior developers
 - Basic English, willing to learn, can follow guides
 - **NOT** requiring: GitHub portfolios, years of experience, senior roles
 
-**What They'll Do:**
+**What Supervisors Do:**
 - Supervise AI-generated code (Rafael writes 100% of code)
 - Deploy to Vercel/Render (copy-paste commands from guides)
 - Test using Sofia's QA checklists
 - Earn $360-1800/month commission in $SOL
 
-**Detection Signals:**
+**Supervisor Detection Signals:**
 - Geographic fit (mentions target countries/cities)
 - Seeking work ("looking for remote work", "need income")
 - Hours availability ("can work 20 hours/week")
@@ -37,10 +39,38 @@ These scripts analyze Telegram conversation exports to identify:
 - Willingness to learn ("willing to learn", "eager to work")
 - Remote work interest ("upwork", "freelance", "work from home")
 
-**Exclusions:**
+**Supervisor Exclusions:**
 - Senior developers (5+ years experience)
 - High rates ($50+/hour - too expensive)
 - CTOs, tech leads, architects
+
+#### Profile Type 2: SOLANA HUSTLERS (marketing/community/creative)
+- Raiders (coordinate raids, engage communities, Twitter Spaces)
+- Designers (UI/UX, graphics, branding, Figma)
+- AMA hosts (community engagement, event hosting)
+- Moderators (Discord/Telegram community management)
+- Marketing types (growth hackers, KOLs, influencers, content creators)
+
+**What Hustlers Do:**
+- Marketing & outreach campaigns
+- Community engagement & growth
+- Design work (UI/UX, graphics, branding)
+- Event hosting & moderation
+- Raid coordination & social engagement
+- Earn commission in $SOL for successful campaigns/growth
+
+**Hustler Detection Signals:**
+- Raiding: "raid", "coordinate raids", "engagement farming", "Twitter Spaces"
+- Design: "UI/UX", "Figma", "graphic design", "logo", "portfolio", "Behance"
+- AMA hosting: "host AMA", "community events", "space host"
+- Moderation: "mod", "moderator", "Discord mod", "community manager"
+- Marketing: "growth", "social media", "KOL", "influencer", "viral", "campaigns"
+- Solana ecosystem: "SOL", "Jupiter", "Orca", "degen", "NFT", "web3"
+
+**Output Profile Types:**
+- 👤 **Supervisor** - Traditional remote worker fit
+- 🚀 **Hustler** - Solana ecosystem marketing/creative fit
+- ⭐ **Hybrid** - BOTH supervisor AND hustler (best match!)
 
 ### 2. `find_potential_clients.py` ⭐ NEW
 
@@ -121,11 +151,14 @@ python3 find_potential_clients.py
 **`team_members/team_members.json`**
 - Full analysis with all signals
 - Structured data for automation
+- Includes: profile_type, supervisor_score, hustler_score
 
 **`team_members/team_members_summary.txt`**
 - Human-readable summary
-- Sorted by score (highest = best fit)
-- Shows key signals + sample messages
+- Sorted by profile type and scores
+- Shows both supervisor and hustler signals
+- Profile type indicators: 👤 Supervisor, 🚀 Hustler, ⭐ Hybrid
+- Sample messages for each signal type
 
 ### Potential Clients
 
@@ -145,8 +178,14 @@ python3 find_potential_clients.py
 ### For Team Members:
 
 1. **Review** `team_members_summary.txt`
-2. **Filter** for highest scores (15+ = very strong fit)
+2. **Filter** by profile type and scores:
+   - ⭐ **Hybrid** (15+ combined score) = highest priority (both skills!)
+   - 👤 **Supervisor** (15+ supervisor score) = strong traditional fit
+   - 🚀 **Hustler** (15+ hustler score) = strong marketing/creative fit
+
 3. **Reach out** via Telegram with personalized message:
+
+#### For Supervisors:
 
 ```
 Hi [Name]!
@@ -162,6 +201,36 @@ Requirements:
 - Willingness to learn
 
 Interested? Let's chat!
+
+https://scopelock.mindprotocol.ai/join
+```
+
+#### For Hustlers:
+
+```
+Hi [Name]!
+
+Saw you're active in [Solana/web3/design/community]. We have paid opportunities at ScopeLock.
+
+We need [raiders/designers/AMA hosts/mods/marketers] to help us grow. Commission-based work, paid in $SOL.
+
+If you're [designing/raiding/hosting/growing communities], let's talk about collaboration opportunities.
+
+Interested?
+
+https://scopelock.mindprotocol.ai/join
+```
+
+#### For Hybrid (Both):
+
+```
+Hi [Name]!
+
+Saw you're both [work-seeking/designer/community-active]. Perfect fit for ScopeLock!
+
+We need people who can supervise AI-generated code AND help with [design/marketing/community]. Double the opportunities, flexible hours, paid in $SOL.
+
+Your skills in [specific signals] would be valuable. Let's chat!
 
 https://scopelock.mindprotocol.ai/join
 ```
@@ -262,9 +331,13 @@ https://scopelock.mindprotocol.ai
 ### High-Quality Matches
 
 **Team Members:**
-- Score 15+ = excellent fit
-- Geographic fit + seeking work + junior = perfect
-- Avoid if they mention "senior", "5+ years", "$50/hour"
+- **Hybrid** (⭐) score 20+ combined = BEST FIT (both supervisor AND hustler skills)
+- **Supervisor** (👤) score 15+ = excellent traditional fit
+  - Geographic fit + seeking work + junior = perfect
+  - Avoid if they mention "senior", "5+ years", "$50/hour"
+- **Hustler** (🚀) score 15+ = excellent marketing/creative fit
+  - Solana ecosystem + raiding/design/AMA/mod = perfect
+  - Strong if combined with web3/crypto mentions
 
 **Clients:**
 - Score 18+ = excellent fit
