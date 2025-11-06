@@ -598,6 +598,97 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <footer style={{
+        marginTop: '4rem',
+        padding: '3rem 0 2rem',
+        borderTop: '1px solid var(--slk-border)',
+        background: 'var(--slk-bg)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 1.5rem',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '2rem'
+        }}>
+          <div>
+            <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>ScopeLock</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--slk-text-muted)', lineHeight: '1.6' }}>
+              Professional software & creative work. Fixed pricing. Fast delivery.
+            </p>
+          </div>
+
+          <div>
+            <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Services</h3>
+            <ul style={{ listStyle: 'none', padding: 0, fontSize: '0.9rem', lineHeight: '2' }}>
+              <li><a href="#services-title" style={{ color: 'var(--slk-text-muted)' }}>Web Development</a></li>
+              <li><a href="#services-title" style={{ color: 'var(--slk-text-muted)' }}>AI Chatbots</a></li>
+              <li><a href="#services-title" style={{ color: 'var(--slk-text-muted)' }}>Presentations</a></li>
+              <li><a href="#services-title" style={{ color: 'var(--slk-text-muted)' }}>Creative AI Services</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Company</h3>
+            <ul style={{ listStyle: 'none', padding: 0, fontSize: '0.9rem', lineHeight: '2' }}>
+              <li><Link href="/about" style={{ color: 'var(--slk-text-muted)' }}>About</Link></li>
+              <li><Link href="/proof" style={{ color: 'var(--slk-text-muted)' }}>Proof Log</Link></li>
+              <li><a href="#faq-title" style={{ color: 'var(--slk-text-muted)' }}>FAQ</a></li>
+              <li><a href="#contact" style={{ color: 'var(--slk-text-muted)' }}>Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Connect</h3>
+            <ul style={{ listStyle: 'none', padding: 0, fontSize: '0.9rem', lineHeight: '2' }}>
+              <li>
+                <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
+                  GitHub (Personal)
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/mind-protocol" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
+                  GitHub (Organization)
+                </a>
+              </li>
+              <li>
+                <a href="mailto:scopelock@mindprotocol.ai" style={{ color: 'var(--slk-text-muted)' }}>
+                  scopelock@mindprotocol.ai
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div style={{
+          maxWidth: '1200px',
+          margin: '2rem auto 0',
+          padding: '2rem 1.5rem 0',
+          borderTop: '1px solid var(--slk-border)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}>
+          <p style={{ fontSize: '0.85rem', color: 'var(--slk-text-muted)', margin: 0 }}>
+            © {new Date().getFullYear()} Mind Protocol. Solo architect + AI-assisted teams.
+          </p>
+          <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.85rem' }}>
+            <a href="https://serenissima.ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
+              serenissima.ai
+            </a>
+            <a href="https://therapykin.ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
+              therapykin.ai
+            </a>
+            <a href="https://konginvest.ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
+              konginvest.ai
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
