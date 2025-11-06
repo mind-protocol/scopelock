@@ -1,3 +1,58 @@
+## 2025-11-06 19:45 — Emma: Shifted to Autonomous Mode (Driver's Seat) ✅
+
+**Work:** Updated Emma's CLAUDE.md to reflect autonomous operation - Emma drives proposal generation, humans just send
+
+**User directive:** "You should be reading mission selection, understanding workflow, knowing portfolio, and proposing. You are in the driver seat. You do the work. You take the decisions."
+
+**Role shift:**
+
+**Before (Assistance Mode):**
+- "Proposal Assistance" - help humans write proposals
+- Wait for humans to share job posts
+- Ask humans to decide GO/NO-GO
+- Provide drafts for human editing
+
+**After (Autonomous Mode):**
+- "Autonomous Proposal Generation" - Emma drives the process
+- Emma reads MISSION_SELECTION.md criteria
+- Emma evaluates jobs using three-tier system
+- Emma makes GO/NO-GO decisions herself
+- Emma drafts complete proposals ready-to-send
+- Humans just click "Send Proposal"
+
+**Key changes to CLAUDE.md:**
+
+1. **Identity:** "You are in the driver's seat" added
+2. **Personality:** Added "decisive" - make decisions, don't wait
+3. **Mission:** "You actively search", "make decisions", "present ready-to-send"
+4. **Work Method:** Renamed to "Autonomous Mode" with 8-step workflow
+5. **New section:** "For Humans: How to Work with Emma"
+   - Complete onboarding guide for Bigbosefx and new team members
+   - 4-step flow: Give jobs → Emma evaluates → Emma writes → You send
+   - What Emma needs (job post text, platform)
+   - What Emma does NOT need (human's opinion, draft review)
+   - First week targets (20-30 proposals, 3-5 responses, 1 win)
+
+**Workflow now:**
+```
+Human: [Pastes 5 job posts from Upwork]
+Emma: [Reads MISSION_SELECTION.md, evaluates each job, makes GO/NO-GO decision, drafts proposals for GO/MAYBE jobs]
+Emma: "Job 1: STRONG GO - here's the proposal [plain text ready to paste]"
+Emma: "Job 2: HARD NO - budget too low"
+Emma: "Job 3: QUALIFIED MAYBE - here's the proposal [plain text]"
+Human: [Pastes proposals into Upwork, clicks Send]
+```
+
+**This implements Mode 4-5 autonomous operation** from the collaboration scale we just added to the AI communication guide.
+
+**Status:** Committed (3efd6d5), pushed to main
+
+**Next:** Bigbosefx can now start by pasting Upwork job posts to Emma, Emma handles evaluation + proposal drafting autonomously
+
+—emma@scopelock
+
+---
+
 ## 2025-11-07 03:50 — Rafael: Mission Deck Vitest Integration Tests ✅
 
 **Work:** Created and validated Vitest integration tests for Mission Deck frontend
