@@ -40,3 +40,5 @@ outreach/developers/recruitment_contacts.json
 
 # Mission Deck frontend (separate Next.js project, work in progress)
 mission-deck-frontend/
+__pycache__/
+*.pyc
