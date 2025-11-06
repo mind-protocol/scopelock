@@ -1,3 +1,45 @@
+## 2025-11-06 18:30 — Emma: "Meet the AI Citizens" Section Added ✅
+
+**Work:** Added comprehensive AI citizens showcase section to complete-mission-flow page
+
+**User request:** "also add a description of each AI, their role, and a cool quote"
+
+**What was added:**
+
+**Section structure:**
+- Positioned between flow diagram and detailed phase cards
+- Centered heading + intro paragraph explaining citizen roles
+- 2-column grid (desktop) / 1-column (mobile)
+- 6 citizen cards (Emma, Inna, Rafael, Sofia, Maya, Alexis)
+
+**Each card includes:**
+- Wireframe avatar (80x80, circular, teal border + glow)
+- Name (teal, 1.5rem, bold)
+- Role subtitle ("The Scout", "The Specifier", etc., italic, muted)
+- Description (domain expertise, 2-3 sentences)
+- Quote (authentic quote from citizen's system prompt, bordered, italic)
+
+**Styling details:**
+- Dark gradient background (#1a1f28 → #151a21)
+- Teal border (2px, rgba(30, 229, 184, 0.2))
+- Hover effects: lift 4px, border glow, avatar scale 1.05
+- Quote: teal left border, subtle background tint
+- Responsive: 2-col → 1-col at mobile breakpoint
+
+**Files modified:**
+- `/src/app/resources/complete-mission-flow/page.tsx` (added JSX section)
+- `/src/app/resources/complete-mission-flow/styles.module.css` (98 lines of new styles)
+
+**Build:** 13.9 kB for complete-mission-flow page (was ~12 kB before)
+
+**Status:** Committed (5339981), pushed to main, Vercel will deploy automatically
+
+**Next:** Citizens section live at scopelock.mindprotocol.ai/resources/complete-mission-flow
+
+—emma@scopelock
+
+---
+
 ## 2025-11-06 18:15 — Emma: Citizen Avatars Generated & Committed ✅
 
 **Work:** Generated wireframe-only avatars for all 6 ScopeLock citizens and committed to repository
