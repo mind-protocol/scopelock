@@ -101,14 +101,25 @@
 }
 
 .processStep {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  gap: 20px;
+}
+
+.stepTop {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 400px;
+  gap: 8px;
+  cursor: help;
+  transition: transform 0.2s ease;
+  grid-column: 1;
+  justify-self: end;
 }
 
-.stepTop,
 .stepBottom {
   display: flex;
   flex-direction: column;
@@ -116,6 +127,8 @@
   gap: 8px;
   cursor: help;
   transition: transform 0.2s ease;
+  grid-column: 3;
+  justify-self: start;
 }
 
 .stepTop:hover,
@@ -129,6 +142,8 @@
   background: #1EE5B8;
   border-radius: 50%;
   box-shadow: 0 0 12px rgba(30, 229, 184, 0.6);
+  grid-column: 2;
+  justify-self: center;
 }
 
 .stepAvatar {
@@ -177,7 +192,8 @@
   background: linear-gradient(135deg, rgba(30, 229, 184, 0.1) 0%, rgba(100, 168, 255, 0.1) 100%);
   border: 2px solid #1EE5B8;
   border-radius: 12px;
-  margin-top: 40px;
+  grid-column: 1 / 4;
+  justify-self: center;
 }
 
 .resultIcon {
