@@ -1,3 +1,44 @@
+## 2025-11-07 11:15 — Rafael: Add Citizen Profile Pictures to Mission Deck ✅
+
+**USER REQUEST:**
+- "add citizens profile pic to the mission deck"
+
+**IMPLEMENTATION:**
+Added circular profile pictures (40x40px) to the CitizenSelector horizontal tabs:
+
+**Features:**
+- Profile images from `/citizens/{id}/avatar.png` (emma, inna, rafael, sofia, maya)
+- Using Next.js Image component for optimization
+- Circular avatars (border-radius: 50%)
+- Active citizen gets accent-colored border (2px solid var(--slk-accent))
+- Status indicator dot overlay on bottom-right of avatar (12px, shows active/complete/waiting status)
+- Increased spacing between elements (gap: 12px) to accommodate larger profile pictures
+
+**Visual hierarchy:**
+1. Profile picture (40x40px circular)
+2. Status dot overlay (bottom-right, 12px with border)
+3. Name + Role text (next to avatar)
+
+**FILES MODIFIED:**
+- src/components/mission-deck/CitizenSelector.tsx (+27 lines, -9 lines)
+
+**COMMIT:** 5f97fa1
+**STATUS:** Pushed to production ✅
+
+**WHY THIS MATTERS:**
+- Visual identity for each citizen (easier to recognize)
+- Professional UI with profile pictures
+- Status visible at-a-glance on avatar overlay
+- Better UX than text-only tabs
+
+**VERIFICATION:**
+- Visit: https://scopelock.mindprotocol.ai/mission-deck/console
+- See 5 citizen tabs with profile pictures: Emma, Inna, Rafael, Sofia, Maya
+- Active citizen (Rafael) has glowing border around avatar
+- Status dots show on each avatar (green for active, etc.)
+
+---
+
 ## 2025-11-07 11:00 — Rafael: Fix React Hydration Errors (Remove ALL Tailwind) ✅
 
 **USER FEEDBACK:**
