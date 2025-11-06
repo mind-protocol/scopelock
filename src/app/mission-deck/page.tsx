@@ -1,30 +1,56 @@
-// Login Page
+// Login Page - Solana Wallet Authentication
 // Maps to: docs/missions/mission-deck/AC.md F1 (User Authentication)
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { api } from '../../lib/api';
+import bs58 from 'bs58';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { publicKey, signMessage, connected } = useWallet();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Auto-redirect if already authenticated
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      router.push('/mission-deck/console');
+    }
+  }, [router]);
+
+  // Handle wallet authentication
+  const handleWalletAuth = async () => {
+    if (!publicKey || !signMessage) {
+      setError('Wallet not connected');
+      return;
+    }
+
     setError('');
     setIsLoading(true);
 
     try {
-      await api.login(email, password);
+      // Create message to sign
+      const message = `Sign this message to authenticate with Mission Deck.\n\nWallet: ${publicKey.toBase58()}\nTimestamp: ${new Date().toISOString()}`;
+      const encodedMessage = new TextEncoder().encode(message);
+
+      // Sign message with wallet
+      const signature = await signMessage(encodedMessage);
+      const signatureBase58 = bs58.encode(signature);
+
+      // Send to backend for verification
+      await api.loginWithWallet(publicKey.toBase58(), signatureBase58, message);
+
       // Redirect to console
-      router.push('/console');
+      router.push('/mission-deck/console');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
+      console.error('Wallet auth error:', err);
+      setError(err instanceof Error ? err.message : 'Authentication failed');
     } finally {
       setIsLoading(false);
     }
@@ -39,54 +65,54 @@ export default function LoginPage() {
         </div>
 
         <div className="panel p-8">
-          <h2 className="text-xl font-semibold text-text mb-6">Log In</h2>
+          <h2 className="text-xl font-semibold text-text mb-6 text-center">
+            Connect Wallet to Continue
+          </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-muted mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="input w-full"
-                placeholder="you@scopelock.ai"
-                required
-              />
+          <div className="space-y-4">
+            {/* Wallet Connect Button */}
+            <div className="flex justify-center">
+              <WalletMultiButton className="!bg-accent hover:!bg-accent/80" />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-muted mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="input w-full"
-                placeholder="••••••••"
-                required
-              />
-            </div>
+            {/* Authenticate Button (shown when wallet connected) */}
+            {connected && (
+              <>
+                <div className="text-center">
+                  <div className="text-sm text-muted mb-2">
+                    Connected: {publicKey?.toBase58().slice(0, 4)}...
+                    {publicKey?.toBase58().slice(-4)}
+                  </div>
+                </div>
 
+                <button
+                  onClick={handleWalletAuth}
+                  disabled={isLoading}
+                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? 'Authenticating...' : 'Sign & Authenticate'}
+                </button>
+              </>
+            )}
+
+            {/* Error Display */}
             {error && (
               <div className="bg-danger/10 border border-danger text-danger text-sm p-3 rounded-md">
                 {error}
               </div>
             )}
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? 'Logging in...' : 'Log In'}
-            </button>
-          </form>
-
-          <div className="mt-6 text-center text-sm text-muted">
-            <p>Week 1 MVP - Any email + password works (mock auth)</p>
+            {/* Info */}
+            <div className="mt-6 text-center text-sm text-muted space-y-2">
+              <p>
+                <strong>Supported Wallets:</strong> Phantom, Solflare, Backpack
+              </p>
+              <p className="text-xs">
+                You'll be asked to sign a message to prove wallet ownership.
+                <br />
+                No transaction fees required.
+              </p>
+            </div>
           </div>
         </div>
       </div>

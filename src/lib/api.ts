@@ -336,10 +336,50 @@ export const api = {
     return response;
   },
 
+  // Solana wallet authentication
+  loginWithWallet: async (
+    wallet_address: string,
+    signature: string,
+    message: string
+  ): Promise<LoginResponse> => {
+    if (USE_MOCK_DATA) {
+      // Mock wallet login
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      const mockResponse: LoginResponse = {
+        access_token: 'mock-wallet-jwt-token',
+        token_type: 'bearer',
+        user: {
+          id: 'user-wallet-' + wallet_address.slice(0, 8),
+          email: wallet_address + '@wallet',
+          name: wallet_address.slice(0, 4) + '...' + wallet_address.slice(-4),
+        },
+      };
+      localStorage.setItem('auth_token', mockResponse.access_token);
+      return mockResponse;
+    }
+
+    const response = await apiCall<LoginResponse>('/api/auth/wallet-login', {
+      method: 'POST',
+      body: JSON.stringify({
+        wallet_address,
+        signature,
+        message,
+      }),
+    });
+
+    // Store JWT token for future authenticated requests
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('auth_token', response.access_token);
+    }
+
+    return response;
+  },
+
   logout: (): void => {
     // Clear local token immediately
     if (typeof window !== 'undefined') {
       localStorage.removeItem('access_token');
+      localStorage.removeItem('auth_token');
     }
 
     // Call backend logout endpoint in background (don't block UI)

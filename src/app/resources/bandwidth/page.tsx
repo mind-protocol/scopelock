@@ -15,12 +15,6 @@ export default function BandwidthSolutionsPage() {
           4 simple tools that make Upwork, Telegram, and screen sharing work on any connection speed.
           Set up once (15 minutes), work faster forever.
         </p>
-        <div className="bandwidth-audience">
-          <span className="audience-tag">🇳🇬 Nigeria</span>
-          <span className="audience-tag">🇮🇳 India</span>
-          <span className="audience-tag">🇵🇭 Philippines</span>
-          <span className="audience-tag">🌍 Rural areas</span>
-        </div>
       </header>
 
       {/* Solution 1: Opera Turbo */}
@@ -28,7 +22,7 @@ export default function BandwidthSolutionsPage() {
         <div className="solution-header">
           <div className="solution-icon">🚀</div>
           <div>
-            <h2>Opera Browser loads Upwork 5x faster than Chrome</h2>
+            <h2>1. Opera Browser loads Upwork 5x faster than Chrome</h2>
             <p className="solution-tagline">Upwork loads in 2 seconds instead of 10+ seconds</p>
           </div>
         </div>
@@ -38,10 +32,11 @@ export default function BandwidthSolutionsPage() {
           Works on 2G, 3G, or unstable WiFi. Free forever.
         </div>
 
-        <details className="setup-steps" open>
+        <details className="setup-steps">
           <summary className="setup-summary">
             <span className="setup-icon">📖</span>
             <strong>Click to see setup (5 minutes)</strong>
+            <span className="chevron">›</span>
           </summary>
           <div className="setup-content">
             <div className="step">
@@ -85,7 +80,7 @@ export default function BandwidthSolutionsPage() {
         <div className="solution-header">
           <div className="solution-icon">💬</div>
           <div>
-            <h2>Telegram Desktop works even when internet cuts out</h2>
+            <h2>2. Telegram Desktop works even when internet cuts out</h2>
             <p className="solution-tagline">Read messages offline, send when connection returns</p>
           </div>
         </div>
@@ -99,6 +94,7 @@ export default function BandwidthSolutionsPage() {
           <summary className="setup-summary">
             <span className="setup-icon">📖</span>
             <strong>Click to see setup (3 minutes)</strong>
+            <span className="chevron">›</span>
           </summary>
           <div className="setup-content">
             <div className="step">
@@ -119,18 +115,6 @@ export default function BandwidthSolutionsPage() {
                 <ul className="step-list">
                   <li>Enter your phone number</li>
                   <li>Enter code from SMS</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="step">
-              <div className="step-number">3</div>
-              <div className="step-content">
-                <h4>Turn off auto-download (saves bandwidth)</h4>
-                <ul className="step-list">
-                  <li>Settings → Advanced → Network</li>
-                  <li>Turn OFF "Auto-download media"</li>
-                  <li>Turn OFF "Auto-play GIFs"</li>
                 </ul>
               </div>
             </div>
