@@ -1,0 +1,4 @@
+node_modules/
+.env
+handled-deployments.json
+npm-debug.log
