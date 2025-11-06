@@ -1,3 +1,41 @@
+## 2025-11-07 16:45 — Rafael: Emma Workspace (Upwork Iframe) ✅
+
+**USER REQUEST:**
+- "implement Emma workspace - Week 2 feature (not implemented yet)"
+- USER CORRECTION: "For the Emma workspace, it should simply be an iframe of Upwork. That's it."
+
+**IMPLEMENTATION:**
+Emma workspace embeds Upwork job search in a simple iframe.
+
+**Features:**
+- Single iframe showing Upwork job search page (https://www.upwork.com/nx/search/jobs/)
+- Full-screen embed (100% width/height, no borders)
+- Sandbox permissions for safe embedding
+- Direct access to Upwork - team sees what Emma sees
+
+**FILES CREATED:**
+- src/components/mission-deck/EmmaWorkspace.tsx (27 lines)
+
+**FILES MODIFIED:**
+- src/app/mission-deck/console/page.tsx (+6 lines: import + render EmmaWorkspace)
+
+**COMMIT:** ddc55c7
+**STATUS:** Pushed to production ✅
+
+**WHY THIS MATTERS:**
+- Emma's job = scout Upwork for jobs
+- Direct Upwork access in Mission Deck = no context switching
+- Team can browse jobs alongside Rafael/Sofia workspaces
+- Simple solution > complex mock UI
+
+**VERIFICATION:**
+- Visit: https://scopelock.mindprotocol.ai/mission-deck/console
+- Click "Emma" tab (first citizen)
+- See Upwork job search embedded
+- Can browse/search jobs directly
+
+---
+
 ## 2025-11-07 11:30 — Rafael: Collapsible Mission Panel + Chat Functional ✅
 
 **USER REQUESTS:**
