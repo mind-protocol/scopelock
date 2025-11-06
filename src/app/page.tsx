@@ -643,6 +643,16 @@ export default function HomePage() {
             <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Connect</h3>
             <ul style={{ listStyle: 'none', padding: 0, fontSize: '0.9rem', lineHeight: '2' }}>
               <li>
+                <a href="https://x.com/nlr_ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
+                  X (Twitter)
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/nicolas-lester-reynolds-836ab828/" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
+                  LinkedIn
+                </a>
+              </li>
+              <li>
                 <a href="https://github.com/nlr-ai" target="_blank" rel="noopener" style={{ color: 'var(--slk-text-muted)' }}>
                   GitHub (Personal)
                 </a>
