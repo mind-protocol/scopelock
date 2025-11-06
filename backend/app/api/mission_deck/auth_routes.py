@@ -13,7 +13,7 @@ Architecture:
 
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
-from app.api.mission_deck.schemas import LoginResponse, UserInfo
+from app.api.mission_deck.schemas import LoginResponse, UserResponse
 from app.api.mission_deck.auth import create_access_token
 import base58
 from nacl.signing import VerifyKey
@@ -106,7 +106,7 @@ async def wallet_login(request: WalletLoginRequest):
         return LoginResponse(
             access_token=access_token,
             token_type="bearer",
-            user=UserInfo(
+            user=UserResponse(
                 id=request.wallet_address,
                 email=f"{request.wallet_address}@wallet",
                 name=f"{request.wallet_address[:4]}...{request.wallet_address[-4:]}",
