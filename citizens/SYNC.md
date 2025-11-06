@@ -1,3 +1,82 @@
+## 2025-11-06 00:15 - Maya: Resources Page Hero & Order Updates
+
+**Work:** Updated resources page hero messaging and reordered Week 1 Critical Path resources
+
+**Changes:**
+1. Hero title: "From Zero to Paid in 2 Weeks" → "ScopeLock: AI-Assisted Development for Junior Developers"
+2. Hero subtitle: Changed from generic learning path description to specific explanation of what resources section contains and why to read Week 1 first
+3. Reordered Week 1 Critical Path resources:
+   - Position 1: Why ScopeLock (unchanged)
+   - Position 2: Compensation Structure (moved from 4th) - answers "What's in it for me?" early
+   - Position 3: Mission Flow (moved from 3rd) - shows complete process
+   - Position 4: How to Talk to AI Citizens (moved from 2nd) - communication skills after understanding context
+
+**Rationale:** New order creates better learning progression - understand the model, understand the economics, understand the process, then learn communication patterns.
+
+**Status:** Complete, deployed
+**Next:** Hero and order changes are live
+**Link:** Commit `8e94475`, deployed to scopelock.mindprotocol.ai/resources
+
+---
+
+## 2025-11-06 03:30 — Alexis: Homepage Messaging Fixes (5 Critical Changes) ✅
+
+**Work:** Fixed homepage messaging issues based on user feedback (solo voice, value clarity, CTA alignment, answer-first structure, timestamps)
+
+**Context:** User identified 5 critical messaging problems after reviewing homepage optimization. Applied fixes to align with solo dev positioning and ScopeLock process.
+
+**Changes Implemented:**
+
+**1. Hero H1: Specific Value Proposition**
+- OLD: "You'll know if we're good before you pay" (vague "good at what?", uses "we")
+- NEW: "Software locked to executable acceptance criteria. Pay only when tests pass."
+- Why: Specific about deliverable (AC-locked software), solo voice implied, outcome-focused
+
+**2. Hero Pitch: Trust-Free Positioning**
+- OLD: "Fixed-price software delivery. 121+ deployments across 7 production systems."
+- NEW: "I write the tests with you. You verify them yourself. No hourly billing, no scope creep, no trust required."
+- Why: User feedback - "121+ deployments sucks" → replaced with stronger value (no trust required, verifiable)
+
+**3. CTA Alignment: Removed Calendar Link**
+- OLD: Primary "Get pricing", Secondary "Book 30min call", Tertiary "See proof log"
+- NEW: Primary "Start with Evidence Sprint", Secondary "See proof log"
+- Why: User feedback - "Book call not our process" → Evidence Sprint IS the entry point, not sales calls
+
+**4. Empathy Section: Answers in Titles, Not Questions**
+- OLD: "Is this you?" + trauma quotes → "Here's what's different" answer
+- NEW: "You see working code before you pay" + 3 solution cards
+  - "No disappearing act" (milestones tagged, payment after green)
+  - "No endless '90% done'" (AC.md locked, tests run in CI)
+  - "No surprise invoices" (price locked, Swap €0 or Add new price)
+- Border color: Red (trauma) → Green (solution)
+- Why: User feedback - "put ANSWERS in titles, not questions" → flipped structure to solution-first
+
+**5. Commit Feed: Added Timestamps**
+- Updated LiveCommits.tsx to extract `commit.author.date` from GitHub API
+- Updated AnimatedCommitList.tsx to display relative time ("2h ago", "5d ago", "Nov 4")
+- Added CSS styling for `.commitTime` (muted color, nowrap, hidden on mobile)
+- Why: User feedback - "add x hours ago" → proves recency/velocity
+
+**Psychology Applied:**
+- Solo voice positioning (avoid "we", use "I" where appropriate)
+- Specific outcomes over vague promises ("AC-locked software" vs "good work")
+- Trust-free value prop ("you verify yourself" vs "trust us")
+- Process alignment (Evidence Sprint entry, not calendar booking)
+- Solution-first empathy (answers as headlines, not questions)
+
+**Files Changed:**
+- `/src/app/page.tsx` (hero, pitch, CTAs, empathy section)
+- `/src/components/LiveCommits.tsx` (extract timestamps from GitHub API)
+- `/src/components/AnimatedCommitList.tsx` (display relative time, interface update)
+- `/src/components/AnimatedCommitList.module.css` (grid layout + commitTime styles)
+
+**Status:** All 5 user-requested fixes implemented, homepage messaging aligned with solo dev positioning + ScopeLock process
+
+alexis@scopelock
+
+---
+
+
 ## 2025-11-06 23:30 — Emma: Fixed Vertical Spacing in Complete Mission Flow ✅
 
 **Work:** Systematically improved vertical spacing throughout complete-mission-flow page
