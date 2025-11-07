@@ -1,3 +1,80 @@
+## 2025-11-07 16:15 — Maya: Mission Catalog Simplified + Telegram Security Addressed ✅
+
+**Work:** Simplified mission catalog to focus ONLY on acquisition, addressed critical Telegram security concern
+
+**Context:** User clarified missions should be acquisition tasks, NOT job-specific work. Also raised security concern about Telegram 2FA code flow.
+
+**Mission Catalog Simplified:**
+
+Removed all job-specific tasks (those belong in job threads, not standalone missions). Focus now on:
+
+**Launch Phase Missions (2):**
+1. **Find and Propose Job on Upwork** - $10 per proposal
+   - Hunt, draft with Emma, submit
+   - High volume = more wins (20-30% win rate)
+
+2. **Connect Telegram with Message Access** - $50 one-time (HIGH VALUE)
+   - Critical infrastructure unlock
+   - Enables 2 additional missions
+   - QR code flow (see security note below)
+
+**Unlocked After Telegram (2):**
+3. **Message Potential Team Member** - $5 + $50 bonus if join and complete first job
+   - Total $55 per successful referral
+
+4. **Message Potential Client** - $5 + $100 bonus if convert to paying client
+   - Total $105 per successful conversion
+
+**Example First Week Earnings:**
+- Connect Telegram: $50
+- 10 proposals: $100
+- 10 team member messages: $50 base ($500 potential bonuses)
+- **Total: $200+ guaranteed, $700+ potential**
+
+**Telegram Security Concern Addressed:**
+
+**Problem Identified:**
+- Asking team members to enter 2FA code contradicts Telegram's warning: "NEVER SHARE THIS CODE"
+- Makes our system look like phishing attack
+- Team members trained NOT to share codes
+
+**Solution: QR Code Login (Not Phone Code)**
+
+✅ No code sharing - Team members don't type anything sensitive
+✅ Telegram shows exactly what's authorized - "Link 'ScopeLock Dashboard'?"
+✅ Standard flow - Same as Telegram Desktop/Web
+✅ Revokable - Shows in "Active Sessions," can terminate anytime
+✅ Trustworthy - Doesn't contradict Telegram's warnings
+
+**Updated Flow:**
+```
+1. Click "Connect Telegram" → Backend generates QR code
+2. Show QR + instructions: "Open Telegram → Settings → Devices → Link Desktop Device"
+3. Team member scans QR in Telegram app
+4. Telegram shows: "Link 'ScopeLock Dashboard'?" (read-only access)
+5. Team member clicks "Link"
+6. ✅ Session authorized, can monitor conversations
+7. Team member can revoke anytime in Telegram settings
+```
+
+**Technical Implementation:**
+- Telethon supports QR code login via `client.qr_login()`
+- Generate QR, return base64 image to frontend
+- Poll for scan completion every 2s
+- Store encrypted session string when authorized
+- Team member sees "ScopeLock Dashboard" in Active Sessions
+
+**Files:**
+- docs/missions/TASK_CATALOG.md (simplified, 670 lines reduced)
+- Commit: d553236 (already pushed)
+
+**Next:**
+- Implement QR code flow in Mission Deck backend
+- Add Telethon QR login endpoint
+- Frontend: Show QR modal instead of phone input
+
+---
+
 ## 2025-11-07 16:00 — Rafael: Fix React Error #425 in Chat (Objects as Children) ✅
 
 **User Issue:** "failed to send a message: Uncaught Error: Minified React error #425"
