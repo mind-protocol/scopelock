@@ -12,6 +12,8 @@ Architecture:
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from datetime import datetime
+import os
+from pathlib import Path
 
 from app.api.mission_deck.dependencies import get_current_user, CurrentUser
 from app.api.mission_deck.services.citizen_cli import ask_citizen  # Uses Claude CLI (subscription, not API)
@@ -25,6 +27,25 @@ from app.api.mission_deck.schemas import (
 )
 
 router = APIRouter(prefix="/api/citizens", tags=["Chat"])
+
+
+def _is_valid_citizen(citizen_id: str) -> bool:
+    """
+    Check if citizen is valid by verifying folder exists.
+
+    Args:
+        citizen_id: Citizen identifier to validate
+
+    Returns:
+        True if citizens/{citizen_id}/ folder exists, False otherwise
+    """
+    # Find scopelock root (backend/app/api/mission_deck/ → backend → app → scopelock)
+    current_file = Path(__file__).resolve()
+    backend_dir = current_file.parent.parent.parent
+    scopelock_root = backend_dir.parent
+    citizen_dir = scopelock_root / "citizens" / citizen_id
+
+    return citizen_dir.exists() and citizen_dir.is_dir()
 
 
 @router.post("/{citizen_id}/chat", response_model=ChatMessageResponse)
@@ -73,12 +94,11 @@ async def send_chat_message(
             ]
         }
     """
-    # Validate citizen_id
-    valid_citizens = ["emma", "rafael", "sofia", "inna", "maya", "alexis"]
-    if citizen_id not in valid_citizens:
+    # Validate citizen_id (check if folder exists)
+    if not _is_valid_citizen(citizen_id):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Invalid citizen_id. Must be one of: {', '.join(valid_citizens)}"
+            detail=f"Invalid citizen_id: {citizen_id}. Citizen folder not found."
         )
 
     # Validate message
@@ -176,12 +196,11 @@ async def get_chat_history(
             "total": 2
         }
     """
-    # Validate citizen_id
-    valid_citizens = ["emma", "rafael", "sofia", "inna", "maya", "alexis"]
-    if citizen_id not in valid_citizens:
+    # Validate citizen_id (check if folder exists)
+    if not _is_valid_citizen(citizen_id):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Invalid citizen_id. Must be one of: {', '.join(valid_citizens)}"
+            detail=f"Invalid citizen_id: {citizen_id}. Citizen folder not found."
         )
 
     # Validate limit
