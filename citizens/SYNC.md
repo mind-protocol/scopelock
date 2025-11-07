@@ -1,3 +1,109 @@
+## 2025-11-07 21:45 — Rafael: Telegram Outreach Mission - Complete 6-Level Documentation ✅
+
+**Work:** Created comprehensive Inna-style documentation for Team Member Hunting via Telegram system
+
+**Mission:** Enable ScopeLock team members to systematically discover, contact, and track conversations with 313 potential team members identified from Telegram message history.
+
+**Documentation Delivered (200KB+):**
+
+1. **PATTERN.md** (16KB) - Core principles, risks, success criteria
+   - Why ScopeLock approach fits (AC-first, evidence-driven, ToS compliance)
+   - Critical principle: ToS-First (read-only automation + manual send)
+   - Risk analysis: Account bans, low response rate, session encryption, AI quality
+   - Success criteria: 5 new team members within 30 days, 15%+ response rate
+
+2. **AC.md** (27KB) - Acceptance criteria
+   - 7 functional features: Data ingestion (313 contacts), QR auth, Maya message gen, outreach queue, manual send, reply monitoring, disconnect
+   - 5 non-functional criteria: Performance (p95 ≤ 500ms), quality (≤1% error rate), deployment (Render + Vercel), security (Fernet encryption), Telegram ToS compliance
+   - Complete verification section with exact test commands
+
+3. **VALIDATION.md** (46KB) - Test specifications for Sofia
+   - Test framework: pytest 7.4+ (backend), Playwright 1.40+ (E2E)
+   - 17 test cases mapped to AC.md features
+   - Performance benchmarks: Queue <1000ms, message gen <5s, monitoring cycle <10s
+   - Mock strategy for Telegram API (no real API calls in tests)
+
+4. **MECHANISM.md** (58KB) - Architecture & tech stack
+   - FalkorDB graph schema: 5 new node types (U4_Contact_Lead, U4_Outreach_Message, U4_Telegram_Session, U4_Telegram_Conversation, U4_Telegram_Reply)
+   - 7 API endpoints with complete Cypher queries
+   - QR code auth flow (Telethon implementation)
+   - Fernet encryption for session strings
+   - Background AsyncIO worker for reply monitoring (60s polling)
+
+5. **ALGORITHM.md** (21KB) - Step-by-step implementation
+   - Feature 1: Data ingestion with duplicate handling
+   - Feature 2: QR code generation + authorization polling
+   - Feature 3: Maya AI message generation with hook finding
+   - Error handling for all edge cases
+   - Data transformations and FalkorDB operations
+
+6. **GUIDE.md** (25KB) - Deployment & troubleshooting
+   - Local setup: Python 3.11 + Telethon + QR code libs
+   - Environment variables: TELEGRAM_API_ID/HASH, FERNET_ENCRYPTION_KEY, FALKORDB_API_KEY
+   - Render backend deployment (FastAPI)
+   - Vercel frontend integration (Mission Deck)
+   - 7 troubleshooting scenarios with fixes
+
+7. **DOD.md** (15KB) - Definition of Done checklist
+   - Complete readiness checklist for Sofia
+   - Current status: Ready for implementation (docs complete)
+   - Blockers: Maya AI integration method decision needed
+   - Next steps: Sofia generates tests → Rafael implements → Tests verify
+
+**Key Technical Decisions:**
+
+1. **QR Code vs Phone Code Auth:**
+   - User identified critical UX issue: Phone code shows "NEVER SHARE THIS CODE" warning from Telegram
+   - Contradicts system asking for code entry
+   - Solution: QR code auth (transparent, no code sharing, standard flow)
+
+2. **Read-Only + Manual Send (ToS Compliance):**
+   - Problem: Automated sending violates Telegram ToS → account bans
+   - Solution: Hybrid approach - system monitors (read-only), human sends manually
+   - Result: ToS compliant, 90% effort reduction (AI generates messages), zero ban risk
+
+3. **FalkorDB with Mind Protocol v2:**
+   - All new nodes follow universal attribute standard
+   - Graph relationships enable future network analysis (who knows who)
+   - Cypher queries via REST API (existing production instance)
+
+4. **TDD Workflow:**
+   - Sofia generates test suite FIRST (from VALIDATION.md)
+   - Rafael implements to make tests pass
+   - Tests define quality criteria, implementation proves quality
+
+**System Architecture:**
+
+- **Backend:** FastAPI on Render (Python 3.11) with AsyncIO background worker
+- **Frontend:** Next.js Mission Deck integration (Vercel)
+- **Database:** FalkorDB graph (5 new node types, 7 new relationship types)
+- **Telegram:** Telethon (QR auth, read-only access, 60s polling)
+- **AI:** Maya service for message generation (integration method TBD)
+- **Security:** Fernet encryption for session strings, HTTPS, no session logging
+
+**Status:** Ready for implementation
+
+**Next Steps:**
+1. NLR approval on Maya AI integration method (Claude Code subprocess vs REST endpoint)
+2. Sofia generates executable test suite from VALIDATION.md (TDD: tests first!)
+3. Rafael generates implementation code from ALGORITHM.md (to pass Sofia's tests)
+4. Deploy to Render (backend) + Vercel (frontend)
+
+**Commit:** f0a91de (docs: complete 6-level documentation for Telegram Outreach mission)
+
+**Files Created:**
+- docs/missions/telegram-outreach/PATTERN.md
+- docs/missions/telegram-outreach/AC.md
+- docs/missions/telegram-outreach/VALIDATION.md
+- docs/missions/telegram-outreach/MECHANISM.md
+- docs/missions/telegram-outreach/ALGORITHM.md
+- docs/missions/telegram-outreach/GUIDE.md
+- docs/missions/telegram-outreach/DOD.md
+
+**Team notified via Telegram** with complete system overview.
+
+---
+
 ## 2025-11-07 19:00 — Rafael: Claude CLI Credentials - Automatic Setup via Env Vars ✅
 
 **Work:** Added Claude settings.json support + comprehensive setup guide for Render deployments
