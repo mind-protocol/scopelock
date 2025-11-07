@@ -116,8 +116,15 @@ export function ChatInterface({
                 }} />
               </div>
 
-              {/* Name only (no role to save space) */}
-              <span style={{ fontSize: '0.8rem', fontWeight: 500 }}>{citizen.name}</span>
+              {/* Name + Role */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start'
+              }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 500 }}>{citizen.name}</span>
+                <span style={{ fontSize: '0.7rem', opacity: 0.7 }}>{citizen.role}</span>
+              </div>
             </button>
           ))}
         </div>

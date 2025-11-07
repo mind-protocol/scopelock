@@ -166,7 +166,12 @@ export default function ConsolePage() {
           )}
 
           {activeMissionId && activeCitizen === 'emma' && (
-            <EmmaWorkspace missionId={activeMissionId} />
+            <EmmaWorkspace
+              missionId={activeMissionId}
+              citizens={CITIZENS}
+              activeCitizen={activeCitizen}
+              onSelectCitizen={setActiveCitizen}
+            />
           )}
 
           {activeMissionId && activeCitizen === 'rafael' && (
@@ -179,7 +184,12 @@ export default function ConsolePage() {
           )}
 
           {activeMissionId && activeCitizen === 'sofia' && (
-            <SofiaWorkspace missionId={activeMissionId} />
+            <SofiaWorkspace
+              missionId={activeMissionId}
+              citizens={CITIZENS}
+              activeCitizen={activeCitizen}
+              onSelectCitizen={setActiveCitizen}
+            />
           )}
 
           {activeMissionId &&
