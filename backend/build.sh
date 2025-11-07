@@ -16,6 +16,16 @@ else
     exit 1
 fi
 
+# Copy Claude settings from repo root to home directory
+# This makes settings available to Claude CLI globally
+if [ -f "../.claude/settings.json" ]; then
+    mkdir -p "$HOME/.claude"
+    cp "../.claude/settings.json" "$HOME/.claude/settings.json"
+    echo "✅ Claude settings copied to ~/.claude/settings.json"
+else
+    echo "⚠️  Claude settings not found at ../.claude/settings.json"
+fi
+
 echo "📦 Installing Python dependencies..."
 pip install --upgrade pip
 pip install -r requirements.txt
