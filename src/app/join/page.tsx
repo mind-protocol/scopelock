@@ -184,60 +184,6 @@ export default function JoinPage() {
         </div>
       </section>
 
-      {/* What You Can Expect */}
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>What You Can Expect</h2>
-          <p className={styles.sectionSubtitle}>
-            You earn commission on every mission. Here's what that looks like at different volumes.
-          </p>
-
-          <div className={styles.scenarios}>
-            {/* Scenario 1 */}
-            <div className={styles.scenario}>
-              <div className={styles.scenarioHeader}>
-                <div className={styles.scenarioTitle}>10 missions/month</div>
-              </div>
-              <div className={styles.scenarioEarnings}>
-                <div className={styles.earningRow}>
-                  <span className={styles.earningRole}>Developer (15%)</span>
-                  <span className={styles.earningAmount}>$900/month</span>
-                </div>
-                <div className={styles.earningRow}>
-                  <span className={styles.earningRole}>Specifier (9%)</span>
-                  <span className={styles.earningAmount}>$540/month</span>
-                </div>
-                <div className={styles.earningRow}>
-                  <span className={styles.earningRole}>QA Tester (6%)</span>
-                  <span className={styles.earningAmount}>$360/month</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Scenario 2 */}
-            <div className={styles.scenario}>
-              <div className={styles.scenarioHeader}>
-                <div className={styles.scenarioTitle}>20 missions/month</div>
-              </div>
-              <div className={styles.scenarioEarnings}>
-                <div className={styles.earningRow}>
-                  <span className={styles.earningRole}>Developer (15%)</span>
-                  <span className={styles.earningAmount}>$1,800/month</span>
-                </div>
-                <div className={styles.earningRow}>
-                  <span className={styles.earningRole}>Specifier (9%)</span>
-                  <span className={styles.earningAmount}>$1,080/month</span>
-                </div>
-                <div className={styles.earningRow}>
-                  <span className={styles.earningRole}>QA Tester (6%)</span>
-                  <span className={styles.earningAmount}>$720/month</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Payment */}
       <section className={styles.section} style={{ background: 'rgba(21, 26, 33, 0.4)' }}>
         <div className={styles.container}>
