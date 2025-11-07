@@ -135,6 +135,7 @@ def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
         # Debug: Log Claude CLI output
         print(f"[citizen_cli.py:ask_citizen] Claude CLI returncode: {result.returncode}")
         print(f"[citizen_cli.py:ask_citizen] Claude CLI stdout length: {len(result.stdout)}")
+        print(f"[citizen_cli.py:ask_citizen] Claude CLI stdout repr: {repr(result.stdout[:200])}")
         print(f"[citizen_cli.py:ask_citizen] Claude CLI stderr: {result.stderr[:200] if result.stderr else 'None'}")
 
         if result.returncode != 0:
@@ -152,7 +153,10 @@ def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
         if not response_text:
             print(f"[citizen_cli.py:ask_citizen] WARNING: Empty response from Claude CLI for {citizen_id}")
             print(f"[citizen_cli.py:ask_citizen] Citizen dir: {citizen_dir}")
+            print(f"[citizen_cli.py:ask_citizen] Citizen dir exists: {os.path.exists(citizen_dir)}")
+            print(f"[citizen_cli.py:ask_citizen] CLAUDE.md exists: {os.path.exists(os.path.join(citizen_dir, 'CLAUDE.md'))}")
             print(f"[citizen_cli.py:ask_citizen] Prompt: {prompt[:100]}")
+            print(f"[citizen_cli.py:ask_citizen] Command: {[claude_bin, '-p', prompt[:50], '--continue', '--dangerously-skip-permissions', '--verbose']}")
             return (
                 "Sorry, I received an empty response. This might be an authentication issue. Please contact support.",
                 []
