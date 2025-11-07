@@ -73,7 +73,8 @@
   - **Jobs vs Missions:** Jobs = Upwork client work, Missions = internal work (proposals, social, recruitment)
   - **Mission pricing:** Write proposal $1, recruit $10, post on X $2
   - **Team gets 35% total:** 30% pool (split by interactions) + 5% mission fund
-  - **Spec created:** `/docs/mission-compensation-system.md` (awaiting Inna's detailed docs)
+  - **Documentation complete:** High-level spec `/docs/mission-compensation-system.md` + team resources (MD + TSX calculator) updated
+  - **Next:** Inna creates detailed technical specs → Rafael implements → Developer builds frontend → Sofia tests
 - Human team: Bigbosexf, Reanance, Kara (now flexible, not dedicated roles)
 - First proposals: 0 sent (Emma ready to hunt creative AI jobs)
 
