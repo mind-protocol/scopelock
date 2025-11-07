@@ -1,3 +1,58 @@
+## 2025-11-07 19:15 — Rafael: Claude Credentials - OAuth Format Documentation Update ✅
+
+**Work:** Updated documentation to reflect new OAuth-based credentials format
+
+**User Input:** Showed actual credentials structure - new OAuth format with `claudeAiOauth` and `mcpOAuth`
+
+**Changes:**
+
+1. **backend/.env.example** (lines 40-51):
+   - Added documentation for NEW OAuth format vs OLD sessionKey format
+   - Example OAuth structure: `{"claudeAiOauth":{"accessToken":"...","refreshToken":"...","expiresAt":...},"mcpOAuth":{...}}`
+   - Note: OAuth credentials are 500+ characters (normal!)
+
+2. **backend/docs/CLAUDE_CLI_SETUP.md**:
+   - Updated Step 1: Always use `jq -c` for single-line conversion
+   - Added credential format examples (OAuth vs sessionKey)
+   - Updated Step 2: Clearer instructions for pasting long JSON
+   - Important: NO quotes needed when pasting to Render dashboard
+   - Updated API section: Show proper JSON escaping with double `jq`
+
+**OAuth Format Structure:**
+```json
+{
+  "claudeAiOauth": {
+    "accessToken": "sk-ant-oat01-...",
+    "refreshToken": "sk-ant-ort01-...",
+    "expiresAt": 1762479855036,
+    "scopes": ["user:inference", "user:profile"],
+    "subscriptionType": "max"
+  },
+  "mcpOAuth": {
+    "vercel|511b08192b045b3d": {
+      "serverName": "vercel",
+      "clientId": "cl_...",
+      "accessToken": "eyJhbGci...",
+      "refreshToken": "eyJhbGci...",
+      "expiresAt": 1762478065592
+    }
+  }
+}
+```
+
+**Backend compatibility:** Code already handles both formats (writes JSON as-is, no parsing needed)
+
+**Render Setup (with OAuth):**
+1. `cat ~/.claude/.credentials.json | jq -c` (get single-line, 500+ chars)
+2. Paste entire output to Render env var `CLAUDE_CREDENTIALS`
+3. No quotes needed (Render dashboard handles it)
+
+**Status:** Documentation updated, team notified via Telegram
+
+**Commit:** 6beacde (docs: update Claude credentials format for new OAuth system)
+
+---
+
 ## 2025-11-07 21:45 — Rafael: Telegram Outreach Mission - Complete 6-Level Documentation ✅
 
 **Work:** Created comprehensive Inna-style documentation for Team Member Hunting via Telegram system
