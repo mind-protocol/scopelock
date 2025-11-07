@@ -9897,3 +9897,41 @@ Commit: 829002c - "fix: remove vitest.config.ts to fix Vercel build"
 **Next:** Inna creates detailed technical specs → Rafael implements backend → Developer implements frontend → Sofia creates test cases
 
 —alexis@scopelock
+
+## 2025-11-07 19:00 — Alexis: Removed Fixed Human Roles (Enable Flexible Team) ✅
+
+**Work:** Eliminated fixed role assignments to remove bottlenecks and enable flexible team model
+
+**Files Updated:**
+- `/citizens/CLAUDE.md` - Replaced dedicated role sections (Bigbosexf/Reanance/Kara) with flexible team description
+- `/docs/resources/complete-mission-flow.md` - All phases now use generic "any team member" instead of specific names
+
+**Key Changes:**
+
+**Before (Fixed Roles):**
+- Bigbosexf = "The Hunter" (Proposal Writing & QA) - fixed assignment
+- Reanance = "The Specifier" (Documentation & Client Relations) - fixed assignment
+- Kara = "The Builder" (Development) - fixed assignment
+- **Problem:** If Bigbosexf busy → no proposals sent → revenue blocked
+
+**After (Flexible Team):**
+- **Any team member** can do any part of pipeline (find jobs, write specs, build, QA, client relations)
+- **No fixed assignments** - work on what needs doing
+- **Per-interaction compensation** drives contribution (30% team pool split by interactions)
+- **No bottlenecks** - if one person busy, another picks up the work
+
+**Documentation Updates:**
+- All phase owners in complete-mission-flow.md: "Owner: Any team member"
+- Decision reference table: "Builder" instead of "Kara", generic roles throughout
+- Day-in-the-Life example: All "Team member" references, no specific names
+- Visual swimlane diagram: Generic role labels
+- Handoff checklists: Generic role names (builder → QA → client relations)
+
+**Philosophy:**
+"Work more → earn more. Work less → earn less. 100% transparent, real-time earnings visibility."
+
+**Status:** Documentation complete. Team can now pick up any mission phase based on availability and interest.
+
+**Impact:** Eliminates single-person blockers. Enables faster scaling (anyone can be trained on any part).
+
+—alexis@scopelock
