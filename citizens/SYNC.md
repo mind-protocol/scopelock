@@ -1,3 +1,27 @@
+## 2025-11-07 14:45 — Rafael: Fixed Citizen Selector Across All Workspaces ✅
+
+**BUG FIX:** Clicking Emma/Sofia made chat disappear
+
+**Root Cause:** EmmaWorkspace and SofiaWorkspace were placeholders without citizen selector integration
+
+**Fix Applied:**
+1. **EmmaWorkspace** - Added full layout (proposal drafts left 70%, chat right 30%, resizable)
+2. **SofiaWorkspace** - Added citizen selector header (above DoD checklist + test results)
+3. **Role labels** - Now showing below citizen name in all citizen buttons
+4. **Consistent layout** - All workspaces (Emma, Rafael, Sofia) now have citizen selector
+
+**Status:** Deployed ✅
+**Commit:** 2c2575c
+**Link:**
+- src/components/mission-deck/EmmaWorkspace.tsx (full rewrite)
+- src/components/mission-deck/SofiaWorkspace.tsx (citizen selector header added)
+- src/components/mission-deck/ChatInterface.tsx (role label added)
+- src/app/mission-deck/console/page.tsx (citizen props passed to all workspaces)
+
+**Next:** All citizen workspaces functional and consistent.
+
+---
+
 ## 2025-11-07 (current) — Inna: Mission Deck Compensation System Specifications COMPLETE ✅
 
 **Work:** Created complete 6-level documentation for interaction-based compensation tracking system

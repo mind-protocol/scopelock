@@ -8,10 +8,12 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { api } from '../../../lib/api';
 import { MissionSelector } from '../../../components/mission-deck/MissionSelector';
+import { CitizenSelector } from '../../../components/mission-deck/CitizenSelector';
 import { EmmaWorkspace } from '../../../components/mission-deck/EmmaWorkspace';
 import { RafaelWorkspace } from '../../../components/mission-deck/RafaelWorkspace';
 import { SofiaWorkspace } from '../../../components/mission-deck/SofiaWorkspace';
-import type { Mission, CitizenInfo, CitizenName } from '../../../types';
+import { ChatInterface } from '../../../components/mission-deck/ChatInterface';
+import type { Mission, CitizenInfo, CitizenName, ChatMessage } from '../../../types';
 
 const CITIZENS: CitizenInfo[] = [
   {
@@ -52,6 +54,10 @@ export default function ConsolePage() {
   const [activeMissionId, setActiveMissionId] = useState<string>('');
   const [activeCitizen, setActiveCitizen] = useState<CitizenName>('rafael');
   const [isLoading, setIsLoading] = useState(true);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [isChatLoading, setIsChatLoading] = useState(false);
+  const [workspaceWidth, setWorkspaceWidth] = useState(70); // percentage
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     // Check auth
@@ -63,6 +69,44 @@ export default function ConsolePage() {
 
     loadMissions();
   }, []);
+
+  // Load messages when mission or citizen changes
+  useEffect(() => {
+    if (activeMissionId) {
+      loadMessages();
+    }
+  }, [activeMissionId, activeCitizen]);
+
+  // Handle mouse drag for resizing panels
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      const windowWidth = window.innerWidth - 200; // Subtract mission selector width
+      const newWidth = ((e.clientX - 200) / windowWidth) * 100;
+      // Constrain between 20% and 80%
+      if (newWidth >= 20 && newWidth <= 80) {
+        setWorkspaceWidth(newWidth);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+  }, [isDragging]);
 
   const loadMissions = async () => {
     try {
@@ -77,6 +121,29 @@ export default function ConsolePage() {
       console.error('Failed to load missions:', error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const loadMessages = async () => {
+    try {
+      const messagesData = await api.getMessages(activeMissionId);
+      setMessages(messagesData);
+    } catch (error) {
+      console.error('Failed to load messages:', error);
+    }
+  };
+
+  const handleSendMessage = async (message: string) => {
+    setIsChatLoading(true);
+    try {
+      await api.sendMessage(activeMissionId, message);
+      // Reload messages to get updated chat history
+      const updatedMessages = await api.getMessages(activeMissionId);
+      setMessages(updatedMessages);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+    } finally {
+      setIsChatLoading(false);
     }
   };
 
@@ -151,10 +218,20 @@ export default function ConsolePage() {
           </button>
         </div>
 
-        {/* Workspace area */}
-        <div style={{ flex: 1, overflow: 'hidden' }}>
+        {/* Citizen selector */}
+        {activeMissionId && (
+          <CitizenSelector
+            citizens={CITIZENS}
+            activeCitizen={activeCitizen}
+            onSelect={setActiveCitizen}
+          />
+        )}
+
+        {/* Content area: Workspace + Chat */}
+        <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
           {!activeMissionId && (
             <div style={{
+              width: '100%',
               height: '100%',
               display: 'flex',
               alignItems: 'center',
@@ -165,48 +242,83 @@ export default function ConsolePage() {
             </div>
           )}
 
-          {activeMissionId && activeCitizen === 'emma' && (
-            <EmmaWorkspace
-              missionId={activeMissionId}
-              citizens={CITIZENS}
-              activeCitizen={activeCitizen}
-              onSelectCitizen={setActiveCitizen}
-            />
-          )}
-
-          {activeMissionId && activeCitizen === 'rafael' && (
-            <RafaelWorkspace
-              missionId={activeMissionId}
-              citizens={CITIZENS}
-              activeCitizen={activeCitizen}
-              onSelectCitizen={setActiveCitizen}
-            />
-          )}
-
-          {activeMissionId && activeCitizen === 'sofia' && (
-            <SofiaWorkspace
-              missionId={activeMissionId}
-              citizens={CITIZENS}
-              activeCitizen={activeCitizen}
-              onSelectCitizen={setActiveCitizen}
-            />
-          )}
-
-          {activeMissionId &&
-            activeCitizen !== 'emma' &&
-            activeCitizen !== 'rafael' &&
-            activeCitizen !== 'sofia' && (
+          {activeMissionId && (
+            <>
+              {/* Left: Workspace content */}
               <div style={{
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--slk-muted)'
+                width: `${workspaceWidth}%`,
+                overflowY: 'auto',
+                overflowX: 'hidden'
               }}>
-                {activeCitizen.charAt(0).toUpperCase() + activeCitizen.slice(1)}{' '}
-                workspace - Week 2 feature (not implemented yet)
+                {activeCitizen === 'emma' && (
+                  <EmmaWorkspace missionId={activeMissionId} />
+                )}
+
+                {activeCitizen === 'rafael' && (
+                  <RafaelWorkspace missionId={activeMissionId} />
+                )}
+
+                {activeCitizen === 'sofia' && (
+                  <SofiaWorkspace missionId={activeMissionId} />
+                )}
+
+                {activeCitizen !== 'emma' &&
+                  activeCitizen !== 'rafael' &&
+                  activeCitizen !== 'sofia' && (
+                    <div style={{
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--slk-muted)',
+                      padding: '24px'
+                    }}>
+                      {activeCitizen.charAt(0).toUpperCase() + activeCitizen.slice(1)}{' '}
+                      workspace - Week 2 feature (not implemented yet)
+                    </div>
+                  )}
               </div>
-            )}
+
+              {/* Draggable divider */}
+              <div
+                onMouseDown={() => setIsDragging(true)}
+                style={{
+                  width: '4px',
+                  cursor: 'col-resize',
+                  background: isDragging ? 'var(--slk-accent)' : 'rgba(230, 234, 242, 0.08)',
+                  transition: 'background 0.2s',
+                  flexShrink: 0
+                }}
+                onMouseEnter={(e) => {
+                  if (!isDragging) {
+                    e.currentTarget.style.background = 'var(--slk-accent)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isDragging) {
+                    e.currentTarget.style.background = 'rgba(230, 234, 242, 0.08)';
+                  }
+                }}
+              />
+
+              {/* Right: Chat (always visible) */}
+              <div style={{
+                width: `${100 - workspaceWidth}%`,
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden'
+              }}>
+                <ChatInterface
+                  messages={messages}
+                  onSendMessage={handleSendMessage}
+                  isLoading={isChatLoading}
+                  citizens={CITIZENS}
+                  activeCitizen={activeCitizen}
+                  onSelectCitizen={setActiveCitizen}
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
