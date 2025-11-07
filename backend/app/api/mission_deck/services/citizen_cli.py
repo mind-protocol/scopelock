@@ -1,0 +1,160 @@
+"""
+Citizen CLI Integration for Mission Deck
+
+This module provides chat functionality with any citizen via Claude CLI.
+Uses subscription credentials (NOT pay-per-token API).
+
+Architecture:
+- Claude CLI: `cd citizens/{citizen_id} && claude -p "message" --continue --dangerously-skip-permissions`
+- Each citizen has their own CLAUDE.md system prompt in their folder
+- Code block extraction via regex
+- Graceful failure handling (fail-loud but don't crash)
+"""
+
+import subprocess
+import re
+import os
+from typing import List, Dict, Optional
+
+
+def extract_code_blocks(text: str) -> List[Dict[str, str]]:
+    """
+    Extract code blocks from citizen's markdown response.
+
+    Args:
+        text: Response text from citizen (may contain ```language\n...\n```)
+
+    Returns:
+        List of {language, code, filename} dicts
+
+    Example:
+        Input: "Here's Python code:\n```python\nprint('hello')\n```"
+        Output: [{"language": "python", "code": "print('hello')", "filename": "code.py"}]
+    """
+    pattern = r"```(\w+)\n(.*?)```"
+    matches = re.findall(pattern, text, re.DOTALL)
+
+    code_blocks = []
+    for lang, code in matches:
+        # Determine filename extension
+        ext_map = {
+            "python": "py",
+            "javascript": "js",
+            "typescript": "ts",
+            "bash": "sh",
+            "shell": "sh",
+            "yaml": "yml",
+        }
+        ext = ext_map.get(lang.lower(), lang.lower())
+
+        code_blocks.append({
+            "language": lang,
+            "code": code.strip(),
+            "filename": f"code.{ext}"
+        })
+
+    return code_blocks
+
+
+def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
+    """
+    Get response from a citizen via Claude CLI.
+
+    Uses Claude Code CLI with subscription credentials (NOT API key).
+    Command: cd citizens/{citizen_id} && claude -p "message" --continue --dangerously-skip-permissions
+
+    Args:
+        citizen_id: Citizen identifier (emma, rafael, sofia, etc.)
+        user_message: User's question/message
+
+    Returns:
+        Tuple of (response_text, code_blocks_list)
+
+    Raises:
+        Exception: If Claude CLI fails (caught and handled with fallback message)
+
+    Example:
+        response, code_blocks = ask_citizen(
+            "rafael",
+            "How do I deploy to Render?"
+        )
+    """
+    # Find citizen's directory
+    # Assume backend is at: backend/app/api/mission_deck/services/
+    # Citizens are at: citizens/{citizen_id}/
+    backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    scopelock_root = os.path.dirname(os.path.dirname(os.path.dirname(backend_dir)))
+    citizen_dir = os.path.join(scopelock_root, "citizens", citizen_id)
+
+    if not os.path.exists(citizen_dir):
+        print(f"[citizen_cli.py:ask_citizen] Citizen directory not found: {citizen_dir}")
+        return (
+            f"Sorry, {citizen_id}'s workspace is not accessible. Please check the server configuration.",
+            []
+        )
+
+    # Citizen's system prompt is in CLAUDE.md in their folder
+    # The prompt is just the user's message - Claude will read CLAUDE.md automatically
+    prompt = user_message
+
+    try:
+        # Try with --continue first (for ongoing conversations)
+        result = subprocess.run(
+            ["claude", "-p", prompt, "--continue", "--dangerously-skip-permissions", "--verbose"],
+            cwd=citizen_dir,
+            capture_output=True,
+            text=True,
+            timeout=60  # 60 second timeout for Claude response
+        )
+
+        # If "no conversation found to continue", retry WITHOUT --continue
+        if "no conversation found to continue" in result.stdout.lower() or \
+           "no conversation found to continue" in result.stderr.lower():
+            print(f"[citizen_cli.py:ask_citizen] No conversation found for {citizen_id}, retrying without --continue")
+            result = subprocess.run(
+                ["claude", "-p", prompt, "--dangerously-skip-permissions", "--verbose"],
+                cwd=citizen_dir,
+                capture_output=True,
+                text=True,
+                timeout=60
+            )
+
+        if result.returncode != 0:
+            # CLI failed - log error but return graceful message
+            print(f"[citizen_cli.py:ask_citizen] Claude CLI failed for {citizen_id}: {result.stderr}")
+            return (
+                f"Sorry, I'm having trouble processing your request right now. Please try again in a moment.",
+                []
+            )
+
+        # Extract response from stdout
+        response_text = result.stdout.strip()
+
+        # Extract code blocks
+        code_blocks = extract_code_blocks(response_text)
+
+        return response_text, code_blocks
+
+    except subprocess.TimeoutExpired:
+        # Claude took too long
+        print(f"[citizen_cli.py:ask_citizen] Claude CLI timeout (>60s) for {citizen_id}")
+        return (
+            "Sorry, your request is taking longer than expected. Please try a simpler question or try again later.",
+            []
+        )
+
+    except FileNotFoundError:
+        # Claude CLI not installed
+        print(f"[citizen_cli.py:ask_citizen] Claude CLI not found in PATH")
+        return (
+            f"Sorry, {citizen_id}'s tools are not installed on this server. Please contact support.",
+            []
+        )
+
+    except Exception as e:
+        # Unexpected error - fail loud but don't crash
+        print(f"[citizen_cli.py:ask_citizen] Unexpected error for {citizen_id}: {e}")
+        return (
+            "Sorry, something unexpected happened. The error has been logged. Please try again or contact support if this persists.",
+            []
+        )

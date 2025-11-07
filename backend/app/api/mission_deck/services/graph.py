@@ -228,27 +228,32 @@ def get_user_missions(assignee_ref: str) -> List[Dict]:
     return [r["m"] for r in results]
 
 
-def get_mission_messages(mission_slug: str, limit: int = 50) -> List[Dict]:
+def get_citizen_messages(citizen_id: str, limit: int = 50) -> List[Dict]:
     """
-    Get chat messages for a mission.
+    Get shared chat messages for a citizen.
+
+    Chat is SHARED across all users - everyone sees the same conversation with each citizen.
 
     Args:
-        mission_slug: Mission slug
+        citizen_id: Citizen identifier (emma, rafael, sofia, etc.)
         limit: Max number of messages to return (default 50)
 
     Returns:
         List of message nodes (U4_Event with event_kind='message')
     """
     cypher = """
-    MATCH (mission:U4_Work_Item {slug: $mission_slug, scope_ref: 'scopelock'})
-          <-[:U4_ABOUT]-(msg:U4_Event)
+    MATCH (msg:U4_Event)
     WHERE msg.event_kind = 'message'
       AND msg.scope_ref = 'scopelock'
+      AND msg.citizen_ref = $citizen_id
     RETURN msg
     ORDER BY msg.timestamp ASC
     LIMIT $limit
     """
-    results = query_graph(cypher, {"mission_slug": mission_slug, "limit": limit})
+    results = query_graph(cypher, {
+        "citizen_id": citizen_id,
+        "limit": limit
+    })
     return [r["msg"] for r in results]
 
 
@@ -271,6 +276,100 @@ def get_mission_dod_items(mission_slug: str) -> List[Dict]:
     """
     results = query_graph(cypher, {"mission_slug": mission_slug})
     return [r["task"] for r in results]
+
+
+def create_citizen_message(
+    citizen_id: str,
+    role: str,
+    content: str,
+    actor_ref: str,
+    code_blocks: Optional[List[Dict]] = None
+) -> Dict:
+    """
+    Create a new citizen chat message (shared across all users).
+
+    Args:
+        citizen_id: Citizen identifier (emma, rafael, sofia, etc.)
+        role: "user" | "assistant"
+        content: Message text
+        actor_ref: Who sent the message (user slug or "{citizen_id}_citizen")
+        code_blocks: Optional list of {language, code, filename} dicts
+
+    Returns:
+        Created message node
+
+    Raises:
+        Exception: If message creation fails
+    """
+    msg_slug = f"chat-{citizen_id}-{uuid.uuid4()}"
+    # Generate all timestamps in Python (FalkorDB doesn't support datetime() function)
+    timestamp = datetime.utcnow().isoformat() + 'Z'
+    created_at = datetime.utcnow().isoformat() + 'Z'
+    updated_at = created_at
+    valid_from = created_at
+
+    # Truncate content for name field (max 100 chars)
+    msg_name = f"{actor_ref}: {content[:50]}..." if len(content) > 50 else f"{actor_ref}: {content}"
+
+    # Create message node with Mind Protocol v2 universal attributes
+    cypher_create = """
+    CREATE (msg:U4_Event {
+      name: $name,
+      slug: $slug,
+      event_kind: 'message',
+      level: 'L2',
+      scope_ref: 'scopelock',
+      citizen_ref: $citizen_id,
+      actor_ref: $actor_ref,
+      timestamp: $timestamp,
+      status: 'active',
+      role: $role,
+      content: $content,
+      code_blocks: $code_blocks,
+      created_at: $created_at,
+      updated_at: $updated_at,
+      valid_from: $valid_from,
+      valid_to: null,
+      description: $description,
+      detailed_description: $detailed_description,
+      type_name: 'U4_Event',
+      visibility: 'partners',
+      policy_ref: 'l4://law/scopelock-chat-policy',
+      proof_uri: '',
+      commitments: [],
+      created_by: $created_by,
+      substrate: 'organizational'
+    })
+    RETURN msg
+    """
+
+    try:
+        results = query_graph(cypher_create, {
+            "name": msg_name,
+            "slug": msg_slug,
+            "citizen_id": citizen_id,
+            "actor_ref": actor_ref,
+            "timestamp": timestamp,
+            "role": role,
+            "content": content,
+            "code_blocks": code_blocks or [],
+            "created_at": created_at,
+            "updated_at": updated_at,
+            "valid_from": valid_from,
+            "description": f"Chat message in {citizen_id} thread",
+            "detailed_description": content[:200],
+            "created_by": actor_ref
+        })
+
+        if not results:
+            raise Exception("Failed to create citizen message node")
+
+        return results[0]["msg"]
+
+    except Exception as e:
+        # Fail loud per ScopeLock principle
+        print(f"[graph.py:create_citizen_message] Failed to create message for {citizen_id}: {e}")
+        raise
 
 
 def create_chat_message(

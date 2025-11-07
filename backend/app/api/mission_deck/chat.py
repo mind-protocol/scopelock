@@ -1,20 +1,21 @@
 """
 Chat Router for Mission Deck
 
-Handles chat interactions with Rafael citizen.
+Handles chat interactions with citizens (Emma, Rafael, Sofia, etc.).
 
 Architecture:
-- POST /chat: Send message, get Rafael response, save to graph
-- GET /messages: Retrieve chat history from graph
-- All endpoints require authentication + mission access
+- POST /citizens/{citizen_id}/chat: Send message to citizen via Claude CLI
+- GET /citizens/{citizen_id}/messages: Retrieve shared chat history
+- Chats are SHARED (all users see same conversation with each citizen)
+- All endpoints require authentication
 """
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from datetime import datetime
 
-from app.api.mission_deck.dependencies import get_current_user, get_current_user_mission, CurrentUser
-from app.api.mission_deck.services.rafael_cli import ask_rafael  # Uses Claude CLI (subscription, not API)
-from app.api.mission_deck.services.graph import create_chat_message, get_mission_messages
+from app.api.mission_deck.dependencies import get_current_user, CurrentUser
+from app.api.mission_deck.services.citizen_cli import ask_citizen  # Uses Claude CLI (subscription, not API)
+from app.api.mission_deck.services.graph import create_citizen_message, get_citizen_messages
 from app.api.mission_deck.schemas import (
     ChatMessageRequest,
     ChatMessageResponse,
@@ -23,57 +24,63 @@ from app.api.mission_deck.schemas import (
     CodeBlockResponse
 )
 
-router = APIRouter(prefix="/api/missions", tags=["Chat"])
+router = APIRouter(prefix="/api/citizens", tags=["Chat"])
 
 
-@router.post("/{mission_id}/chat", response_model=ChatMessageResponse)
+@router.post("/{citizen_id}/chat", response_model=ChatMessageResponse)
 async def send_chat_message(
-    mission_id: str,
+    citizen_id: str,
     request: ChatMessageRequest,
-    current_user: CurrentUser = Depends(get_current_user),
-    mission: dict = Depends(get_current_user_mission)
+    current_user: CurrentUser = Depends(get_current_user)
 ):
     """
-    Send message to Rafael and get response.
+    Send message to a citizen and get response via Claude CLI.
 
     Flow:
-    1. Save user message to graph
-    2. Call Rafael API (Claude) with mission context
-    3. Save Rafael response to graph
-    4. Return Rafael response to frontend
+    1. Save user message to graph (shared chat history)
+    2. Call Claude CLI from citizen's folder (e.g., citizens/rafael/)
+    3. Save citizen response to graph
+    4. Return citizen response to frontend
 
     Args:
-        mission_id: Mission slug (from URL)
+        citizen_id: Citizen identifier (emma, rafael, sofia, etc.)
         request: ChatMessageRequest with user message
         current_user: Authenticated user
-        mission: Mission node (injected, includes auth check)
 
     Returns:
-        ChatMessageResponse with Rafael's response and code blocks
+        ChatMessageResponse with citizen's response and code blocks
 
     Raises:
-        HTTPException 400: If message is empty or too long
-        HTTPException 500: If Rafael API fails
+        HTTPException 400: If message is empty or citizen_id invalid
+        HTTPException 500: If Claude CLI fails
 
     Example:
-        POST /api/missions/mission-47-telegram-bot/chat
+        POST /api/citizens/rafael/chat
         Authorization: Bearer <token>
         {
-            "message": "How do I send a Telegram message?"
+            "message": "How do I deploy to Render?"
         }
 
         Response:
         {
-            "response": "Here's how...\n```python\nfrom telegram import Bot\n```",
+            "response": "Here's how to deploy...\n```bash\ngit push render main\n```",
             "code_blocks": [
                 {
-                    "language": "python",
-                    "code": "from telegram import Bot",
-                    "filename": "code.py"
+                    "language": "bash",
+                    "code": "git push render main",
+                    "filename": "deploy.sh"
                 }
             ]
         }
     """
+    # Validate citizen_id
+    valid_citizens = ["emma", "rafael", "sofia", "inna", "maya", "alexis"]
+    if citizen_id not in valid_citizens:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid citizen_id. Must be one of: {', '.join(valid_citizens)}"
+        )
+
     # Validate message
     if not request.message or len(request.message.strip()) == 0:
         raise HTTPException(
@@ -82,35 +89,24 @@ async def send_chat_message(
         )
 
     try:
-        # Save user message to graph
-        create_chat_message(
-            mission_slug=mission_id,
+        # Save user message to graph (shared chat history)
+        create_citizen_message(
+            citizen_id=citizen_id,
             role="user",
             content=request.message,
             actor_ref=current_user.slug,
             code_blocks=None
         )
 
-        # Build mission context for Rafael
-        mission_context = {
-            "title": mission.get("name", "Unknown Mission"),
-            "stack": {
-                "backend": mission.get("stack_backend"),
-                "frontend": mission.get("stack_frontend"),
-                "database": mission.get("stack_database")
-            },
-            "notes": mission.get("notes")
-        }
+        # Get response from citizen via Claude CLI (cd citizens/{citizen_id} && claude -p "message")
+        citizen_response, code_blocks = ask_citizen(citizen_id, request.message)
 
-        # Get response from Rafael (via Claude CLI - subscription, not API)
-        rafael_response, code_blocks = ask_rafael(request.message, mission_context)
-
-        # Save Rafael response to graph
-        create_chat_message(
-            mission_slug=mission_id,
+        # Save citizen response to graph
+        create_citizen_message(
+            citizen_id=citizen_id,
             role="assistant",
-            content=rafael_response,
-            actor_ref="rafael_citizen",
+            content=citizen_response,
+            actor_ref=f"{citizen_id}_citizen",
             code_blocks=code_blocks
         )
 
@@ -120,7 +116,7 @@ async def send_chat_message(
         ]
 
         return ChatMessageResponse(
-            response=rafael_response,
+            response=citizen_response,
             code_blocks=formatted_code_blocks
         )
 
@@ -129,34 +125,34 @@ async def send_chat_message(
 
     except Exception as e:
         # Fail loud - log error but return user-friendly message
-        print(f"[routers/chat.py:send_chat_message] Chat error: {e}")
+        print(f"[routers/chat.py:send_chat_message] Chat error for {citizen_id}: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to process chat message. Please try again."
+            detail=f"Failed to process chat message with {citizen_id}. Please try again."
         )
 
 
-@router.get("/{mission_id}/messages", response_model=MessageHistoryResponse)
+@router.get("/{citizen_id}/messages", response_model=MessageHistoryResponse)
 async def get_chat_history(
-    mission_id: str,
+    citizen_id: str,
     limit: int = 50,
-    current_user: CurrentUser = Depends(get_current_user),
-    mission: dict = Depends(get_current_user_mission)
+    current_user: CurrentUser = Depends(get_current_user)
 ):
     """
-    Get chat message history for a mission.
+    Get shared chat message history for a citizen.
+
+    Chat history is SHARED across all users - everyone sees the same conversation.
 
     Args:
-        mission_id: Mission slug (from URL)
+        citizen_id: Citizen identifier (emma, rafael, sofia, etc.)
         limit: Max messages to return (default 50, max 100)
         current_user: Authenticated user
-        mission: Mission node (injected, includes auth check)
 
     Returns:
         MessageHistoryResponse with list of messages
 
     Example:
-        GET /api/missions/mission-47-telegram-bot/messages?limit=10
+        GET /api/citizens/rafael/messages?limit=10
         Authorization: Bearer <token>
 
         Response:
@@ -164,29 +160,30 @@ async def get_chat_history(
             "messages": [
                 {
                     "id": "chat-msg-uuid-1",
-                    "role": "system",
-                    "content": "Mission #47: Telegram Notifier. Ready to help.",
-                    "code_blocks": [],
-                    "created_at": "2025-11-05T10:00:00Z"
-                },
-                {
-                    "id": "chat-msg-uuid-2",
                     "role": "user",
                     "content": "How do I deploy to Render?",
                     "code_blocks": [],
                     "created_at": "2025-11-05T10:05:00Z"
                 },
                 {
-                    "id": "chat-msg-uuid-3",
+                    "id": "chat-msg-uuid-2",
                     "role": "assistant",
                     "content": "Here's how to deploy...",
                     "code_blocks": [{...}],
                     "created_at": "2025-11-05T10:05:10Z"
                 }
             ],
-            "total": 3
+            "total": 2
         }
     """
+    # Validate citizen_id
+    valid_citizens = ["emma", "rafael", "sofia", "inna", "maya", "alexis"]
+    if citizen_id not in valid_citizens:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid citizen_id. Must be one of: {', '.join(valid_citizens)}"
+        )
+
     # Validate limit
     if limit < 1 or limit > 100:
         raise HTTPException(
@@ -195,8 +192,8 @@ async def get_chat_history(
         )
 
     try:
-        # Get messages from graph
-        messages = get_mission_messages(mission_id, limit=limit)
+        # Get shared messages from graph
+        messages = get_citizen_messages(citizen_id, limit=limit)
 
         # Format messages for response
         formatted_messages = []
@@ -228,8 +225,8 @@ async def get_chat_history(
 
     except Exception as e:
         # Fail loud
-        print(f"[routers/chat.py:get_chat_history] Error fetching messages: {e}")
+        print(f"[routers/chat.py:get_chat_history] Error fetching messages for {citizen_id}: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to fetch chat history"
+            detail=f"Failed to fetch chat history for {citizen_id}"
         )
