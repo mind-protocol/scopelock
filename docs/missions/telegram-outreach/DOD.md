@@ -38,7 +38,7 @@
 
 **Environment variables:**
 - [x] All required env vars listed in AC.md and GUIDE.md
-- [ ] .env.example file created with all variables (dummy values)
+- [x] .env.example file created with all variables (dummy values)
 - [x] Instructions provided for obtaining each variable value
 
 **Database schema:**
