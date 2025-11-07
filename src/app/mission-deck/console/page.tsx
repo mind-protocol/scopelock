@@ -56,7 +56,7 @@ export default function ConsolePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isChatLoading, setIsChatLoading] = useState(false);
-  const [workspaceWidth, setWorkspaceWidth] = useState(70); // percentage
+  const [workspaceWidth, setWorkspaceWidth] = useState(60); // percentage (chat gets 40%)
   const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
@@ -247,6 +247,7 @@ export default function ConsolePage() {
               {/* Left: Workspace content */}
               <div style={{
                 width: `${workspaceWidth}%`,
+                height: '100%',
                 overflowY: 'auto',
                 overflowX: 'hidden'
               }}>
