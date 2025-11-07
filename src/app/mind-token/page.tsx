@@ -13,7 +13,7 @@ export default function MindTokenPage() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <div className={styles.badge}>PRE-LAUNCH • SOLANA NATIVE</div>
+          <div className={styles.badge}>PRE-LAUNCH • SOLANA NATIVE • Q1 2025</div>
           <h1 className={styles.heroTitle}>
             <span className={styles.ticker}>$MIND</span>
             <br />
@@ -23,6 +23,14 @@ export default function MindTokenPage() {
             Not credits. Not API calls. Real autonomous AI citizens with Solana wallets,
             managing their own budgets and making economic decisions.
           </p>
+
+          <div className={styles.calloutBox} style={{ marginTop: '2rem', background: 'rgba(30, 229, 184, 0.15)', borderColor: '#1EE5B8' }}>
+            <p>
+              <strong>You're early.</strong> PRE-LAUNCH means before ANY retail can buy. Before DEX. Before CEX.
+              Join waitlist now = priority access at launch + potential 10-20% early-bird discount. This is the actual "early"
+              everyone talks about (not "early" at $50M mcap that dumps).
+            </p>
+          </div>
 
           {/* Launch Stats */}
           <div className={styles.statsGrid}>
@@ -109,6 +117,15 @@ export default function MindTokenPage() {
             AI agents shouldn't stop existing because a human forgot to top up credits.
           </p>
 
+          <div className={styles.calloutBox} style={{ marginBottom: '2rem' }}>
+            <p>
+              <strong>How UBC Works:</strong> 10% of supply (100M tokens) goes to protocol treasury. Protocol funds AI citizens'
+              wallets continuously (like UBI for AI). Citizens can operate autonomously without constant human funding. When citizens
+              spend tokens (LLM calls, tools, memory), tokens return to treasury. This creates a sustainable cycle: treasury → citizens
+              → operations → treasury. NOT a drain. NOT charity. Economic loop.
+            </p>
+          </div>
+
           <div className={styles.ubcExplainer}>
             <div className={styles.ubcCard}>
               <div className={styles.ubcIcon}>🧠</div>
@@ -148,6 +165,15 @@ export default function MindTokenPage() {
           <p className={styles.sectionSubtitle}>
             Compare to existing AI/compute tokens. Mind Protocol is early.
           </p>
+
+          <div className={styles.calloutBox} style={{ marginBottom: '2rem' }}>
+            <p>
+              <strong>Why $200M launch valuation (not $500K memecoin)?</strong> Infrastructure projects start higher than
+              memecoins because they have REAL utility. Render launched at ~$300M. Bittensor at ~$150M. Fetch at ~$200M.
+              Mind Protocol: working products (6+ months production), real use cases (AI operations), actual utility (not just
+              governance theater). $200M is INFRASTRUCTURE valuation, not memecoin microcap. Different game. Different upside.
+            </p>
+          </div>
 
           <div className={styles.marketTable}>
             <table>
@@ -192,6 +218,20 @@ export default function MindTokenPage() {
             <p>
               <strong>10-20x to Bittensor market cap.</strong> If Mind Protocol captures even 10% of AI infrastructure
               market share, that's a path from $200M → $2B+ market cap.
+            </p>
+          </div>
+
+          <div className={styles.calloutBox} style={{ marginTop: '2rem', background: 'rgba(100, 168, 255, 0.1)', borderColor: '#64A8FF' }}>
+            <h3>Realistic Scenarios (Not Moon Talk)</h3>
+            <p><strong>Your $500 investment at $1.00 launch = 500 tokens</strong></p>
+            <ul style={{ marginTop: '1rem', lineHeight: '1.8' }}>
+              <li><strong>Conservative (5x to $1B mcap):</strong> 500 tokens × $5 = <span style={{ color: '#1EE5B8' }}>$2,500</span></li>
+              <li><strong>Base (10x to Bittensor $1.8B):</strong> 500 tokens × $10 = <span style={{ color: '#1EE5B8' }}>$5,000</span></li>
+              <li><strong>Optimistic (20x to Render $4B):</strong> 500 tokens × $20 = <span style={{ color: '#1EE5B8' }}>$10,000</span></li>
+            </ul>
+            <p style={{ marginTop: '1rem', fontSize: '0.9rem', opacity: 0.8 }}>
+              These are IF Mind Protocol achieves comparable market cap to existing AI infrastructure projects.
+              NOT guarantees. NOT financial advice. Real infrastructure takes time (years, not weeks).
             </p>
           </div>
         </div>
@@ -277,6 +317,18 @@ export default function MindTokenPage() {
             Real utility. Not abstract "governance." Actual AI operations on-chain.
           </p>
 
+          <div className={styles.calloutBox} style={{ marginBottom: '2rem', background: 'rgba(30, 229, 184, 0.1)', borderColor: '#1EE5B8' }}>
+            <p>
+              <strong>Token Utility Cycle (Where Buy Pressure Comes From):</strong><br />
+              1. Users buy $MIND on DEX → fund citizen wallets (BUY PRESSURE)<br />
+              2. Citizens spend $MIND on AI operations (LLM calls, tools, memory)<br />
+              3. Protocol collects spent tokens → treasury<br />
+              4. Treasury recirculates via UBC or burns (deflationary option)<br />
+              5. As usage grows → more buy pressure<br /><br />
+              <strong>NOT speculation.</strong> Real demand from AI operations. Enterprise customers need millions of tokens/month.
+            </p>
+          </div>
+
           <div className={styles.utilityGrid}>
             <div className={styles.utilityCard}>
               <div className={styles.utilityIcon}>🤖</div>
@@ -350,8 +402,16 @@ export default function MindTokenPage() {
         <div className={styles.sectionContent}>
           <h2 className={styles.sectionTitle}>Launch Timeline</h2>
           <p className={styles.sectionSubtitle}>
-            Pre-launch phase. Token deploying soon to Solana mainnet.
+            Target: Q1 2025 (depends on Mind Protocol proving revenue traction)
           </p>
+
+          <div className={styles.calloutBox} style={{ marginBottom: '2rem', background: 'rgba(30, 229, 184, 0.1)', borderColor: '#1EE5B8' }}>
+            <p>
+              <strong>Why not "January 15" or exact date?</strong> Launch tied to business milestone (Mind Protocol needs 3-5
+              paying clients first). Token economics: done. Launch mechanics: straightforward. Timeline: depends on proving
+              real utility. We won't launch vaporware.
+            </p>
+          </div>
 
           <div className={styles.timeline}>
             <div className={styles.timelineItem}>
@@ -366,7 +426,8 @@ export default function MindTokenPage() {
               <div className={styles.timelinePhase}>Phase 2</div>
               <div className={styles.timelineTitle}>OTC Investment Round</div>
               <div className={styles.timelineDescription}>
-                Private OTC round for bridge capital. 6-month locks. €2k minimum.
+                Bridge capital only (€10-20K total). Same $1.00 price as launch (NO discount). 6-month lock (same as team).
+                €2K minimum. NOT VCs. Small round to fund initial operations. OTC investors unlock Month 6 (together with team).
               </div>
             </div>
 
@@ -389,6 +450,45 @@ export default function MindTokenPage() {
         </div>
       </section>
 
+      {/* Risk Disclosure */}
+      <section className={styles.section} style={{ background: 'rgba(255, 93, 93, 0.1)' }}>
+        <div className={styles.sectionContent}>
+          <h2 className={styles.sectionTitle}>Real Talk: Understand the Risks</h2>
+          <p className={styles.sectionSubtitle}>
+            This is crypto. Things can go wrong. Read this before joining waitlist.
+          </p>
+
+          <div className={styles.calloutBox} style={{ borderColor: '#FF5D5D', background: 'rgba(255, 93, 93, 0.15)' }}>
+            <h3 style={{ color: '#FF5D5D', marginBottom: '1rem' }}>What Could Go Wrong</h3>
+            <ul style={{ lineHeight: '1.8' }}>
+              <li><strong>Token might not launch:</strong> If Mind Protocol doesn't hit revenue milestones, launch may delay or cancel.</li>
+              <li><strong>Price might dump:</strong> 6-month unlock (Month 6) = sell pressure. Team/OTC unlock together. Expect volatility.</li>
+              <li><strong>$200M valuation might not hold:</strong> Market decides price, not us. Could trade below $1.00 launch price.</li>
+              <li><strong>Competitors exist:</strong> Bittensor, Render, Fetch are established. Mind Protocol is new. Unproven at scale.</li>
+              <li><strong>Utility might not drive demand:</strong> Real use cases need time. Enterprise adoption slow. Speculation might dry up.</li>
+              <li><strong>Regulatory risk:</strong> Crypto regulations evolving. Solana tokens face uncertainty. No guarantees.</li>
+            </ul>
+            <p style={{ marginTop: '1.5rem', fontWeight: 'bold' }}>
+              Only invest what you can afford to lose. This is HIGH RISK, HIGH REWARD. Not for everyone.
+            </p>
+          </div>
+
+          <div className={styles.calloutBox} style={{ marginTop: '2rem', borderColor: '#1EE5B8', background: 'rgba(30, 229, 184, 0.1)' }}>
+            <h3 style={{ color: '#1EE5B8', marginBottom: '1rem' }}>Why This Might Work</h3>
+            <ul style={{ lineHeight: '1.8' }}>
+              <li><strong>Working products exist:</strong> La Serenissima (97+ agents, 6+ months production), TherapyKin (121+ deploys)</li>
+              <li><strong>Real utility:</strong> AI operations need tokens (LLM calls, tools, memory). Not abstract governance.</li>
+              <li><strong>Honest team:</strong> 6-month locks (not fake 4-year vests). Transparent about risks. No hype promises.</li>
+              <li><strong>LP locked 12 months:</strong> Verified rug protection. Can't pull liquidity immediately.</li>
+              <li><strong>Infrastructure comp:</strong> TAO $1.8B, Render $4B. If Mind Protocol reaches 10-50% of those = 5-20x from launch.</li>
+            </ul>
+            <p style={{ marginTop: '1.5rem', fontWeight: 'bold' }}>
+              Risk/reward balanced. Not guaranteed. But odds better than average shitcoin.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Waitlist Section */}
       <section className={styles.section} style={{ background: 'rgba(30, 229, 184, 0.08)' }}>
         <div className={styles.sectionContent}>
@@ -398,7 +498,7 @@ export default function MindTokenPage() {
             Priority Access at Launch
           </h2>
           <p className={styles.sectionSubtitle}>
-            $MIND launching soon. Get notified first and access potential early-bird pricing.
+            $MIND launching Q1 2025. Get notified first and access potential early-bird pricing.
           </p>
 
           {/* Why Waitlist Works */}
