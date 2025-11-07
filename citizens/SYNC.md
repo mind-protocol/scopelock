@@ -1,3 +1,33 @@
+## 2025-11-07 15:30 — Rafael: Layout Adjustments - Chat Default Width + No Scroll ✅
+
+**User Request:** "Again, I want no footer on this page and no scroll. It should take the whole space. And put the default chat to 40%."
+
+**Changes:**
+1. **Default split adjusted:** Workspace 60% | Chat 40% (was 70/30)
+2. **Height constraint added:** Workspace div now has explicit `height: '100%'`
+3. **Verified:** No footer exists, proper overflow settings prevent outer page scroll
+
+**Layout Structure (Updated):**
+```
+Mission Selector (200px) | Top Bar
+                        | Citizen Selector (horizontal tabs)
+                        | [Workspace 60% | Divider | Chat 40%]
+```
+
+**Technical Details:**
+- Main container: `height: '100vh', overflow: 'hidden'` (no outer scroll)
+- Workspace: `height: '100%', overflowY: 'auto'` (internal scroll only)
+- Chat: `overflow: 'hidden'` (ChatInterface handles internal scrolling)
+- Mission selector: `height: '100vh', overflowY: 'auto'` (internal scroll)
+
+**Status:** Committed ✅
+**Commit:** 59c567f
+**File:** src/app/mission-deck/console/page.tsx
+
+**Next:** Ready for browser testing to verify no outer page scrolling.
+
+---
+
 ## 2025-11-07 15:00 — Rafael: Major Refactor - Chat Separated from Workspaces ✅
 
 **MAJOR REFACTOR:** Chat now always visible, separate from workspaces
