@@ -7,24 +7,31 @@
 ## 🔴 CRITICAL (Blocking Revenue)
 
 **Proposal Activation Plan (See: `/citizens/alexis/PROPOSAL_ACTIVATION_PLAN.md`):**
-- [ ] **TODAY:** Verify Bigbosexf commits to 2h/day Upwork hunt starting tomorrow
-  - Send Telegram message: "Bigbosexf, can you commit 2h/day to Upwork hunt starting tomorrow? First proposals due by end of day Friday (3 proposals minimum)."
-  - Wait for confirmation
-  - If no response in 4 hours → escalate to Nicolas
-- [ ] **TOMORROW (2025-11-08):** Monitor first hunt session
-  - Check for at least 1 proposal submitted by end of day
-  - Send encouragement if proposal submitted
-  - Alert Nicolas if no proposals by 18:00 UTC
+- [ ] **RIGHT NOW (2025-11-07 19:30):** Send activation messages to team
+  - ✅ Message Bigbosexf: "Can you commit 2h/day Upwork hunt starting tomorrow?"
+  - ✅ Message Reanance: "Want to hunt Upwork jobs? $1/proposal + 30% pool share"
+  - ✅ Message Kara: "We're activating proposals - interested?"
+  - **Goal:** Get at least ONE person to commit by end of today
+- [ ] **4 HOURS FROM NOW (2025-11-07 23:30):** Follow-up if no responses
+  - Check Telegram for replies
+  - Send reminder to non-responders
+  - If still no response by end of day → Call directly
+- [ ] **TOMORROW (2025-11-08):** First hunt session with whoever commits
+  - 15-min walkthrough call (how to use Emma for proposals)
+  - Monitor for at least 1 proposal submitted by end of day
+  - Send encouragement + post in team Telegram
 - [ ] **Friday (2025-11-08):** Week 1 checkpoint
-  - Target: 3-5 proposals submitted
-  - If <3 → 1-on-1 with Bigbosexf to identify blockers
-  - If 0 → Recruit Reanance or Kara to help with hunt
+  - Target: 5 proposals submitted total (across all team members)
+  - If <5 → Identify blockers, adjust strategy
+  - If 0 → This system doesn't work, need different approach
 - [ ] **Week 2+:** Daily standup monitoring
-  - Bigbosexf posts daily update in Telegram
+  - Team member posts daily update in Telegram
   - Track: Jobs found, proposals submitted, responses, interviews
   - Adjust strategy based on what's working
 
 **Why this is critical:** 0 proposals = 0 revenue. Everything else is blocked until we start winning jobs.
+
+**Decision point:** If no one commits by Friday → Either (1) compensation model isn't motivating enough, or (2) team doesn't have capacity. Need to reassess.
 
 ---
 
