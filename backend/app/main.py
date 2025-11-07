@@ -180,10 +180,12 @@ from app.api.mission_deck.missions import router as missions_router
 from app.api.mission_deck.chat import router as chat_router
 from app.api.mission_deck.dod import router as dod_router
 from app.api.mission_deck.auth_routes import router as auth_router
+from app.api.mission_deck.compensation import router as compensation_router
 app.include_router(auth_router, tags=["Mission Deck Auth"])
 app.include_router(missions_router, prefix="/api", tags=["Mission Deck"])
 app.include_router(chat_router, tags=["Mission Deck Chat"])  # Router already has /api/missions prefix
 app.include_router(dod_router, prefix="/api", tags=["Mission Deck"])
+app.include_router(compensation_router, tags=["Compensation"])
 
 
 if __name__ == "__main__":

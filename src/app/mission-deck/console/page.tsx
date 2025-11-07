@@ -13,6 +13,7 @@ import { EmmaWorkspace } from '../../../components/mission-deck/EmmaWorkspace';
 import { RafaelWorkspace } from '../../../components/mission-deck/RafaelWorkspace';
 import { SofiaWorkspace } from '../../../components/mission-deck/SofiaWorkspace';
 import { ChatInterface } from '../../../components/mission-deck/ChatInterface';
+import { EarningsBanner } from '../../../components/mission-deck/EarningsBanner';
 import type { Mission, CitizenInfo, CitizenName, ChatMessage } from '../../../types';
 
 const CITIZENS: CitizenInfo[] = [
@@ -213,9 +214,14 @@ export default function ConsolePage() {
             )}
           </div>
 
-          <button onClick={handleLogout} className="btn-secondary" style={{ fontSize: '0.875rem' }}>
-            Log Out
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            {/* Earnings Banner (real-time polling) */}
+            <EarningsBanner memberSlug="bigbosexf" />
+
+            <button onClick={handleLogout} className="btn-secondary" style={{ fontSize: '0.875rem' }}>
+              Log Out
+            </button>
+          </div>
         </div>
 
         {/* Citizen selector */}

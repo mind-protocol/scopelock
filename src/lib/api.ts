@@ -18,6 +18,8 @@ import type {
   PerformanceMetric,
   Lead,
   Proposal,
+  EarningsData,
+  MissionFundData,
 } from '../types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://scopelock.onrender.com';
@@ -396,27 +398,12 @@ export const api = {
   },
 
   // Solana wallet authentication
+  // IMPORTANT: Auth NEVER uses mock data (chat endpoints need real JWT tokens)
   loginWithWallet: async (
     wallet_address: string,
     signature: string,
     message: string
   ): Promise<LoginResponse> => {
-    if (USE_MOCK_DATA) {
-      // Mock wallet login
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      const mockResponse: LoginResponse = {
-        access_token: 'mock-wallet-jwt-token',
-        token_type: 'bearer',
-        user: {
-          id: 'user-wallet-' + wallet_address.slice(0, 8),
-          email: wallet_address + '@wallet',
-          name: wallet_address.slice(0, 4) + '...' + wallet_address.slice(-4),
-        },
-      };
-      localStorage.setItem('access_token', mockResponse.access_token);
-      return mockResponse;
-    }
-
     const response = await apiCall<LoginResponse>('/api/auth/wallet-login', {
       method: 'POST',
       body: JSON.stringify({
@@ -625,5 +612,34 @@ export const api = {
   getProposals: async (missionId: string): Promise<Proposal[]> => {
     await new Promise((resolve) => setTimeout(resolve, 300));
     return MOCK_PROPOSALS[missionId] || [];
+  },
+
+  // Compensation system (Week 1: REST API polling, no mock data)
+  // Maps to: backend/app/api/mission_deck/compensation.py
+
+  /**
+   * Get member's complete earnings summary
+   * Polled by frontend every 2 seconds for real-time updates
+   */
+  getEarnings: async (memberSlug: string): Promise<EarningsData> => {
+    return apiCall<EarningsData>(`/api/compensation/earnings/${memberSlug}`);
+  },
+
+  /**
+   * Get current mission fund balance and tier information
+   */
+  getMissionFund: async (): Promise<MissionFundData> => {
+    return apiCall<MissionFundData>('/api/compensation/mission-fund');
+  },
+
+  /**
+   * Get member's earnings for a specific job
+   */
+  getJobEarnings: async (jobSlug: string, memberSlug: string) => {
+    return apiCall<{
+      earning: number;
+      yourInteractions: number;
+      teamTotal: number;
+    }>(`/api/compensation/jobs/${jobSlug}/earnings/${memberSlug}`);
   },
 };

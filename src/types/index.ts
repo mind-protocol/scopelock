@@ -140,3 +140,37 @@ export interface Proposal {
   decision?: string; // Emma's decision reasoning
   generatedAt: string; // ISO 8601 datetime
 }
+
+// Compensation system types (Week 1: REST API polling)
+// Maps to: backend/app/api/mission_deck/compensation.py response models
+
+export interface JobEarning {
+  jobSlug: string;
+  jobName: string;
+  yourInteractions: number;
+  teamTotal: number;
+  earning: number;
+}
+
+export interface EarningsData {
+  potentialFromJobs: number;
+  completedMissions: number;
+  grandTotal: number;
+  jobs: JobEarning[];
+  totalInteractions: number;
+}
+
+export interface MissionFundData {
+  balance: number;
+  tier: 1 | 2 | 3 | 4;
+  tierName: string;
+  tierStatus: string;
+  tierColor: string;
+  tierEmoji: string;
+  missionPayments: {
+    proposal: number;
+    social: number;
+    recruitment: number;
+    other: number;
+  };
+}
