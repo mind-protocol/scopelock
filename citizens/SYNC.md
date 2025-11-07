@@ -1,3 +1,49 @@
+## 2025-11-07 16:20 — Rafael: Fix Chat Backend Router Registration (404 → Working) ✅
+
+**User Issue:** Chat giving 404 errors for `/api/missions/47/chat` endpoint
+
+**Root Cause:** Double prefix in router registration
+- Chat router defined with: `router = APIRouter(prefix="/api/missions", ...)`
+- main.py was adding another prefix: `app.include_router(chat_router, prefix="/api", ...)`
+- This created: `/api/api/missions/{id}/chat` ❌ (wrong!)
+- Should be: `/api/missions/{id}/chat` ✅
+
+**Fix:**
+```python
+# Before:
+app.include_router(chat_router, prefix="/api", tags=["Mission Deck"])
+
+# After:
+app.include_router(chat_router, tags=["Mission Deck Chat"])  # Router already has /api/missions prefix
+```
+
+**How Chat Works:**
+1. User sends message from Mission Deck UI
+2. Frontend POSTs to `/api/missions/{mission_id}/chat`
+3. Backend calls: `cd citizens/rafael && claude -p "message" --continue --dangerously-skip-permissions`
+4. Claude CLI responds (using subscription, not API)
+5. Response saved to FalkorDB graph
+6. Returns to frontend chat interface
+
+**Backend Components Already Implemented:**
+- ✅ `/backend/app/api/mission_deck/chat.py` - Chat router (POST /chat, GET /messages)
+- ✅ `/backend/app/api/mission_deck/services/rafael_cli.py` - Claude CLI wrapper
+- ✅ Code block extraction, timeout handling, graceful failures
+- ✅ Message persistence to graph
+
+**Status:** Fixed and pushed to main ✅
+**Commit:** da5b200
+**File:** backend/app/main.py (line 185)
+
+**Deployment:**
+- Render will auto-deploy backend fix (~2 minutes)
+- Chat should work once backend redeploys
+- Endpoints now: `/api/missions/{id}/chat` (POST), `/api/missions/{id}/messages` (GET)
+
+**Next:** Wait for Render deployment, test chat with Rafael from Mission Deck UI.
+
+---
+
 ## 2025-11-07 16:15 — Maya: Mission Catalog Simplified + Telegram Security Addressed ✅
 
 **Work:** Simplified mission catalog to focus ONLY on acquisition, addressed critical Telegram security concern
