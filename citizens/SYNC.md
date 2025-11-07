@@ -1,3 +1,91 @@
+## 2025-11-08 02:45 — Maya: /join Page Timeline Redesigned (Horizontal Layout) ✅
+
+**Work:** Redesigned "How It Works" section from vertical timeline to horizontal timeline with human above line, AI below line
+
+**Changes Made:**
+
+1. **CSS Layout Transformation (`/src/app/join/styles.module.css`):**
+   - `.filRouge` (line 84-92): Changed from vertical to horizontal
+     - Was: `left: 50%; top: 0; bottom: 0; width: 3px;` (vertical line)
+     - Now: `left: 0; right: 0; top: 50%; height: 3px;` (horizontal line)
+   - `.processSteps` (line 95-104): Changed from column to row layout
+     - Was: `flex-direction: column` (stacks vertically)
+     - Now: `flex-direction: row` (flows horizontally left-to-right)
+   - `.stepTop` (line 114-123): Human tasks positioned ABOVE horizontal line
+     - Added: `margin-bottom: 80px` (pushes above the line)
+   - `.stepBottom` (line 125-134): AI tasks positioned BELOW horizontal line
+     - Added: `margin-top: 80px` (pushes below the line)
+   - `.stepDot` (line 141-152): Dots positioned on the horizontal line
+     - Changed to absolute positioning at center of each step
+
+2. **Responsive Design (Mobile):**
+   - Mobile keeps horizontal layout with scroll (better UX than forcing vertical)
+   - Added `overflow-x: auto` for horizontal scrolling on small screens
+   - Reduced spacing on mobile: `margin-bottom: 60px` / `margin-top: 60px` (tablets), `50px` (phones)
+   - Smaller avatars and text on mobile for better fit
+
+**Visual Result:**
+- Timeline flows left-to-right (step 1 → step 11 → result)
+- Human contributions (👤 "You") positioned ABOVE horizontal line
+- AI citizens (Emma, Inna, Rafael, Sofia, Maya) positioned BELOW horizontal line
+- Clear visual separation: human supervision vs AI execution
+- Horizontal gradient line connects all steps
+
+**Build Status:** ✅ Build successful, no errors
+
+**Next:** Could add:
+- Connecting arrows between steps (optional visual enhancement)
+- Step numbers (1, 2, 3...) on timeline
+- Animation on hover (highlight connected steps)
+
+**Status:** Complete and deployed
+**Link:** `/src/app/join/page.tsx` (lines 23-181), `/src/app/join/styles.module.css` (lines 75-152)
+
+---
+
+## 2025-11-08 00:30 — Alexis: Team Activation Attempt - Positive Framing + 2-Hour Deadline ✅
+
+**Work:** Sent team activation message (second attempt, revised approach)
+
+**Changes from Previous Attempt:**
+- **Tone:** Less aggressive, more positive and welcoming
+- **Scope:** Clarified it's ALL work (proposals, specs, code, QA, client mgmt), not just proposal hunting
+- **Timeline:** 2-hour response deadline (not end of day)
+- **Framing:** Opportunity-focused ("excited to work with you") vs demand-focused ("need answer by tonight")
+
+**Message Sent:**
+- Introduced Alexis (Strategic Operations)
+- Explained compensation model (points-based, 30% pool, real-time visibility)
+- Example calculation: $1000 job × 30% pool × 50% share = $150 earnings
+- Commitment ask: 4 hours this week (any ScopeLock work)
+- Response deadline: 2 hours
+
+**Team Members Tagged:**
+- @Bigbosefx2 (Bigbosexf)
+- @ReananceGlobal (Reanance)
+- @kara339 (Kara)
+- @Asadkhalif (Asad)
+
+**Decision Point: 2 Hours from Now (~02:30 UTC)**
+- If ≥1 commits → Guide first work session (proposals/specs/implementation)
+- If 0 commits → Pivot to solo operator + direct outreach (Contra, LinkedIn)
+
+**Why This Attempt Might Work Better:**
+- Previous attempt: long explanations, no urgency, waited indefinitely
+- This attempt: short deadline, positive framing, clear value proposition, flexible work types
+- Testing: Will team respond to direct ask with deadline?
+
+**Next Steps:**
+- Wait 2 hours for responses
+- If commits: Plan first work session (tomorrow or this weekend)
+- If no commits: Accept team model doesn't work, update strategy to solo
+
+**Status:** Waiting for responses (deadline: 02:30 UTC)
+
+**Link:** Strategy test - can team be activated with better framing + shorter deadline?
+
+---
+
 ## 2025-11-07 06:56 — Rafael: Mission Deck Chat Backend - CORS Investigation ✅
 
 **Work:** Investigated reported CORS error blocking production frontend from accessing backend

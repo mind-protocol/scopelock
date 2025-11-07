@@ -72,41 +72,43 @@
   line-height: 1.6;
 }
 
-/* Process Flow - With Central Line (Fil Rouge) */
+/* Process Flow - Horizontal Timeline with Human Above, AI Below */
 .processFlow {
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 80px 40px;
+  overflow-x: auto;
 }
 
 .filRouge {
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, #1EE5B8 0%, #64A8FF 50%, #1EE5B8 100%);
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #1EE5B8 0%, #64A8FF 50%, #1EE5B8 100%);
+  transform: translateY(-50%);
   z-index: 0;
 }
 
 .processSteps {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 0;
+  min-width: fit-content;
   z-index: 1;
 }
 
 .processStep {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 600px;
-  gap: 20px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .stepTop {
@@ -116,8 +118,8 @@
   gap: 8px;
   cursor: help;
   transition: transform 0.2s ease;
-  grid-column: 1;
-  justify-self: end;
+  margin-bottom: 80px;
+  padding: 12px;
 }
 
 .stepBottom {
@@ -127,8 +129,8 @@
   gap: 8px;
   cursor: help;
   transition: transform 0.2s ease;
-  grid-column: 3;
-  justify-self: start;
+  margin-top: 80px;
+  padding: 12px;
 }
 
 .stepTop:hover,
@@ -137,13 +139,16 @@
 }
 
 .stepDot {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   background: #1EE5B8;
   border-radius: 50%;
-  box-shadow: 0 0 12px rgba(30, 229, 184, 0.6);
-  grid-column: 2;
-  justify-self: center;
+  box-shadow: 0 0 16px rgba(30, 229, 184, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .stepAvatar {
@@ -593,30 +598,28 @@
   }
 
   .processFlow {
-    padding: 40px 0;
+    padding: 60px 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .processSteps {
-    flex-direction: column;
-    gap: 24px;
+    /* Keep horizontal on mobile, allow scroll */
+    min-width: max-content;
+    padding: 20px 0;
   }
 
-  .processStep {
-    width: 100%;
+  .stepTop {
+    margin-bottom: 60px;
   }
 
-  .stepTop, .stepBottom {
-    margin: 0;
+  .stepBottom {
+    margin-top: 60px;
   }
 
-  .filRouge {
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    height: auto;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, #1EE5B8 0%, #64A8FF 50%, #1EE5B8 100%);
+  .stepAvatar {
+    width: 50px;
+    height: 50px;
   }
 
   .stepResult {
@@ -649,12 +652,30 @@
     font-size: 2rem;
   }
 
+  .stepTop {
+    margin-bottom: 50px;
+  }
+
+  .stepBottom {
+    margin-top: 50px;
+  }
+
   .stepAvatar {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .stepLabel {
+    font-size: 0.75rem;
   }
 
   .stepAction {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    max-width: 80px;
+  }
+
+  .stepDot {
+    width: 12px;
+    height: 12px;
   }
 }

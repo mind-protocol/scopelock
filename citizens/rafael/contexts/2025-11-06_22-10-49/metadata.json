@@ -5,5 +5,7 @@
   "created_at": "2025-11-06T21:10:49.989558+00:00",
   "last_updated": "2025-11-06T21:49:46.853299+00:00",
   "message_count": 14,
-  "has_tool_calls": true
+  "has_tool_calls": true,
+  "closed_at": "2025-11-07T07:09:20.389651+00:00",
+  "closed_reason": "compact"
 }

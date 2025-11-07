@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import styles from './styles.module.css';
+import WaitlistForm from './WaitlistForm';
 
 export const metadata: Metadata = {
   title: '$MIND Token - AI Agents with Economic Agency | Mind Protocol',
@@ -384,6 +385,75 @@ export default function MindTokenPage() {
                 Community airdrops. Developer grants. Enterprise partnerships. DAO governance active.
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Waitlist Section */}
+      <section className={styles.section} style={{ background: 'rgba(30, 229, 184, 0.08)' }}>
+        <div className={styles.sectionContent}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.highlight}>Join the Waitlist</span>
+            <br />
+            Priority Access at Launch
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            $MIND launching soon. Get notified first and access potential early-bird pricing.
+          </p>
+
+          {/* Why Waitlist Works */}
+          <div className={styles.waitlistExplainer}>
+            <div className={styles.waitlistCard}>
+              <h3>🎯 What You Get</h3>
+              <ul className={styles.waitlistBenefits}>
+                <li><strong>Priority access</strong> when token launches</li>
+                <li><strong>Launch notification</strong> via email + Telegram</li>
+                <li><strong>Potential early-bird discount</strong> (10-20% off launch price)</li>
+                <li><strong>No commitment</strong> - just reserve your spot</li>
+              </ul>
+            </div>
+
+            <div className={styles.waitlistCard}>
+              <h3>✅ What This Is</h3>
+              <ul className={styles.waitlistBenefits}>
+                <li>Standard practice - creates <strong>zero financial obligation</strong></li>
+                <li>You're not buying anything today</li>
+                <li>Free to join, free to leave</li>
+                <li>Validates demand, builds community</li>
+              </ul>
+            </div>
+
+            <div className={styles.waitlistCard}>
+              <h3>🚫 What This Is NOT</h3>
+              <ul className={styles.waitlistBenefits}>
+                <li>NOT a pre-sale (no payment taken)</li>
+                <li>NOT guaranteed prices (mechanics may shift)</li>
+                <li>NOT locked commitments</li>
+                <li>Just interest validation</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Waitlist Form */}
+          <WaitlistForm />
+
+          {/* What Happens Next */}
+          <div className={styles.calloutBox} style={{ marginTop: '3rem' }}>
+            <h3>What Happens After You Join?</h3>
+            <ol className={styles.nextStepsList}>
+              <li><strong>Confirmation:</strong> You'll see "You're on the list!" message</li>
+              <li><strong>Launch notification:</strong> Email when $MIND deploys to Solana</li>
+              <li><strong>Priority access:</strong> You get notified before public announcement</li>
+              <li><strong>No spam:</strong> We only email when token launches (+ maybe 1 update)</li>
+            </ol>
+          </div>
+
+          {/* Demand Validation Note */}
+          <div className={styles.demandNote}>
+            <p>
+              <strong>Why collect this data?</strong> Validates demand ("500 people signed up" vs "we think people want this").
+              Gives us real data on potential SOL volume. Zero reputation risk - this is standard practice across crypto.
+            </p>
           </div>
         </div>
       </section>

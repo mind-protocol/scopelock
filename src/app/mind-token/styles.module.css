@@ -569,6 +569,181 @@
   text-align: center;
 }
 
+/* Waitlist Section */
+.waitlistExplainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.waitlistCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+  border-radius: 12px;
+}
+
+.waitlistCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #1EE5B8;
+}
+
+.waitlistBenefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.waitlistBenefits li {
+  padding: 12px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #9AA3AE;
+  border-bottom: 1px solid rgba(154, 163, 174, 0.1);
+}
+
+.waitlistBenefits li:last-child {
+  border-bottom: none;
+}
+
+/* Waitlist Form */
+.waitlistFormContainer {
+  max-width: 600px;
+  margin: 48px auto;
+  padding: 48px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 2px solid #1EE5B8;
+  border-radius: 16px;
+}
+
+.waitlistForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #E6EAF2;
+}
+
+.formInput,
+.formSelect {
+  padding: 14px 16px;
+  background: rgba(14, 17, 22, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.3);
+  border-radius: 8px;
+  color: #E6EAF2;
+  font-size: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.3s ease;
+}
+
+.formInput:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: #1EE5B8;
+  box-shadow: 0 0 0 3px rgba(30, 229, 184, 0.1);
+}
+
+.formInput::placeholder {
+  color: #9AA3AE;
+  opacity: 0.6;
+}
+
+.formHint {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  font-style: italic;
+}
+
+.submitButton {
+  padding: 16px 32px;
+  background: #1EE5B8;
+  color: #0E1116;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.submitButton:hover {
+  background: #5CE27E;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.3);
+}
+
+.submitButton:disabled {
+  background: #9AA3AE;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.formStatus {
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+  display: none;
+}
+
+.formStatus.success {
+  display: block;
+  background: rgba(92, 226, 126, 0.15);
+  border: 1px solid #5CE27E;
+  color: #5CE27E;
+}
+
+.formStatus.error {
+  display: block;
+  background: rgba(255, 93, 93, 0.15);
+  border: 1px solid #FF5D5D;
+  color: #FF5D5D;
+}
+
+/* Next Steps List */
+.nextStepsList {
+  padding-left: 20px;
+  margin: 16px 0 0 0;
+}
+
+.nextStepsList li {
+  padding: 8px 0;
+  font-size: 1rem;
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+/* Demand Note */
+.demandNote {
+  margin-top: 32px;
+  padding: 24px;
+  background: rgba(100, 168, 255, 0.05);
+  border-left: 4px solid #64A8FF;
+  border-radius: 8px;
+}
+
+.demandNote p {
+  font-size: 0.95rem;
+  color: #9AA3AE;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .heroTitle {
@@ -606,5 +781,13 @@
   .marketTable th,
   .marketTable td {
     padding: 12px;
+  }
+
+  .waitlistFormContainer {
+    padding: 24px;
+  }
+
+  .waitlistExplainer {
+    grid-template-columns: 1fr;
   }
 }
