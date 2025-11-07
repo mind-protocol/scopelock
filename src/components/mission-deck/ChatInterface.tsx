@@ -5,8 +5,7 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import type { ChatMessage, CodeBlock, CitizenInfo, CitizenName } from '../../types';
+import type { ChatMessage, CodeBlock } from '../../types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -14,18 +13,12 @@ interface ChatInterfaceProps {
   messages: ChatMessage[];
   onSendMessage: (message: string) => Promise<void>;
   isLoading?: boolean;
-  citizens: CitizenInfo[];
-  activeCitizen: CitizenName;
-  onSelectCitizen: (citizen: CitizenName) => void;
 }
 
 export function ChatInterface({
   messages,
   onSendMessage,
   isLoading = false,
-  citizens,
-  activeCitizen,
-  onSelectCitizen,
 }: ChatInterfaceProps) {
   const [inputValue, setInputValue] = useState('');
 
@@ -38,98 +31,8 @@ export function ChatInterface({
     await onSendMessage(message);
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active': return 'var(--slk-accent)';
-      case 'complete': return 'var(--slk-success)';
-      default: return 'rgba(154, 163, 174, 0.4)';
-    }
-  };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Citizen Selector Header */}
-      <div style={{
-        borderBottom: '1px solid rgba(230, 234, 242, 0.08)',
-        background: 'var(--slk-surface)',
-        padding: '12px 16px'
-      }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          flexWrap: 'wrap'
-        }}>
-          {citizens.map((citizen) => (
-            <button
-              key={citizen.id}
-              onClick={() => onSelectCitizen(citizen.id)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '6px 12px',
-                borderRadius: '6px',
-                transition: 'background 0.2s, color 0.2s',
-                background: activeCitizen === citizen.id ? 'var(--slk-bg)' : 'transparent',
-                border: activeCitizen === citizen.id ? '1px solid var(--slk-accent)' : '1px solid transparent',
-                color: activeCitizen === citizen.id ? 'var(--slk-accent)' : 'var(--slk-muted)',
-                cursor: 'pointer',
-                fontSize: '0.8rem'
-              }}
-              onMouseEnter={(e) => {
-                if (activeCitizen !== citizen.id) {
-                  e.currentTarget.style.background = 'var(--slk-bg)';
-                  e.currentTarget.style.color = 'var(--slk-text)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeCitizen !== citizen.id) {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = 'var(--slk-muted)';
-                }
-              }}
-            >
-              {/* Profile Picture */}
-              <div style={{ position: 'relative' }}>
-                <Image
-                  src={`/citizens/${citizen.id}/avatar.png`}
-                  alt={`${citizen.name} avatar`}
-                  width={32}
-                  height={32}
-                  style={{
-                    borderRadius: '50%',
-                    border: activeCitizen === citizen.id ? '2px solid var(--slk-accent)' : '2px solid transparent'
-                  }}
-                />
-                {/* Status indicator overlay */}
-                <span style={{
-                  position: 'absolute',
-                  bottom: '-2px',
-                  right: '-2px',
-                  width: '10px',
-                  height: '10px',
-                  borderRadius: '50%',
-                  background: getStatusColor(citizen.status),
-                  border: '2px solid var(--slk-surface)',
-                  display: 'inline-block'
-                }} />
-              </div>
-
-              {/* Name + Role */}
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start'
-              }}>
-                <span style={{ fontSize: '0.8rem', fontWeight: 500 }}>{citizen.name}</span>
-                <span style={{ fontSize: '0.7rem', opacity: 0.7 }}>{citizen.role}</span>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-
       {/* Message list */}
       <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {messages.map((message) => (

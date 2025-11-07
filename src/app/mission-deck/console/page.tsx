@@ -313,9 +313,6 @@ export default function ConsolePage() {
                   messages={messages}
                   onSendMessage={handleSendMessage}
                   isLoading={isChatLoading}
-                  citizens={CITIZENS}
-                  activeCitizen={activeCitizen}
-                  onSelectCitizen={setActiveCitizen}
                 />
               </div>
             </>

@@ -1,8 +1,9 @@
 # GUIDE: Mission Deck Compensation System
 
-**Version:** 1.0
+**Version:** 1.1 (WebSocket + Tier-Based Payments)
 **Created:** 2025-11-07
-**Mission:** Setup, deployment, and usage guide for compensation system
+**Updated:** 2025-11-07
+**Mission:** Setup, deployment, and usage guide for compensation system with WebSocket real-time updates and tier-based mission payments
 
 ---
 
@@ -273,6 +274,151 @@ Running 12 tests using 3 workers
   ...
 
   12 passed (1.2m)
+```
+
+---
+
+## Understanding the Tier-Based Mission Payment System
+
+### What Are Tiers?
+
+Mission payments change dynamically based on the **mission fund balance** (5% of all client job values).
+
+**4 Tier Levels:**
+
+| Tier | Balance Range | Status | Meaning |
+|------|--------------|---------|---------|
+| **Tier 1** | ≥ $200 | 🟢 Abundant | Fund is healthy, full payments |
+| **Tier 2** | $100-200 | 🟡 Healthy | Fund is adequate, reduced payments |
+| **Tier 3** | $50-100 | 🟠 Limited | Fund is low, minimal payments |
+| **Tier 4** | < $50 | 🔴 Critical | Fund is critical, emergency payments |
+
+### Payment Matrix
+
+Different mission types have different payment amounts per tier:
+
+| Mission Type | Tier 1 | Tier 2 | Tier 3 | Tier 4 |
+|--------------|--------|--------|--------|--------|
+| **Proposal Writing** | $2.00 | $1.50 | $1.00 | $0.50 |
+| **Social Media Post** | $3.00 | $2.50 | $2.00 | $1.00 |
+| **Recruitment** | $15.00 | $12.00 | $10.00 | $8.00 |
+| **Other Tasks** | $5.00 | $4.00 | $3.00 | $2.00 |
+
+### How It Works (User Perspective)
+
+**Example 1: Abundant Fund (Tier 1)**
+```
+Mission Fund Balance: $250.00
+Current Tier: Tier 1 (Abundant)
+
+Available Mission: "Write proposal for AI Dashboard project"
+Payment if claimed now: $2.00
+```
+
+**Example 2: Limited Fund (Tier 3)**
+```
+Mission Fund Balance: $75.00
+Current Tier: Tier 3 (Limited)
+
+Available Mission: "Write proposal for AI Dashboard project"
+Payment if claimed now: $1.00
+```
+
+**Key Point:** Payment is locked at claim time. If you claim a mission when fund is Tier 1, you get Tier 1 payment even if fund drops to Tier 3 by completion.
+
+### Why Tier-Based Payments?
+
+**Problem solved:**
+- Fixed payments drain the mission fund regardless of health
+- No feedback loop between fund balance and spending
+- Team can't see when to prioritize client jobs (which increase fund) vs internal missions (which drain fund)
+
+**Benefits:**
+1. **Self-regulating:** Low fund = lower mission payments = incentive to win client jobs
+2. **Transparent:** Team sees exactly how fund health affects earnings
+3. **Fair:** Early contributors get higher payments when fund is healthy
+4. **Sustainable:** System prevents fund depletion
+
+---
+
+## WebSocket Real-Time Updates (Week 1 Scope)
+
+### How WebSocket Works
+
+**Traditional REST polling (OLD):**
+```
+Frontend: "What's my current earnings?" (every 5 seconds)
+Backend: "Your earnings are $X"
+Frontend: "What's my current earnings?" (5 seconds later)
+Backend: "Your earnings are $X"
+... (network waste, battery drain)
+```
+
+**WebSocket (NEW):**
+```
+Frontend: *connects once*
+Backend: *pushes updates when they happen*
+Backend → Frontend: "Interaction counted! +$10.50"
+Backend → Frontend: "Mission claimed! +$2.00"
+... (efficient, real-time)
+```
+
+### WebSocket Events (Personal Earnings Only)
+
+**Week 1 Scope:** Personal earnings updates only (no team broadcasts yet)
+
+| Event | Trigger | Payload | What Happens |
+|-------|---------|---------|--------------|
+| `connected` | WebSocket connection established | `{event, memberId, timestamp}` | Frontend shows "Connected" status |
+| `interaction_counted` | You send message to AI citizen | `{event, jobId, yourInteractions, teamTotal, yourPotentialEarning}` | Job card updates live |
+| `mission_claimed` | You claim a mission | `{event, missionId, payment, tier, fundBalance}` | Mission card updates + fund balance shown |
+| `mission_completed` | NLR approves your mission | `{event, missionId, payment, newTotal}` | Your total earnings update |
+| `job_paid` | NLR marks job payment received | `{event, jobId, yourEarning, totalPaid}` | Potential → Paid earnings |
+
+### Testing WebSocket Connection
+
+**Browser DevTools Test:**
+
+1. Open Mission Deck: `http://localhost:3000/mission-deck/console`
+2. Open DevTools (F12)
+3. Network tab → Filter: WS (WebSocket)
+4. You should see: `ws://localhost:8000/api/compensation/ws/[your-member-id]`
+5. Status: `101 Switching Protocols` (success)
+6. Messages tab shows: `{"event":"connected","memberId":"...","timestamp":"..."}`
+
+**Manual cURL Test (Backend Only):**
+
+```bash
+# Install websocat (WebSocket CLI tool)
+# macOS: brew install websocat
+# Linux: cargo install websocat
+
+# Connect to WebSocket endpoint
+websocat ws://localhost:8000/api/compensation/ws/test-member-123
+
+# Expected output:
+# {"event":"connected","memberId":"test-member-123","timestamp":"2025-11-07T14:23:45.123Z"}
+```
+
+**Simulate Interaction Event:**
+
+```python
+# Run in Python shell (with backend running)
+import requests
+
+# Send message to AI citizen (this should trigger WebSocket broadcast)
+response = requests.post(
+    "http://localhost:8000/api/chat/send",
+    json={
+        "missionId": "test-job-1",
+        "message": "Rafael, implement authentication",
+        "citizenId": "rafael",
+        "memberId": "test-member-123"
+    }
+)
+
+# Check WebSocket message in browser DevTools
+# Should see: {"event":"interaction_counted","jobId":"test-job-1",...}
 ```
 
 ---

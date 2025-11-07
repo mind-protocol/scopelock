@@ -12,5 +12,9 @@ export default function MissionDeckLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <SolanaWalletProvider>{children}</SolanaWalletProvider>
+  return (
+    <div style={{ height: '100vh', overflow: 'hidden' }}>
+      <SolanaWalletProvider>{children}</SolanaWalletProvider>
+    </div>
+  )
 }
