@@ -43,6 +43,7 @@ class Settings(BaseSettings):
 
     # Claude CLI Configuration
     claude_credentials: str = ""  # JSON string with Claude session credentials
+    claude_settings: str = ""  # JSON string with Claude settings (optional)
 
     class Config:
         env_file = ".env"
