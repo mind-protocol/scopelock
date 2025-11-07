@@ -41,24 +41,39 @@ export default function RootLayout({
               />
             </Link>
             <div className="nav-links">
-              {/* About & How It Works */}
-              <Link href="/about">About</Link>
-              <Link href="/process">How ScopeLock Works</Link>
-              <Link href="/pricing">Pricing</Link>
-              <span className="nav-separator" aria-hidden="true">|</span>
+              {/* Portfolio */}
+              <div className="nav-dropdown">
+                <button className="nav-dropdown-trigger">Portfolio</button>
+                <div className="nav-dropdown-menu">
+                  <Link href="/case-studies">Projects</Link>
+                  <Link href="/blog">Blog</Link>
+                </div>
+              </div>
 
-              {/* Portfolio & Content */}
-              <Link href="/mission-deck">Portfolio</Link>
-              <Link href="/blog">Blog</Link>
-              <span className="nav-separator" aria-hidden="true">|</span>
+              {/* How It Works */}
+              <div className="nav-dropdown">
+                <button className="nav-dropdown-trigger">How It Works</button>
+                <div className="nav-dropdown-menu">
+                  <Link href="/process">ScopeLock Process</Link>
+                  <Link href="/pricing">Pricing</Link>
+                  <Link href="/faq">FAQ</Link>
+                </div>
+              </div>
 
-              {/* Support & Resources */}
-              <Link href="/faq">FAQ</Link>
-              <Link href="/resources">Resources</Link>
+              {/* About */}
+              <div className="nav-dropdown">
+                <button className="nav-dropdown-trigger">About</button>
+                <div className="nav-dropdown-menu">
+                  <Link href="/about">Our Story</Link>
+                  <Link href="/mission-deck">Mission Deck</Link>
+                  <Link href="/resources">Resources</Link>
+                </div>
+              </div>
+
               <span className="nav-separator" aria-hidden="true">|</span>
 
               {/* Get Started */}
-              <Link href="/#contact" className="cta-nav">Get Started</Link>
+              <Link href="/#contact" className="cta-nav">Start a Project</Link>
             </div>
           </nav>
         </header>
