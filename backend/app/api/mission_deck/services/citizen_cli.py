@@ -101,10 +101,19 @@ def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
     # The prompt is just the user's message - Claude will read CLAUDE.md automatically
     prompt = user_message
 
+    # Find Claude CLI binary (installed by build.sh to backend/bin/claude)
+    claude_bin = os.path.join(backend_dir, "bin", "claude")
+    if not os.path.exists(claude_bin):
+        # Fallback to PATH (for local development)
+        claude_bin = "claude"
+        print(f"[citizen_cli.py:ask_citizen] Claude binary not found at {os.path.join(backend_dir, 'bin', 'claude')}, using PATH")
+    else:
+        print(f"[citizen_cli.py:ask_citizen] Using Claude binary at {claude_bin}")
+
     try:
         # Try with --continue first (for ongoing conversations)
         result = subprocess.run(
-            ["claude", "-p", prompt, "--continue", "--dangerously-skip-permissions", "--verbose"],
+            [claude_bin, "-p", prompt, "--continue", "--dangerously-skip-permissions", "--verbose"],
             cwd=citizen_dir,
             capture_output=True,
             text=True,
@@ -116,7 +125,7 @@ def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
            "no conversation found to continue" in result.stderr.lower():
             print(f"[citizen_cli.py:ask_citizen] No conversation found for {citizen_id}, retrying without --continue")
             result = subprocess.run(
-                ["claude", "-p", prompt, "--dangerously-skip-permissions", "--verbose"],
+                [claude_bin, "-p", prompt, "--dangerously-skip-permissions", "--verbose"],
                 cwd=citizen_dir,
                 capture_output=True,
                 text=True,
