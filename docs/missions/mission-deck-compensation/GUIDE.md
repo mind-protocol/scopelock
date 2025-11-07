@@ -703,31 +703,54 @@ If still failing:
 - Need to refresh page to see changes
 
 **Cause:**
-- SSE connection failed
-- Browser doesn't support SSE
-- Network firewall blocking SSE
+- WebSocket connection failed
+- Browser doesn't support WebSocket
+- Network firewall blocking WebSocket
+- Wrong WebSocket URL configured
 
 **Fix:**
 
-1. Check SSE connection in DevTools:
-   - Network tab → Filter "stream"
-   - Should see: `/api/compensation/earnings/member_a/stream` (pending, never completes)
-   - If it completes immediately → connection failed
+1. Check WebSocket connection in DevTools:
+   - Network tab → Filter "WS" (WebSocket)
+   - Should see: `ws://localhost:8000/api/compensation/ws/[member-id]`
+   - Status should be: `101 Switching Protocols`
+   - If status is `400/403/500` → connection failed
 
-2. Check browser console for SSE errors:
+2. Check browser console for WebSocket errors:
    ```
-   EventSource failed: ...
+   WebSocket connection to 'ws://...' failed: ...
    ```
 
-3. Fallback to polling (if SSE unavailable):
-   - Frontend will automatically fall back to polling every 5 seconds
-   - Less real-time, but works everywhere
+3. Verify WebSocket URL is correct:
+   - Check frontend `.env.local`:
+     ```bash
+     NEXT_PUBLIC_WS_URL=ws://localhost:8000  # Local dev
+     # Or for production:
+     # NEXT_PUBLIC_WS_URL=wss://scopelock-backend.onrender.com
+     ```
+   - **Important:** Use `ws://` for local, `wss://` for production (secure WebSocket)
 
-4. Verify CORS headers (if cross-origin):
+4. Test WebSocket endpoint manually:
+   ```bash
+   # Install websocat
+   brew install websocat  # macOS
+   cargo install websocat  # Linux
+
+   # Connect to WebSocket
+   websocat ws://localhost:8000/api/compensation/ws/test-member
+
+   # Expected: {"event":"connected","memberId":"test-member",...}
+   ```
+
+5. Verify CORS headers allow WebSocket upgrade (if cross-origin):
    ```bash
    # Check CORS_ORIGINS in backend .env
    CORS_ORIGINS=https://deck.scopelock.mindprotocol.ai
    ```
+
+6. Check backend logs for WebSocket errors:
+   - Render dashboard → Logs
+   - Search for "WebSocket" or "ws"
 
 ---
 
@@ -821,6 +844,28 @@ After successful deployment:
    - Add more mission types
    - Improve UI/UX based on feedback
    - Consider weighting different actions (future)
+
+---
+
+## Next Steps (Week 2+ Features)
+
+**Team awareness features** (deferred until team is active):
+
+1. **Live Activity Feed** - See other team members' recent interactions in real-time
+2. **Real-Time Leaderboard** - Live ranking by total potential earnings (updates as interactions happen)
+3. **Mission Claiming Race** - See who's claiming missions in real-time with countdown timers
+4. **Team Velocity Tracker** - Live team-wide interaction rate (interactions/hour) with trend arrows
+5. **Live Streak Display** - Daily interaction streaks with fire emojis and team streak competition
+
+**Why deferred:**
+> "We cannot do the real-time game team visibility right now because there's nobody working right now. It won't feel powerful." - Alexis
+
+**When to enable:** Week 2+ when at least 3+ active team members are working simultaneously. The WebSocket infrastructure is already built, so enabling these features will be straightforward.
+
+**Implementation note:** All team broadcast events are commented out in `websocket_manager.py`. To enable:
+1. Uncomment `broadcast_to_all()` function
+2. Update frontend to handle team events (`team_interaction`, `live_leaderboard_update`, etc.)
+3. Test with 3+ concurrent users
 
 ---
 

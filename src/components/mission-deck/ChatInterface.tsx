@@ -63,7 +63,7 @@ export function ChatInterface({
 
               {/* Message content */}
               <div style={{ whiteSpace: 'pre-wrap', fontSize: '14px' }}>
-                {message.content}
+                {typeof message.content === 'string' ? message.content : JSON.stringify(message.content)}
               </div>
 
               {/* Code blocks */}
@@ -181,14 +181,22 @@ function CodeBlockDisplay({ block }: { block: CodeBlock }) {
   );
 }
 
-function formatTime(isoString: string): string {
-  const date = new Date(isoString);
-  const now = new Date();
-  const diffMs = now.getTime() - date.getTime();
-  const diffMins = Math.floor(diffMs / 60000);
+function formatTime(isoString: string | undefined): string {
+  if (!isoString) return '';
 
-  if (diffMins < 1) return 'Just now';
-  if (diffMins < 60) return `${diffMins}m ago`;
-  if (diffMins < 1440) return `${Math.floor(diffMins / 60)}h ago`;
-  return date.toLocaleDateString();
+  try {
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) return '';
+
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffMins = Math.floor(diffMs / 60000);
+
+    if (diffMins < 1) return 'Just now';
+    if (diffMins < 60) return `${diffMins}m ago`;
+    if (diffMins < 1440) return `${Math.floor(diffMins / 60)}h ago`;
+    return date.toLocaleDateString();
+  } catch (error) {
+    return '';
+  }
 }

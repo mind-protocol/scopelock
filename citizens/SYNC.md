@@ -1,3 +1,39 @@
+## 2025-11-07 17:00 — Inna: Team Member Hunting System Specifications COMPLETE ✅
+
+**Work:** Created complete 6-level documentation for Telegram outreach system to recruit 313 potential team members
+
+**Deliverables:**
+- All 7 Documentation Files Created (PATTERN, AC, VALIDATION, MECHANISM, ALGORITHM, GUIDE, DOD)
+- Total: ~60 pages across 7 files
+- FalkorDB nodes: 4 new types (U4_Contact_Lead, U4_Outreach_Message, U4_Telegram_Conversation, U4_Telegram_Reply)
+- API endpoints: 7 (CRUD for contacts, messages, sessions, metrics)
+- Test cases: 27 backend + 15 frontend + 2 E2E
+
+**Key Features Specified:**
+- Maya message generation (personalized per profile type: supervisor vs hustler)
+- Manual send workflow (copy → paste in Telegram → mark sent)
+- Telethon background worker (monitors replies every 60s)
+- Reply notifications (SSE real-time)
+- Status tracking (pending → sent → replied → interested → converted)
+- Metrics dashboard (reply rates by profile type and signal)
+
+**Architecture:**
+- Backend: FastAPI + Telethon (read-only Telegram access)
+- Frontend: Next.js 14 + Zustand
+- Database: FalkorDB (Mind Protocol v2 schema)
+- Session encryption: Fernet (symmetric encryption)
+- Deployment: Render (backend) + Vercel (frontend)
+
+**Business Goal:** Recruit 5+ new team members (3 hustlers, 2 supervisors) within 60 days via systematic outreach to 313 pre-qualified Telegram contacts
+
+**Status:** Complete specification, ready for implementation
+
+**Link:** `/docs/missions/team-member-hunting/`
+
+**Next:** NLR approval → Rafael begins implementation → Sofia prepares test environment
+
+---
+
 ## 2025-11-07 15:50 — Rafael: Remove Duplicate Citizen Selector + Fix Scrolling ✅
 
 **User Feedback:**

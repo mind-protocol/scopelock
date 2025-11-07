@@ -1,8 +1,9 @@
 # MECHANISM: Mission Deck Compensation System
 
-**Version:** 1.0
+**Version:** 1.1 (WebSocket + Tier-Based Payments)
 **Created:** 2025-11-07
-**Mission:** Architecture and implementation approach for interaction-based compensation
+**Updated:** 2025-11-07
+**Mission:** Architecture and implementation approach for interaction-based compensation with WebSocket real-time updates and tier-based mission payments
 
 ---
 
@@ -94,13 +95,14 @@
 
 ### Frontend
 **Framework:** Next.js 14 (App Router) deployed on **Vercel**
-- **Why:** Standard ScopeLock stack, zero-config deployment, real-time updates via Server-Sent Events
+- **Why:** Standard ScopeLock stack, zero-config deployment, real-time updates via WebSocket
 
 **UI Library:** React 18.3+ with Zustand for state management
 - **Why:** Zustand provides simple real-time state updates without Redux complexity
 
-**Real-time Updates:** Server-Sent Events (SSE) for earnings updates
-- **Why:** Simpler than WebSocket for unidirectional updates (server → client)
+**Real-time Updates:** WebSocket for personal earnings updates (Week 1 scope)
+- **Why:** Bidirectional communication for future team features, persistent connection reduces latency
+- **Scope:** Personal earnings only (no team broadcasts yet - deferred to Week 2+)
 
 **Styling:** Tailwind CSS + ScopeLock design tokens
 - **Why:** Consistent with existing Mission Deck UI
@@ -112,8 +114,9 @@
 **Graph Client:** FalkorDB REST API via `requests` library
 - **Why:** Direct integration with Mind Protocol v2 production graph
 
-**Real-time:** FastAPI SSE endpoints for earnings broadcasts
-- **Why:** Native async support in FastAPI
+**Real-time:** FastAPI WebSocket endpoints for earnings broadcasts
+- **Why:** Native async support in FastAPI, bidirectional communication, persistent connections
+- **Library:** `websockets` for WebSocket protocol support
 
 ### Database
 **Primary:** FalkorDB production graph (scopelock L2)
@@ -693,31 +696,138 @@ https://deck.scopelock.mindprotocol.ai/api/compensation
 
 ---
 
-### Real-Time Updates (SSE)
+### Real-Time Updates (WebSocket)
 
-#### `GET /api/compensation/earnings/{memberId}/stream`
-**Server-Sent Events stream for earnings updates**
+#### `WebSocket /api/compensation/ws/{memberId}`
+**WebSocket connection for personal earnings updates (Week 1 scope)**
 
-**Response (streaming):**
-```
-event: earnings-update
-data: {"totalPotentialEarnings": 164.00}
-
-event: interaction-counted
-data: {"jobId": "job-therapykin-chatbot", "newCount": 21, "newEarning": 185.29}
-
-event: mission-completed
-data: {"missionId": "mission-proposal-ai-analytics", "payment": 1.00}
-```
-
-**Frontend usage:**
+**Connection:**
 ```javascript
-const eventSource = new EventSource('/api/compensation/earnings/member_a/stream');
+// Frontend: Establish WebSocket connection
+const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+const wsUrl = `${protocol}//${window.location.host}/api/compensation/ws/${memberId}`;
+const ws = new WebSocket(wsUrl);
 
-eventSource.addEventListener('earnings-update', (e) => {
-  const data = JSON.parse(e.data);
-  updateEarningsBanner(data.totalPotentialEarnings);
-});
+ws.onopen = () => {
+  console.log('WebSocket connected');
+  // Server sends: {"event":"connected","memberId":"...","timestamp":"..."}
+};
+
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+
+  switch (data.event) {
+    case 'connected':
+      console.log('Connected as:', data.memberId);
+      break;
+
+    case 'interaction_counted':
+      // Update job card interaction count + potential earning
+      updateJobCard(data.jobId, {
+        yourInteractions: data.yourInteractions,
+        teamTotal: data.teamTotal,
+        yourPotentialEarning: data.yourPotentialEarning
+      });
+      break;
+
+    case 'mission_claimed':
+      // Update mission fund balance + tier indicator
+      updateMissionCard(data.missionId, {
+        payment: data.payment,
+        tier: data.tier
+      });
+      updateMissionFundBalance(data.fundBalance);
+      break;
+
+    case 'mission_completed':
+      // Update total potential earnings
+      updateTotalEarnings(data.newTotal);
+      break;
+
+    case 'job_paid':
+      // Move from potential to paid earnings
+      moveToPaidHistory(data.jobId, data.yourEarning);
+      break;
+  }
+};
+
+ws.onerror = (error) => {
+  console.error('WebSocket error:', error);
+};
+
+ws.onclose = () => {
+  console.log('WebSocket disconnected');
+  // Attempt reconnect after 5 seconds
+  setTimeout(() => reconnect(), 5000);
+};
+```
+
+**Event Types (Personal Only - Week 1):**
+
+| Event | Trigger | Payload | Purpose |
+|-------|---------|---------|---------|
+| `connected` | WebSocket established | `{event, memberId, timestamp}` | Confirm connection |
+| `interaction_counted` | Member sends message | `{event, jobId, yourInteractions, teamTotal, yourPotentialEarning}` | Live interaction count update |
+| `mission_claimed` | Member claims mission | `{event, missionId, payment, tier, fundBalance}` | Show tier-based payment |
+| `mission_completed` | NLR approves mission | `{event, missionId, payment, newTotal}` | Update total earnings |
+| `job_paid` | NLR triggers payment | `{event, jobId, yourEarning, totalPaid}` | Move to paid history |
+
+**Backend Implementation:**
+```python
+# services/websocket_manager.py
+from fastapi import WebSocket
+from typing import Dict, Set
+import asyncio
+
+# Active WebSocket connections: {member_id: Set[WebSocket]}
+active_connections: Dict[str, Set[WebSocket]] = {}
+
+async def connect_member(websocket: WebSocket, member_id: str):
+    """Accept WebSocket connection and add to active connections."""
+    await websocket.accept()
+
+    if member_id not in active_connections:
+        active_connections[member_id] = set()
+
+    active_connections[member_id].add(websocket)
+
+    await websocket.send_json({
+        "event": "connected",
+        "memberId": member_id,
+        "timestamp": datetime.utcnow().isoformat()
+    })
+
+def broadcast_to_member(member_id: str, data: dict):
+    """Broadcast message to specific member's WebSocket connections."""
+    asyncio.create_task(async_broadcast_to_member(member_id, data))
+
+async def async_broadcast_to_member(member_id: str, data: dict):
+    """Async broadcast to member's connections."""
+    if member_id not in active_connections:
+        return
+
+    dead_connections = set()
+
+    for connection in active_connections[member_id]:
+        try:
+            await connection.send_json(data)
+        except Exception:
+            dead_connections.add(connection)
+
+    # Clean up dead connections
+    active_connections[member_id] -= dead_connections
+```
+
+**Keepalive (Ping/Pong):**
+```javascript
+// Frontend: Send ping every 30 seconds to keep connection alive
+setInterval(() => {
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(JSON.stringify({ type: 'ping' }));
+  }
+}, 30000);
+
+// Backend handles ping automatically (FastAPI WebSocket)
 ```
 
 ---
@@ -804,8 +914,15 @@ def track_interaction(
     # 5. Recalculate earnings for all members
     new_earnings = calculate_all_member_earnings(job_id)
 
-    # 6. Broadcast update via SSE
-    broadcast_earnings_update(member_id, new_earnings)
+    # 6. Broadcast update via WebSocket (personal earnings only)
+    from services.websocket_manager import broadcast_to_member
+    broadcast_to_member(member_id, {
+        "event": "interaction_counted",
+        "jobId": job_id,
+        "yourInteractions": updated_job[0]["job"]["interactionCounts"][member_id],
+        "teamTotal": updated_job[0]["job"]["totalInteractions"],
+        "yourPotentialEarning": new_earnings[member_id]
+    })
 
     return {
         "interactionCounted": True,
@@ -898,14 +1015,30 @@ def claim_mission(mission_id: str, member_id: str) -> dict:
     if result[0]["status"] != "available":
         raise ValueError("Mission not available")
 
-    # 3. Check mission fund sufficient
-    mission_payment = get_mission_payment(mission_id)
-    fund_balance = get_mission_fund_balance()
+    # 3. Calculate tier-based payment dynamically
+    from services.compensation.tier_calculator import (
+        get_current_tier,
+        get_mission_payment,
+        get_mission_fund_balance
+    )
 
+    # Get mission type
+    cypher_type = """
+    MATCH (mission:U4_Work_Item {slug: $mission_slug})
+    RETURN mission.missionType AS missionType
+    """
+    mission_type_result = query_graph(cypher_type, {"mission_slug": mission_id})
+    mission_type = mission_type_result[0]["missionType"]
+
+    # Calculate payment based on current tier
+    tier, fund_balance = get_current_tier()
+    mission_payment = get_mission_payment(mission_type)
+
+    # Verify fund sufficient
     if fund_balance < mission_payment:
         raise ValueError(f"Mission fund insufficient (${fund_balance} available, need ${mission_payment})")
 
-    # 4. Update mission status
+    # 4. Update mission status + store payment and tier (locked at claim time)
     expires_at = datetime.utcnow() + timedelta(hours=24)
 
     cypher_claim = """
@@ -914,6 +1047,8 @@ def claim_mission(mission_id: str, member_id: str) -> dict:
         mission.claimedBy = $member_id,
         mission.claimedAt = datetime($claimed_at),
         mission.claimExpiresAt = datetime($expires_at),
+        mission.fixedPayment = $payment,
+        mission.claimTier = $tier,
         mission.updated_at = datetime()
     RETURN mission
     """
@@ -922,7 +1057,9 @@ def claim_mission(mission_id: str, member_id: str) -> dict:
         "mission_slug": mission_id,
         "member_id": member_id,
         "claimed_at": datetime.utcnow().isoformat(),
-        "expires_at": expires_at.isoformat()
+        "expires_at": expires_at.isoformat(),
+        "payment": float(mission_payment),
+        "tier": tier
     })
 
     # 5. Create link

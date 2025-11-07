@@ -99,29 +99,48 @@ Banner shows: "YOUR TOTAL POTENTIAL EARNINGS: $164.00"
 
 ---
 
-### F4: Mission Listing and Claiming
+### F4: Mission Listing and Claiming (Tier-Based Payments)
 
 **Given:** Team member views Mission Deck
 **When:** They navigate to MISSIONS section
-**Then:** They see available missions they can claim with fixed payment amounts
+**Then:** They see available missions they can claim with tier-based payment amounts (dynamically calculated)
 
 **Acceptance:**
 - [ ] MISSIONS section lists all available missions
-- [ ] Each mission card shows: Title, fixed payment, status (Available/Claimed/Completed)
+- [ ] Each mission card shows: Title, **current payment (based on tier)**, status (Available/Claimed/Completed)
+- [ ] Mission payment updates when mission fund balance changes tiers
+- [ ] Tier indicator shown: 🟢 Tier 1, 🟡 Tier 2, 🟠 Tier 3, 🔴 Tier 4
+- [ ] Tooltip on payment: "Payment locked at claim time. Current tier: [X]"
 - [ ] "Claim Mission" button on available missions
 - [ ] After claiming: Status changes to "Claimed by [Name]", button becomes "Mark Complete"
-- [ ] 24-hour claim expiry: If not completed in 24h, status reverts to "Available"
+- [ ] After claiming: Payment amount and tier are **locked** (stored on mission node)
+- [ ] 24-hour claim expiry: If not completed in 24h, status reverts to "Available" (payment recalculated at next claim)
 - [ ] Cannot claim if < 5 total interactions across all jobs (error: "Need 5+ interactions to claim missions")
 
-**Test data:**
+**Test data (Tier 1 - Abundant Fund):**
 ```
-Available missions:
-1. "Write proposal for 'AI Analytics Dashboard'" - $1.00
-2. "Post about ScopeLock on X" - $2.00
-3. "Recruit new team member" - $10.00 (requires approval)
+Mission Fund Balance: $250.00 → Tier 1 (Abundant)
 
-Member with 3 interactions tries to claim → Error
-Member with 10 interactions claims Mission 1 → Status: "Claimed by [Name]"
+Available missions:
+1. "Write proposal for 'AI Analytics Dashboard'" - $2.00 🟢 (Tier 1)
+2. "Post about ScopeLock on X" - $3.00 🟢 (Tier 1)
+3. "Recruit new team member" - $15.00 🟢 (Tier 1)
+
+Member with 3 interactions tries to claim → Error: "Need 5+ interactions to claim missions. Currently: 3."
+Member with 10 interactions claims Mission 1 → Status: "Claimed by [Name]", Payment locked at $2.00, Tier locked at 1
+```
+
+**Test data (Tier 3 - Limited Fund):**
+```
+Mission Fund Balance: $75.00 → Tier 3 (Limited)
+
+Available missions:
+1. "Write proposal for 'AI Analytics Dashboard'" - $1.00 🟠 (Tier 3)
+2. "Post about ScopeLock on X" - $2.00 🟠 (Tier 3)
+3. "Recruit new team member" - $10.00 🟠 (Tier 3)
+
+Member claims Mission 1 → Payment locked at $1.00, Tier locked at 3
+(Even if fund increases to Tier 1 before completion, member still gets $1.00)
 ```
 
 ---
@@ -221,29 +240,46 @@ Paid History:
 
 ---
 
-### F8: Mission Fund Balance Visibility
+### F8: Mission Fund Balance Visibility (with Tier Indicator)
 
 **Given:** Team member or NLR wants to check mission fund status
 **When:** They view MISSIONS section
-**Then:** Header shows current mission fund balance and source (5% from which jobs)
+**Then:** Header shows current mission fund balance, tier, and source (5% from which jobs)
 
 **Acceptance:**
-- [ ] MISSIONS section header shows: "Mission Fund: $XX.XX available"
+- [ ] MISSIONS section header shows: "Mission Fund: $XX.XX available" + tier indicator (🟢🟡🟠🔴)
+- [ ] Tier badge shows: "Tier 1 (Abundant)" | "Tier 2 (Healthy)" | "Tier 3 (Limited)" | "Tier 4 (Critical)"
+- [ ] Tier color matches indicator: Tier 1 green, Tier 2 yellow, Tier 3 orange, Tier 4 red
 - [ ] Tooltip shows: "From: Job A ($X), Job B ($Y), Job C ($Z)"
-- [ ] If balance < $10: Warning icon with "Low balance - complete jobs to increase fund"
+- [ ] If balance < $50 (Tier 4): Warning icon with "Critical - complete jobs to increase fund and mission payments"
+- [ ] If balance $50-100 (Tier 3): Info icon with "Limited fund - mission payments reduced"
 - [ ] NLR sees additional: "Pending missions: $W" (total of claimed but incomplete missions)
+- [ ] Tooltip explains tier system: "Tier affects mission payments. Higher tier = higher payments."
 
-**Test data:**
+**Test data (Tier 2 - Healthy):**
 ```
 Job A ($1,500) contributed: $75
 Job B ($800) contributed: $40
 Job C ($1,200) contributed: $60
 Spent: $25 on completed missions
 
+Balance: $150.00 → Tier 2 (Healthy)
+
 Expected display:
-Mission Fund: $150.00 available
+Mission Fund: $150.00 available 🟡 Tier 2 (Healthy)
 From: Build Chatbot ($75), Landing Page ($40), Dashboard ($60)
 Spent: $25
+Current payments: Proposal $1.50, Social $2.50, Recruitment $12.00
+```
+
+**Test data (Tier 4 - Critical):**
+```
+Balance: $35.00 → Tier 4 (Critical)
+
+Expected display:
+Mission Fund: $35.00 available 🔴 Tier 4 (Critical) ⚠️
+Warning: "Critical fund level. Complete client jobs to increase fund and restore full mission payments."
+Current payments: Proposal $0.50, Social $1.00, Recruitment $8.00
 ```
 
 ---
