@@ -34,7 +34,7 @@ export default function JoinPage() {
 
             {/* Process steps */}
             <div className={styles.processSteps}>
-              {/* Step 1: You - Find job */}
+              {/* Step 1: Find job + Write proposal */}
               <div className={styles.processStep}>
                 <div className={styles.stepTop} title="Search Upwork for jobs matching our criteria">
                   <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
@@ -43,11 +43,6 @@ export default function JoinPage() {
                   <div className={styles.stepLabel}>You</div>
                   <div className={styles.stepAction}>Find job</div>
                 </div>
-                <div className={styles.stepDot}></div>
-              </div>
-
-              {/* Step 2: Emma - Analyze */}
-              <div className={styles.processStep}>
                 <div className={styles.stepDot}></div>
                 <div className={styles.stepBottom} title="Emma analyzes job posts and writes complete proposal with budget and timeline">
                   <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
@@ -58,7 +53,7 @@ export default function JoinPage() {
                 </div>
               </div>
 
-              {/* Step 3: You - Submit */}
+              {/* Step 2: Submit + Write specs */}
               <div className={styles.processStep}>
                 <div className={styles.stepTop} title="Review Emma's proposal and submit to client on Upwork">
                   <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
@@ -67,11 +62,6 @@ export default function JoinPage() {
                   <div className={styles.stepLabel}>You</div>
                   <div className={styles.stepAction}>Submit</div>
                 </div>
-                <div className={styles.stepDot}></div>
-              </div>
-
-              {/* Step 4: Inna - Specs */}
-              <div className={styles.processStep}>
                 <div className={styles.stepDot}></div>
                 <div className={styles.stepBottom} title="Inna writes complete technical specifications with acceptance criteria">
                   <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
@@ -82,7 +72,7 @@ export default function JoinPage() {
                 </div>
               </div>
 
-              {/* Step 5: You - Lock scope */}
+              {/* Step 3: Lock scope + Generate code */}
               <div className={styles.processStep}>
                 <div className={styles.stepTop} title="Review and approve the scope with client">
                   <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
@@ -91,11 +81,6 @@ export default function JoinPage() {
                   <div className={styles.stepLabel}>You</div>
                   <div className={styles.stepAction}>Lock scope</div>
                 </div>
-                <div className={styles.stepDot}></div>
-              </div>
-
-              {/* Step 6: Rafael - Code */}
-              <div className={styles.processStep}>
                 <div className={styles.stepDot}></div>
                 <div className={styles.stepBottom} title="Rafael generates 100% of the code based on Inna's specifications">
                   <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
@@ -106,7 +91,7 @@ export default function JoinPage() {
                 </div>
               </div>
 
-              {/* Step 7: You - Deploy */}
+              {/* Step 4: Deploy + QA checklist */}
               <div className={styles.processStep}>
                 <div className={styles.stepTop} title="Review Rafael's code and deploy to production">
                   <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
@@ -115,11 +100,6 @@ export default function JoinPage() {
                   <div className={styles.stepLabel}>You</div>
                   <div className={styles.stepAction}>Deploy</div>
                 </div>
-                <div className={styles.stepDot}></div>
-              </div>
-
-              {/* Step 8: Sofia - QA */}
-              <div className={styles.processStep}>
                 <div className={styles.stepDot}></div>
                 <div className={styles.stepBottom} title="Sofia generates complete QA checklist with test cases">
                   <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
@@ -130,7 +110,7 @@ export default function JoinPage() {
                 </div>
               </div>
 
-              {/* Step 9: You - Test */}
+              {/* Step 5: Test + Demo script */}
               <div className={styles.processStep}>
                 <div className={styles.stepTop} title="Run through Sofia's QA checklist and test everything">
                   <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
@@ -139,11 +119,6 @@ export default function JoinPage() {
                   <div className={styles.stepLabel}>You</div>
                   <div className={styles.stepAction}>Test</div>
                 </div>
-                <div className={styles.stepDot}></div>
-              </div>
-
-              {/* Step 10: Maya - Demo */}
-              <div className={styles.processStep}>
                 <div className={styles.stepDot}></div>
                 <div className={styles.stepBottom} title="Maya creates demo script showing what to present to client">
                   <div className={styles.stepAvatar} style={{ borderColor: '#1EE5B8' }}>
@@ -154,7 +129,7 @@ export default function JoinPage() {
                 </div>
               </div>
 
-              {/* Step 11: You - Present */}
+              {/* Step 6: Present + Result */}
               <div className={styles.processStep}>
                 <div className={styles.stepTop} title="Present completed work to client following Maya's script">
                   <div className={styles.stepAvatar} style={{ borderColor: '#64A8FF' }}>
@@ -163,11 +138,6 @@ export default function JoinPage() {
                   <div className={styles.stepLabel}>You</div>
                   <div className={styles.stepAction}>Present</div>
                 </div>
-                <div className={styles.stepDot}></div>
-              </div>
-
-              {/* Result */}
-              <div className={styles.processStep}>
                 <div className={styles.stepDot}></div>
                 <div className={styles.stepResult}>
                   <div className={styles.resultIcon}>✅</div>

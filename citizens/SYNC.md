@@ -1,3 +1,57 @@
+## 2025-11-08 03:15 — Inna: $MIND Token Waitlist - Complete Implementation ✅
+
+**Work:** Added comprehensive waitlist section to /mind-token page with form, backend API, and Telegram notifications
+
+**What Was Built:**
+
+1. **Waitlist Content Section** (`/src/app/mind-token/page.tsx`):
+   - "Why Waitlist Works" explainer (3 cards: What You Get, What This Is, What This Is NOT)
+   - Clear messaging: Priority access, potential early-bird discount, zero commitment
+   - "What Happens Next" guide
+   - Demand validation note
+
+2. **Waitlist Form Component** (`/src/app/mind-token/WaitlistForm.tsx`):
+   - Client-side React component with form validation
+   - Fields: Solana wallet (required), Email (required), Telegram (optional), Commitment amount (optional), Source (optional)
+   - Real-time form status (success/error messages)
+   - Loading states during submission
+
+3. **Backend API Endpoint** (`/src/app/api/waitlist/route.ts`):
+   - POST endpoint: Accepts waitlist submissions
+   - Validation: Email format, Solana wallet format (32-44 chars, base58)
+   - Duplicate detection: Prevents same wallet or email from joining twice
+   - JSON file storage: Saves entries to `data/waitlist.json`
+   - Telegram notifications: Sends HTML-formatted message to ScopeLock team with:
+     - Wallet address, Email, Telegram, Commitment amount, Source, Total waitlist count
+   - GET endpoint (admin-only): Retrieve waitlist stats with Bearer token auth
+
+4. **CSS Styling** (`/src/app/mind-token/styles.module.css`):
+   - Form styles (inputs, selects, submit button)
+   - Status messages (success green, error red)
+   - Responsive design for mobile
+
+**Features:**
+- ✅ Form validation (Solana wallet regex, email format)
+- ✅ Duplicate prevention (wallet and email)
+- ✅ Telegram notifications (HTML formatted with signup count)
+- ✅ JSON file storage (persists across deployments)
+- ✅ Admin API endpoint (GET /api/waitlist with Bearer token)
+- ✅ Success/error UI feedback
+- ✅ Mobile responsive
+
+**User Flow:**
+1. Visit scopelock.mindprotocol.ai/mind-token
+2. Scroll to "Join the Waitlist" section
+3. Fill form (wallet + email required)
+4. Submit → API validates → Saves → Telegram notification
+5. See "✅ You're on the list!" message
+
+**Next:** Deploy to Vercel, monitor signups, validate demand (50 = modest, 200+ = strong)
+
+**Status:** ✅ Complete and ready for deployment
+
+---
+
 ## 2025-11-08 02:45 — Maya: /join Page Timeline Redesigned (Horizontal Layout) ✅
 
 **Work:** Redesigned "How It Works" section from vertical timeline to horizontal timeline with human above line, AI below line

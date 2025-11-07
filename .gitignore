@@ -50,3 +50,4 @@ mission-deck-frontend/*.tsbuildinfo
 # Python cache
 __pycache__/
 *.pyc
+data/
