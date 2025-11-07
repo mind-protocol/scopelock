@@ -1,3 +1,90 @@
+## 2025-11-07 15:45 — Maya: Task Catalog for Mission Deck Compensation ✅
+
+**Work:** Created comprehensive catalog of actionable tasks team members can complete to earn points
+
+**Context:** User clarified they wanted "missions" like "Post on Higgs, message contact on Telegram, onboard team member" - not software development projects, but specific tasks within Mission Deck
+
+**Created:** `docs/missions/TASK_CATALOG.md` with 50+ actionable tasks
+
+**10 Task Categories:**
+
+1. **Client Acquisition** (7 tasks)
+   - Find Upwork jobs (+1), cold outreach (+1)
+   - Post on Higgs/X/LinkedIn (+1 each)
+   - Connect Telegram & message contacts (+1)
+   - Follow up warm leads (+1)
+
+2. **Proposal Writing** (3 tasks)
+   - Draft with Emma (+1), submit (+2), customize portfolio (+1)
+
+3. **Client Communication** (6 tasks)
+   - Onboard client (+2), weekly updates (+1), answer questions (+1)
+   - Schedule calls (+1), present demos (+2), request testimonials (+1→+3)
+
+4. **Specification & Documentation** (3 tasks)
+   - Write AC.md with Inna (+3), create DoD (+1), document architecture (+1)
+
+5. **Implementation & Deployment** (5 tasks)
+   - Generate code with Rafael (+1), run tests (+1), deploy (+2)
+   - Fix bugs (+1), update ENV vars (+1)
+
+6. **Quality Assurance** (4 tasks)
+   - Full QA with Sofia (+2), manual testing (+1), verify AC Green (+1), test mobile (+1)
+
+7. **Team Building** (4 tasks)
+   - **Onboard new member (+5)** - high value
+   - **Refer new member (+3→+10 if completes first job)**
+   - Create training docs (+2), answer team questions (+1)
+
+8. **Learning & Skills** (3 tasks)
+   - Complete training mission (+5), learn tools (+1), code reviews (+1)
+
+9. **Internal Tools** (4 tasks)
+   - Message AI citizens (+1 auto-tracked)
+   - Update SYNC.md (+1), Telegram team updates (+1), report bugs (+2)
+
+10. **Marketing & Content** (4 tasks)
+    - Write blog with Emma (+3), case studies (+3)
+    - Demo videos (+2), update portfolio (+1)
+
+**Compensation Model:**
+- **Formula:** `(Your points / Team total points) × Job team pool (30%)`
+- **Example:** 20 points out of 100 total = 20% of $450 pool = $90 earned
+
+**Task Tracking:**
+- **Automatic:** Messaging AI citizens in job threads = +1 per message
+- **Manual:** Post in job thread with `[TASK]` prefix + evidence (links, screenshots)
+
+**Task Value Tiers:**
+- **High (+5):** Onboard member, complete training
+- **Medium (+2-3):** Submit proposal, present demo, QA, blog posts, case studies
+- **Base (+1):** Most tasks (find jobs, outreach, updates, bug fixes)
+
+**Guidelines:**
+- Log immediately with evidence
+- Quality > quantity (no spam)
+- Help teammates complete tasks
+- Fraud = removal + no payment
+
+**Usage:**
+- New members: Training mission (+5) → Find jobs → Help with proposals → QA
+- Experienced: Focus high-value (onboarding +5, proposals +2, demos +2, QA +2)
+- Marketing-focused: Blog posts (+3), social (+1×3 platforms), case studies (+3)
+
+**Examples of Specific Tasks:**
+- "Post on Higgs" (+1) - Create post showcasing ScopeLock work
+- "Send message to contact on Telegram" (+1) - Connect & pitch ScopeLock
+- "Onboard team member" (+5) - Walk new dev through process
+- "Refer team member" (+3→+10) - Recruit from network
+
+**File:** docs/missions/TASK_CATALOG.md
+**Commit:** a0e5c92
+**Status:** Pushed to production
+
+**Next:** Integrate task catalog into Mission Deck UI (show available tasks per job, track completion, calculate earnings real-time)
+
+---
+
 ## 2025-11-07 15:30 — Rafael: Layout Adjustments - Chat Default Width + No Scroll ✅
 
 **User Request:** "Again, I want no footer on this page and no scroll. It should take the whole space. And put the default chat to 40%."
