@@ -335,6 +335,85 @@ Expected display:
 
 ---
 
+### F11: Team Leaderboard (Mandatory Wallet Connection)
+
+**Given:** Team member wants to view team-wide potential earnings leaderboard
+**When:** They navigate to Team page
+**Then:** If wallet connected, show leaderboard; if not, show wallet connection prompt
+
+**Acceptance:**
+- [ ] New "Team" page accessible from main navigation
+- [ ] **If wallet NOT connected:**
+  - [ ] Show prompt: "Connect Your Solana Wallet"
+  - [ ] Explanation: "Required to receive payments and view team leaderboard"
+  - [ ] "Connect Wallet" button → Opens existing wallet connection flow
+  - [ ] After wallet connected → Automatically shows leaderboard
+- [ ] **If wallet connected:**
+  - [ ] Page title: "Team Potential Earnings Leaderboard"
+  - [ ] Shows all team members ranked by `potentialEarnings` (DESC)
+  - [ ] Table columns: Rank (#1, #2, #3...), Name, Potential Earnings
+  - [ ] Current user row highlighted (different background color)
+  - [ ] Real-time updates via WebSocket (<1s after earnings change)
+  - [ ] Shows total team potential: "Team Total: $X,XXX.XX"
+- [ ] **Wallet display:**
+  - [ ] User's connected wallet shown in header (truncated): "9xQe...rGtX"
+  - [ ] Click wallet → Show full address + "Disconnect" option
+  - [ ] If wallet disconnected → Returns to connection prompt
+- [ ] **Privacy:**
+  - [ ] Only shows potential earnings (NOT paid earnings)
+  - [ ] Only shows totals (NOT per-job breakdown)
+  - [ ] No interaction counts visible
+
+**Test data:**
+```
+Team members (sorted by potential earnings):
+1. member_a: $450.00 (Alice) ← Current user
+2. member_b: $320.00 (Bob)
+3. member_c: $180.00 (Carol)
+4. member_d: $90.00 (Dan)
+
+Team Total: $1,040.00
+```
+
+**Expected display (wallet connected):**
+```
+┌─────────────────────────────────────────────────────┐
+│ Team Potential Earnings Leaderboard                 │
+│ Connected: 9xQe...rGtX                              │
+├─────────────────────────────────────────────────────┤
+│ Rank  Name     Potential Earnings                   │
+├─────────────────────────────────────────────────────┤
+│  #1   Alice    $450.00                   ← You      │
+│  #2   Bob      $320.00                              │
+│  #3   Carol    $180.00                              │
+│  #4   Dan      $90.00                               │
+├─────────────────────────────────────────────────────┤
+│ Team Total: $1,040.00                               │
+└─────────────────────────────────────────────────────┘
+```
+
+**Expected display (wallet NOT connected):**
+```
+┌─────────────────────────────────────────────────────┐
+│ Connect Your Solana Wallet                          │
+│                                                      │
+│ Required to receive payments and view team          │
+│ leaderboard                                          │
+│                                                      │
+│ [Connect Wallet]                                     │
+│                                                      │
+│ Use Phantom, Solflare, or any Solana wallet         │
+└─────────────────────────────────────────────────────┘
+```
+
+**Verification:**
+- [ ] Cannot view leaderboard without wallet (enforced on backend)
+- [ ] Wallet stored in `agent.walletAddress` field (from existing flow)
+- [ ] Leaderboard query checks `walletAddress IS NOT NULL`
+- [ ] Real-time updates work (WebSocket)
+
+---
+
 ## Non-Functional Criteria
 
 ### NF1: Performance

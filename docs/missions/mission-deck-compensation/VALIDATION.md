@@ -239,6 +239,19 @@ def test_mission_fund_contribution_on_job_creation():
    - Try to trigger payment without marking "Cash received"
    - Assert: Error "Cannot pay before receiving funds from Upwork"
 
+7. **`test_payment_requires_wallet_address`** (NEW)
+   - Job completed with 2 contributors
+   - Member A has wallet connected, Member B does not
+   - Try to trigger payment
+   - Assert: Error "Cannot pay. These members need to connect wallet: member_b"
+   - Assert: Payment not triggered
+
+8. **`test_payment_succeeds_when_all_have_wallets`** (NEW)
+   - Job completed with 2 contributors
+   - Both members have verified wallet addresses
+   - Trigger payment
+   - Assert: Payment succeeds, walletValidation = {member_a: True, member_b: True}
+
 **Expected assertions:**
 ```python
 def test_payment_calculates_final_shares():
@@ -265,9 +278,66 @@ def test_payment_calculates_final_shares():
 
 ---
 
+#### T5: Team Leaderboard Backend (NEW)
+**File:** `tests/backend/test_compensation_leaderboard.py`
+
+**Test cases:**
+
+1. **`test_leaderboard_only_includes_members_with_wallets`**
+   - Create 3 members: A (wallet), B (wallet), C (no wallet)
+   - Set potential earnings: A=$450, B=$320, C=$180
+   - Call get_team_leaderboard()
+   - Assert: Only A and B in leaderboard, C excluded
+
+2. **`test_leaderboard_sorted_by_potential_earnings`**
+   - Members: A=$100, B=$500, C=$300
+   - All have wallets
+   - Call get_team_leaderboard()
+   - Assert: Order is B (#1), C (#2), A (#3)
+
+3. **`test_leaderboard_truncates_wallet_addresses`**
+   - Member has wallet "9xQeWvG816bUx9EPjHmaT23yfAS2Zo1pEZGfSPqYrGtX"
+   - Call get_team_leaderboard()
+   - Assert: Returned wallet = "9xQe...rGtX"
+
+4. **`test_check_member_has_wallet_true`**
+   - Member has verified wallet
+   - Call check_member_has_wallet(member_id)
+   - Assert: hasWallet=True, walletAddress truncated, walletVerified=True
+
+5. **`test_check_member_has_wallet_false`**
+   - Member has no wallet
+   - Call check_member_has_wallet(member_id)
+   - Assert: hasWallet=False, walletAddress=None, walletVerified=False
+
+6. **`test_team_total_potential_sums_correctly`**
+   - Members with wallets: A=$450, B=$320, C=$180
+   - Call get_team_total_potential()
+   - Assert: Total = $950.00
+
+**Expected assertions:**
+```python
+def test_leaderboard_only_includes_members_with_wallets():
+    # Setup
+    member_a = create_test_member("member_a", wallet="9xQe...rGtX", verified=True, earnings=450)
+    member_b = create_test_member("member_b", wallet="8yPd...sWuY", verified=True, earnings=320)
+    member_c = create_test_member("member_c", wallet=None, verified=False, earnings=180)
+
+    # Action
+    leaderboard = get_team_leaderboard()
+
+    # Assertions
+    assert len(leaderboard) == 2
+    assert leaderboard[0]["memberId"] == "member_a"
+    assert leaderboard[1]["memberId"] == "member_b"
+    assert "member_c" not in [entry["memberId"] for entry in leaderboard]
+```
+
+---
+
 ### Frontend Tests
 
-#### T5: Real-Time Earnings UI Updates
+#### T6: Real-Time Earnings UI Updates
 **File:** `tests/frontend/earnings-display.test.tsx`
 
 **Test cases:**
@@ -383,9 +453,103 @@ test('test_claim_button_disabled_if_insufficient_interactions', () => {
 
 ---
 
+#### T7: Team Leaderboard UI (NEW)
+**File:** `tests/frontend/team-leaderboard.test.tsx`
+
+**Test cases:**
+
+1. **`test_leaderboard_shows_wallet_prompt_if_not_connected`**
+   - Member has no wallet
+   - Render TeamLeaderboard component
+   - Assert: "Connect Your Solana Wallet" prompt visible
+   - Assert: "Connect Wallet" button visible
+   - Assert: Leaderboard table NOT visible
+
+2. **`test_leaderboard_displays_after_wallet_connected`**
+   - Member has connected wallet
+   - Mock API returns 3 team members
+   - Render TeamLeaderboard component
+   - Assert: Leaderboard table visible
+   - Assert: Shows 3 rows with rank, name, earnings
+
+3. **`test_leaderboard_highlights_current_user`**
+   - Current member is rank #2
+   - Render leaderboard
+   - Assert: Row for current member has highlighted background
+   - Assert: data-testid="your-row" present
+
+4. **`test_leaderboard_shows_team_total`**
+   - Team total = $1,040.50
+   - Render leaderboard
+   - Assert: "Team Total: $1,040.50" displayed
+
+5. **`test_leaderboard_updates_on_websocket_event`**
+   - Initial leaderboard loaded
+   - Trigger 'leaderboard_updated' event (simulate WebSocket)
+   - Assert: Leaderboard re-renders with new data
+   - Assert: Rank positions update correctly
+
+6. **`test_wallet_gate_redirects_to_settings`**
+   - Member has no wallet
+   - Click "Connect Wallet" button
+   - Assert: Redirects to /deck/settings?action=connect-wallet
+
+**Expected assertions:**
+```typescript
+import { render, screen, waitFor } from '@testing-library/react';
+import { TeamLeaderboard } from '@/components/TeamLeaderboard';
+
+test('test_leaderboard_shows_wallet_prompt_if_not_connected', async () => {
+  // Mock API to return 403 (no wallet)
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      status: 403,
+      json: () => Promise.resolve({ error: 'wallet_required' })
+    })
+  );
+
+  render(<TeamLeaderboard memberId="member_a" />);
+
+  await waitFor(() => {
+    expect(screen.getByText(/Connect Your Solana Wallet/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Connect Wallet/i })).toBeInTheDocument();
+    expect(screen.queryByRole('table')).not.toBeInTheDocument();
+  });
+});
+
+test('test_leaderboard_highlights_current_user', async () => {
+  // Mock API response with 3 members
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve({
+        hasWallet: true,
+        leaderboard: [
+          { rank: 1, memberId: 'member_b', name: 'Bob', potentialEarnings: 500 },
+          { rank: 2, memberId: 'member_a', name: 'Alice', potentialEarnings: 300 },
+          { rank: 3, memberId: 'member_c', name: 'Carol', potentialEarnings: 100 }
+        ],
+        teamTotal: 900,
+        yourRank: 2
+      })
+    })
+  );
+
+  render(<TeamLeaderboard memberId="member_a" />);
+
+  await waitFor(() => {
+    const yourRow = screen.getByTestId('your-row');
+    expect(yourRow).toBeInTheDocument();
+    expect(yourRow).toHaveClass('bg-yellow-50'); // Highlighted
+  });
+});
+```
+
+---
+
 ### End-to-End Tests
 
-#### T7: Complete Job Flow
+#### T8: Complete Job Flow
 **File:** `tests/e2e/compensation-flow.spec.ts`
 
 **Test scenario:** Complete flow from job creation to payment

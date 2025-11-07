@@ -283,46 +283,61 @@ CREATE (event:U4_Event {
 
 ---
 
-### Node: U4_Agent (Enhanced with Earnings)
+### Node: U4_Agent (Enhanced with Earnings + Wallet)
 
-**Purpose:** Team member with earnings tracking
+**Purpose:** Team member with earnings tracking and Solana wallet for payments
 
 **Existing fields + new compensation fields:**
 
 ```cypher
 MATCH (agent:U4_Agent {slug: 'member_a'})
-SET agent.compensationData = {
-  totalInteractions: 35,             // Across all jobs (historical)
-  potentialEarnings: 164.00,         // Sum from active jobs + pending missions
-  paidEarnings: 450.00,              // Historical total paid
+SET
+  // Earnings tracking (direct fields)
+  agent.totalInteractions = 35,          // Across all jobs (historical)
+  agent.potentialEarnings = 164.00,      // Sum from active jobs + pending missions
+  agent.paidEarnings = 450.00,           // Historical total paid
 
-  jobEarnings: {                     // Per-job breakdown
-    "job-therapykin-chatbot": {
-      interactions: 20,
-      potentialEarning: 90.00,
-      status: "pending"
-    },
-    "job-startupx-landing": {
-      interactions: 5,
-      potentialEarning: 24.00,
-      status: "pending"
-    }
-  },
+  // Solana wallet (for payments) - NOT ENCRYPTED
+  agent.walletAddress = "9xQeWvG816bUx9EPjHmaT23yfAS2Zo1pEZGfSPqYrGtX",
+  agent.walletVerified = true,           // Has ownership been proven via signature?
+  agent.walletVerifiedAt = datetime("2025-11-07T10:00:00Z"),
+  agent.walletSignature = "3yZe7d5F8C...",  // Proof of ownership (from existing signing flow)
 
-  missionEarnings: {                 // Per-mission breakdown
-    "mission-proposal-ai-analytics": {
-      amount: 1.00,
-      status: "pending"
+  // Detailed earnings (JSON object)
+  agent.compensationData = {
+    jobEarnings: {                     // Per-job breakdown
+      "job-therapykin-chatbot": {
+        interactions: 20,
+        potentialEarning: 90.00,
+        status: "pending"
+      },
+      "job-startupx-landing": {
+        interactions: 5,
+        potentialEarning: 24.00,
+        status: "pending"
+      }
     },
-    "mission-x-post-nov5": {
-      amount: 2.00,
-      status: "paid"
+
+    missionEarnings: {                 // Per-mission breakdown
+      "mission-proposal-ai-analytics": {
+        amount: 1.00,
+        status: "pending"
+      },
+      "mission-x-post-nov5": {
+        amount: 2.00,
+        status: "paid"
+      }
     }
   }
-}
 ```
 
-**Note:** `compensationData` is a JSON object stored on the agent node. Alternative: Create separate `U4_Earnings` nodes linked to agent.
+**Wallet Fields:**
+- `walletAddress` (String): Solana wallet address (Base58, ~44 chars) - NOT encrypted (public by nature)
+- `walletVerified` (Boolean): Has ownership been proven via signature?
+- `walletVerifiedAt` (Datetime): When signature verification passed
+- `walletSignature` (String): Signature proving ownership (from existing wallet connection flow)
+
+**Note:** Wallet connection flow already exists in system. This spec documents the storage schema only.
 
 ---
 

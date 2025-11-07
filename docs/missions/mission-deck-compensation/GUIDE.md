@@ -754,11 +754,119 @@ If still failing:
 
 ---
 
+### Issue: "Cannot trigger payment - wallet not connected" (NEW)
+
+**Symptoms:**
+- NLR tries to trigger payment for completed job
+- Error: "Cannot pay. These members need to connect wallet: member_b"
+- Payment blocked
+
+**Cause:**
+- One or more team members haven't connected their Solana wallet
+- Wallet connection required for all contributors before payment can be made
+
+**Fix:**
+
+1. Identify which members need wallets:
+   - Error message lists specific member slugs
+   - Example: "member_b, member_c"
+
+2. Notify those members to connect wallet:
+   ```
+   @member_b Please connect your Solana wallet to receive payment.
+
+   Steps:
+   1. Go to Mission Deck → Settings
+   2. Click "Connect Solana Wallet"
+   3. Sign message to verify ownership
+   4. Your wallet will be stored (encrypted)
+   ```
+
+3. Verify wallet connections:
+   ```bash
+   # Check which members have wallets
+   curl GET https://scopelock-backend.onrender.com/api/compensation/team/wallet-status/member_b \
+     -H "Authorization: Bearer <nlr-token>"
+
+   # Expected: {"hasWallet": true/false, "walletAddress": "9xQe...rGtX", ...}
+   ```
+
+4. Once all members have wallets, retry payment:
+   - Return to job
+   - Click "Trigger Payment"
+   - Should succeed this time
+
+**Note:** Wallet connection uses existing wallet flow (already implemented). This spec just documents the storage schema.
+
+---
+
+### Issue: "Cannot view team leaderboard" (NEW)
+
+**Symptoms:**
+- Click "Team" page
+- See "Connect Your Solana Wallet" prompt instead of leaderboard
+
+**Cause:**
+- Team leaderboard requires wallet connection (enforced)
+- Privacy measure: only members ready to receive payment see earnings comparison
+
+**Fix:**
+
+1. Connect your Solana wallet:
+   - Click "Connect Wallet" button on prompt
+   - Or go to Settings → Connect Solana Wallet
+
+2. Wallet connection flow:
+   - Click "Connect Wallet"
+   - Pop-up opens (Phantom/Solflare/etc.)
+   - Sign message to verify ownership
+   - Wallet address stored in FalkorDB (NOT encrypted - public by nature)
+
+3. After connection:
+   - Page automatically shows leaderboard
+   - See team members ranked by potential earnings
+   - Your rank highlighted
+
+**Why required?**
+- Leaderboard shows potential earnings (future payments)
+- Only members ready to receive payment should see this data
+- Wallet = proof you're ready for payment
+
+---
+
 ## Usage Guide
 
 ### For Team Members
 
-#### 1. Viewing Your Earnings
+#### 1. Connecting Your Solana Wallet (Required)
+
+**When to do this:**
+- Before you can view team leaderboard
+- Before you can receive payments from jobs/missions
+
+**Steps:**
+
+1. Open Mission Deck: https://deck.scopelock.mindprotocol.ai
+2. Go to Settings → "Connect Solana Wallet"
+3. Click "Connect" button
+4. Phantom/Solflare wallet pop-up opens
+5. Sign message to verify ownership (no transaction, just signature)
+6. Success! Your wallet address is now stored
+
+**What's stored:**
+- `walletAddress`: Your Solana wallet address (public, NOT encrypted)
+- `walletVerified`: Boolean (True after signing)
+- `walletVerifiedAt`: Timestamp
+- `walletSignature`: Proof of ownership
+
+**Privacy:**
+- Wallet addresses are public on blockchain anyway
+- No private keys or seed phrases stored
+- Only your signature (proves you own the wallet)
+
+---
+
+#### 2. Viewing Your Earnings
 
 1. Open Mission Deck: https://deck.scopelock.mindprotocol.ai
 2. Top banner shows: "YOUR TOTAL POTENTIAL EARNINGS: $164.00"
@@ -773,7 +881,36 @@ If still failing:
 5. Each message = +1 interaction
 6. Watch your earnings update in real-time
 
-#### 3. Claiming a Mission
+#### 3. Viewing Team Leaderboard (NEW)
+
+**Requirement:** Must have Solana wallet connected
+
+1. Left panel → TEAM section
+2. See team-wide potential earnings leaderboard
+3. Members ranked by total potential earnings (jobs + missions)
+4. Your row highlighted in yellow
+5. Team total shown at top
+6. Real-time updates via WebSocket (<1s after any earnings change)
+
+**What you see:**
+- Rank (#1, #2, #3...)
+- Member name
+- Potential earnings (NOT paid earnings - privacy)
+- Your rank highlighted
+
+**What you DON'T see:**
+- Paid earnings (private)
+- Per-job breakdown (private)
+- Interaction counts (private)
+
+**Why wallet required?**
+- Leaderboard shows future payments
+- Only members ready to receive payment see this data
+- Ensures everyone has payment method before viewing earnings
+
+---
+
+#### 4. Claiming a Mission
 
 1. Left panel → MISSIONS section
 2. See available missions with fixed payments
@@ -783,7 +920,7 @@ If still failing:
 6. Wait for NLR approval
 7. Earnings added to your total
 
-#### 4. Checking Payment History
+#### 5. Checking Payment History
 
 1. Click "View Breakdown" in top banner
 2. Tab: "Paid History"

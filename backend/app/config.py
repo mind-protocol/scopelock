@@ -41,6 +41,9 @@ class Settings(BaseSettings):
     jwt_secret: str = ""
     cors_origins: str = "https://scopelock.mindprotocol.ai,http://localhost:3000"
 
+    # Claude CLI Configuration
+    claude_credentials: str = ""  # JSON string with Claude session credentials
+
     class Config:
         env_file = ".env"
         case_sensitive = False

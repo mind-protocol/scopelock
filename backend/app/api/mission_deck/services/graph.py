@@ -24,12 +24,50 @@ FALKORDB_API_KEY = settings.falkordb_api_key
 GRAPH_NAME = settings.graph_name
 
 
+def _escape_cypher_value(value: Any) -> str:
+    """
+    Escape a Python value for inline Cypher query.
+
+    FalkorDB doesn't support parameterized queries, so we must inline values safely.
+
+    Args:
+        value: Python value to escape
+
+    Returns:
+        Cypher-safe string representation
+    """
+    if value is None:
+        return "null"
+    elif isinstance(value, bool):
+        return "true" if value else "false"
+    elif isinstance(value, (int, float)):
+        return str(value)
+    elif isinstance(value, str):
+        # Escape single quotes for Cypher strings
+        escaped = value.replace("'", "\\'")
+        return f"'{escaped}'"
+    elif isinstance(value, list):
+        # Convert list to Cypher array
+        items = [_escape_cypher_value(item) for item in value]
+        return f"[{', '.join(items)}]"
+    elif isinstance(value, dict):
+        # Convert dict to Cypher map
+        items = [f"{k}: {_escape_cypher_value(v)}" for k, v in value.items()]
+        return f"{{{', '.join(items)}}}"
+    else:
+        # Fallback: convert to string
+        return _escape_cypher_value(str(value))
+
+
 def query_graph(cypher: str, params: Optional[Dict[str, Any]] = None) -> List[Dict]:
     """
     Execute Cypher query on FalkorDB production graph.
 
+    IMPORTANT: FalkorDB doesn't support parameterized queries, so parameters are
+    interpolated inline using safe escaping.
+
     Args:
-        cypher: Cypher query string (use $param for parameterized queries)
+        cypher: Cypher query string (use $param for parameters)
         params: Dict of parameters to substitute in query
 
     Returns:
@@ -49,6 +87,12 @@ def query_graph(cypher: str, params: Optional[Dict[str, Any]] = None) -> List[Di
             "FalkorDB credentials missing. Set FALKORDB_API_URL and FALKORDB_API_KEY."
         )
 
+    # Inline parameters since FalkorDB doesn't support parameterized queries
+    if params:
+        for key, value in params.items():
+            escaped_value = _escape_cypher_value(value)
+            cypher = cypher.replace(f"${key}", escaped_value)
+
     try:
         response = requests.post(
             FALKORDB_API_URL,
@@ -59,12 +103,13 @@ def query_graph(cypher: str, params: Optional[Dict[str, Any]] = None) -> List[Di
             json={
                 "graph_name": GRAPH_NAME,
                 "query": cypher,
-                "params": params or {}
+                "params": {}  # Always empty since we inline
             },
             timeout=10
         )
         response.raise_for_status()
-        return response.json().get("results", [])
+        # FalkorDB returns "result" (not "results")
+        return response.json().get("result", [])
     except requests.exceptions.RequestException as e:
         # Fail loud per ScopeLock fail-loud principle
         print(f"[graph.py:query_graph] FalkorDB query failed: {e}")

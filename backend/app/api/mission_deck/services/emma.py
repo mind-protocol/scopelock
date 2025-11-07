@@ -20,9 +20,15 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 from pathlib import Path
 from app.api.mission_deck.services.graph import query_graph
+from app.config import settings
 
 # Local backup directory (fallback if FalkorDB unavailable)
-BACKUP_DIR = Path("/var/data/emma/proposals")
+# Use /var/data in production (Render), local path in development
+if settings.environment == "production":
+    BACKUP_DIR = Path("/var/data/emma/proposals")
+else:
+    BACKUP_DIR = Path(__file__).parent.parent.parent.parent / "data" / "emma" / "proposals"
+
 BACKUP_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -84,7 +90,7 @@ def log_upwork_search(
       proposals_sent: $proposals_sent,
       platform: $platform,
       filters_applied: $filters_applied,
-      timestamp: datetime($timestamp),
+      timestamp: $timestamp,
 
       description: $description,
       detailed_description: $detailed_description,
@@ -96,9 +102,9 @@ def log_upwork_search(
       created_by: 'emma',
       substrate: 'organizational',
 
-      created_at: datetime(),
-      updated_at: datetime(),
-      valid_from: datetime(),
+      created_at: $created_at,
+      updated_at: $updated_at,
+      valid_from: $valid_from,
       valid_to: null
     })
     RETURN s
@@ -114,6 +120,9 @@ def log_upwork_search(
             "platform": platform,
             "filters_applied": filters_applied or [],
             "timestamp": timestamp,
+            "created_at": timestamp,
+            "updated_at": timestamp,
+            "valid_from": timestamp,
             "description": f"Upwork search for {search_query[:50]}",
             "detailed_description": f"Searched {platform} with query '{search_query}'. Filtered {jobs_filtered} jobs, sent {proposals_sent} proposals."
         })

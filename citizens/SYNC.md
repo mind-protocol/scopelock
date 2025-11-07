@@ -1,3 +1,86 @@
+## 2025-11-07 18:30 — Inna: Mission Deck Compensation - Wallet Integration + Team Leaderboard ✅
+
+**Work:** Updated compensation specs with Solana wallet integration and team leaderboard feature
+
+**Context:** User requested wallet storage for Solana payments + team leaderboard with mandatory wallet requirement
+
+**User Requirements:**
+- Blockchain: Solana
+- Storage: Fields in U4_Agent (not separate node)
+- Encryption: NOT encrypted (wallet addresses are public)
+- Verification: Signing already implemented (existing wallet connection flow)
+- Constraint: One wallet only per person
+- Leaderboard: Requires wallet connection to view
+
+**Files Updated:**
+
+1. **MECHANISM.md** - Enhanced U4_Agent schema with wallet fields:
+   - `walletAddress` - Solana address (Base58, ~44 chars, NOT encrypted)
+   - `walletVerified` - Boolean flag
+   - `walletVerifiedAt` - Timestamp
+   - `walletSignature` - Proof of ownership
+
+2. **AC.md** - Added F11: Team Leaderboard (Mandatory Wallet Connection):
+   - If wallet NOT connected: Show connection prompt
+   - If wallet connected: Show leaderboard with real-time WebSocket updates
+   - Privacy: Only potential earnings (not paid), no per-job breakdown
+   - Backend enforcement: Query requires `walletAddress IS NOT NULL`
+
+3. **ALGORITHM.md** - Implementation steps:
+   - Payment trigger now validates ALL contributors have wallets before payment
+   - New service: `team_leaderboard.py` (get_team_leaderboard, check_member_has_wallet)
+   - WebSocket broadcast for leaderboard updates
+   - Frontend TeamLeaderboard component with wallet gate
+
+4. **VALIDATION.md** - Test specifications:
+   - Backend: Wallet validation tests (payment requires wallets)
+   - Backend: Team leaderboard tests (only includes members with wallets)
+   - Frontend: Team leaderboard UI tests (wallet gate, highlights current user)
+
+5. **GUIDE.md** - Documentation:
+   - Usage: How to connect Solana wallet
+   - Usage: How to view team leaderboard
+   - Troubleshooting: "Cannot trigger payment - wallet not connected"
+   - Troubleshooting: "Cannot view team leaderboard"
+
+6. **DOD.md** - Definition of Done checklist:
+   - Added F11 to functional criteria
+   - Added wallet fields to FalkorDB schema
+   - Added leaderboard API endpoints
+   - Added wallet validation to business logic
+   - Updated test specifications
+
+**Technical Details:**
+
+**Wallet Storage (in U4_Agent):**
+```cypher
+SET
+  agent.walletAddress = "9xQeWvG816bUx9EPjHmaT23yfAS2Zo1pEZGfSPqYrGtX",
+  agent.walletVerified = true,
+  agent.walletVerifiedAt = datetime("2025-11-07T18:00:00Z"),
+  agent.walletSignature = "3yZe7d5F8C..."
+```
+
+**Payment Validation:**
+- Before payment trigger: Check ALL contributors have `walletAddress IS NOT NULL` AND `walletVerified = true`
+- If ANY member missing wallet: Error "Cannot pay. These members need to connect wallet: [list]"
+- If all have wallets: Payment proceeds, `walletValidation` returned in response
+
+**Team Leaderboard:**
+- API: `GET /api/compensation/team/leaderboard?member_id=X`
+- Requires: Member must have verified wallet
+- Returns 403 if no wallet: `{"error": "wallet_required", "message": "Connect your Solana wallet..."}`
+- Shows: Rank, name, potential earnings (truncated wallet address)
+- Real-time: WebSocket broadcasts `leaderboard_updated` event to all connected members
+
+**Status:** Complete specification, ready for implementation
+
+**Link:** `/docs/missions/mission-deck-compensation/`
+
+**Next:** Rafael begins implementation → Sofia prepares test environment
+
+---
+
 ## 2025-11-07 16:50 — Rafael: Chat Auth Fixed - Mock Token → Real JWT ✅
 
 **Work:** Fixed 401 authentication errors by removing mock auth when chat endpoints are real

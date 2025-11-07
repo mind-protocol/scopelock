@@ -31,6 +31,7 @@
 - [x] F8: Mission fund balance visibility
 - [x] F9: Interaction history audit
 - [x] F10: Mobile-responsive earnings UI
+- [x] F11: Team Leaderboard (mandatory wallet connection) - NEW
 
 ### Non-Functional Criteria Documented
 - [x] NF1: Performance (p95 ≤500ms for interaction tracking)
@@ -48,6 +49,7 @@
 - [x] U4_Work_Item (mission) node schema with claiming/completion fields
 - [x] U4_Event (message) node schema for interaction events
 - [x] U4_Agent enhanced with compensationData JSON object
+- [x] U4_Agent enhanced with Solana wallet fields (walletAddress, walletVerified, etc.) - NEW
 - [x] U4_ABOUT link (event → job)
 - [x] U4_CLAIMED_BY link (mission → agent)
 
@@ -61,16 +63,20 @@
 - [x] POST /api/compensation/missions/{id}/complete (complete mission)
 - [x] POST /api/compensation/missions/{id}/approve (approve completion, NLR only)
 - [x] GET /api/compensation/earnings/{memberId} (earnings breakdown)
-- [x] POST /api/compensation/payments/trigger (trigger payment, NLR only)
+- [x] POST /api/compensation/payments/trigger (trigger payment with wallet validation, NLR only)
 - [x] GET /api/compensation/earnings/{memberId}/stream (SSE for real-time updates)
+- [x] GET /api/compensation/team/leaderboard (team leaderboard with wallet gate) - NEW
+- [x] GET /api/compensation/team/wallet-status/{memberId} (check wallet connection) - NEW
 
 ### Business Logic Specified
 - [x] Interaction counting algorithm (with duplicate detection)
 - [x] Earnings calculation formula ((interactions/total) × teamPool)
 - [x] Mission claiming validation (requires 5+ total interactions)
 - [x] Mission fund balance calculation (contributions - spent)
-- [x] Payment trigger logic (NLR only, cash received check)
+- [x] Payment trigger logic (NLR only, cash received check, wallet validation) - UPDATED
 - [x] Mission expiry check (24-hour claim timeout)
+- [x] Team leaderboard filtering (only members with verified wallets) - NEW
+- [x] Wallet connection requirement (enforced on leaderboard access) - NEW
 
 ---
 
@@ -98,12 +104,14 @@
 - [x] test_interaction_tracker.py (6 test cases)
 - [x] test_earnings_calculator.py (6 test cases)
 - [x] test_mission_manager.py (6 test cases)
-- [x] test_payment_processor.py (6 test cases)
+- [x] test_payment_processor.py (8 test cases including wallet validation) - UPDATED
+- [x] test_team_leaderboard.py (6 test cases) - NEW
 - [x] Target coverage: ≥95%
 
 ### Frontend Tests Specified
 - [x] earnings-display.test.tsx (6 test cases)
 - [x] mission-claiming.test.tsx (6 test cases)
+- [x] team-leaderboard.test.tsx (6 test cases) - NEW
 - [x] compensation-ui.test.tsx (11 test cases)
 - [x] Target coverage: ≥85%
 

@@ -1013,6 +1013,8 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
     """
     Trigger payment for completed job (NLR only).
 
+    **NEW: Validates wallet addresses before payment.**
+
     Args:
         job_id: Job slug
         triggered_by: NLR member slug
@@ -1024,12 +1026,13 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
             "status": "paid",
             "totalPaid": 450.00,
             "memberPayments": {"member_a": 270.00, "member_b": 180.00},
-            "notificationsSent": 2
+            "notificationsSent": 2,
+            "walletValidation": {"member_a": True, "member_b": True}
         }
 
     Raises:
         PermissionError: If not NLR
-        ValueError: If cash not received or job already paid
+        ValueError: If cash not received, job already paid, or wallet not connected
     """
 
     # 1. Verify NLR role
@@ -1059,15 +1062,50 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
     if job_data["status"] == "paid":
         raise ValueError("Job already paid")
 
-    # 4. Calculate final shares
+    # 4. Validate wallet addresses for all members (NEW)
     interaction_counts = job_data.get("counts", {})
+
+    cypher_check_wallets = """
+    MATCH (agent:U4_Agent {slug: $member_id})
+    RETURN agent.walletAddress AS address,
+           agent.walletVerified AS verified
+    """
+
+    wallet_validation = {}
+    members_without_wallet = []
+
+    for member_id in interaction_counts.keys():
+        wallet_result = query_graph(cypher_check_wallets, {"member_id": member_id})
+
+        if not wallet_result:
+            members_without_wallet.append(member_id)
+            wallet_validation[member_id] = False
+            continue
+
+        wallet_address = wallet_result[0].get("address")
+        wallet_verified = wallet_result[0].get("verified", False)
+
+        if not wallet_address or not wallet_verified:
+            members_without_wallet.append(member_id)
+            wallet_validation[member_id] = False
+        else:
+            wallet_validation[member_id] = True
+
+    # Fail if ANY member lacks wallet
+    if members_without_wallet:
+        raise ValueError(
+            f"Cannot pay. These members need to connect wallet: {', '.join(members_without_wallet)}. "
+            f"Wallet connection flow: Mission Deck → Settings → Connect Solana Wallet"
+        )
+
+    # 5. Calculate final shares
     member_payments = {}
 
     for member_id in interaction_counts.keys():
         earning = calculate_member_earning(job_id, member_id)
         member_payments[member_id] = earning
 
-    # 5. Update job status to 'paid'
+    # 6. Update job status to 'paid'
     paid_at = datetime.utcnow().isoformat()
 
     cypher_update = """
@@ -1080,13 +1118,13 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
 
     query_graph(cypher_update, {"job_slug": job_id, "paid_at": paid_at})
 
-    # 6. Update each member's paid earnings history
+    # 7. Update each member's paid earnings history
     #    (Store as compensationData.paidEarnings on U4_Agent node)
 
     for member_id, amount in member_payments.items():
         update_member_paid_earnings(member_id, job_id, amount, job_data["title"])
 
-    # 7. Send notifications (placeholder - actual implementation TBD)
+    # 8. Send notifications (placeholder - actual implementation TBD)
     notifications_sent = len(member_payments)
     for member_id, amount in member_payments.items():
         # TODO: Implement send_payment_notification()
@@ -1097,6 +1135,7 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
         "status": "paid",
         "totalPaid": round(sum(member_payments.values()), 2),
         "memberPayments": member_payments,
+        "walletValidation": wallet_validation,
         "notificationsSent": notifications_sent
     }
 
@@ -1356,6 +1395,185 @@ async def websocket_compensation_endpoint(websocket: WebSocket, member_id: str):
 
 ---
 
+### Step 1.8: Team Leaderboard Implementation (NEW)
+
+**File:** `backend/services/compensation/team_leaderboard.py`
+
+**Purpose:** Get team-wide potential earnings leaderboard. **Requires wallet connection.**
+
+```python
+"""
+Team leaderboard for potential earnings (requires wallet connection).
+"""
+
+from typing import List, Dict
+from services.graph import query_graph
+
+
+def get_team_leaderboard() -> List[Dict]:
+    """
+    Get team-wide potential earnings leaderboard.
+
+    **NEW: Only includes members with connected wallets.**
+
+    Returns:
+        [
+            {
+                "rank": 1,
+                "memberId": "member_a",
+                "name": "Alice",
+                "potentialEarnings": 450.00,
+                "walletAddress": "9xQe...rGtX" (truncated)
+            },
+            ...
+        ]
+
+    Privacy constraints:
+    - Only shows potential earnings (NOT paid)
+    - Only shows totals (NOT per-job breakdown)
+    - Only includes members with walletAddress IS NOT NULL
+    """
+
+    # Query members with wallet addresses, ordered by potential earnings
+    cypher = """
+    MATCH (agent:U4_Agent)
+    WHERE agent.walletAddress IS NOT NULL
+      AND agent.walletVerified = true
+    RETURN agent.slug AS memberId,
+           agent.name AS name,
+           agent.potentialEarnings AS potentialEarnings,
+           agent.walletAddress AS walletAddress
+    ORDER BY agent.potentialEarnings DESC
+    """
+
+    results = query_graph(cypher, {})
+
+    leaderboard = []
+
+    for idx, row in enumerate(results):
+        wallet_full = row.get("walletAddress", "")
+        # Truncate wallet: show first 4 and last 4 chars
+        wallet_truncated = f"{wallet_full[:4]}...{wallet_full[-4:]}" if len(wallet_full) > 8 else wallet_full
+
+        leaderboard.append({
+            "rank": idx + 1,
+            "memberId": row["memberId"],
+            "name": row.get("name", row["memberId"]),
+            "potentialEarnings": round(row.get("potentialEarnings", 0), 2),
+            "walletAddress": wallet_truncated
+        })
+
+    return leaderboard
+
+
+def get_team_total_potential() -> float:
+    """
+    Get total team potential earnings (sum across all members with wallets).
+
+    Returns:
+        Total potential earnings (e.g., 1040.50)
+    """
+
+    cypher = """
+    MATCH (agent:U4_Agent)
+    WHERE agent.walletAddress IS NOT NULL
+      AND agent.walletVerified = true
+    RETURN sum(agent.potentialEarnings) AS total
+    """
+
+    result = query_graph(cypher, {})
+    total = result[0].get("total", 0) if result else 0
+
+    return round(total, 2)
+
+
+def check_member_has_wallet(member_id: str) -> Dict:
+    """
+    Check if member has connected wallet (for leaderboard access gate).
+
+    Args:
+        member_id: Member slug
+
+    Returns:
+        {
+            "hasWallet": True/False,
+            "walletAddress": "9xQe...rGtX" or None,
+            "walletVerified": True/False
+        }
+    """
+
+    cypher = """
+    MATCH (agent:U4_Agent {slug: $member_id})
+    RETURN agent.walletAddress AS address,
+           agent.walletVerified AS verified
+    """
+
+    result = query_graph(cypher, {"member_id": member_id})
+
+    if not result:
+        return {
+            "hasWallet": False,
+            "walletAddress": None,
+            "walletVerified": False
+        }
+
+    address = result[0].get("address")
+    verified = result[0].get("verified", False)
+
+    has_wallet = bool(address) and verified
+
+    # Truncate for display
+    address_truncated = None
+    if address:
+        address_truncated = f"{address[:4]}...{address[-4:]}"
+
+    return {
+        "hasWallet": has_wallet,
+        "walletAddress": address_truncated,
+        "walletVerified": verified
+    }
+```
+
+**WebSocket Update for Leaderboard:**
+
+Update `backend/services/websocket_manager.py` to broadcast leaderboard updates:
+
+```python
+def broadcast_leaderboard_update():
+    """
+    Broadcast leaderboard update to ALL members with wallets.
+    Called when any member's potential earnings change.
+    """
+
+    from services.compensation.team_leaderboard import get_team_leaderboard, get_team_total_potential
+
+    leaderboard = get_team_leaderboard()
+    team_total = get_team_total_potential()
+
+    # Broadcast to all connected members
+    for member_id in active_connections.keys():
+        asyncio.create_task(async_broadcast_to_member(member_id, {
+            "event": "leaderboard_updated",
+            "leaderboard": leaderboard,
+            "teamTotal": team_total
+        }))
+```
+
+**Integration with interaction tracker:**
+
+Update `interaction_tracker.py` to trigger leaderboard broadcast after earnings update:
+
+```python
+# In track_interaction() function, after broadcasting to member:
+
+# 8. Broadcast leaderboard update to all members (NEW)
+from services.websocket_manager import broadcast_leaderboard_update
+
+broadcast_leaderboard_update()
+```
+
+---
+
 ## Phase 2: API Endpoints (Day 3)
 
 ### Step 2.1: Create Compensation Router
@@ -1537,6 +1755,85 @@ async def get_member_earnings(member_id: str):
     }
 
 
+# ----- Team Leaderboard Endpoints (NEW) -----
+
+@router.get("/team/leaderboard")
+async def get_leaderboard(member_id: str):
+    """
+    Get team leaderboard (requires wallet connection).
+
+    Args:
+        member_id: Current member slug (to check wallet requirement)
+
+    Returns:
+        {
+            "hasWallet": True,
+            "leaderboard": [...],
+            "teamTotal": 1040.50,
+            "yourRank": 2
+        }
+
+    Raises:
+        HTTPException 403: If member doesn't have wallet connected
+    """
+
+    from services.compensation.team_leaderboard import (
+        check_member_has_wallet,
+        get_team_leaderboard,
+        get_team_total_potential
+    )
+
+    # Check wallet requirement
+    wallet_status = check_member_has_wallet(member_id)
+
+    if not wallet_status["hasWallet"]:
+        raise HTTPException(
+            status_code=403,
+            detail={
+                "error": "wallet_required",
+                "message": "Connect your Solana wallet to view team leaderboard",
+                "walletConnectionFlow": "Mission Deck → Settings → Connect Solana Wallet"
+            }
+        )
+
+    # Get leaderboard
+    leaderboard = get_team_leaderboard()
+    team_total = get_team_total_potential()
+
+    # Find current member's rank
+    your_rank = None
+    for entry in leaderboard:
+        if entry["memberId"] == member_id:
+            your_rank = entry["rank"]
+            break
+
+    return {
+        "hasWallet": True,
+        "walletAddress": wallet_status["walletAddress"],
+        "leaderboard": leaderboard,
+        "teamTotal": team_total,
+        "yourRank": your_rank
+    }
+
+
+@router.get("/team/wallet-status/{member_id}")
+async def get_wallet_status(member_id: str):
+    """
+    Check if member has wallet connected (for leaderboard gate).
+
+    Returns:
+        {
+            "hasWallet": True/False,
+            "walletAddress": "9xQe...rGtX" or None,
+            "walletVerified": True/False
+        }
+    """
+
+    from services.compensation.team_leaderboard import check_member_has_wallet
+
+    return check_member_has_wallet(member_id)
+
+
 # ----- Payments Endpoints -----
 
 @router.post("/payments/trigger")
@@ -1669,7 +1966,166 @@ export function EarningsBanner() {
 
 ---
 
-### Step 3.3: Create Job Card Component
+### Step 3.3: Team Leaderboard Component (NEW)
+
+**File:** `frontend/components/TeamLeaderboard.tsx`
+
+```typescript
+'use client';
+
+import { useState, useEffect } from 'react';
+
+interface LeaderboardEntry {
+  rank: number;
+  memberId: string;
+  name: string;
+  potentialEarnings: number;
+  walletAddress: string;
+}
+
+interface TeamLeaderboardProps {
+  memberId: string;
+}
+
+export function TeamLeaderboard({ memberId }: TeamLeaderboardProps) {
+  const [hasWallet, setHasWallet] = useState<boolean | null>(null);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+  const [teamTotal, setTeamTotal] = useState<number>(0);
+  const [yourRank, setYourRank] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch leaderboard
+  useEffect(() => {
+    async function fetchLeaderboard() {
+      try {
+        const response = await fetch(`/api/compensation/team/leaderboard?member_id=${memberId}`);
+
+        if (response.status === 403) {
+          // Wallet not connected
+          setHasWallet(false);
+          setLoading(false);
+          return;
+        }
+
+        const data = await response.json();
+
+        setHasWallet(true);
+        setLeaderboard(data.leaderboard);
+        setTeamTotal(data.teamTotal);
+        setYourRank(data.yourRank);
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch leaderboard:', error);
+        setLoading(false);
+      }
+    }
+
+    fetchLeaderboard();
+  }, [memberId]);
+
+  // Listen for WebSocket updates
+  useEffect(() => {
+    // WebSocket connection managed by useEarningsWebSocket hook
+    // This component just listens to Zustand store updates
+
+    const handleLeaderboardUpdate = (event: CustomEvent) => {
+      const { leaderboard: newLeaderboard, teamTotal: newTotal } = event.detail;
+      setLeaderboard(newLeaderboard);
+      setTeamTotal(newTotal);
+
+      // Recalculate your rank
+      const entry = newLeaderboard.find((e: LeaderboardEntry) => e.memberId === memberId);
+      setYourRank(entry ? entry.rank : null);
+    };
+
+    window.addEventListener('leaderboard_updated', handleLeaderboardUpdate as EventListener);
+
+    return () => {
+      window.removeEventListener('leaderboard_updated', handleLeaderboardUpdate as EventListener);
+    };
+  }, [memberId]);
+
+  if (loading) {
+    return <div className="text-center py-8">Loading leaderboard...</div>;
+  }
+
+  // Wallet not connected - show prompt
+  if (hasWallet === false) {
+    return (
+      <div className="bg-white border rounded-lg p-8 text-center">
+        <h3 className="text-xl font-semibold mb-2">Connect Your Solana Wallet</h3>
+        <p className="text-gray-600 mb-4">
+          Required to receive payments and view team leaderboard
+        </p>
+        <button
+          className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600"
+          onClick={() => {
+            // Open wallet connection flow
+            window.location.href = '/deck/settings?action=connect-wallet';
+          }}
+        >
+          Connect Wallet
+        </button>
+      </div>
+    );
+  }
+
+  // Wallet connected - show leaderboard
+  return (
+    <div className="bg-white border rounded-lg p-6">
+      <h2 className="text-2xl font-bold mb-4">Team Potential Earnings Leaderboard</h2>
+
+      <div className="mb-4 p-4 bg-blue-50 rounded">
+        <p className="text-sm text-gray-600">Team Total</p>
+        <p className="text-3xl font-bold text-blue-600">${teamTotal.toFixed(2)}</p>
+      </div>
+
+      <table className="w-full">
+        <thead>
+          <tr className="border-b">
+            <th className="text-left py-2">Rank</th>
+            <th className="text-left py-2">Name</th>
+            <th className="text-right py-2">Potential Earnings</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leaderboard.map((entry) => (
+            <tr
+              key={entry.memberId}
+              className={`border-b ${
+                entry.memberId === memberId ? 'bg-yellow-50 font-semibold' : ''
+              }`}
+              data-testid={entry.memberId === memberId ? 'your-row' : undefined}
+            >
+              <td className="py-3">#{entry.rank}</td>
+              <td className="py-3">{entry.name}</td>
+              <td className="py-3 text-right text-green-600 font-semibold">
+                ${entry.potentialEarnings.toFixed(2)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {yourRank && (
+        <div className="mt-4 p-3 bg-green-50 rounded text-center">
+          <p className="text-sm text-gray-600">Your Rank</p>
+          <p className="text-2xl font-bold text-green-600">#{yourRank}</p>
+        </div>
+      )}
+
+      <div className="mt-4 text-xs text-gray-500">
+        <p>Privacy: Only shows potential earnings (not paid), no per-job breakdown.</p>
+        <p>Real-time: Updates automatically when any team member's earnings change.</p>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+### Step 3.4: Create Job Card Component
 
 **File:** `frontend/components/JobCard.tsx`
 
@@ -1731,7 +2187,7 @@ export function JobCard({ job }: JobCardProps) {
 
 ---
 
-### Step 3.4: Real-Time Updates with WebSocket
+### Step 3.5: Real-Time Updates with WebSocket (Updated)
 
 **File:** `frontend/hooks/useEarningsWebSocket.ts`
 
@@ -1780,6 +2236,20 @@ export function useEarningsWebSocket(memberId: string) {
             data.yourPotentialEarning
           );
           console.log('[WebSocket] Interaction counted:', data);
+          break;
+
+        case 'leaderboard_updated':
+          // NEW: Broadcast leaderboard update to all team members
+          console.log('[WebSocket] Leaderboard updated:', data);
+
+          // Dispatch custom event for TeamLeaderboard component to listen
+          const leaderboardEvent = new CustomEvent('leaderboard_updated', {
+            detail: {
+              leaderboard: data.leaderboard,
+              teamTotal: data.teamTotal
+            }
+          });
+          window.dispatchEvent(leaderboardEvent);
           break;
 
         case 'mission_claimed':
@@ -1902,8 +2372,32 @@ git push origin main
 
 ## Complete Implementation Checklist
 
-- [ ] Phase 1: Backend services (interaction tracker, earnings calculator, mission manager, payment processor)
-- [ ] Phase 2: API endpoints (jobs, interactions, missions, earnings, payments)
-- [ ] Phase 3: Frontend UI (Zustand store, earnings banner, job cards, mission cards, SSE)
-- [ ] Phase 4: Tests (backend pytest, frontend Vitest, E2E Playwright)
-- [ ] Phase 5: Deployment (Render backend, Vercel frontend, seed data)
+- [ ] Phase 1: Backend services
+  - [ ] Interaction tracker (track_interaction, get_interaction_history)
+  - [ ] Earnings calculator (calculate_member_earning, get_total_potential_earnings)
+  - [ ] Mission manager (claim_mission, complete_mission, approve_mission)
+  - [ ] Payment processor with **wallet validation** (trigger_payment checks walletAddress)
+  - [ ] **Team leaderboard service** (get_team_leaderboard, check_member_has_wallet)
+  - [ ] WebSocket manager with **leaderboard broadcast** (broadcast_leaderboard_update)
+- [ ] Phase 2: API endpoints
+  - [ ] Jobs (create, list, get interactions)
+  - [ ] Interactions (track interaction)
+  - [ ] Missions (list, claim, complete, approve)
+  - [ ] Earnings (get member earnings)
+  - [ ] **Team leaderboard** (GET /team/leaderboard, GET /team/wallet-status)
+  - [ ] Payments (trigger payment with wallet validation)
+- [ ] Phase 3: Frontend UI
+  - [ ] Zustand store (compensation state management)
+  - [ ] Earnings banner (total potential earnings)
+  - [ ] Job cards (your interactions, potential earning)
+  - [ ] Mission cards (available missions, claim/complete)
+  - [ ] **Team leaderboard component** (wallet gate, live updates via WebSocket)
+  - [ ] **WebSocket hook updated** (handle leaderboard_updated events)
+- [ ] Phase 4: Tests
+  - [ ] Backend pytest (interaction tracking, earnings, missions, **wallet validation**, **leaderboard**)
+  - [ ] Frontend Vitest (components, hooks, **leaderboard UI**, **wallet gate**)
+  - [ ] E2E Playwright (complete flows, **wallet connection**, **leaderboard access**)
+- [ ] Phase 5: Deployment
+  - [ ] Render backend (with wallet validation logic)
+  - [ ] Vercel frontend (with team leaderboard page)
+  - [ ] Seed data (test team members with wallet addresses)

@@ -117,10 +117,10 @@ Neutral‑tone hoodie, small notebook, black pen. Practical headphones. Focused 
    - Ask for ONE missing detail inside the proposal
    - Do not stall waiting for humans to gather info
 
-8. **Save Every GO Proposal:**
-   - Save to `/home/mind-protocol/scopelock/citizens/emma/proposals/YYYY-MM-DD_[platform]_[title].txt`
-   - Save metadata to `.json` file with same name
-   - Include: job details, decision, confidence score, portfolio match, bid amount
+8. **Track Every GO/MAYBE Proposal:**
+   - Use `create_proposal()` to save to FalkorDB (see Proposal Tracking section)
+   - Automatically creates local backup at `/var/data/emma/proposals/{slug}.json`
+   - Include: job details, decision, confidence score, portfolio match, budget, client info
 
 9. **Log Search Query After Session:**
    - Update `/home/mind-protocol/scopelock/citizens/emma/search-history.md`
@@ -461,68 +461,188 @@ TIER: brief rationale for classification
 
 Then immediately output the proposal as a single plain‑text block (for GO/MAYBE). No headings, no bullets, no markdown symbols.
 
-## Output File Requirement
+## Proposal Tracking (FalkorDB + Local Backup)
 
-Every GO proposal MUST be saved to BOTH `.txt` AND `.json` files with this naming pattern:
+**Architecture:** All proposals stored in FalkorDB production graph (Mind Protocol v2 schema) with local JSON backup for resilience.
 
-```
-/home/mind-protocol/scopelock/citizens/emma/proposals/YYYY-MM-DD_[platform]_[brief-title].txt
-/home/mind-protocol/scopelock/citizens/emma/proposals/YYYY-MM-DD_[platform]_[brief-title].json
-```
+**Location:** `/home/mind-protocol/scopelock/backend/app/api/mission_deck/services/emma.py`
 
-**Example:**
-- `2025-11-05_upwork_skin-genius-ai-backend.txt`
-- `2025-11-05_upwork_skin-genius-ai-backend.json`
+### When to Track
 
-### JSON Structure
+Every GO or QUALIFIED MAYBE proposal must be tracked using these Python functions:
 
-The `.json` file MUST contain:
+1. **Log search** (when starting a search session)
+2. **Create proposal** (when sending proposal to client)
+3. **Link search to proposal** (track which searches led to proposals)
+4. **Update state** (when client responds: Confirmed/Rejected/NoResponse)
+5. **Create follow-up** (for cold proposals after 14+ days)
 
-```json
-{
-  "timestamp": "2025-11-05T14:23:45Z",
-  "platform": "upwork|contra|linkedin",
-  "job_title": "Full job title from post",
-  "job_url": "https://...",
-  "decision": "STRONG GO|QUALIFIED MAYBE",
-  "confidence": 85,
-  "budget_range": "$5,000-$8,000",
-  "client_info": {
-    "spent": 12500.50,
-    "rating": 4.9,
-    "hires": 15,
-    "payment_verified": true,
-    "country": "United States"
-  },
-  "proposal_text": "Full plain-text proposal here...",
-  "questions": [
-    "Which integration matters most: Stripe or custom payment gateway?",
-    "Do you have existing user data to migrate?"
-  ],
-  "portfolio_match": "TherapyKin",
-  "client_type": "process-skeptical|process-friendly",
-  "bid_amount": 6500,
-  "urgency": 8,
-  "pain": 9
-}
+### Core Functions
+
+#### 1. Log Search (Start of Session)
+
+```python
+from app.api.mission_deck.services.emma import log_upwork_search
+
+search = log_upwork_search(
+    search_query="AI integration Python Next.js",
+    jobs_filtered=50,
+    proposals_sent=5,
+    filters_applied=["payment_verified", "fixed_price", "$3K+"]
+)
+# Returns: U4_Event node with event_kind='upwork_search'
 ```
 
-### Telegram Notification Workflow
+#### 2. Create Proposal (When Sending)
 
-After saving both files, IMMEDIATELY send Telegram notification using the tool at `/home/mind-protocol/scopelock/tools/telegram-notify.cjs`:
+```python
+from app.api.mission_deck.services.emma import create_proposal
 
-**Command:**
-```bash
-node /home/mind-protocol/scopelock/tools/telegram-notify.cjs \
-  --proposal "/home/mind-protocol/scopelock/citizens/emma/proposals/2025-11-05_upwork_title.json"
+proposal = create_proposal(
+    job_title="Build Dental SaaS MVP with AI",
+    job_url="https://www.upwork.com/jobs/~021985...",
+    budget_cents=800000,  # $8000 in cents
+    client_info={
+        "name": "Dr. Smith",
+        "spent": 12500.50,
+        "rating": 4.9,
+        "hires": 15,
+        "payment_verified": True,
+        "country": "United States",
+        "rank": "Enterprise"  # optional
+    },
+    proposal_text="Full proposal content...",
+    confidence=0.85,  # 0-1
+    client_type="process-skeptical",  # or "process-friendly"
+    portfolio_match="TherapyKin",
+    questions=["Which integration matters most?"],  # optional
+    decision="STRONG GO",  # or "QUALIFIED MAYBE"
+    urgency=8,  # 1-10
+    pain=9  # 1-10
+)
+# Returns: U3_Deal node with state='Proposed'
 ```
 
-**What gets sent:**
+#### 3. Link Search to Proposal
 
-1. **Main message** with proposal text
-2. **One message per question** (if questions exist)
-3. **Job link** for easy tracking
-4. **Metadata** (platform, budget, confidence)
+```python
+from app.api.mission_deck.services.emma import link_search_to_proposal
+
+link_search_to_proposal(
+    search_slug=search['slug'],
+    proposal_slug=proposal['slug']
+)
+# Creates: (search)-[:U4_LEADS_TO]->(proposal)
+```
+
+#### 4. Update State (Client Response)
+
+```python
+from app.api.mission_deck.services.emma import update_proposal_state
+
+# Client accepted!
+update_proposal_state(
+    proposal_slug=proposal['slug'],
+    new_state="Confirmed",  # or "Rejected" or "NoResponse"
+    response_timestamp="2025-11-05T14:30:00Z"  # optional
+)
+# Updates: state and response_at fields
+```
+
+#### 5. Check Follow-ups (Automated)
+
+```python
+from app.api.mission_deck.services.emma import (
+    get_proposals_needing_followup,
+    create_followup_task
+)
+
+# Get proposals with no response after 14 days
+cold_proposals = get_proposals_needing_followup(days_since=14)
+
+# Create follow-up tasks
+for cold in cold_proposals:
+    create_followup_task(
+        proposal_slug=cold['slug'],
+        followup_date="2025-11-20",
+        reason="No response after 14 days",
+        followup_type="no_response"
+    )
+# Creates: U4_Work_Item with work_type='lead_followup'
+```
+
+### Complete Session Example
+
+```python
+# Import all functions
+from app.api.mission_deck.services.emma import (
+    log_upwork_search,
+    create_proposal,
+    link_search_to_proposal
+)
+
+# 1. Log search
+search = log_upwork_search(
+    search_query="AI integration Python Next.js",
+    jobs_filtered=50,
+    proposals_sent=5
+)
+
+# 2. For each GO/MAYBE proposal:
+proposal = create_proposal(
+    job_title="Build AI Chatbot MVP",
+    job_url="https://upwork.com/jobs/123",
+    budget_cents=500000,
+    client_info={
+        "name": "John Doe",
+        "spent": 8000.0,
+        "rating": 4.8,
+        "hires": 10,
+        "payment_verified": True,
+        "country": "Canada"
+    },
+    proposal_text="I noticed you need an AI chatbot...",
+    confidence=0.80,
+    client_type="process-skeptical",
+    portfolio_match="TherapyKin"
+)
+
+# 3. Link search to proposal
+link_search_to_proposal(search['slug'], proposal['slug'])
+
+# Done! Proposal tracked in FalkorDB + local backup saved
+```
+
+### Analytics Queries
+
+After tracking proposals, you can query insights:
+
+```python
+from app.api.mission_deck.services.emma import get_win_rate_by_search_query
+
+# Which search queries have best win rate?
+results = get_win_rate_by_search_query()
+for row in results:
+    print(f"{row['search_query']}: {row['win_rate']*100:.1f}% win rate")
+```
+
+### Local Backup
+
+**Resilience:** Each proposal automatically saved to `/var/data/emma/proposals/{slug}.json`
+
+If FalkorDB unavailable, local backup allows manual recovery. All functions fail-loud per ScopeLock principle.
+
+### Benefits
+
+✅ **Single source of truth** - All mission data in one graph
+✅ **Rich analytics** - Win rates by search query, client patterns
+✅ **Persistent memory** - Survives file system resets
+✅ **Relationships** - Link proposals → missions → revenue
+✅ **Scalable** - Handles 1000s of proposals efficiently
+
+### Documentation
+
+Complete API reference: `/home/mind-protocol/scopelock/docs/emma-tracking-falkordb/API.md`
 
 ## Proposal Architecture
 

@@ -37,24 +37,39 @@ class ClaudeRunner:
         self._setup_credentials()
 
     def _setup_credentials(self):
-        """Write Claude credentials from env var to ~/.claude/.credentials.json"""
+        """
+        Write Claude credentials and settings from env vars to ~/.claude/
+
+        Reads from environment:
+        - CLAUDE_CREDENTIALS → ~/.claude/.credentials.json
+        - CLAUDE_SETTINGS → ~/.claude/settings.json (optional)
+        """
+        claude_dir = Path.home() / '.claude'
+        claude_dir.mkdir(parents=True, exist_ok=True)
+
+        # Setup credentials (required)
         credentials_env = os.getenv('CLAUDE_CREDENTIALS')
         if not credentials_env:
             logger.warning('⚠️  CLAUDE_CREDENTIALS not set, Claude CLI may fail')
-            return
+        else:
+            try:
+                credentials_path = claude_dir / '.credentials.json'
+                credentials_path.write_text(credentials_env)
+                logger.info(f'✅ Claude credentials written to {credentials_path}')
+            except Exception as error:
+                logger.error(f'❌ Failed to write Claude credentials: {error}')
 
-        try:
-            claude_dir = Path.home() / '.claude'
-            credentials_path = claude_dir / '.credentials.json'
-
-            # Create .claude directory if it doesn't exist
-            claude_dir.mkdir(parents=True, exist_ok=True)
-
-            # Write credentials file
-            credentials_path.write_text(credentials_env)
-            logger.info(f'✅ Claude credentials written to {credentials_path}')
-        except Exception as error:
-            logger.error(f'❌ Failed to write Claude credentials: {error}')
+        # Setup settings (optional)
+        settings_env = os.getenv('CLAUDE_SETTINGS')
+        if settings_env:
+            try:
+                settings_path = claude_dir / 'settings.json'
+                settings_path.write_text(settings_env)
+                logger.info(f'✅ Claude settings written to {settings_path}')
+            except Exception as error:
+                logger.error(f'❌ Failed to write Claude settings: {error}')
+        else:
+            logger.debug('ℹ️  CLAUDE_SETTINGS not set (optional)')
 
     def run_rafael(self, client: str, message: str, job_title: str, job_link: str, received_at: Optional[str] = None) -> dict:
         """
