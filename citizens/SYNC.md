@@ -1,3 +1,49 @@
+## 2025-11-07 16:00 — Rafael: Fix React Error #425 in Chat (Objects as Children) ✅
+
+**User Issue:** "failed to send a message: Uncaught Error: Minified React error #425"
+
+**Error Analysis:**
+- React error #425: "Objects are not valid as a React child"
+- Happens when trying to render an object directly instead of converting to string
+- Also getting 404 from `/api/missions/47/messages` and `/api/missions/47/chat` (expected - backend not set up yet)
+
+**Root Cause:**
+1. `message.content` could be an object instead of string
+2. `formatTime(message.created_at)` might return invalid data if `created_at` is undefined/malformed
+
+**Fixes Applied:**
+
+1. **Message Content Safety:**
+   ```typescript
+   // Before:
+   {message.content}
+
+   // After:
+   {typeof message.content === 'string' ? message.content : JSON.stringify(message.content)}
+   ```
+
+2. **FormatTime Safety:**
+   ```typescript
+   function formatTime(isoString: string | undefined): string {
+     if (!isoString) return '';
+     try {
+       const date = new Date(isoString);
+       if (isNaN(date.getTime())) return '';
+       // ... rest of logic
+     } catch (error) {
+       return '';  // Instead of crashing
+     }
+   }
+   ```
+
+**Status:** Committed and pushed ✅
+**Commit:** d553236
+**File:** src/components/mission-deck/ChatInterface.tsx
+
+**Next:** Chat should handle malformed message data gracefully. 404 errors expected until backend chat API is implemented for mission #47.
+
+---
+
 ## 2025-11-07 17:00 — Inna: Team Member Hunting System Specifications COMPLETE ✅
 
 **Work:** Created complete 6-level documentation for Telegram outreach system to recruit 313 potential team members
