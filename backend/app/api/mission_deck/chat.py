@@ -146,8 +146,10 @@ async def send_chat_message(
         raise  # Re-raise HTTP exceptions
 
     except Exception as e:
-        # Fail loud - log error but return user-friendly message
+        # Fail loud - log error with traceback but return user-friendly message
+        import traceback
         print(f"[routers/chat.py:send_chat_message] Chat error for {citizen_id}: {e}")
+        print(f"[routers/chat.py:send_chat_message] Traceback: {traceback.format_exc()}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to process chat message with {citizen_id}. Please try again."
@@ -219,15 +221,30 @@ async def get_chat_history(
         # Format messages for response
         formatted_messages = []
         for msg in messages:
-            # Parse timestamp
+            # Parse timestamp safely
             timestamp = msg.get("timestamp")
-            if isinstance(timestamp, str):
-                timestamp = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+            if timestamp:
+                try:
+                    if isinstance(timestamp, str):
+                        timestamp = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+                    elif not isinstance(timestamp, datetime):
+                        timestamp = datetime.utcnow()
+                except (ValueError, AttributeError) as e:
+                    print(f"[chat.py:get_chat_history] Failed to parse timestamp: {timestamp}, error: {e}")
+                    timestamp = datetime.utcnow()
+            else:
+                timestamp = datetime.utcnow()
 
-            # Parse code blocks
+            # Parse code blocks safely
             code_blocks = msg.get("code_blocks", [])
-            if code_blocks and isinstance(code_blocks, list):
-                code_blocks = [CodeBlockResponse(**block) for block in code_blocks]
+            try:
+                if code_blocks and isinstance(code_blocks, list):
+                    code_blocks = [CodeBlockResponse(**block) for block in code_blocks]
+                else:
+                    code_blocks = []
+            except Exception as e:
+                print(f"[chat.py:get_chat_history] Failed to parse code blocks: {e}")
+                code_blocks = []
 
             formatted_messages.append(
                 MessageHistoryItem(
@@ -235,7 +252,7 @@ async def get_chat_history(
                     role=msg.get("role"),
                     content=msg.get("content"),
                     code_blocks=code_blocks,
-                    created_at=timestamp or datetime.utcnow()
+                    created_at=timestamp
                 )
             )
 
@@ -245,8 +262,10 @@ async def get_chat_history(
         )
 
     except Exception as e:
-        # Fail loud
+        # Fail loud - print full traceback for debugging
+        import traceback
         print(f"[routers/chat.py:get_chat_history] Error fetching messages for {citizen_id}: {e}")
+        print(f"[routers/chat.py:get_chat_history] Traceback: {traceback.format_exc()}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to fetch chat history for {citizen_id}"
