@@ -114,7 +114,6 @@ export function RafaelWorkspace({ missionId }: RafaelWorkspaceProps) {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }
