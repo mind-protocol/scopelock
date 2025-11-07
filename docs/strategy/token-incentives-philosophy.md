@@ -38,7 +38,7 @@ Tokens = achievement markers, status symbols, early access privilege
 ### 2. Scarcity as Motivation
 
 **Early Access Grants (Expires November 15):**
-- First 5 who commit get 500 tokens ($500 at launch)
+- First 5 who commit get 100 tokens ($100 at launch)
 - After Nov 15: No more base grants
 - Late joiners miss out entirely
 
@@ -55,26 +55,26 @@ Tokens = achievement markers, status symbols, early access privilege
 ### 3. Competition Structure (Month 1)
 
 **Competition 1: "First to 10 Proposals"**
-- Winner: 100 tokens ($100)
-- 2nd place: 50 tokens ($50)
-- 3rd place: 25 tokens ($25)
+- Winner: 25 tokens ($25)
+- 2nd place: 10 tokens ($10)
+- 3rd place: 5 tokens ($5)
 - Deadline: 7 days from announcement
 
 **Competition 2: "First Job Won"**
-- Winner: 200 tokens ($200)
+- Winner: 50 tokens ($50)
 - Single prize to first person who wins a client project
 
 **Competition 3: "Most Delivered This Month"**
-- 1st: 300 tokens ($300)
-- 2nd: 150 tokens ($150)
-- 3rd: 75 tokens ($75)
+- 1st: 75 tokens ($75)
+- 2nd: 40 tokens ($40)
+- 3rd: 20 tokens ($20)
 - Based on number of AC green deliveries in Month 1
 
 **Total Month 1 Budget:**
-- Base grants (5 × 500): 2,500 tokens
-- Competition prizes: ~1,000 tokens
-- Total: ~3,500 tokens ($3,500 at launch)
-- From 10M token pool: 0.035% used
+- Base grants (5 × 100): 500 tokens
+- Competition prizes: ~225 tokens
+- Total: ~725 tokens ($725 at launch)
+- From 10M token pool: 0.007% used
 
 ---
 
@@ -88,10 +88,10 @@ Tokens = achievement markers, status symbols, early access privilege
 
 **Why framing matters:**
 - Crypto teams understand token upside (10x-100x potential)
-- 500 token grant → potential $5K-$50K if token succeeds (10x-100x)
+- 100 token grant → potential $1K-$10K if token succeeds (10x-100x)
 - Positions ScopeLock as serious project, not side hustle
 - Team becomes stakeholders, not contractors
-- Amounts are bonuses (not payment replacement), but upside is real
+- Amounts are small bonuses (not payment), but upside is real if token succeeds
 
 ---
 
