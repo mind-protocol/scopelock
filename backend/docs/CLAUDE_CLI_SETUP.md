@@ -30,34 +30,33 @@ The backend calls Claude CLI to get Rafael's responses for chat. Claude CLI need
 
 ## Step 1: Get Credentials from Local Machine
 
-### Option A: Read Files Directly (Recommended)
+### Get Single-Line JSON (Recommended)
 
 ```bash
 # On your local machine where Claude CLI is authenticated:
 
-# 1. View credentials
-cat ~/.claude/.credentials.json
-
-# 2. View settings (optional)
-cat ~/.claude/settings.json
-```
-
-### Option B: Use JSON Tools (If Multi-line)
-
-If credentials span multiple lines, convert to single-line JSON:
-
-```bash
-# Credentials (required)
+# 1. Get credentials (required) - convert to single-line JSON
 cat ~/.claude/.credentials.json | jq -c
 
-# Settings (optional)
+# 2. Get settings (optional) - convert to single-line JSON
 cat ~/.claude/settings.json | jq -c
 ```
 
-**Example Output:**
+**Important:** Always use `jq -c` to convert to single-line format for environment variables!
+
+### Credential Formats
+
+**NEW FORMAT (OAuth-based, current):**
 ```json
-{"sessionKey":"sk_ant_sid01-AbCdEf...","email":"you@example.com"}
+{"claudeAiOauth":{"accessToken":"sk-ant-oat01-...","refreshToken":"sk-ant-ort01-...","expiresAt":1762479855036,"scopes":["user:inference","user:profile"],"subscriptionType":"max"},"mcpOAuth":{"vercel|511b08192b045b3d":{"serverName":"vercel",...}}}
 ```
+
+**OLD FORMAT (sessionKey, legacy):**
+```json
+{"sessionKey":"sk_ant_sid01-...","email":"you@example.com"}
+```
+
+Both formats work! The backend writes the JSON exactly as provided.
 
 ---
 
@@ -70,35 +69,43 @@ cat ~/.claude/settings.json | jq -c
 3. Click: **Add Environment Variable**
 4. Add credentials:
    - **Key:** `CLAUDE_CREDENTIALS`
-   - **Value:** Paste the JSON from Step 1 (entire file as single line)
+   - **Value:** Paste the **entire single-line JSON** from Step 1
+     - Example: `{"claudeAiOauth":{"accessToken":"sk-ant-oat01-bZ3X...","refreshToken":"sk-ant-ort01-irQ4UFo_AA...","expiresAt":1762479855036,...}}`
+     - **DO NOT** add quotes around the JSON (Render handles that)
    - Click **Save**
 5. *(Optional)* Add settings:
    - **Key:** `CLAUDE_SETTINGS`
-   - **Value:** Paste settings JSON
+   - **Value:** Paste settings JSON (single line from `jq -c`)
    - Click **Save**
 6. Render will automatically redeploy with new environment variables
 
+**Important Notes:**
+- Copy the **entire** output from `cat ~/.claude/.credentials.json | jq -c`
+- Paste directly into the Value field (no extra quotes needed)
+- The JSON can be very long (500+ characters with OAuth format) - that's normal!
+
 ### Via Render API (For Automation)
 
+**Note:** Using the Render dashboard (above) is much easier than API for credentials due to JSON escaping complexity.
+
+If you must use the API:
+
 ```bash
-# Set CLAUDE_CREDENTIALS
+# Get credentials as escaped JSON string
+CREDS=$(cat ~/.claude/.credentials.json | jq -c | jq -Rs .)
+
+# Set CLAUDE_CREDENTIALS via Render API
 curl -X PUT "https://api.render.com/v1/services/srv-d43toq3ipnbc73cb5kqg/env-vars/CLAUDE_CREDENTIALS" \
   -H "Authorization: Bearer $RENDER_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{
-    "value": "{\"sessionKey\":\"sk_ant_...\",\"email\":\"you@example.com\"}"
-  }'
-
-# Set CLAUDE_SETTINGS (optional)
-curl -X PUT "https://api.render.com/v1/services/srv-d43toq3ipnbc73cb5kqg/env-vars/CLAUDE_SETTINGS" \
-  -H "Authorization: Bearer $RENDER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "value": "{\"model\":\"claude-sonnet-4.5\",\"maxTokens\":8000}"
-  }'
+  -d "{\"value\": $CREDS}"
 ```
 
-**Important:** Escape quotes in JSON when using curl!
+**Important:**
+- The double `jq` command properly escapes the JSON for curl
+- First `jq -c` converts to single-line
+- Second `jq -Rs .` escapes it as a JSON string
+- **Highly recommend using dashboard instead** - much simpler!
 
 ---
 

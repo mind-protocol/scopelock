@@ -24,6 +24,76 @@ FALKORDB_API_KEY = settings.falkordb_api_key
 GRAPH_NAME = settings.graph_name
 
 
+def _parse_falkordb_node(node_data: List) -> Dict:
+    """
+    Parse FalkorDB node format into a dictionary.
+
+    FalkorDB returns nodes as:
+    [["id", 0], ["labels", ["NodeType"]], ["properties", [["key1", "val1"], ["key2", "val2"]]]]
+
+    Args:
+        node_data: FalkorDB node representation
+
+    Returns:
+        Dict with node properties
+    """
+    result = {}
+    for item in node_data:
+        if item[0] == "properties":
+            # Parse properties list into dict
+            for prop in item[1]:
+                result[prop[0]] = prop[1]
+        elif item[0] == "id":
+            result["_id"] = item[1]
+        elif item[0] == "labels":
+            result["_labels"] = item[1]
+    return result
+
+
+def _parse_falkordb_result(raw_result: List) -> List[Dict]:
+    """
+    Parse FalkorDB result format into list of dicts.
+
+    FalkorDB format:
+    - result[0] = column names: ["col1", "col2"]
+    - result[1] = data rows: [[[node_data]], [[node_data]]]
+    - result[2] = metadata: ["Nodes created: 1", ...]
+
+    Args:
+        raw_result: Raw FalkorDB result
+
+    Returns:
+        List of dicts with column names as keys
+    """
+    if not raw_result or len(raw_result) < 2:
+        return []
+
+    columns = raw_result[0]
+    rows = raw_result[1]
+
+    if not rows:
+        return []
+
+    parsed_rows = []
+    for row in rows:
+        parsed_row = {}
+        for i, col_name in enumerate(columns):
+            if i < len(row):
+                # Check if this is a node (list of lists with specific format)
+                cell_data = row[i]
+                if isinstance(cell_data, list) and len(cell_data) > 0:
+                    # Check if it looks like a node (has id/labels/properties)
+                    if isinstance(cell_data[0], list) and len(cell_data[0]) == 2:
+                        parsed_row[col_name] = _parse_falkordb_node(cell_data)
+                    else:
+                        parsed_row[col_name] = cell_data
+                else:
+                    parsed_row[col_name] = cell_data
+        parsed_rows.append(parsed_row)
+
+    return parsed_rows
+
+
 def _escape_cypher_value(value: Any) -> str:
     """
     Escape a Python value for inline Cypher query.
@@ -108,8 +178,9 @@ def query_graph(cypher: str, params: Optional[Dict[str, Any]] = None) -> List[Di
             timeout=10
         )
         response.raise_for_status()
-        # FalkorDB returns "result" (not "results")
-        return response.json().get("result", [])
+        # FalkorDB returns "result" (not "results"), and in a special format
+        raw_result = response.json().get("result", [])
+        return _parse_falkordb_result(raw_result)
     except requests.exceptions.RequestException as e:
         # Fail loud per ScopeLock fail-loud principle
         print(f"[graph.py:query_graph] FalkorDB query failed: {e}")

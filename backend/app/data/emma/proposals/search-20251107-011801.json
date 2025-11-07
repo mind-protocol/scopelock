@@ -1,0 +1,30 @@
+{
+  "_id": 2,
+  "_labels": [
+    "U4_Event"
+  ],
+  "name": "Upwork Search: AI integration Python Next.js",
+  "slug": "search-20251107-011801",
+  "event_kind": "upwork_search",
+  "level": "L2",
+  "scope_ref": "scopelock",
+  "actor_ref": "emma",
+  "search_query": "AI integration Python Next.js",
+  "jobs_filtered": 50,
+  "proposals_sent": 3,
+  "platform": "upwork",
+  "filters_applied": "[payment_verified, fixed_price, $3K+]",
+  "timestamp": "2025-11-07T01:18:01.223681",
+  "description": "Upwork search for AI integration Python Next.js",
+  "detailed_description": "Searched upwork with query 'AI integration Python Next.js'. Filtered 50 jobs, sent 3 proposals.",
+  "type_name": "U4_Event",
+  "visibility": "partners",
+  "policy_ref": "l4://law/scopelock-tracking-policy",
+  "proof_uri": "",
+  "commitments": "[]",
+  "created_by": "emma",
+  "substrate": "organizational",
+  "created_at": "2025-11-07T01:18:01.223681",
+  "updated_at": "2025-11-07T01:18:01.223681",
+  "valid_from": "2025-11-07T01:18:01.223681"
+}
