@@ -1,3 +1,46 @@
+## 2025-11-07 15:00 — Rafael: Major Refactor - Chat Separated from Workspaces ✅
+
+**MAJOR REFACTOR:** Chat now always visible, separate from workspaces
+
+**User Request:** "The chat should be a separated component that is not inside the workspace, so that it is displayed whatever citizen you select."
+
+**Architecture Change:**
+- **OLD:** Each workspace had its own chat panel (Rafael, Emma, Sofia all had embedded chat)
+- **NEW:** Single chat component at console level, always visible on the right
+
+**Layout Structure:**
+```
+Mission Selector (200px) | Top Bar
+                        | Citizen Selector (horizontal tabs)
+                        | [Workspace 70% | Divider | Chat 30%]
+```
+
+**Benefits:**
+1. **Chat persistence** - Chat stays visible when switching citizens
+2. **Simpler workspaces** - Each workspace only shows its specific content
+3. **Consistent UX** - Chat always in the same place, always accessible
+4. **Better separation** - Workspace logic separate from chat logic
+
+**Changes:**
+1. **Console page** - Added chat state, drag handling, manages workspace+chat layout
+2. **RafaelWorkspace** - Only shows GitHub repository view (no chat)
+3. **EmmaWorkspace** - Only shows proposal drafts (no chat)
+4. **SofiaWorkspace** - Only shows DoD + tests (no chat)
+5. **CitizenSelector** - Moved back to top bar
+6. **ChatInterface** - Still has citizen selector header for quick switching
+
+**Status:** Deployed ✅
+**Commit:** 823510a
+**Link:**
+- src/app/mission-deck/console/page.tsx (major changes)
+- src/components/mission-deck/RafaelWorkspace.tsx (simplified)
+- src/components/mission-deck/EmmaWorkspace.tsx (simplified)
+- src/components/mission-deck/SofiaWorkspace.tsx (simplified)
+
+**Next:** Chat is now always visible and accessible. Ready for testing.
+
+---
+
 ## 2025-11-07 15:15 — Claude: Reorganized Website Header with Dropdown Navigation ✅
 
 **Work:** Restructured site header from flat navigation to dropdown menus per user requirements
@@ -5,7 +48,7 @@
 **Changes Made:**
 1. **Portfolio dropdown** - Projects (case-studies), Blog
 2. **How It Works dropdown** - ScopeLock Process, Pricing, FAQ
-3. **About dropdown** - Our Story, Mission Deck (internal workspace), Resources
+3. **About dropdown** - Our Story, Join Our Team, Mission Deck (internal workspace), Resources
 4. **CTA update** - Changed "Get Started" → "Start a Project"
 5. **Removed items** - No public-proof log (wasn't in nav), no $UBC scope mentions (already clean)
 
@@ -15,14 +58,14 @@
 - Consistent with existing ScopeLock brand (teal accent, dark theme)
 
 **Files Modified:**
-- src/app/layout.tsx:43-79 (header structure)
+- src/app/layout.tsx:43-79 (header structure + join link)
 - src/app/globals.css:123-192 (dropdown CSS)
 
 **Status:** Deployed ✅
-**Commit:** fc407cd
+**Commits:** fc407cd (initial), 2d5f278 (added /join)
 **Link:** scopelock.mindprotocol.ai (deployed to Vercel)
 
-**Next:** Header navigation now organized for clarity. About dropdown contains Team (current /about), Mission Deck (internal workspace), and Resources (team learning materials).
+**Next:** Header navigation now organized for clarity. About dropdown contains Team info, recruitment page (/join), Mission Deck (internal workspace), and Resources (team learning materials).
 
 ---
 
