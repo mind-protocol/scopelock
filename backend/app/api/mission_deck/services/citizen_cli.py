@@ -9,6 +9,11 @@ Architecture:
 - Each citizen has their own CLAUDE.md system prompt in their folder
 - Code block extraction via regex
 - Graceful failure handling (fail-loud but don't crash)
+
+Authentication:
+- Claude CLI must be authenticated on the server
+- Use `claude setup-token` to generate long-lived token for production
+- Store token in environment/config for persistence across deployments
 """
 
 import subprocess
