@@ -35,50 +35,31 @@ Tokens = achievement markers, status symbols, early access privilege
 
 ---
 
-### 2. Scarcity as Motivation
-
-**Early Access Grants (Expires November 15):**
-- First 5 who commit get 100 tokens ($100 at launch)
-- After Nov 15: No more base grants
-- Late joiners miss out entirely
-
-**Why scarcity works:**
-- Creates FOMO (fear of missing out)
-- Rewards early believers
-- Distinguishes founding team from future hires
-- Leverages crypto culture (early = value)
-
-**Psychological trigger:** "You're the only ones who can get this. After Nov 15, this window closes forever."
-
----
-
-### 3. Competition Structure (Month 1)
+### 2. Competition Structure (Month 1)
 
 **Competition 1: "First to 10 Proposals"**
-- Winner: 25 tokens ($25)
-- 2nd place: 10 tokens ($10)
-- 3rd place: 5 tokens ($5)
+- Winner: 100 tokens ($100)
 - Deadline: 7 days from announcement
+- First person to submit 10 Upwork proposals wins
 
 **Competition 2: "First Job Won"**
-- Winner: 50 tokens ($50)
+- Winner: 100 tokens ($100)
 - Single prize to first person who wins a client project
 
 **Competition 3: "Most Delivered This Month"**
-- 1st: 75 tokens ($75)
-- 2nd: 40 tokens ($40)
-- 3rd: 20 tokens ($20)
+- Winner: 150 tokens ($150)
 - Based on number of AC green deliveries in Month 1
 
 **Total Month 1 Budget:**
-- Base grants (5 × 100): 500 tokens
-- Competition prizes: ~225 tokens
-- Total: ~725 tokens ($725 at launch)
-- From 10M token pool: 0.007% used
+- Competition prizes: ~350 tokens max
+- Total: $350 at launch
+- From 10M token pool: 0.0035% used
+
+**Note:** No base grants. No "early access." Tokens only for achievements.
 
 ---
 
-### 4. Crypto-Native Framing
+### 3. Crypto-Native Framing
 
 **This is a BIG token:**
 - Launch target: $1.00 per token
@@ -88,14 +69,14 @@ Tokens = achievement markers, status symbols, early access privilege
 
 **Why framing matters:**
 - Crypto teams understand token upside (10x-100x potential)
-- 100 token grant → potential $1K-$10K if token succeeds (10x-100x)
+- 100 tokens earned → potential $1K-$10K if token succeeds (10x-100x)
 - Positions ScopeLock as serious project, not side hustle
 - Team becomes stakeholders, not contractors
-- Amounts are small bonuses (not payment), but upside is real if token succeeds
+- Amounts are small achievement bonuses, but upside is real if token succeeds
 
 ---
 
-### 5. Separation of Concerns
+### 4. Separation of Concerns
 
 **Cash compensation:** Tracks interactions, immediate payment, predictable
 **Token compensation:** Tracks achievements, deferred payment, speculative
