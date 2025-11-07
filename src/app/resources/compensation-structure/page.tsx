@@ -67,21 +67,21 @@ export default function CompensationStructurePage() {
       {/* Lead */}
       <section className={styles.lead}>
         <p className={styles.leadQuote}>
-          "The more you work, the more you earn. And you know exactly how much."
+          "The more you contribute, the more you earn. And you see the estimate live."
         </p>
         <p>
           Most agencies pay fixed salaries or hourly rates. You work hard on a project, but your teammate slacks off—you both get paid the same. That&apos;s not fair.
         </p>
         <p>
-          <strong>ScopeLock is different:</strong> Every time you send a message to an AI from Mission Deck, you earn +1 interaction point.
-          Your share: <code>(Your interactions / Total interactions) × 30% of job value</code>.
+          <strong>ScopeLock is different:</strong> Your contribution to each job is tracked automatically as you work with AI citizens.
+          Your share: <code>(Your contribution % / Total team contribution) × 30% of job value</code>.
           Real-time visibility. 100% transparent. 100% fair.
         </p>
 
         <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(30, 229, 184, 0.1)', borderRadius: '8px', border: '1px solid rgba(30, 229, 184, 0.3)', lineHeight: '1.8' }}>
           <p style={{ margin: 0 }}>
-            <strong>Why this is cool:</strong> Work 2x as hard → earn 2x as much. No politics, no favoritism, no arbitrary roles.
-            Everyone sees everyone&apos;s contribution in real-time. More work = more money. Less work = less money. <strong>Fair.</strong>
+            <strong>Why this is cool:</strong> Contribute 2x as much → earn 2x as much. No politics, no favoritism, no arbitrary roles.
+            Everyone sees their live earnings estimate in real-time. More contribution = more money. Less contribution = less money. <strong>Fair.</strong>
           </p>
         </div>
       </section>
@@ -90,35 +90,21 @@ export default function CompensationStructurePage() {
       <section className={styles.section}>
         <h2>How It Works</h2>
         <div className={styles.callout}>
-          <strong>Step 1:</strong> Every message to an AI from Mission Deck = +1 interaction point
+          <strong>Step 1:</strong> Work on jobs via Mission Deck with AI citizens (Rafael, Inna, Sofia, Emma)
           <br/>
-          <strong>Step 2:</strong> Your share = <code>(Your interactions / Total interactions) × 30% team pool</code>
+          <strong>Step 2:</strong> Your contribution is tracked automatically in the background
           <br/>
-          <strong>Step 3:</strong> Get paid when client pays (typically 21 days after delivery)
+          <strong>Step 3:</strong> See your live earnings estimate as you work
+          <br/>
+          <strong>Step 4:</strong> Get paid when client pays (typically 21 days after delivery)
         </div>
 
-        <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px' }}>
-          <h3 style={{ fontSize: '1rem', marginBottom: '0.75rem' }}>What counts as an interaction?</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-            <div>
-              <strong style={{ color: 'var(--slk-success, #5CE27E)' }}>✅ Counts:</strong>
-              <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem', fontSize: '0.9rem' }}>
-                <li>Messages to Rafael (code gen)</li>
-                <li>Messages to Inna (specs)</li>
-                <li>Messages to Sofia (QA)</li>
-                <li>Messages to Emma (proposals)</li>
-              </ul>
-            </div>
-            <div>
-              <strong style={{ color: 'var(--slk-danger, #FF5D5D)' }}>❌ Does NOT count (for now):</strong>
-              <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem', fontSize: '0.9rem' }}>
-                <li>File uploads</li>
-                <li>Deployments</li>
-                <li>Testing actions</li>
-                <li>Messages outside Mission Deck</li>
-              </ul>
-            </div>
-          </div>
+        <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(30, 229, 184, 0.1)', borderRadius: '8px', border: '1px solid rgba(30, 229, 184, 0.3)' }}>
+          <p style={{ margin: 0, lineHeight: '1.8' }}>
+            <strong>The system tracks your work automatically.</strong> You don&apos;t need to log hours or fill timesheets.
+            Just work with the AI citizens, and your contribution percentage updates in real-time.
+            The more you contribute to a job, the higher your share of the 30% team pool.
+          </p>
         </div>
       </section>
 
@@ -197,10 +183,10 @@ export default function CompensationStructurePage() {
 
             <div className={styles.control}>
               <label htmlFor="activity">
-                Your % of team interactions: <strong>{yourInteractionPct}%</strong>
+                Your contribution level: <strong>{yourInteractionPct}%</strong>
                 <br/>
                 <span style={{ fontSize: '0.85rem', color: 'var(--slk-muted, #9AA3AE)' }}>
-                  (50% = average, 70%+ = very active)
+                  (50% = average contributor, 70%+ = very active)
                 </span>
               </label>
               <input
@@ -246,7 +232,7 @@ export default function CompensationStructurePage() {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(230, 234, 242, 0.1)' }}>
                 <div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--slk-muted)', marginBottom: '0.25rem' }}>From jobs ({yourInteractionPct}% of interactions):</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--slk-muted)', marginBottom: '0.25rem' }}>From jobs ({yourInteractionPct}% contribution):</div>
                   <div style={{ fontSize: '1.25rem', fontWeight: 600 }}>{formatCurrency(yourJobEarnings)}</div>
                 </div>
                 <div>
@@ -279,44 +265,44 @@ export default function CompensationStructurePage() {
             <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>Job: $1,000 | Team pool: $300 (30%)</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
               <div style={{ padding: '0.75rem', background: 'rgba(30, 229, 184, 0.1)', borderRadius: '6px' }}>
-                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>You: 15 interactions</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>You: 33.3%</div>
                 <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--slk-accent)' }}>$100</div>
               </div>
               <div style={{ padding: '0.75rem', background: 'rgba(30, 229, 184, 0.1)', borderRadius: '6px' }}>
-                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate A: 15</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate A: 33.3%</div>
                 <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--slk-accent)' }}>$100</div>
               </div>
               <div style={{ padding: '0.75rem', background: 'rgba(30, 229, 184, 0.1)', borderRadius: '6px' }}>
-                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate B: 15</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate B: 33.3%</div>
                 <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--slk-accent)' }}>$100</div>
               </div>
             </div>
-            <p style={{ fontSize: '0.85rem', marginTop: '0.75rem', fontStyle: 'italic' }}>Everyone contributed equally (15/45 = 33.3%) → everyone earns equally.</p>
+            <p style={{ fontSize: '0.85rem', marginTop: '0.75rem', fontStyle: 'italic' }}>Everyone contributed equally → everyone earns equally.</p>
           </div>
 
           {/* Example 2 */}
           <div style={{ padding: '1.5rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', border: '1px solid rgba(230, 234, 242, 0.1)' }}>
-            <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: 'var(--slk-accent, #1EE5B8)' }}>💪 You Work Harder → You Earn More</h3>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: 'var(--slk-accent, #1EE5B8)' }}>💪 You Contribute More → You Earn More</h3>
             <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>Job: $1,000 | Team pool: $300 (30%)</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
               <div style={{ padding: '0.75rem', background: 'rgba(30, 229, 184, 0.2)', borderRadius: '6px', border: '2px solid var(--slk-accent)' }}>
-                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>You: 30 interactions</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>You: 66.7%</div>
                 <div style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--slk-accent)' }}>$200</div>
-                <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>66.7% of work</div>
+                <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>High contribution</div>
               </div>
               <div style={{ padding: '0.75rem', background: 'rgba(30, 229, 184, 0.05)', borderRadius: '6px' }}>
-                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate A: 10</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate A: 22.2%</div>
                 <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--slk-text)' }}>$67</div>
-                <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>22.2% of work</div>
+                <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>Medium contribution</div>
               </div>
               <div style={{ padding: '0.75rem', background: 'rgba(30, 229, 184, 0.05)', borderRadius: '6px' }}>
-                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate B: 5</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--slk-muted)' }}>Teammate B: 11.1%</div>
                 <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--slk-text)' }}>$33</div>
-                <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>11.1% of work</div>
+                <div style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>Lower contribution</div>
               </div>
             </div>
             <p style={{ fontSize: '0.85rem', marginTop: '0.75rem', fontStyle: 'italic', color: 'var(--slk-accent)' }}>
-              <strong>You worked 3x harder than Teammate A → you earn 3x as much. Fair.</strong>
+              <strong>You contributed 3x more than Teammate A → you earn 3x as much. Fair.</strong>
             </p>
           </div>
         </div>
@@ -355,7 +341,7 @@ export default function CompensationStructurePage() {
         <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(30, 229, 184, 0.1)', borderRadius: '8px', border: '1px solid rgba(30, 229, 184, 0.3)' }}>
           <strong>You earn from:</strong>
           <ul style={{ marginTop: '0.5rem', marginBottom: 0, paddingLeft: '1.5rem' }}>
-            <li><strong>Team pool:</strong> Your % of 30% based on interactions</li>
+            <li><strong>Team pool:</strong> Your % of 30% based on contribution level</li>
             <li><strong>Missions:</strong> Fixed $ per mission (proposals $1, posts $2, recruitment $10)</li>
           </ul>
         </div>
@@ -377,11 +363,11 @@ export default function CompensationStructurePage() {
           </div>
 
           <div style={{ padding: '1.5rem', background: 'rgba(30, 229, 184, 0.1)', borderRadius: '8px', border: '1px solid rgba(30, 229, 184, 0.3)' }}>
-            <h3 style={{ fontSize: '1rem', marginBottom: '1rem', color: 'var(--slk-success)' }}>✅ New System (Per-Interaction)</h3>
+            <h3 style={{ fontSize: '1rem', marginBottom: '1rem', color: 'var(--slk-success)' }}>✅ New System (Contribution-Based)</h3>
             <ul style={{ fontSize: '0.9rem', lineHeight: '1.8' }}>
-              <li>Work 2x as hard → earn 2x as much</li>
-              <li>Real-time visibility into earnings</li>
-              <li>100% transparent (everyone sees everyone&apos;s contribution)</li>
+              <li>Contribute 2x as much → earn 2x as much</li>
+              <li>Real-time visibility into earnings estimates</li>
+              <li>100% transparent (everyone sees their live contribution %)</li>
               <li>Natural incentive to contribute more</li>
               <li>Fair distribution based on actual work</li>
             </ul>

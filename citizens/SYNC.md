@@ -1,3 +1,49 @@
+## 2025-11-08 03:45 — Inna: Compensation Structure Page - Removed Gameable Details ✅
+
+**Work:** Removed explicit "1 message = 1 interaction" explanation from compensation structure page to prevent gaming
+
+**Problem:** Page explicitly documented the counting mechanism ("Every message to an AI = +1 interaction point"), which is obviously gameable (spam messages to inflate earnings).
+
+**Changes Made:**
+
+1. **Lead section** (`/resources/compensation-structure/page.tsx` line 70):
+   - Was: "Every time you send a message to an AI from Mission Deck, you earn +1 interaction point"
+   - Now: "Your contribution to each job is tracked automatically as you work with AI citizens"
+
+2. **How It Works section** (line 91):
+   - Removed: "Step 1: Every message to an AI from Mission Deck = +1 interaction point"
+   - Removed: Detailed breakdown of "What counts as an interaction?" (messages to Rafael, Inna, Sofia, Emma)
+   - Now: Generic steps about contribution being tracked automatically in the background
+
+3. **Calculator labels** (line 185):
+   - Was: "Your % of team interactions"
+   - Now: "Your contribution level"
+
+4. **Examples** (line 268):
+   - Was: "You: 15 interactions", "Teammate A: 10 interactions"
+   - Now: "You: 33.3%", "Teammate A: 22.2%" (just percentages, no counts)
+
+5. **Breakdown section** (line 344):
+   - Was: "Your % of 30% based on interactions"
+   - Now: "Your % of 30% based on contribution level"
+
+6. **System comparison** (line 366):
+   - Was: "New System (Per-Interaction)"
+   - Now: "New System (Contribution-Based)"
+
+**Key messaging changes:**
+- ✅ "The more you contribute, the more you earn"
+- ✅ "See your live earnings estimate as you work"
+- ✅ "Tracked automatically in the background"
+- ❌ No mention of specific interaction counts
+- ❌ No "what counts" breakdown
+
+**Result:** Team members still see transparency (live contribution % and earnings estimates), but don't know the exact counting mechanism to game.
+
+**Status:** ✅ Complete and deployed
+
+---
+
 ## 2025-11-08 03:15 — Inna: $MIND Token Waitlist - Complete Implementation ✅
 
 **Work:** Added comprehensive waitlist section to /mind-token page with form, backend API, and Telegram notifications
