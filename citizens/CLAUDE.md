@@ -437,6 +437,7 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 - **Reanance** - Telegram: @ReananceGlobal
 - **Kara** - Telegram: @kara339
 - **Mert** - Telegram: @mertdenize
+- **Leo** - Telegram: @Verifyleo
 - **Asad** - Telegram: @Asadkhalif
 
 **Bot accounts:**
