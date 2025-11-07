@@ -1,0 +1,10 @@
+{
+  "context_id": "2025-11-07_16-19-56",
+  "entity_type": "citizen",
+  "entity_id": "alexis",
+  "created_at": "2025-11-07T15:19:56.145658+00:00",
+  "created_by": "precompact_hook",
+  "last_updated": "2025-11-07T15:19:56.145668+00:00",
+  "message_count": 0,
+  "has_tool_calls": false
+}

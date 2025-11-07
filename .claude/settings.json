@@ -1,0 +1,13 @@
+{
+  "env": {
+    "MAX_THINKING_TOKENS": 25000
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": [
+      "../../../"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "forceLoginMethod": "claudeai"
+}
