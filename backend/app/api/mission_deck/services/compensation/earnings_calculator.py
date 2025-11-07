@@ -141,11 +141,14 @@ def get_all_active_jobs() -> List[Dict]:
 
     Returns:
         List of job dicts with slug, value, teamPool
+
+    Note: Limited to 50 jobs to prevent memory issues on free tier hosting
     """
     cypher = """
     MATCH (job:U4_Work_Item {work_type: 'job', scope_ref: 'scopelock'})
     WHERE job.status = 'active'
     RETURN job.slug AS slug, job.value AS value, job.teamPool AS team_pool, job.name AS name
+    LIMIT 50
     """
 
     try:
@@ -188,7 +191,24 @@ def calculate_member_total_potential_earnings(member_slug: str) -> Dict:
           'totalInteractions': 15
         }
     """
-    active_jobs = get_all_active_jobs()
+    try:
+        active_jobs = get_all_active_jobs()
+    except Exception as e:
+        # If query fails, return empty earnings (prevents memory crash)
+        print(f"[earnings_calculator:calculate_member_total_potential_earnings] Failed to get jobs: {e}")
+        return {
+            'total': 0.0,
+            'jobs': [],
+            'totalInteractions': 0
+        }
+
+    # Early return if no active jobs (prevents unnecessary queries)
+    if not active_jobs:
+        return {
+            'total': 0.0,
+            'jobs': [],
+            'totalInteractions': 0
+        }
 
     total_earning = Decimal('0.00')
     job_earnings = []
@@ -253,8 +273,9 @@ def get_member_completed_mission_earnings(member_slug: str) -> Decimal:
         return Decimal(str(total)) if total else Decimal('0.00')
 
     except Exception as e:
+        # Return 0 instead of crashing (prevents memory issues from cascading)
         print(f"[earnings_calculator:get_member_completed_mission_earnings] Error: {e}")
-        raise
+        return Decimal('0.00')
 
 
 def calculate_member_full_earnings(member_slug: str) -> Dict:

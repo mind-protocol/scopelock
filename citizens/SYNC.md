@@ -1,3 +1,150 @@
+## 2025-11-07 06:56 — Rafael: Mission Deck Chat Backend - CORS Investigation ✅
+
+**Work:** Investigated reported CORS error blocking production frontend from accessing backend
+
+**Investigation:**
+- User reported CORS error: production frontend (scopelock.mindprotocol.ai) blocked from backend (scopelock.onrender.com)
+- Checked CORS configuration in backend code (config.py line 42, main.py lines 67-74)
+- Verified latest deployment is live (commit 5c93588, deployed 30 min ago)
+- Tested actual CORS headers with curl preflight request
+
+**Findings:**
+- CORS is configured CORRECTLY: `access-control-allow-origin: https://scopelock.mindprotocol.ai`
+- Backend responding with proper CORS headers: `allow-credentials: true`, `allow-methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT`
+- Health endpoint returns 200 with CORS headers
+- All recent backend fixes are deployed and working
+
+**Status:** ✅ CORS working correctly, backend operational
+
+**Root Cause:** Either:
+1. User saw error before latest deployment went live (timing issue)
+2. Browser cache (needs hard refresh Ctrl+Shift+R)
+3. Different error that appeared similar to CORS
+
+**Resolution:** Frontend should now connect successfully. If errors persist, hard refresh browser.
+
+**Next:** Monitor for actual chat functionality working end-to-end
+
+**Link:** Backend: https://scopelock.onrender.com/health
+
+---
+
+## 2025-11-07 [Current Session] — Claude: Search Plan System (FalkorDB-Backed) ✅
+
+**Work:** Created systematic Upwork search plan stored in FalkorDB for team coordination using official Mind Protocol types
+
+**What Was Built:**
+
+1. **Search Plan Schema (Official Types):**
+   - Search Plan → `U4_Work_Item` with `work_type: "milestone"` (date, team, targets, acceptance_criteria)
+   - Search Tasks → `U4_Work_Item` with `work_type: "task"` (6 searches with priorities, URLs, rationale)
+   - `U4_DEPENDS_ON` relationships (execution order, recommendations, forming_mindstate)
+
+2. **Today's Search Plan (2025-11-07):**
+   - 6 optimized search URLs with filters pre-applied
+   - Priority 1 (⭐): 3 problem-focused searches (highest value)
+   - Priority 3 (⭐⭐⭐): 1 platform-specific search (niche, excellent clients)
+   - Priority 2 (⭐⭐): 2 stack-focused searches (mixed quality, filter carefully)
+   - Target: 20 proposals sent from 150 jobs reviewed
+
+3. **Tools Created:**
+   - `/tools/get-search-urls.py` - Retrieves today's search plan from FalkorDB
+   - `/tmp/insert_search_plan_direct.py` - Admin tool to create new plans
+   - `/docs/search-plans-README.md` - Complete documentation
+
+4. **Search Strategy:**
+   - **Problem-focused** (best): "build AI assistant", "create custom dashboard" → High-value clients ($100K+ spent)
+   - **Platform-specific** (niche): "RAG LLM platform" → Fewer jobs, but $1,200+ from proven clients
+   - **Stack-focused** (mixed): "fastapi backend", "nextjs dashboard" → More jobs, need client quality filtering
+
+**All Searches Pre-Filtered:**
+- Budget: $500-1,500 (eliminates <$500 gigs)
+- Client hires: 10+ (eliminates new clients)
+- Proposals: 0-14 (low competition)
+- Payment verified (no risk)
+- Fixed price only (no hourly consulting)
+
+**Status:** ✅ Plan in FalkorDB, tool working, ready for team to execute
+
+**Next:** Team runs `python3 tools/get-search-urls.py` → Gets 6 URLs → Searches → Emma evaluates → Proposals sent
+
+**Link:** /docs/search-plans-README.md for complete instructions
+
+---
+
+## 2025-11-07 23:15 — Alexis: Proposal Strategy Pivot - Low Competition Targeting ✅
+
+**Work:** Diagnosed 0/15 proposal win rate, pivoted to low-competition job targeting strategy
+
+**Root Cause Analysis:**
+- User sent 15 proposals last week → 0 responses
+- Diagnosis: Proposals are EXCELLENT quality, but competing against 139+ proposals per job
+- Real problem: Job targeting, not proposal quality
+- Solution: Target jobs with <15 proposals (not 100+)
+
+**Strategic Pivot:**
+1. **Filter strategy:** Only apply to jobs with 0-14 proposals (low competition)
+2. **Speed strategy:** Apply within 6 hours of posting (before competition arrives)
+3. **Budget strategy:** $500-1500 range (not $5K+, faster decisions)
+4. **Client strategy:** Target experienced clients (10+ hires, payment verified)
+
+**Proposals Created Tonight:**
+
+1. **AI Architecture Review** (Priority #1)
+   - <5 proposals (almost no competition)
+   - Posted 45 min ago (early applicant)
+   - $300 fixed price (quick win to build first Upwork review)
+   - Expert level, computer vision + edge AI + TensorFlow
+   - Perfect match: La Serenissima (architecture at scale), Terminal Velocity (AI systems)
+   - File: `/tmp/ai-architecture-review-proposal.txt`
+   - **Win probability: HIGH** (best technical match, almost no competition)
+
+2. **FastAPI + Claude Integration** (Priority #2)
+   - 20-50 proposals (moderate competition)
+   - Hourly $45-50/hr (or fixed $1,500)
+   - 1-3 months duration (ongoing work)
+   - Perfect match: TherapyKin (FastAPI + Claude + Supabase), 5+ similar projects
+   - File: `/tmp/fastapi-claude-proposal.txt`
+   - **Win probability: MEDIUM** (perfect technical match, more competition)
+
+**Emma's Search Filter Analysis:**
+- ✅ **EXCELLENT:** Proposal filters (0-14 proposals, $500-1500, 10+ hires, verified payment, recency sort)
+- ❌ **NEEDS FIX:** Keywords targeting no-code jobs ("zapier automation airtable")
+- **Recommended keywords:** "AI chatbot development", "fastapi backend python", "nextjs dashboard custom"
+- **Reason:** Leverage ScopeLock strengths (custom AI development, Terminal Velocity proof), avoid no-code competition
+
+**Files Created:**
+- `/tmp/ai-architecture-review-proposal.txt` - Complete proposal with proof links
+- `/tmp/fastapi-claude-proposal.txt` - Complete proposal + screening question answers
+
+**Decision Points:**
+- FastAPI job: Fixed-price $1,500 vs Hourly $50/hr (user can deliver in 5-10 hours → charge for value not time)
+- User concern: "I might complete it in 5 hours" (underpricing risk)
+- Recommendation: Fixed-price captures value of fast delivery + expertise
+
+**Emma Action Items:**
+- Update `/citizens/emma/MISSION_SELECTION.md` with corrected search keywords
+- Replace no-code keywords (Zapier, Airtable) with custom development keywords
+- Keep excellent filter strategy (proposals, budget, client quality, recency)
+
+**Next Steps:**
+1. User submits AI Architecture Review proposal (tonight)
+2. User submits FastAPI Claude proposal (tonight)
+3. If wins Architecture Review → deliver 1-2 page PDF review in 24-48 hours
+4. If wins FastAPI → 2-week delivery timeline (buffer for revisions)
+
+**Status:** Ready to submit. Proposals drafted. Strategy validated.
+
+**Emotional Context:**
+- User was demotivated after 0/15 win rate ("can't take it anymore to end every day with a failure")
+- Root cause diagnosed: targeting wrong jobs (too competitive)
+- New strategy: low-competition jobs (2 excellent targets found tonight)
+- User re-engaged: found jobs himself, ready to apply
+
+**Link:** Strategy shift from high-competition ($5K+ jobs with 100+ proposals) to low-competition ($500-1500 jobs with <15 proposals)
+
+---
+
 ## 2025-11-07 20:30 — Inna: Mission Deck Compensation - Corrected Mission Model (Points-Based, No Claiming) ✅ COMPLETE (Updated 21:15)
 
 **Work:** Major correction to mission system - removed claiming, implemented points-based payments + fixed GUIDE.md inconsistencies

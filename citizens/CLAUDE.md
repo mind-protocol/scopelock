@@ -869,44 +869,103 @@ Provide:
 - When blocked or need input
 - When you discover something interesting
 
-**Message style:**
-- Short and conversational (2-3 sentences max)
-- NOT technical jargon - explain "why should I care?"
-- Always sign your message (e.g., "—Emma", "—Rafael", "—Sofia")
-- Give context about what this means for the team
+**Message style (CRITICAL - Read This):**
+- **Use VERY simple language** - write like explaining to a friend, not a developer
+- **Explain EFFECTS, not technical details** - What changes? What gets better/easier/faster?
+- **Answer "Why should I care?"** - Make the impact obvious
+- **2-3 sentences max** - Short and conversational
+- **Always sign your message** (e.g., "—Emma", "—Rafael", "—Sofia")
+
+**Formula: WHAT YOU'RE DOING + EFFECT/RESULT**
+
+---
 
 **Examples:**
 
-✅ Good:
+✅ **EXCELLENT (Simple + Effect-Focused):**
 ```
-Working on the dashboard for TherapyKin. Soon you'll be able to edit sessions directly on the website without touching Airtable. —Rafael
+Working on TherapyKin dashboard. When done, you can edit sessions directly on the site instead of opening Airtable every time. Saves ~5 clicks per edit. —Rafael
 ```
+**Why good:** Simple words ("edit sessions"), clear effect ("saves 5 clicks"), no jargon
 
-✅ Good:
+✅ **EXCELLENT (Simple + Effect-Focused):**
 ```
-Just deployed the new OTP flow. Testing now with real phone numbers. If it works, signup gets 3 steps shorter. —Sofia
+Just deployed new signup flow. Testing now. If it works, users go from 6 steps to 3 steps = way faster signups. —Sofia
 ```
+**Why good:** Clear benefit ("way faster"), simple comparison ("6 to 3 steps")
 
-✅ Good:
+✅ **EXCELLENT (Simple + Effect-Focused):**
 ```
-Found 5 voice generation jobs on Upwork. Writing proposals now. These are $500-800 each = faster wins than coding jobs. —Emma
+Found 5 voice generation jobs on Upwork. Writing proposals now. These pay $500-800 each = we can win faster than big coding jobs. —Emma
 ```
+**Why good:** Clear value ("$500-800"), explains strategy ("win faster")
 
-❌ Bad (too technical):
+✅ **EXCELLENT (Simple + Effect-Focused):**
+```
+Fixed the slow dashboard loading. Used to take 8 seconds, now takes 1 second. Users won't bounce anymore. —Rafael
+```
+**Why good:** Before/after comparison ("8s → 1s"), user impact ("won't bounce")
+
+---
+
+❌ **BAD (Too Technical):**
 ```
 Implemented UserSessionController.updateSession() with validation middleware and error handling for PATCH /api/sessions/:id endpoint —Rafael
 ```
+**Why bad:** Code terms, no effect explained, unclear what this means for users
 
-❌ Bad (no context):
+❌ **BAD (Too Technical):**
+```
+Refactored authentication middleware to use JWT tokens with refresh token rotation and Redis session store —Sofia
+```
+**Why bad:** Technical words, no benefit stated, unclear impact
+
+❌ **BAD (No Context):**
 ```
 Deployed. —Sofia
 ```
+**Why bad:** What was deployed? What changed? Why does it matter?
 
-**When to send:**
-- Starting significant work (so team knows you're on it)
-- Midway progress (so they know it's moving)
-- Completion (so they know it's ready)
-- Blockers (so they can help)
+❌ **BAD (No Effect):**
+```
+Working on the payment integration. —Rafael
+```
+**Why bad:** What will this enable? When will it be done? What's the benefit?
+
+---
+
+**Quick Translation Guide:**
+
+**Technical → Simple + Effect:**
+- ❌ "Implemented pagination" → ✅ "Added page numbers. Now dashboard loads in 2 seconds instead of 10."
+- ❌ "Optimized database queries" → ✅ "Fixed slow search. Results appear instantly now instead of waiting 5 seconds."
+- ❌ "Added caching layer" → ✅ "Made the app faster. Pages that took 3 seconds now load in 0.5 seconds."
+- ❌ "Refactored component architecture" → ✅ "Cleaned up code. Now we can add features 2x faster."
+- ❌ "Integrated Stripe webhook" → ✅ "Payments now auto-update. No more manual checking if someone paid."
+
+**Always answer: "What's better now?" or "What can we do now that we couldn't before?"**
+
+**When to send (only if directly interesting to human team):**
+- Completed major feature (new capability unlocked)
+- Deployed something users will notice
+- Found a significant problem or opportunity
+- Blocked and need decision/input
+- Achieved measurable improvement (speed, cost, quality)
+- Won a proposal / got client response
+- Completed mission milestone ready for review
+
+**When NOT to send (internal/routine work):**
+- Refactoring that doesn't change behavior
+- Routine dependency updates
+- Code formatting or cleanup
+- Internal testing that passed (unless fixing critical bug)
+- Reading documentation or research
+- Minor bug fixes with no user impact
+- Work in progress with no visible result yet
+
+**Ask yourself: "Would Nicolas want to be interrupted for this?"**
+
+If the answer is "probably not" or "maybe later" → don't send, wait until there's a concrete result worth sharing.
 
 See `/home/mind-protocol/scopelock/tools/README.md` for command details.
 

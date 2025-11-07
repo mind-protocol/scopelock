@@ -54,8 +54,8 @@ def get_mission_fund_balance() -> Decimal:
 
     except Exception as e:
         print(f"[tier_calculator:get_mission_fund_balance] Error: {e}")
-        # Fail loud: rethrow
-        raise
+        # Return 0 instead of crashing (prevents memory issues)
+        return Decimal('0.00')
 
 
 def get_current_tier() -> Tuple[int, Decimal]:

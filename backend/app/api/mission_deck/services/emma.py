@@ -672,3 +672,222 @@ def get_win_rate_by_search_query() -> List[Dict]:
     except Exception as e:
         print(f"[emma.py:get_win_rate_by_search_query] Failed: {e}")
         raise
+
+
+def create_mission(
+    search_slug: str,
+    search_query: str,
+    validated_jobs_count: int,
+    mission_type: str = "proposal"
+) -> Dict:
+    """
+    Create a mission after Emma completes an Upwork search.
+
+    Args:
+        search_slug: Slug of the search event that triggered this mission
+        search_query: The search query used (e.g., "voice AI dashboard")
+        validated_jobs_count: Number of jobs Emma validated for proposals
+        mission_type: Type of mission (default "proposal")
+
+    Returns:
+        Created U4_Work_Item node (mission)
+
+    Raises:
+        Exception: If mission creation fails
+
+    Example:
+        create_mission(
+            search_slug="search-20251107-153045",
+            search_query="voice AI dashboard",
+            validated_jobs_count=5,
+            mission_type="proposal"
+        )
+    """
+    slug = f"mission-{mission_type}-{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}"
+    timestamp = datetime.utcnow().isoformat()
+    search_date = timestamp[:10]  # Extract YYYY-MM-DD
+
+    cypher = """
+    CREATE (m:U4_Work_Item {
+      name: $name,
+      slug: $slug,
+      work_type: 'mission',
+      level: 'L2',
+      scope_ref: 'scopelock',
+      status: 'available',
+
+      missionType: $mission_type,
+      points: 1,
+
+      createdBy: 'emma_citizen',
+      emmaSearchQuery: $search_query,
+      emmaValidatedJobsCount: $validated_jobs_count,
+      emmaSearchDate: $search_date,
+
+      completedBy: null,
+      completedAt: null,
+      emmaChatSessionId: null,
+
+      paidAt: null,
+      paidWithJob: null,
+      actualPayment: null,
+
+      created_at: $created_at,
+      updated_at: $updated_at,
+      valid_from: $valid_from,
+      valid_to: null,
+
+      description: $description,
+      detailed_description: $detailed_description,
+      type_name: 'U4_Work_Item',
+      visibility: 'partners',
+      policy_ref: 'l4://law/scopelock-mission-policy',
+      proof_uri: '',
+      commitments: [],
+      created_by: 'emma_citizen',
+      substrate: 'organizational'
+    })
+    RETURN m
+    """
+
+    try:
+        results = query_graph(cypher, {
+            "name": f"Apply to all jobs from Emma search '{search_query}' ({validated_jobs_count} jobs)",
+            "slug": slug,
+            "mission_type": mission_type,
+            "search_query": search_query,
+            "validated_jobs_count": validated_jobs_count,
+            "search_date": search_date,
+            "created_at": timestamp,
+            "updated_at": timestamp,
+            "valid_from": timestamp,
+            "description": f"Mission: Apply to {validated_jobs_count} validated jobs",
+            "detailed_description": f"Complete proposals for all {validated_jobs_count} jobs validated by Emma from search '{search_query}'"
+        })
+
+        if not results:
+            raise Exception("Failed to create mission node")
+
+        mission_node = results[0]["m"]
+
+        # Link mission to search event
+        link_search_to_mission(search_slug, slug)
+
+        # Save local backup
+        _save_local_backup(slug, mission_node)
+
+        return mission_node
+
+    except Exception as e:
+        print(f"[emma.py:create_mission] Failed: {e}")
+        raise
+
+
+def link_search_to_mission(search_slug: str, mission_slug: str) -> None:
+    """
+    Link a search event to a mission.
+
+    Creates U4_LEADS_TO relationship from search to mission.
+
+    Args:
+        search_slug: Search event slug
+        mission_slug: Mission slug
+
+    Raises:
+        Exception: If linking fails
+    """
+    timestamp = datetime.utcnow().isoformat()
+
+    cypher = """
+    MATCH (search:U4_Event {slug: $search_slug, event_kind: 'upwork_search'})
+    MATCH (mission:U4_Work_Item {slug: $mission_slug, work_type: 'mission'})
+    CREATE (search)-[:U4_LEADS_TO {
+      focus_type: 'mission_creation',
+      created_at: $created_at,
+      updated_at: $updated_at,
+      valid_from: $valid_from,
+      valid_to: null,
+      confidence: 1.0,
+      energy: 0.8,
+      forming_mindstate: 'execution',
+      goal: 'Mission created from search results',
+      visibility: 'partners',
+      commitments: [],
+      created_by: 'emma_citizen',
+      substrate: 'organizational'
+    }]->(mission)
+    """
+
+    try:
+        query_graph(cypher, {
+            "search_slug": search_slug,
+            "mission_slug": mission_slug,
+            "created_at": timestamp,
+            "updated_at": timestamp,
+            "valid_from": timestamp
+        })
+    except Exception as e:
+        print(f"[emma.py:link_search_to_mission] Failed: {e}")
+        raise
+
+
+def complete_mission(
+    mission_slug: str,
+    member_id: str,
+    chat_session_id: str
+) -> Dict:
+    """
+    Mark a mission as completed when Emma validates it via chat.
+
+    Args:
+        mission_slug: Mission slug (e.g., "mission-proposal-20251107-153045")
+        member_id: Team member who completed the mission (e.g., "bigbosexf", "kara")
+        chat_session_id: Chat session ID where Emma validated completion
+
+    Returns:
+        Updated mission node with completion details
+
+    Raises:
+        Exception: If mission not found or update fails
+
+    Example:
+        complete_mission(
+            mission_slug="mission-proposal-20251107-153045",
+            member_id="bigbosexf",
+            chat_session_id="chat-session-uuid-12345"
+        )
+    """
+    timestamp = datetime.utcnow().isoformat()
+
+    cypher = """
+    MATCH (m:U4_Work_Item {slug: $mission_slug, work_type: 'mission'})
+    SET m.status = 'completed',
+        m.completedBy = $member_id,
+        m.completedAt = $completed_at,
+        m.emmaChatSessionId = $chat_session_id,
+        m.updated_at = $updated_at
+    RETURN m
+    """
+
+    try:
+        results = query_graph(cypher, {
+            "mission_slug": mission_slug,
+            "member_id": member_id,
+            "chat_session_id": chat_session_id,
+            "completed_at": timestamp,
+            "updated_at": timestamp
+        })
+
+        if not results:
+            raise Exception(f"Mission not found: {mission_slug}")
+
+        mission_node = results[0]["m"]
+
+        # Update local backup
+        _save_local_backup(mission_slug, mission_node)
+
+        return mission_node
+
+    except Exception as e:
+        print(f"[emma.py:complete_mission] Failed: {e}")
+        raise
