@@ -32,14 +32,12 @@ echo "🔧 Configuring Claude CLI..."
 
 # Add MCP servers
 echo "📡 Adding MCP servers..."
-# Vercel MCP
-./bin/claude mcp add --transport http vercel https://mcp.vercel.com
-echo "✅ Vercel MCP added"
+# Vercel MCP (ignore if already exists)
+./bin/claude mcp add --transport http vercel https://mcp.vercel.com || echo "✅ Vercel MCP already configured"
 
 # Render MCP (requires RENDER_API_KEY env var)
 if [ -n "$RENDER_API_KEY" ]; then
-    ./bin/claude mcp add --transport http render https://mcp.render.com/mcp --header "Authorization: Bearer $RENDER_API_KEY"
-    echo "✅ Render MCP added"
+    ./bin/claude mcp add --transport http render https://mcp.render.com/mcp --header "Authorization: Bearer $RENDER_API_KEY" || echo "✅ Render MCP already configured"
 else
     echo "⚠️  RENDER_API_KEY not set, skipping Render MCP"
 fi
