@@ -39,10 +39,12 @@ def _is_valid_citizen(citizen_id: str) -> bool:
     Returns:
         True if citizens/{citizen_id}/ folder exists, False otherwise
     """
-    # Find scopelock root (backend/app/api/mission_deck/ → backend → app → scopelock)
+    # Find scopelock root
+    # chat.py is at: backend/app/api/mission_deck/chat.py
+    # Need to go up 4 levels to backend/, then 1 more to scopelock/
     current_file = Path(__file__).resolve()
-    backend_dir = current_file.parent.parent.parent
-    scopelock_root = backend_dir.parent
+    backend_dir = current_file.parent.parent.parent.parent  # backend/
+    scopelock_root = backend_dir.parent  # scopelock/
     citizen_dir = scopelock_root / "citizens" / citizen_id
 
     return citizen_dir.exists() and citizen_dir.is_dir()

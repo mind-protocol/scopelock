@@ -80,10 +80,14 @@ def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
         )
     """
     # Find citizen's directory
-    # Assume backend is at: backend/app/api/mission_deck/services/
-    # Citizens are at: citizens/{citizen_id}/
-    backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    scopelock_root = os.path.dirname(os.path.dirname(os.path.dirname(backend_dir)))
+    # citizen_cli.py is at: backend/app/api/mission_deck/services/citizen_cli.py
+    # Need to go up 5 levels to backend/, then 1 more to scopelock/
+    services_dir = os.path.dirname(os.path.abspath(__file__))  # services/
+    mission_deck_dir = os.path.dirname(services_dir)  # mission_deck/
+    api_dir = os.path.dirname(mission_deck_dir)  # api/
+    app_dir = os.path.dirname(api_dir)  # app/
+    backend_dir = os.path.dirname(app_dir)  # backend/
+    scopelock_root = os.path.dirname(backend_dir)  # scopelock/
     citizen_dir = os.path.join(scopelock_root, "citizens", citizen_id)
 
     if not os.path.exists(citizen_dir):
