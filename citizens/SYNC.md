@@ -1,3 +1,53 @@
+## 2025-11-07 15:50 — Rafael: Remove Duplicate Citizen Selector + Fix Scrolling ✅
+
+**User Feedback:**
+- "citizen appears twice: one on the right side and one on the top"
+- "I saw the scrolling, it is still scrolling"
+
+**Issues Fixed:**
+
+1. **Duplicate Citizen Selector**
+   - Was appearing in two places: top bar (CitizenSelector) + chat header (ChatInterface)
+   - User only wants it in one place (top bar)
+
+2. **Page Scrolling**
+   - Mission Deck page still had outer page scroll despite height constraints
+
+**Changes:**
+
+1. **ChatInterface simplified:**
+   - Removed citizen selector header from chat component
+   - Removed citizen-related props (citizens, activeCitizen, onSelectCitizen)
+   - Chat now shows only messages + input area
+   - Cleaner interface, no duplicate controls
+
+2. **Console page updated:**
+   - Removed citizen props passed to ChatInterface
+   - Only passes: messages, onSendMessage, isLoading
+
+3. **Layout wrapper fixed:**
+   - Added `height: '100vh', overflow: 'hidden'` to mission-deck layout.tsx
+   - Ensures entire page constrained to viewport
+   - No outer page scrolling
+
+**Layout Now:**
+```
+Mission Selector (200px) | Top Bar + Logout
+                        | CitizenSelector (horizontal tabs) ← ONLY ONE
+                        | [Workspace 60% | Divider | Chat 40%]
+```
+
+**Status:** Committed and pushed ✅
+**Commit:** c8b38d3
+**Files:**
+- src/components/mission-deck/ChatInterface.tsx (removed citizen selector)
+- src/app/mission-deck/console/page.tsx (updated props)
+- src/app/mission-deck/layout.tsx (added overflow constraints)
+
+**Next:** Ready for user testing - citizen selector should appear only once at top, no page scrolling.
+
+---
+
 ## 2025-11-07 15:40 — Rafael: Syntax Error Fix - RafaelWorkspace ✅
 
 **Bug:** Syntax error in RafaelWorkspace.tsx breaking dev server build
