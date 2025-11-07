@@ -1,3 +1,100 @@
+## 2025-11-07 20:30 — Inna: Mission Deck Compensation - Corrected Mission Model (Points-Based, No Claiming) ✅ COMPLETE (Updated 21:15)
+
+**Work:** Major correction to mission system - removed claiming, implemented points-based payments + fixed GUIDE.md inconsistencies
+
+**User Corrections:**
+1. NO claiming mechanism - missions go straight from `available` → `completed` (first to complete wins)
+2. NO manual proof upload - Emma validates via chat ("mission complete" in chat session)
+3. NO fixed payments - missions earn **points** (1 point for proposals)
+4. Points-based distribution: `(member_points / total_points) × job's_5%_pool`
+5. Payment timing: Batched with next job completion (NOT immediate)
+6. Points reset to 0 after each job payment
+7. If no missions completed → 5% pool goes to NLR (org)
+8. NO requirements to complete missions (removed 5+ interactions requirement)
+9. NO manual approval (auto-approved, trust member + spot check)
+
+**Clarification on job pools:**
+- 30% team pool → Split by interactions (for JOB earnings)
+- 5% mission pool → Split by points (for MISSION earnings)
+
+**Files Updated:**
+
+1. **MECHANISM.md:**
+   - Removed U4_CLAIMED_BY link (no claiming)
+   - Updated mission schema (removed `claimedBy`, `claimExpiresAt`, `fixedPayment`, `proofUrl`, `approvedBy`)
+   - Added mission schema fields: `points`, `emmaChatSessionId`, `actualPayment`, `paidWithJob`
+   - Updated `/api/compensation/missions` endpoint (removed claiming status, added points display)
+   - Removed `/api/compensation/missions/{id}/claim` endpoint
+   - Updated `/api/compensation/missions/{id}/complete` endpoint (Emma validation, no proof required)
+   - Removed `/api/compensation/missions/{id}/approve` endpoint
+   - Updated payment trigger endpoint (includes mission pool distribution)
+   - Added team leaderboard endpoints (wallet-gated)
+   - Updated WebSocket events (removed `mission_claimed`, updated `mission_completed` with points)
+
+2. **AC.md:**
+   - F4: Updated mission listing (Emma auto-created, points-based, first to complete wins)
+   - F5: Updated mission completion (Emma chat validation, points accumulation, batched payment)
+   - F8: Updated mission fund visibility (removed tiers, clarified 5% pool vs 30% pool)
+   - Added test data showing points-based distribution
+
+3. **ALGORITHM.md:**
+   - Rewrote mission_manager.py completely:
+     - Removed `claim_mission()` function
+     - Removed `approve_mission()` function
+     - Removed `check_mission_expiry()` function
+     - Added `complete_mission_via_emma()` (first to complete wins, chat validation)
+     - Added `calculate_mission_payments_for_job()` (points-based distribution)
+     - Added `mark_missions_paid_and_reset_points()` (status: completed → paid)
+   - Updated `trigger_payment()` function:
+     - Now pays BOTH job earnings (30% by interactions) AND mission earnings (5% by points)
+     - If no missions → 5% pool goes to NLR
+     - Returns combined payment breakdown per member
+
+4. **VALIDATION.md:**
+   - Removed claiming tests (test_mission_claiming_requires_minimum_interactions, test_mission_claim_expiry_24_hours)
+   - Added Emma validation tests (test_mission_completion_via_emma_chat, test_mission_first_to_complete_wins)
+   - Added points accumulation tests (test_mission_points_accumulate_until_job_payment)
+   - Added mission pool payment tests (test_payment_includes_mission_earnings_by_points, test_payment_mission_pool_goes_to_nlr)
+   - Updated frontend tests: mission-claiming.test.tsx → mission-display.test.tsx (points display, no claiming UI)
+   - Updated E2E tests: mission-claiming-flow → mission-points-flow (Emma validation, payment batching)
+
+5. **GUIDE.md:**
+   - Removed "Claiming a Mission" section
+   - Added "Completing a Mission (via Emma in Chat)" workflow
+   - Updated NLR section: Removed "Approving Mission Completions", added "Viewing Mission Progress" (spot check only)
+   - Updated "Triggering Payments" to clarify BOTH job + mission earnings distributed
+   - Added payment breakdown explanation (30% job pool + 5% mission pool)
+   - **Fixed inconsistencies (2025-11-07 21:15):**
+     - Replaced "Understanding the Tier-Based Mission Payment System" → "Understanding the Points-Based Mission Payment System"
+     - Updated WebSocket events table (removed `mission_claimed`, updated `mission_completed` payload with points)
+     - Updated seed data examples (missions now show "1 point, available/completed/paid" instead of "$1", "$2", "$10")
+     - Replaced troubleshooting section: removed "Mission fund insufficient" (obsolete claiming scenario), added three new points-based scenarios:
+       - "I completed a mission but didn't get paid" (explains batched payment timing)
+       - "My points disappeared" (explains points reset after payment)
+       - "Where did the mission pool go?" (explains pool goes to NLR when no missions completed)
+
+6. **DOD.md:**
+   - Updated functional criteria (F4, F5 descriptions)
+   - Removed U4_CLAIMED_BY link from schema checklist
+   - Removed claiming endpoints from API checklist
+   - Updated business logic (removed claiming validation, added points logic)
+   - Updated test specs (mission-claiming → mission-display, points-based tests)
+   - Updated Open Questions with corrected decisions
+
+**Chat Integration Requirement (IMPORTANT):**
+- Chat messages MUST include `member_id` so system can:
+  1. Track interactions for job earnings (POST /api/compensation/interactions)
+  2. Attribute mission completions to correct member (Emma calls POST /api/compensation/missions/{id}/complete)
+
+**Next Steps:**
+- Document Emma auto-creation workflow (when user says "we'll define together")
+- Implementation by Rafael (6-level docs now complete and ready)
+- Testing by Sofia (test specs complete in VALIDATION.md)
+
+**Status:** ✅ 6/6 spec files updated (ALL COMPLETE)
+
+---
+
 ## 2025-11-07 19:15 — Rafael: Claude Credentials - OAuth Format Documentation Update ✅
 
 **Work:** Updated documentation to reflect new OAuth-based credentials format

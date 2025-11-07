@@ -24,8 +24,8 @@
 - [x] F1: Job tracking with interaction counting
 - [x] F2: Job creation from Upwork win
 - [x] F3: Real-time total potential earnings display
-- [x] F4: Mission listing and claiming
-- [x] F5: Mission completion and earnings
+- [x] F4: Mission listing (Emma auto-created, points-based)
+- [x] F5: Mission completion via Emma chat validation
 - [x] F6: Job completion and payment trigger
 - [x] F7: Earnings breakdown view
 - [x] F8: Mission fund balance visibility
@@ -46,12 +46,12 @@
 
 ### FalkorDB Schema Defined
 - [x] U4_Work_Item (job) node schema with interaction tracking fields
-- [x] U4_Work_Item (mission) node schema with claiming/completion fields
+- [x] U4_Work_Item (mission) node schema with points-based completion fields
 - [x] U4_Event (message) node schema for interaction events
 - [x] U4_Agent enhanced with compensationData JSON object
-- [x] U4_Agent enhanced with Solana wallet fields (walletAddress, walletVerified, etc.) - NEW
+- [x] U4_Agent enhanced with Solana wallet fields (walletAddress, walletVerified, etc.)
 - [x] U4_ABOUT link (event → job)
-- [x] U4_CLAIMED_BY link (mission → agent)
+- [x] REMOVED: U4_CLAIMED_BY link (no claiming mechanism)
 
 ### API Endpoints Designed
 - [x] POST /api/compensation/jobs (create job)
@@ -59,9 +59,9 @@
 - [x] GET /api/compensation/jobs/{id}/interactions (interaction history)
 - [x] POST /api/compensation/interactions (track interaction)
 - [x] GET /api/compensation/missions (list missions)
-- [x] POST /api/compensation/missions/{id}/claim (claim mission)
-- [x] POST /api/compensation/missions/{id}/complete (complete mission)
-- [x] POST /api/compensation/missions/{id}/approve (approve completion, NLR only)
+- [x] REMOVED: POST /api/compensation/missions/{id}/claim (no claiming)
+- [x] POST /api/compensation/missions/{id}/complete (Emma validation, no proof upload)
+- [x] REMOVED: POST /api/compensation/missions/{id}/approve (auto-approved)
 - [x] GET /api/compensation/earnings/{memberId} (earnings breakdown)
 - [x] POST /api/compensation/payments/trigger (trigger payment with wallet validation, NLR only)
 - [x] GET /api/compensation/earnings/{memberId}/stream (SSE for real-time updates)
@@ -70,13 +70,15 @@
 
 ### Business Logic Specified
 - [x] Interaction counting algorithm (with duplicate detection)
-- [x] Earnings calculation formula ((interactions/total) × teamPool)
-- [x] Mission claiming validation (requires 5+ total interactions)
-- [x] Mission fund balance calculation (contributions - spent)
-- [x] Payment trigger logic (NLR only, cash received check, wallet validation) - UPDATED
-- [x] Mission expiry check (24-hour claim timeout)
-- [x] Team leaderboard filtering (only members with verified wallets) - NEW
-- [x] Wallet connection requirement (enforced on leaderboard access) - NEW
+- [x] Earnings calculation formula (job: (interactions/total) × 30%pool, mission: (points/total) × 5%pool)
+- [x] REMOVED: Mission claiming validation (no claiming mechanism)
+- [x] Mission fund balance calculation (5% from all active jobs)
+- [x] Mission completion validation (Emma chat-based, first to complete wins)
+- [x] Mission points accumulation and reset logic (reset at job payment)
+- [x] Payment trigger logic (NLR only, cash received check, wallet validation, includes mission pool)
+- [x] REMOVED: Mission expiry check (no claiming timeout)
+- [x] Team leaderboard filtering (only members with verified wallets)
+- [x] Wallet connection requirement (enforced on leaderboard access)
 
 ---
 
@@ -103,21 +105,21 @@
 ### Backend Tests Specified
 - [x] test_interaction_tracker.py (6 test cases)
 - [x] test_earnings_calculator.py (6 test cases)
-- [x] test_mission_manager.py (6 test cases)
+- [x] test_mission_manager.py (6 test cases - Emma validation, points tracking)
 - [x] test_payment_processor.py (8 test cases including wallet validation) - UPDATED
 - [x] test_team_leaderboard.py (6 test cases) - NEW
 - [x] Target coverage: ≥95%
 
 ### Frontend Tests Specified
 - [x] earnings-display.test.tsx (6 test cases)
-- [x] mission-claiming.test.tsx (6 test cases)
-- [x] team-leaderboard.test.tsx (6 test cases) - NEW
+- [x] mission-display.test.tsx (6 test cases - points display, Emma validation, no claiming)
+- [x] team-leaderboard.test.tsx (6 test cases)
 - [x] compensation-ui.test.tsx (11 test cases)
 - [x] Target coverage: ≥85%
 
 ### E2E Tests Specified
-- [x] compensation-flow.spec.ts (complete job flow)
-- [x] mission-claiming-flow.spec.ts (mission flow)
+- [x] compensation-flow.spec.ts (complete job flow with mission pool payment)
+- [x] mission-points-flow.spec.ts (Emma validation, points accumulation, payment)
 - [x] compensation-load.js (k6 performance test)
 
 ---
@@ -189,11 +191,13 @@
 
 ## Open Questions Resolved ✅
 
-- [x] Q1: Mission fund rollover → **Decision:** Surplus rolls over, cap at $200
-- [x] Q2: Minimum interaction threshold → **Decision:** No minimum for jobs, 5+ for missions
-- [x] Q3: Mission claiming mechanism → **Decision:** One per mission, 24h expiry
-- [x] Q4: Historical data → **Decision:** Start fresh, no backfill
-- [x] Q5: Interaction weighting → **Decision:** Phase 1 = equal, Phase 2 = consider weighting
+- [x] Q1: Mission fund rollover → **Decision:** Fund = 5% of active jobs, decreases at payment
+- [x] Q2: Minimum interaction threshold → **Decision:** NO requirements for missions (removed)
+- [x] Q3: Mission claiming mechanism → **Decision:** NO claiming, Emma validates via chat, first to complete wins
+- [x] Q4: Mission payment model → **Decision:** Points-based, batched with job payment, NOT fixed amounts
+- [x] Q5: Historical data → **Decision:** Start fresh, no backfill
+- [x] Q6: Interaction weighting → **Decision:** Phase 1 = equal, Phase 2 = consider weighting
+- [x] Q7: Mission proof → **Decision:** NO manual proof, Emma validates via chat session
 
 ---
 

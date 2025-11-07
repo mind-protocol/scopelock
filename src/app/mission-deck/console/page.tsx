@@ -217,10 +217,6 @@ export default function ConsolePage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             {/* Earnings Banner (real-time polling) */}
             <EarningsBanner memberSlug="bigbosexf" />
-
-            <button onClick={handleLogout} className="btn-secondary" style={{ fontSize: '0.875rem' }}>
-              Log Out
-            </button>
           </div>
         </div>
 

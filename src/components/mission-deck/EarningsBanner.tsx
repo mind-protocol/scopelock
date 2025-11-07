@@ -86,7 +86,7 @@ export function EarningsBanner({ memberSlug }: EarningsBannerProps) {
             letterSpacing: '0.05em',
           }}
         >
-          Total Earnings
+          Total Estimated Earnings
         </span>
         <span
           style={{
@@ -124,14 +124,6 @@ export function EarningsBanner({ memberSlug }: EarningsBannerProps) {
           <span style={{ color: 'var(--slk-muted)', fontSize: '0.7rem' }}>From Missions</span>
           <span style={{ color: 'var(--slk-text)', fontFamily: 'monospace' }}>
             ${completedMissions.toFixed(2)}
-          </span>
-        </div>
-
-        {/* Interactions */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          <span style={{ color: 'var(--slk-muted)', fontSize: '0.7rem' }}>Interactions</span>
-          <span style={{ color: 'var(--slk-text)', fontFamily: 'monospace' }}>
-            {totalInteractions}
           </span>
         </div>
       </div>

@@ -168,29 +168,36 @@ def test_earnings_formula_multiple_members():
    - Create job with value $1,000
    - Assert: Mission fund increases by $50 (5%)
 
-2. **`test_mission_fund_decreases_on_completion`**
-   - Mission fund balance: $100
-   - Complete mission worth $2
-   - Assert: Balance = $98
+2. **`test_mission_completion_via_emma_chat`**
+   - Mission status: "Available"
+   - Emma calls complete_mission_via_emma(mission_id, member_id, chat_session_id)
+   - Assert: Mission status = "Completed", completedBy = member_id, points added
 
-3. **`test_mission_claiming_requires_minimum_interactions`**
-   - Member with 3 total interactions tries to claim mission
-   - Assert: Error "Need 5+ interactions to claim missions"
+3. **`test_mission_first_to_complete_wins`**
+   - Mission available
+   - member_a completes it
+   - member_b tries to complete same mission
+   - Assert: Error "Mission already completed by another member"
 
-4. **`test_mission_claim_expiry_24_hours`**
-   - Member claims mission at T=0
-   - Check status at T=25 hours
-   - Assert: Status reverted to "Available"
+4. **`test_mission_points_accumulate_until_job_payment`**
+   - member_a completes mission 1 (1 point)
+   - member_a completes mission 2 (1 point)
+   - Assert: member_a total points = 2
+   - Job pays
+   - Assert: member_a points reset to 0
 
-5. **`test_mission_fund_insufficient_blocks_creation`**
-   - Mission fund: $5
-   - Try to create $10 mission
-   - Assert: Error "Mission fund insufficient ($5 available, need $10)"
+5. **`test_mission_fund_only_decreases_on_job_payment`**
+   - Mission fund: $175 (from 3 active jobs)
+   - member_a completes mission (1 point)
+   - Assert: Fund still $175 (no immediate decrease)
+   - Job A pays ($1500 value, 5% = $75 mission pool)
+   - Assert: Fund decreases by $75 (mission pool distributed)
 
-6. **`test_mission_fund_rollover`**
-   - Job A contributes $50, Job B contributes $75
-   - Spend $25 on missions
-   - Assert: Balance = $100 (rolls over between jobs)
+6. **`test_mission_fund_rollover_between_jobs`**
+   - Job A ($1500) active → fund = $75
+   - Job B ($800) active → fund = $75 + $40 = $115
+   - Job A pays → fund decreases by $75, now $40
+   - Job B still active → fund stays at $40
 
 **Expected assertions:**
 ```python
@@ -251,6 +258,23 @@ def test_mission_fund_contribution_on_job_creation():
    - Both members have verified wallet addresses
    - Trigger payment
    - Assert: Payment succeeds, walletValidation = {member_a: True, member_b: True}
+
+9. **`test_payment_includes_mission_earnings_by_points`** (NEW - MISSION POOL)
+   - Job value $1000 (30% team pool = $300, 5% mission pool = $50)
+   - Job interactions: member_a=30, member_b=20 (total 50)
+   - Completed missions: member_a=2 points, member_b=1 point (total 3)
+   - Trigger payment
+   - Assert: member_a gets job=$180 + mission=$33.33 = $213.33
+   - Assert: member_b gets job=$120 + mission=$16.67 = $136.67
+   - Assert: Mission statuses changed from "completed" to "paid"
+   - Assert: member_a and member_b points reset to 0
+
+10. **`test_payment_mission_pool_goes_to_nlr_if_no_missions`** (NEW)
+   - Job value $1000 (5% mission pool = $50)
+   - No missions completed
+   - Trigger payment
+   - Assert: $50 goes to NLR (org)
+   - Assert: missionPoolRecipient = "nlr (org)"
 
 **Expected assertions:**
 ```python
@@ -403,51 +427,63 @@ test('test_earnings_update_on_new_interaction', async () => {
 
 ---
 
-#### T6: Mission Claiming UI Flow
-**File:** `tests/frontend/mission-claiming.test.tsx`
+#### T6: Mission Display UI (Points-Based, Emma Validated)
+**File:** `tests/frontend/mission-display.test.tsx`
 
 **Test cases:**
 
-1. **`test_mission_card_displays_correctly`**
-   - Render mission: "Write proposal - $1.00"
-   - Assert: Title, payment, "Claim Mission" button visible
+1. **`test_mission_card_displays_points_not_dollars`**
+   - Render mission: "Apply to all jobs from Emma search 'voice AI dashboard' (5 jobs)"
+   - Assert: Title visible, points badge "1 point", status "Available"
+   - Assert: NO "Claim Mission" button (missions completed via Emma in chat)
 
-2. **`test_claim_button_disabled_if_insufficient_interactions`**
-   - Member has 3 interactions (need 5+)
-   - Assert: Button disabled with tooltip "Need 5+ interactions"
+2. **`test_mission_card_shows_emma_search_details`**
+   - Mission created by Emma for search "AI analytics"
+   - Assert: "Created by: emma_citizen" visible
+   - Assert: "Search query: AI analytics" visible
+   - Assert: "5 jobs" visible
 
-3. **`test_claim_button_triggers_modal`**
-   - Click "Claim Mission"
-   - Assert: Confirmation modal opens: "Claim this mission for $1.00?"
+3. **`test_completed_mission_shows_completer`**
+   - Mission completed by member_a on 2025-11-07
+   - Assert: Status badge "Completed"
+   - Assert: "Completed by: member_a" visible
+   - Assert: Timestamp "2025-11-07T14:23:00Z" formatted
 
-4. **`test_claimed_mission_shows_mark_complete_button`**
-   - Mission status: "Claimed by You"
-   - Assert: "Mark Complete" button visible
+4. **`test_current_points_total_displayed`**
+   - member_a has completed 3 missions (3 points)
+   - Render mission section header
+   - Assert: "You have 3 points" visible
+   - Assert: "Points convert to earnings at next job completion" tooltip
 
-5. **`test_mark_complete_requires_proof_upload`**
-   - Click "Mark Complete"
-   - Modal opens with proof upload field
-   - Submit without proof
-   - Assert: Error "Proof required"
+5. **`test_payment_timing_note_visible`**
+   - Render mission fund section
+   - Assert: "Payment timing: At next job completion" visible
 
-6. **`test_mission_completion_shows_pending_approval`**
-   - Complete mission with proof
-   - Assert: Status badge "Pending Approval"
+6. **`test_first_to_complete_wins_ui_feedback`**
+   - Mission available, user views it
+   - WebSocket event: mission completed by member_b
+   - Assert: Mission card updates to show "Completed by member_b"
+   - Assert: Mission no longer shows as available to current user
 
 **Expected assertions:**
 ```typescript
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MissionCard } from '@/components/MissionCard';
 
-test('test_claim_button_disabled_if_insufficient_interactions', () => {
-  const mission = { id: '1', title: 'Write proposal', payment: 1.00 };
-  const member = { totalInteractions: 3 };
+test('test_mission_card_displays_points_not_dollars', () => {
+  const mission = {
+    id: '1',
+    title: 'Apply to all jobs from Emma search "voice AI dashboard" (5 jobs)',
+    points: 1,
+    status: 'available',
+    emmaSearchQuery: 'voice AI dashboard'
+  };
 
-  render(<MissionCard mission={mission} member={member} />);
+  render(<MissionCard mission={mission} />);
 
-  const button = screen.getByRole('button', { name: /claim mission/i });
-  expect(button).toBeDisabled();
-  expect(screen.getByText(/need 5\+ interactions/i)).toBeInTheDocument();
+  expect(screen.getByText(/1 point/i)).toBeInTheDocument();
+  expect(screen.getByText(/available/i)).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /claim/i })).not.toBeInTheDocument();
 });
 ```
 
@@ -630,46 +666,67 @@ test('complete job compensation flow', async ({ page }) => {
 
 ---
 
-#### T8: Mission Claiming and Completion Flow
+#### T8: Mission Display and Points Accumulation Flow
 **File:** `tests/e2e/compensation-flow.spec.ts`
 
 ```typescript
-test('mission claiming and completion flow', async ({ page }) => {
-  // 1. Login as member with 10 interactions (meets minimum)
+test('mission points accumulation and payment flow', async ({ page }) => {
+  // 1. Login as member_a
   await page.goto('https://deck.scopelock.mindprotocol.ai');
   await loginAsMember(page, 'member_a');
 
   // 2. Navigate to MISSIONS section
   await page.click('[data-testid="missions-tab"]');
 
-  // 3. Verify mission fund balance visible
-  await expect(page.locator('[data-testid="mission-fund-balance"]')).toContainText('$150.00');
+  // 3. Verify mission fund balance visible (5% from active jobs)
+  await expect(page.locator('[data-testid="mission-fund-balance"]')).toContainText('$175.00');
+  await expect(page.locator('[data-testid="mission-fund-source"]')).toContainText('From: Build Chatbot ($75), Landing Page ($40), Dashboard ($60)');
 
-  // 4. Claim "Write proposal" mission ($1)
-  await page.click('[data-testid="mission-claim-proposal"]');
-  await page.click('[data-testid="confirm-claim"]');
+  // 4. Verify available mission shows points (not dollars)
+  await expect(page.locator('[data-testid="mission-proposal-voice-ai"]')).toContainText('1 point');
+  await expect(page.locator('[data-testid="mission-proposal-voice-ai"]')).toContainText('Available');
+  await expect(page.locator('[data-testid="mission-proposal-voice-ai"]')).toContainText('Created by: emma_citizen');
 
-  // 5. Verify mission status changed to "Claimed by You"
-  await expect(page.locator('[data-testid="mission-status-proposal"]')).toHaveText('Claimed by You');
-  await expect(page.locator('[data-testid="mission-button-proposal"]')).toHaveText('Mark Complete');
+  // 5. Verify NO claim button (missions completed via Emma in chat)
+  await expect(page.locator('[data-testid="mission-claim-button"]')).not.toBeVisible();
 
-  // 6. Mark mission complete with proof
-  await page.click('[data-testid="mission-button-proposal"]');
-  await page.fill('[data-testid="proof-url"]', 'https://upwork.com/job/123/proposal');
-  await page.fill('[data-testid="proof-notes"]', 'Submitted proposal for AI Dashboard job');
-  await page.click('[data-testid="submit-completion"]');
+  // 6. Verify current points total displayed
+  await expect(page.locator('[data-testid="member-points-total"]')).toHaveText('You have 2 points');
+  await expect(page.locator('[data-testid="payment-timing-note"]')).toHaveText('Points convert to earnings at next job completion');
 
-  // 7. Verify mission status "Pending Approval"
-  await expect(page.locator('[data-testid="mission-status-proposal"]')).toHaveText('Pending Approval');
+  // 7. Simulate Emma completing mission (via backend API, not UI)
+  // In real flow, Emma calls POST /api/compensation/missions/{id}/complete from chat
+  // For E2E test, we call API directly to simulate Emma's action
+  await simulateEmmaCompleteMission(page, 'mission-proposal-voice-ai', 'member_a');
 
-  // 8. Login as NLR, approve mission
+  // 8. Verify mission status updated to "Completed"
+  await page.reload();
+  await expect(page.locator('[data-testid="mission-status-proposal-voice-ai"]')).toHaveText('Completed');
+  await expect(page.locator('[data-testid="mission-completed-by"]')).toHaveText('Completed by: member_a');
+
+  // 9. Verify points increased
+  await expect(page.locator('[data-testid="member-points-total"]')).toHaveText('You have 3 points');
+
+  // 10. Verify mission earnings NOT yet paid (batched with job payment)
+  await expect(page.locator('[data-testid="mission-earnings-status"]')).toHaveText('Pending (paid at next job completion)');
+
+  // 11. Login as NLR, trigger job payment
   await loginAsNLR(page);
-  await page.click('[data-testid="missions-tab"]');
-  await page.click('[data-testid="mission-approve-proposal"]');
+  await page.click('[data-testid="jobs-tab"]');
+  await page.click('[data-testid="job-card-chatbot"]');
+  await page.click('[data-testid="mark-payment-received"]');
+  await page.check('[data-testid="confirm-cash-received"]');
+  await page.click('[data-testid="confirm-payment"]');
 
-  // 9. Verify mission earnings added to member total
+  // 12. Verify payment breakdown includes BOTH job + mission earnings
+  // Job pool (30% of $1500 = $450) + Mission pool (5% of $1500 = $75)
+  // member_a: job earnings + (3/3 × $75) = job + $75
+  await expect(page.locator('[data-testid="payment-breakdown-member-a"]')).toContainText('Job: $XXX.XX, Missions: $75.00');
+
+  // 13. Login back as member_a, verify points reset to 0
   await loginAsMember(page, 'member_a');
-  await expect(page.locator('[data-testid="total-earnings"]')).toContainText('+$1.00');
+  await page.click('[data-testid="missions-tab"]');
+  await expect(page.locator('[data-testid="member-points-total"]')).toHaveText('You have 0 points');
 
   // 10. Verify mission fund decreased
   await page.click('[data-testid="missions-tab"]');

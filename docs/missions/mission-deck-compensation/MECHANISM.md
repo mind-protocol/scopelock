@@ -185,52 +185,68 @@ CREATE (job:U4_Work_Item {
 
 ### Node: U4_Work_Item (Mission)
 
-**Purpose:** Represents an internal mission with fixed payment
+**Purpose:** Represents an internal mission with points-based payment (proposal missions only for now)
+
+**Payment Model:**
+- Missions earn points (1 point for proposal missions)
+- Points accumulate until next job completion
+- Job's 5% pool split proportionally by total points
+- If no missions completed → 5% pool goes to NLR
 
 ```cypher
 CREATE (mission:U4_Work_Item {
-  name: "Write proposal for 'AI Analytics Dashboard'",
+  name: "Apply to all jobs from Emma search 'voice AI dashboard' (5 jobs)",
   work_type: "mission",
   level: "L2",
   scope_ref: "scopelock",
-  slug: "mission-proposal-ai-analytics-2025-11",
-  status: "available",  // available|claimed|completed|paid
+  slug: "mission-proposal-voice-ai-2025-11-07",
+  status: "available",  // available|completed|paid
 
   // Mission-specific fields
-  missionType: "proposal",           // proposal|recruitment|social|other
-  fixedPayment: 1.00,                // Dollar amount
+  missionType: "proposal",           // Only 'proposal' for now (future: social, recruitment)
+  points: 1,                         // Point value for payment calculation
 
-  // Claiming tracking
-  claimedBy: null,                   // Agent slug (e.g., "member_a")
-  claimedAt: null,                   // Timestamp
-  claimExpiresAt: null,              // claimedAt + 24 hours
+  // Auto-creation metadata (from Emma)
+  createdBy: "emma_citizen",
+  emmaSearchQuery: "voice AI dashboard",
+  emmaValidatedJobsCount: 5,
+  emmaSearchDate: "2025-11-07",
 
-  // Completion tracking
-  completedAt: null,
-  proofUrl: null,                    // URL or file path
-  proofNotes: null,                  // Optional notes
-  approvedBy: null,                  // NLR slug
-  approvedAt: null,
+  // Completion tracking (no claiming, no manual proof)
+  completedBy: null,                 // Agent slug (first to complete wins)
+  completedAt: null,                 // When Emma says "mission complete" in chat
+  emmaChatSessionId: null,           // Chat session where Emma validated completion
+
+  // Payment tracking (calculated at job completion)
+  paidAt: null,                      // When next job completed
+  paidWithJob: null,                 // Which job's payment batch (job slug)
+  actualPayment: null,               // Calculated: (points / total_points) × job's 5% pool
 
   // Universal attributes
   created_at: datetime(),
   updated_at: datetime(),
   valid_from: datetime(),
   valid_to: null,
-  description: "Write and submit proposal for AI Analytics job",
+  description: "Apply to Upwork jobs validated by Emma for search 'voice AI dashboard'",
   type_name: "U4_Work_Item",
   visibility: "partners",
   policy_ref: "l4://law/scopelock-mission-policy",
-  created_by: "emma_citizen",
   substrate: "organizational"
 })
 ```
 
+**Key Changes from Previous Model:**
+- ❌ Removed: `fixedPayment`, `claimedBy`, `claimExpiresAt`, `proofUrl`, `proofNotes`, `approvedBy`, `approvedAt`
+- ✅ Added: `points`, `emmaSearchQuery`, `emmaValidatedJobsCount`, `emmaChatSessionId`, `actualPayment`, `paidWithJob`
+- ✅ Simplified: Status flow (available → completed → paid)
+- ✅ Auto-validation: Emma detects "mission complete" in chat, no manual proof upload
+
 **Indexes:**
 - `slug` (unique identifier)
-- `status` (for querying available/claimed missions)
+- `status` (for querying available/completed missions)
 - `missionType` (for filtering by category)
 - `work_type = 'mission'` (distinguish from jobs)
+- `completedBy` (for querying member's completed missions)
 
 ---
 
@@ -362,28 +378,6 @@ CREATE (event)-[:U4_ABOUT {
   created_by: 'member_a',
   substrate: 'organizational'
 }]->(job)
-```
-
----
-
-### Link: (Mission)-[:U4_CLAIMED_BY]->(Agent)
-
-**Purpose:** Links claimed mission to team member
-
-```cypher
-MATCH (mission:U4_Work_Item {work_type: 'mission', slug: 'mission-proposal-ai-analytics'})
-MATCH (agent:U4_Agent {slug: 'member_a'})
-CREATE (mission)-[:U4_CLAIMED_BY {
-  claimed_at: datetime(),
-  expires_at: datetime() + duration({hours: 24}),
-  created_at: datetime(),
-  updated_at: datetime(),
-  valid_from: datetime(),
-  valid_to: null,
-  visibility: 'partners',
-  created_by: 'member_a',
-  substrate: 'organizational'
-}]->(agent)
 ```
 
 ---
@@ -521,107 +515,71 @@ https://deck.scopelock.mindprotocol.ai/api/compensation
 **List available missions**
 
 **Query params:**
-- `status` (optional): `available`, `claimed`, `completed`, `paid`
-- `type` (optional): `proposal`, `recruitment`, `social`, `other`
+- `status` (optional): `available`, `completed`, `paid`
+- `type` (optional): `proposal` (only type for now)
 
 **Response:**
 ```json
 {
   "missionFundBalance": 150.00,
+  "currentPoints": 3,
   "missions": [
     {
-      "id": "mission-proposal-ai-analytics",
-      "title": "Write proposal for 'AI Analytics Dashboard'",
+      "id": "mission-proposal-voice-ai-2025-11-07",
+      "title": "Apply to all jobs from Emma search 'voice AI dashboard' (5 jobs)",
       "type": "proposal",
-      "fixedPayment": 1.00,
+      "points": 1,
       "status": "available",
-      "canClaim": true
+      "createdBy": "emma_citizen",
+      "emmaSearchQuery": "voice AI dashboard",
+      "emmaValidatedJobsCount": 5
     },
     {
-      "id": "mission-recruitment-developer",
-      "title": "Recruit new team member",
-      "type": "recruitment",
-      "fixedPayment": 10.00,
-      "status": "available",
-      "canClaim": false,
-      "reason": "Requires NLR approval"
+      "id": "mission-proposal-ai-analytics-2025-11-06",
+      "title": "Apply to all jobs from Emma search 'AI analytics' (3 jobs)",
+      "type": "proposal",
+      "points": 1,
+      "status": "completed",
+      "completedBy": "member_a",
+      "completedAt": "2025-11-06T14:23:00Z"
     }
   ]
 }
 ```
 
----
-
-#### `POST /api/compensation/missions/{missionId}/claim`
-**Claim a mission**
-
-**Request:**
-```json
-{
-  "memberId": "member_a"
-}
-```
-
-**Response:**
-```json
-{
-  "missionId": "mission-proposal-ai-analytics",
-  "status": "claimed",
-  "claimedBy": "member_a",
-  "expiresAt": "2025-11-08T14:00:00Z"
-}
-```
-
-**Error cases:**
-- Insufficient interactions: `403 Forbidden - Need 5+ interactions to claim missions`
-- Mission already claimed: `409 Conflict`
-- Mission fund insufficient: `400 Bad Request`
+**Note:** Missions are auto-created by Emma when she completes job searches. First to complete wins (mission becomes unavailable).
 
 ---
 
 #### `POST /api/compensation/missions/{missionId}/complete`
-**Mark mission complete (with proof)**
+**Mark mission complete (called by Emma when she says "mission complete" in chat)**
 
 **Request:**
 ```json
 {
   "memberId": "member_a",
-  "proofUrl": "https://upwork.com/job/123/proposal",
-  "proofNotes": "Submitted proposal for AI Analytics job"
+  "emmaChatSessionId": "chat-session-uuid-12345"
 }
 ```
 
 **Response:**
 ```json
 {
-  "missionId": "mission-proposal-ai-analytics",
+  "missionId": "mission-proposal-voice-ai-2025-11-07",
   "status": "completed",
-  "pendingApproval": true
+  "completedBy": "member_a",
+  "completedAt": "2025-11-07T14:23:00Z",
+  "points": 1,
+  "totalPoints": 3,
+  "paymentTiming": "At next job completion"
 }
 ```
 
----
+**Error cases:**
+- Mission already completed: `409 Conflict - Mission already completed by member_b`
+- Mission not found: `404 Not Found`
 
-#### `POST /api/compensation/missions/{missionId}/approve`
-**Approve mission completion (NLR only)**
-
-**Request:**
-```json
-{
-  "approvedBy": "nlr",
-  "approved": true
-}
-```
-
-**Response:**
-```json
-{
-  "missionId": "mission-proposal-ai-analytics",
-  "status": "paid",
-  "memberEarnings": 1.00,
-  "newMissionFundBalance": 149.00
-}
-```
+**Note:** Emma validates completion based on chat session where search completed and proposals formulated. No manual proof upload required. Trust member + spot check.
 
 ---
 
@@ -708,6 +666,65 @@ https://deck.scopelock.mindprotocol.ai/api/compensation
 **Error cases:**
 - Not NLR role: `403 Forbidden`
 - Cash not received: `400 Bad Request - Cannot pay before receiving funds`
+- Members without wallets: `400 Bad Request - Cannot pay. These members need to connect wallet: [list]`
+
+---
+
+### Team Leaderboard
+
+#### `GET /api/compensation/team/leaderboard`
+**Get team-wide potential earnings leaderboard (wallet connection required)**
+
+**Query params:**
+- `memberId` (required): Requesting member's ID (for wallet gate check)
+
+**Response:**
+```json
+{
+  "leaderboard": [
+    {
+      "rank": 1,
+      "memberId": "member_a",
+      "name": "Alice",
+      "potentialEarnings": 450.00,
+      "walletAddress": "9xQe...rGtX"
+    },
+    {
+      "rank": 2,
+      "memberId": "member_b",
+      "name": "Bob",
+      "potentialEarnings": 320.00,
+      "walletAddress": "8yPd...sWuY"
+    }
+  ]
+}
+```
+
+**Error cases:**
+- Wallet not connected: `403 Forbidden - Connect your Solana wallet to view team leaderboard`
+- Wallet not verified: `403 Forbidden - Verify your wallet signature to view team leaderboard`
+
+**Privacy notes:**
+- Only shows potential earnings (NOT paid amounts)
+- Only includes members with verified wallets
+- No per-job breakdown (aggregate only)
+- Wallet addresses truncated for display
+
+---
+
+#### `GET /api/compensation/team/wallet-status/{memberId}`
+**Check if member has wallet connected (for UI state)**
+
+**Response:**
+```json
+{
+  "memberId": "member_a",
+  "walletConnected": true,
+  "walletAddress": "9xQe...rGtX",
+  "walletVerified": true,
+  "walletVerifiedAt": "2025-11-07T10:00:00Z"
+}
+```
 
 ---
 
@@ -745,23 +762,19 @@ ws.onmessage = (event) => {
       });
       break;
 
-    case 'mission_claimed':
-      // Update mission fund balance + tier indicator
-      updateMissionCard(data.missionId, {
-        payment: data.payment,
-        tier: data.tier
-      });
-      updateMissionFundBalance(data.fundBalance);
-      break;
-
     case 'mission_completed':
-      // Update total potential earnings
+      // Update total points + potential earnings
+      updateMissionPoints(data.points, data.totalPoints);
       updateTotalEarnings(data.newTotal);
       break;
 
     case 'job_paid':
       // Move from potential to paid earnings
       moveToPaidHistory(data.jobId, data.yourEarning);
+      // Also moves mission earnings to paid
+      if (data.missionEarning) {
+        moveMissionToPaid(data.missionEarning);
+      }
       break;
   }
 };
@@ -783,9 +796,8 @@ ws.onclose = () => {
 |-------|---------|---------|---------|
 | `connected` | WebSocket established | `{event, memberId, timestamp}` | Confirm connection |
 | `interaction_counted` | Member sends message | `{event, jobId, yourInteractions, teamTotal, yourPotentialEarning}` | Live interaction count update |
-| `mission_claimed` | Member claims mission | `{event, missionId, payment, tier, fundBalance}` | Show tier-based payment |
-| `mission_completed` | NLR approves mission | `{event, missionId, payment, newTotal}` | Update total earnings |
-| `job_paid` | NLR triggers payment | `{event, jobId, yourEarning, totalPaid}` | Move to paid history |
+| `mission_completed` | Emma validates completion | `{event, missionId, points, totalPoints, newTotal}` | Update points + earnings |
+| `job_paid` | NLR triggers payment | `{event, jobId, yourEarning, missionEarning, totalPaid}` | Move job + mission earnings to paid history |
 
 **Backend Implementation:**
 ```python

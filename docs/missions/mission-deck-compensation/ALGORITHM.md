@@ -684,58 +684,108 @@ def get_total_potential_earnings(member_id: str) -> Dict:
 
 ```python
 """
-Handle mission claiming, completion, and approval.
+Handle mission completion (Emma validation) and points tracking.
+NO CLAIMING - missions go straight from available → completed via Emma.
 """
 
 import uuid
-from datetime import datetime, timedelta
-from typing import Dict
+from datetime import datetime
+from typing import Dict, List
 
 from services.graph import query_graph
 
 
-def get_member_total_interactions(member_id: str) -> int:
-    """Get member's total interactions across all jobs."""
+def get_mission_fund_balance() -> float:
+    """
+    Calculate total mission fund from 5% of all active jobs.
+
+    Returns:
+        Total mission fund balance (5% pool from all active jobs)
+    """
 
     cypher = """
-    MATCH (e:U4_Event {actor_ref: $member_id, event_kind: 'message'})
-    WHERE e.interaction_context = 'job'
-    RETURN count(e) AS total
+    MATCH (job:U4_Work_Item {work_type: 'job'})
+    WHERE job.status IN ['active', 'completed']
+    RETURN sum(job.value * 0.05) AS fund_balance
+    """
+
+    result = query_graph(cypher, {})
+    return float(result[0]["fund_balance"]) if result and result[0]["fund_balance"] else 0.0
+
+
+def get_total_points() -> int:
+    """
+    Get total points in system (sum of all completed missions since last payment).
+
+    Returns:
+        Total points from completed missions
+    """
+
+    cypher = """
+    MATCH (mission:U4_Work_Item {work_type: 'mission'})
+    WHERE mission.status = 'completed'
+    RETURN sum(mission.points) AS total_points
+    """
+
+    result = query_graph(cypher, {})
+    return int(result[0]["total_points"]) if result and result[0]["total_points"] else 0
+
+
+def get_member_points(member_id: str) -> int:
+    """
+    Get member's current points (from completed missions since last payment).
+
+    Returns:
+        Member's current points
+    """
+
+    cypher = """
+    MATCH (mission:U4_Work_Item {work_type: 'mission', status: 'completed'})
+    WHERE mission.completedBy = $member_id
+    RETURN sum(mission.points) AS member_points
     """
 
     result = query_graph(cypher, {"member_id": member_id})
-    return result[0]["total"] if result else 0
+    return int(result[0]["member_points"]) if result and result[0]["member_points"] else 0
 
 
-# NOTE: get_mission_fund_balance() is now in tier_calculator.py
-# Import it here for backward compatibility
-from services.compensation.tier_calculator import (
-    get_mission_fund_balance,
-    get_mission_payment,
-    get_current_tier
-)
-
-
-def claim_mission(mission_id: str, member_id: str) -> Dict:
+def complete_mission_via_emma(
+    mission_id: str,
+    member_id: str,
+    emma_chat_session_id: str
+) -> Dict:
     """
-    Claim a mission (with validation).
-    Payment is calculated dynamically based on current tier.
+    Mark mission complete via Emma chat validation.
+
+    Emma calls this when she says "mission complete" in chat session
+    after member finishes search and proposes to all jobs.
+
+    First to complete wins - mission becomes unavailable to others.
+
+    Args:
+        mission_id: Mission slug
+        member_id: Member who completed
+        emma_chat_session_id: Chat session ID for audit trail
+
+    Returns:
+        {
+            "missionId": "...",
+            "status": "completed",
+            "completedBy": "member_a",
+            "completedAt": "2025-11-07T14:23:00Z",
+            "points": 1,
+            "totalPoints": 3,
+            "paymentTiming": "At next job completion"
+        }
 
     Raises:
-        ValueError: If validation fails
+        ValueError: If mission not available (already completed)
     """
 
-    # 1. Check member has minimum 5 total interactions
-    total_interactions = get_member_total_interactions(member_id)
-    if total_interactions < 5:
-        raise ValueError(
-            f"Need 5+ interactions to claim missions. Currently: {total_interactions}"
-        )
-
-    # 2. Check mission exists and is available
+    # 1. Check mission exists and is available
     cypher_check = """
     MATCH (mission:U4_Work_Item {slug: $mission_slug, work_type: 'mission'})
-    RETURN mission.status AS status, mission.missionType AS missionType
+    RETURN mission.status AS status, mission.points AS points
     """
 
     result = query_graph(cypher_check, {"mission_slug": mission_id})
@@ -744,237 +794,128 @@ def claim_mission(mission_id: str, member_id: str) -> Dict:
         raise ValueError(f"Mission not found: {mission_id}")
 
     if result[0]["status"] != "available":
-        raise ValueError("Mission not available (already claimed or completed)")
+        # Already completed by someone else
+        raise ValueError(f"Mission already completed by another member")
 
-    # 3. Calculate payment based on current tier
-    mission_type = result[0]["missionType"]
-    tier, fund_balance = get_current_tier()
-    mission_payment = float(get_mission_payment(mission_type))
+    mission_points = result[0]["points"]
 
-    if fund_balance < mission_payment:
-        raise ValueError(
-            f"Mission fund insufficient (${fund_balance:.2f} available, need ${mission_payment:.2f})"
-        )
-
-    # 4. Update mission status (store calculated payment + tier)
-    claimed_at = datetime.utcnow()
-    expires_at = claimed_at + timedelta(hours=24)
-
-    cypher_claim = """
-    MATCH (mission:U4_Work_Item {slug: $mission_slug})
-    SET mission.status = 'claimed',
-        mission.claimedBy = $member_id,
-        mission.claimedAt = datetime($claimed_at),
-        mission.claimExpiresAt = datetime($expires_at),
-        mission.fixedPayment = $payment,
-        mission.claimTier = $tier,
-        mission.updated_at = datetime()
-    RETURN mission
-    """
-
-    query_graph(cypher_claim, {
-        "mission_slug": mission_id,
-        "member_id": member_id,
-        "claimed_at": claimed_at.isoformat(),
-        "expires_at": expires_at.isoformat(),
-        "payment": mission_payment,
-        "tier": tier
-    })
-
-    # 5. Create U4_CLAIMED_BY link
-    cypher_link = """
-    MATCH (mission:U4_Work_Item {slug: $mission_slug})
-    MATCH (agent:U4_Agent {slug: $member_id})
-    CREATE (mission)-[:U4_CLAIMED_BY {
-      claimed_at: datetime($claimed_at),
-      expires_at: datetime($expires_at),
-      created_at: datetime(),
-      updated_at: datetime(),
-      valid_from: datetime(),
-      valid_to: null,
-      visibility: 'partners',
-      created_by: $member_id,
-      substrate: 'organizational'
-    }]->(agent)
-    """
-
-    query_graph(cypher_link, {
-        "mission_slug": mission_id,
-        "member_id": member_id,
-        "claimed_at": claimed_at.isoformat(),
-        "expires_at": expires_at.isoformat()
-    })
-
-    return {
-        "missionId": mission_id,
-        "status": "claimed",
-        "claimedBy": member_id,
-        "expiresAt": expires_at.isoformat(),
-        "payment": mission_payment,
-        "tier": tier
-    }
-
-
-def complete_mission(
-    mission_id: str,
-    member_id: str,
-    proof_url: str,
-    proof_notes: str = ""
-) -> Dict:
-    """
-    Mark mission complete (awaiting NLR approval).
-
-    Args:
-        mission_id: Mission slug
-        member_id: Member who completed
-        proof_url: URL or file path proving completion
-        proof_notes: Optional notes
-
-    Raises:
-        ValueError: If mission not claimed by this member
-    """
-
-    # 1. Verify mission claimed by this member
-    cypher_check = """
-    MATCH (mission:U4_Work_Item {slug: $mission_slug, work_type: 'mission'})
-    RETURN mission.status AS status, mission.claimedBy AS claimedBy
-    """
-
-    result = query_graph(cypher_check, {"mission_slug": mission_id})
-
-    if not result:
-        raise ValueError(f"Mission not found: {mission_id}")
-
-    if result[0]["claimedBy"] != member_id:
-        raise ValueError("Mission not claimed by you")
-
-    if result[0]["status"] != "claimed":
-        raise ValueError(f"Mission status is {result[0]['status']}, expected 'claimed'")
-
-    # 2. Update mission with completion data
+    # 2. Update mission status (first to complete wins)
     completed_at = datetime.utcnow().isoformat()
 
     cypher_complete = """
     MATCH (mission:U4_Work_Item {slug: $mission_slug})
     SET mission.status = 'completed',
+        mission.completedBy = $member_id,
         mission.completedAt = datetime($completed_at),
-        mission.proofUrl = $proof_url,
-        mission.proofNotes = $proof_notes,
+        mission.emmaChatSessionId = $emma_chat_session_id,
         mission.updated_at = datetime()
     RETURN mission
     """
 
     query_graph(cypher_complete, {
         "mission_slug": mission_id,
+        "member_id": member_id,
         "completed_at": completed_at,
-        "proof_url": proof_url,
-        "proof_notes": proof_notes
+        "emma_chat_session_id": emma_chat_session_id
     })
+
+    # 3. Get total points in system (for display)
+    total_points = get_total_points()
 
     return {
         "missionId": mission_id,
         "status": "completed",
-        "pendingApproval": True
+        "completedBy": member_id,
+        "completedAt": completed_at,
+        "points": mission_points,
+        "totalPoints": total_points,
+        "paymentTiming": "At next job completion"
     }
 
 
-def approve_mission(mission_id: str, approved_by: str, approved: bool) -> Dict:
+def calculate_mission_payments_for_job(job_mission_pool: float) -> Dict[str, float]:
     """
-    Approve or reject mission completion (NLR only).
+    Calculate mission payments when a job completes.
+
+    Split job's 5% mission pool proportionally by member points.
+    If no missions completed, return {} (pool goes to NLR).
 
     Args:
-        mission_id: Mission slug
-        approved_by: NLR slug
-        approved: True to approve, False to reject
+        job_mission_pool: The 5% pool from completed job (e.g., $50 from $1000 job)
 
     Returns:
         {
-            "missionId": "...",
-            "status": "paid" or "claimed",
-            "memberEarnings": 1.00 (if approved),
-            "newMissionFundBalance": 149.00 (if approved)
+            "member_a": 37.50,
+            "member_b": 12.50
         }
+        OR {} if no missions completed
     """
 
-    if not approved:
-        # Reject: revert to "claimed" status
-        cypher_reject = """
-        MATCH (mission:U4_Work_Item {slug: $mission_slug})
-        SET mission.status = 'claimed',
-            mission.completedAt = null,
-            mission.proofUrl = null,
-            mission.proofNotes = null,
+    # 1. Get all completed missions (since last payment)
+    cypher_missions = """
+    MATCH (mission:U4_Work_Item {work_type: 'mission', status: 'completed'})
+    RETURN mission.completedBy AS member_id, mission.points AS points
+    """
+
+    result = query_graph(cypher_missions, {})
+
+    if not result:
+        # No missions completed → pool goes to NLR
+        return {}
+
+    # 2. Group by member and sum points
+    member_points = {}
+    for row in result:
+        member_id = row["member_id"]
+        points = row["points"]
+        member_points[member_id] = member_points.get(member_id, 0) + points
+
+    # 3. Calculate total points
+    total_points = sum(member_points.values())
+
+    if total_points == 0:
+        return {}
+
+    # 4. Calculate payments proportionally
+    payments = {}
+    for member_id, points in member_points.items():
+        payment = (points / total_points) * job_mission_pool
+        payments[member_id] = round(payment, 2)
+
+    return payments
+
+
+def mark_missions_paid_and_reset_points(job_id: str, payments: Dict[str, float]) -> None:
+    """
+    After job payment, mark missions as paid and record actual payments.
+    Points reset happens by marking status 'completed' → 'paid'.
+
+    Args:
+        job_id: Job slug that triggered payment
+        payments: {"member_a": 37.50, "member_b": 12.50}
+    """
+
+    paid_at = datetime.utcnow().isoformat()
+
+    # For each member, update their completed missions to 'paid'
+    for member_id, total_payment in payments.items():
+        cypher = """
+        MATCH (mission:U4_Work_Item {work_type: 'mission', status: 'completed'})
+        WHERE mission.completedBy = $member_id
+        SET mission.status = 'paid',
+            mission.paidAt = datetime($paid_at),
+            mission.paidWithJob = $job_id,
             mission.updated_at = datetime()
-        RETURN mission.claimedBy AS claimedBy
         """
 
-        result = query_graph(cypher_reject, {"mission_slug": mission_id})
+        query_graph(cypher, {
+            "member_id": member_id,
+            "paid_at": paid_at,
+            "job_id": job_id
+        })
 
-        return {
-            "missionId": mission_id,
-            "status": "claimed",
-            "rejected": True
-        }
-
-    # Approve: mark as paid
-    approved_at = datetime.utcnow().isoformat()
-
-    cypher_approve = """
-    MATCH (mission:U4_Work_Item {slug: $mission_slug})
-    SET mission.status = 'paid',
-        mission.approvedBy = $approved_by,
-        mission.approvedAt = datetime($approved_at),
-        mission.updated_at = datetime()
-    RETURN mission.claimedBy AS claimedBy, mission.fixedPayment AS payment
-    """
-
-    result = query_graph(cypher_approve, {
-        "mission_slug": mission_id,
-        "approved_by": approved_by,
-        "approved_at": approved_at
-    })
-
-    member_id = result[0]["claimedBy"]
-    payment = result[0]["payment"]
-
-    # Update member earnings (will be implemented in payment_processor.py)
-    # For now, just return success
-
-    new_balance = get_mission_fund_balance()
-
-    return {
-        "missionId": mission_id,
-        "status": "paid",
-        "memberEarnings": payment,
-        "newMissionFundBalance": new_balance
-    }
-
-
-def check_mission_expiry() -> int:
-    """
-    Check for expired mission claims (24 hours) and revert to 'available'.
-
-    Returns:
-        Number of missions reverted
-
-    Should be run periodically (e.g., every hour via cron job).
-    """
-
-    now = datetime.utcnow().isoformat()
-
-    cypher = """
-    MATCH (mission:U4_Work_Item {work_type: 'mission', status: 'claimed'})
-    WHERE mission.claimExpiresAt < datetime($now)
-    SET mission.status = 'available',
-        mission.claimedBy = null,
-        mission.claimedAt = null,
-        mission.claimExpiresAt = null,
-        mission.updated_at = datetime()
-    RETURN count(mission) AS reverted
-    """
-
-    result = query_graph(cypher, {"now": now})
-    return result[0]["reverted"] if result else 0
+    # Note: Points are "reset" by changing status from 'completed' to 'paid'
+    # get_total_points() only counts missions with status='completed'
 ```
 
 ---
@@ -1013,7 +954,7 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
     """
     Trigger payment for completed job (NLR only).
 
-    **NEW: Validates wallet addresses before payment.**
+    **Pays BOTH job earnings (30% pool by interactions) AND mission earnings (5% pool by points).**
 
     Args:
         job_id: Job slug
@@ -1025,7 +966,19 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
             "jobId": "...",
             "status": "paid",
             "totalPaid": 450.00,
-            "memberPayments": {"member_a": 270.00, "member_b": 180.00},
+            "memberPayments": {
+                "member_a": {
+                    "jobEarning": 270.00,
+                    "missionEarning": 37.50,
+                    "total": 307.50
+                },
+                "member_b": {
+                    "jobEarning": 180.00,
+                    "missionEarning": 12.50,
+                    "total": 192.50
+                }
+            },
+            "missionPoolPaid": 50.00,  // OR goes to NLR if no missions
             "notificationsSent": 2,
             "walletValidation": {"member_a": True, "member_b": True}
         }
@@ -1098,14 +1051,64 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
             f"Wallet connection flow: Mission Deck → Settings → Connect Solana Wallet"
         )
 
-    # 5. Calculate final shares
-    member_payments = {}
+    # 5. Calculate job earnings (30% pool by interactions)
+    job_payments = {}
 
     for member_id in interaction_counts.keys():
         earning = calculate_member_earning(job_id, member_id)
-        member_payments[member_id] = earning
+        job_payments[member_id] = earning
 
-    # 6. Update job status to 'paid'
+    # 6. Calculate mission earnings (5% pool by points)
+    #    Import from mission_manager.py
+    from services.compensation.mission_manager import (
+        calculate_mission_payments_for_job,
+        mark_missions_paid_and_reset_points
+    )
+
+    # Get job value to calculate 5% mission pool
+    cypher_job_value = """
+    MATCH (job:U4_Work_Item {slug: $job_slug})
+    RETURN job.value AS value
+    """
+    job_value_result = query_graph(cypher_job_value, {"job_slug": job_id})
+    job_value = job_value_result[0]["value"] if job_value_result else 0
+    mission_pool = job_value * 0.05
+
+    mission_payments = calculate_mission_payments_for_job(mission_pool)
+
+    # If no missions completed, pool goes to NLR
+    if not mission_payments:
+        mission_payments = {"nlr": mission_pool}
+        mission_pool_recipient = "nlr (org)"
+    else:
+        mission_pool_recipient = f"{len(mission_payments)} members"
+        # Mark missions as paid and reset points
+        mark_missions_paid_and_reset_points(job_id, mission_payments)
+
+    # 7. Combine job + mission earnings per member
+    combined_payments = {}
+
+    # Add job earnings
+    for member_id, job_earning in job_payments.items():
+        combined_payments[member_id] = {
+            "jobEarning": job_earning,
+            "missionEarning": 0.0,
+            "total": job_earning
+        }
+
+    # Add mission earnings
+    for member_id, mission_earning in mission_payments.items():
+        if member_id not in combined_payments:
+            combined_payments[member_id] = {
+                "jobEarning": 0.0,
+                "missionEarning": mission_earning,
+                "total": mission_earning
+            }
+        else:
+            combined_payments[member_id]["missionEarning"] = mission_earning
+            combined_payments[member_id]["total"] += mission_earning
+
+    # 8. Update job status to 'paid'
     paid_at = datetime.utcnow().isoformat()
 
     cypher_update = """
@@ -1118,23 +1121,32 @@ def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict
 
     query_graph(cypher_update, {"job_slug": job_id, "paid_at": paid_at})
 
-    # 7. Update each member's paid earnings history
-    #    (Store as compensationData.paidEarnings on U4_Agent node)
+    # 9. Update each member's paid earnings history
+    for member_id, payment_details in combined_payments.items():
+        update_member_paid_earnings(
+            member_id,
+            job_id,
+            payment_details["total"],
+            job_data["title"],
+            job_earning=payment_details["jobEarning"],
+            mission_earning=payment_details["missionEarning"]
+        )
 
-    for member_id, amount in member_payments.items():
-        update_member_paid_earnings(member_id, job_id, amount, job_data["title"])
-
-    # 8. Send notifications (placeholder - actual implementation TBD)
-    notifications_sent = len(member_payments)
-    for member_id, amount in member_payments.items():
+    # 10. Send notifications
+    notifications_sent = len(combined_payments)
+    for member_id, payment_details in combined_payments.items():
         # TODO: Implement send_payment_notification()
-        print(f"Notification: {member_id} earned ${amount:.2f} from {job_data['title']}")
+        print(f"Notification: {member_id} earned ${payment_details['total']:.2f} "
+              f"(Job: ${payment_details['jobEarning']:.2f}, Missions: ${payment_details['missionEarning']:.2f}) "
+              f"from {job_data['title']}")
 
     return {
         "jobId": job_id,
         "status": "paid",
-        "totalPaid": round(sum(member_payments.values()), 2),
-        "memberPayments": member_payments,
+        "totalPaid": round(sum(p["total"] for p in combined_payments.values()), 2),
+        "memberPayments": combined_payments,
+        "missionPoolPaid": mission_pool,
+        "missionPoolRecipient": mission_pool_recipient,
         "walletValidation": wallet_validation,
         "notificationsSent": notifications_sent
     }
@@ -1144,12 +1156,22 @@ def update_member_paid_earnings(
     member_id: str,
     job_id: str,
     amount: float,
-    job_title: str
+    job_title: str,
+    job_earning: float = 0.0,
+    mission_earning: float = 0.0
 ) -> None:
     """
     Update member's paid earnings history.
 
-    Stores data in agent.compensationData.paidEarnings
+    Stores data in agent.compensationData.paidEarnings with breakdown.
+
+    Args:
+        member_id: Member slug
+        job_id: Job slug
+        amount: Total amount paid (job + mission)
+        job_title: Job title for display
+        job_earning: Job earning component (30% pool)
+        mission_earning: Mission earning component (5% pool)
     """
 
     # Fetch current compensationData

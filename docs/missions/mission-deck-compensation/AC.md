@@ -99,78 +99,119 @@ Banner shows: "YOUR TOTAL POTENTIAL EARNINGS: $164.00"
 
 ---
 
-### F4: Mission Listing and Claiming (Tier-Based Payments)
+### F4: Mission Listing (Emma Auto-Created, Points-Based)
 
 **Given:** Team member views Mission Deck
 **When:** They navigate to MISSIONS section
-**Then:** They see available missions they can claim with tier-based payment amounts (dynamically calculated)
+**Then:** They see Emma-created missions with points (no claiming, first to complete wins)
 
 **Acceptance:**
-- [ ] MISSIONS section lists all available missions
-- [ ] Each mission card shows: Title, **current payment (based on tier)**, status (Available/Claimed/Completed)
-- [ ] Mission payment updates when mission fund balance changes tiers
-- [ ] Tier indicator shown: 🟢 Tier 1, 🟡 Tier 2, 🟠 Tier 3, 🔴 Tier 4
-- [ ] Tooltip on payment: "Payment locked at claim time. Current tier: [X]"
-- [ ] "Claim Mission" button on available missions
-- [ ] After claiming: Status changes to "Claimed by [Name]", button becomes "Mark Complete"
-- [ ] After claiming: Payment amount and tier are **locked** (stored on mission node)
-- [ ] 24-hour claim expiry: If not completed in 24h, status reverts to "Available" (payment recalculated at next claim)
-- [ ] Cannot claim if < 5 total interactions across all jobs (error: "Need 5+ interactions to claim missions")
+- [ ] MISSIONS section lists all missions (available, completed, paid)
+- [ ] Each mission card shows: Title, **points value** (not dollar amount), status, Emma search query
+- [ ] Mission title format: "Apply to all jobs from Emma search '[query]' (X jobs)"
+- [ ] Status badge: Available (green), Completed (blue), Paid (gray)
+- [ ] If completed: Shows "Completed by [Name]" and completion timestamp
+- [ ] Points indicator: "1 point" (for proposal missions)
+- [ ] Current points total shown: "You have 3 points" (resets at next job payment)
+- [ ] Payment timing note: "Points convert to earnings at next job completion"
+- [ ] No claiming mechanism (missions go straight from available → completed)
+- [ ] No requirements to complete (anyone can do any mission)
+- [ ] First to complete wins (mission becomes unavailable to others)
 
-**Test data (Tier 1 - Abundant Fund):**
+**Test data (Available missions):**
 ```
-Mission Fund Balance: $250.00 → Tier 1 (Abundant)
+Mission Fund Balance: $150.00 (from 5% of active jobs)
+Current Points: member_a = 2, member_b = 1
 
 Available missions:
-1. "Write proposal for 'AI Analytics Dashboard'" - $2.00 🟢 (Tier 1)
-2. "Post about ScopeLock on X" - $3.00 🟢 (Tier 1)
-3. "Recruit new team member" - $15.00 🟢 (Tier 1)
+1. "Apply to all jobs from Emma search 'voice AI dashboard' (5 jobs)" - 1 point ⚪ Available
+   Created by: emma_citizen
+   Search date: 2025-11-07
 
-Member with 3 interactions tries to claim → Error: "Need 5+ interactions to claim missions. Currently: 3."
-Member with 10 interactions claims Mission 1 → Status: "Claimed by [Name]", Payment locked at $2.00, Tier locked at 1
+2. "Apply to all jobs from Emma search 'AI analytics' (3 jobs)" - 1 point ⚪ Available
+   Created by: emma_citizen
+   Search date: 2025-11-06
+
+Completed missions:
+3. "Apply to all jobs from Emma search 'chatbot integration' (2 jobs)" - 1 point ✅ Completed
+   Completed by: member_a on 2025-11-05T14:23:00Z
 ```
 
-**Test data (Tier 3 - Limited Fund):**
+**Test data (First to complete wins):**
 ```
-Mission Fund Balance: $75.00 → Tier 3 (Limited)
-
-Available missions:
-1. "Write proposal for 'AI Analytics Dashboard'" - $1.00 🟠 (Tier 3)
-2. "Post about ScopeLock on X" - $2.00 🟠 (Tier 3)
-3. "Recruit new team member" - $10.00 🟠 (Tier 3)
-
-Member claims Mission 1 → Payment locked at $1.00, Tier locked at 3
-(Even if fund increases to Tier 1 before completion, member still gets $1.00)
+Mission 1 is available.
+member_a completes it via Emma chat validation.
+→ Mission 1 status: Completed by member_a
+→ Mission 1 no longer available to member_b
+→ member_a points: 3 (was 2, +1 from this mission)
 ```
 
 ---
 
-### F5: Mission Completion and Earnings
+### F5: Mission Completion via Emma Chat Validation
 
-**Given:** Team member has claimed a mission
-**When:** They mark it complete with proof (screenshot, link, etc.)
-**Then:** Mission earnings added to their total potential earnings, mission fund balance decreases
+**Given:** Team member completes a mission (applies to jobs from Emma search)
+**When:** Emma says "mission complete" in chat session
+**Then:** Mission auto-completes, points added to member, paid at next job completion
 
 **Acceptance:**
-- [ ] "Mark Complete" button shows proof upload modal
-- [ ] Required: Proof (URL or file upload), optional: Notes
-- [ ] On submit: Mission status → "Completed", awaiting approval
-- [ ] NLR sees: "Approve Mission Completion" notification
-- [ ] After approval: Mission earnings added to member's total potential, mission fund decreases
-- [ ] If mission fund insufficient: Error "Mission fund balance too low ($X available, need $Y)"
+- [ ] Emma validates completion via chat (no manual proof upload)
+- [ ] When Emma says "mission complete" in chat: Mission status → "Completed"
+- [ ] Emma tracks chat session ID for audit trail
+- [ ] Member's points increase immediately (+1 for proposal missions)
+- [ ] Mission earnings = (member_points / total_points) × next_job's_5%_pool
+- [ ] Payment timing: Batched with next job completion (NOT immediate)
+- [ ] If no missions completed when job pays → 5% pool goes to NLR
+- [ ] Points reset to 0 after each job payment
+- [ ] No NLR approval needed (auto-approved, trust member + spot check)
 
-**Test data:**
+**Test data (Emma chat validation):**
 ```
-Mission: "Post about ScopeLock on X" - $2.00
-Current mission fund: $50.00
+Mission: "Apply to all jobs from Emma search 'voice AI dashboard' (5 jobs)" - 1 point
 
-Member completes with proof: twitter.com/user/status/123
+Chat session:
+member_a: "Emma, search for 'voice AI dashboard' jobs"
+Emma: [searches Upwork, finds 5 jobs]
+Emma: "Found 5 jobs. Writing proposals now..."
+Emma: [generates 5 proposals]
+Emma: "mission complete"
+
 Expected:
-- Mission status: "Completed (pending approval)"
-- After NLR approval:
-  - Member earnings: +$2.00
-  - Mission fund: $48.00
-  - Mission status: "Completed"
+- Mission status: Completed by member_a
+- member_a points: +1 (e.g., from 2 → 3)
+- Chat session ID stored: "chat-session-uuid-12345"
+- Payment timing: "At next job completion"
+- No manual proof required
+```
+
+**Test data (Points-based payment at job completion):**
+```
+Current state:
+- member_a: 3 points (completed 3 missions)
+- member_b: 1 point (completed 1 mission)
+- Total points: 4
+
+Job completes with $1000 value:
+- 30% team pool: $300 (split by interactions)
+- 5% mission pool: $50 (split by points)
+
+Mission payments:
+- member_a: (3/4) × $50 = $37.50
+- member_b: (1/4) × $50 = $12.50
+
+After payment:
+- Points reset to 0 for all members
+- Mission statuses: Completed → Paid
+```
+
+**Test data (No missions completed → pool goes to NLR):**
+```
+Job completes with $1000 value:
+- 30% team pool: $300 (split by interactions)
+- 5% mission pool: $50
+
+No missions completed since last job.
+→ $50 goes to NLR (org)
 ```
 
 ---
@@ -240,46 +281,71 @@ Paid History:
 
 ---
 
-### F8: Mission Fund Balance Visibility (with Tier Indicator)
+### F8: Mission Fund Balance Visibility (5% Pool from Jobs)
 
 **Given:** Team member or NLR wants to check mission fund status
 **When:** They view MISSIONS section
-**Then:** Header shows current mission fund balance, tier, and source (5% from which jobs)
+**Then:** Header shows current mission fund balance and source (5% from which jobs)
 
 **Acceptance:**
-- [ ] MISSIONS section header shows: "Mission Fund: $XX.XX available" + tier indicator (🟢🟡🟠🔴)
-- [ ] Tier badge shows: "Tier 1 (Abundant)" | "Tier 2 (Healthy)" | "Tier 3 (Limited)" | "Tier 4 (Critical)"
-- [ ] Tier color matches indicator: Tier 1 green, Tier 2 yellow, Tier 3 orange, Tier 4 red
-- [ ] Tooltip shows: "From: Job A ($X), Job B ($Y), Job C ($Z)"
-- [ ] If balance < $50 (Tier 4): Warning icon with "Critical - complete jobs to increase fund and mission payments"
-- [ ] If balance $50-100 (Tier 3): Info icon with "Limited fund - mission payments reduced"
-- [ ] NLR sees additional: "Pending missions: $W" (total of claimed but incomplete missions)
-- [ ] Tooltip explains tier system: "Tier affects mission payments. Higher tier = higher payments."
+- [ ] MISSIONS section header shows: "Mission Fund: $XX.XX available"
+- [ ] Tooltip shows source: "From: Job A ($X), Job B ($Y), Job C ($Z)"
+- [ ] Current points total shown: "Total points in system: X" (sum of all completed missions)
+- [ ] Payment timing note: "Points convert to earnings at next job completion"
+- [ ] If no active jobs: Info message "No active jobs - mission fund at $0"
+- [ ] If no completed missions: Note "No missions completed yet - 5% pool will go to org at next job payment"
+- [ ] NLR sees additional: "Completed missions: X (worth Y points total)"
 
-**Test data (Tier 2 - Healthy):**
+**Test data (Mission fund accumulation - 5% from jobs):**
 ```
-Job A ($1,500) contributed: $75
-Job B ($800) contributed: $40
-Job C ($1,200) contributed: $60
-Spent: $25 on completed missions
+Active jobs:
+- Job A ($1,500): 30% team pool ($450 for interactions), 5% mission pool ($75)
+- Job B ($800): 30% team pool ($240 for interactions), 5% mission pool ($40)
+- Job C ($1,200): 30% team pool ($360 for interactions), 5% mission pool ($60)
 
-Balance: $150.00 → Tier 2 (Healthy)
+Mission Fund Total: $175.00 (5% from all active jobs)
+Completed missions: 3 (3 points total)
 
 Expected display:
-Mission Fund: $150.00 available 🟡 Tier 2 (Healthy)
+Mission Fund: $175.00 available
 From: Build Chatbot ($75), Landing Page ($40), Dashboard ($60)
-Spent: $25
-Current payments: Proposal $1.50, Social $2.50, Recruitment $12.00
+Total points in system: 3
+Payment timing: At next job completion
+
+Note: Job earnings (30% pools) are separate and split by interactions.
+Mission earnings (5% pools) are separate and split by points.
 ```
 
-**Test data (Tier 4 - Critical):**
+**Test data (Points-based distribution when job pays):**
 ```
-Balance: $35.00 → Tier 4 (Critical)
+Job A completes and pays:
+- 30% team pool ($450) → Split by interactions among contributors
+- 5% mission pool ($75) → Split by points among mission completers
+
+Mission pool distribution:
+member_a: 2 points (completed 2 missions)
+member_b: 1 point (completed 1 mission)
+Total: 3 points
+
+Mission earnings from Job A's 5%:
+- member_a: (2/3) × $75 = $50.00
+- member_b: (1/3) × $75 = $25.00
+
+After payment:
+- Points reset to 0 for both members
+- Mission statuses: Completed → Paid
+- Mission fund decreases by $75
+```
+
+**Test data (No missions completed):**
+```
+Fund: $175.00
+Completed missions: 0
 
 Expected display:
-Mission Fund: $35.00 available 🔴 Tier 4 (Critical) ⚠️
-Warning: "Critical fund level. Complete client jobs to increase fund and restore full mission payments."
-Current payments: Proposal $0.50, Social $1.00, Recruitment $8.00
+Mission Fund: $175.00 available
+Total points in system: 0
+Note: "No missions completed. At next job payment, this fund goes to org."
 ```
 
 ---

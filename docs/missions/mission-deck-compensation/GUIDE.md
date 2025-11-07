@@ -1,9 +1,9 @@
 # GUIDE: Mission Deck Compensation System
 
-**Version:** 1.1 (WebSocket + Tier-Based Payments)
+**Version:** 1.1 (WebSocket + Points-Based Payments)
 **Created:** 2025-11-07
 **Updated:** 2025-11-07
-**Mission:** Setup, deployment, and usage guide for compensation system with WebSocket real-time updates and tier-based mission payments
+**Mission:** Setup, deployment, and usage guide for compensation system with WebSocket real-time updates and points-based mission payments
 
 ---
 
@@ -189,11 +189,11 @@ python3 scripts/seed-compensation-test-data.py
    - job-techcorp-dashboard-2025-11 ($1,200)
 
 ✅ Created 5 test missions:
-   - mission-proposal-ai-analytics ($1)
-   - mission-x-post-scopelock ($2)
-   - mission-recruitment-developer ($10)
-   - mission-proposal-chatbot ($1)
-   - mission-blog-post ($5)
+   - mission-proposal-voice-ai-2025-11-07 (1 point, available)
+   - mission-proposal-ai-analytics-2025-11-06 (1 point, completed by member_a)
+   - mission-proposal-chatbot-2025-11-05 (1 point, completed by member_b)
+   - mission-proposal-dashboard-2025-11-04 (1 point, paid)
+   - mission-proposal-landing-2025-11-03 (1 point, paid)
 
 ✅ Seeded 45 interactions across 2 test members:
    - member_a: 25 interactions
@@ -278,66 +278,69 @@ Running 12 tests using 3 workers
 
 ---
 
-## Understanding the Tier-Based Mission Payment System
+## Understanding the Points-Based Mission Payment System
 
-### What Are Tiers?
+### How Mission Payments Work
 
-Mission payments change dynamically based on the **mission fund balance** (5% of all client job values).
+Missions earn **points** (NOT fixed dollar amounts). Points convert to earnings when the next job completes and pays out.
 
-**4 Tier Levels:**
+**Key Concepts:**
 
-| Tier | Balance Range | Status | Meaning |
-|------|--------------|---------|---------|
-| **Tier 1** | ≥ $200 | 🟢 Abundant | Fund is healthy, full payments |
-| **Tier 2** | $100-200 | 🟡 Healthy | Fund is adequate, reduced payments |
-| **Tier 3** | $50-100 | 🟠 Limited | Fund is low, minimal payments |
-| **Tier 4** | < $50 | 🔴 Critical | Fund is critical, emergency payments |
+1. **Missions earn points:** Complete a proposal mission = 1 point
+2. **Points accumulate:** Keep earning points until next job payment
+3. **Points → Earnings:** Job's 5% mission pool split by point ratio
+4. **Points reset:** After payment, everyone's points reset to 0
 
-### Payment Matrix
+### Payment Example
 
-Different mission types have different payment amounts per tier:
-
-| Mission Type | Tier 1 | Tier 2 | Tier 3 | Tier 4 |
-|--------------|--------|--------|--------|--------|
-| **Proposal Writing** | $2.00 | $1.50 | $1.00 | $0.50 |
-| **Social Media Post** | $3.00 | $2.50 | $2.00 | $1.00 |
-| **Recruitment** | $15.00 | $12.00 | $10.00 | $8.00 |
-| **Other Tasks** | $5.00 | $4.00 | $3.00 | $2.00 |
-
-### How It Works (User Perspective)
-
-**Example 1: Abundant Fund (Tier 1)**
+**Current state:**
 ```
-Mission Fund Balance: $250.00
-Current Tier: Tier 1 (Abundant)
+Active jobs:
+- Job A ($1500): 30% team pool ($450), 5% mission pool ($75)
+- Job B ($800): 30% team pool ($240), 5% mission pool ($40)
+- Job C ($1200): 30% team pool ($360), 5% mission pool ($60)
 
-Available Mission: "Write proposal for AI Dashboard project"
-Payment if claimed now: $2.00
+Total mission fund: $175 (5% from all active jobs)
+
+Completed missions:
+- member_a: 2 points (completed 2 proposal missions)
+- member_b: 1 point (completed 1 proposal mission)
+Total points: 3
 ```
 
-**Example 2: Limited Fund (Tier 3)**
+**Job A completes and pays:**
 ```
-Mission Fund Balance: $75.00
-Current Tier: Tier 3 (Limited)
+Job A's 5% mission pool: $75
 
-Available Mission: "Write proposal for AI Dashboard project"
-Payment if claimed now: $1.00
+Mission earnings distribution:
+- member_a: (2/3) × $75 = $50.00
+- member_b: (1/3) × $75 = $25.00
+
+After payment:
+- Points reset: member_a = 0, member_b = 0
+- Mission statuses: completed → paid
+- Mission fund decreases by $75
 ```
 
-**Key Point:** Payment is locked at claim time. If you claim a mission when fund is Tier 1, you get Tier 1 payment even if fund drops to Tier 3 by completion.
+**If no missions completed:**
+```
+Job A's 5% mission pool: $75
+No missions completed → $75 goes to NLR (org)
+```
 
-### Why Tier-Based Payments?
+### Why Points-Based Payments?
 
 **Problem solved:**
-- Fixed payments drain the mission fund regardless of health
-- No feedback loop between fund balance and spending
-- Team can't see when to prioritize client jobs (which increase fund) vs internal missions (which drain fund)
+- Fixed payments create race conditions and claiming drama
+- No way to batch mission payments with job payments
+- Manual approval creates bottleneck (NLR approval required)
 
 **Benefits:**
-1. **Self-regulating:** Low fund = lower mission payments = incentive to win client jobs
-2. **Transparent:** Team sees exactly how fund health affects earnings
-3. **Fair:** Early contributors get higher payments when fund is healthy
-4. **Sustainable:** System prevents fund depletion
+1. **Simple:** 1 point per mission, no complex tier calculations
+2. **Batched:** Missions paid when jobs pay (simpler accounting)
+3. **Auto-validated:** Emma validates via chat, no manual approval
+4. **First to complete wins:** No claiming race, just do the work
+5. **Fair:** Points = share of next job's mission pool
 
 ---
 
@@ -359,7 +362,7 @@ Backend: "Your earnings are $X"
 Frontend: *connects once*
 Backend: *pushes updates when they happen*
 Backend → Frontend: "Interaction counted! +$10.50"
-Backend → Frontend: "Mission claimed! +$2.00"
+Backend → Frontend: "Mission completed! +1 point (3 total)"
 ... (efficient, real-time)
 ```
 
@@ -371,9 +374,8 @@ Backend → Frontend: "Mission claimed! +$2.00"
 |-------|---------|---------|--------------|
 | `connected` | WebSocket connection established | `{event, memberId, timestamp}` | Frontend shows "Connected" status |
 | `interaction_counted` | You send message to AI citizen | `{event, jobId, yourInteractions, teamTotal, yourPotentialEarning}` | Job card updates live |
-| `mission_claimed` | You claim a mission | `{event, missionId, payment, tier, fundBalance}` | Mission card updates + fund balance shown |
-| `mission_completed` | NLR approves your mission | `{event, missionId, payment, newTotal}` | Your total earnings update |
-| `job_paid` | NLR marks job payment received | `{event, jobId, yourEarning, totalPaid}` | Potential → Paid earnings |
+| `mission_completed` | Emma validates mission completion | `{event, missionId, points, totalPoints, newTotal}` | Points counter updates |
+| `job_paid` | NLR marks job payment received | `{event, jobId, yourEarning, missionEarning, totalPaid}` | Potential → Paid earnings, points reset to 0 |
 
 ### Testing WebSocket Connection
 
@@ -668,30 +670,99 @@ If still failing:
 
 ---
 
-### Issue: "Mission fund insufficient"
+### Issue: "I completed a mission but didn't get paid"
 
 **Symptoms:**
-- Try to claim mission worth $10
-- Error: "Mission fund insufficient ($5 available, need $10)"
+- Mission shows status "completed"
+- Points counter increased
+- But no payment received yet
 
 **Cause:**
-- Too many missions completed vs jobs completed
-- Mission fund not replenished
+- Missions pay when the **next job completes**, not immediately
+- If no jobs have completed since your mission, you haven't been paid yet
 
 **Fix:**
 
-1. Check mission fund balance:
-   - Go to MISSIONS section
-   - See "Mission Fund: $X.XX available"
+1. Check mission status:
+   ```bash
+   GET /api/compensation/missions
+   ```
+   - `status: "completed"` = waiting for next job payment
+   - `status: "paid"` = already paid with a job
 
-2. Wait for new jobs to complete:
-   - Each job contributes 5% to mission fund
-   - $1,000 job → +$50 to fund
+2. Check your points balance:
+   ```bash
+   GET /api/compensation/earnings/{your-member-id}
+   ```
+   - `currentMissionPoints: 2` = you have 2 points waiting for next job payment
+   - `currentMissionPoints: 0` = points were already paid and reset
 
-3. Or lower mission payment amount (NLR only):
-   - Edit mission, change from $10 to $5
+3. Wait for next job to complete:
+   - Your mission earnings will be included in that job's payment
+   - Formula: `(your_points / total_points) × job's_5%_pool`
 
-4. Or complete more client jobs (increases fund)
+**Example:**
+- You complete mission on Monday → 1 point
+- Job A completes on Wednesday → You get paid: `(1/3) × $75 = $25`
+- Your points reset to 0 after payment
+
+---
+
+### Issue: "My points disappeared"
+
+**Symptoms:**
+- Had 2 points yesterday
+- Today shows 0 points
+- Don't remember getting paid
+
+**Cause:**
+- Points reset to 0 after each job payment (by design)
+- Check your payment history to see the payment
+
+**Fix:**
+
+1. Check payment history:
+   ```bash
+   GET /api/compensation/earnings/{your-member-id}
+   ```
+   Look for recent `paidMissionEarnings` entries
+
+2. Verify you received payment:
+   - Mission earnings are combined with job earnings in single payment
+   - Check your wallet for recent transaction
+   - Check notification history for payment alert
+
+**This is expected behavior:** Points are temporary counters that convert to actual earnings at job payment, then reset to 0.
+
+---
+
+### Issue: "Where did the mission pool go?"
+
+**Symptoms:**
+- Job completed and paid
+- No mission earnings distributed
+- 5% mission pool seems missing
+
+**Cause:**
+- If **no missions were completed** when job paid, the 5% mission pool goes to NLR (org)
+- This is by design
+
+**Fix:**
+
+This is expected behavior. To earn from the mission pool:
+1. Complete missions **before** a job pays out
+2. Accumulate points while job is in progress
+3. When job completes, your points convert to earnings from that job's 5% pool
+
+**Example:**
+- Job A in progress (no missions completed yet)
+- Job A completes and pays
+- 5% mission pool ($75) → goes to NLR (org)
+- 30% job pool ($450) → distributed to contributors by interactions
+
+To get mission earnings next time:
+- Complete missions while jobs are in progress
+- Build up points before job payment triggers
 
 ---
 
@@ -910,15 +981,27 @@ If still failing:
 
 ---
 
-#### 4. Claiming a Mission
+#### 4. Completing a Mission (via Emma in Chat)
 
+**Missions are completed via Emma in chat - NOT through UI claiming.**
+
+**For Proposal Missions:**
+1. In chat, ask Emma to search for jobs: "Emma, search for 'voice AI dashboard' jobs"
+2. Emma searches Upwork and finds matching jobs
+3. Emma writes proposals for all validated jobs
+4. When Emma finishes, she says "mission complete" in chat
+5. Backend automatically completes the mission and awards you points
+6. Points accumulate until next job payment (NOT immediate)
+
+**How to check your progress:**
 1. Left panel → MISSIONS section
-2. See available missions with fixed payments
-3. Click "Claim Mission" (requires 5+ total interactions)
-4. Work on the mission (write proposal, post on X, etc.)
-5. Click "Mark Complete", upload proof
-6. Wait for NLR approval
-7. Earnings added to your total
+2. See available missions (created by Emma after searches)
+3. See your current points total: "You have 3 points"
+4. Payment timing: "Points convert to earnings at next job completion"
+
+**First to complete wins:**
+- If you complete a mission, it becomes unavailable to others
+- No claiming required - just work with Emma in chat
 
 #### 5. Checking Payment History
 
@@ -941,25 +1024,41 @@ If still failing:
 3. Click "Create"
 4. Team pool ($450) and mission fund ($75) calculated automatically
 
-#### 2. Approving Mission Completions
+#### 2. Viewing Mission Progress
 
-1. MISSIONS section → Filter "Pending Approval"
-2. Click mission → See proof uploaded by member
-3. Review proof (URL, screenshot, etc.)
-4. Click "Approve" or "Reject"
-5. If approved: Member earnings updated, mission fund decreased
+**Missions are auto-approved (Emma validates) - no manual approval needed.**
 
-#### 3. Triggering Payments
+1. MISSIONS section → See all missions
+2. Filter by status: Available, Completed, Paid
+3. View completed missions: Who completed them, when, chat session ID
+4. Trust member + spot check (no formal approval flow)
 
+**Spot checking (if needed):**
+- Check chat session ID to see Emma's validation
+- Verify member actually completed the work
+- If issue found: Discuss with team, adjust manually
+
+#### 3. Triggering Payments (Pays BOTH Jobs + Missions)
+
+**When you trigger payment for a job, it pays:**
+1. **30% job pool** (split by interactions among contributors)
+2. **5% mission pool** (split by points among mission completers)
+3. If no missions completed → 5% pool goes to you (NLR/org)
+
+**Steps:**
 1. Wait for client to release payment on Upwork
 2. Verify cash received in bank account
 3. JOBS section → Click completed job
 4. Click "Mark Payment Received"
-5. Confirm: "Pay $450 to 2 team members?"
+5. Confirm: "Pay job earnings ($450) + mission earnings ($50) = $500 total to team?"
 6. Enter 2FA code
 7. Click "Confirm Payment"
-8. Team members receive notifications
-9. Earnings moved from "potential" to "paid"
+8. System distributes:
+   - Job earnings by interaction ratios
+   - Mission earnings by point ratios
+9. Team members receive combined notifications
+10. Mission points reset to 0 for all members
+11. Earnings moved from "potential" to "paid"
 
 ---
 
