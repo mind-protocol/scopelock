@@ -87,6 +87,11 @@ def get_current_user_mission(
     """
     FastAPI dependency to get mission and verify user has access.
 
+    Authorization rules:
+    - Missions (work_type='mission'): Allow any authenticated user to access unclaimed missions,
+      or allow access to claimed missions only if claimedBy matches current user
+    - Jobs (work_type='job'): Check assignee_ref matches current user (if implemented)
+
     Args:
         mission_id: Mission slug from URL parameter
         current_user: Current authenticated user (injected dependency)
@@ -96,7 +101,7 @@ def get_current_user_mission(
 
     Raises:
         HTTPException 404: If mission not found
-        HTTPException 403: If user is not assigned to this mission
+        HTTPException 403: If user is not authorized to access this mission
 
     Usage:
         @app.get("/api/missions/{mission_id}")
@@ -115,11 +120,36 @@ def get_current_user_mission(
             detail=f"Mission not found: {mission_id}"
         )
 
-    # Verify user is assigned to this mission
-    if mission.get("assignee_ref") != current_user.slug:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="You are not authorized to access this mission"
-        )
+    # Check work_type to determine authorization model
+    work_type = mission.get("work_type")
 
-    return mission
+    if work_type == "mission":
+        # MISSIONS: Allow access to unclaimed missions, or claimed by current user
+        claimed_by = mission.get("claimedBy")
+
+        if claimed_by is None:
+            # Unclaimed mission - any authenticated user can access
+            return mission
+        elif claimed_by == current_user.slug:
+            # Claimed by current user - allow access
+            return mission
+        else:
+            # Claimed by someone else - deny access
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Mission is claimed by another user: {claimed_by}"
+            )
+
+    elif work_type == "job":
+        # JOBS: Check assignee_ref (for future job implementation)
+        if mission.get("assignee_ref") != current_user.slug:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="You are not authorized to access this job"
+            )
+        return mission
+
+    else:
+        # Unknown work_type or missing - for backwards compatibility, allow access
+        # (This handles any legacy data without work_type field)
+        return mission

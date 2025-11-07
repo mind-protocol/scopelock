@@ -224,15 +224,6 @@ export default function ConsolePage() {
           </div>
         </div>
 
-        {/* Citizen selector */}
-        {activeMissionId && (
-          <CitizenSelector
-            citizens={CITIZENS}
-            activeCitizen={activeCitizen}
-            onSelect={setActiveCitizen}
-          />
-        )}
-
         {/* Content area: Workspace + Chat */}
         <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
           {!activeMissionId && (
@@ -308,13 +299,21 @@ export default function ConsolePage() {
                 }}
               />
 
-              {/* Right: Chat (always visible) */}
+              {/* Right: Chat panel with citizen selector */}
               <div style={{
                 width: `${100 - workspaceWidth}%`,
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden'
               }}>
+                {/* Citizen selector inside chat panel */}
+                <CitizenSelector
+                  citizens={CITIZENS}
+                  activeCitizen={activeCitizen}
+                  onSelect={setActiveCitizen}
+                />
+
+                {/* Chat interface */}
                 <ChatInterface
                   messages={messages}
                   onSendMessage={handleSendMessage}
