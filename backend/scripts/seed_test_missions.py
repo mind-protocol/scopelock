@@ -25,6 +25,7 @@ GRAPH_NAME = os.getenv('GRAPH_NAME', 'scopelock')
 
 # Test missions matching frontend mock data
 # These are MISSIONS (internal tasks), not Jobs (client work)
+# CORRECTED MODEL: No claiming, points-based, first to complete wins
 TEST_MISSIONS = [
     {
         "slug": "47",
@@ -34,18 +35,14 @@ TEST_MISSIONS = [
         "budget_cents": 30000,  # $300.00
         "due_date": "2025-11-08T23:59:59Z",
         "state": "active",
-        "status": "available",  # Available to claim
-        "missionType": "other",  # Could be 'proposal', 'social', 'recruitment', 'other'
-        "fixedPayment": 2.00,  # Fixed payment for this mission
-        "claimTier": 1,  # Tier 1 payment
-        "claimedBy": None,  # Not claimed yet
-        "claimedAt": None,
-        "claimExpiresAt": None,
-        "completedAt": None,
-        "proofUrl": None,
-        "proofNotes": None,
-        "approvedBy": None,
-        "approvedAt": None,
+        "status": "available",  # Available (first to complete wins)
+        "missionType": "other",  # 'proposal', 'social', 'recruitment', 'other'
+        "points": 1,  # Points earned for completing (1 for proposals, varies by type)
+        "emmaChatSessionId": None,  # Set when Emma validates completion
+        "completedAt": None,  # Set when Emma validates
+        "completedBy": None,  # Member who completed (first to finish)
+        "actualPayment": None,  # Calculated at job payment time
+        "paidWithJob": None,  # Job slug that triggered payment
         "stack_backend": "Python FastAPI",
         "stack_frontend": None,
         "stack_deploy_backend": "Render",
@@ -69,16 +66,12 @@ TEST_MISSIONS = [
         "state": "active",
         "status": "available",
         "missionType": "other",
-        "fixedPayment": 3.00,
-        "claimTier": 1,
-        "claimedBy": None,
-        "claimedAt": None,
-        "claimExpiresAt": None,
+        "points": 1,
+        "emmaChatSessionId": None,
         "completedAt": None,
-        "proofUrl": None,
-        "proofNotes": None,
-        "approvedBy": None,
-        "approvedAt": None,
+        "completedBy": None,
+        "actualPayment": None,
+        "paidWithJob": None,
         "stack_backend": None,
         "stack_frontend": "Next.js 14",
         "stack_deploy_backend": None,
@@ -100,18 +93,14 @@ TEST_MISSIONS = [
         "budget_cents": 60000,  # $600.00
         "due_date": "2025-11-12T23:59:59Z",
         "state": "qa",
-        "status": "completed",  # This one is in QA, so marked completed
+        "status": "completed",  # This one is completed
         "missionType": "other",
-        "fixedPayment": 5.00,
-        "claimTier": 1,
-        "claimedBy": None,  # Not assigned to anyone
-        "claimedAt": None,
-        "claimExpiresAt": None,
+        "points": 1,
+        "emmaChatSessionId": "chat-session-123",  # Emma validated this one
         "completedAt": "2025-11-06T15:00:00Z",
-        "proofUrl": None,
-        "proofNotes": None,
-        "approvedBy": None,
-        "approvedAt": None,
+        "completedBy": "test-member-wallet",  # Member who completed it
+        "actualPayment": None,  # Will be calculated when job completes
+        "paidWithJob": None,  # Not paid yet
         "stack_backend": "Python FastAPI",
         "stack_frontend": "Next.js 14",
         "stack_deploy_backend": "Render",
@@ -220,12 +209,11 @@ def create_mission(mission_data: dict):
     mission_data['updated_at'] = updated_at
     mission_data['valid_from'] = valid_from
 
-    # Add all mission-specific fields
+    # Add all mission-specific fields (CORRECTED: No claiming, points-based)
     cypher += "\nSET m.state = $state"
     cypher += "\nSET m.status = $status"
     cypher += "\nSET m.missionType = $missionType"
-    cypher += "\nSET m.fixedPayment = $fixedPayment"
-    cypher += "\nSET m.claimTier = $claimTier"
+    cypher += "\nSET m.points = $points"
     cypher += "\nSET m.client_name = $client_name"
     cypher += "\nSET m.budget_cents = $budget_cents"
     cypher += "\nSET m.due_date = $due_date"
@@ -243,22 +231,16 @@ def create_mission(mission_data: dict):
         cypher += "\nSET m.stack_database = $stack_database"
     if mission_data.get('notes'):
         cypher += "\nSET m.notes = $notes"
-    if mission_data.get('claimedBy'):
-        cypher += "\nSET m.claimedBy = $claimedBy"
-    if mission_data.get('claimedAt'):
-        cypher += "\nSET m.claimedAt = $claimedAt"
-    if mission_data.get('claimExpiresAt'):
-        cypher += "\nSET m.claimExpiresAt = $claimExpiresAt"
+    if mission_data.get('emmaChatSessionId'):
+        cypher += "\nSET m.emmaChatSessionId = $emmaChatSessionId"
     if mission_data.get('completedAt'):
         cypher += "\nSET m.completedAt = $completedAt"
-    if mission_data.get('proofUrl'):
-        cypher += "\nSET m.proofUrl = $proofUrl"
-    if mission_data.get('proofNotes'):
-        cypher += "\nSET m.proofNotes = $proofNotes"
-    if mission_data.get('approvedBy'):
-        cypher += "\nSET m.approvedBy = $approvedBy"
-    if mission_data.get('approvedAt'):
-        cypher += "\nSET m.approvedAt = $approvedAt"
+    if mission_data.get('completedBy'):
+        cypher += "\nSET m.completedBy = $completedBy"
+    if mission_data.get('actualPayment') is not None:
+        cypher += "\nSET m.actualPayment = $actualPayment"
+    if mission_data.get('paidWithJob'):
+        cypher += "\nSET m.paidWithJob = $paidWithJob"
 
     cypher += "\nRETURN m.slug, m.name, m.work_type, m.status"
 
@@ -278,7 +260,7 @@ def verify_missions():
     cypher = """
     MATCH (m:U4_Work_Item)
     WHERE m.scope_ref = 'scopelock' AND m.work_type = 'mission'
-    RETURN m.slug, m.name, m.work_type, m.status, m.state, m.claimedBy
+    RETURN m.slug, m.name, m.work_type, m.status, m.points, m.completedBy
     ORDER BY m.slug
     """
 
@@ -287,17 +269,17 @@ def verify_missions():
     if result and result['result'][1]:
         print(f"\n📋 Found {len(result['result'][1])} missions:")
         for row in result['result'][1]:
-            slug, name, work_type, status, state, claimed_by = row
-            claimed_str = f"claimed by {claimed_by}" if claimed_by else "unclaimed"
-            print(f"   • Mission {slug}: {name} (status={status}, state={state}, {claimed_str})")
+            slug, name, work_type, status, points, completed_by = row
+            completed_str = f"completed by {completed_by}" if completed_by else "available (first to complete wins)"
+            print(f"   • Mission {slug}: {name} (status={status}, points={points}, {completed_str})")
     else:
         print("   ❌ No missions found")
 
 
 def main():
-    print("🌱 Seeding test missions into FalkorDB")
+    print("🌱 Seeding test missions into FalkorDB (CORRECTED MODEL)")
     print(f"   Graph: {GRAPH_NAME}")
-    print(f"   Missions: Unassigned (no assignee_ref)")
+    print(f"   Model: Points-based, no claiming, first to complete wins")
     print()
 
     # Clear existing test missions
@@ -312,11 +294,12 @@ def main():
     verify_missions()
 
     print("\n✅ Seeding complete!")
-    print("\n💡 Created MISSIONS (internal tasks) with:")
+    print("\n💡 Created MISSIONS with CORRECTED MODEL:")
     print("   • work_type: 'mission'")
-    print("   • status: 'available' or 'completed'")
-    print("   • claimedBy: null (unclaimed)")
-    print("\n💡 Note: Backend may need to be updated to handle missions without assignee_ref")
+    print("   • Points-based: 1 point per mission")
+    print("   • NO claiming: First to complete wins")
+    print("   • Emma validation: Via chat, no manual proof")
+    print("   • Payment: Batched with next job (5% pool split by points)")
 
 
 if __name__ == "__main__":
