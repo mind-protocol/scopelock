@@ -1,3 +1,45 @@
+## 2025-11-07 16:35 — Rafael: CORS Fix + Backend Deployment Status Check 🔄
+
+**Work:** Updated CORS configuration to allow frontend requests from production domain
+
+**Issue:** CORS errors blocking frontend from accessing backend API
+```
+Access to fetch at 'https://scopelock.onrender.com/api/missions/47/messages'
+from origin 'https://scopelock.mindprotocol.ai' has been blocked by CORS policy
+```
+
+**Fixes Applied:**
+1. Updated `backend/.env.example` - Changed CORS_ORIGINS from old to current domain:
+   ```bash
+   # From: https://scopelock-mission-deck.vercel.app
+   # To:   https://scopelock.mindprotocol.ai
+   ```
+2. Updated Render environment variable via API
+3. Triggered new Render deployment (dep-d46k8jumcj7s73e7sqmg)
+
+**Current Status:**
+- ✅ Frontend: All fixes deployed to Vercel (layout, chat, error handling)
+- ⏳ Backend: Deployment triggered but **backend not responding** at https://scopelock.onrender.com/health
+- 🔍 Need to investigate deployment status - might have failed or still building
+
+**All Chat Fixes Complete:**
+- ✅ Chat width default changed to 40%
+- ✅ Page scrolling fixed (fits in viewport)
+- ✅ Duplicate citizen selector removed
+- ✅ Router registration fixed (no more 404s)
+- ✅ CORS configuration updated
+- ✅ React rendering errors fixed
+
+**Next:**
+1. Check Render dashboard for deployment logs
+2. Verify deployment completed successfully
+3. Test chat functionality once backend is live
+
+**Commit:** 5e00a10 (docs: update CORS origins in .env.example)
+**Files Modified:** backend/.env.example (line 54)
+
+---
+
 ## 2025-11-07 16:20 — Rafael: Fix Chat Backend Router Registration (404 → Working) ✅
 
 **User Issue:** Chat giving 404 errors for `/api/missions/47/chat` endpoint
