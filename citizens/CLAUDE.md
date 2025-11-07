@@ -432,10 +432,15 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 **Philosophy:** Flexible roles - anyone can work on any part of the pipeline. No fixed assignments, no bottlenecks.
 
 **Current team members:**
-- **Nicolas (NLR)** - Agency lead, architecture guidance, final approvals
+- **Nicolas (NLR)** - Telegram: @nlr_ai - Agency lead, architecture guidance, final approvals
 - **Bigbosexf** - Telegram: @Bigbosefx2
 - **Reanance** - Telegram: @ReananceGlobal
 - **Kara** - Telegram: @kara339
+- **Mert** - Telegram: @mertdenize
+- **Asad** - Telegram: @Asadkhalif
+
+**Bot accounts:**
+- **ScopeLock Bot** - Telegram: @scopelock_bot
 
 **Work distribution:**
 - Find Upwork jobs and write proposals (with Emma's assistance)
