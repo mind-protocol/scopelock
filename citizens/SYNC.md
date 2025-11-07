@@ -1,3 +1,31 @@
+## 2025-11-07 15:15 — Claude: Reorganized Website Header with Dropdown Navigation ✅
+
+**Work:** Restructured site header from flat navigation to dropdown menus per user requirements
+
+**Changes Made:**
+1. **Portfolio dropdown** - Projects (case-studies), Blog
+2. **How It Works dropdown** - ScopeLock Process, Pricing, FAQ
+3. **About dropdown** - Our Story, Mission Deck (internal workspace), Resources
+4. **CTA update** - Changed "Get Started" → "Start a Project"
+5. **Removed items** - No public-proof log (wasn't in nav), no $UBC scope mentions (already clean)
+
+**Implementation:**
+- Added CSS-only dropdown menus with hover functionality
+- Smooth transitions and visual polish
+- Consistent with existing ScopeLock brand (teal accent, dark theme)
+
+**Files Modified:**
+- src/app/layout.tsx:43-79 (header structure)
+- src/app/globals.css:123-192 (dropdown CSS)
+
+**Status:** Deployed ✅
+**Commit:** fc407cd
+**Link:** scopelock.mindprotocol.ai (deployed to Vercel)
+
+**Next:** Header navigation now organized for clarity. About dropdown contains Team (current /about), Mission Deck (internal workspace), and Resources (team learning materials).
+
+---
+
 ## 2025-11-07 14:45 — Rafael: Fixed Citizen Selector Across All Workspaces ✅
 
 **BUG FIX:** Clicking Emma/Sofia made chat disappear
