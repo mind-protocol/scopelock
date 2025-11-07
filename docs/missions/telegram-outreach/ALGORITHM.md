@@ -944,35 +944,62 @@ def generate_generic_template(contact_data: dict) -> str:
 
 async def call_maya_ai(prompt: str) -> str:
     """
-    Call Maya AI service to generate message.
+    Call Claude Code via subprocess for message generation.
 
-    Implementation TBD: Either REST API or Claude Code invocation.
+    Integration Method: Claude Code subprocess (approved by NLR 2025-11-07)
 
     Args:
-        prompt: Generation prompt
+        prompt: Generation prompt with contact context
 
     Returns:
-        Generated message text
+        Generated message text (stripped of whitespace)
+
+    Raises:
+        Exception: If Claude Code fails or times out (10s)
     """
-    # TODO: Implement Maya AI integration
-    # Option 1: REST API call
-    # Option 2: Claude Code subprocess invocation
+    try:
+        # Create subprocess running Claude Code
+        result = await asyncio.create_subprocess_exec(
+            "claude",  # Claude CLI binary
+            "-p", prompt,  # Prompt flag
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            cwd="/home/mind-protocol/scopelock"  # Project root for context
+        )
 
-    # Placeholder implementation
-    import subprocess
+        # Wait for completion with 10 second timeout
+        stdout, stderr = await asyncio.wait_for(
+            result.communicate(),
+            timeout=10.0
+        )
 
-    # Example using Claude Code (adjust path as needed)
-    result = subprocess.run(
-        ["claude", "-p", prompt],
-        capture_output=True,
-        text=True,
-        timeout=10
-    )
+        # Check exit code
+        if result.returncode == 0:
+            # Success: return generated message
+            message = stdout.decode('utf-8').strip()
+            return message
+        else:
+            # Claude Code failed
+            error_output = stderr.decode('utf-8')
+            raise Exception(f"Claude Code failed (exit {result.returncode}): {error_output}")
 
-    if result.returncode == 0:
-        return result.stdout.strip()
-    else:
-        raise Exception(f"Maya AI failed: {result.stderr}")
+    except asyncio.TimeoutError:
+        # Timeout after 10 seconds
+        # Kill subprocess if still running
+        try:
+            result.kill()
+            await result.wait()
+        except:
+            pass
+        raise Exception("Claude Code timed out after 10 seconds")
+
+    except FileNotFoundError:
+        # Claude CLI not found in PATH
+        raise Exception("Claude CLI not installed or not in PATH")
+
+    except Exception as e:
+        # Other errors
+        raise Exception(f"Maya AI call failed: {e}")
 ```
 
 ---

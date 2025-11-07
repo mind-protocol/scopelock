@@ -122,8 +122,9 @@ TELEGRAM_API_HASH=[your-api-hash]
 # Encryption (Session Strings)
 FERNET_ENCRYPTION_KEY=[generate-32-byte-key]
 
-# Maya AI Service (TBD)
-MAYA_AI_ENDPOINT=[to-be-determined]
+# Claude Code (Maya AI Integration)
+# Claude CLI must be authenticated (already configured via CLAUDE_CREDENTIALS)
+# No additional env vars needed - uses subprocess invocation
 
 # Server Config
 PORT=8000
@@ -388,7 +389,7 @@ python tests/performance/benchmark_telegram_outreach.py
    - TELEGRAM_API_ID = [from my.telegram.org]
    - TELEGRAM_API_HASH = [from my.telegram.org]
    - FERNET_ENCRYPTION_KEY = [generated 32-byte key]
-   - MAYA_AI_ENDPOINT = [TBD]
+   - CLAUDE_CREDENTIALS = [already set for existing backend - Maya AI uses Claude Code subprocess]
    ```
 
 4. **Deploy:**

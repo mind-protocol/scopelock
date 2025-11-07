@@ -21,7 +21,7 @@
 - [x] `DOD.md` (this file) complete
 
 **Documentation quality:**
-- [ ] No placeholders or TODO sections remain (Maya AI integration still TBD)
+- [x] No placeholders or TODO sections remain (Maya AI decision made: Claude Code subprocess)
 - [x] All code examples are complete and accurate
 - [x] All commands are copy-paste executable
 - [x] All file paths reference actual files that exist
@@ -239,9 +239,9 @@
   - [ ] TELEGRAM_API_ID
   - [ ] TELEGRAM_API_HASH
   - [ ] FERNET_ENCRYPTION_KEY
-  - [ ] MAYA_AI_ENDPOINT (TBD)
+  - [ ] CLAUDE_CREDENTIALS (already set - used for Maya AI subprocess)
 - [ ] FalkorDB connected and accessible
-- [ ] Maya AI service configured (TBD)
+- [ ] Claude CLI authenticated (check backend startup logs for "✅ Claude credentials written")
 
 **Verification:**
 - [ ] Health endpoint returns 200 OK: `GET /api/health`
@@ -353,7 +353,7 @@
 - NLR final approval
 
 **🔒 Blockers:**
-- Maya AI endpoint not yet determined (needs decision: REST or Claude Code)
+- ~~Maya AI endpoint not yet determined~~ **RESOLVED:** Claude Code subprocess approved by NLR (2025-11-07)
 
 **If ANY item is unchecked:**
 - Mission is **NOT COMPLETE**
@@ -372,11 +372,11 @@
 
 **Mission-Specific Considerations:**
 
-1. **Maya AI Integration Decision Required:**
-   - Option 1: Deploy Maya as separate FastAPI service (REST endpoint)
-   - Option 2: Use Claude Code subprocess invocation (`subprocess.run(["claude", "-p", prompt])`)
-   - **Recommendation:** Claude Code subprocess (keeps us on subscription budget, simpler deployment)
-   - **Action:** NLR to approve approach before Rafael starts implementation
+1. **Maya AI Integration - APPROVED ✅**
+   - **Decision:** Claude Code subprocess invocation (approved by NLR 2025-11-07)
+   - **Implementation:** `asyncio.create_subprocess_exec("claude", "-p", prompt, ...)`
+   - **Why:** Budget compliance (subscription vs API costs), simpler deployment (no separate service)
+   - **Requirements:** Claude CLI authenticated on backend (already configured via CLAUDE_CREDENTIALS env var)
 
 2. **Fernet Encryption Key Management:**
    - Production key must be generated securely and stored in Render environment variables

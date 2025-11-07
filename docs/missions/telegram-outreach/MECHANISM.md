@@ -787,40 +787,91 @@ SET s.is_active = false,
 
 **Purpose:** Generate personalized outreach messages
 
-**Integration Method:** TBD (either REST API endpoint or Claude Code invocation)
+**Integration Method:** **Claude Code subprocess invocation** (approved by NLR 2025-11-07)
 
-**Input:**
-```json
-{
-  "contact": {
-    "name": "Liam",
-    "profile_type": "hustler",
-    "signals": ["raider", "hustler"],
-    "matching_messages": [
-      {"text_snippet": "Completed 100 retweets", "signal_type": "hustler"}
-    ]
-  },
-  "template_type": "auto"
-}
+**Why Claude Code subprocess:**
+- Budget compliance: Uses subscription, not pay-per-token API costs
+- Simpler deployment: No separate service to deploy
+- Existing infrastructure: Claude Code already authenticated on backend
+- Standard ScopeLock pattern: Internal AI calls via Claude Code
+
+**Implementation:**
+```python
+import subprocess
+import asyncio
+
+async def call_maya_ai(prompt: str) -> str:
+    """
+    Call Claude Code via subprocess for message generation.
+
+    Args:
+        prompt: Generation prompt with contact context
+
+    Returns:
+        Generated message text
+
+    Raises:
+        Exception: If Claude Code fails or times out
+    """
+    try:
+        # Run Claude Code with prompt
+        result = await asyncio.create_subprocess_exec(
+            "claude",
+            "-p", prompt,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            cwd="/home/mind-protocol/scopelock"  # Project root for context
+        )
+
+        stdout, stderr = await asyncio.wait_for(
+            result.communicate(),
+            timeout=10.0  # 10 second timeout
+        )
+
+        if result.returncode == 0:
+            return stdout.decode('utf-8').strip()
+        else:
+            raise Exception(f"Claude Code failed: {stderr.decode('utf-8')}")
+
+    except asyncio.TimeoutError:
+        raise Exception("Claude Code timed out after 10 seconds")
+```
+
+**Input Prompt Format:**
+```
+Generate a personalized Telegram outreach message for:
+
+Name: Liam
+Profile Type: hustler
+Signals: raider, hustler
+Hook (their actual activity): "Completed 100 retweets for UBC"
+
+Message requirements:
+1. Reference their specific activity from the hook
+2. Explain ScopeLock: AI-assisted agency helping junior devs build real projects with AI guidance
+3. Include clear call-to-action (e.g., "Interested in hearing more?")
+4. Keep it under 500 characters
+5. Be conversational and friendly, not salesy
+
+Example tone: "Hey Liam, saw you grinding those 100 retweets for UBC. Noticed you're into earning opportunities. We're ScopeLock – helping junior devs build client projects with AI. Want to hear more?"
 ```
 
 **Output:**
-```json
-{
-  "message_text": "Hey Liam, saw you grinding those 100 retweets...",
-  "personalization_context": {
-    "hook_used": "Completed 100 retweets",
-    "signals_referenced": ["hustler"]
-  }
-}
+```
+Hey Liam, saw you grinding those 100 retweets for UBC. Noticed you're into earning opportunities. We're ScopeLock – helping junior devs build client projects with AI. Want to hear more?
 ```
 
-**Timeout:** 10 seconds (fallback to generic template if Maya doesn't respond)
+**Timeout:** 10 seconds (fallback to generic template if subprocess times out)
 
 **Fallback Template:**
 ```
 Hey {name}, came across your profile and noticed your {profile_type} skills. We're ScopeLock – an AI-human agency helping junior developers build real projects with AI guidance. Interested in hearing more about joining our team? Let me know!
 ```
+
+**Environment Requirements:**
+- Claude CLI must be authenticated on backend server
+- CLAUDE_CREDENTIALS env var set in Render (already configured)
+- Working directory: /home/mind-protocol/scopelock (for project context)
 
 ---
 
