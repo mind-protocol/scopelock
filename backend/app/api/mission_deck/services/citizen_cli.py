@@ -132,6 +132,11 @@ def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
                 timeout=60
             )
 
+        # Debug: Log Claude CLI output
+        print(f"[citizen_cli.py:ask_citizen] Claude CLI returncode: {result.returncode}")
+        print(f"[citizen_cli.py:ask_citizen] Claude CLI stdout length: {len(result.stdout)}")
+        print(f"[citizen_cli.py:ask_citizen] Claude CLI stderr: {result.stderr[:200] if result.stderr else 'None'}")
+
         if result.returncode != 0:
             # CLI failed - log error but return graceful message
             print(f"[citizen_cli.py:ask_citizen] Claude CLI failed for {citizen_id}: {result.stderr}")
@@ -142,6 +147,16 @@ def ask_citizen(citizen_id: str, user_message: str) -> tuple[str, List[Dict]]:
 
         # Extract response from stdout
         response_text = result.stdout.strip()
+
+        # Debug: Check if response is empty
+        if not response_text:
+            print(f"[citizen_cli.py:ask_citizen] WARNING: Empty response from Claude CLI for {citizen_id}")
+            print(f"[citizen_cli.py:ask_citizen] Citizen dir: {citizen_dir}")
+            print(f"[citizen_cli.py:ask_citizen] Prompt: {prompt[:100]}")
+            return (
+                "Sorry, I received an empty response. This might be an authentication issue. Please contact support.",
+                []
+            )
 
         # Extract code blocks
         code_blocks = extract_code_blocks(response_text)
