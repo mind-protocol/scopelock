@@ -297,7 +297,11 @@ def create_chat_message(
         Exception: If message creation or linking fails
     """
     msg_slug = f"chat-msg-{uuid.uuid4()}"
-    timestamp = datetime.utcnow().isoformat()
+    # Generate all timestamps in Python (FalkorDB doesn't support datetime() function)
+    timestamp = datetime.utcnow().isoformat() + 'Z'
+    created_at = datetime.utcnow().isoformat() + 'Z'
+    updated_at = created_at
+    valid_from = created_at
 
     # Truncate content for name field (max 100 chars)
     msg_name = f"{actor_ref}: {content[:50]}..." if len(content) > 50 else f"{actor_ref}: {content}"
@@ -311,14 +315,14 @@ def create_chat_message(
       level: 'L2',
       scope_ref: 'scopelock',
       actor_ref: $actor_ref,
-      timestamp: datetime($timestamp),
+      timestamp: $timestamp,
       status: 'active',
       role: $role,
       content: $content,
       code_blocks: $code_blocks,
-      created_at: datetime(),
-      updated_at: datetime(),
-      valid_from: datetime(),
+      created_at: $created_at,
+      updated_at: $updated_at,
+      valid_from: $valid_from,
       valid_to: null,
       description: $description,
       detailed_description: $detailed_description,
@@ -342,6 +346,9 @@ def create_chat_message(
             "role": role,
             "content": content,
             "code_blocks": code_blocks or [],
+            "created_at": created_at,
+            "updated_at": updated_at,
+            "valid_from": valid_from,
             "description": f"Chat message from {actor_ref}",
             "detailed_description": content[:200],
             "created_by": actor_ref
@@ -350,15 +357,19 @@ def create_chat_message(
         if not results:
             raise Exception("Failed to create message node")
 
-        # Link message to mission
+        # Link message to mission (generate timestamps for edge)
+        edge_created_at = datetime.utcnow().isoformat() + 'Z'
+        edge_updated_at = edge_created_at
+        edge_valid_from = edge_created_at
+
         cypher_link = """
         MATCH (msg:U4_Event {slug: $msg_slug})
         MATCH (mission:U4_Work_Item {slug: $mission_slug})
         CREATE (msg)-[:U4_ABOUT {
           focus_type: 'primary_subject',
-          created_at: datetime(),
-          updated_at: datetime(),
-          valid_from: datetime(),
+          created_at: $edge_created_at,
+          updated_at: $edge_updated_at,
+          valid_from: $edge_valid_from,
           valid_to: null,
           confidence: 1.0,
           energy: 0.7,
@@ -374,6 +385,9 @@ def create_chat_message(
         query_graph(cypher_link, {
             "msg_slug": msg_slug,
             "mission_slug": mission_slug,
+            "edge_created_at": edge_created_at,
+            "edge_updated_at": edge_updated_at,
+            "edge_valid_from": edge_valid_from,
             "created_by": actor_ref
         })
 
@@ -402,17 +416,21 @@ def update_dod_task_state(task_slug: str, new_state: str) -> Dict:
     if new_state not in ["todo", "doing", "done"]:
         raise ValueError(f"Invalid state: {new_state}. Must be todo/doing/done.")
 
+    # Generate timestamp in Python (FalkorDB doesn't support datetime() function)
+    updated_at = datetime.utcnow().isoformat() + 'Z'
+
     cypher = """
     MATCH (task:U4_Work_Item {slug: $slug, scope_ref: 'scopelock'})
     SET task.state = $new_state,
-        task.updated_at = datetime()
+        task.updated_at = $updated_at
     RETURN task
     """
 
     try:
         results = query_graph(cypher, {
             "slug": task_slug,
-            "new_state": new_state
+            "new_state": new_state,
+            "updated_at": updated_at
         })
 
         if not results:
