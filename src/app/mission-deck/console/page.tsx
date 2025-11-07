@@ -71,12 +71,12 @@ export default function ConsolePage() {
     loadMissions();
   }, []);
 
-  // Load messages when mission or citizen changes
+  // Load messages when citizen changes (chats are per-citizen, not per-mission)
   useEffect(() => {
-    if (activeMissionId) {
+    if (activeCitizen) {
       loadMessages();
     }
-  }, [activeMissionId, activeCitizen]);
+  }, [activeCitizen]);
 
   // Handle mouse drag for resizing panels
   useEffect(() => {
@@ -127,22 +127,24 @@ export default function ConsolePage() {
 
   const loadMessages = async () => {
     try {
-      const messagesData = await api.getMessages(activeMissionId);
+      // Load messages for active citizen (chats are per-citizen, shared across all users)
+      const messagesData = await api.getMessages(activeCitizen);
       setMessages(messagesData);
     } catch (error) {
-      console.error('Failed to load messages:', error);
+      console.error(`Failed to load messages for ${activeCitizen}:`, error);
     }
   };
 
   const handleSendMessage = async (message: string) => {
     setIsChatLoading(true);
     try {
-      await api.sendMessage(activeMissionId, message);
+      // Send message to active citizen (emma, rafael, sofia, etc.)
+      await api.sendMessage(activeCitizen, message);
       // Reload messages to get updated chat history
-      const updatedMessages = await api.getMessages(activeMissionId);
+      const updatedMessages = await api.getMessages(activeCitizen);
       setMessages(updatedMessages);
     } catch (error) {
-      console.error('Failed to send message:', error);
+      console.error(`Failed to send message to ${activeCitizen}:`, error);
     } finally {
       setIsChatLoading(false);
     }

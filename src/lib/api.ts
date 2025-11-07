@@ -487,12 +487,14 @@ export const api = {
   },
 
   // Chat - NO MOCK DATA (always use real backend with Claude Code CLI)
+  // ARCHITECTURE: Chats are per-citizen (emma, rafael, sofia), NOT per-mission
+  // All users see the SAME conversation with each citizen (shared chat history)
   sendMessage: async (
-    missionId: string,
+    citizenId: string,
     message: string
   ): Promise<SendMessageResponse> => {
     return apiCall<SendMessageResponse>(
-      `/api/missions/${missionId}/chat`,
+      `/api/citizens/${citizenId}/chat`,
       {
         method: 'POST',
         body: JSON.stringify({ message }),
@@ -500,12 +502,12 @@ export const api = {
     );
   },
 
-  getMessages: async (missionId: string): Promise<ChatMessage[]> => {
+  getMessages: async (citizenId: string): Promise<ChatMessage[]> => {
     // Fetch from backend and extract messages array from MessageHistoryResponse
     const response = await apiCall<{
       messages: ChatMessage[];
       total: number;
-    }>(`/api/missions/${missionId}/messages`);
+    }>(`/api/citizens/${citizenId}/messages`);
     return response.messages;
   },
 
