@@ -38,12 +38,12 @@ You're joining a team where **AI does 95% of the heavy lifting** and you supervi
 
 ## Phase 1: ACQUIRE (~2 minutes)
 
-### Owner: Bigbosexf ("The Hunter")
+### Owner: Any team member
 ### AI Support: Emma ("The Scout")
 
 ### The Flow
 
-**Step 1: Search & Filter (Bigbosexf)**
+**Step 1: Search & Filter (Team member)**
 1. Open Upwork, search for jobs matching our criteria
 2. Copy entire results page
 3. Paste to Emma (via Claude Code): `"Emma, analyze these jobs"`
@@ -53,7 +53,7 @@ You're joining a team where **AI does 95% of the heavy lifting** and you supervi
 - Returns: `"3 NO-GO (reasons), 2 STRONG GO (confidence scores)"`
 - Provides brief rationale for each decision
 
-**Step 3: Deep Dive (Bigbosexf)**
+**Step 3: Deep Dive (Team member)**
 - Open each STRONG GO job
 - Copy ENTIRE job description (don't summarize!)
 - Paste to Emma: `"Emma, write proposal for this job"`
@@ -65,14 +65,14 @@ Emma produces:
 - ✅ Metadata JSON (budget, timeline, client info)
 - ✅ Telegram notification to team
 
-**Step 5: Send (Bigbosexf)**
+**Step 5: Send (Team member)**
 - Review Emma's proposal (30 seconds)
 - Copy-paste into Upwork
 - Submit!
 
 ### Duration: ~2 minutes per proposal
 
-### What You Receive (As Bigbosexf)
+### What You Receive
 
 📱 **Telegram notification:**
 ```
@@ -103,7 +103,7 @@ PROPOSAL:
 
 ## Phase 2: SPECIFY (Duration: PLACEHOLDER - Details TBD)
 
-### Owner: Reanance ("The Specifier")
+### Owner: Any team member
 ### AI Support: Inna ("The Specifier")
 
 ### The Flow
@@ -132,13 +132,13 @@ This phase involves:
 
 ## Phase 3: BUILD (2 days simple, 5 days complex)
 
-### Owner: Kara ("The Builder")
+### Owner: Any team member
 ### AI Support: Rafael ("The Guide")
 
 ### The Flow
 
-**Step 1: Read Specs (Kara, 30 min)**
-- Read Reanance's complete specs
+**Step 1: Read Specs (Team member, 30 min)**
+- Read complete specs from Phase 2
 - Check AC.md (what must work)
 - Check DoD checklist (how we verify it works)
 - Review architecture notes
@@ -146,9 +146,9 @@ This phase involves:
 
 **Step 2: Generate Code (Rafael, AI, instant)**
 
-Kara asks Rafael via Claude Code:
+Team member asks Rafael via Claude Code:
 ```
-"Rafael, generate implementation for Mission #47 per Reanance's specs at
+"Rafael, generate implementation for Mission #47 per specs at
 /path/to/specs/AC.md"
 ```
 
@@ -159,28 +159,28 @@ Rafael returns:
 - ✅ Configuration (.env.example)
 - ✅ Deployment instructions
 
-**Step 3: Review & Test Locally (Kara, 2-4 hours)**
+**Step 3: Review & Test Locally (Team member, 2-4 hours)**
 - Create project from Rafael's code
 - Install dependencies
 - Run locally
 - Test against AC.md criteria
 - Fix any obvious issues
 
-**Step 4: Deploy (Kara, 1-2 hours)**
+**Step 4: Deploy (Team member, 1-2 hours)**
 - Deploy to Vercel (frontend) or Render (backend)
 - Configure environment variables
 - Test deployed version
 - Verify all AC.md criteria pass on production
 
-**Step 5: Update SYNC.md (Kara)**
+**Step 5: Update SYNC.md (Team member)**
 ```markdown
-## 2025-11-05 14:30 - Kara: Mission #47 Deployed
+## 2025-11-05 14:30 - [Your Name]: Mission #47 Deployed
 
 **Status:** Deployed to production, ready for QA
 **URL:** https://client-project.vercel.app
 **What works:** All 5 AC.md criteria tested and passing
-**Next:** Bigbosexf QA testing
-**Link:** /citizens/kara/missions/047-saas-landing/
+**Next:** QA testing
+**Link:** [path to mission folder]
 ```
 
 ### Duration
@@ -206,16 +206,16 @@ Rafael returns:
 
 ## Phase 4: TEST (2-4 hours)
 
-### Owner: Bigbosexf ("The Hunter" + QA)
+### Owner: Any team member (QA role)
 ### AI Support: Sofia ("The Checker")
 
 ### The Flow
 
-**Step 1: Receive Handoff (Bigbosexf)**
+**Step 1: Receive Handoff (QA team member)**
 
-Kara updates SYNC.md → Bigbosexf sees notification
+Builder updates SYNC.md → QA team member sees notification
 
-**Step 2: Get QA Checklist (Bigbosexf + Sofia)**
+**Step 2: Get QA Checklist (QA team member + Sofia)**
 
 Ask Sofia via Claude Code:
 ```
@@ -224,12 +224,12 @@ Ask Sofia via Claude Code:
 ```
 
 Sofia returns:
-- ✅ DoD checklist from Reanance's specs
+- ✅ DoD checklist from specs
 - ✅ AC.md criteria to verify
 - ✅ Performance thresholds to check
 - ✅ Test URLs and credentials
 
-**Step 3: Manual Testing (Bigbosexf, 1-2 hours)**
+**Step 3: Manual Testing (QA team member, 1-2 hours)**
 - Test every AC.md criterion
 - Try to break it (edge cases)
 - Check mobile responsiveness
@@ -242,7 +242,7 @@ Sofia returns:
 - Screenshot the bug
 - Write clear reproduction steps
 - Update SYNC.md with findings
-- **Talk directly to Kara** (not NLR, not Rafael)
+- **Talk directly to builder** (not NLR, not Rafael)
 
 **If all passes:**
 - Update SYNC.md: "QA passed ✅"
@@ -256,34 +256,34 @@ Sofia returns:
 ### Bug Fix Loop
 
 ```
-Bigbosexf finds bug
+QA finds bug
     ↓
-Talks to Kara (in-person or Telegram)
+Talks to builder (in-person or Telegram)
     ↓
-Kara fixes (with Rafael's help if needed)
+Builder fixes (with Rafael's help if needed)
     ↓
-Kara deploys fix
+Builder deploys fix
     ↓
-Bigbosexf re-tests ONLY the fixed part
+QA re-tests ONLY the fixed part
     ↓
 If still broken: repeat
 If fixed: continue QA
 ```
 
 ### When to Escalate
-- ❌ **DON'T escalate:** Bug found → Talk to Kara directly
-- ✅ **DO escalate:** Bug is critical AND Kara can't fix in 2 hours → Telegram NLR
+- ❌ **DON'T escalate:** Bug found → Talk to builder directly
+- ✅ **DO escalate:** Bug is critical AND builder can't fix in 2 hours → Telegram NLR
 
 ---
 
 ## Phase 5: DELIVER (~1 day)
 
-### Owner: Reanance ("The Specifier")
+### Owner: Any team member (Client relations role)
 ### AI Support: Maya ("The Bridge")
 
 ### The Flow
 
-**Step 1: Prepare Delivery Package (Reanance + Maya)**
+**Step 1: Prepare Delivery Package (Team member + Maya)**
 
 Ask Maya:
 ```
@@ -297,7 +297,7 @@ Maya provides:
 - ✅ Handoff documentation template
 - ✅ Post-delivery check-in message template
 
-**Step 2: Present to Client (Reanance, 30 min call)**
+**Step 2: Present to Client (Team member, 30 min call)**
 - Show demo (following Maya's script)
 - Highlight quantified deltas
 - Provide credentials + documentation
@@ -313,7 +313,7 @@ Maya provides:
 - [PLACEHOLDER: Payment flow details TBD]
 - [PLACEHOLDER: Team payment distribution TBD]
 
-**Step 5: Post-Delivery Check-in (Reanance + Maya, 1 week later)**
+**Step 5: Post-Delivery Check-in (Team member + Maya, 1 week later)**
 
 Maya provides message template:
 ```
@@ -333,7 +333,7 @@ It's been a week since we delivered [Project Name]. Quick check-in:
 
 ### When to Escalate
 - ✅ **DO escalate:** Client unhappy/requests major changes → Telegram NLR immediately
-- ✅ **DO escalate:** Client requests scope change → Reanance decides Swap/Add (unless unsure, then ask NLR)
+- ✅ **DO escalate:** Client requests scope change → Team member decides Swap/Add (unless unsure, then ask NLR)
 
 ---
 
@@ -371,10 +371,10 @@ Update SYNC.md **after any significant event**, not daily. "Significant" means:
 |-----------|-----|-----|
 | Stuck on code error <1 hour | Rafael (AI) | He debugs instantly |
 | Stuck on code error >1 hour | NLR (Telegram/Call) | Need human guidance |
-| Bug found in QA | Kara directly | She's the implementer |
+| Bug found in QA | Builder directly | They're the implementer |
 | Client question (technical) | Rafael or NLR | Depends on complexity |
-| Client question (scope/timeline) | Reanance handles (with Maya's help) | Reanance owns client relationship |
-| Client requests change | Reanance decides Swap/Add | Unless unclear, then NLR |
+| Client question (scope/timeline) | Team member handling client (with Maya's help) | Whoever owns that mission |
+| Client requests change | Team member decides Swap/Add | Unless unclear, then NLR |
 | Should I take this job? | Emma (AI) | She evaluates fit |
 | How should I price this? | Alexis (AI) | She guides pricing strategy |
 | How do I write specs? | Inna (AI) | She generates complete docs |
@@ -398,7 +398,7 @@ Update SYNC.md **after any significant event**, not daily. "Significant" means:
 ### Failure Mode 3: "Client Changed Requirements Mid-Mission"
 **Symptom:** Client wants something different from AC.md
 **Fix:**
-1. Reanance decides: is this Swap (equal/lower complexity, €0) or Add (new milestone, priced)?
+1. Team member handling client decides: is this Swap (equal/lower complexity, €0) or Add (new milestone, priced)?
 2. If Swap: Update AC.md, continue
 3. If Add: Create new milestone, get client approval, schedule separately
 4. If unsure which: Telegram NLR
@@ -406,8 +406,8 @@ Update SYNC.md **after any significant event**, not daily. "Significant" means:
 ### Failure Mode 4: "QA Found Critical Bug Right Before Delivery"
 **Symptom:** Bug breaks core functionality, delivery is tomorrow
 **Fix:**
-1. Bigbosexf talks to Kara immediately (don't wait)
-2. Kara asks Rafael for fix
+1. QA team member talks to builder immediately (don't wait)
+2. Builder asks Rafael for fix
 3. If fixable in <2 hours: fix, re-test, deliver
 4. If not fixable quickly: Telegram NLR + postpone delivery 1 day
 
@@ -416,47 +416,47 @@ Update SYNC.md **after any significant event**, not daily. "Significant" means:
 ## Day-in-the-Life Example: $500 Landing Page Mission
 
 ### Day 1 Morning: Acquire
-- **09:00** - Bigbosexf searches Upwork, finds 8 jobs
+- **09:00** - Team member searches Upwork, finds 8 jobs
 - **09:02** - Pastes results to Emma
 - **09:03** - Emma returns: "6 NO-GO, 2 STRONG GO"
-- **09:05** - Bigbosexf opens STRONG GO #1, copies full description
+- **09:05** - Team member opens STRONG GO #1, copies full description
 - **09:06** - Pastes to Emma: "Write proposal"
 - **09:07** - Emma returns complete proposal
-- **09:08** - Bigbosexf reviews, submits
+- **09:08** - Team member reviews, submits
 - **09:10** - Repeats for STRONG GO #2
 - **Total time:** 10 minutes, 2 proposals sent
 
 ### Day 1 Afternoon: Specify
 - **14:00** - Client accepts proposal! 🎉
-- **14:05** - Reanance gets notification
+- **14:05** - Team member gets notification
 - **14:10** - [PLACEHOLDER: Specification process details TBD]
 - **16:00** - Specs complete, AC.md locked
 
 ### Day 2-3: Build
-- **Day 2, 10:00** - Kara reads specs
+- **Day 2, 10:00** - Team member reads specs
 - **10:30** - Asks Rafael: "Generate implementation"
 - **10:45** - Rafael returns complete Next.js code
-- **11:00-13:00** - Kara reviews, sets up project, tests locally
+- **11:00-13:00** - Team member reviews, sets up project, tests locally
 - **14:00** - Deploys to Vercel
 - **14:30** - Tests deployed version, all AC.md criteria pass
 - **14:45** - Updates SYNC.md: "Ready for QA"
 
 ### Day 4 Morning: Test
-- **09:00** - Bigbosexf sees SYNC.md update
+- **09:00** - Team member sees SYNC.md update
 - **09:15** - Asks Sofia for QA checklist
 - **09:20** - Tests all AC.md criteria
 - **10:30** - Bug found: Mobile menu doesn't close when clicking link
-- **10:35** - Talks to Kara: "Mobile menu bug, repro steps: [...]"
-- **10:50** - Kara asks Rafael for fix
+- **10:35** - Talks to Team member: "Mobile menu bug, repro steps: [...]"
+- **10:50** - Team member asks Rafael for fix
 - **11:00** - Rafael provides fix
-- **11:15** - Kara deploys fixed version
-- **11:20** - Bigbosexf re-tests mobile menu
+- **11:15** - Team member deploys fixed version
+- **11:20** - Team member re-tests mobile menu
 - **11:25** - Bug fixed ✅
 - **11:30** - Completes rest of QA
 - **12:00** - Updates SYNC.md: "QA passed ✅"
 
 ### Day 4 Afternoon: Deliver
-- **14:00** - Reanance asks Maya for delivery script
+- **14:00** - Team member asks Maya for delivery script
 - **14:15** - Schedules demo call with client
 - **14:30** - Presents demo (15 min)
 - **14:45** - Client loves it! ✅
@@ -464,7 +464,7 @@ Update SYNC.md **after any significant event**, not daily. "Significant" means:
 - **15:30** - [PLACEHOLDER: Payment received]
 
 ### Day 11: Follow-up
-- **Reanance sends Maya's check-in message**
+- **Team member sends Maya's check-in message**
 - Client responds: "Working great! Here's a testimonial..."
 - 🎉 Mission complete!
 
@@ -477,40 +477,40 @@ Update SYNC.md **after any significant event**, not daily. "Significant" means:
 ```
 PHASE 1: ACQUIRE (~2 min)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Bigbosexf  │ [Search Upwork] → [Copy results] → [Paste to Emma]
+Team member  │ [Search Upwork] → [Copy results] → [Paste to Emma]
 Emma (AI)  │ ........................ [Analyze jobs] → [Select STRONG GO]
-Bigbosexf  │ ........................ [Open job] → [Copy full description]
+Team member  │ ........................ [Open job] → [Copy full description]
 Emma (AI)  │ ........................ [Write proposal + JSON + Telegram]
-Bigbosexf  │ ........................ [Review] → [Submit] ✅
+Team member  │ ........................ [Review] → [Submit] ✅
 
 PHASE 2: SPECIFY (TBD)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Reanance   │ [Onboard client] → [Gather requirements]
+Team member   │ [Onboard client] → [Gather requirements]
 Inna (AI)  │ ........................ [Write 6-level docs]
-Reanance   │ ........................ [Review] → [Lock scope] ✅
+Team member   │ ........................ [Review] → [Lock scope] ✅
 
 PHASE 3: BUILD (2-5 days)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Kara       │ [Read specs] → [Ask Rafael]
+Team member       │ [Read specs] → [Ask Rafael]
 Rafael (AI)│ ........................ [Generate complete code]
-Kara       │ ........................ [Review] → [Test] → [Deploy] → [SYNC update] ✅
+Team member       │ ........................ [Review] → [Test] → [Deploy] → [SYNC update] ✅
 
 PHASE 4: TEST (2-4 hours)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Bigbosexf  │ [Ask Sofia for checklist]
+Team member  │ [Ask Sofia for checklist]
 Sofia (AI) │ ........................ [Generate QA checklist]
-Bigbosexf  │ ........................ [Manual testing]
-           │ → Bug found? → [Talk to Kara] → Kara fixes → Re-test
+Team member  │ ........................ [Manual testing]
+           │ → Bug found? → [Talk to Team member] → Team member fixes → Re-test
            │ → All pass? → [SYNC update: QA passed] ✅
 
 PHASE 5: DELIVER (~1 day)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Reanance   │ [Ask Maya for demo script]
+Team member   │ [Ask Maya for demo script]
 Maya (AI)  │ ........................ [Generate delivery package]
-Reanance   │ ........................ [Present demo to client]
+Team member   │ ........................ [Present demo to client]
 NLR        │ ........................ [Final review 15 min] → [Approve]
 Client     │ ........................ [Accept] → [Payment] 🎉
-Reanance   │ ........................ [1 week later: check-in + testimonial request]
+Team member   │ ........................ [1 week later: check-in + testimonial request]
 ```
 
 ---
@@ -519,13 +519,13 @@ Reanance   │ ........................ [1 week later: check-in + testimonial re
 
 *Note: This article shows WHO and WHEN. For detailed WHAT (specific handoff criteria), see the specialized articles on each role.*
 
-### Bigbosexf → Reanance (Job Won)
+### Team member → Team member (Job Won)
 - ✅ Job URL
 - ✅ Emma's proposal JSON (has all client context)
 - ✅ Client's Upwork profile link
 - ✅ Budget confirmed
 
-### Reanance → Kara (Specs Ready)
+### Team member → Team member (Specs Ready)
 - ✅ AC.md (acceptance criteria)
 - ✅ DoD checklist
 - ✅ Architecture notes
@@ -533,20 +533,20 @@ Reanance   │ ........................ [1 week later: check-in + testimonial re
 - ✅ Test credentials (if needed)
 - ✅ SYNC.md updated
 
-### Kara → Bigbosexf (Ready for QA)
+### Team member → Team member (Ready for QA)
 - ✅ Deployed URL (production)
 - ✅ Test credentials
 - ✅ What to test (AC.md criteria)
 - ✅ Known issues (if any)
 - ✅ SYNC.md updated
 
-### Bigbosexf → Reanance (QA Passed)
+### Team member → Team member (QA Passed)
 - ✅ All AC.md criteria tested ✅
 - ✅ Screenshots of key features working
 - ✅ DoD checklist signed off
 - ✅ SYNC.md updated
 
-### Reanance → NLR (Ready for Approval)
+### Team member → NLR (Ready for Approval)
 - ✅ Demo prepared
 - ✅ QA passed
 - ✅ Client scheduled for presentation
@@ -556,7 +556,7 @@ Reanance   │ ........................ [1 week later: check-in + testimonial re
 
 ## Quiz: Test Your Understanding
 
-**Scenario 1:** You're Kara. You deployed the app but get a weird error you've never seen. You've been stuck for 45 minutes. What do you do?
+**Scenario 1:** You're Team member. You deployed the app but get a weird error you've never seen. You've been stuck for 45 minutes. What do you do?
 
 <details>
 <summary>Show Answer</summary>
@@ -570,7 +570,7 @@ Reanance   │ ........................ [1 week later: check-in + testimonial re
 
 ---
 
-**Scenario 2:** You're Bigbosexf doing QA. You find a bug where the contact form doesn't send emails. What do you do?
+**Scenario 2:** You're Team member doing QA. You find a bug where the contact form doesn't send emails. What do you do?
 
 <details>
 <summary>Show Answer</summary>
@@ -578,16 +578,16 @@ Reanance   │ ........................ [1 week later: check-in + testimonial re
 **Correct action:**
 1. Screenshot the bug
 2. Write reproduction steps
-3. Talk directly to Kara (don't go through NLR or Rafael first)
-4. Kara will fix (with Rafael's help if needed)
-5. Kara will let you know when to re-test
+3. Talk directly to Team member (don't go through NLR or Rafael first)
+4. Team member will fix (with Rafael's help if needed)
+5. Team member will let you know when to re-test
 
-**Why:** Kara is the implementer. She owns the fix. Going through NLR wastes time.
+**Why:** Team member is the implementer. She owns the fix. Going through NLR wastes time.
 </details>
 
 ---
 
-**Scenario 3:** You're Reanance. Mid-implementation, the client says "Can we also add a blog section?" What do you do?
+**Scenario 3:** You're Team member. Mid-implementation, the client says "Can we also add a blog section?" What do you do?
 
 <details>
 <summary>Show Answer</summary>
@@ -596,11 +596,11 @@ Reanance   │ ........................ [1 week later: check-in + testimonial re
 1. Check AC.md: Is "blog section" in scope?
 2. If NO → This is a change request
 3. Decide: Is this Swap (replace something with blog, same complexity) or Add (new milestone)?
-4. If SWAP: Update AC.md, tell Kara, continue
+4. If SWAP: Update AC.md, tell Team member, continue
 5. If ADD: Create new milestone, price it, get client approval before scheduling
 6. If you're unsure which → Telegram NLR for guidance
 
-**Why:** Reanance owns scope decisions. But if unclear, NLR helps decide.
+**Why:** Team member owns scope decisions. But if unclear, NLR helps decide.
 </details>
 
 ---
@@ -625,9 +625,9 @@ Now you understand **WHO does WHAT WHEN**. Next articles cover:
 ├─────────────────────────────────────────────────────────┤
 │ Code error <1hr        → Rafael (AI)                    │
 │ Code error >1hr        → NLR (Telegram)                 │
-│ Bug in QA              → Kara (direct)                  │
-│ Client question        → Reanance (with Maya/Rafael)    │
-│ Scope change           → Reanance decides (or NLR)      │
+│ Bug in QA              → Team member (direct)                  │
+│ Client question        → Team member (with Maya/Rafael)    │
+│ Scope change           → Team member decides (or NLR)      │
 │ Job evaluation         → Emma (AI)                      │
 │ Pricing guidance       → Alexis (AI)                    │
 │ Ready for delivery?    → Sofia (AI)                     │

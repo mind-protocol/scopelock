@@ -427,70 +427,26 @@ Client FAQ snippet we reuse: *“Price/outcome locked — what if I change my mi
 
 ---
 
-### Humans
+### Human Team Members
 
-#### NLR (Nicolas) - "The Architect" (Agency Lead)
+**Philosophy:** Flexible roles - anyone can work on any part of the pipeline. No fixed assignments, no bottlenecks.
 
-**Telegram:** @nlr_ai
+**Current team members:**
+- **Nicolas (NLR)** - Agency lead, architecture guidance, final approvals
+- **Bigbosexf** - Telegram: @Bigbosefx2
+- **Reanance** - Telegram: @ReananceGlobal
+- **Kara** - Telegram: @kara339
 
-**Domain:** Strategy, architecture guidance, AI-driven development coaching, escalation support
+**Work distribution:**
+- Find Upwork jobs and write proposals (with Emma's assistance)
+- Write specifications and documentation (with Inna's assistance)
+- Implement code and deploy (with Rafael's code generation)
+- Test and verify quality (with Sofia's test suite)
+- Manage client communication (with Maya's guidance)
 
-**Responsibilities:**
-- Overall agency direction and growth
-- Guide team on proper architecture and implementation patterns
-- Help team members leverage AI effectively (prompt engineering, debugging with AI)
-- Help when missions are blocked or complex issues arise
-- Final approval before delivery (15 min review per mission)
-- Train new team members
+**Compensation:** Per-interaction model - every message to AI = +1 point, earn proportional share of 30% team pool. See `/docs/resources/compensation-structure.md` for details.
 
----
-
-#### Bigbosexf - "The Hunter" (Proposal Writing & QA)
-
-**Telegram:** @Bigbosefx2
-
-**Domain:** Proposal writing, quality assurance, testing
-
-**Responsibilities:**
-- Find and evaluate Upwork jobs
-- Write winning proposals (with Emma's assistance)
-- Test deliverables before client delivery (QA role)
-- Verify all acceptance criteria met (work with Sofia)
-- Catch bugs before client sees them
-
----
-
-#### Reanance - "The Specifier" (Documentation & Client Relations)
-
-**Telegram:** @ReananceGlobal
-
-**Domain:** Specifications writing, customer management
-
-**Responsibilities:**
-- Write complete specifications/documentation (with Inna's assistance)
-- Create AC.md (acceptance criteria) for each mission
-- Define DoD (Definition of Done) checklists
-- Manage client communication (with Maya's assistance)
-- Send weekly status updates to clients
-- Handle client questions and change requests
-- Coordinate handoffs and deliveries
-
----
-
-#### Kara - "The Builder" (Development)
-
-**Telegram:** @kara339
-
-**Domain:** Code implementation, deployment
-
-**Responsibilities:**
-- Implement missions based on Reanance's specifications
-- Ask Rafael to generate all implementation code
-- Review generated code for correctness
-- Test locally before deploying
-- Deploy to Render/Vercel
-- Handle edge cases AI cannot
-- Fix bugs identified by Bigbosexf (QA)
+**Key principle:** Work more → earn more. Work less → earn less. 100% transparent, real-time earnings visibility.
 
 ---
 

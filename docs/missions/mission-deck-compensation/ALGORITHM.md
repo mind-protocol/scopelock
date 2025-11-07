@@ -1,0 +1,1515 @@
+# ALGORITHM: Mission Deck Compensation System
+
+**Version:** 1.0
+**Created:** 2025-11-07
+**Mission:** Step-by-step implementation guide for compensation tracking
+
+---
+
+## Phase 1: Backend Foundation (Day 1-2)
+
+### Step 1.1: Update Dependencies
+
+**File:** `requirements.txt`
+
+Add compensation-specific dependencies:
+
+```txt
+# Existing dependencies
+fastapi==0.104.0
+uvicorn[standard]==0.24.0
+requests==2.31.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+
+# New for compensation
+redis==5.0.1                # For earnings caching (optional)
+sse-starlette==1.6.5        # For Server-Sent Events (real-time updates)
+```
+
+Install:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### Step 1.2: Create Compensation Service Module
+
+**File:** `backend/services/compensation/__init__.py`
+
+```python
+"""
+Compensation service for interaction-based earnings tracking.
+"""
+
+from .interaction_tracker import track_interaction, get_interaction_history
+from .earnings_calculator import (
+    calculate_member_earning,
+    calculate_all_member_earnings,
+    get_total_potential_earnings
+)
+from .mission_manager import (
+    claim_mission,
+    complete_mission,
+    approve_mission,
+    check_mission_expiry
+)
+from .payment_processor import trigger_payment, get_payment_history
+
+__all__ = [
+    "track_interaction",
+    "get_interaction_history",
+    "calculate_member_earning",
+    "calculate_all_member_earnings",
+    "get_total_potential_earnings",
+    "claim_mission",
+    "complete_mission",
+    "approve_mission",
+    "check_mission_expiry",
+    "trigger_payment",
+    "get_payment_history",
+]
+```
+
+---
+
+### Step 1.3: Interaction Tracker Implementation
+
+**File:** `backend/services/compensation/interaction_tracker.py`
+
+```python
+"""
+Track interactions (messages sent to AI citizens) and update job interaction counts.
+"""
+
+import hashlib
+import uuid
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+
+from services.graph import query_graph
+from services.compensation.earnings_calculator import calculate_all_member_earnings
+
+
+def track_interaction(
+    job_id: str,
+    member_id: str,
+    message: str,
+    ai_recipient: str
+) -> Dict:
+    """
+    Track new interaction and update earnings.
+
+    Args:
+        job_id: Job slug (e.g., "job-therapykin-chatbot-2025-11")
+        member_id: Member slug (e.g., "member_a")
+        message: Message content
+        ai_recipient: AI citizen name ("rafael", "inna", "sofia", "emma")
+
+    Returns:
+        {
+            "interactionCounted": True,
+            "newInteractionCount": 21,
+            "teamTotal": 51,
+            "newPotentialEarning": 185.29,
+            "eventId": "chat-msg-uuid-12345"
+        }
+
+    Raises:
+        ValueError: If duplicate message detected or job not found
+    """
+
+    # 1. Check for duplicate (same message within 1 second)
+    content_hash = hashlib.sha256(message.encode()).hexdigest()
+
+    cypher_check_duplicate = """
+    MATCH (e:U4_Event {actor_ref: $member_id, content_hash: $content_hash})
+    WHERE e.timestamp > datetime($since)
+    RETURN count(e) AS count
+    """
+
+    since = (datetime.utcnow() - timedelta(seconds=1)).isoformat()
+    duplicate_result = query_graph(cypher_check_duplicate, {
+        "member_id": member_id,
+        "content_hash": content_hash,
+        "since": since
+    })
+
+    if duplicate_result and duplicate_result[0]["count"] > 0:
+        raise ValueError("Duplicate message detected (sent within 1 second)")
+
+    # 2. Verify job exists
+    cypher_check_job = """
+    MATCH (job:U4_Work_Item {slug: $job_slug, work_type: 'job'})
+    RETURN job.slug AS slug
+    """
+
+    job_result = query_graph(cypher_check_job, {"job_slug": job_id})
+    if not job_result:
+        raise ValueError(f"Job not found: {job_id}")
+
+    # 3. Create U4_Event node
+    event_slug = f"chat-msg-{uuid.uuid4()}"
+    timestamp = datetime.utcnow().isoformat()
+
+    cypher_create_event = """
+    CREATE (e:U4_Event {
+      slug: $slug,
+      name: $name,
+      event_kind: 'message',
+      level: 'L2',
+      scope_ref: 'scopelock',
+      status: 'active',
+      actor_ref: $actor_ref,
+      timestamp: datetime($timestamp),
+      role: 'user',
+      content: $content,
+      code_blocks: [],
+      ai_recipient: $ai_recipient,
+      interaction_context: 'job',
+      job_slug: $job_slug,
+      content_hash: $content_hash,
+      created_at: datetime(),
+      updated_at: datetime(),
+      valid_from: datetime(),
+      valid_to: null,
+      description: $description,
+      type_name: 'U4_Event',
+      visibility: 'partners',
+      created_by: $actor_ref,
+      substrate: 'organizational'
+    })
+    RETURN e
+    """
+
+    query_graph(cypher_create_event, {
+        "slug": event_slug,
+        "name": f"{member_id}: {message[:50]}...",
+        "actor_ref": member_id,
+        "timestamp": timestamp,
+        "content": message,
+        "ai_recipient": ai_recipient,
+        "job_slug": job_id,
+        "content_hash": content_hash,
+        "description": f"Chat message from {member_id} to {ai_recipient}"
+    })
+
+    # 4. Link event to job
+    cypher_link = """
+    MATCH (e:U4_Event {slug: $event_slug})
+    MATCH (job:U4_Work_Item {slug: $job_slug})
+    CREATE (e)-[:U4_ABOUT {
+      focus_type: 'primary_subject',
+      created_at: datetime(),
+      updated_at: datetime(),
+      valid_from: datetime(),
+      valid_to: null,
+      confidence: 1.0,
+      energy: 0.7,
+      forming_mindstate: 'guidance',
+      goal: 'Message contributes to job',
+      visibility: 'partners',
+      created_by: $member_id,
+      substrate: 'organizational'
+    }]->(job)
+    """
+
+    query_graph(cypher_link, {
+        "event_slug": event_slug,
+        "job_slug": job_id,
+        "member_id": member_id
+    })
+
+    # 5. Update job interaction counts
+    #    NOTE: FalkorDB doesn't support nested object updates directly,
+    #    so we fetch, modify, and set the entire interactionCounts object
+
+    # Fetch current counts
+    cypher_get_counts = """
+    MATCH (job:U4_Work_Item {slug: $job_slug})
+    RETURN job.interactionCounts AS counts, job.totalInteractions AS total
+    """
+
+    counts_result = query_graph(cypher_get_counts, {"job_slug": job_id})
+    current_counts = counts_result[0].get("counts", {}) if counts_result else {}
+    current_total = counts_result[0].get("total", 0) if counts_result else 0
+
+    # Update counts
+    if member_id not in current_counts:
+        current_counts[member_id] = 0
+    current_counts[member_id] += 1
+    new_total = current_total + 1
+
+    # Write back updated counts
+    cypher_update_job = """
+    MATCH (job:U4_Work_Item {slug: $job_slug})
+    SET job.interactionCounts = $new_counts,
+        job.totalInteractions = $new_total,
+        job.updated_at = datetime()
+    RETURN job
+    """
+
+    query_graph(cypher_update_job, {
+        "job_slug": job_id,
+        "new_counts": current_counts,
+        "new_total": new_total
+    })
+
+    # 6. Recalculate earnings for all members
+    all_earnings = calculate_all_member_earnings(job_id)
+    member_earning = all_earnings.get(member_id, 0.0)
+
+    # 7. (Optional) Broadcast update via SSE
+    # This will be implemented in Step 1.6
+
+    return {
+        "interactionCounted": True,
+        "newInteractionCount": current_counts[member_id],
+        "teamTotal": new_total,
+        "newPotentialEarning": member_earning,
+        "eventId": event_slug
+    }
+
+
+def get_interaction_history(job_id: str, member_id: str) -> List[Dict]:
+    """
+    Get complete interaction history for a member on a job.
+
+    Returns:
+        [
+            {
+                "timestamp": "2025-11-07T14:23:15Z",
+                "messagePreview": "Rafael, implement OTP flow...",
+                "aiRecipient": "rafael",
+                "eventId": "chat-msg-uuid-123"
+            },
+            ...
+        ]
+    """
+
+    cypher = """
+    MATCH (e:U4_Event)-[:U4_ABOUT]->(job:U4_Work_Item {slug: $job_slug})
+    WHERE e.actor_ref = $member_id AND e.event_kind = 'message'
+    RETURN e.timestamp AS timestamp,
+           e.content AS content,
+           e.ai_recipient AS aiRecipient,
+           e.slug AS eventId
+    ORDER BY e.timestamp DESC
+    """
+
+    results = query_graph(cypher, {"job_slug": job_id, "member_id": member_id})
+
+    history = []
+    for row in results:
+        content = row["content"]
+        preview = content[:50] + "..." if len(content) > 50 else content
+
+        history.append({
+            "timestamp": row["timestamp"],
+            "messagePreview": preview,
+            "aiRecipient": row["aiRecipient"],
+            "eventId": row["eventId"]
+        })
+
+    return history
+```
+
+---
+
+### Step 1.4: Earnings Calculator Implementation
+
+**File:** `backend/services/compensation/earnings_calculator.py`
+
+```python
+"""
+Calculate member earnings from interaction counts.
+"""
+
+from typing import Dict
+from services.graph import query_graph
+
+
+def calculate_member_earning(job_id: str, member_id: str) -> float:
+    """
+    Calculate member's potential earning for a job.
+
+    Formula: (member_interactions / total_interactions) × team_pool
+
+    Args:
+        job_id: Job slug
+        member_id: Member slug
+
+    Returns:
+        Potential earning in dollars (rounded to 2 decimals)
+    """
+
+    # Get job data
+    cypher = """
+    MATCH (job:U4_Work_Item {slug: $job_slug, work_type: 'job'})
+    RETURN job.teamPool AS pool,
+           job.interactionCounts AS counts,
+           job.totalInteractions AS total
+    """
+
+    result = query_graph(cypher, {"job_slug": job_id})
+
+    if not result:
+        return 0.0
+
+    data = result[0]
+    team_pool = data.get("pool", 0)
+    interaction_counts = data.get("counts", {})
+    total_interactions = data.get("total", 0)
+
+    member_interactions = interaction_counts.get(member_id, 0)
+
+    if total_interactions == 0:
+        return 0.0
+
+    # Calculate earning
+    earning = (member_interactions / total_interactions) * team_pool
+
+    # Round to 2 decimals
+    return round(earning, 2)
+
+
+def calculate_all_member_earnings(job_id: str) -> Dict[str, float]:
+    """
+    Calculate earnings for all members who contributed to job.
+
+    Returns:
+        {
+            "member_a": 180.00,
+            "member_b": 90.00,
+            ...
+        }
+    """
+
+    cypher = """
+    MATCH (job:U4_Work_Item {slug: $job_slug, work_type: 'job'})
+    RETURN job.interactionCounts AS counts
+    """
+
+    result = query_graph(cypher, {"job_slug": job_id})
+
+    if not result:
+        return {}
+
+    counts = result[0].get("counts", {})
+    earnings = {}
+
+    for member_id in counts.keys():
+        earnings[member_id] = calculate_member_earning(job_id, member_id)
+
+    return earnings
+
+
+def get_total_potential_earnings(member_id: str) -> Dict:
+    """
+    Get member's total potential earnings across all active jobs + pending missions.
+
+    Returns:
+        {
+            "totalPotentialEarnings": 164.00,
+            "fromJobs": 159.00,
+            "fromMissions": 5.00,
+            "breakdown": {
+                "jobs": [...],
+                "missions": [...]
+            }
+        }
+    """
+
+    # 1. Get earnings from all active jobs
+    cypher_jobs = """
+    MATCH (job:U4_Work_Item {work_type: 'job', scope_ref: 'scopelock'})
+    WHERE job.status IN ['active', 'completed']
+    RETURN job.slug AS jobId,
+           job.name AS title,
+           job.interactionCounts AS counts,
+           job.totalInteractions AS total,
+           job.teamPool AS pool
+    """
+
+    job_results = query_graph(cypher_jobs, {})
+
+    job_earnings = 0.0
+    jobs_breakdown = []
+
+    for row in job_results:
+        job_id = row["jobId"]
+        counts = row.get("counts", {})
+        member_interactions = counts.get(member_id, 0)
+
+        if member_interactions > 0:
+            earning = calculate_member_earning(job_id, member_id)
+            job_earnings += earning
+
+            jobs_breakdown.append({
+                "jobId": job_id,
+                "title": row["title"],
+                "yourInteractions": member_interactions,
+                "teamTotal": row["total"],
+                "potentialEarning": earning
+            })
+
+    # 2. Get earnings from completed missions (pending payment)
+    cypher_missions = """
+    MATCH (mission:U4_Work_Item {work_type: 'mission', scope_ref: 'scopelock'})
+    WHERE mission.status = 'completed' AND mission.claimedBy = $member_id
+    RETURN mission.slug AS missionId,
+           mission.name AS title,
+           mission.fixedPayment AS payment
+    """
+
+    mission_results = query_graph(cypher_missions, {"member_id": member_id})
+
+    mission_earnings = 0.0
+    missions_breakdown = []
+
+    for row in mission_results:
+        payment = row.get("payment", 0)
+        mission_earnings += payment
+
+        missions_breakdown.append({
+            "missionId": row["missionId"],
+            "title": row["title"],
+            "payment": payment,
+            "status": "pending"
+        })
+
+    # 3. Calculate total
+    total = round(job_earnings + mission_earnings, 2)
+
+    return {
+        "totalPotentialEarnings": total,
+        "fromJobs": round(job_earnings, 2),
+        "fromMissions": round(mission_earnings, 2),
+        "breakdown": {
+            "jobs": jobs_breakdown,
+            "missions": missions_breakdown
+        }
+    }
+```
+
+---
+
+### Step 1.5: Mission Manager Implementation
+
+**File:** `backend/services/compensation/mission_manager.py`
+
+```python
+"""
+Handle mission claiming, completion, and approval.
+"""
+
+import uuid
+from datetime import datetime, timedelta
+from typing import Dict
+
+from services.graph import query_graph
+
+
+def get_member_total_interactions(member_id: str) -> int:
+    """Get member's total interactions across all jobs."""
+
+    cypher = """
+    MATCH (e:U4_Event {actor_ref: $member_id, event_kind: 'message'})
+    WHERE e.interaction_context = 'job'
+    RETURN count(e) AS total
+    """
+
+    result = query_graph(cypher, {"member_id": member_id})
+    return result[0]["total"] if result else 0
+
+
+def get_mission_fund_balance() -> float:
+    """Calculate current mission fund balance."""
+
+    # 1. Get total mission fund contributions from all jobs
+    cypher_contributions = """
+    MATCH (job:U4_Work_Item {work_type: 'job', scope_ref: 'scopelock'})
+    RETURN sum(job.missionFund) AS total
+    """
+
+    contrib_result = query_graph(cypher_contributions, {})
+    total_contributions = contrib_result[0].get("total", 0) if contrib_result else 0
+
+    # 2. Get total spent on completed/paid missions
+    cypher_spent = """
+    MATCH (mission:U4_Work_Item {work_type: 'mission', scope_ref: 'scopelock'})
+    WHERE mission.status IN ['completed', 'paid']
+    RETURN sum(mission.fixedPayment) AS total
+    """
+
+    spent_result = query_graph(cypher_spent, {})
+    total_spent = spent_result[0].get("total", 0) if spent_result else 0
+
+    balance = round(total_contributions - total_spent, 2)
+    return max(balance, 0.0)  # Ensure non-negative
+
+
+def claim_mission(mission_id: str, member_id: str) -> Dict:
+    """
+    Claim a mission (with validation).
+
+    Raises:
+        ValueError: If validation fails
+    """
+
+    # 1. Check member has minimum 5 total interactions
+    total_interactions = get_member_total_interactions(member_id)
+    if total_interactions < 5:
+        raise ValueError(
+            f"Need 5+ interactions to claim missions. Currently: {total_interactions}"
+        )
+
+    # 2. Check mission exists and is available
+    cypher_check = """
+    MATCH (mission:U4_Work_Item {slug: $mission_slug, work_type: 'mission'})
+    RETURN mission.status AS status, mission.fixedPayment AS payment
+    """
+
+    result = query_graph(cypher_check, {"mission_slug": mission_id})
+
+    if not result:
+        raise ValueError(f"Mission not found: {mission_id}")
+
+    if result[0]["status"] != "available":
+        raise ValueError("Mission not available (already claimed or completed)")
+
+    # 3. Check mission fund sufficient
+    mission_payment = result[0]["payment"]
+    fund_balance = get_mission_fund_balance()
+
+    if fund_balance < mission_payment:
+        raise ValueError(
+            f"Mission fund insufficient (${fund_balance:.2f} available, need ${mission_payment:.2f})"
+        )
+
+    # 4. Update mission status
+    claimed_at = datetime.utcnow()
+    expires_at = claimed_at + timedelta(hours=24)
+
+    cypher_claim = """
+    MATCH (mission:U4_Work_Item {slug: $mission_slug})
+    SET mission.status = 'claimed',
+        mission.claimedBy = $member_id,
+        mission.claimedAt = datetime($claimed_at),
+        mission.claimExpiresAt = datetime($expires_at),
+        mission.updated_at = datetime()
+    RETURN mission
+    """
+
+    query_graph(cypher_claim, {
+        "mission_slug": mission_id,
+        "member_id": member_id,
+        "claimed_at": claimed_at.isoformat(),
+        "expires_at": expires_at.isoformat()
+    })
+
+    # 5. Create U4_CLAIMED_BY link
+    cypher_link = """
+    MATCH (mission:U4_Work_Item {slug: $mission_slug})
+    MATCH (agent:U4_Agent {slug: $member_id})
+    CREATE (mission)-[:U4_CLAIMED_BY {
+      claimed_at: datetime($claimed_at),
+      expires_at: datetime($expires_at),
+      created_at: datetime(),
+      updated_at: datetime(),
+      valid_from: datetime(),
+      valid_to: null,
+      visibility: 'partners',
+      created_by: $member_id,
+      substrate: 'organizational'
+    }]->(agent)
+    """
+
+    query_graph(cypher_link, {
+        "mission_slug": mission_id,
+        "member_id": member_id,
+        "claimed_at": claimed_at.isoformat(),
+        "expires_at": expires_at.isoformat()
+    })
+
+    return {
+        "missionId": mission_id,
+        "status": "claimed",
+        "claimedBy": member_id,
+        "expiresAt": expires_at.isoformat()
+    }
+
+
+def complete_mission(
+    mission_id: str,
+    member_id: str,
+    proof_url: str,
+    proof_notes: str = ""
+) -> Dict:
+    """
+    Mark mission complete (awaiting NLR approval).
+
+    Args:
+        mission_id: Mission slug
+        member_id: Member who completed
+        proof_url: URL or file path proving completion
+        proof_notes: Optional notes
+
+    Raises:
+        ValueError: If mission not claimed by this member
+    """
+
+    # 1. Verify mission claimed by this member
+    cypher_check = """
+    MATCH (mission:U4_Work_Item {slug: $mission_slug, work_type: 'mission'})
+    RETURN mission.status AS status, mission.claimedBy AS claimedBy
+    """
+
+    result = query_graph(cypher_check, {"mission_slug": mission_id})
+
+    if not result:
+        raise ValueError(f"Mission not found: {mission_id}")
+
+    if result[0]["claimedBy"] != member_id:
+        raise ValueError("Mission not claimed by you")
+
+    if result[0]["status"] != "claimed":
+        raise ValueError(f"Mission status is {result[0]['status']}, expected 'claimed'")
+
+    # 2. Update mission with completion data
+    completed_at = datetime.utcnow().isoformat()
+
+    cypher_complete = """
+    MATCH (mission:U4_Work_Item {slug: $mission_slug})
+    SET mission.status = 'completed',
+        mission.completedAt = datetime($completed_at),
+        mission.proofUrl = $proof_url,
+        mission.proofNotes = $proof_notes,
+        mission.updated_at = datetime()
+    RETURN mission
+    """
+
+    query_graph(cypher_complete, {
+        "mission_slug": mission_id,
+        "completed_at": completed_at,
+        "proof_url": proof_url,
+        "proof_notes": proof_notes
+    })
+
+    return {
+        "missionId": mission_id,
+        "status": "completed",
+        "pendingApproval": True
+    }
+
+
+def approve_mission(mission_id: str, approved_by: str, approved: bool) -> Dict:
+    """
+    Approve or reject mission completion (NLR only).
+
+    Args:
+        mission_id: Mission slug
+        approved_by: NLR slug
+        approved: True to approve, False to reject
+
+    Returns:
+        {
+            "missionId": "...",
+            "status": "paid" or "claimed",
+            "memberEarnings": 1.00 (if approved),
+            "newMissionFundBalance": 149.00 (if approved)
+        }
+    """
+
+    if not approved:
+        # Reject: revert to "claimed" status
+        cypher_reject = """
+        MATCH (mission:U4_Work_Item {slug: $mission_slug})
+        SET mission.status = 'claimed',
+            mission.completedAt = null,
+            mission.proofUrl = null,
+            mission.proofNotes = null,
+            mission.updated_at = datetime()
+        RETURN mission.claimedBy AS claimedBy
+        """
+
+        result = query_graph(cypher_reject, {"mission_slug": mission_id})
+
+        return {
+            "missionId": mission_id,
+            "status": "claimed",
+            "rejected": True
+        }
+
+    # Approve: mark as paid
+    approved_at = datetime.utcnow().isoformat()
+
+    cypher_approve = """
+    MATCH (mission:U4_Work_Item {slug: $mission_slug})
+    SET mission.status = 'paid',
+        mission.approvedBy = $approved_by,
+        mission.approvedAt = datetime($approved_at),
+        mission.updated_at = datetime()
+    RETURN mission.claimedBy AS claimedBy, mission.fixedPayment AS payment
+    """
+
+    result = query_graph(cypher_approve, {
+        "mission_slug": mission_id,
+        "approved_by": approved_by,
+        "approved_at": approved_at
+    })
+
+    member_id = result[0]["claimedBy"]
+    payment = result[0]["payment"]
+
+    # Update member earnings (will be implemented in payment_processor.py)
+    # For now, just return success
+
+    new_balance = get_mission_fund_balance()
+
+    return {
+        "missionId": mission_id,
+        "status": "paid",
+        "memberEarnings": payment,
+        "newMissionFundBalance": new_balance
+    }
+
+
+def check_mission_expiry() -> int:
+    """
+    Check for expired mission claims (24 hours) and revert to 'available'.
+
+    Returns:
+        Number of missions reverted
+
+    Should be run periodically (e.g., every hour via cron job).
+    """
+
+    now = datetime.utcnow().isoformat()
+
+    cypher = """
+    MATCH (mission:U4_Work_Item {work_type: 'mission', status: 'claimed'})
+    WHERE mission.claimExpiresAt < datetime($now)
+    SET mission.status = 'available',
+        mission.claimedBy = null,
+        mission.claimedAt = null,
+        mission.claimExpiresAt = null,
+        mission.updated_at = datetime()
+    RETURN count(mission) AS reverted
+    """
+
+    result = query_graph(cypher, {"now": now})
+    return result[0]["reverted"] if result else 0
+```
+
+---
+
+### Step 1.6: Payment Processor Implementation
+
+**File:** `backend/services/compensation/payment_processor.py`
+
+```python
+"""
+Handle payment triggers and history tracking.
+"""
+
+from datetime import datetime
+from typing import Dict
+
+from services.graph import query_graph
+from services.compensation.earnings_calculator import calculate_member_earning
+
+
+def is_nlr(member_id: str) -> bool:
+    """Check if member has NLR role."""
+
+    cypher = """
+    MATCH (agent:U4_Agent {slug: $member_id})
+    RETURN agent.slug AS slug
+    """
+
+    result = query_graph(cypher, {"member_id": member_id})
+
+    # Simplified check: Only "nlr" slug has permission
+    return member_id == "nlr"
+
+
+def trigger_payment(job_id: str, triggered_by: str, cash_received: bool) -> Dict:
+    """
+    Trigger payment for completed job (NLR only).
+
+    Args:
+        job_id: Job slug
+        triggered_by: NLR member slug
+        cash_received: True if Upwork payment received
+
+    Returns:
+        {
+            "jobId": "...",
+            "status": "paid",
+            "totalPaid": 450.00,
+            "memberPayments": {"member_a": 270.00, "member_b": 180.00},
+            "notificationsSent": 2
+        }
+
+    Raises:
+        PermissionError: If not NLR
+        ValueError: If cash not received or job already paid
+    """
+
+    # 1. Verify NLR role
+    if not is_nlr(triggered_by):
+        raise PermissionError("Only NLR can trigger payments")
+
+    # 2. Verify cash received
+    if not cash_received:
+        raise ValueError("Cannot pay before receiving funds from Upwork")
+
+    # 3. Get job data
+    cypher_job = """
+    MATCH (job:U4_Work_Item {slug: $job_slug, work_type: 'job'})
+    RETURN job.teamPool AS pool,
+           job.interactionCounts AS counts,
+           job.status AS status,
+           job.name AS title
+    """
+
+    result = query_graph(cypher_job, {"job_slug": job_id})
+
+    if not result:
+        raise ValueError(f"Job not found: {job_id}")
+
+    job_data = result[0]
+
+    if job_data["status"] == "paid":
+        raise ValueError("Job already paid")
+
+    # 4. Calculate final shares
+    interaction_counts = job_data.get("counts", {})
+    member_payments = {}
+
+    for member_id in interaction_counts.keys():
+        earning = calculate_member_earning(job_id, member_id)
+        member_payments[member_id] = earning
+
+    # 5. Update job status to 'paid'
+    paid_at = datetime.utcnow().isoformat()
+
+    cypher_update = """
+    MATCH (job:U4_Work_Item {slug: $job_slug})
+    SET job.status = 'paid',
+        job.paidAt = datetime($paid_at),
+        job.updated_at = datetime()
+    RETURN job
+    """
+
+    query_graph(cypher_update, {"job_slug": job_id, "paid_at": paid_at})
+
+    # 6. Update each member's paid earnings history
+    #    (Store as compensationData.paidEarnings on U4_Agent node)
+
+    for member_id, amount in member_payments.items():
+        update_member_paid_earnings(member_id, job_id, amount, job_data["title"])
+
+    # 7. Send notifications (placeholder - actual implementation TBD)
+    notifications_sent = len(member_payments)
+    for member_id, amount in member_payments.items():
+        # TODO: Implement send_payment_notification()
+        print(f"Notification: {member_id} earned ${amount:.2f} from {job_data['title']}")
+
+    return {
+        "jobId": job_id,
+        "status": "paid",
+        "totalPaid": round(sum(member_payments.values()), 2),
+        "memberPayments": member_payments,
+        "notificationsSent": notifications_sent
+    }
+
+
+def update_member_paid_earnings(
+    member_id: str,
+    job_id: str,
+    amount: float,
+    job_title: str
+) -> None:
+    """
+    Update member's paid earnings history.
+
+    Stores data in agent.compensationData.paidEarnings
+    """
+
+    # Fetch current compensationData
+    cypher_get = """
+    MATCH (agent:U4_Agent {slug: $member_id})
+    RETURN agent.compensationData AS data
+    """
+
+    result = query_graph(cypher_get, {"member_id": member_id})
+    compensation_data = result[0].get("data", {}) if result else {}
+
+    # Initialize if missing
+    if not compensation_data:
+        compensation_data = {
+            "totalInteractions": 0,
+            "potentialEarnings": 0.0,
+            "paidEarnings": 0.0,
+            "jobEarnings": {},
+            "missionEarnings": {},
+            "paidHistory": []
+        }
+
+    # Add to paid history
+    compensation_data["paidHistory"].append({
+        "jobId": job_id,
+        "title": job_title,
+        "amount": amount,
+        "paidAt": datetime.utcnow().isoformat()
+    })
+
+    # Update total paid earnings
+    compensation_data["paidEarnings"] = round(
+        compensation_data.get("paidEarnings", 0) + amount,
+        2
+    )
+
+    # Remove from job earnings (no longer potential)
+    if job_id in compensation_data.get("jobEarnings", {}):
+        del compensation_data["jobEarnings"][job_id]
+
+    # Write back
+    cypher_update = """
+    MATCH (agent:U4_Agent {slug: $member_id})
+    SET agent.compensationData = $data,
+        agent.updated_at = datetime()
+    """
+
+    query_graph(cypher_update, {
+        "member_id": member_id,
+        "data": compensation_data
+    })
+
+
+def get_payment_history(member_id: str) -> Dict:
+    """
+    Get member's payment history.
+
+    Returns:
+        {
+            "totalPaid": 450.00,
+            "history": [
+                {
+                    "jobId": "...",
+                    "title": "...",
+                    "amount": 120.00,
+                    "paidAt": "2025-11-01T10:00:00Z"
+                },
+                ...
+            ]
+        }
+    """
+
+    cypher = """
+    MATCH (agent:U4_Agent {slug: $member_id})
+    RETURN agent.compensationData AS data
+    """
+
+    result = query_graph(cypher, {"member_id": member_id})
+    compensation_data = result[0].get("data", {}) if result else {}
+
+    paid_history = compensation_data.get("paidHistory", [])
+    total_paid = compensation_data.get("paidEarnings", 0.0)
+
+    return {
+        "totalPaid": total_paid,
+        "history": paid_history
+    }
+```
+
+---
+
+## Phase 2: API Endpoints (Day 3)
+
+### Step 2.1: Create Compensation Router
+
+**File:** `backend/routers/compensation.py`
+
+```python
+"""
+Compensation API endpoints.
+"""
+
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel
+from typing import List, Optional
+
+from services.compensation import (
+    track_interaction,
+    get_interaction_history,
+    calculate_all_member_earnings,
+    get_total_potential_earnings,
+    claim_mission,
+    complete_mission,
+    approve_mission,
+    trigger_payment,
+    get_payment_history
+)
+from auth import get_current_user, User, require_nlr
+
+router = APIRouter(prefix="/api/compensation", tags=["compensation"])
+
+
+# ----- Request/Response Models -----
+
+class CreateJobRequest(BaseModel):
+    title: str
+    client: str
+    value: float
+    dueDate: Optional[str] = None
+
+
+class TrackInteractionRequest(BaseModel):
+    jobId: str
+    memberId: str
+    message: str
+    aiRecipient: str
+
+
+class ClaimMissionRequest(BaseModel):
+    memberId: str
+
+
+class CompleteMissionRequest(BaseModel):
+    memberId: str
+    proofUrl: str
+    proofNotes: Optional[str] = ""
+
+
+class ApproveMissionRequest(BaseModel):
+    approvedBy: str
+    approved: bool
+
+
+class TriggerPaymentRequest(BaseModel):
+    triggeredBy: str
+    cashReceived: bool
+
+
+# ----- Jobs Endpoints -----
+
+@router.post("/jobs")
+async def create_job(req: CreateJobRequest):
+    """Create new job."""
+    # Implementation similar to create_test_job()
+    # (Omitted for brevity - see MECHANISM.md for full schema)
+    pass
+
+
+@router.get("/jobs")
+async def list_jobs(
+    status: Optional[str] = None,
+    memberId: Optional[str] = None
+):
+    """List all jobs."""
+    pass
+
+
+@router.get("/jobs/{job_id}/interactions")
+async def get_job_interactions(job_id: str):
+    """Get interaction history for a job."""
+    pass
+
+
+# ----- Interactions Endpoints -----
+
+@router.post("/interactions")
+async def create_interaction(req: TrackInteractionRequest):
+    """Track new interaction (called when message sent)."""
+
+    try:
+        result = track_interaction(
+            job_id=req.jobId,
+            member_id=req.memberId,
+            message=req.message,
+            ai_recipient=req.aiRecipient
+        )
+        return result
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+# ----- Missions Endpoints -----
+
+@router.get("/missions")
+async def list_missions(
+    status: Optional[str] = None,
+    type: Optional[str] = None
+):
+    """List available missions."""
+    pass
+
+
+@router.post("/missions/{mission_id}/claim")
+async def create_mission_claim(mission_id: str, req: ClaimMissionRequest):
+    """Claim a mission."""
+
+    try:
+        result = claim_mission(mission_id, req.memberId)
+        return result
+
+    except ValueError as e:
+        if "Need 5+ interactions" in str(e):
+            raise HTTPException(status_code=403, detail=str(e))
+        elif "not available" in str(e):
+            raise HTTPException(status_code=409, detail=str(e))
+        else:
+            raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("/missions/{mission_id}/complete")
+async def create_mission_completion(mission_id: str, req: CompleteMissionRequest):
+    """Mark mission complete (with proof)."""
+
+    try:
+        result = complete_mission(
+            mission_id,
+            req.memberId,
+            req.proofUrl,
+            req.proofNotes
+        )
+        return result
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("/missions/{mission_id}/approve")
+@require_nlr
+async def create_mission_approval(mission_id: str, req: ApproveMissionRequest):
+    """Approve mission completion (NLR only)."""
+
+    result = approve_mission(mission_id, req.approvedBy, req.approved)
+    return result
+
+
+# ----- Earnings Endpoints -----
+
+@router.get("/earnings/{member_id}")
+async def get_member_earnings(member_id: str):
+    """Get member's complete earnings breakdown."""
+
+    result = get_total_potential_earnings(member_id)
+    paid_history = get_payment_history(member_id)
+
+    return {
+        **result,
+        "totalPaidEarnings": paid_history["totalPaid"],
+        "paidHistory": paid_history["history"]
+    }
+
+
+# ----- Payments Endpoints -----
+
+@router.post("/payments/trigger")
+@require_nlr
+async def create_payment_trigger(req: TriggerPaymentRequest):
+    """Trigger payment for completed job (NLR only)."""
+
+    try:
+        result = trigger_payment(
+            job_id=req.jobId,
+            triggered_by=req.triggeredBy,
+            cash_received=req.cashReceived
+        )
+        return result
+
+    except PermissionError as e:
+        raise HTTPException(status_code=403, detail=str(e))
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+```
+
+---
+
+## Phase 3: Frontend Implementation (Day 4-5)
+
+### Step 3.1: Create Zustand Store
+
+**File:** `frontend/stores/compensationStore.ts`
+
+```typescript
+import create from 'zustand';
+
+interface Job {
+  id: string;
+  title: string;
+  client: string;
+  value: number;
+  teamPool: number;
+  status: 'active' | 'completed' | 'paid';
+  yourInteractions: number;
+  teamTotal: number;
+  yourPotentialEarning: number;
+}
+
+interface Mission {
+  id: string;
+  title: string;
+  type: 'proposal' | 'recruitment' | 'social' | 'other';
+  fixedPayment: number;
+  status: 'available' | 'claimed' | 'completed' | 'paid';
+  canClaim: boolean;
+}
+
+interface CompensationState {
+  totalPotentialEarnings: number;
+  jobs: Job[];
+  missions: Mission[];
+  missionFundBalance: number;
+
+  // Actions
+  setTotalEarnings: (amount: number) => void;
+  updateJobInteraction: (jobId: string, newCount: number, newEarning: number) => void;
+  setJobs: (jobs: Job[]) => void;
+  setMissions: (missions: Mission[]) => void;
+}
+
+export const useCompensationStore = create<CompensationState>((set) => ({
+  totalPotentialEarnings: 0,
+  jobs: [],
+  missions: [],
+  missionFundBalance: 0,
+
+  setTotalEarnings: (amount) => set({ totalPotentialEarnings: amount }),
+
+  updateJobInteraction: (jobId, newCount, newEarning) => set((state) => ({
+    jobs: state.jobs.map(job =>
+      job.id === jobId
+        ? {
+            ...job,
+            yourInteractions: newCount,
+            yourPotentialEarning: newEarning
+          }
+        : job
+    )
+  })),
+
+  setJobs: (jobs) => set({ jobs }),
+  setMissions: (missions) => set({ missions }),
+}));
+```
+
+---
+
+### Step 3.2: Create Earnings Banner Component
+
+**File:** `frontend/components/EarningsBanner.tsx`
+
+```typescript
+'use client';
+
+import { useCompensationStore } from '@/stores/compensationStore';
+
+export function EarningsBanner() {
+  const totalEarnings = useCompensationStore((state) => state.totalPotentialEarnings);
+
+  return (
+    <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white p-4 shadow-lg">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div>
+          <p className="text-sm opacity-90">YOUR TOTAL POTENTIAL EARNINGS</p>
+          <p className="text-4xl font-bold" data-testid="total-earnings">
+            ${totalEarnings.toFixed(2)}
+          </p>
+        </div>
+
+        <button
+          className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100"
+          onClick={() => {
+            // Open earnings breakdown modal
+          }}
+        >
+          View Breakdown
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+### Step 3.3: Create Job Card Component
+
+**File:** `frontend/components/JobCard.tsx`
+
+```typescript
+'use client';
+
+interface JobCardProps {
+  job: {
+    id: string;
+    title: string;
+    client: string;
+    value: number;
+    yourInteractions: number;
+    teamTotal: number;
+    yourPotentialEarning: number;
+    status: string;
+  };
+}
+
+export function JobCard({ job }: JobCardProps) {
+  return (
+    <div className="bg-white border rounded-lg p-4 shadow-sm hover:shadow-md transition">
+      <h3 className="font-semibold text-lg">{job.title}</h3>
+      <p className="text-sm text-gray-600">Client: {job.client}</p>
+      <p className="text-sm text-gray-600">Value: ${job.value.toFixed(2)}</p>
+
+      <div className="mt-3 space-y-1">
+        <p className="text-sm">
+          <span className="text-gray-600">Your interactions:</span>{' '}
+          <span className="font-semibold" data-testid="your-interactions">
+            {job.yourInteractions}
+          </span>
+        </p>
+
+        <p className="text-sm">
+          <span className="text-gray-600">Team total:</span>{' '}
+          <span className="font-semibold" data-testid="team-total">
+            {job.teamTotal}
+          </span>
+        </p>
+
+        <p className="text-base font-bold text-green-600" data-testid="potential-earning">
+          Earning at job completion: ${job.yourPotentialEarning.toFixed(2)}
+        </p>
+      </div>
+
+      <div className="mt-4 flex gap-2">
+        <button className="flex-1 bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600">
+          View Details
+        </button>
+        <button className="flex-1 bg-gray-200 text-gray-800 px-3 py-2 rounded hover:bg-gray-300">
+          Message AI
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+### Step 3.4: Real-Time Updates with SSE
+
+**File:** `frontend/hooks/useEarningsStream.ts`
+
+```typescript
+import { useEffect } from 'react';
+import { useCompensationStore } from '@/stores/compensationStore';
+
+export function useEarningsStream(memberId: string) {
+  const setTotalEarnings = useCompensationStore((state) => state.setTotalEarnings);
+  const updateJobInteraction = useCompensationStore((state) => state.updateJobInteraction);
+
+  useEffect(() => {
+    const eventSource = new EventSource(
+      `/api/compensation/earnings/${memberId}/stream`
+    );
+
+    eventSource.addEventListener('earnings-update', (e) => {
+      const data = JSON.parse(e.data);
+      setTotalEarnings(data.totalPotentialEarnings);
+    });
+
+    eventSource.addEventListener('interaction-counted', (e) => {
+      const data = JSON.parse(e.data);
+      updateJobInteraction(data.jobId, data.newCount, data.newEarning);
+    });
+
+    eventSource.onerror = (err) => {
+      console.error('SSE connection error:', err);
+      eventSource.close();
+    };
+
+    return () => {
+      eventSource.close();
+    };
+  }, [memberId, setTotalEarnings, updateJobInteraction]);
+}
+```
+
+---
+
+## Phase 4: Testing (Day 6)
+
+### Step 4.1: Backend Tests
+
+See VALIDATION.md for complete test specifications.
+
+**Run tests:**
+```bash
+pytest tests/backend/test_compensation_*.py -v --cov=services/compensation
+```
+
+---
+
+### Step 4.2: Frontend Tests
+
+**Run tests:**
+```bash
+npm test -- tests/frontend/compensation*.test.tsx
+```
+
+---
+
+### Step 4.3: E2E Tests
+
+**Run tests:**
+```bash
+npx playwright test tests/e2e/compensation-flow.spec.ts
+```
+
+---
+
+## Phase 5: Deployment (Day 7)
+
+### Step 5.1: Database Migration
+
+No explicit migrations needed (FalkorDB is schema-free), but create seed data:
+
+```bash
+python3 scripts/seed-compensation-test-data.py
+```
+
+---
+
+### Step 5.2: Deploy Backend
+
+```bash
+# Push to main branch (triggers Render deployment)
+git push origin main
+```
+
+---
+
+### Step 5.3: Deploy Frontend
+
+```bash
+# Push to main branch (triggers Vercel deployment)
+git push origin main
+```
+
+---
+
+## Complete Implementation Checklist
+
+- [ ] Phase 1: Backend services (interaction tracker, earnings calculator, mission manager, payment processor)
+- [ ] Phase 2: API endpoints (jobs, interactions, missions, earnings, payments)
+- [ ] Phase 3: Frontend UI (Zustand store, earnings banner, job cards, mission cards, SSE)
+- [ ] Phase 4: Tests (backend pytest, frontend Vitest, E2E Playwright)
+- [ ] Phase 5: Deployment (Render backend, Vercel frontend, seed data)
