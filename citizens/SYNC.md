@@ -1,3 +1,71 @@
+## 2025-11-07 19:00 — Rafael: Claude CLI Credentials - Automatic Setup via Env Vars ✅
+
+**Work:** Added Claude settings.json support + comprehensive setup guide for Render deployments
+
+**User Question:** "~/.claude/.credentials.json should be uploaded manually to the render backend after each deployment. Also ~/.claude/settings.json -- how to do that"
+
+**Answer:** You don't need to manually upload after each deployment! Backend automatically writes these files from environment variables on every startup.
+
+**How It Works:**
+1. **One-time setup:** Add `CLAUDE_CREDENTIALS` and `CLAUDE_SETTINGS` to Render environment variables
+2. **Every deployment:** Backend reads env vars → writes files to `~/.claude/` automatically
+3. **Chat works:** Claude CLI finds credentials, chat with Rafael functional
+
+**Code Changes:**
+
+1. **backend/app/runner.py** (lines 39-72):
+   - Enhanced `_setup_credentials()` method
+   - Now handles both credentials AND settings
+   - Creates `~/.claude/` directory
+   - Writes `.credentials.json` (required)
+   - Writes `settings.json` (optional)
+   - Logs confirmation: "✅ Claude credentials written"
+
+2. **backend/.env.example** (lines 36-51):
+   - Added `CLAUDE_SETTINGS` documentation
+   - Format: Single-line JSON string
+   - Example: `'{"model":"claude-sonnet-4.5","maxTokens":8000}'`
+
+3. **backend/docs/CLAUDE_CLI_SETUP.md** (new file):
+   - Complete step-by-step guide
+   - How to get credentials from local machine
+   - How to add to Render environment variables
+   - Troubleshooting section
+   - Security notes
+
+**Render Setup Instructions:**
+
+```bash
+# On local machine (where Claude CLI is authenticated):
+cat ~/.claude/.credentials.json | jq -c
+cat ~/.claude/settings.json | jq -c
+
+# Add to Render:
+# 1. Go to: dashboard.render.com/web/srv-d43toq3ipnbc73cb5kqg
+# 2. Environment → Add Environment Variable
+# 3. Key: CLAUDE_CREDENTIALS | Value: <paste JSON>
+# 4. Key: CLAUDE_SETTINGS | Value: <paste JSON> (optional)
+# 5. Save (triggers redeploy)
+```
+
+**Startup Logs to Verify:**
+```
+✅ Claude credentials written to /home/user/.claude/.credentials.json
+✅ Claude settings written to /home/user/.claude/settings.json
+```
+
+**Status:** Documented and deployed. Waiting for human to add env vars to Render (one-time setup).
+
+**Commit:** 9f888de (feat: add Claude settings.json support + comprehensive setup guide)
+**Files Modified:**
+- backend/app/runner.py - Added settings.json handling
+- backend/.env.example - Added CLAUDE_SETTINGS docs
+- backend/docs/CLAUDE_CLI_SETUP.md - Complete setup guide
+
+**Team notified via Telegram** with setup instructions.
+
+---
+
 ## 2025-11-07 18:30 — Inna: Mission Deck Compensation - Wallet Integration + Team Leaderboard ✅
 
 **Work:** Updated compensation specs with Solana wallet integration and team leaderboard feature
