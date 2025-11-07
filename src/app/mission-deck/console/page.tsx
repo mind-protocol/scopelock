@@ -177,7 +177,13 @@ export default function ConsolePage() {
   return (
     <div style={{
       display: 'flex',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       height: '100vh',
+      width: '100vw',
       background: 'var(--slk-bg)',
       overflow: 'hidden'
     }}>
@@ -244,7 +250,9 @@ export default function ConsolePage() {
                 width: `${workspaceWidth}%`,
                 height: '100%',
                 overflowY: 'auto',
-                overflowX: 'hidden'
+                overflowX: 'hidden',
+                minWidth: 0,
+                flexShrink: 0
               }}>
                 {activeCitizen === 'emma' && (
                   <EmmaWorkspace missionId={activeMissionId} />
@@ -300,9 +308,11 @@ export default function ConsolePage() {
               {/* Right: Chat panel with citizen selector */}
               <div style={{
                 width: `${100 - workspaceWidth}%`,
+                height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                minWidth: 0
               }}>
                 {/* Citizen selector inside chat panel */}
                 <CitizenSelector
@@ -311,12 +321,14 @@ export default function ConsolePage() {
                   onSelect={setActiveCitizen}
                 />
 
-                {/* Chat interface */}
-                <ChatInterface
-                  messages={messages}
-                  onSendMessage={handleSendMessage}
-                  isLoading={isChatLoading}
-                />
+                {/* Chat interface - takes remaining vertical space */}
+                <div style={{ flex: 1, minHeight: 0, overflow: 'hidden' }}>
+                  <ChatInterface
+                    messages={messages}
+                    onSendMessage={handleSendMessage}
+                    isLoading={isChatLoading}
+                  />
+                </div>
               </div>
             </>
           )}
