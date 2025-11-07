@@ -65,7 +65,7 @@ export default function RootLayout({
                 <button className="nav-dropdown-trigger">About</button>
                 <div className="nav-dropdown-menu">
                   <Link href="/about">Our Story</Link>
-                  <Link href="/join">Join Our Team</Link>
+                  <Link href="/join">Join ScopeLock</Link>
                   <Link href="/mission-deck">Mission Deck</Link>
                   <Link href="/resources">Resources</Link>
                 </div>
