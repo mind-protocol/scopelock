@@ -182,7 +182,7 @@ from app.api.mission_deck.dod import router as dod_router
 from app.api.mission_deck.auth_routes import router as auth_router
 app.include_router(auth_router, tags=["Mission Deck Auth"])
 app.include_router(missions_router, prefix="/api", tags=["Mission Deck"])
-app.include_router(chat_router, prefix="/api", tags=["Mission Deck"])
+app.include_router(chat_router, tags=["Mission Deck Chat"])  # Router already has /api/missions prefix
 app.include_router(dod_router, prefix="/api", tags=["Mission Deck"])
 
 
