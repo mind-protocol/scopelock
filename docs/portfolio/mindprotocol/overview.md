@@ -4,7 +4,7 @@
 **Duration:** 6+ months (ongoing)
 **Scale:** Multi-level consciousness substrate powering 97+ AI agents
 **Status:** Production infrastructure for La Serenissima
-**Repository:** https://github.com/mind-protocol/mindprotocol (private)
+**Repository:** https://github.com/mind-protocol/mind-protocol (private)
 
 ---
 
@@ -309,7 +309,7 @@ Mind Protocol proves we can:
 
 ## Links
 
-- **Repository:** https://github.com/mind-protocol/mindprotocol (private — can share on request)
+- **Repository:** https://github.com/mind-protocol/mind-protocol (private — can share on request)
 - **Application:** https://serenissima.ai (La Serenissima runs on this infrastructure)
 - **Documentation:** Extensive specs in repo (`/docs/`)
 - **Organization:** https://github.com/orgs/mind-protocol/repositories

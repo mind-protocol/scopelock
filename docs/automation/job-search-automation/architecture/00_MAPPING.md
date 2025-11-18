@@ -463,7 +463,7 @@
 
 **Documentation:**
 - `/docs/automation/job-search-automation/architecture/04_database_schema.md` § Graph Schema
-- `/home/mind-protocol/mindprotocol/docs/COMPLETE_TYPE_REFERENCE.md` § Mind Protocol types
+- `/home/mind-protocol/mind-protocol/docs/COMPLETE_TYPE_REFERENCE.md` § Mind Protocol types
 
 **Node Types:**
 - U4_Work_Item (job_opportunity, proposal, review_task, submit_task, mission_task)

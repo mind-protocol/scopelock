@@ -7,7 +7,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SUPERVISOR_PY="/home/mind-protocol/mindprotocol/orchestration/mpsv3_supervisor.py"
+SUPERVISOR_PY="/home/mind-protocol/mind-protocol/orchestration/mpsv3_supervisor.py"
 CONFIG_YAML="${SCRIPT_DIR}/services.yaml"
 
 if [ ! -f "${SUPERVISOR_PY}" ]; then

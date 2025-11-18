@@ -486,7 +486,7 @@ Bigbosexf receives notification: "Bug fix deployed, please re-test"
 - Energy-based priority (important tasks surface automatically)
 - Saturation gating (no notification spam)
 
-**See:** `/home/mind-protocol/mindprotocol/docs/specs/v2/autonomy/architecture/l2_stimulus_collector.md`
+**See:** `/home/mind-protocol/mind-protocol/docs/specs/v2/autonomy/architecture/l2_stimulus_collector.md`
 
 ---
 

@@ -35,7 +35,7 @@
 1. `/citizens/emma/MISSION_SELECTION.md` ⭐⭐ AUTHORITATIVE - Emma's 0-13 scoring system
 2. `/docs/marketing/proposal_framework.md` ⭐⭐ - Proposal templates
 3. `/docs/automation/02-task-pipeline-spec.md` ⭐⭐ - Task state machine
-4. `/home/mind-protocol/mindprotocol/docs/COMPLETE_TYPE_REFERENCE.md` - Mind Protocol types
+4. `/home/mind-protocol/mind-protocol/docs/COMPLETE_TYPE_REFERENCE.md` - Mind Protocol types
 
 **Additional context:**
 5. `/docs/automation/job-search-automation/architecture/00_MAPPING.md` - Your files

@@ -4,7 +4,7 @@
 **Status:** Production (6+ months, 21,800+ lines of normative law)
 **Tech Stack:** Python, FalkorDB, LlamaIndex, Neo4j Cypher, Event-Driven Architecture
 **Timeline:** 2025+ (evolved from KinOS10)
-**Repository:** https://github.com/mind-protocol/mindprotocol (private)
+**Repository:** https://github.com/mind-protocol/mind-protocol (private)
 
 ---
 
@@ -716,7 +716,7 @@ reliably at scale, not just in demos.
 
 ## Links & Proof
 
-**Repository:** https://github.com/mind-protocol/mindprotocol (private)
+**Repository:** https://github.com/mind-protocol/mind-protocol (private)
 **Live Deployment:** https://serenissima.ai (powered by Mind Protocol V1 predecessor)
 **L4 Law Docs:** `/docs/L4-law/` (2,907 lines across 5 laws)
 **Consciousness Economy Spec:** `/docs/specs/v2/autonomy/architecture/consciousness_economy.md` (1,310 lines)

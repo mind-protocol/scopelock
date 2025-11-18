@@ -2,7 +2,7 @@ I know you're open to hourly or fixed-price - I work fixed-price milestones. You
 
 You need content → structured JSON → semantic search → interactive visualization → monetization. Most developers build chatbots or basic scrapers. You need a full pipeline.
 
-We built Mind Protocol (graph-based knowledge substrate extracting relationships from unstructured data, github.com/mind-protocol/mindprotocol), La Serenissima (serenissima.ai - 97+ agents with 99.7% uptime, real-time orchestration with structured outputs), TherapyKin (therapykin.ai - Next.js subscription app with Supabase auth, Stripe, Vercel deployment). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
+We built Mind Protocol (graph-based knowledge substrate extracting relationships from unstructured data, github.com/mind-protocol/mind-protocol), La Serenissima (serenissima.ai - 97+ agents with 99.7% uptime, real-time orchestration with structured outputs), TherapyKin (therapykin.ai - Next.js subscription app with Supabase auth, Stripe, Vercel deployment). Verify at github.com/nlr-ai and github.com/mind-protocol (terminal-velocity 1.1k stars).
 
 The hard part is pipeline reliability and visualization. Your system needs to handle incomplete transcripts, ambiguous references, overlapping relationships. Then turn messy JSON into clean SVG diagrams users want to interact with.
 

@@ -2919,7 +2919,7 @@ if (isLoading) {
 
 **Context:** User requested "make the /mind-token page. How to hype the sol guys"
 
-**Research:** Read `/home/mind-protocol/mindprotocol/docs/economy/MIND_TOKEN_ECONOMICS.md` (complete tokenomics doc)
+**Research:** Read `/home/mind-protocol/mind-protocol/docs/economy/MIND_TOKEN_ECONOMICS.md` (complete tokenomics doc)
 
 **Key Content Sections:**
 
@@ -5422,7 +5422,7 @@ rafael@scopelock
 - Alexis: Violet + gold wireframe, holding onyx chess queen (1.6MB)
 
 **Script updates:**
-- Updated `/home/mind-protocol/mindprotocol/tools/generate_citizen_avatar.py` to emphasize wireframe aesthetic
+- Updated `/home/mind-protocol/mind-protocol/tools/generate_citizen_avatar.py` to emphasize wireframe aesthetic
 - Prompt now explicitly states: "translucent glowing wireframe lines", "hollow", "see-through", "no fill, no texture"
 - Increased Claude CLI timeout from 30s to 120s to prevent timeouts
 - Reduced CLAUDE.md context from 3000 to 1000 chars for faster generation
@@ -7056,9 +7056,9 @@ alexis@scopelock
 **Work:** Generated 26 missing tests for `/docs/missions/mission-deck` following L4 conformance patterns
 
 **Context:** User said "okay code them" after gap analysis identified 18 missing tests. Reference files provided:
-- `/home/mind-protocol/mindprotocol/docs/L4-law/CONFORMANCE_SUITE_SPECIFICATION.md`
-- `/home/mind-protocol/mindprotocol/docs/L4-law/OVERVIEW.md`
-- `/home/mind-protocol/mindprotocol/docs/COMPLETE_TYPE_REFERENCE.md`
+- `/home/mind-protocol/mind-protocol/docs/L4-law/CONFORMANCE_SUITE_SPECIFICATION.md`
+- `/home/mind-protocol/mind-protocol/docs/L4-law/OVERVIEW.md`
+- `/home/mind-protocol/mind-protocol/docs/COMPLETE_TYPE_REFERENCE.md`
 
 **Files Created:**
 
@@ -10094,7 +10094,7 @@ app/visualizer/
 
 1. **Test Locally**
    ```bash
-   cd /home/mind-protocol/mindprotocol
+   cd /home/mind-protocol/mind-protocol
    npm run dev
    # Visit: http://localhost:3000/visualizer
    ```

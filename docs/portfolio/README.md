@@ -81,7 +81,7 @@ Constitutional framework and graph substrate for AI consciousness — **21,800 l
 - Powers La Serenissima (130+ agents, 99.7% uptime, 6+ months production, 50K+ state updates/hour)
 
 **Links:**
-- Repository: https://github.com/mind-protocol/mindprotocol (private)
+- Repository: https://github.com/mind-protocol/mind-protocol (private)
 - Powers: https://serenissima.ai
 - Evolved from: KinOS10
 

@@ -704,7 +704,7 @@ print(f"Connected! Found {results[0]['node_count']} scopelock nodes.")
 
 **Initial Data (Optional):**
 If testing locally, you can create test mission nodes manually or via the ingestion tool.
-See: `/home/mind-protocol/mindprotocol/tools/ingestion/falkordb_ingestor_rest.py`
+See: `/home/mind-protocol/mind-protocol/tools/ingestion/falkordb_ingestor_rest.py`
 
 ---
 

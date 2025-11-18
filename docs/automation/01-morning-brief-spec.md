@@ -582,7 +582,7 @@ python3 tools/query_production.py "MATCH (n:U4_Work_Item {scope_ref: 'scopelock'
 python3 tools/ingestion/falkordb_ingestor_rest.py <extraction.json>
 ```
 
-**Reference:** `/home/mind-protocol/mindprotocol/docs/COMPLETE_TYPE_REFERENCE.md` for all node/link types
+**Reference:** `/home/mind-protocol/mind-protocol/docs/COMPLETE_TYPE_REFERENCE.md` for all node/link types
 
 ### Systemd Timer
 

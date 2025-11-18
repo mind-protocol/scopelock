@@ -187,7 +187,7 @@ External:
 
 ## FalkorDB Graph Schema
 
-**Note:** All nodes inherit universal attributes from Mind Protocol v2 spec. See `/home/mind-protocol/mindprotocol/docs/COMPLETE_TYPE_REFERENCE.md` for complete reference.
+**Note:** All nodes inherit universal attributes from Mind Protocol v2 spec. See `/home/mind-protocol/mind-protocol/docs/COMPLETE_TYPE_REFERENCE.md` for complete reference.
 
 ### Node Type: U4_Agent (Developers)
 

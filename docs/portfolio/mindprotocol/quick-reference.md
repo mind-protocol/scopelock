@@ -96,7 +96,7 @@ Single-energy-per-node substrate with derived SubEntity activation, surplus-only
 
 ## Links
 
-- **Repository:** https://github.com/mind-protocol/mindprotocol (private — can share on request)
+- **Repository:** https://github.com/mind-protocol/mind-protocol (private — can share on request)
 - **Application:** https://serenissima.ai (powered by this infrastructure)
 - **Organization:** https://github.com/orgs/mind-protocol/repositories
 - **Related:** La Serenissima portfolio entry (application layer)
