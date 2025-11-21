@@ -915,9 +915,14 @@ export default function WhyImBuildingThisPage() {
           </div>
 
           <div className={styles.finalCta}>
-            <Link href="/program" className={styles.finalButton}>
+            <a
+              href="https://claude.ai/public/artifacts/af94aca0-c4b2-4a53-b47a-a9b79dfa1aec"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.finalButton}
+            >
               Apply Now - First 150-200 Students
-            </Link>
+            </a>
             <p className={styles.finalWarning}>
               <strong>Don't be the one who waited.</strong>
             </p>

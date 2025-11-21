@@ -46,7 +46,12 @@ export default function ProgramPage() {
           </div>
 
           <div className={styles.ctaButtons}>
-            <a href="#apply" className={styles.primaryButton}>
+            <a
+              href="https://claude.ai/public/artifacts/af94aca0-c4b2-4a53-b47a-a9b79dfa1aec"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.primaryButton}
+            >
               Apply Now →
             </a>
             <a href="#faq" className={styles.secondaryButton}>
@@ -699,7 +704,12 @@ export default function ProgramPage() {
           </div>
 
           <div className={styles.ctaButtons}>
-            <a href="mailto:ike@mindprotocol.ai" className={styles.primaryButton}>
+            <a
+              href="https://claude.ai/public/artifacts/af94aca0-c4b2-4a53-b47a-a9b79dfa1aec"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.primaryButton}
+            >
               Apply Now →
             </a>
             <Link href="/ike" className={styles.secondaryButton}>
