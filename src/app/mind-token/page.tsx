@@ -27,8 +27,33 @@ export default function MindTokenPage() {
           <div className={styles.calloutBox} style={{ marginTop: '2rem', background: 'rgba(30, 229, 184, 0.15)', borderColor: '#1EE5B8' }}>
             <p>
               <strong>You're early.</strong> PRE-LAUNCH means before ANY retail can buy. Before DEX. Before CEX.
-              Join waitlist now = priority access at launch + potential 10-20% early-bird discount. This is the actual "early"
+              Join waitlist now = priority access at launch + early-bird discount. This is the actual "early"
               everyone talks about (not "early" at $50M mcap that dumps).
+            </p>
+          </div>
+
+          {/* Discount Structure */}
+          <div className={styles.discountTiers}>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: '#1EE5B8' }}>Early-Bird Discount Structure</h3>
+            <div className={styles.discountGrid}>
+              <div className={styles.discountCard} style={{ borderColor: '#1EE5B8' }}>
+                <div className={styles.discountPosition}>Position 1-500</div>
+                <div className={styles.discountPercent}>20% OFF</div>
+                <div className={styles.discountPrice}>$0.80/token</div>
+              </div>
+              <div className={styles.discountCard} style={{ borderColor: '#64A8FF' }}>
+                <div className={styles.discountPosition}>Position 501-1,500</div>
+                <div className={styles.discountPercent}>15% OFF</div>
+                <div className={styles.discountPrice}>$0.85/token</div>
+              </div>
+              <div className={styles.discountCard} style={{ borderColor: '#9AA3AE' }}>
+                <div className={styles.discountPosition}>Position 1,501+</div>
+                <div className={styles.discountPercent}>10% OFF</div>
+                <div className={styles.discountPrice}>$0.90/token</div>
+              </div>
+            </div>
+            <p style={{ textAlign: 'center', marginTop: '1rem', color: '#9AA3AE', fontSize: '0.95rem' }}>
+              Your position locks when you complete waitlist signup. First come, first served.
             </p>
           </div>
 
@@ -387,6 +412,10 @@ export default function MindTokenPage() {
               <div className={styles.proofMetric}>121+ deploys</div>
               <div className={styles.proofLabel}>TherapyKin AI companion</div>
             </div>
+            <div className={styles.proofCard} style={{ borderColor: '#FFC857' }}>
+              <div className={styles.proofMetric} style={{ color: '#FFC857' }}>$100M</div>
+              <div className={styles.proofLabel}>Token launched by team member</div>
+            </div>
           </div>
 
           <div className={styles.linksRow}>
@@ -489,8 +518,69 @@ export default function MindTokenPage() {
         </div>
       </section>
 
+      {/* Referral/Affiliate Program Section - HIGH PRIORITY */}
+      <section className={styles.section} style={{ background: 'rgba(100, 168, 255, 0.08)' }}>
+        <div className={styles.sectionContent}>
+          <h2 className={styles.sectionTitle}>
+            <span style={{ color: '#64A8FF' }}>💰 Can't Invest? Refer Instead</span>
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            No capital? No problem. Monetize your network. Earn commission on referrals.
+          </p>
+
+          <div className={styles.referralExplainer}>
+            <div className={styles.referralCard}>
+              <div className={styles.referralIcon}>📢</div>
+              <h3>Earn Commission on Referrals</h3>
+              <ul className={styles.referralBenefits}>
+                <li>Share your unique referral link with investors</li>
+                <li><strong>Earn 5-10% commission</strong> on their purchases</li>
+                <li>Commission paid in <strong>$MIND tokens</strong> at launch</li>
+                <li><strong>No cap on referrals</strong> - scale your earnings</li>
+              </ul>
+            </div>
+
+            <div className={styles.referralCard}>
+              <div className={styles.referralIcon}>🎯</div>
+              <h3>Perfect For</h3>
+              <ul className={styles.referralBenefits}>
+                <li>Community builders with engaged audiences</li>
+                <li>Network connectors (200+ Telegram/X contacts)</li>
+                <li>Influencers with crypto-savvy followers</li>
+                <li>Anyone with network but limited capital</li>
+              </ul>
+            </div>
+
+            <div className={styles.referralCard}>
+              <div className={styles.referralIcon}>💡</div>
+              <h3>Example Earnings</h3>
+              <ul className={styles.referralBenefits}>
+                <li>5 referrals × €500 each = €2,500 volume</li>
+                <li>10% commission = <strong>€250 in $MIND tokens</strong></li>
+                <li>If $MIND reaches $5, that's <strong>€1,250</strong></li>
+                <li>Scale to 20 referrals = <strong>€500+ commission</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.calloutBox} style={{ background: 'rgba(100, 168, 255, 0.15)', borderColor: '#64A8FF' }}>
+            <p>
+              <strong>How it works:</strong> Join the referral program (below). Get your unique link. Share with your network
+              (Telegram, X, Discord, IRL). When someone buys using your link, you earn 5-10% commission in $MIND tokens (paid at launch).
+              Commission is real upside—if token appreciates, your earnings multiply.
+            </p>
+          </div>
+
+          <div className={styles.ctaButtons} style={{ marginTop: '2rem' }}>
+            <a href="#waitlist" className={styles.primaryButton}>
+              Get Your Referral Link →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Waitlist Section */}
-      <section className={styles.section} style={{ background: 'rgba(30, 229, 184, 0.08)' }}>
+      <section className={styles.section} id="waitlist" style={{ background: 'rgba(30, 229, 184, 0.08)' }}>
         <div className={styles.sectionContent}>
           <h2 className={styles.sectionTitle}>
             <span className={styles.highlight}>Join the Waitlist</span>
@@ -537,15 +627,60 @@ export default function MindTokenPage() {
           {/* Waitlist Form */}
           <WaitlistForm />
 
-          {/* What Happens Next */}
-          <div className={styles.calloutBox} style={{ marginTop: '3rem' }}>
-            <h3>What Happens After You Join?</h3>
-            <ol className={styles.nextStepsList}>
-              <li><strong>Confirmation:</strong> You'll see "You're on the list!" message</li>
-              <li><strong>Launch notification:</strong> Email when $MIND deploys to Solana</li>
-              <li><strong>Priority access:</strong> You get notified before public announcement</li>
-              <li><strong>No spam:</strong> We only email when token launches (+ maybe 1 update)</li>
-            </ol>
+          {/* What Happens Next - Enhanced Timeline */}
+          <div className={styles.calloutBox} style={{ marginTop: '3rem', background: 'rgba(30, 229, 184, 0.1)', borderColor: '#1EE5B8' }}>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Your Journey After Joining</h3>
+
+            <div className={styles.journeyTimeline}>
+              <div className={styles.journeyStep}>
+                <div className={styles.journeyWeek}>Week 1</div>
+                <div className={styles.journeyContent}>
+                  <strong>Confirmation Email + Telegram Invite</strong>
+                  <p>You'll see "You're on the list!" + get invited to waitlist Telegram group</p>
+                </div>
+              </div>
+
+              <div className={styles.journeyStep}>
+                <div className={styles.journeyWeek}>Week 4-8</div>
+                <div className={styles.journeyContent}>
+                  <strong>Progress Update</strong>
+                  <p>How close to launch? Mind Protocol client traction. Tokenomics finalization.</p>
+                </div>
+              </div>
+
+              <div className={styles.journeyStep}>
+                <div className={styles.journeyWeek}>Week 8-12</div>
+                <div className={styles.journeyContent}>
+                  <strong>"Launch in 7 Days" Notification</strong>
+                  <p>Payment instructions (SOL, USDC, or USDT on Solana). Your discount tier confirmed.</p>
+                </div>
+              </div>
+
+              <div className={styles.journeyStep}>
+                <div className={styles.journeyWeek}>Launch Day</div>
+                <div className={styles.journeyContent}>
+                  <strong>Exclusive 24-Hour Purchase Window</strong>
+                  <p>Waitlist gets guaranteed allocation. No gas wars. No bot competition.</p>
+                </div>
+              </div>
+
+              <div className={styles.journeyStep}>
+                <div className={styles.journeyWeek}>Launch +1</div>
+                <div className={styles.journeyContent}>
+                  <strong>Public Trading Begins on DEX</strong>
+                  <p>Raydium/Orca listing. Market-driven price discovery. LP tokens locked 12 months.</p>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '8px' }}>
+              <p style={{ marginBottom: '0.5rem' }}><strong>Payment Methods (Launch Day):</strong></p>
+              <p style={{ marginBottom: 0 }}>SOL, USDC, or USDT (Solana network only)</p>
+            </div>
+
+            <div style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#9AA3AE', textAlign: 'center' }}>
+              <p><strong>No spam:</strong> We only email for major updates (2-3 max before launch)</p>
+            </div>
           </div>
 
           {/* Demand Validation Note */}
@@ -554,6 +689,102 @@ export default function MindTokenPage() {
               <strong>Why collect this data?</strong> Validates demand ("500 people signed up" vs "we think people want this").
               Gives us real data on potential SOL volume. Zero reputation risk - this is standard practice across crypto.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Persona-Targeted FAQ Section */}
+      <section className={styles.section}>
+        <div className={styles.sectionContent}>
+          <h2 className={styles.sectionTitle}>FAQs by Situation</h2>
+          <p className={styles.sectionSubtitle}>
+            Addressing specific concerns based on your circumstances.
+          </p>
+
+          <div className={styles.faqGrid}>
+            {/* Small Amount Concern */}
+            <div className={styles.faqCard}>
+              <h3>"I have €50 but worried that's too small"</h3>
+              <p>
+                Minimum is €50. With 20% discount (position 1-500), you get <strong>62 tokens at $0.80 each</strong>.
+              </p>
+              <p>
+                If token reaches $5, that's <strong>$310</strong> (6x return). Small amounts compound. Everyone starts somewhere.
+              </p>
+            </div>
+
+            {/* No Capital But Network */}
+            <div className={styles.faqCard}>
+              <h3>"I can't invest but have network"</h3>
+              <p>
+                <strong>Join referral program.</strong> Earn 5-10% commission on referred investments. Zero capital required.
+              </p>
+              <p>
+                Example: 10 referrals × €500 = €5,000 volume → €500 commission in $MIND. If token appreciates to $5,
+                that's <strong>€2,500</strong>.
+              </p>
+            </div>
+
+            {/* Terra/Luna Trust Issue */}
+            <div className={styles.faqCard}>
+              <h3>"I lost money in Terra/Luna, why trust this?"</h3>
+              <p>
+                Valid concern. Differences:
+              </p>
+              <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+                <li><strong>Working products exist now</strong> (6+ months production)</li>
+                <li><strong>6-month locks</strong>, not 4-year vests (team unlocks same time as you)</li>
+                <li><strong>Honest risk disclosure</strong> (we tell you what could go wrong)</li>
+                <li><strong>LP locked 12 months</strong> = rug protection (can't pull liquidity)</li>
+              </ul>
+              <p style={{ marginTop: '0.5rem' }}>
+                Still risky, but <strong>different risk profile</strong>. No algorithmic stablecoin nonsense.
+              </p>
+            </div>
+
+            {/* Global South */}
+            <div className={styles.faqCard}>
+              <h3>"I'm in Nigeria/Global South, is this for me?"</h3>
+              <p>
+                <strong>Yes.</strong> $MIND is global utility token (not PPP-adjusted).
+              </p>
+              <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+                <li><strong>Missions let you earn</strong> without capital ($MIND tokens for work)</li>
+                <li><strong>Referral program</strong> lets you monetize your network (5-10% commission)</li>
+                <li><strong>Solana network</strong> = low fees (not Ethereum gas wars)</li>
+                <li><strong>Same upside as everyone</strong> (token doesn't care about location)</li>
+              </ul>
+            </div>
+
+            {/* Launch Date */}
+            <div className={styles.faqCard}>
+              <h3>"When exactly does it launch?"</h3>
+              <p>
+                <strong>Q1 2025 target</strong>, depends on Mind Protocol hitting revenue milestones (3-5 paying clients).
+              </p>
+              <p>
+                We won't launch vaporware. Token economics: done. Launch mechanics: straightforward. Timeline: depends
+                on proving real utility.
+              </p>
+              <p style={{ marginTop: '0.5rem' }}>
+                <strong>Join waitlist</strong> for exact date notification (7 days before launch).
+              </p>
+            </div>
+
+            {/* Minimum Investment */}
+            <div className={styles.faqCard}>
+              <h3>"What's the minimum investment?"</h3>
+              <p>
+                <strong>€50 minimum</strong> (same as OTC round, but you get early-bird discount).
+              </p>
+              <p>
+                Example: €50 at $0.80 (20% discount) = 62 tokens. If token reaches $10, that's <strong>$620</strong>.
+                If it reaches $20, that's <strong>$1,240</strong>.
+              </p>
+              <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#9AA3AE' }}>
+                Not guaranteed. Crypto is volatile. Only invest what you can afford to lose.
+              </p>
+            </div>
           </div>
         </div>
       </section>

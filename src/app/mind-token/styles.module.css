@@ -744,6 +744,205 @@
   margin: 0;
 }
 
+/* Discount Tiers */
+.discountTiers {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+}
+
+.discountGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 1.5rem;
+}
+
+.discountCard {
+  padding: 24px;
+  background: rgba(30, 229, 184, 0.05);
+  border: 2px solid;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.discountCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 229, 184, 0.2);
+}
+
+.discountPosition {
+  font-size: 0.875rem;
+  color: #9AA3AE;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.discountPercent {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #1EE5B8;
+  margin-bottom: 8px;
+}
+
+.discountPrice {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  color: #E6EAF2;
+  font-weight: 600;
+}
+
+/* Referral Program */
+.referralExplainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+.referralCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(100, 168, 255, 0.3);
+  border-radius: 12px;
+}
+
+.referralIcon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.referralCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #64A8FF;
+}
+
+.referralBenefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.referralBenefits li {
+  padding: 12px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #9AA3AE;
+  border-bottom: 1px solid rgba(154, 163, 174, 0.1);
+}
+
+.referralBenefits li:last-child {
+  border-bottom: none;
+}
+
+/* Journey Timeline */
+.journeyTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 1.5rem;
+}
+
+.journeyStep {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px;
+  background: rgba(30, 229, 184, 0.05);
+  border-left: 4px solid #1EE5B8;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.journeyStep:hover {
+  background: rgba(30, 229, 184, 0.08);
+  transform: translateX(4px);
+}
+
+.journeyWeek {
+  flex-shrink: 0;
+  min-width: 100px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1EE5B8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.journeyContent {
+  flex: 1;
+}
+
+.journeyContent strong {
+  display: block;
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+  color: #E6EAF2;
+}
+
+.journeyContent p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+/* FAQ Grid */
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.faqCard {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.faqCard:hover {
+  border-color: #1EE5B8;
+  transform: translateY(-2px);
+}
+
+.faqCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: #1EE5B8;
+  font-style: italic;
+}
+
+.faqCard p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+.faqCard p:last-child {
+  margin-bottom: 0;
+}
+
+.faqCard ul {
+  margin: 0;
+  color: #9AA3AE;
+  line-height: 1.6;
+}
+
+.faqCard ul li {
+  margin: 8px 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .heroTitle {
@@ -788,6 +987,27 @@
   }
 
   .waitlistExplainer {
+    grid-template-columns: 1fr;
+  }
+
+  .discountGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .referralExplainer {
+    grid-template-columns: 1fr;
+  }
+
+  .journeyStep {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .journeyWeek {
+    min-width: auto;
+  }
+
+  .faqGrid {
     grid-template-columns: 1fr;
   }
 }
