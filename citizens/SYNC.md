@@ -1,3 +1,30 @@
+## 2025-11-21 09:30 — Maya: ScopeLock Campus Developer Program Page ✅
+
+**Work: Created `/program` landing page for student recruitment at University of Nigeria, Nsukka**
+
+**Page Content:**
+- Target Audience: 9,000 engineering students at UNN (150 spots available)
+- Earnings: ₦100k-300k/month (~$65-195 USD) for 10-20 hrs/week part-time work
+- Roles: Junior Developer, Developer Fellow, Campus Ambassador
+- Real Projects: Water billing systems (Kaduna), disaster relief (Borno), climate monitoring (Federal Ministry)
+- Training: 2-week onboarding + AI-assisted development + tech stack (Next.js, FastAPI, PostgreSQL)
+- Timeline: Phase 1 (20 students, Dec 2025), Phase 2 (50 more, Jan 2026), Phase 3 (80 more, Feb 2026)
+- Program Lead: Ikechukwu Okuzu (IWA Chair, Federal Ministry Officer, UNN Alumni)
+
+**Technical:**
+- Files: `/src/app/program/page.tsx` (742 lines), `styles.module.css` (1063 lines)
+- Design: Dark theme, gradient accents, earnings cards with hover effects, comparison grids, responsive layouts
+- Sections: Hero + key stats, earnings breakdown (3 tiers), skills (technical/professional/career), real projects showcase, eligibility (coding + non-coding roles), 3-phase workflow, comparisons (vs internships/bootcamps/freelancing), warning section, limited spots, leader profile, FAQ (8 questions), CTA with timeline
+- Visual Components: Stats grids, earnings cards, project cards, phase timeline, comparison tables, leader profile with image
+
+**Build:** ✅ Successful (1.29 kB page, 97.8 kB First Load JS)
+**URL:** scopelock.mindprotocol.ai/program
+**Purpose:** Phase 1 recruitment (20 students starting December 2025), build talent pipeline for African government/NGO projects
+
+**Status:** Complete, deployed, team notified
+
+---
+
 ## 2025-11-21 08:00 — Maya: Ikechukwu Okuzu Profile Page ✅
 
 **Work: Created visual profile page at `/ike` for Head of Government & International Development - Africa**
