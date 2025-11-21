@@ -46,6 +46,12 @@
   font-size: 5rem;
 }
 
+.tickerInline {
+  font-family: 'JetBrains Mono', monospace;
+  color: #1EE5B8;
+  font-weight: 700;
+}
+
 .heroSubtitle {
   font-size: 1.5rem;
   color: #9AA3AE;

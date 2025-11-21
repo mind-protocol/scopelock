@@ -117,7 +117,7 @@ export default function MindTokenPage() {
             </div>
 
             <div className={styles.comparisonCard} style={{ borderColor: '#1EE5B8' }}>
-              <div className={styles.comparisonLabel} style={{ color: '#1EE5B8' }}>$MIND Protocol</div>
+              <div className={styles.comparisonLabel} style={{ color: '#1EE5B8' }}><span className={styles.tickerInline}>$MIND</span> Protocol</div>
               <ul className={styles.comparisonList}>
                 <li>✅ AI citizens have real Solana wallets</li>
                 <li>✅ Manage their own budgets autonomously</li>
@@ -337,7 +337,7 @@ export default function MindTokenPage() {
       {/* Utility & Use Cases */}
       <section className={styles.section}>
         <div className={styles.sectionContent}>
-          <h2 className={styles.sectionTitle}>What $MIND Powers</h2>
+          <h2 className={styles.sectionTitle}>What <span className={styles.tickerInline}>$MIND</span> Powers</h2>
           <p className={styles.sectionSubtitle}>
             Real utility. Not abstract "governance." Actual AI operations on-chain.
           </p>
@@ -345,8 +345,8 @@ export default function MindTokenPage() {
           <div className={styles.calloutBox} style={{ marginBottom: '2rem', background: 'rgba(30, 229, 184, 0.1)', borderColor: '#1EE5B8' }}>
             <p>
               <strong>Token Utility Cycle (Where Buy Pressure Comes From):</strong><br />
-              1. Users buy $MIND on DEX → fund citizen wallets (BUY PRESSURE)<br />
-              2. Citizens spend $MIND on AI operations (LLM calls, tools, memory)<br />
+              1. Users buy <span className={styles.tickerInline}>$MIND</span> on DEX → fund citizen wallets (BUY PRESSURE)<br />
+              2. Citizens spend <span className={styles.tickerInline}>$MIND</span> on AI operations (LLM calls, tools, memory)<br />
               3. Protocol collects spent tokens → treasury<br />
               4. Treasury recirculates via UBC or burns (deflationary option)<br />
               5. As usage grows → more buy pressure<br /><br />
@@ -378,7 +378,7 @@ export default function MindTokenPage() {
               <div className={styles.utilityIcon}>🏛️</div>
               <h3>Governance</h3>
               <p>
-                1 $MIND = 1 vote. DAO controls 120M token treasury, UBC distribution rates,
+                1 <span className={styles.tickerInline}>$MIND</span> = 1 vote. DAO controls 120M token treasury, UBC distribution rates,
                 strategic partnerships. Real community ownership.
               </p>
             </div>
@@ -447,7 +447,7 @@ export default function MindTokenPage() {
               <div className={styles.timelinePhase}>Phase 1</div>
               <div className={styles.timelineTitle}>Token Deployment</div>
               <div className={styles.timelineDescription}>
-                Deploy $MIND on Solana. Create initial LP (Raydium/Orca). Lock LP tokens 12 months.
+                Deploy <span className={styles.tickerInline}>$MIND</span> on Solana. Create initial LP (Raydium/Orca). Lock LP tokens 12 months.
               </div>
             </div>
 
@@ -535,7 +535,7 @@ export default function MindTokenPage() {
               <ul className={styles.referralBenefits}>
                 <li>Share your unique referral link with investors</li>
                 <li><strong>Earn 5-10% commission</strong> on their purchases</li>
-                <li>Commission paid in <strong>$MIND tokens</strong> at launch</li>
+                <li>Commission paid in <strong><span className={styles.tickerInline}>$MIND</span> tokens</strong> at launch</li>
                 <li><strong>No cap on referrals</strong> - scale your earnings</li>
               </ul>
             </div>
@@ -556,8 +556,8 @@ export default function MindTokenPage() {
               <h3>Example Earnings</h3>
               <ul className={styles.referralBenefits}>
                 <li>5 referrals × €500 each = €2,500 volume</li>
-                <li>10% commission = <strong>€250 in $MIND tokens</strong></li>
-                <li>If $MIND reaches $5, that's <strong>€1,250</strong></li>
+                <li>10% commission = <strong>€250 in <span className={styles.tickerInline}>$MIND</span> tokens</strong></li>
+                <li>If <span className={styles.tickerInline}>$MIND</span> reaches $5, that's <strong>€1,250</strong></li>
                 <li>Scale to 20 referrals = <strong>€500+ commission</strong></li>
               </ul>
             </div>
@@ -566,7 +566,7 @@ export default function MindTokenPage() {
           <div className={styles.calloutBox} style={{ background: 'rgba(100, 168, 255, 0.15)', borderColor: '#64A8FF' }}>
             <p>
               <strong>How it works:</strong> Join the referral program (below). Get your unique link. Share with your network
-              (Telegram, X, Discord, IRL). When someone buys using your link, you earn 5-10% commission in $MIND tokens (paid at launch).
+              (Telegram, X, Discord, IRL). When someone buys using your link, you earn 5-10% commission in <span className={styles.tickerInline}>$MIND</span> tokens (paid at launch).
               Commission is real upside—if token appreciates, your earnings multiply.
             </p>
           </div>
@@ -588,7 +588,7 @@ export default function MindTokenPage() {
             Priority Access at Launch
           </h2>
           <p className={styles.sectionSubtitle}>
-            $MIND launching Q1 2025. Get notified first and access potential early-bird pricing.
+            <span className={styles.tickerInline}>$MIND</span> launching Q1 2025. Get notified first and access potential early-bird pricing.
           </p>
 
           {/* Why Waitlist Works */}
@@ -720,7 +720,7 @@ export default function MindTokenPage() {
                 <strong>Join referral program.</strong> Earn 5-10% commission on referred investments. Zero capital required.
               </p>
               <p>
-                Example: 10 referrals × €500 = €5,000 volume → €500 commission in $MIND. If token appreciates to $5,
+                Example: 10 referrals × €500 = €5,000 volume → €500 commission in <span className={styles.tickerInline}>$MIND</span>. If token appreciates to $5,
                 that's <strong>€2,500</strong>.
               </p>
             </div>
@@ -746,10 +746,10 @@ export default function MindTokenPage() {
             <div className={styles.faqCard}>
               <h3>"I'm in Nigeria/Global South, is this for me?"</h3>
               <p>
-                <strong>Yes.</strong> $MIND is global utility token (not PPP-adjusted).
+                <strong>Yes.</strong> <span className={styles.tickerInline}>$MIND</span> is global utility token (not PPP-adjusted).
               </p>
               <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
-                <li><strong>Missions let you earn</strong> without capital ($MIND tokens for work)</li>
+                <li><strong>Missions let you earn</strong> without capital (<span className={styles.tickerInline}>$MIND</span> tokens for work)</li>
                 <li><strong>Referral program</strong> lets you monetize your network (5-10% commission)</li>
                 <li><strong>Solana network</strong> = low fees (not Ethereum gas wars)</li>
                 <li><strong>Same upside as everyone</strong> (token doesn't care about location)</li>
@@ -820,7 +820,7 @@ export default function MindTokenPage() {
       {/* Footer Disclaimer */}
       <section className={styles.disclaimer}>
         <p>
-          <strong>Disclaimer:</strong> $MIND is a utility token for AI compute operations. This page is for informational
+          <strong>Disclaimer:</strong> <span className={styles.tickerInline}>$MIND</span> is a utility token for AI compute operations. This page is for informational
           purposes only and does not constitute investment advice. Cryptocurrency investments carry risk. Token not yet launched.
           Tokenomics subject to change before deployment. DYOR.
         </p>
