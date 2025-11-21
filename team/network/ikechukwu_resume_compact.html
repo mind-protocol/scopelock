@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikechukwu Okuzu - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.4;
+            color: #1a1a1a;
+            background: #f5f5f5;
+            padding: 20px 10px;
+            font-size: 10pt;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Header */
+        .header {
+            background: #1a2332;
+            color: white;
+            padding: 25px 30px 20px 30px;
+            border-bottom: 3px solid #2c5aa0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .header .title {
+            font-size: 0.95em;
+            font-weight: 300;
+            margin-bottom: 12px;
+            color: #c0c0c0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .header .tagline {
+            font-size: 0.9em;
+            font-style: normal;
+            color: #d4e1f0;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 500;
+            padding: 8px 0;
+            border-top: 1px solid #3a4a5a;
+            border-bottom: 1px solid #3a4a5a;
+            line-height: 1.4;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.8em;
+        }
+
+        .contact-info a {
+            color: #8fadcf;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: #b8d4f1;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 25px 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.1em;
+            color: #1a2332;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #2c5aa0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary {
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #2a2a2a;
+            background: #fafafa;
+            padding: 15px;
+            border-left: 3px solid #2c5aa0;
+            text-align: justify;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 18px;
+            padding: 15px;
+            background: #fafafa;
+            border-left: 3px solid #2c5aa0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #1a2332;
+        }
+
+        .job-company {
+            font-size: 0.85em;
+            color: #2c5aa0;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        .job-date {
+            font-size: 0.75em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job-location {
+            font-size: 0.75em;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .job-description {
+            margin-top: 8px;
+            color: #2a2a2a;
+            font-size: 0.85em;
+        }
+
+        .job-description ul {
+            margin-left: 15px;
+            margin-top: 6px;
+        }
+
+        .job-description li {
+            margin-bottom: 5px;
+            color: #2a2a2a;
+            line-height: 1.4;
+        }
+
+        .job-description p {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #fafafa;
+            border-left: 3px solid #2c5aa0;
+        }
+
+        .degree {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #1a2332;
+            margin-bottom: 5px;
+        }
+
+        .institution {
+            font-size: 0.85em;
+            color: #2c5aa0;
+            font-weight: 600;
+        }
+
+        .edu-date {
+            font-size: 0.75em;
+            color: #666;
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+        .achievement {
+            margin-top: 6px;
+            color: #1a2332;
+            font-weight: 500;
+            line-height: 1.4;
+            font-size: 0.85em;
+        }
+
+        /* Skills & Certifications */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .skill-category {
+            background: #fafafa;
+            padding: 12px;
+            border-left: 3px solid #2c5aa0;
+        }
+
+        .skill-category h4 {
+            color: #1a2332;
+            margin-bottom: 8px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 3px 0;
+            color: #2a2a2a;
+            font-size: 0.8em;
+        }
+
+        .skill-category li:before {
+            content: "▪ ";
+            color: #2c5aa0;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        /* Awards */
+        .award {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #fafafa;
+            border-left: 3px solid #2c5aa0;
+        }
+
+        .award-title {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #1a2332;
+            margin-bottom: 5px;
+        }
+
+        .award-org {
+            color: #2c5aa0;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .award-date {
+            font-size: 0.75em;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background: #1a2332;
+            color: white;
+            padding: 18px;
+            margin-bottom: 20px;
+            border-left: 3px solid #2c5aa0;
+        }
+
+        .highlight-box h3 {
+            font-size: 1em;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .highlight-box p {
+            font-size: 0.85em;
+            line-height: 1.5;
+            color: #d0d0d0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-top: 12px;
+            border-top: 1px solid #3a4a5a;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: 600;
+            display: block;
+            color: #8fadcf;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            color: #b0b0b0;
+            margin-top: 3px;
+        }
+
+        /* Certifications */
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .cert-item {
+            background: #fafafa;
+            padding: 12px;
+            border-left: 3px solid #2c5aa0;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #1a2332;
+            margin-bottom: 5px;
+            font-size: 0.85em;
+        }
+
+        .cert-org {
+            font-size: 0.8em;
+            color: #2c5aa0;
+        }
+
+        .cert-date {
+            font-size: 0.75em;
+            color: #666;
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+        /* Languages */
+        .languages {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .language {
+            background: #fafafa;
+            padding: 8px 15px;
+            border: 2px solid #2c5aa0;
+            font-weight: 600;
+            color: #1a2332;
+            font-size: 0.8em;
+        }
+
+        /* Ensure underlined emphasis is visible in all formats */
+        .emphasis-underline {
+            text-decoration: underline;
+            text-decoration-color: #2c5aa0;
+            text-decoration-thickness: 2px;
+            font-weight: 600;
+        }
+
+        /* Print Styles - Optimized for PDF */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border: none;
+                max-width: 100%;
+            }
+            
+            .header {
+                background: #1a2332 !important;
+                color: white !important;
+                border-bottom: 3px solid #2c5aa0;
+                page-break-after: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .header h1,
+            .header .title,
+            .header .tagline,
+            .header .contact-info,
+            .header .contact-info a,
+            .header .contact-info span {
+                color: white !important;
+            }
+            
+            .highlight-box {
+                background: #1a2332 !important;
+                border: 2px solid #2c5aa0;
+                color: white !important;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .highlight-box h3,
+            .highlight-box p,
+            .highlight-box .stat-number,
+            .highlight-box .stat-label {
+                color: white !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .job {
+                page-break-inside: avoid;
+                margin-bottom: 12px;
+            }
+            
+            .education-item,
+            .award,
+            .cert-item {
+                page-break-inside: avoid;
+            }
+            
+            .section-title {
+                page-break-after: avoid;
+                border-bottom: 2px solid #2c5aa0;
+            }
+            
+            /* Ensure links are visible and underlined in PDF */
+            a {
+                color: #2c5aa0 !important;
+                text-decoration: underline;
+            }
+            
+            /* Show URLs after links in PDF */
+            a[href^="http"]:after {
+                content: " (" attr(href) ")";
+                font-size: 0.7em;
+                color: #666;
+            }
+            
+            /* Don't show URL for GitHub link (already visible) */
+            a[href*="github.com/mind-protocol/scopelock"]:after {
+                content: "";
+            }
+            
+            /* Don't show mailto: prefix for email links */
+            a[href^="mailto:"]:after {
+                content: "";
+            }
+            
+            /* Preserve background colors for emphasis */
+            .job,
+            .education-item,
+            .award,
+            .cert-item,
+            .skill-category {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            /* Better page margins */
+            @page {
+                margin: 0.5in;
+                size: letter;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 15px;
+            }
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .content {
+                padding: 20px 15px;
+            }
+            .job-header {
+                flex-direction: column;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>IKECHUKWU OKUZU</h1>
+            <div class="title">Engineering Leader | Water & Climate Solutions Expert | Technology Partnership Strategist</div>
+            <div class="tagline">Bridging government, academia, and technology to deliver scalable infrastructure solutions across Africa</div>
+            <div class="contact-info">
+                <a href="mailto:ike@mindprotocol.ai">ike@mindprotocol.ai</a>
+                <span style="color: white;">|</span>
+                <a href="https://www.linkedin.com/in/ikechukwu-okuzu">LinkedIn: @ikechukwu-okuzu</a>
+                <span style="color: white;">|</span>
+                <span style="color: white;">4,020+ LinkedIn Followers</span>
+                <span style="color: white;">|</span>
+                <span style="color: white;">Maiduguri, Borno State, Nigeria</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            
+            <!-- Highlight Box -->
+            <div class="highlight-box">
+                <h3>Strategic Network Access</h3>
+                <p>Direct connections to 36 state water ministries, 9,000+ engineering students across 9 departments, and international development organizations. Proven ability to mobilize resources, establish partnerships, and deliver measurable impact at scale.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">9,000+</span>
+                        <span class="stat-label">Students Accessible</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">36</span>
+                        <span class="stat-label">State Ministries</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Direct Contacts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI-Driven Development Section -->
+            <section class="section">
+                <h2 class="section-title" style="font-size: 1.3em; color: #2c5aa0;">AI-Driven Development</h2>
+                
+                <div class="job">
+                    <div class="job-description">
+                        <p><strong>Access to cutting-edge open-source AI infrastructure that <span class="emphasis-underline">enables non-developers and junior developers to perform complex software development work</span>:</strong></p>
+                        <ul>
+                            <li><strong>10x Productivity:</strong> Junior developers and engineering students achieve senior-level output through AI-driven code generation, testing, and deployment</li>
+                            <li><strong>Rapid Training:</strong> Transform computer science students into productive developers within 2-4 weeks</li>
+                            <li><strong>Cost Efficiency:</strong> Reduce development costs by 60-70% while maintaining enterprise-grade quality</li>
+                            <li><strong>Open Source:</strong> Built on proven open-source infrastructure - <a href="https://github.com/mind-protocol/scopelock" target="_blank" style="color: #2c5aa0; text-decoration: none; font-weight: 600;">github.com/mind-protocol/scopelock</a></li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Strategic Impact:</strong> This technology enables universities to provide immediate real-world value to students while delivering cost-effective solutions to government and enterprise clients.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Summary -->
+            <section class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="summary">
+                    Award-winning engineering professional with exceptional access to Nigerian government agencies, international development organizations, and university networks. Former President of Engineering Student Association at University of Nigeria with direct connections to 9 departments encompassing 9,000+ students. Currently serving as Chair of IWA Young Water Professionals Nigeria, providing interface with water ministries across all 36 Nigerian states. Expertise in leveraging cutting-edge AI-driven infrastructure to enable non-developers and junior developers to perform complex software development work—reducing project costs by 60-70% while maintaining enterprise-grade quality. Proven ability to bridge government, academia, and technology sectors to deliver scalable infrastructure solutions across Africa's water, climate, and technology challenges.
+                </div>
+            </section>
+
+            <!-- Current Leadership Positions -->
+            <section class="section">
+                <h2 class="section-title">Current Leadership Positions</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Chair</div>
+                            <div class="job-company">IWA Young Water Professionals Nigeria</div>
+                        </div>
+                        <div class="job-date">Dec 2023 - Present (2 years)</div>
+                    </div>
+                    <div class="job-description">
+                        <p><strong>Network Access:</strong> International Water Association (IWA) - the global authority on water professionals</p>
+                        <ul>
+                            <li>Direct interface with water ministry commissioners across all 36 Nigerian states</li>
+                            <li>Regular participation in government water policy discussions and infrastructure planning meetings</li>
+                            <li>Access to Federal Ministry of Water Resources officials and local government water officers</li>
+                            <li>Connection to international water development organizations and WASH-focused NGOs</li>
+                            <li>Gateway to UN SDG 6 initiatives and World Bank water projects</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Africa Regional Coordinator</div>
+                            <div class="job-company">Swiss Agency for Development and Cooperation (1MYAC Ambassador)</div>
+                        </div>
+                        <div class="job-date">Jul 2023 - Present (2+ years)</div>
+                    </div>
+                    <div class="job-description">
+                        <p><strong>International Development Leadership:</strong> Swiss government-backed position connecting to major development funding channels</p>
+                        <ul>
+                            <li>Access to Swiss development grants ($250K-500K range)</li>
+                            <li>Connection to UN Water SDG 6 funding initiatives (millions available)</li>
+                            <li>Network with World Bank water infrastructure projects</li>
+                            <li>Partnership coordination with international development organizations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Partnership Lead - University & Government Relations</div>
+                            <div class="job-company">ScopeLock AI-Driven Software Development Agency</div>
+                        </div>
+                        <div class="job-date">Nov 2025 - Present</div>
+                    </div>
+                    <div class="job-description">
+                        <p><strong>Strategic Initiative:</strong> Leveraging AI-driven development to build 5x delivery capacity through university talent pipeline and government contract development</p>
+                        <ul>
+                            <li><strong>AI-Driven Student Development Program:</strong> Recruiting and training 150-200 students from 9 engineering departments using cutting-edge AI infrastructure that enables junior developers to perform senior-level work within weeks</li>
+                            <li><strong>University Partnership Strategy:</strong> Establishing official partnerships with Computer Science, Software Engineering, and Engineering departments—providing students with real client work experience and measurable career outcomes</li>
+                            <li><strong>Government Contract Pipeline:</strong> Opening channels for water infrastructure systems, climate monitoring platforms, disaster relief coordination tools, and environmental data management solutions</li>
+                            <li><strong>Technology-Enabled Scalability:</strong> Utilizing AI-driven development to reduce project costs by 60-70% while maintaining enterprise-grade quality—enabling competitive pricing on government contracts</li>
+                            <li><strong>Internship-to-Employment Pipeline:</strong> Creating systematic path from student recruitment through AI-driven training to full-time employment, solving both talent acquisition and youth employment challenges</li>
+                            <li><strong>Projected Impact:</strong> $2M-4M revenue growth in Year 1 through combination of student-leveraged delivery capacity and government contract channels</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Climate Change Officer</div>
+                            <div class="job-company">Federal Ministry of Environment, Nigeria</div>
+                        </div>
+                        <div class="job-date">Jun 2024 - Mar 2025 (Contract)</div>
+                    </div>
+                    <div class="job-location">Maiduguri, Borno State (On-site)</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Strategic partnership with EcoVanguard NYSC CDS Group for environmental sustainability</li>
+                            <li>Led tree-planting initiative at Borno State Firewood Market</li>
+                            <li>Negotiated "Cut 1 Tree, Plant 10" campaign with government stakeholders</li>
+                            <li>Active government insider with Federal Ministry credentials and state agency connections</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Flood Relief and Assessment Specialist</div>
+                            <div class="job-company">Flood Relief Disbursement Committee</div>
+                        </div>
+                        <div class="job-date">Oct 2024 - Dec 2024 (3 months)</div>
+                    </div>
+                    <div class="job-location">Maiduguri, Borno State</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Conducted data collection across 15 flood-affected communities</li>
+                            <li>Verified 5,000+ beneficiaries for relief fund disbursement</li>
+                            <li>Engaged with local leaders, flood victims, and stakeholders</li>
+                            <li>Compiled detailed impact reports with demographic and socioeconomic data</li>
+                            <li>Informed strategic planning for future flood risk mitigation</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Education -->
+            <section class="section">
+                <h2 class="section-title">Education & Academic Leadership</h2>
+                
+                <div class="education-item">
+                    <div class="degree">Bachelor of Engineering (B.Eng) - Agricultural and Bio-Resources Engineering</div>
+                    <div class="institution">University of Nigeria, Nsukka</div>
+                    <div class="edu-date">2017 - 2022</div>
+                    <div class="achievement">🏆 President of Engineering Student Association (ABESA) - 2023</div>
+                    <div class="achievement">🎓 Direct access to 9 engineering departments (Computer Science, Software Engineering, Electrical, Mechanical, Agricultural, Civil, Chemical, Industrial, Systems Engineering)</div>
+                    <div class="achievement">👥 Network: 9,000+ students across 9 departments - recruitable talent pipeline for industry partnerships</div>
+                </div>
+            </section>
+
+            <!-- International Recognition & Awards -->
+            <section class="section">
+                <h2 class="section-title">International Recognition & Awards</h2>
+                
+                <div class="award">
+                    <div class="award-title">🏆 2021 Filmmaker Award - Canada</div>
+                    <div class="award-org">Global Institute for Water Security, University of Saskatchewan</div>
+                    <div class="award-date">May 2021</div>
+                    <div class="job-description">
+                        <p style="margin-top: 6px;">Created award-winning short water film that attracted 2 water projects. Out of 241 submitted video entries, only 3 came from Africa - reached Viewers Choice Award. Demonstrates storytelling ability, international recognition, and comfort with AI-powered filmmaking tools.</p>
+                    </div>
+                </div>
+
+                <div class="award">
+                    <div class="award-title">🥉 NESTEC Essay Winner (3rd Runner)</div>
+                    <div class="award-org">BlueApple</div>
+                    <div class="award-date">February 2022</div>
+                </div>
+            </section>
+
+            <!-- Technical Expertise & Skills -->
+            <section class="section">
+                <h2 class="section-title">Technical Expertise & Skills</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Water & Climate Solutions</h4>
+                        <ul>
+                            <li>Water infrastructure systems</li>
+                            <li>Climate change monitoring</li>
+                            <li>Environmental data collection</li>
+                            <li>Disaster management</li>
+                            <li>WASH (Water, Sanitation, Hygiene)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Government Relations</h4>
+                        <ul>
+                            <li>Ministry-level stakeholder engagement</li>
+                            <li>Government procurement processes</li>
+                            <li>Policy development collaboration</li>
+                            <li>International development funding</li>
+                            <li>Public-private partnerships</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>University Partnerships</h4>
+                        <ul>
+                            <li>Student recruitment & management</li>
+                            <li>Industry-academia collaboration</li>
+                            <li>Internship program development</li>
+                            <li>Technical training & mentorship</li>
+                            <li>Capstone project coordination</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Product Development</h4>
+                        <ul>
+                            <li>Software requirements analysis</li>
+                            <li>Product conceptualization</li>
+                            <li>Fixed-price project delivery</li>
+                            <li>Technical writing & documentation</li>
+                            <li>Digital storytelling & communications</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="section">
+                <h2 class="section-title">Professional Certifications</h2>
+                
+                <div class="cert-list">
+                    <div class="cert-item">
+                        <div class="cert-name">Water in Communications Training Programme</div>
+                        <div class="cert-org">SIWI - Stockholm International Water Institute</div>
+                        <div class="cert-date">June 2025 | Focus: Storytelling and Journalism</div>
+                    </div>
+
+                    <div class="cert-item">
+                        <div class="cert-name">Hygiene Promotion</div>
+                        <div class="cert-org">DisasterReady</div>
+                        <div class="cert-date">April 2025</div>
+                    </div>
+
+                    <div class="cert-item">
+                        <div class="cert-name">Advanced Engineering Studies</div>
+                        <div class="cert-org">University of Nigeria, Nsukka</div>
+                        <div class="cert-date">2017-2022 | Agricultural & Bio-Resources Engineering</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications -->
+            <section class="section">
+                <h2 class="section-title">Select Publications</h2>
+                
+                <div class="job-description">
+                    <ul style="margin-left: 0;">
+                        <li><strong>"Challenges and opportunities in power generation and transmission in Nigeria"</strong> - NIEEE, October 2023</li>
+                        <li><strong>"Covid-19 Transmission Prevention Using Artificial Intelligent Door"</strong> - Blue Apple, June 2021 (Demonstrates AI/automation innovation mindset)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Languages -->
+            <section class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="languages">
+                    <div class="language">English (Full Professional Proficiency)</div>
+                    <div class="language">German (Limited Working Proficiency)</div>
+                    <div class="language">Hausa (Native/Fluent)</div>
+                    <div class="language">Igbo (Native/Fluent)</div>
+                </div>
+            </section>
+
+            <!-- Strategic Value Proposition -->
+            <div class="highlight-box">
+                <h3>Strategic Value Proposition</h3>
+                <p><strong>For Universities:</strong> Access to AI-driven development infrastructure that enables students to contribute to real client projects immediately—providing measurable employment outcomes, industry partnerships, and revenue-generating research opportunities without capital investment.</p>
+                <p style="margin-top: 10px;"><strong>For Government Agencies:</strong> Cost-effective, high-quality software solutions delivered through proven fixed-price model. Direct access to decision-makers across 36 states, understanding of procurement processes, and credibility through Federal Ministry position. AI-driven development reduces costs by 60-70% while maintaining enterprise standards.</p>
+                <p style="margin-top: 10px;"><strong>For Technology Companies:</strong> Immediate access to 9,000+ student talent pool trained on cutting-edge AI-driven development infrastructure, established government contract channels generating $2M-4M annually, and connections to international development funding sources (Swiss Agency, UN Water, World Bank).</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -13,6 +13,13 @@ export default function IkePage() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
+          <div className={styles.profileImageContainer}>
+            <img
+              src="/humans/ike/profile.jpeg"
+              alt="Ikechukwu Okuzu"
+              className={styles.profileImage}
+            />
+          </div>
           <div className={styles.badge}>🌍 AFRICA REGIONAL LEAD</div>
           <h1 className={styles.heroTitle}>Ikechukwu Okuzu</h1>
           <div className={styles.heroRole}>Head of Government & International Development - Africa</div>
