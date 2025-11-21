@@ -80,6 +80,121 @@ export default function MissionsPage() {
             </p>
           </div>
         </div>
+
+        <h3 style={{ marginTop: '3rem', marginBottom: '1.5rem' }}>Content Missions (Can Batch Offline)</h3>
+        <div className={styles.missionCards}>
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>🧵 Write X Thread About AI Agents</div>
+              <div className={styles.missionReward}>5 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Write 10-tweet thread about AI agents, ScopeLock process, or AI-human partnership. Draft offline, post when internet returns. Submit proof (screenshot of thread).
+            </p>
+          </div>
+
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>📊 Create Carousel Post Explaining ScopeLock</div>
+              <div className={styles.missionReward}>3 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Design 5-slide carousel showing ScopeLock process (use Canva free). Export and post to X or LinkedIn. Submit proof (link to post).
+            </p>
+          </div>
+        </div>
+
+        <h3 style={{ marginTop: '2rem', marginBottom: '1.5rem' }}>Design Missions (Free Tools)</h3>
+        <div className={styles.missionCards}>
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>🎨 Design Social Media Template Pack</div>
+              <div className={styles.missionReward}>5 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Create 3 branded social media templates team can reuse (use Canva). Include: quote template, announcement template, portfolio showcase. Submit proof (exported files).
+            </p>
+          </div>
+
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>⚡ Create 90s Delivery Process Explainer Graphic</div>
+              <div className={styles.missionReward}>3 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Design simple infographic showing ScopeLock&apos;s 90-second Evidence Sprint process. Visual content for social media. Submit proof (exported graphic).
+            </p>
+          </div>
+        </div>
+
+        <h3 style={{ marginTop: '2rem', marginBottom: '1.5rem' }}>Testing & Feedback Missions (Mobile-Friendly)</h3>
+        <div className={styles.missionCards}>
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>📱 Test Mission Deck on Mobile & Report Bugs</div>
+              <div className={styles.missionReward}>2 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Use Mission Deck on your phone, find UI/UX issues or bugs. Document with screenshots and clear steps to reproduce. Submit proof (bug report).
+            </p>
+          </div>
+
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>🐛 Try to Break AI Citizens Workflow</div>
+              <div className={styles.missionReward}>3 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Intentionally test edge cases and unusual inputs with Rafael/Sofia/Emma. Document any issues, errors, or confusing responses. Submit proof (screenshots + description).
+            </p>
+          </div>
+        </div>
+
+        <h3 style={{ marginTop: '2rem', marginBottom: '1.5rem' }}>Market Research & Sales Enablement</h3>
+        <div className={styles.missionCards}>
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>💬 Document Common Client Objections & Responses</div>
+              <div className={styles.missionReward}>3 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Create sales enablement doc: 5 common objections you hear ("Too expensive", "AI isn&apos;t reliable", etc.) with proven responses. Submit proof (document).
+            </p>
+          </div>
+
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>🌍 African Market Research Report</div>
+              <div className={styles.missionReward}>5 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Document local market insights: common tech needs, budget ranges, payment preferences, communication style. 500+ words. Submit proof (report).
+            </p>
+          </div>
+        </div>
+
+        <h3 style={{ marginTop: '2rem', marginBottom: '1.5rem' }}>Quick Micro-Missions (5-10 Minutes)</h3>
+        <div className={styles.missionCards}>
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>💬 Engage With ScopeLock Team Posts</div>
+              <div className={styles.missionReward}>1 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Comment meaningfully on 3 ScopeLock team posts (X, LinkedIn, etc.). Boost engagement, add value. Submit proof (screenshots of comments).
+            </p>
+          </div>
+
+          <div className={styles.missionCard}>
+            <div className={styles.missionHeader}>
+              <div className={styles.missionTitle}>⭐ Leave Authentic Review on Relevant Platform</div>
+              <div className={styles.missionReward}>2 $MIND</div>
+            </div>
+            <p className={styles.missionDescription}>
+              Share honest experience working with ScopeLock on Trustpilot, ProductHunt, or relevant review site. Submit proof (link to review).
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* How It Works */}
@@ -263,6 +378,56 @@ export default function MissionsPage() {
               <li>Share brief message: "Hey, working with this AI-powered agency that delivers in 90s. Thought of you."</li>
               <li>Screenshot your outreach message as proof</li>
               <li>Even if they don&apos;t respond immediately, you&apos;ve planted the seed</li>
+            </ul>
+          </div>
+
+          <div className={styles.tipCard}>
+            <h3>For Content Creation (3-5 $MIND)</h3>
+            <ul>
+              <li>Draft threads/carousels offline during power outages, post when internet returns</li>
+              <li>Use Canva free account for carousel design (5 slides = sweet spot)</li>
+              <li>Thread topics: AI-human partnership, your learning journey, ScopeLock process</li>
+              <li>Authentic &gt; polished - share real experiences, not corporate speak</li>
+            </ul>
+          </div>
+
+          <div className={styles.tipCard}>
+            <h3>For Design Missions (3-5 $MIND)</h3>
+            <ul>
+              <li>Use Canva free templates as starting point, customize with ScopeLock colors (#1EE5B8, #64A8FF)</li>
+              <li>Mobile-first design - most viewers see on phone, not desktop</li>
+              <li>Include ScopeLock logo/branding for consistency</li>
+              <li>Export as PNG (social) or PDF (print) depending on use case</li>
+            </ul>
+          </div>
+
+          <div className={styles.tipCard}>
+            <h3>For Testing Missions (2-3 $MIND)</h3>
+            <ul>
+              <li>Document bugs with clear steps to reproduce (not just "it doesn&apos;t work")</li>
+              <li>Screenshot error messages, weird UI behavior</li>
+              <li>Test on your actual device (not simulator) - real conditions matter</li>
+              <li>Try edge cases: slow internet, battery saver mode, small screen</li>
+            </ul>
+          </div>
+
+          <div className={styles.tipCard}>
+            <h3>For Market Research (3-5 $MIND)</h3>
+            <ul>
+              <li>Document real conversations - what objections do people actually raise?</li>
+              <li>Local context matters - Nigerian market ≠ US market, explain differences</li>
+              <li>Budget ranges, payment methods, communication preferences - be specific</li>
+              <li>500+ words minimum for research reports, cite sources when possible</li>
+            </ul>
+          </div>
+
+          <div className={styles.tipCard}>
+            <h3>For Micro-Missions (1-2 $MIND)</h3>
+            <ul>
+              <li>Meaningful comments &gt; generic "Great post!" - add value or ask questions</li>
+              <li>Boost team posts within 24h of posting for max reach</li>
+              <li>Reviews should be honest - fake reviews hurt more than help</li>
+              <li>Perfect for intermittent internet - grab 5 min when power is on</li>
             </ul>
           </div>
         </div>
