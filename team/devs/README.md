@@ -11,6 +11,7 @@
 | Date | Handle | Decision | Confidence | Assessor | Key Finding | Status |
 |------|--------|----------|------------|----------|-------------|---------|
 | 2025-11-21 | [nwanoch](https://github.com/nwanoch) | ⚠️ INSUFFICIENT DATA | Low | Alexis | 5,924 private contributions (87% commits) - real work not visible publicly | Awaiting portfolio |
+| 2025-11-21 | [Glorypaul-pixel](https://github.com/Glorypaul-pixel) | ⚠️ QUALIFIED MAYBE | Medium | Alexis | Frontend-only, AI Level 1-2, ~168 contributions/year, Bolt.new usage | Junior role only, paid trial recommended |
 
 ---
 
@@ -80,7 +81,7 @@
 
 ### ⏸️ QUALIFIED MAYBE
 
-*None yet*
+- **[glorypaul-pixel_analysis.md](./glorypaul-pixel_analysis.md)** - 2025-11-21 - Junior frontend only, AI Level 1-2, requires significant training, paid trial recommended
 
 ### ✅ STRONG GO
 
