@@ -9,7 +9,7 @@ const learningPath = [
     subtitle: 'Day 1-2 • Must Read Before First Mission',
     description: 'Build the foundational mindset and skills. Learn why you can succeed (even as a junior), how to communicate with AI citizens effectively, who does what in each phase, how you get paid, and how to work on slow connections.',
     outcome: 'After this section: You understand the AI-human partnership model, know who to ask for what, have your connection optimized, and feel confident you can complete missions.',
-    totalTime: '62 min',
+    totalTime: '72 min',
     badge: 'Start Here',
     badgeColor: '#FF5D5D',
     resources: [
@@ -39,6 +39,20 @@ const learningPath = [
           '4-way split: Team 30%, Upwork 10%, Org 21%, Profit 39%',
           'Payment timing: AC Green → 21 days → SOL',
           'PPP advantage: $900 → $4,500+ purchasing power'
+        ],
+      },
+      {
+        title: 'Missions: Side Quests for $MIND Token Upside',
+        description: 'Understand optional side quests that earn $MIND tokens. Learn the difference between Jobs (main income) and Missions (token upside), how token allocation works, and what gives $MIND value.',
+        href: '/resources/missions',
+        icon: '🎮',
+        impact: 'Optional bonus income, protocol upside',
+        timeToRead: '10 min',
+        whatYouLearn: [
+          'Jobs = rent money, Missions = token upside',
+          '$MIND launches at $1.00 (clear baseline value)',
+          '4 mission types: Proposals, Recruiting, Posts, Prospects',
+          'Claim → Complete → Submit proof → Tokens allocated'
         ],
       },
       {
@@ -587,7 +601,7 @@ export default function ResourcesPage() {
             margin: '0 auto 40px',
             lineHeight: 1.6,
           }}>
-            Begin with Week 1 Critical Path. Complete all 5 resources (62 minutes total reading),
+            Begin with Week 1 Critical Path. Complete all 6 resources (72 minutes total reading),
             then move to Quality Foundations. After Week 1, you'll be ready for your first supervised mission.
           </p>
 
@@ -609,7 +623,7 @@ export default function ResourcesPage() {
                 Week 1: Day 1-2
               </div>
               <div style={{ fontSize: '0.875rem', color: '#9AA3AE' }}>
-                Read Critical Path (62 min) → Mindset, skills, flow, compensation, bandwidth setup
+                Read Critical Path (72 min) → Mindset, skills, flow, compensation, missions, bandwidth setup
               </div>
             </div>
 

@@ -11,7 +11,7 @@
 ScopeLock is transitioning from dedicated roles to a **flexible, gamified compensation system** where any team member can work on any task and earn based on contribution.
 
 **Key principles:**
-- Pay per interaction (not hourly or per role)
+- Pay per productive interaction (not hourly or per role)
 - Real-time visibility into potential earnings
 - Gamified to motivate team members
 - Flexible roles (anyone can do anything)
@@ -36,9 +36,9 @@ Examples:
 **Internal work NOT directly linked to client revenue.**
 
 Examples:
-- "Write proposal for Upwork job" → $1
-- "Recruit new team member" → $10
-- "Post about ScopeLock on X" → $2
+- "Write proposal for Upwork job" → $1-2
+- "Recruit new team member" → $5-10
+- "Post about ScopeLock on X" → $1-2
 
 **Characteristics:**
 - Fixed dollar value per completion
