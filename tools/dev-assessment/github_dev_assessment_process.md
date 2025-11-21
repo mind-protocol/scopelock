@@ -1,10 +1,10 @@
 # GitHub Developer Assessment Process
 
-**Version:** 1.0  
-**Purpose:** Systematic evaluation of developer capabilities through GitHub profile analysis  
-**Executor:** ScopeLock citizens (Emma, Rafael, Sofia - via Claude Code)  
-**Output:** `team/devs/{handle}_analysis.md`  
-**Time:** 20-30 minutes per developer
+**Version:** 1.1 (Added Phase 1.5: Private Contribution Check)
+**Purpose:** Systematic evaluation of developer capabilities through GitHub profile analysis
+**Executor:** ScopeLock citizens (Emma, Rafael, Sofia - via Claude Code)
+**Output:** `team/devs/{handle}_analysis.md`
+**Time:** 20-30 minutes per developer (or 5 min if high private activity → portfolio request)
 
 ---
 
@@ -51,7 +51,7 @@ Before starting, collect:
 
 ---
 
-## Process: 5 Phases
+## Process: 6 Phases
 
 ### Phase 1: Profile Reconnaissance (3 minutes)
 
@@ -107,7 +107,82 @@ Before starting, collect:
 
 ---
 
+### Phase 1.5: Private Contribution Check (2 minutes) ⚠️ CRITICAL GATE
+
+**REQUIRED BEFORE PROCEEDING TO PHASE 2**
+
+**What to check:**
+- Scroll to contribution graph on profile page
+- Look for text: "X contributions in the last year"
+- Check breakdown: "X% Commits, Y% Pull requests, Z% Code review"
+- Look at contribution squares - are they mostly empty (private work) or filled (public work)?
+
+**Decision Gate:**
+
+```
+IF total contributions > 3,000 AND commits > 80% AND graph is mostly empty:
+  → STOP public repo deep dive
+  → Public repos likely NOT representative of real work
+  → NEXT STEP: Request portfolio (code samples, project context, AI workflow evidence)
+  → Document: "INSUFFICIENT DATA - High private activity (X contributions/year)"
+  → DO NOT conclude "no production code" from empty public repos
+
+ELSE IF contributions < 500/year OR mostly inactive:
+  → PROCEED to Phase 2 (public repo deep dive)
+  → Public repos ARE representative sample
+```
+
+**Why This Matters:**
+
+Professional developers often have ALL real work in private company/client repos. Their public GitHub may be:
+- Learning experiments
+- Tutorial follow-alongs
+- Empty scaffolds
+- Abandoned side projects
+
+**This is NORMAL and does NOT indicate incompetence.**
+
+**Critical Assessment Error to Avoid:**
+❌ **DO NOT** conclude "no production work" based on empty public repos when private contributions are high
+✅ **DO** request portfolio to see actual professional work
+
+**Example Private Activity Pattern:**
+```
+5,924 contributions in the last year
+- 87% Commits (5,155 commits)
+- 10% Pull Requests
+- 3% Code Review
+
+November: 515 contributions in private repositories
+October: 484 contributions in private repositories
+```
+
+**This pattern indicates:** Active professional developer with substantial commit volume. Empty public repos are NOT representative.
+
+**Output for this phase:**
+
+```markdown
+### Private Activity (CRITICAL CONTEXT)
+**Total Contributions (Last Year):** X,XXX contributions
+**Breakdown:**
+- X% Commits
+- Y% Pull Requests
+- Z% Code Review
+
+**Recent Activity:**
+- [Month]: XXX contributions in private repositories
+- [Month]: XXX contributions in private repositories
+
+**Pattern:** [Mostly private / Balanced / Mostly public]
+
+**Impact on Assessment:** [If mostly private: Cannot evaluate based on public repos alone - portfolio required]
+```
+
+---
+
 ### Phase 2: Repository Deep Dive (10 minutes)
+
+**⚠️ ONLY proceed with Phase 2 if private activity check passed (low private contributions OR portfolio already provided)**
 
 **Select 3 repos strategically:**
 1. **Most complex pinned original repo** (shows their best work)

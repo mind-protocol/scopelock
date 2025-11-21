@@ -8,9 +8,9 @@
 
 ## Assessment Index
 
-| Date | Handle | Decision | Confidence | Assessor | Key Disqualifiers |
-|------|--------|----------|------------|----------|-------------------|
-| 2025-11-21 | [nwanoch](https://github.com/nwanoch) | ❌ NO HIRE | High | Alexis | Zero AI workflow, fraudulent repo naming, 93 repos but all empty scaffolds, no production code |
+| Date | Handle | Decision | Confidence | Assessor | Key Finding | Status |
+|------|--------|----------|------------|----------|-------------|---------|
+| 2025-11-21 | [nwanoch](https://github.com/nwanoch) | ⚠️ INSUFFICIENT DATA | Low | Alexis | 5,924 private contributions (87% commits) - real work not visible publicly | Awaiting portfolio |
 
 ---
 
@@ -46,10 +46,25 @@
 
 **Phases:**
 1. **Profile Reconnaissance** (3 min) - Handle, bio, repos, activity pattern
-2. **Repository Deep Dive** (10 min) - 3-4 repos: structure, README, code quality, tests, commits
-3. **AI Workflow Assessment** (5 min) - CRITICAL - Scan for `.claude/`, `.cursorrules`, AI signatures
-4. **Stack Depth Analysis** (5 min) - Match to ScopeLock stack
-5. **Decision & Recommendation** (2 min) - Red/yellow/green flags, hire decision
+2. **⚠️ PRIVATE CONTRIBUTION CHECK** (2 min) - **REQUIRED BEFORE PROCEEDING**
+   - Check contribution graph for private activity
+   - If >3,000 contributions/year with >80% commits in private repos:
+     - **STOP public repo deep dive**
+     - **Request portfolio instead**
+     - Public repos likely NOT representative of actual work
+3. **Repository Deep Dive** (10 min) - 3-4 repos: structure, README, code quality, tests, commits
+4. **AI Workflow Assessment** (5 min) - CRITICAL - Scan for `.claude/`, `.cursorrules`, AI signatures
+5. **Stack Depth Analysis** (5 min) - Match to ScopeLock stack
+6. **Decision & Recommendation** (2 min) - Red/yellow/green flags, hire decision
+
+### Critical Assessment Limitation
+
+**Public repo analysis can completely misrepresent employed developers whose real work is private.**
+
+**Before making decisive NO HIRE recommendations:**
+- ✅ Check private contribution counts
+- ✅ If high (>3K/year, >80% commits) → request portfolio
+- ❌ Do NOT conclude "no production work" based on empty public repos
 
 ---
 
@@ -57,7 +72,11 @@
 
 ### ❌ NO HIRE
 
-- **[nwanoch_analysis.md](./nwanoch_analysis.md)** - 2025-11-21 - 9 red flags, 0 green flags, zero AI workflow (disqualifying)
+*None yet*
+
+### ⏸️ INSUFFICIENT DATA (Awaiting Portfolio)
+
+- **[nwanoch_analysis.md](./nwanoch_analysis.md)** - 2025-11-21 - 5,924 private contributions, cannot assess without portfolio access
 
 ### ⏸️ QUALIFIED MAYBE
 
