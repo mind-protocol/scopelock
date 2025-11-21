@@ -1,3 +1,70 @@
+## 2025-11-21 06:30 — Maya: $MIND Token Page Enhancements ✅
+
+**Work: Enhanced `/mind-token` page with conversion optimization improvements**
+
+**5 Major Additions:**
+
+1. **Specific Discount Mechanics (MEDIUM PRIORITY)**
+   - Replaced vague "10-20% discount" with 3-tier structure
+   - Position 1-500: 20% off ($0.80/token)
+   - Position 501-1,500: 15% off ($0.85/token)
+   - Position 1,501+: 10% off ($0.90/token)
+   - "Your position locks when you complete waitlist signup. First come, first served."
+
+2. **Referral/Affiliate Program Section (HIGH PRIORITY)**
+   - New prominent section BEFORE waitlist (so people see it)
+   - Addresses Kofi's use case: network but no capital
+   - 5-10% commission on referrals, paid in $MIND tokens at launch
+   - No cap on referrals
+   - Example earnings: 20 referrals × €500 = €10k volume → €1,000 commission in $MIND
+   - If token reaches $5, that's €5,000
+   - Perfect for: Community builders, network connectors, influencers
+
+3. **Post-Waitlist Journey Timeline (LOW PRIORITY)**
+   - Visual 5-step timeline showing journey from signup to trading
+   - Week 1: Confirmation email + Telegram invite
+   - Week 4-8: Progress update (client traction, tokenomics finalization)
+   - Week 8-12: "Launch in 7 days" notification with payment instructions
+   - Launch Day: Exclusive 24-hour purchase window (no gas wars, no bots)
+   - Launch +1: Public DEX trading (Raydium/Orca)
+   - Payment methods: SOL, USDC, USDT (Solana network)
+
+4. **Social Proof Addition**
+   - Added "$100M token launched by team member" to Proof of Execution section
+   - Strengthens credibility (team has token launch experience)
+
+5. **Persona-Targeted FAQ Section (LOW PRIORITY)**
+   - 6 situation-specific FAQs addressing common concerns:
+     - "I have €50 but worried that's too small" → €50 min, with 20% discount = 62 tokens, 6x = $310
+     - "I can't invest but have network" → Join referral program, earn 5-10% commission
+     - "I lost money in Terra/Luna, why trust this?" → Different risk profile (6-month locks, LP locked 12 months, working products)
+     - "I'm in Nigeria/Global South, is this for me?" → Yes, missions + referrals let you participate without capital
+     - "When exactly does it launch?" → Q1 2025 target, depends on revenue milestones
+     - "What's the minimum investment?" → €50 minimum, early-bird discount applies
+
+**Technical:**
+- Files modified:
+  - `/src/app/mind-token/page.tsx` - Added 5 new sections
+  - `/src/app/mind-token/styles.module.css` - Added CSS for discount tiers, referral program, journey timeline, FAQ grid
+- New CSS classes: `.discountTiers`, `.discountGrid`, `.discountCard`, `.referralExplainer`, `.referralCard`, `.journeyTimeline`, `.journeyStep`, `.faqGrid`, `.faqCard`
+- Mobile-responsive for all new sections
+
+**Build Status:** ✅ Successful (90.5 kB page size)
+**Commit:** 5cd9257 "feat: enhance /mind-token page with specific discounts, referral program, timeline, and persona-targeted FAQs"
+**URL:** scopelock.mindprotocol.ai/mind-token
+
+**Why These Changes:**
+- **Conversion optimization:** Specific discount tiers reduce confusion ("When do I get 10% vs 20%?")
+- **Inclusive participation:** Referral program lets people with network but no capital participate
+- **Reduced anxiety:** Timeline shows exactly what happens after signup (no spam, 2-3 emails max)
+- **Trust building:** Persona-specific FAQs address real concerns (Terra/Luna PTSD, small amounts, location barriers)
+- **Social proof:** $100M token launch experience shows team knows how to execute
+
+**Status:** All work complete, deployed, team notified via Telegram
+**Next:** Waitlist form already functional, referral tracking needs implementation (future work)
+
+---
+
 ## 2025-11-21 03:00 — Maya: Missions Resource Page + Team Handles Update ✅
 
 **Work 1: New Resource Page - Missions (Side Quests for $MIND Token)**
