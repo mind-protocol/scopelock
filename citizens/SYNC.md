@@ -1,3 +1,51 @@
+## 2025-11-21 03:00 — Maya: Missions Resource Page + Team Handles Update ✅
+
+**Work 1: New Resource Page - Missions (Side Quests for $MIND Token)**
+
+Created comprehensive resource page explaining mission system and $MIND token upside.
+
+**Content:**
+- Jobs vs Missions distinction (income vs token upside)
+- 4 mission types with rewards:
+  - Write Upwork Proposal (1 $MIND)
+  - Recruit Team Member (10 $MIND)
+  - Post on X (2 $MIND)
+  - Find Telegram Prospect (1 $MIND)
+- $MIND token value proposition (launches at $1.00)
+- Token allocation timeline (Claim → Complete → Submit → Verify → Allocate)
+- Understanding protocol economics (Uniswap/ENS comparison)
+- Mission completion tips per type
+- FAQ (6 questions answered)
+- Key takeaways (5 main points)
+
+**Technical:**
+- Next.js page: `/src/app/resources/missions/page.tsx`
+- CSS module: `/src/app/resources/missions/styles.module.css`
+- Styled consistently with other resource pages (compensation-structure pattern)
+- Added to Week 1 Critical Path resources (between compensation and mission flow)
+- Updated total reading time: 62 min → 72 min
+
+**Build Status:** ✅ Successful
+**URL:** scopelock.mindprotocol.ai/resources/missions
+
+---
+
+**Work 2: Added Team Telegram Handles to CLAUDE.md**
+
+Updated `/citizens/CLAUDE.md` with all team member Telegram handles for easy reference:
+- @nlr_ai (Nicolas - founder)
+- @Bigbosefx2 (Bigbosexf)
+- @ReananceGlobal (Reanance)
+- @kara339 (Kara)
+- @mertdenize (Mert)
+- @Asadkhalif (Asad)
+- @scopelock_bot (bot account)
+
+**Status:** Both tasks complete and deployed
+**Link:** `/resources/missions`, `/citizens/CLAUDE.md` lines 435-443
+
+---
+
 ## 2025-11-08 02:45 — Alexis: Proactive Mission System Designed (Emma's Primary Focus) ✅
 
 **Work:** Designed Emma's proactive mission suggestion system to remove team friction
