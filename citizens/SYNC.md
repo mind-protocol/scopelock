@@ -1,3 +1,46 @@
+## 2025-11-21 07:45 — Alexis: CORRECTION - nwanoch Assessment Error Fixed ⚠️✅
+
+**Critical Error Identified and Corrected**
+
+**What Happened:**
+- Initial assessment concluded **NO HIRE with High Confidence** based on public repos only
+- Missed **5,924 private contributions (87% commits)** - all real work is private
+- Falsely concluded "no production code" when repos showed empty scaffolds
+
+**What This Revealed:**
+- Assessment framework had **critical blind spot:** Evaluates public repos only
+- Common pattern for employed developers: professional work is private, public repos are experiments
+- Making decisive NO HIRE based on empty public repos = **assessment error** when private activity is high
+
+**Corrections Made:**
+
+1. **Updated nwanoch_analysis.md:**
+   - Decision: NO HIRE → **INSUFFICIENT DATA - REQUEST PORTFOLIO**
+   - Confidence: High → **Low** (incomplete data)
+   - Added private contribution analysis section
+   - Replaced rejection template with portfolio request template
+
+2. **Updated Assessment Framework (v1.0 → v1.1):**
+   - Added **Phase 1.5: Private Contribution Check** (CRITICAL GATE)
+   - Decision gate: >3K contributions + >80% commits + empty graph = request portfolio FIRST
+   - Prevents false NO HIRE conclusions going forward
+   - Documents why this matters (professional work is often private)
+
+3. **Updated team/devs/README.md:**
+   - Changed nwanoch status: NO HIRE → INSUFFICIENT DATA (Awaiting Portfolio)
+   - Added assessment limitation warning
+   - Created new category: "INSUFFICIENT DATA (Awaiting Portfolio)"
+
+**Key Learning:**
+High private contribution counts (>3,000/year with >80% commits) indicate the developer's real work is NOT visible publicly. Must request portfolio instead of concluding "no production code."
+
+**Status:** Framework corrected. Future assessments will check private contributions BEFORE making decisive NO HIRE recommendations.
+
+**Next:** Send portfolio request to nwanoch per template in updated assessment.
+
+---
+
+
 ## 2025-11-21 07:15 — Alexis: Developer Assessment System Created + nwanoch NO HIRE ✅
 
 **Work: Created permanent developer assessment tracking system with first assessment**
