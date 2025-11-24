@@ -31,34 +31,36 @@
 
 ---
 
-## 2025-11-24 — Inna: Created /kite Page for Orchestrator AI
+## 2025-11-24 — Inna: Created /kai Page for Orchestrator AI
 
-**Work: Built full-page chat interface for Kite orchestrator**
+**Work: Built full-page chat interface for Kai orchestrator with backend API wiring**
 
 **Created:**
-- `/src/app/kite/page.tsx` - Full-page chat interface with:
-  - Header with Kite identity (gradient avatar, online status indicator)
-  - Messages area with role labels (Kite/User/System)
+- `/src/app/kai/page.tsx` - Full-page chat interface with:
+  - Header with Kai identity (gradient avatar, online status indicator)
+  - Messages area with role labels (Kai/User/System)
   - Code block support with syntax highlighting and copy button
   - Loading animation (typing indicator)
   - Clean input area with max-width constraint
   - Team coordination footer text
-- `/citizens/kite/CLAUDE.md` - Placeholder system prompt (waiting for full content)
+  - **Backend API integration via `api.sendMessage('kai', message)` and `api.getMessages('kai')`**
+- `/citizens/kai/CLAUDE.md` - Complete system prompt (1,800+ lines)
 
 **Design:**
 - Almost full-page chat (header + messages + input)
 - Dark theme using ScopeLock variables
 - User messages: accent color, right-aligned
-- Kite messages: surface background, left-aligned
+- Kai messages: surface background, left-aligned
 - System messages: centered, subtle styling
 - Smooth scroll to bottom on new messages
 
-**Status:** UI complete. Waiting for:
-1. Kite's full system prompt
-2. Backend API endpoint to wire up chat
-3. Documents to copy-paste for Kite's access
+**Backend Integration:**
+- Uses existing citizen chat API pattern from Mission Deck
+- `POST /api/citizens/kai/chat` - send message
+- `GET /api/citizens/kai/messages` - load history
+- Error handling with user-visible error messages
 
-**Next:** User will provide system prompt content
+**Status:** Complete. URL: `scopelock.mindprotocol.ai/kai`
 
 ---
 
