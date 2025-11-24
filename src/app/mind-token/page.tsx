@@ -4,7 +4,7 @@ import WaitlistForm from './WaitlistForm';
 
 export const metadata: Metadata = {
   title: '$MIND Token - AI Agents with Economic Agency | Mind Protocol',
-  description: 'Autonomous AI citizens with real wallets on Solana. Universal Basic Compute. $1.00 launch, $200M cap, $1B FDV. Infrastructure for the AI economy.',
+  description: 'Autonomous AI citizens with real wallets on Solana. Universal Basic Compute. $0.20 launch, $40M cap, $200M FDV. Infrastructure for the AI economy.',
 };
 
 export default function MindTokenPage() {
@@ -13,7 +13,7 @@ export default function MindTokenPage() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <div className={styles.badge}>PRE-LAUNCH • SOLANA NATIVE • Q1 2025</div>
+          <div className={styles.badge}>PRE-LAUNCH • SOLANA NATIVE • Q1 2026</div>
           <h1 className={styles.heroTitle}>
             <span className={styles.ticker}>$MIND</span>
             <br />
@@ -34,41 +34,41 @@ export default function MindTokenPage() {
 
           {/* Discount Structure */}
           <div className={styles.discountTiers}>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: '#1EE5B8' }}>Early-Bird Discount Structure</h3>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: '#1EE5B8' }}>Pre-Sale Pricing</h3>
             <div className={styles.discountGrid}>
               <div className={styles.discountCard} style={{ borderColor: '#1EE5B8' }}>
-                <div className={styles.discountPosition}>Position 1-500</div>
+                <div className={styles.discountPosition}>Pre-Sale (Now)</div>
                 <div className={styles.discountPercent}>20% OFF</div>
-                <div className={styles.discountPrice}>$0.80/token</div>
+                <div className={styles.discountPrice}>$0.16/token</div>
               </div>
               <div className={styles.discountCard} style={{ borderColor: '#64A8FF' }}>
-                <div className={styles.discountPosition}>Position 501-1,500</div>
-                <div className={styles.discountPercent}>15% OFF</div>
-                <div className={styles.discountPrice}>$0.85/token</div>
+                <div className={styles.discountPosition}>Public Launch</div>
+                <div className={styles.discountPercent}>FULL PRICE</div>
+                <div className={styles.discountPrice}>$0.20/token</div>
               </div>
               <div className={styles.discountCard} style={{ borderColor: '#9AA3AE' }}>
-                <div className={styles.discountPosition}>Position 1,501+</div>
-                <div className={styles.discountPercent}>10% OFF</div>
-                <div className={styles.discountPrice}>$0.90/token</div>
+                <div className={styles.discountPosition}>Minimum</div>
+                <div className={styles.discountPercent}>€1,000</div>
+                <div className={styles.discountPrice}>~6,560 tokens</div>
               </div>
             </div>
             <p style={{ textAlign: 'center', marginTop: '1rem', color: '#9AA3AE', fontSize: '0.95rem' }}>
-              Your position locks when you complete waitlist signup. First come, first served.
+              Pre-sale investors get 20% discount + 6-month lock (same as team).
             </p>
           </div>
 
           {/* Launch Stats */}
           <div className={styles.statsGrid}>
             <div className={styles.statCard}>
-              <div className={styles.statValue}>$1.00</div>
+              <div className={styles.statValue}>$0.20</div>
               <div className={styles.statLabel}>Launch Price</div>
             </div>
             <div className={styles.statCard}>
-              <div className={styles.statValue}>$200M</div>
+              <div className={styles.statValue}>$40M</div>
               <div className={styles.statLabel}>Market Cap</div>
             </div>
             <div className={styles.statCard}>
-              <div className={styles.statValue}>$1B</div>
+              <div className={styles.statValue}>$200M</div>
               <div className={styles.statLabel}>FDV</div>
             </div>
             <div className={styles.statCard}>
@@ -193,10 +193,10 @@ export default function MindTokenPage() {
 
           <div className={styles.calloutBox} style={{ marginBottom: '2rem' }}>
             <p>
-              <strong>Why $200M launch valuation (not $500K memecoin)?</strong> Infrastructure projects start higher than
-              memecoins because they have REAL utility. Render launched at ~$300M. Bittensor at ~$150M. Fetch at ~$200M.
-              Mind Protocol: working products (6+ months production), real use cases (AI operations), actual utility (not just
-              governance theater). $200M is INFRASTRUCTURE valuation, not memecoin microcap. Different game. Different upside.
+              <strong>Why $40M launch cap (not $500K memecoin)?</strong> Infrastructure projects start higher than
+              memecoins because they have REAL utility. Mind Protocol: working products (6+ months production),
+              real use cases (AI operations), actual utility (not just governance theater). $40M market cap with
+              $200M FDV is REALISTIC for pre-revenue infrastructure. Room to grow 10-50x to match Render/Bittensor scale.
             </p>
           </div>
 
@@ -231,7 +231,7 @@ export default function MindTokenPage() {
                 </tr>
                 <tr style={{ background: 'rgba(30, 229, 184, 0.1)' }}>
                   <td><strong>Mind Protocol</strong></td>
-                  <td className={styles.marketCap} style={{ color: '#1EE5B8' }}>$200M</td>
+                  <td className={styles.marketCap} style={{ color: '#1EE5B8' }}>$40M</td>
                   <td>AI agents with economic agency</td>
                   <td><span className={styles.stageBadge} style={{ background: '#1EE5B8', color: '#0E1116' }}>PRE-LAUNCH</span></td>
                 </tr>
@@ -241,18 +241,19 @@ export default function MindTokenPage() {
 
           <div className={styles.calloutBox}>
             <p>
-              <strong>10-20x to Bittensor market cap.</strong> If Mind Protocol captures even 10% of AI infrastructure
-              market share, that's a path from $200M → $2B+ market cap.
+              <strong>45x to Bittensor market cap.</strong> If Mind Protocol captures even 10% of AI infrastructure
+              market share, that's a path from $40M → $400M+ market cap (10x from launch).
             </p>
           </div>
 
           <div className={styles.calloutBox} style={{ marginTop: '2rem', background: 'rgba(100, 168, 255, 0.1)', borderColor: '#64A8FF' }}>
             <h3>Realistic Scenarios (Not Moon Talk)</h3>
-            <p><strong>Your $500 investment at $1.00 launch = 500 tokens</strong></p>
+            <p><strong>Your €1,000 pre-sale at $0.16 = ~6,560 tokens</strong></p>
             <ul style={{ marginTop: '1rem', lineHeight: '1.8' }}>
-              <li><strong>Conservative (5x to $1B mcap):</strong> 500 tokens × $5 = <span style={{ color: '#1EE5B8' }}>$2,500</span></li>
-              <li><strong>Base (10x to Bittensor $1.8B):</strong> 500 tokens × $10 = <span style={{ color: '#1EE5B8' }}>$5,000</span></li>
-              <li><strong>Optimistic (20x to Render $4B):</strong> 500 tokens × $20 = <span style={{ color: '#1EE5B8' }}>$10,000</span></li>
+              <li><strong>At launch ($0.20):</strong> 6,560 tokens × $0.20 = <span style={{ color: '#1EE5B8' }}>$1,312</span> (25% gain)</li>
+              <li><strong>Conservative (5x to $200M mcap):</strong> 6,560 tokens × $1.00 = <span style={{ color: '#1EE5B8' }}>$6,560</span></li>
+              <li><strong>Base (25x to $1B mcap):</strong> 6,560 tokens × $5.00 = <span style={{ color: '#1EE5B8' }}>$32,800</span></li>
+              <li><strong>Optimistic (45x to Bittensor):</strong> 6,560 tokens × $9.00 = <span style={{ color: '#1EE5B8' }}>$59,040</span></li>
             </ul>
             <p style={{ marginTop: '1rem', fontSize: '0.9rem', opacity: 0.8 }}>
               These are IF Mind Protocol achieves comparable market cap to existing AI infrastructure projects.
@@ -431,7 +432,7 @@ export default function MindTokenPage() {
         <div className={styles.sectionContent}>
           <h2 className={styles.sectionTitle}>Launch Timeline</h2>
           <p className={styles.sectionSubtitle}>
-            Target: Q1 2025 (depends on Mind Protocol proving revenue traction)
+            Target: Q1 2026 (depends on Mind Protocol proving revenue traction)
           </p>
 
           <div className={styles.calloutBox} style={{ marginBottom: '2rem', background: 'rgba(30, 229, 184, 0.1)', borderColor: '#1EE5B8' }}>
@@ -453,10 +454,10 @@ export default function MindTokenPage() {
 
             <div className={styles.timelineItem}>
               <div className={styles.timelinePhase}>Phase 2</div>
-              <div className={styles.timelineTitle}>OTC Investment Round</div>
+              <div className={styles.timelineTitle}>Pre-Sale Investment Round</div>
               <div className={styles.timelineDescription}>
-                Bridge capital only (€10-20K total). Same $1.00 price as launch (NO discount). 6-month lock (same as team).
-                €2K minimum. NOT VCs. Small round to fund initial operations. OTC investors unlock Month 6 (together with team).
+                Bridge capital (€10-20K total). Pre-sale price: $0.16 (20% discount from $0.20 launch). 6-month lock (same as team).
+                €1,000 minimum. NOT VCs. Small round to fund initial operations. Investors unlock Month 6 (together with team).
               </div>
             </div>
 
@@ -492,7 +493,7 @@ export default function MindTokenPage() {
             <ul style={{ lineHeight: '1.8' }}>
               <li><strong>Token might not launch:</strong> If Mind Protocol doesn't hit revenue milestones, launch may delay or cancel.</li>
               <li><strong>Price might dump:</strong> 6-month unlock (Month 6) = sell pressure. Team/OTC unlock together. Expect volatility.</li>
-              <li><strong>$200M valuation might not hold:</strong> Market decides price, not us. Could trade below $1.00 launch price.</li>
+              <li><strong>$40M valuation might not hold:</strong> Market decides price, not us. Could trade below $0.20 launch price.</li>
               <li><strong>Competitors exist:</strong> Bittensor, Render, Fetch are established. Mind Protocol is new. Unproven at scale.</li>
               <li><strong>Utility might not drive demand:</strong> Real use cases need time. Enterprise adoption slow. Speculation might dry up.</li>
               <li><strong>Regulatory risk:</strong> Crypto regulations evolving. Solana tokens face uncertainty. No guarantees.</li>
@@ -588,38 +589,38 @@ export default function MindTokenPage() {
             Priority Access at Launch
           </h2>
           <p className={styles.sectionSubtitle}>
-            <span className={styles.tickerInline}>$MIND</span> launching Q1 2025. Get notified first and access potential early-bird pricing.
+            <span className={styles.tickerInline}>$MIND</span> launching Q1 2026. Pre-sale now open at $0.16 (20% discount).
           </p>
 
-          {/* Why Waitlist Works */}
+          {/* Pre-Sale Benefits */}
           <div className={styles.waitlistExplainer}>
             <div className={styles.waitlistCard}>
-              <h3>🎯 What You Get</h3>
+              <h3>🎯 Pre-Sale Deal</h3>
               <ul className={styles.waitlistBenefits}>
-                <li><strong>Priority access</strong> when token launches</li>
-                <li><strong>Launch notification</strong> via email + Telegram</li>
-                <li><strong>Potential early-bird discount</strong> (10-20% off launch price)</li>
-                <li><strong>No commitment</strong> - just reserve your spot</li>
+                <li><strong>$0.16 per token</strong> (20% off $0.20 launch)</li>
+                <li><strong>€1,000 minimum</strong> investment</li>
+                <li><strong>~6,560 tokens</strong> per €1,000</li>
+                <li><strong>6-month lock</strong> (same as team)</li>
               </ul>
             </div>
 
             <div className={styles.waitlistCard}>
-              <h3>✅ What This Is</h3>
+              <h3>✅ What You Get</h3>
               <ul className={styles.waitlistBenefits}>
-                <li>Standard practice - creates <strong>zero financial obligation</strong></li>
-                <li>You're not buying anything today</li>
-                <li>Free to join, free to leave</li>
-                <li>Validates demand, builds community</li>
+                <li><strong>25% paper gain</strong> at launch ($0.16 → $0.20)</li>
+                <li><strong>Priority access</strong> before public trading</li>
+                <li><strong>Same terms as team</strong> (aligned incentives)</li>
+                <li><strong>Future LP access</strong> for early investors</li>
               </ul>
             </div>
 
             <div className={styles.waitlistCard}>
-              <h3>🚫 What This Is NOT</h3>
+              <h3>🔒 Transparency</h3>
               <ul className={styles.waitlistBenefits}>
-                <li>NOT a pre-sale (no payment taken)</li>
-                <li>NOT guaranteed prices (mechanics may shift)</li>
-                <li>NOT locked commitments</li>
-                <li>Just interest validation</li>
+                <li>Team tokens locked 6 months</li>
+                <li>LP locked 12 months</li>
+                <li>All locks verifiable on-chain</li>
+                <li>Open-source protocol</li>
               </ul>
             </div>
           </div>
@@ -702,14 +703,15 @@ export default function MindTokenPage() {
           </p>
 
           <div className={styles.faqGrid}>
-            {/* Small Amount Concern */}
+            {/* Investment Concern */}
             <div className={styles.faqCard}>
-              <h3>"I have €50 but worried that's too small"</h3>
+              <h3>"What do I get for €1,000?"</h3>
               <p>
-                Minimum is €50. With 20% discount (position 1-500), you get <strong>62 tokens at $0.80 each</strong>.
+                Pre-sale price: $0.16 per token. €1,000 (~$1,050) gets you <strong>~6,560 tokens</strong>.
               </p>
               <p>
-                If token reaches $5, that's <strong>$310</strong> (6x return). Small amounts compound. Everyone starts somewhere.
+                At launch ($0.20): <strong>$1,312 value</strong> (25% gain). If token reaches $1.00: <strong>$6,560</strong>.
+                If it reaches $5.00: <strong>$32,800</strong>.
               </p>
             </div>
 
@@ -760,14 +762,14 @@ export default function MindTokenPage() {
             <div className={styles.faqCard}>
               <h3>"When exactly does it launch?"</h3>
               <p>
-                <strong>Q1 2025 target</strong>, depends on Mind Protocol hitting revenue milestones (3-5 paying clients).
+                <strong>Q1 2026 target</strong>, depends on Mind Protocol hitting revenue milestones (3-5 paying clients).
               </p>
               <p>
                 We won't launch vaporware. Token economics: done. Launch mechanics: straightforward. Timeline: depends
                 on proving real utility.
               </p>
               <p style={{ marginTop: '0.5rem' }}>
-                <strong>Join waitlist</strong> for exact date notification (7 days before launch).
+                <strong>Join pre-sale</strong> for priority access at $0.16 (20% discount from launch).
               </p>
             </div>
 
@@ -775,11 +777,11 @@ export default function MindTokenPage() {
             <div className={styles.faqCard}>
               <h3>"What's the minimum investment?"</h3>
               <p>
-                <strong>€50 minimum</strong> (same as OTC round, but you get early-bird discount).
+                <strong>€1,000 minimum</strong> for pre-sale. You get 20% discount ($0.16 vs $0.20 launch).
               </p>
               <p>
-                Example: €50 at $0.80 (20% discount) = 62 tokens. If token reaches $10, that's <strong>$620</strong>.
-                If it reaches $20, that's <strong>$1,240</strong>.
+                Example: €1,000 at $0.16 = ~6,560 tokens. If token reaches $1, that's <strong>$6,560</strong>.
+                If it reaches $5, that's <strong>$32,800</strong>.
               </p>
               <p style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#9AA3AE' }}>
                 Not guaranteed. Crypto is volatile. Only invest what you can afford to lose.
