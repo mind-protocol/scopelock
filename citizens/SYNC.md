@@ -1,3 +1,67 @@
+## 2025-11-24 — Maya: Technical Basics Resource Page for Team Onboarding
+
+**Work: Created comprehensive educational resource page for new team members**
+
+**Created:**
+- `/docs/resources/technical-basics.md` - Source content in markdown
+- `/src/app/resources/technical-basics/page.tsx` - Interactive resource page
+- `/src/app/resources/technical-basics/styles.module.css` - Educational-focused styling
+
+**Content (8 Core Concepts):**
+1. **Markdown** - Formatting basics with "What You Type" vs "What You Get" examples
+2. **System Prompts** - How AI citizens get their personality (CLAUDE.md files)
+3. **GitHub** - Repository, commits, branches, PRs explained
+4. **Specifications** - Our 6-level structure (PATTERN → GUIDE)
+5. **Tests** - Unit, integration, E2E (pytest, Vitest, Playwright)
+6. **Pushing** - Upload flow from local to GitHub
+7. **Deployment** - Vercel (frontend) + Render (backend) auto-deploy
+8. **Full Flow** - Complete SPEC → TESTS → CODE → REVIEW → PUSH → DEPLOY → VERIFY → DONE
+
+**Design:**
+- Interactive table of contents with smooth scrolling
+- Code comparison blocks (markdown source vs rendered)
+- Platform cards for Vercel/Render with "Why we use it"
+- Quick reference table for common terms
+- Flow diagram showing complete task lifecycle
+
+**Live:** scopelock.mindprotocol.ai/resources/technical-basics
+
+**Status:** Complete and deployed
+**Next:** Use during team onboarding sessions
+
+---
+
+## 2025-11-24 — Inna: Created /kite Page for Orchestrator AI
+
+**Work: Built full-page chat interface for Kite orchestrator**
+
+**Created:**
+- `/src/app/kite/page.tsx` - Full-page chat interface with:
+  - Header with Kite identity (gradient avatar, online status indicator)
+  - Messages area with role labels (Kite/User/System)
+  - Code block support with syntax highlighting and copy button
+  - Loading animation (typing indicator)
+  - Clean input area with max-width constraint
+  - Team coordination footer text
+- `/citizens/kite/CLAUDE.md` - Placeholder system prompt (waiting for full content)
+
+**Design:**
+- Almost full-page chat (header + messages + input)
+- Dark theme using ScopeLock variables
+- User messages: accent color, right-aligned
+- Kite messages: surface background, left-aligned
+- System messages: centered, subtle styling
+- Smooth scroll to bottom on new messages
+
+**Status:** UI complete. Waiting for:
+1. Kite's full system prompt
+2. Backend API endpoint to wire up chat
+3. Documents to copy-paste for Kite's access
+
+**Next:** User will provide system prompt content
+
+---
+
 ## 2025-11-21 10:45 — Maya: "Why I'm Building This" Long-Form Blog Post ✅
 
 **Work: Created personal narrative blog post from Ikechukwu Okuzu about Campus Developer Program origins**
