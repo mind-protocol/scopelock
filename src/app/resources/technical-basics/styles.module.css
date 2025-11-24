@@ -999,6 +999,543 @@
   color: #19C69F;
 }
 
+/* Why Should I Care Section */
+.whyCareSection {
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(154, 163, 174, 0.2);
+}
+
+.whyCareTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #E6EAF2;
+}
+
+.whyCareIntro {
+  text-align: center;
+  color: #9AA3AE;
+  font-size: 1.125rem;
+  margin-bottom: 40px;
+}
+
+.whyCareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.whyCareCard {
+  padding: 28px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 2px solid rgba(154, 163, 174, 0.2);
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.whyCareCard:hover {
+  border-color: #1EE5B8;
+  transform: translateY(-4px);
+}
+
+.whyCareEmoji {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.whyCareCard h4 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #1EE5B8;
+}
+
+.whyCareCard p {
+  color: #9AA3AE;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.whyCareCard strong {
+  color: #E6EAF2;
+}
+
+.whyCareBottom {
+  text-align: center;
+  padding: 24px;
+  background: rgba(30, 229, 184, 0.1);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+  border-radius: 12px;
+}
+
+.whyCareBottom p {
+  font-size: 1.125rem;
+  color: #E6EAF2;
+  margin: 0;
+}
+
+/* Resource Links */
+.resourceLinks {
+  padding: 24px;
+  background: rgba(30, 229, 184, 0.1);
+  border: 1px solid rgba(30, 229, 184, 0.3);
+  border-radius: 12px;
+  margin-top: 32px;
+}
+
+.resourceLinks h4 {
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+  color: #1EE5B8;
+}
+
+.resourceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.resourceLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.resourceLink:hover {
+  border-color: #1EE5B8;
+  background: rgba(30, 229, 184, 0.1);
+  transform: translateY(-2px);
+}
+
+.resourceEmoji {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.resourceLink strong {
+  display: block;
+  color: #E6EAF2;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.resourceLink p {
+  color: #9AA3AE;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Collapsible Example */
+.collapsibleExample {
+  margin: 32px 0;
+  border: 2px solid rgba(100, 168, 255, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.collapsibleSummary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  background: rgba(100, 168, 255, 0.1);
+  cursor: pointer;
+  font-weight: 600;
+  color: #E6EAF2;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+.collapsibleSummary:hover {
+  background: rgba(100, 168, 255, 0.15);
+}
+
+.collapsibleSummary::-webkit-details-marker {
+  display: none;
+}
+
+.summaryIcon {
+  font-size: 1.5rem;
+}
+
+.expandIcon {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+  color: #64A8FF;
+}
+
+.collapsibleExample[open] .expandIcon {
+  transform: rotate(180deg);
+}
+
+.collapsibleContent {
+  padding: 24px;
+  background: rgba(21, 26, 33, 0.8);
+}
+
+.systemPromptWithComments {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.promptSection {
+  border-left: 3px solid #64A8FF;
+  padding-left: 20px;
+}
+
+.promptComment {
+  padding: 12px 16px;
+  background: rgba(100, 168, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  color: #E6EAF2;
+  font-size: 0.95rem;
+}
+
+.promptComment strong {
+  color: #64A8FF;
+}
+
+.promptCode {
+  padding: 16px;
+  background: #151A21;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 0;
+  color: #9AA3AE;
+}
+
+.viewFullPrompt {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(154, 163, 174, 0.2);
+  text-align: center;
+}
+
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(100, 168, 255, 0.2);
+  border: 1px solid #64A8FF;
+  border-radius: 8px;
+  color: #64A8FF;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.githubLink:hover {
+  background: rgba(100, 168, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Frontend/Backend Section */
+.frontendBackendGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.fbCard {
+  padding: 32px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.fbCard:hover {
+  transform: translateY(-4px);
+}
+
+.frontendCard {
+  background: rgba(100, 168, 255, 0.1);
+  border: 2px solid rgba(100, 168, 255, 0.3);
+}
+
+.frontendCard:hover {
+  border-color: #64A8FF;
+}
+
+.backendCard {
+  background: rgba(30, 229, 184, 0.1);
+  border: 2px solid rgba(30, 229, 184, 0.3);
+}
+
+.backendCard:hover {
+  border-color: #1EE5B8;
+}
+
+.fbEmoji {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.fbCard h4 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.frontendCard h4 {
+  color: #64A8FF;
+}
+
+.backendCard h4 {
+  color: #1EE5B8;
+}
+
+.fbSubtitle {
+  text-align: center;
+  color: #9AA3AE;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.fbCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.fbCard ul li {
+  padding-left: 24px;
+  position: relative;
+  margin-bottom: 8px;
+  color: #E6EAF2;
+  font-size: 0.95rem;
+}
+
+.fbCard ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+}
+
+.frontendCard ul li::before {
+  color: #64A8FF;
+}
+
+.backendCard ul li::before {
+  color: #1EE5B8;
+}
+
+.fbExample {
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #9AA3AE;
+}
+
+.fbExample strong {
+  color: #E6EAF2;
+}
+
+/* Languages Section */
+.languagesSection {
+  padding: 32px;
+  background: rgba(21, 26, 33, 0.8);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.languagesSection h4 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #E6EAF2;
+}
+
+.languagesIntro {
+  color: #9AA3AE;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.languagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.languageCard {
+  padding: 24px;
+  background: rgba(30, 229, 184, 0.05);
+  border: 1px solid rgba(154, 163, 174, 0.2);
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.languageCard:hover {
+  border-color: #1EE5B8;
+}
+
+.languageIcon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.languageName {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #E6EAF2;
+  margin-bottom: 8px;
+}
+
+.languageCard p {
+  color: #9AA3AE;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.languageUsed {
+  padding: 8px 12px;
+  background: rgba(30, 229, 184, 0.1);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #1EE5B8;
+  font-weight: 600;
+}
+
+/* Simple Analogy */
+.simpleAnalogy {
+  padding: 24px;
+  background: rgba(255, 200, 87, 0.1);
+  border: 1px solid rgba(255, 200, 87, 0.3);
+  border-radius: 12px;
+}
+
+.simpleAnalogy h4 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: #FFC857;
+}
+
+.analogyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.analogyItem {
+  padding: 16px;
+  background: rgba(21, 26, 33, 0.6);
+  border-radius: 8px;
+}
+
+.analogyItem strong {
+  display: block;
+  color: #FFC857;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.analogyItem p {
+  color: #9AA3AE;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Congratulations Section */
+.congratsSection {
+  padding: 80px 0;
+  background: linear-gradient(135deg, rgba(30, 229, 184, 0.1) 0%, rgba(100, 168, 255, 0.1) 100%);
+  border-top: 1px solid rgba(154, 163, 174, 0.2);
+  border-bottom: 1px solid rgba(154, 163, 174, 0.2);
+  text-align: center;
+}
+
+.congratsContent {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.congratsEmoji {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.congratsTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #1EE5B8 0%, #64A8FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.congratsText {
+  font-size: 1.125rem;
+  color: #9AA3AE;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.congratsChecklist {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.congratsItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background: rgba(21, 26, 33, 0.6);
+  border-radius: 8px;
+  color: #E6EAF2;
+  font-size: 1rem;
+}
+
+.congratsItem span {
+  font-size: 1.25rem;
+}
+
+.nextStepsBox {
+  padding: 28px;
+  background: rgba(30, 229, 184, 0.15);
+  border: 2px solid #1EE5B8;
+  border-radius: 16px;
+}
+
+.nextStepsBox h4 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #1EE5B8;
+}
+
+.nextStepsBox p {
+  color: #E6EAF2;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .heroTitle {

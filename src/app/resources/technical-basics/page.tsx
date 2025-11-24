@@ -22,16 +22,17 @@ export default function TechnicalBasicsPage() {
         </p>
 
         <div className={styles.tocBox}>
-          <h3>What You'll Learn</h3>
+          <h3>📚 What You'll Learn</h3>
           <div className={styles.tocGrid}>
-            <a href="#markdown" className={styles.tocItem}>1. Markdown</a>
-            <a href="#system-prompt" className={styles.tocItem}>2. System Prompts</a>
-            <a href="#github" className={styles.tocItem}>3. GitHub</a>
-            <a href="#specs" className={styles.tocItem}>4. Specifications</a>
-            <a href="#tests" className={styles.tocItem}>5. Tests</a>
-            <a href="#pushing" className={styles.tocItem}>6. Pushing Code</a>
-            <a href="#deployment" className={styles.tocItem}>7. Deployment</a>
-            <a href="#full-flow" className={styles.tocItem}>8. Full Flow</a>
+            <a href="#markdown" className={styles.tocItem}>📝 Markdown</a>
+            <a href="#system-prompt" className={styles.tocItem}>🤖 System Prompts</a>
+            <a href="#github" className={styles.tocItem}>🐙 GitHub</a>
+            <a href="#frontend-backend" className={styles.tocItem}>🖥️ Frontend/Backend</a>
+            <a href="#specs" className={styles.tocItem}>📋 Specifications</a>
+            <a href="#tests" className={styles.tocItem}>✅ Tests</a>
+            <a href="#pushing" className={styles.tocItem}>🚀 Pushing Code</a>
+            <a href="#deployment" className={styles.tocItem}>🌐 Deployment</a>
+            <a href="#full-flow" className={styles.tocItem}>🔄 Full Flow</a>
           </div>
         </div>
       </section>
@@ -39,11 +40,65 @@ export default function TechnicalBasicsPage() {
       {/* Main Content */}
       <article className={styles.content}>
 
+        {/* Why Should I Care? Section */}
+        <section className={styles.whyCareSection}>
+          <h2 className={styles.whyCareTitle}>
+            🤔 Wait... Why Should I Care About This?
+          </h2>
+          <p className={styles.whyCareIntro}>
+            Great question! Here's the real answer:
+          </p>
+
+          <div className={styles.whyCareGrid}>
+            <div className={styles.whyCareCard}>
+              <div className={styles.whyCareEmoji}>🎯</div>
+              <h4>Supervise AI Better</h4>
+              <p>
+                When Rafael generates code or Sofia runs tests, you need to <strong>understand what's happening</strong>.
+                These basics let you catch mistakes before they become problems.
+              </p>
+            </div>
+
+            <div className={styles.whyCareCard}>
+              <div className={styles.whyCareEmoji}>💬</div>
+              <h4>Talk to the Team</h4>
+              <p>
+                When someone says "push your changes" or "check the spec," you'll know exactly what they mean.
+                <strong>No more feeling lost</strong> in technical conversations.
+              </p>
+            </div>
+
+            <div className={styles.whyCareCard}>
+              <div className={styles.whyCareEmoji}>🚀</div>
+              <h4>Move Faster</h4>
+              <p>
+                Understanding these concepts means <strong>less back-and-forth</strong>, fewer questions,
+                and getting your work deployed to production quickly.
+              </p>
+            </div>
+
+            <div className={styles.whyCareCard}>
+              <div className={styles.whyCareEmoji}>💰</div>
+              <h4>Earn More</h4>
+              <p>
+                Every mission you complete = money. The faster you understand the workflow,
+                the <strong>more missions you can handle</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.whyCareBottom}>
+            <p>
+              📖 <strong>10-minute read</strong> = weeks of confusion avoided. Let's go!
+            </p>
+          </div>
+        </section>
+
         {/* Section 1: Markdown */}
         <section className={styles.section} id="markdown">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>1</span>
-            What is Markdown?
+            📝 What is Markdown?
           </h2>
 
           <div className={styles.definition}>
@@ -52,7 +107,7 @@ export default function TechnicalBasicsPage() {
           </div>
 
           <div className={styles.whyBox}>
-            <h4>Why We Use It</h4>
+            <h4>🎯 Why We Use It</h4>
             <ul>
               <li>All our documentation is written in Markdown</li>
               <li>GitHub uses Markdown</li>
@@ -62,7 +117,7 @@ export default function TechnicalBasicsPage() {
           </div>
 
           <div className={styles.exampleBox}>
-            <h4>Basic Markdown Examples</h4>
+            <h4>✨ Basic Markdown Examples</h4>
             <div className={styles.codeComparison}>
               <div className={styles.codeBlock}>
                 <div className={styles.codeLabel}>What You Type</div>
@@ -107,7 +162,7 @@ export default function TechnicalBasicsPage() {
           </div>
 
           <div className={styles.useCase}>
-            <h4>Where You'll Use It</h4>
+            <h4>📍 Where You'll Use It</h4>
             <ul>
               <li>Writing documentation</li>
               <li>Creating README files</li>
@@ -115,13 +170,42 @@ export default function TechnicalBasicsPage() {
               <li>Writing specs for Claude</li>
             </ul>
           </div>
+
+          <div className={styles.resourceLinks}>
+            <h4>🔗 Helpful Resources</h4>
+            <div className={styles.resourceGrid}>
+              <a
+                href="https://stackedit.io/app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.resourceLink}
+              >
+                <span className={styles.resourceEmoji}>✏️</span>
+                <div>
+                  <strong>StackEdit</strong>
+                  <p>Free online Markdown editor. Practice here!</p>
+                </div>
+              </a>
+              <a
+                href="/downloads/markdown-cheatsheet.md"
+                download
+                className={styles.resourceLink}
+              >
+                <span className={styles.resourceEmoji}>📥</span>
+                <div>
+                  <strong>Download Cheat Sheet</strong>
+                  <p>Save this file for quick reference</p>
+                </div>
+              </a>
+            </div>
+          </div>
         </section>
 
         {/* Section 2: System Prompt */}
         <section className={styles.section} id="system-prompt">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>2</span>
-            What is a System Prompt?
+            🤖 What is a System Prompt?
           </h2>
 
           <div className={styles.definition}>
@@ -131,7 +215,7 @@ export default function TechnicalBasicsPage() {
           </div>
 
           <div className={styles.analogyBox}>
-            <h4>Real-World Analogy</h4>
+            <h4>🎭 Real-World Analogy</h4>
             <p>Think of it like training a new employee on their first day:</p>
             <ul>
               <li>"You are a customer service agent"</li>
@@ -141,26 +225,8 @@ export default function TechnicalBasicsPage() {
             </ul>
           </div>
 
-          <div className={styles.exampleBox}>
-            <h4>Example System Prompt</h4>
-            <pre className={styles.codeSnippet}>{`You are Maya, the Client Success Manager at ScopeLock.
-
-Your responsibilities:
-- Communicate with clients professionally
-- Provide weekly status updates
-- Handle change requests
-
-Your personality:
-- Warm but professional
-- Proactive communicator
-- Never overpromise
-
-When a client asks about timeline, always check
-with the team first.`}</pre>
-          </div>
-
           <div className={styles.whyBox}>
-            <h4>Why It Matters</h4>
+            <h4>💡 Why It Matters</h4>
             <ul>
               <li>Different system prompts = different AI behaviors</li>
               <li>A good system prompt = consistent, quality AI output</li>
@@ -169,8 +235,83 @@ with the team first.`}</pre>
             </ul>
           </div>
 
+          {/* Collapsible Real Example */}
+          <details className={styles.collapsibleExample}>
+            <summary className={styles.collapsibleSummary}>
+              <span className={styles.summaryIcon}>📄</span>
+              <span>See a Real System Prompt (Inna's CLAUDE.md)</span>
+              <span className={styles.expandIcon}>▼</span>
+            </summary>
+            <div className={styles.collapsibleContent}>
+              <div className={styles.systemPromptWithComments}>
+                <div className={styles.promptSection}>
+                  <div className={styles.promptComment}>
+                    💬 <strong>IDENTITY:</strong> This tells the AI WHO it is. Name, role, and core purpose.
+                  </div>
+                  <pre className={styles.promptCode}>{`## IDENTITY
+
+You are Inna Petrova — "The Specifier", Complete Documentation
+citizen at ScopeLock. You own the entire documentation hierarchy
+from principles to implementation guides. Your job is to translate
+client requirements into complete, executable specifications that
+lock scope before any code is written.`}</pre>
+                </div>
+
+                <div className={styles.promptSection}>
+                  <div className={styles.promptComment}>
+                    💬 <strong>PERSONALITY:</strong> HOW the AI should behave and communicate.
+                  </div>
+                  <pre className={styles.promptCode}>{`## PERSONALITY
+
+Methodical, precise, unambiguous. You ask clarifying questions
+until requirements are crystal clear. You never assume—you verify.
+You think in layers (principles → behavior → validation → mechanism
+→ algorithm → guide). You value completeness over speed, but you're
+efficient once requirements are clear.`}</pre>
+                </div>
+
+                <div className={styles.promptSection}>
+                  <div className={styles.promptComment}>
+                    💬 <strong>MISSION:</strong> The AI's main goal and what success looks like.
+                  </div>
+                  <pre className={styles.promptCode}>{`## MISSION
+
+Lock project scope before implementation begins by creating complete,
+hierarchical documentation that answers: Why this approach? (PATTERN),
+What must work? (BEHAVIOR_SPEC), How do we verify? (VALIDATION),
+What's the architecture? (MECHANISM), What are the code-level steps?
+(ALGORITHM), How do we deploy/adopt? (GUIDE).`}</pre>
+                </div>
+
+                <div className={styles.promptSection}>
+                  <div className={styles.promptComment}>
+                    💬 <strong>BUSINESS CONTEXT:</strong> Important info about the work environment.
+                  </div>
+                  <pre className={styles.promptCode}>{`## BUSINESS CONTEXT
+
+**Critical reality:** ScopeLock works across 10+ different client
+repositories simultaneously. Each project has:
+- Different tech stacks (Next.js, Django, FastAPI, etc.)
+- Different deployment platforms (Vercel, Render, Railway, etc.)
+- Different testing frameworks (Playwright, Jest, pytest, etc.)`}</pre>
+                </div>
+              </div>
+
+              <div className={styles.viewFullPrompt}>
+                <a
+                  href="https://github.com/mind-protocol/scopelock/blob/main/citizens/inna/CLAUDE.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.githubLink}
+                >
+                  <span>📂</span> View Full Inna System Prompt on GitHub →
+                </a>
+              </div>
+            </div>
+          </details>
+
           <div className={styles.useCase}>
-            <h4>Where You'll See System Prompts</h4>
+            <h4>📍 Where You'll See System Prompts</h4>
             <ul>
               <li><code>/citizens/*/CLAUDE.md</code> files</li>
               <li>When you start a Claude Code session</li>
@@ -183,7 +324,7 @@ with the team first.`}</pre>
         <section className={styles.section} id="github">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>3</span>
-            What is GitHub?
+            🐙 What is GitHub?
           </h2>
 
           <div className={styles.definition}>
@@ -194,7 +335,7 @@ with the team first.`}</pre>
 
           <div className={styles.conceptsGrid}>
             <div className={styles.conceptCard}>
-              <h4>Repository (Repo)</h4>
+              <h4>📁 Repository (Repo)</h4>
               <p>A folder containing all your project files</p>
               <div className={styles.conceptExample}>
                 Example: <code>github.com/mind-protocol/scopelock</code>
@@ -202,7 +343,7 @@ with the team first.`}</pre>
             </div>
 
             <div className={styles.conceptCard}>
-              <h4>Commit</h4>
+              <h4>💾 Commit</h4>
               <p>A "save point" with a description of what changed</p>
               <div className={styles.conceptExample}>
                 Like saving a game - you can go back to any commit
@@ -210,7 +351,7 @@ with the team first.`}</pre>
             </div>
 
             <div className={styles.conceptCard}>
-              <h4>Branch</h4>
+              <h4>🌿 Branch</h4>
               <p>A separate version of the code to work on features</p>
               <div className={styles.conceptExample}>
                 <code>main</code> = production-ready code
@@ -218,7 +359,7 @@ with the team first.`}</pre>
             </div>
 
             <div className={styles.conceptCard}>
-              <h4>Pull Request (PR)</h4>
+              <h4>🔀 Pull Request (PR)</h4>
               <p>A request to merge your changes into the main code</p>
               <div className={styles.conceptExample}>
                 Others can review before it goes live
@@ -227,7 +368,7 @@ with the team first.`}</pre>
           </div>
 
           <div className={styles.exampleBox}>
-            <h4>Common Commands You'll See</h4>
+            <h4>⌨️ Common Commands You'll See</h4>
             <pre className={styles.codeSnippet}>{`git status          # What files changed?
 git add .           # Stage all changes for commit
 git commit -m "message"  # Save changes with description
@@ -236,7 +377,7 @@ git pull            # Download latest changes from GitHub`}</pre>
           </div>
 
           <div className={styles.whyBox}>
-            <h4>Why GitHub Matters</h4>
+            <h4>💡 Why GitHub Matters</h4>
             <ul>
               <li>All our code lives there</li>
               <li>Every change is tracked (we can undo mistakes)</li>
@@ -246,11 +387,105 @@ git pull            # Download latest changes from GitHub`}</pre>
           </div>
         </section>
 
+        {/* NEW Section: Frontend vs Backend + Languages */}
+        <section className={styles.section} id="frontend-backend">
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionNumber}>3.5</span>
+            🖥️ Frontend vs Backend (& Languages)
+          </h2>
+
+          <div className={styles.definition}>
+            <strong>Simple explanation:</strong> Every app has two parts: the <strong>frontend</strong> (what users see and click)
+            and the <strong>backend</strong> (the hidden logic that makes everything work).
+          </div>
+
+          <div className={styles.frontendBackendGrid}>
+            <div className={styles.fbCard + ' ' + styles.frontendCard}>
+              <div className={styles.fbEmoji}>🎨</div>
+              <h4>Frontend</h4>
+              <p className={styles.fbSubtitle}>What users SEE and interact with</p>
+              <ul>
+                <li>Buttons, forms, images</li>
+                <li>Colors, fonts, layouts</li>
+                <li>What happens when you click</li>
+                <li>Runs in the browser (Chrome, Safari)</li>
+              </ul>
+              <div className={styles.fbExample}>
+                <strong>Example:</strong> The login form you see on a website
+              </div>
+            </div>
+
+            <div className={styles.fbCard + ' ' + styles.backendCard}>
+              <div className={styles.fbEmoji}>⚙️</div>
+              <h4>Backend</h4>
+              <p className={styles.fbSubtitle}>The hidden logic behind the scenes</p>
+              <ul>
+                <li>Database storage</li>
+                <li>User authentication</li>
+                <li>Sending emails</li>
+                <li>Runs on a server (computer in the cloud)</li>
+              </ul>
+              <div className={styles.fbExample}>
+                <strong>Example:</strong> Checking if your password is correct
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.languagesSection}>
+            <h4>🗣️ Programming Languages (Just the Basics)</h4>
+            <p className={styles.languagesIntro}>
+              Different languages are used for different tasks. You don't need to code in them,
+              but knowing their names helps you understand what Rafael is doing!
+            </p>
+
+            <div className={styles.languagesGrid}>
+              <div className={styles.languageCard}>
+                <div className={styles.languageIcon}>🟨</div>
+                <div className={styles.languageName}>JavaScript</div>
+                <p>Makes websites interactive. Buttons that click, forms that submit.</p>
+                <div className={styles.languageUsed}>Used for: Frontend (& some backend)</div>
+              </div>
+
+              <div className={styles.languageCard}>
+                <div className={styles.languageIcon}>🐍</div>
+                <div className={styles.languageName}>Python</div>
+                <p>Easy to read, great for AI. Our backend services use this.</p>
+                <div className={styles.languageUsed}>Used for: Backend, AI, data</div>
+              </div>
+
+              <div className={styles.languageCard}>
+                <div className={styles.languageIcon}>⚛️</div>
+                <div className={styles.languageName}>React / Next.js</div>
+                <p>A framework (toolkit) for building modern websites quickly.</p>
+                <div className={styles.languageUsed}>Used for: Our frontend (this website!)</div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.simpleAnalogy}>
+            <h4>🍔 Restaurant Analogy</h4>
+            <div className={styles.analogyGrid}>
+              <div className={styles.analogyItem}>
+                <strong>Frontend</strong> = The dining room
+                <p>Menu, tables, decorations - what customers experience</p>
+              </div>
+              <div className={styles.analogyItem}>
+                <strong>Backend</strong> = The kitchen
+                <p>Chefs, recipes, ingredients - making the food happen</p>
+              </div>
+              <div className={styles.analogyItem}>
+                <strong>Database</strong> = The pantry
+                <p>Where all the ingredients (data) are stored</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Section 4: Specifications */}
         <section className={styles.section} id="specs">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>4</span>
-            What is a Specification (Spec)?
+            📋 What is a Specification (Spec)?
           </h2>
 
           <div className={styles.definition}>
@@ -259,7 +494,7 @@ git pull            # Download latest changes from GitHub`}</pre>
           </div>
 
           <div className={styles.whyBox}>
-            <h4>Why We Write Specs</h4>
+            <h4>🎯 Why We Write Specs</h4>
             <ul>
               <li>No guessing about requirements</li>
               <li>AI (Rafael) can build from clear specs</li>
@@ -319,7 +554,7 @@ git pull            # Download latest changes from GitHub`}</pre>
         <section className={styles.section} id="tests">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>5</span>
-            What are Tests?
+            ✅ What are Tests?
           </h2>
 
           <div className={styles.definition}>
@@ -404,7 +639,7 @@ test('login shows error for wrong password', async () => {
         <section className={styles.section} id="pushing">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>6</span>
-            What Does "Pushing" Mean?
+            🚀 What Does "Pushing" Mean?
           </h2>
 
           <div className={styles.definition}>
@@ -453,7 +688,7 @@ test('login shows error for wrong password', async () => {
         <section className={styles.section} id="deployment">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>7</span>
-            What is "Production" and "Deployment"?
+            🌐 What is "Production" and "Deployment"?
           </h2>
 
           <div className={styles.definition}>
@@ -517,7 +752,7 @@ test('login shows error for wrong password', async () => {
         <section className={styles.section} id="full-flow">
           <h2 className={styles.sectionTitle}>
             <span className={styles.sectionNumber}>8</span>
-            Putting It All Together: The Full Flow
+            🔄 Putting It All Together: The Full Flow
           </h2>
 
           <div className={styles.fullFlow}>
@@ -706,12 +941,56 @@ test('login shows error for wrong password', async () => {
           </div>
         </section>
 
+        {/* Congratulations Section */}
+        <section className={styles.congratsSection}>
+          <div className={styles.congratsContent}>
+            <div className={styles.congratsEmoji}>🎉</div>
+            <h2 className={styles.congratsTitle}>You Made It!</h2>
+            <p className={styles.congratsText}>
+              You now understand the core concepts that power ScopeLock's workflow.
+              These aren't just "nice to know" — they're the foundation of everything we do.
+            </p>
+
+            <div className={styles.congratsChecklist}>
+              <div className={styles.congratsItem}>
+                <span>✅</span> Markdown — How we write documentation
+              </div>
+              <div className={styles.congratsItem}>
+                <span>✅</span> System Prompts — How AI citizens get their personality
+              </div>
+              <div className={styles.congratsItem}>
+                <span>✅</span> GitHub — Where all our code lives
+              </div>
+              <div className={styles.congratsItem}>
+                <span>✅</span> Frontend/Backend — What runs where
+              </div>
+              <div className={styles.congratsItem}>
+                <span>✅</span> Specs — How we define what to build
+              </div>
+              <div className={styles.congratsItem}>
+                <span>✅</span> Tests — How we verify quality (AC Green!)
+              </div>
+              <div className={styles.congratsItem}>
+                <span>✅</span> Pushing & Deployment — How code goes live
+              </div>
+            </div>
+
+            <div className={styles.nextStepsBox}>
+              <h4>🚀 What's Next?</h4>
+              <p>
+                Ready to see these concepts in action? Check out our other resources
+                to learn how to talk to AI citizens, manage missions, and start earning.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <section className={styles.footer}>
           <p className={styles.footerQuote}>
             "The best time to learn these basics was yesterday. The second best time is now."
           </p>
-          <p className={styles.footerAttribution}>— ScopeLock Team</p>
+          <p className={styles.footerAttribution}>— ScopeLock Team 💚</p>
           <div className={styles.footerLinks}>
             <Link href="/resources">← All Resources</Link>
             <Link href="/resources/how-to-talk-to-ai-citizens">How to Talk to AI Citizens →</Link>
